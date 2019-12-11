@@ -29,7 +29,7 @@ Você vai criar uma aplicação de cadastro de pedidos de compra, a partir de um
 ## Entrega:
 Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo e depois envie-nos o pull request. Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
 
-Envie também seu currículo atualizado para o email vagas@oliveiratrust.com.br.
+Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
 
 ### Bônus:
 
