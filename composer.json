@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "geekcom/validator-docs": "^3.4",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0"
     },
