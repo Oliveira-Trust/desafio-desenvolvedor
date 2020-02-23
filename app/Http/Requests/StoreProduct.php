@@ -25,7 +25,19 @@ class StoreProduct extends FormRequest
     {
         return [
             'name' => 'required|unique:products|max:70',
-            'price' => 'required',
+            'price' => 'required|numeric',
         ];
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'price' => str_replace(',', '.', $this->price)
+        ]);
     }
 }
