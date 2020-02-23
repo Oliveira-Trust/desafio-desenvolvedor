@@ -13,16 +13,30 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @param ProductFilters $productFilters
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(ProductFilters $productFilters)
+    public function index(Request $request, ProductFilters $productFilters)
     {
-        $products = Product::select('id', 'name', 'price')
+        $results = Product::select('id', 'name', 'price')
             ->filter($productFilters)
-            ->orderBy('name')
+            ->orderBy($request->input('order','id'))
             ->paginate(10);
-        return ProductResource::collection($products);
+        if ($request->wantsJson()) {
+            return ProductResource::collection($results);
+        }
+        return view('product.index')->with(compact('results'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('product.form');
     }
 
     /**
@@ -44,12 +58,27 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param Request $request
      * @param \App\Product $product
      * @return ProductResource
      */
-    public function show(Product $product)
+    public function show(Request $request, Product $product)
     {
-        return new ProductResource($product);
+        if ($request->wantsJson()) {
+            return new ProductResource($product);
+        }
+        return view('product.show')->with(compact('product'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Product $product
+     * @return void
+     */
+    public function edit(Product $product)
+    {
+        return view('product.form')->with(compact('product'));
     }
 
     /**
@@ -72,11 +101,12 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Product $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
     public function destroy(Product $product)
     {
         $product->delete();
+        return response()->json('Removido com sucesso!', 200);
     }
 }

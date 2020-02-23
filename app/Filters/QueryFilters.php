@@ -44,9 +44,9 @@ abstract class QueryFilters {
             }
             if (strlen($value)) {
                 $this->$name($value);
-            } else {
+            } /*else {
                 $this->$name();
-            }
+            }*/
         }
         return $this->builder;
     }

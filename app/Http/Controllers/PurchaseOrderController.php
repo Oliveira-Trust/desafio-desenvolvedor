@@ -34,7 +34,7 @@ class PurchaseOrderController extends Controller
         // Esses dois metodos chamados abaixo podem ser refatorados e movidos para outro lugar
         $this->storeItems($request->all(), $purchase->id);
         $this->setAmount($purchase);
-        dd($purchase);
+        //dd($purchase);
     }
 
     private function storeItems($input, $purchase_id) {
