@@ -8,17 +8,33 @@
                     <div class="card-header">Listagem de Clientes <br><a class="btn btn-link float-right" href="{{ route('customer.create') }}">Cadastrar novo</a></div>
                     <div class="card-body">
                         <form method="get" action="{{ route('customer.index') }}">
-                            <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" class="form-control" name="name">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>CPF</label>
+                                    <input type="text" class="form-control" name="cpf">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="email">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" name="email">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>CPF</label>
-                                <input type="text" class="form-control" name="cpf">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline1" name="order" class="custom-control-input" value="name">
+                                <label class="custom-control-label" for="customRadioInline1">Ordernar por nome</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline2" name="order" class="custom-control-input" value="id">
+                                <label class="custom-control-label" for="customRadioInline2">Ou por id</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline3" name="order" class="custom-control-input" value="email">
+                                <label class="custom-control-label" for="customRadioInline3">Ou por email</label>
                             </div>
                             <br>
                             <div class="text-center">

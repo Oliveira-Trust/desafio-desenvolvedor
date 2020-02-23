@@ -35,7 +35,7 @@ class CustomerFilters extends QueryFilters
      */
     public function email($email)
     {
-        return $this->builder->where('email', $email);
+        return $this->builder->where('email','like', '%'.$email.'%');
     }
 
 }

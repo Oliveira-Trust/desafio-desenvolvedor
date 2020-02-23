@@ -6,6 +6,7 @@ use App\Filters\CustomerFilters;
 use App\Http\Requests\StoreCustomer;
 use App\Http\Resources\Customer as CustomerResource;
 use App\User;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,32 +14,36 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @param CustomerFilters $customerFilters
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|Factory|\Illuminate\View\View
      */
-    public function index(CustomerFilters $customerFilters)
+    public function index(Request $request, CustomerFilters $customerFilters)
     {
-        $users = User::select('id', 'cpf', 'name', 'email')
+        $results = User::select('id', 'cpf', 'name', 'email')
             ->filter($customerFilters)
-            ->orderBy('name')
+            ->orderBy($request->input('order','name'))
             ->paginate(15);
-        return CustomerResource::collection($users);
+        if ($request->wantsJson()) {
+            return CustomerResource::collection($results);
+        }
+        return view('customer.index')->with(compact('results'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('customer.form');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return CustomerResource
      */
     public function store(StoreCustomer $request)
@@ -57,22 +62,25 @@ class CustomerController extends Controller
      * Display the specified resource.
      *
      * @param User $customer
-     * @return CustomerResource
+     * @return CustomerResource|Factory|\Illuminate\View\View
      */
-    public function show(User $customer)
+    public function show(Request $request, User $customer)
     {
-        return new CustomerResource($customer);
+        if ($request->wantsJson()) {
+            return new CustomerResource($customer);
+        }
+        return view('customer.show')->with(compact('customer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param User $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $customer)
     {
-        //
+        return view('customer.form')->with(compact('customer'));
     }
 
     /**
