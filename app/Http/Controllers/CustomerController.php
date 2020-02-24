@@ -55,7 +55,14 @@ class CustomerController extends Controller
         $customer->password = $request->input('password');
         $customer->admin = $request->input('admin');
         $customer->save();
-        return new CustomerResource($customer);
+        if ($request->wantsJson()) {
+            return new CustomerResource($customer);
+        }
+        return redirect()->route('customer.show', $customer->id)
+            ->with([
+                'aviso' => 'Cliente cadastrado com sucesso.',
+                'type' => 'success'
+            ]);
     }
 
     /**
@@ -95,6 +102,11 @@ class CustomerController extends Controller
         $input = $request->only('name', 'cpf', 'email', 'password', 'admin');
         $customer->fill($input);
         $customer->save();
+        return redirect()->route('customer.show', $customer->id)
+            ->with([
+                'aviso' => 'Cliente alterado com sucesso.',
+                'type' => 'success'
+            ]);
     }
 
     /**

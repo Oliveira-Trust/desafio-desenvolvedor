@@ -14,7 +14,9 @@ class PurchaseOrderController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param PurchaseFilters $purchaseFilters
+     * @return Factory|\Illuminate\View\View
      */
     public function index(Request $request, PurchaseFilters $purchaseFilters)
     {

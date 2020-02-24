@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         $results = Product::select('id', 'name', 'price')
             ->filter($productFilters)
-            ->orderBy($request->input('order','id'))
+            ->orderBy($request->input('order', 'id'))
             ->paginate(10);
         if ($request->wantsJson()) {
             return ProductResource::collection($results);
@@ -43,7 +43,7 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return ProductResource
+     * @return ProductResource|\Illuminate\Http\RedirectResponse
      */
     public function store(StoreProduct $request)
     {
@@ -52,7 +52,15 @@ class ProductController extends Controller
         $product->price = str_replace(',', '.', $request->input('price'));
         $product->obs = $request->input('obs');
         $product->save();
-        return new ProductResource($product);
+
+        if ($request->wantsJson()) {
+            return new ProductResource($product);
+        }
+        return redirect()->route('product.show', $product->id)
+            ->with([
+                'aviso' => 'Produto cadastrado com sucesso.',
+                'type' => 'success'
+            ]);
     }
 
     /**
@@ -94,7 +102,14 @@ class ProductController extends Controller
         $product->price = str_replace(',', '.', $request->input('price'));
         $product->obs = $request->input('obs');
         $product->save();
-        return new ProductResource($product);
+        if ($request->wantsJson()) {
+            return new ProductResource($product);
+        }
+        return redirect()->route('product.show', $product->id)
+            ->with([
+                'aviso' => 'Produto alterado com sucesso.',
+                'type' => 'success'
+            ]);
     }
 
     /**
