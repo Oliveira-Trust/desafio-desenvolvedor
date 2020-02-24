@@ -16,7 +16,7 @@
                                 <th>Pedido: {{$purchase->id}}</th>
                             </tr>
                             <tr>
-                                <th>Data encomenda: {{$purchase->created_at->format('d/m/Y H:i')}}</th>
+                                <th>Data pedido: {{$purchase->created_at->format('d/m/Y H:i')}}</th>
                             </tr>
                         </table>
                         <table class="table table-bordered">
