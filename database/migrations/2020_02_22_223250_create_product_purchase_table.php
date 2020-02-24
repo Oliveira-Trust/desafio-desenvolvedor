@@ -14,7 +14,7 @@ class CreateProductPurchaseTable extends Migration
     public function up()
     {
         Schema::create('product_purchase', function (Blueprint $table) {
-            $table->bigInteger('purchase_id')->unsigned()->index();
+            $table->bigInteger('purchase_order_id')->unsigned()->index();
             $table->bigInteger('product_id')->unsigned()->index();
             $table->decimal('unitary_price', 10, 2);
             $table->decimal('total_price', 10, 2);
@@ -23,8 +23,8 @@ class CreateProductPurchaseTable extends Migration
         });
 
         Schema::table('product_purchase', function (Blueprint $table) {
-            $table->primary(['purchase_id', 'product_id']);
-            $table->foreign('purchase_id')->references('id')->on('purchase_orders')->onDelete('cascade');
+            $table->primary(['purchase_order_id', 'product_id']);
+            $table->foreign('purchase_order_id')->references('id')->on('purchase_orders')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }

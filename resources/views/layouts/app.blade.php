@@ -58,7 +58,7 @@
                             <a class="nav-link" href="{{ route('product.index') }}">{{ __('Produtos') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Pedidos de Compra') }}</a>
+                            <a class="nav-link" href="{{ route('purchase.index') }}">{{ __('Pedidos de Compra') }}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

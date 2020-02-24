@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('customer', 'CustomerController');
 Route::resource('product', 'ProductController');
+Route::resource('purchase', 'PurchaseOrderController');
+Route::put('/purchase-status/{purchase}', 'PurchaseOrderController@status')->name('purchase.status');

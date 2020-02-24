@@ -8,7 +8,7 @@
                     <div class="card-header">Cadastro de Produto</div>
                     <div class="card-body">
                         <form method="post"
-                              action="{{ $product?route('product.update',$product->id):route('product.store') }}">
+                              action="{{ isset($product)?route('product.update',$product->id):route('product.store') }}">
                             @csrf
                             @if(isset($product))
                                 @method('PUT')
