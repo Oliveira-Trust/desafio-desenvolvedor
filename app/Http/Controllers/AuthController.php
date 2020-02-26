@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationFormRequest;
-use App\User;
+use App\Model\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Hash;
  */
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login', 'new']]);
-    }
-
     /**
      * Handle login.
      */

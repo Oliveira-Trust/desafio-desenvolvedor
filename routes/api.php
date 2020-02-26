@@ -14,13 +14,14 @@ use Illuminate\Http\Request;
 */
 // Route::get('', 'Controller@checkWebServer');
 
-Route::group(['middleware' => 'api'], function ($router) {
+Route::post('login', 'AuthController@login')->name('api.login');
+Route::post('register', 'AuthController@new');
+
+Route::group(['middleware' => 'jwt'], function () {
     // Auth routes
-    Route::post('login', 'AuthController@login')->name('api.login');
-    Route::post('register', 'AuthController@new');
     Route::get('refresh', 'AuthController@refresh');
     Route::get('logout', 'AuthController@logout')->name('api.logout');
-    Route::get('check', 'AuthController@check');
+    Route::get('me', 'AuthController@me');
 
     // Api routes
     Route::apiResources([

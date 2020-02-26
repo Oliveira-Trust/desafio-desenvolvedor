@@ -1,14 +1,19 @@
-// import { Auth } from "./auth";
+import { Auth } from "./auth";
 
-// const email = document.querySelector("#email");
-// const password = document.querySelector("#password");
-// const btnSubmit = document.querySelector("#submit");
-// const form = document.querySelector("form");
+const email = document.querySelector("#email");
+const password = document.querySelector("#password");
+const btnLogin = document.querySelector("#login");
+const form = document.querySelector("form");
 
-// function submit() {
-//     let auth = new Auth();
-//     event.preventDefault();
-//     auth.login(email.value, password.value);
-// }
+async function login() {
+    event.preventDefault();
+    let auth = new Auth();
 
-// btnSubmit.onclick = submit;
+    return await auth.login(email.value, password.value)
+    .then(() => {
+        if (auth.isLoggedIn()) {
+            form.submit();
+        }
+    });
+}
+btnLogin.onclick = login;

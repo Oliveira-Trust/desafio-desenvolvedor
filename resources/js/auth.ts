@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 export class Auth {
+    private headers = {
+        'Authorization': 'Bearer '.concat(this.getToken())
+    };
     private apiRoot: string = 'http://localhost:8080/';
 
     private setSession(authResult) {
@@ -12,30 +15,27 @@ export class Auth {
         return localStorage.getItem('token');
     }
 
-    redirectHome() { 
-        axios.get(this.apiRoot.concat('home'), {
-            headers: {
-                "Content-Type": 'application/json',
-                Authorization: 'Bearer '.concat(localStorage.getItem('token'))
-            }
-        })
-        .then((res) => location.href = res.request.responseURL);
-    }
-
-    login(email: string, password: string) {
-        try {
-            axios.post(this.apiRoot.concat('api/auth/login'), {email, password})
+    async login(email: string, password: string) {
+        return await axios.post(this.apiRoot.concat('api/login'), {email, password})
             .then((response) => {
-                console.log(response);
                 this.setSession(response.data);
-                this.redirectHome();
             })
-        } catch (error) {
-            console.log(error);
-        }
+            .catch (error => console.log(error));
     }
 
-    logout() {
-        localStorage.removeItem('token');
+    async logout() {
+        return await axios.get(this.apiRoot.concat('api/logout'), {
+            headers: this.headers
+        }).then((res) => {
+            localStorage.removeItem('token');
+        })
+        .catch(error => console.log(error));
+    }
+
+    isLoggedIn(): boolean {
+        return this.getToken() != null ? true : false;
+    }
+    isLoggedOut(): boolean {
+        return !this.isLoggedIn();
     }
 }
