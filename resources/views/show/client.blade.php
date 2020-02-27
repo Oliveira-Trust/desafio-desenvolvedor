@@ -20,7 +20,11 @@
                 </div>                    
             </div>
             <div class="row">
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
+                    <label for="phone">Telefone</label>
+                    <input type="text" name="phone" class="form-control" id="phone" value="{{$client->phone}}" readonly>
+                </div>
+                <div class="form-group col-sm-6">
                     <label for="address">Endereço</label>
                     <input type="text" name="address" class="form-control" id="address" value="{{$client->address}}" readonly>
                 </div>

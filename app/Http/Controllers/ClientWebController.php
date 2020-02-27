@@ -26,7 +26,7 @@ class ClientWebController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.client');
     }
 
     /**
@@ -37,7 +37,16 @@ class ClientWebController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Client::create($request->all());
+
+            return back()->with('message', 'Registro cadastrado com sucesso.');
+        } catch (\PDOException $e) {
+            Log::error($e->getMessage());
+
+            return back()->with('message', 'Não foi possível cadastrar o registro.')
+                ->withInput();
+        }
     }
 
     /**
