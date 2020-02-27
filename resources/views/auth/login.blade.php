@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @push('scripts')
 <script src="js/login.js"></script>
