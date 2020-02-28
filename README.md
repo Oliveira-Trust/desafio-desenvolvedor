@@ -15,4 +15,5 @@ Para executar comandos dentro do container
 docker-compose exec app php artisan #comando
 ```
 
-O host da API e o site Web é http://localhost:8080
+O host Web é http://localhost:8080
+O host da API é http://localhost:8080/api
