@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientFormRequest;
 use App\Model\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -15,8 +16,7 @@ class ClientWebController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(5);
-        return view('clients', ['clients' => $clients]);
+        return view('clients', ['clients' => Client::all()]);
     }
 
     /**
@@ -35,7 +35,7 @@ class ClientWebController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientFormRequest $request)
     {
         try {
             Client::create($request->all());

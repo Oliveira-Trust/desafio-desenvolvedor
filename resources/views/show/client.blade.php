@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h1>Edição de Cliente</h1>
+        <h1>Detalhes de Cliente</h1>
     </div>
     <div class="card-body">
         <form method="POST" action="{{route('clients.destroy', $client->id)}}">

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-@push('scripts')
-    <script src="js/clients.js"></script>
+@push('script')
+    <script>
+    
+    </script>
 @endpush
 
 @section('content')
@@ -11,7 +13,16 @@
     </div>
 @endif
 
-<h1>Clientes</h1>
+<div class="row">
+  <div class="col"><h1>Clientes</h1></div>
+  <div class="col">
+      <div class="float-right">
+        <a href="{{route('clients.create')}}" class="btn btn-success">
+         <i class="fas fa-plus"></i> Novo Cliente
+        </a>
+      </div>
+  </div>
+</div>
 
 <table class="table table-hover">
     <thead>
@@ -37,9 +48,6 @@
         @endforeach
       </tbody>
     </table>
-      <div class="d-flex justify-content-between">
-        <a href="{{route('clients.create')}}" class="btn btn-success">Cadastrar</a>
-        {{ $clients->links() }}
-      </div>
+      
 
 @endsection
