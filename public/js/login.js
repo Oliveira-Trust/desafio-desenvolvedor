@@ -2977,7 +2977,8 @@ var form = document.querySelector("form");
 
 function login() {
   return _login.apply(this, arguments);
-}
+} // btnLogin.onclick = login;
+
 
 function _login() {
   _login = _asyncToGenerator(
@@ -3010,7 +3011,43 @@ function _login() {
   return _login.apply(this, arguments);
 }
 
-btnLogin.onclick = login;
+var btnLogout = document.querySelector("#logout");
+
+function logout() {
+  return _logout.apply(this, arguments);
+} // btnLogout.onclick = logout;
+
+
+function _logout() {
+  _logout = _asyncToGenerator(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    var auth;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            event.preventDefault();
+            auth = new _auth__WEBPACK_IMPORTED_MODULE_1__["Auth"]();
+            _context2.next = 4;
+            return auth.logout().then(function () {
+              if (auth.isLoggedOut()) {
+                document.getElementById('logout-form').submit();
+              }
+            });
+
+          case 4:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 5:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _logout.apply(this, arguments);
+}
 
 /***/ }),
 
