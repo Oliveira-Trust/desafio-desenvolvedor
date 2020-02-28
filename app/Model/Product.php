@@ -15,4 +15,20 @@ class Product extends Model
     {
         return $this->hasMany('App\Model\Purchase');
     }
+
+    /**
+     * Change common to dot in price.
+     */
+    public function setPriceAttribute($value)
+    {
+        return $this->attributes['price'] = str_replace(',', '.', $value);
+    }
+
+    /**
+     * Format price to number.
+     */
+    public function getPriceAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
 }

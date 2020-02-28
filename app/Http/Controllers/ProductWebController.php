@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductFormRequest;
 use App\Model\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductWebController extends Controller
 {
@@ -14,7 +16,7 @@ class ProductWebController extends Controller
      */
     public function index()
     {
-        //
+        return view('products', ['products' => Product::all()]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductWebController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.product');
     }
 
     /**
@@ -33,9 +35,18 @@ class ProductWebController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
-        //
+        try {
+            Product::create($request->all());
+
+            return back()->with('message', 'Registro cadastrado com sucesso.');
+        } catch (\PDOException $e) {
+            Log::error($e->getMessage());
+
+            return back()->with('message', 'Não foi possível cadastrar o registro.')
+                ->withInput();
+        }
     }
 
     /**
@@ -46,7 +57,7 @@ class ProductWebController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('show.product', ['product' => $product]);
     }
 
     /**
@@ -57,7 +68,7 @@ class ProductWebController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('edit.product', ['product' => $product]);
     }
 
     /**
@@ -69,7 +80,15 @@ class ProductWebController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        try {
+            $product->update($request->all());
+
+            return back()->with('message', 'Registro atualizado com sucesso.');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+
+            return back()->with('message', 'Não foi possível atualizar o registro.')->withInput();
+        }
     }
 
     /**
@@ -80,6 +99,15 @@ class ProductWebController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        try {
+            $product->delete();
+
+            return redirect()->route('products.index')
+                ->with('message', 'Registro deletado com sucesso.');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+
+            return back()->with('message', 'Não foi possível atualizar o registro.')->withInput();
+        }
     }
 }
