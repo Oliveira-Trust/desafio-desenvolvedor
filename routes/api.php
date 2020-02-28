@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// Route::get('', 'Controller@checkWebServer');
-
 Route::post('login', 'API\AuthController@login')->name('api.login');
 Route::post('register', 'API\AuthController@new');
 
