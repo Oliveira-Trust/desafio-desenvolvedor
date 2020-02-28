@@ -23,6 +23,9 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "datatables.net": "^1.10.20",
+        "datatables.net-bs4": "^1.10.20",
+        "datatables.net-dt": "^1.10.20",
         "startbootstrap-simple-sidebar": "^5.1.1",
         "ts-loader": "^6.2.1",
         "typescript": "^3.8.2"

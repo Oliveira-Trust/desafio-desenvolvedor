@@ -1,17 +1,8 @@
 require('./bootstrap');
-import { Auth } from "./auth";
+import $ from 'jquery';
+import dt from 'datatables.net-bs4';
+global.$.DataTable = dt;
 
-const btnLogout = document.querySelector("#logout");
-
-async function logout() {
-    event.preventDefault();
-    let auth = new Auth();
-    
-    return await auth.logout()
-    .then(() => {
-        if (auth.isLoggedOut()) {
-            document.getElementById('logout-form').submit();
-        }
-    });
-}
-btnLogout.onclick = logout;
+$(document).ready( function () {
+    $('.table').DataTable();
+} );

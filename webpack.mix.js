@@ -28,6 +28,4 @@ mix.js('resources/js/app.js', 'public/js')
         }
     });
 
-// mix.js('resources/js/auth.ts', 'public/js');
 mix.js('resources/js/login.js', 'public/js');
-mix.js('resources/js/clients.js', 'public/js');
