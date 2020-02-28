@@ -1,36 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\ProductFormRequest;
-use App\Model\Product;
-use App\Repository\Contracts\ProductRepositoryInterface;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientFormRequest;
+use App\Model\Client;
+use App\Repository\Contracts\ClientRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class ProductController extends Controller
+class ClientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, ProductRepositoryInterface $productRepository): JsonResponse
+    public function index(Request $request, ClientRepositoryInterface $clientRepository): JsonResponse
     {
-        return response()->json($productRepository->queryToPaginate($request->all()));
+        return response()->json($clientRepository->queryToPaginate($request->all()));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductFormRequest $request): JsonResponse
+    public function store(ClientFormRequest $request): JsonResponse
     {
         try {
-            Product::create([
-                'description' => $request->input('description'),
-                'price' => $request->input('price'),
-                'quantity' => $request->input('quantity'),
-                'tag' => json_encode($request->input('tag'))
-            ]);
+            Client::create($request->input());
 
             return response()->json([
                 'message' => 'Registro criado com sucesso.'
@@ -45,18 +45,18 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product): JsonResponse
+    public function show(Client $client): JsonResponse
     {
-        return response()->json($product);
+        return response()->json($client);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product): JsonResponse
+    public function update(Request $request, Client $client): JsonResponse
     {
         try {
-            $product->update($request->input());
+            $client->update($request->input());
 
             return response()->json([
                 'message' => 'Registro atualizado com sucesso.',
@@ -71,10 +71,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product): JsonResponse
+    public function destroy(Client $client): JsonResponse
     {
         try {
-            $product->delete();
+            $client->delete();
 
             return response()->json([
                 'message' => 'Registro deletado com sucesso.',

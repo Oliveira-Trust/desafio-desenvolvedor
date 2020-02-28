@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationFormRequest;
-use App\User;
+use App\Model\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,26 +14,26 @@ use Illuminate\Support\Facades\Hash;
  */
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login', 'new']]);
-    }
-
     /**
      * Handle login.
      */
-    public function login (Request $request): JsonResponse
+    public function login (): JsonResponse
     {
-        $input = $request->only('email', 'password');
+        $credentials = request(['email', 'password']);
 
-        if (!auth()->attempt($input)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Dados inválidos.',
-            ], 401);
+        if (! $token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->check();
+        return $this->respondWithToken($token);
+    }
+
+    /**
+     * Get the authenticated User.
+     */
+    public function me(): JsonResponse
+    {
+        return response()->json(auth()->user());
     }
 
     /**
@@ -72,19 +73,18 @@ class AuthController extends Controller
      */
     public function refresh(): JsonResponse
     {
-        return response()->json(auth()->refresh());
+        return $this->respondWithToken(auth()->refresh());
     }
 
     /**
      * Check user logged.
      */
-    public function check(): JsonResponse
+    public function respondWithToken($token): JsonResponse
     {
         return response()->json([
-            'logged' => auth()->check(),
-            'access_token' => auth()->tokenById(auth()->user()->id),
+            'access_token' => $token,
+            'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user(),
         ]);
     }
 }

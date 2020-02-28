@@ -12,20 +12,21 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('', 'Controller@checkWebServer');
+// Route::get('', 'Controller@checkWebServer');
 
-Route::group(['middleware' => 'api'], function () {
+Route::post('login', 'API\AuthController@login')->name('api.login');
+Route::post('register', 'API\AuthController@new');
+
+Route::group(['middleware' => 'jwt'], function () {
     // Auth routes
-    Route::post('login', 'AuthController@login');
-    Route::post('register', 'AuthController@new');
-    Route::get('refresh', 'AuthController@refresh');
-    Route::get('logout', 'AuthController@logout');
-    Route::get('check', 'AuthController@check');
+    Route::get('refresh', 'API\AuthController@refresh');
+    Route::get('logout', 'API\AuthController@logout')->name('api.logout');
+    Route::get('me', 'API\AuthController@me');
 
     // Api routes
     Route::apiResources([
-        'client' => 'ClientController',
-        'product' => 'ProductController',
-        'purchase' => 'PurchaseController',
+        'client' => 'API\ClientController',
+        'product' => 'API\ProductController',
+        'purchase' => 'API\PurchaseController',
     ]);
 });

@@ -1,36 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\PurchaseFormRequest;
-use App\Http\Resources\PurchaseResource;
-use App\Model\Purchase;
-use App\Repository\Contracts\PurchaseRepositoryInterface;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductFormRequest;
+use App\Model\Product;
+use App\Repository\Contracts\ProductRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class PurchaseController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, PurchaseRepositoryInterface $purchaseRepository): JsonResponse
+    public function index(Request $request, ProductRepositoryInterface $productRepository): JsonResponse
     {
-        return response()->json($purchaseRepository->queryToPaginate($request->all()));
+        return response()->json($productRepository->queryToPaginate($request->all()));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PurchaseFormRequest $request): JsonResponse
+    public function store(ProductFormRequest $request): JsonResponse
     {
         try {
-            Purchase::create([
-                'client_id' => $request->input('client_id'),
-                'product_id' => $request->input('product_id'),
+            Product::create([
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
                 'quantity' => $request->input('quantity'),
-                'status' => 'PENDING'
+                'tag' => json_encode($request->input('tag'))
             ]);
 
             return response()->json([
@@ -38,26 +38,26 @@ class PurchaseController extends Controller
             ]);
         } catch (\PDOException $e) {
             Log::error($e->getMessage());
-
-            return response()->json(['error' => 'Não foi possível criar o registro.'], 500); 
+            
+            return response()->json(['error' => 'Não foi possível criar o registro.'], 500);
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Purchase $purchase): JsonResponse
+    public function show(Product $product): JsonResponse
     {
-        return response()->json(new PurchaseResource($purchase));
+        return response()->json($product);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Purchase $purchase): JsonResponse
+    public function update(Request $request, Product $product): JsonResponse
     {
         try {
-            $purchase->update($request->input());
+            $product->update($request->input());
 
             return response()->json([
                 'message' => 'Registro atualizado com sucesso.',
@@ -72,10 +72,10 @@ class PurchaseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Purchase $purchase): JsonResponse
+    public function destroy(Product $product): JsonResponse
     {
         try {
-            $purchase->delete();
+            $product->delete();
 
             return response()->json([
                 'message' => 'Registro deletado com sucesso.',
