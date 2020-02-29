@@ -42,7 +42,8 @@
     // Restringe acesso a página para que somente usuários logados tenham acesso
     function restrictedPage() {
         if (!isLogged()) {
-            header('Location: controller.php?acao?');
+            header('Location: /controllers/LoginController.php?');
         }
     }
+
 ?>
