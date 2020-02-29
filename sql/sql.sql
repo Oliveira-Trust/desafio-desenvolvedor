@@ -5,6 +5,12 @@ use ot_store;
 create table clients (
     id int primary key not null auto_increment,
     name varchar(20) not null,
+    email varchar(30) not null
+);
+
+create table users (
+    id int primary key not null auto_increment,
+    name varchar(20) not null,
     password varchar(40) not null,
     email varchar(30) not null
 );

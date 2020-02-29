@@ -13,7 +13,11 @@
         
         // Lista todos os registros
         public function index() {
-            $findAll = $this->model->findAll(null,null);
+
+            $field = ['name' => 'name', 'value' => 'lll'];
+            $order = ['fieldName' => 'id', 'orderType' => 'ASC'];
+
+            $findAll = $this->model->findAll(null ,null);
             if (is_array($findAll) && count($findAll)) {
                 echo json_encode(['status' => '1', 'data' => $findAll]);
                 return;

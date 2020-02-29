@@ -3,7 +3,7 @@
     include_once(__DIR__ . '/Model.php');
     include_once(__DIR__ . '/../utils/Db.php');
 
-    class Product extends Model {
+    class User extends Model {
 
         private $conn;
 
@@ -14,8 +14,8 @@
         // Seleciona todos os registros da tabela
         public function findAll($field = null, $order){
             if ($this->conn !== false) {
-                $queryTxt = ($field === null) ? 'SELECT * FROM products' 
-                                              : 'SELECT * FROM products WHERE '.$field['name'].' = :fieldValue';
+                $queryTxt = ($field === null) ? 'SELECT * FROM users' 
+                                              : 'SELECT * FROM users WHERE '.$field['name'].' = :fieldValue';
                 if ($order !== null) {
                     $queryTxt .= ' ORDER BY '.$order['fieldName']. ' '.$order['orderType'];
                 }
@@ -36,7 +36,7 @@
         // Seleciona por ID
         public function findById($id){
             if ($this->conn !== false) {
-                $query = $this->conn->prepare('SELECT * FROM products WHERE id = :id');
+                $query = $this->conn->prepare('SELECT * FROM users WHERE id = :id');
                 $query->execute(['id' => $id]);
                 $data = $query->fetch(PDO::FETCH_ASSOC);
                 return $data;
@@ -49,8 +49,10 @@
         public function insert($fields){
             if ($this->conn !== false) {
                 try {
-                    $query = $this->conn->prepare('INSERT INTO products (name, price) values (:name, :price)');
-                    $query->execute(['name' => $fields['name'], 'price' => $fields['price']]);
+                    $query = $this->conn->prepare('INSERT INTO users (name, email, password) values (:name, :email, :password)');
+                    $query->execute(['name' => $fields['name'], 
+                                    'email' => $fields['email'], 
+                                    'password' => sha1($fields['password'])]);
                     return true;
                 }
                 catch(PDOException $e) {
@@ -65,8 +67,10 @@
         public function updateById($id, $fields){
             if ($this->conn !== false) {
                 try {
-                    $query = $this->conn->prepare('UPDATE products SET name = :name, price = :price where id = :id');
-                    $query->execute(['id' => $id, 'name' => $fields['name'], 'price' => $fields['price']]);
+                    $query = $this->conn->prepare('UPDATE users SET name = :name, email = :email, password = :password where id = :id');
+                    $query->execute(['id' => $id, 
+                                    'name' => $fields['name'], 
+                                    'password' => sha1($fields['password'])]);
                     return true;
                 }
                 catch(PDOException $e) {
@@ -81,7 +85,7 @@
         public function deleteById($id){
             if ($this->conn !== false) {
                 try {
-                    $query = $this->conn->prepare('DELETE FROM products WHERE id = :id');
+                    $query = $this->conn->prepare('DELETE FROM users WHERE id = :id');
                     $query->execute(['id' => $id]);
                     return true;
                 }
@@ -97,7 +101,7 @@
         public function deleteSelected($ids){
             if ($this->conn !== false) {
                 try {
-                    $this->conn->query('DELETE FROM products WHERE id IN ('.implode(',', $ids).')');
+                    $this->conn->query('DELETE FROM users WHERE id IN ('.implode(',', $ids).')');
                     return true;
                 }
                 catch(PDOException $e) {

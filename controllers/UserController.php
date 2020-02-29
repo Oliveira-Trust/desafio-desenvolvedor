@@ -1,9 +1,15 @@
 <?php
 
     include_once(__DIR__ . '/Controller.php');
-    include_once(__DIR__ . '/../models/Login.php');
+    include_once(__DIR__ . '/../models/User.php');
 
-    class LoginController extends Controller {
+    class UserController extends Controller {
+
+        private $model;
+
+        public function __construct() {
+            $this->model = new Product();
+        }
         
         // Lista todos os registros
         public function index() {
@@ -20,7 +26,7 @@
     // Pega a ação por get, verifica se existe o método no obj e caso não exista retorna erro
     $acao = (isset($_GET['acao'])) ? $_GET['acao'] : 'index';
 
-    $obj = new LoginController();
+    $obj = new UserController();
     if (method_exists($obj, $acao)) {
     $obj->$acao();
     } else {
