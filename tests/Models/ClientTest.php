@@ -7,6 +7,13 @@ use App\Models\Client;
 
 class ClientTest extends TestCase
 {
+    public function testStructure()
+    {
+        $client = factory(Client::class)->make();
+        $this->assertArrayHasKey('name', $client);
+        $this->assertArrayHasKey('user_id', $client);
+    }
+
     public function testByUserScope()
     {
         $clients = factory(Client::class, 3)->create();
