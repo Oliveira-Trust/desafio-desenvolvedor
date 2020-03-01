@@ -27,7 +27,7 @@ function PurchaseOrder() {
                                 <td>`+json.data[i].status+`</td>
                                 <td>`+json.data[i].qtd+`</td>
                                 <td>R$ `+parseFloat(json.data[i].price).toFixed(2)+`</td>
-                                <td>R$ `+parseFloat((json.data[i].price * json.data[i].qtd)).toFixed(2)+`</td>
+                                <td>R$ `+parseFloat(json.data[i].totalPrice).toFixed(2)+`</td>
                                 <td>
                                     <a href='purchaseOrderEdit.php?id=`+json.data[i].id+`'><button class="btn btn-primary btn-sm">Editar</button></a>
                                 </td>
@@ -88,6 +88,6 @@ function PurchaseOrder() {
         } else {
             alert('Erro ao efetuar operação.');
         }
-        
+
     }
 }

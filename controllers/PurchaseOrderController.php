@@ -15,10 +15,14 @@
         // Lista todos os registros
         public function index() {
 
-            $field = ['name' => 'name', 'value' => 'lll'];
-            $order = ['fieldName' => 'id', 'orderType' => 'ASC'];
+            $field = (!isset($_POST['fieldFilter']) || $_POST['fieldFilter'] == 'Selecione'|| !isset($_POST['fieldValue']) || trim($_POST['fieldValue']) === '') 
+                        ? null : ['name' => $_POST['fieldFilter'], 'value' => $_POST['fieldValue']];
+            
+            $order = (!isset($_POST['fieldOrder']) || $_POST['fieldOrder'] == 'Selecione'|| !isset($_POST['orderType']) || $_POST['orderType'] === 'Selecione') 
+            ? null : ['fieldName' => $_POST['fieldOrder'], 'orderType' => $_POST['orderType']]; 
+        
 
-            $findAll = $this->model->findAll(null ,null);
+            $findAll = $this->model->findAll($field, $order);
             if (is_array($findAll) && count($findAll)) {
                 echo json_encode(['status' => '1', 'data' => $findAll]);
                 return;

@@ -18,11 +18,15 @@
                     $join = 'INNER JOIN clients c ON c.id = po.clientId ';
                     $join .= 'INNER JOIN products p ON p.id = po.productId';
 
+                    $filterClause = (isset($field['name']) && $field['name'] == 'totalPrice') ? 'HAVING' : 'WHERE';
 
-                    $queryTxt = ($field === null) ? "SELECT po.id, po.qtd, po.status, c.name AS clientName, p.name AS productName, p.price 
+
+                    $queryTxt = ($field === null) ? "SELECT po.id, po.qtd, po.status, c.name AS clientName, p.name AS productName, p.price,
+                                                            (p.price * po.qtd) AS totalPrice 
                                                         FROM purchaseorder po $join" 
-                                                : 'SELECT po.id, po.qtd, po.status, c.name AS clientName, p.name AS productName, p.price 
-                                                        FROM purchaseorder po '.$join.' WHERE '.$field['name'].' = :fieldValue';
+                                                : 'SELECT po.id, po.qtd, po.status, c.name AS clientName, p.name AS productName, p.price,
+                                                          (p.price * po.qtd) AS totalPrice 
+                                                        FROM purchaseorder po '.$join.' '.$filterClause.' '.$field['name'].' = :fieldValue';
                     if ($order !== null) {
                         $queryTxt .= ' ORDER BY '.$order['fieldName']. ' '.$order['orderType'];
                     }

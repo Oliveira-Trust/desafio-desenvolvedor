@@ -59,8 +59,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPedidosCompra" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pedidos de Compra</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownPedidosCompra">
-                            <a class="dropdown-item" href="#">Cadastrar</a>
-                            <a class="dropdown-item" href="#">Listar</a>
+                            <a class="dropdown-item" href="purchaseOrderRegister.php">Cadastrar</a>
+                            <a class="dropdown-item" href="purchaseOrderList.php">Listar</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
