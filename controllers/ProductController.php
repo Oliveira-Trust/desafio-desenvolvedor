@@ -15,9 +15,11 @@
         // Lista todos os registros
         public function index() {
 
+            // Caso tenha valor válido nos campos, atribui o valor, senão atribui nulo
             $field = (!isset($_POST['fieldFilter']) || $_POST['fieldFilter'] == 'Selecione'|| !isset($_POST['fieldValue']) || trim($_POST['fieldValue']) === '') 
                         ? null : ['name' => $_POST['fieldFilter'], 'value' => $_POST['fieldValue']];
             
+            // Caso tenha valor válido nos campos, atribui o valor, senão atribui nulo
             $order = (!isset($_POST['fieldOrder']) || $_POST['fieldOrder'] == 'Selecione'|| !isset($_POST['orderType']) || $_POST['orderType'] === 'Selecione') 
             ? null : ['fieldName' => $_POST['fieldOrder'], 'orderType' => $_POST['orderType']]; 
         
@@ -34,6 +36,7 @@
         // Exibe os detalhes do registro selecionado
         public function show() {
 
+            // Validações
             if (!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id'] == 0) {
                 echo json_encode(['status' => '0', 'msg' => 'Id não possui um valor válido, tente novamente.']);
                 return;
@@ -48,8 +51,10 @@
             echo json_encode(['status' => '0', 'msg' => 'Erro ao localizar registro, tente novamente.']);
         }
 
+        // Insere um novo registro
         public function store() {
 
+            // Validações
             if (!isset($_POST['name']) || trim($_POST['name']) === '') {
                 echo json_encode(['status' => '0', 'msg' => 'Nome do produto inválido, tente novamente.']);
                 return;
@@ -76,8 +81,10 @@
             echo json_encode(['status' => '0', 'msg' => 'Erro ao localizar registro, tente novamente.']);
         }
 
+        // Atualiza um registro
         public function update() {
 
+            // Validações
             if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
                 echo json_encode(['status' => '0', 'msg' => 'Id inválido, tente novamente.']);
                 return;
@@ -109,8 +116,10 @@
             echo json_encode(['status' => '0', 'msg' => 'Erro ao localizar registro, tente novamente.']);
         }
 
+        // Deleta um registro
         public function destroy() {
 
+            // Validações
             if (!isset($_POST['id']) || empty($_POST['id']) || !is_numeric($_POST['id'])) {
                 echo json_encode(['status' => '0', 'msg' => 'O valor do registro não é válido, tente novamente.']);
                 return;
@@ -128,8 +137,10 @@
             echo json_encode(['status' => '0', 'msg' => 'Erro ao localizar registro, tente novamente.']);
         }
 
+        // Deleta um ou vários registros selecionados
         public function destroySelected() {
 
+            // Validações
             if(!isset($_POST['ids'])) {
                 echo json_encode(['status' => '0', 'msg' => 'O valor dos registros não são válidos, tente novamente.']);
                 return;
