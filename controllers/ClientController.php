@@ -15,10 +15,14 @@
         // Lista todos os registros
         public function index() {
 
-            $field = ['name' => 'email', 'value' => 'lll'];
-            $order = ['fieldName' => 'id', 'orderType' => 'ASC'];
+            $field = (!isset($_POST['fieldFilter']) || $_POST['fieldFilter'] == 'Selecione'|| !isset($_POST['fieldValue']) || trim($_POST['fieldValue']) === '') 
+                        ? null : ['name' => $_POST['fieldFilter'], 'value' => $_POST['fieldValue']];
+            
+            $order = (!isset($_POST['fieldOrder']) || $_POST['fieldOrder'] == 'Selecione'|| !isset($_POST['orderType']) || $_POST['orderType'] === 'Selecione') 
+            ? null : ['fieldName' => $_POST['fieldOrder'], 'orderType' => $_POST['orderType']]; 
+        
 
-            $findAll = $this->model->findAll(null ,null);
+            $findAll = $this->model->findAll($field, $order);
             if (is_array($findAll) && count($findAll)) {
                 echo json_encode(['status' => '1', 'data' => $findAll]);
                 return;
@@ -29,7 +33,13 @@
 
         // Exibe os detalhes do registro selecionado
         public function show() {
-            $findById = $this->model->findById(1);
+
+            if (!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id'] == 0) {
+                echo json_encode(['status' => '0', 'msg' => 'Id não possui um valor válido, tente novamente.']);
+                return;
+            }
+
+            $findById = $this->model->findById($_POST['id']);
             if (is_array($findById) && count($findById)) {
                 echo json_encode(['status' => '1', 'data' => $findById]);
                 return;
@@ -39,10 +49,18 @@
         }
 
         public function store() {
-            $arr['name'] = 'Teste';
-            $arr['email'] = 'teste@teste.com';
+            
+            if (!isset($_POST['name']) || trim($_POST['name']) === '') {
+                echo json_encode(['status' => '0', 'msg' => 'Nome inválido, tente novamente.']);
+                return;
+            }
 
-            $insert = $this->model->insert($arr);
+            if (!isset($_POST['email']) || trim($_POST['email']) === '') {
+                echo json_encode(['status' => '0', 'msg' => 'Email inválido, tente novamente.']);
+                return;
+            }
+
+            $insert = $this->model->insert($_POST);
             if ($insert) {
                 echo json_encode(['status' => '1']);
                 return;
@@ -52,10 +70,23 @@
         }
 
         public function update() {
-            $arr['name'] = 'Test22e';
-            $arr['email'] = 'teste22e@teste.com';
+            
+            if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Id inválido, tente novamente.']);
+                return;
+            }
 
-            $updateById = $this->model->updateById(1, $arr);
+            if (!isset($_POST['name']) || trim($_POST['name']) === '') {
+                echo json_encode(['status' => '0', 'msg' => 'Nome inválido, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['email']) || trim($_POST['email']) === '') {
+                echo json_encode(['status' => '0', 'msg' => 'Email inválido, tente novamente.']);
+                return;
+            }
+
+            $updateById = $this->model->updateById($_POST['id'], $_POST);
             if ($updateById) {
                 echo json_encode(['status' => '1']);
                 return;
@@ -65,9 +96,18 @@
         }
 
         public function destroy() {
-            $deleteById = $this->model->deleteById(2);
-            if ($deleteById) {
+            
+            if (!isset($_POST['id']) || empty($_POST['id']) || !is_numeric($_POST['id'])) {
+                echo json_encode(['status' => '0', 'msg' => 'O valor do registro não é válido, tente novamente.']);
+                return;
+            }
+            
+            $deleteById = $this->model->deleteById($_POST['id']);
+            if ($deleteById === true) {
                 echo json_encode(['status' => '1']);
+                return;
+            } else if ($deleteById == -1) {
+                echo json_encode(['status' => '0', 'msg' => 'Não é possível deletar clientes vinculados a um pedido de compra.']);
                 return;
             }
 
@@ -75,9 +115,18 @@
         }
 
         public function destroySelected() {
-            $deleteSelected = $this->model->deleteSelected([1, 3, 4]);
-            if ($deleteSelected) {
+            
+            if(!isset($_POST['ids'])) {
+                echo json_encode(['status' => '0', 'msg' => 'O valor dos registros não são válidos, tente novamente.']);
+                return;
+            }
+
+            $deleteSelected = $this->model->deleteSelected($_POST['ids']);
+            if ($deleteSelected === true) {
                 echo json_encode(['status' => '1']);
+                return;
+            } else if ($deleteSelected == -1) {
+                echo json_encode(['status' => '0', 'msg' => 'Não é possível deletar clientes vinculados a um pedido de compra.']);
                 return;
             }
 

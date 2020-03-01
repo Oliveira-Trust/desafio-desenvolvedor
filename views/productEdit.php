@@ -14,7 +14,7 @@
         <form id="formProductGetData">
             <h1 class="h3 mb-3 mt-3 font-weight-normal">Editar Produto</h1>
             <div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" class="form-control" />
             </div>
             <div class="form-group">
