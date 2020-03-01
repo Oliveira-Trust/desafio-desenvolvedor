@@ -2,8 +2,9 @@ FROM php:7.2-fpm-stretch
 
 MAINTAINER Heric Branco <hericbranco@gmail.com>
 
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 #Instaling my-sql driver
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev libldap2-dev mysql-client zip git wget\
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev libldap2-dev mysql-client zip git wget build-essential nodejs\
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql
 
