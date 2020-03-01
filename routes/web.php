@@ -15,5 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('clients', 'ClientController');
+Route::middleware('auth')->resource('clients', 'ClientController');
 //Route::post('clients/update', 'ClientController:update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
