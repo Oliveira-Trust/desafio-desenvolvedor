@@ -19,7 +19,7 @@ function PurchaseOrder() {
                     html += `<tr>
                                 <td>
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="delete[]" data-id="`+json.data[i].id+`" />
+                                        <input type="checkbox" class="form-check-input" name="deleteSelected" value="`+json.data[i].id+`" />
                                     </div>
                                 </td>
                                 <td>`+json.data[i].clientName+`</td>
@@ -29,10 +29,10 @@ function PurchaseOrder() {
                                 <td>R$ `+parseFloat(json.data[i].price).toFixed(2)+`</td>
                                 <td>R$ `+parseFloat((json.data[i].price * json.data[i].qtd)).toFixed(2)+`</td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm">Editar</button>
+                                    <a href='purchaseOrderEdit.php?id=`+json.data[i].id+`'><button class="btn btn-primary btn-sm">Editar</button></a>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger btn-sm">Deletar</button>
+                                    <button class="btn btn-danger btn-sm" type='button' name='delete' onclick='new PurchaseOrder().delete(`+json.data[i].id+`)'>Deletar</button>
                                 </td>
                             </tr>`;
                 }
@@ -44,5 +44,50 @@ function PurchaseOrder() {
         } else {
             alert('Erro ao efetuar operação.');
         }
+    }
+
+    this.delete = function(id) {
+
+        var data = 'id='+id;
+
+        returnData('controllers/PurchaseOrderController.php?acao=destroy', 'post', data);
+
+        var json = response;
+
+        if (json.status != undefined) {
+            if (json.status == 0) {
+                alert(json.msg);
+            } else {
+                this.getData();
+            }
+        } else {
+            alert('Erro ao efetuar operação.');
+        }
+    }
+
+    this.deleteSelected = function() {
+
+        debugger;
+
+        var data = []
+
+        $.each($('input[name=deleteSelected]:checked'), function(){
+            data.push($(this).val());
+        });
+
+        returnData('controllers/PurchaseOrderController.php?acao=destroySelected', 'post', 'ids='+data);
+
+        var json = response;
+
+        if (json.status != undefined) {
+            if (json.status == 0) {
+                alert(json.msg);
+            } else {
+                this.getData();
+            }
+        } else {
+            alert('Erro ao efetuar operação.');
+        }
+        
     }
 }

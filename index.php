@@ -5,7 +5,7 @@
     if (!isLogged()) {
         header('Location: views/login.php');
     } else {
-        header('Location: views/purchaseOrder.php');
+        header('Location: views/purchaseOrderList.php');
     }
 
     ?>

@@ -26,13 +26,17 @@
 
             $findAll = $this->model->findAll($field, null);
             if (is_array($findAll) && count($findAll)) {
-                if ($findAll[0]['password'] == $pass) {
-                    $_SESSION['user']['id'] = $findAll[0]['id'];
-                    $_SESSION['user']['name'] = $findAll[0]['name'];
-                    $_SESSION['user']['email'] = $findAll[0]['email'];
+                    if ($findAll[0]['password'] == $pass) {
+                        $_SESSION['user']['id'] = $findAll[0]['id'];
+                        $_SESSION['user']['name'] = $findAll[0]['name'];
+                        $_SESSION['user']['email'] = $findAll[0]['email'];
+                    
+                    echo json_encode(['status' => '1', 'data' => $findAll]);
+                    return;
+                } else {
+                    echo json_encode(['status' => '0', 'msg' => 'Login ou senha incorretos, tente novamente.']);
+                    return;
                 }
-                echo json_encode(['status' => '1', 'data' => $findAll]);
-                return;
             }
 
             echo json_encode(['status' => '0', 'msg' => 'Erro ao localizar registro, tente novamente.']);

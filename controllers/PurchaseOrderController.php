@@ -67,7 +67,13 @@
         }
 
         public function destroy() {
-            $deleteById = $this->model->deleteById(2);
+
+            if (!isset($_POST['id']) || empty($_POST['id']) || !is_numeric($_POST['id'])) {
+                echo json_encode(['status' => '0', 'msg' => 'O valor do registro não é válido, tente novamente.']);
+                return;
+            }
+
+            $deleteById = $this->model->deleteById($_POST['id']);
             if ($deleteById) {
                 echo json_encode(['status' => '1']);
                 return;
@@ -77,7 +83,16 @@
         }
 
         public function destroySelected() {
-            $deleteSelected = $this->model->deleteSelected([1, 3, 4]);
+
+
+            if(!isset($_POST['ids'])) {
+                echo json_encode(['status' => '0', 'msg' => 'O valor dos registros não são válidos, tente novamente.']);
+                return;
+            }
+
+            $arrIds = explode(',', $_POST['ids']);
+
+            $deleteSelected = $this->model->deleteSelected($arrIds);
             if ($deleteSelected) {
                 echo json_encode(['status' => '1']);
                 return;

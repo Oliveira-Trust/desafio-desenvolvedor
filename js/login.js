@@ -13,7 +13,7 @@ function Login() {
             if (json.status == 0) {
                 alert(json.msg);
             } else {
-                window.location.href = '../views/purchaseOrder.php';
+                window.location.href = '../views/purchaseOrderList.php';
             }
 
         } else {

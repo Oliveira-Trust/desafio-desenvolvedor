@@ -31,7 +31,7 @@
             </div>
             <div class="row text-right">
                 <div class="col-md-12 mt-2 text-right">
-                    <button type="button" class="btn btn-danger text-right" id="deleteSelected">Deletar selecionados</button>
+                    <button type="button" class="btn btn-danger text-right" id="deleteSelected" onclick="new PurchaseOrder().deleteSelected()">Deletar selecionados</button>
                 </div>
             </div>
         </form>
