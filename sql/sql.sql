@@ -12,7 +12,7 @@ create table users (
     id int primary key not null auto_increment,
     name varchar(20) not null,
     password varchar(40) not null,
-    email varchar(30) not null
+    email varchar(30) not null unique
 );
 
 create table products (

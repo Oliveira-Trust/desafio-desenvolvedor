@@ -1,7 +1,7 @@
 var response = ''
 
 function returnData(page, method, data) {
-
+    
     $.ajax({
         url : '../' + page,
         type : method,
