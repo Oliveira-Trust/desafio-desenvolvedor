@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use ByUser;
+
+    protected $fillable = [
+        'name'
+    ];
 }

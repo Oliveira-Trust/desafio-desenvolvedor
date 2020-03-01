@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Client as RequestsClient;
 use App\Models\Client;
-use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -37,10 +36,7 @@ class ClientController extends Controller
      */
     public function store(RequestsClient $request)
     {
-        $client = new Client();
-        $client->name = $request->name;
-        $client->user_id=1;
-        $client->save();
+        Client::create($request->all('name'));
         return redirect('clients');
     }
 
@@ -76,9 +72,8 @@ class ClientController extends Controller
      */
     public function update(RequestsClient $request, Client $client)
     {
-        $client->name = $request->name;
-        $client->save();
-        return redirect('clients/'.$client->id);
+        $client->update($request->all('name'));
+        return redirect('clients');
     }
 
     /**
@@ -89,6 +84,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect('clients')->with('success','Product has been  deleted');
     }
 }
