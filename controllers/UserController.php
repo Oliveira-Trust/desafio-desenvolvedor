@@ -21,7 +21,6 @@
             }
 
             $field = ['name' => 'email', 'value' => $_POST['email']];
-            $order = ['fieldName' => 'id', 'orderType' => 'ASC'];
             $pass = sha1($_POST['password']);
 
             $findAll = $this->model->findAll($field, null);
@@ -44,7 +43,13 @@
 
         // Exibe os detalhes do registro selecionado
         public function show() {
-            $findById = $this->model->findById(1);
+
+            if (!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id'] == 0) {
+                echo json_encode(['status' => '0', 'msg' => 'Id não possui um valor válido, tente novamente.']);
+                return;
+            }
+
+            $findById = $this->model->findById($_POST['id']);
             if (is_array($findById) && count($findById)) {
                 echo json_encode(['status' => '1', 'data' => $findById]);
                 return;
@@ -54,6 +59,12 @@
         }
 
         public function store() {
+
+            if (!isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['password'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Erro ao recuperar informações do campo, tente novamente.']);
+                return;
+            }
+
             if (trim($_POST['name']) === '' || trim($_POST['email']) === '' || trim($_POST['password']) === '') {
                 echo json_encode(['status' => '0', 'msg' => 'Os campos não podem ficar em branco.']);
                 return;
@@ -69,11 +80,24 @@
         }
 
         public function update() {
-            $arr['name'] = 'Test22e';
-            $arr['email'] = 'teste22e@teste.com';
-            $arr['password'] = '12345678';
 
-            $updateById = $this->model->updateById(1, $arr);
+            if (!isset($_POST['id']) ||!isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['password'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Erro ao recuperar informações do campo, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id'] == 0) {
+                echo json_encode(['status' => '0', 'msg' => 'Id não possui um valor válido, tente novamente.']);
+                return;
+            }
+
+
+            if (trim($_POST['name']) === '' || trim($_POST['email']) === '' || trim($_POST['password']) === '') {
+                echo json_encode(['status' => '0', 'msg' => 'Os campos não podem ficar em branco.']);
+                return;
+            }
+
+            $updateById = $this->model->updateById($_POST['id'], $_POST);
             if ($updateById) {
                 echo json_encode(['status' => '1']);
                 return;
@@ -83,7 +107,13 @@
         }
 
         public function destroy() {
-            $deleteById = $this->model->deleteById(2);
+
+            if (!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id'] == 0) {
+                echo json_encode(['status' => '0', 'msg' => 'Id não possui um valor válido, tente novamente.']);
+                return;
+            }
+
+            $deleteById = $this->model->deleteById($_POST['id']);
             if ($deleteById) {
                 echo json_encode(['status' => '1']);
                 return;
@@ -93,7 +123,13 @@
         }
 
         public function destroySelected() {
-            $deleteSelected = $this->model->deleteSelected([1, 3, 4]);
+
+            if(!isset($_POST['ids'])) {
+                echo json_encode(['status' => '0', 'msg' => 'O valor dos registros não são válidos, tente novamente.']);
+                return;
+            }
+
+            $deleteSelected = $this->model->deleteSelected($_POST['ids']);
             if ($deleteSelected) {
                 echo json_encode(['status' => '1']);
                 return;

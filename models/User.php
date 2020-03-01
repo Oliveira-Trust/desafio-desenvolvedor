@@ -79,6 +79,7 @@
                 try {
                     $query = $this->conn->prepare('UPDATE users SET name = :name, email = :email, password = :password where id = :id');
                     $query->execute(['id' => $id, 
+                                    'email' => $fields['email'],
                                     'name' => $fields['name'], 
                                     'password' => sha1($fields['password'])]);
                     return true;
@@ -111,7 +112,7 @@
         public function deleteSelected($ids){
             if ($this->conn !== false) {
                 try {
-                    $this->conn->query('DELETE FROM users WHERE id IN ('.implode(',', $ids).')');
+                    $this->conn->query('DELETE FROM users WHERE id IN ('.$ids.')');
                     return true;
                 }
                 catch(PDOException $e) {
