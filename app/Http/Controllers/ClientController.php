@@ -25,7 +25,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        return view('form')
+        ->with('model', new Client());
     }
 
     /**
@@ -59,8 +60,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('clients.edit')
-        ->with('client', $client);
+        return view('form')
+        ->with('model', $client);
     }
 
     /**
