@@ -10,6 +10,7 @@ function PurchaseOrder() {
         
         if (json.status != undefined) {
 
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 $('#purchaseOrderData').html('Nenhum registro');
                 $('#deleteSelected').hide();
@@ -55,6 +56,8 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
+            
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -78,6 +81,8 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -97,6 +102,7 @@ function PurchaseOrder() {
         var clientOptions = '';
         var productOptions = '';
 
+        // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (clientList.status != 0 && clientList.status != 2) {
 
             for (var i in clientList.data) {
@@ -104,6 +110,7 @@ function PurchaseOrder() {
             }
         }
 
+        // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (productList.status != 0 && productList.status != 2) {
 
             for (var i in productList.data) {
@@ -124,6 +131,8 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -154,7 +163,7 @@ function PurchaseOrder() {
         var productOptions = '';
 
 
-
+        // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (clientList.status != 0 && clientList.status != 2) {
 
             for (var i in clientList.data) {
@@ -162,6 +171,7 @@ function PurchaseOrder() {
             }
         }
 
+        // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (productList.status != 0 && productList.status != 2) {
 
             for (var i in productList.data) {
@@ -172,6 +182,7 @@ function PurchaseOrder() {
         $('#clientId').append(clientOptions);
         $('#productId').append(productOptions);
 
+        // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (purchaseOrderDataById.status != 0 && purchaseOrderDataById.status != 2) {
             $('#qtd').val(purchaseOrderDataById.data.qtd);
             $('#clientId > option').each(function() {
@@ -203,6 +214,8 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {

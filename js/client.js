@@ -18,6 +18,8 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -39,6 +41,7 @@ function Client() {
         
         if (json.status != undefined) {
 
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 $('#clientData').html('Nenhum registro');
                 $('#deleteSelected').hide();
@@ -80,6 +83,8 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -103,6 +108,8 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -127,7 +134,7 @@ function Client() {
 
         var clientDataById = this.findById(id);
 
-
+        // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (clientDataById.status != 0 && clientDataById.status != 2) {
             $('#name').val(clientDataById.data.name);
             $('#email').val(clientDataById.data.email);
@@ -143,6 +150,8 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {

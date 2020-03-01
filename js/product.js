@@ -18,6 +18,8 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -39,6 +41,7 @@ function Product() {
         
         if (json.status != undefined) {
 
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 $('#productData').html('Nenhum registro');
                 $('#deleteSelected').hide();
@@ -80,6 +83,8 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -103,6 +108,8 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
@@ -127,7 +134,7 @@ function Product() {
 
         var productDataById = this.findById(id);
 
-
+        // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (productDataById.status != 0 && productDataById.status != 2) {
             $('#name').val(productDataById.data.name);
             $('#price').val(productDataById.data.price);
@@ -143,6 +150,8 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
+
+            // Status 0 = Erro  -  Status 2 = Usuário não logado
             if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
