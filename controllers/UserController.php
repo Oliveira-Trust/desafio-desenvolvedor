@@ -2,6 +2,7 @@
 
     include_once(__DIR__ . '/Controller.php');
     include_once(__DIR__ . '/../models/User.php');
+    include_once(__DIR__ . '/../utils/functions.php');
 
     class UserController extends Controller {
 
@@ -14,16 +15,21 @@
         // Lista todos os registros
         public function index() {
 
-            $field = ['name' => 'email', 'value' => 'teste@teste.com'];
+            if (!isset($_POST['email']) || trim($_POST['email']) === '' || !isset($_POST['password']) || trim($_POST['password']) === '') {
+                echo json_encode(['status' => '1', 'msg' => 'Favor, preencher o email e a senha.']);
+                return;
+            }
+
+            $field = ['name' => 'email', 'value' => $_POST['email']];
             $order = ['fieldName' => 'id', 'orderType' => 'ASC'];
-            $pass = sha1('123456');
+            $pass = sha1($_POST['password']);
 
             $findAll = $this->model->findAll($field, null);
             if (is_array($findAll) && count($findAll)) {
-                if ($findAll['password'] == $pass) {
-                    $_SESSION['id'] = $findAll['id'];
-                    $_SESSION['name'] = $findAll['name'];
-                    $_SESSION['email'] = $findAll['email'];
+                if ($findAll[0]['password'] == $pass) {
+                    $_SESSION['user']['id'] = $findAll[0]['id'];
+                    $_SESSION['user']['name'] = $findAll[0]['name'];
+                    $_SESSION['user']['email'] = $findAll[0]['email'];
                 }
                 echo json_encode(['status' => '1', 'data' => $findAll]);
                 return;
