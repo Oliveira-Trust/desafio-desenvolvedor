@@ -2,6 +2,7 @@
 
     include_once(__DIR__ . '/Controller.php');
     include_once(__DIR__ . '/../models/Product.php');
+    include_once(__DIR__ . '/../utils/functions.php');
 
     class ProductController extends Controller {
 
@@ -84,15 +85,19 @@
         }
     }
 
-    // Pega a ação por get, verifica se existe o método no obj e caso não exista retorna erro
-    $acao = (isset($_GET['acao'])) ? $_GET['acao'] : 'index';
+    if (isLogged()) {
+        // Pega a ação por get, verifica se existe o método no obj e caso não exista retorna erro
+        $acao = (isset($_GET['acao'])) ? $_GET['acao'] : 'index';
 
-    $obj = new ProductController();
-    if (method_exists($obj, $acao)) {
-    $obj->$acao();
+        $obj = new ProductController();
+        if (method_exists($obj, $acao)) {
+            $obj->$acao();
+        } else {
+            echo json_encode(['status' => '0', 'msg' => 'Não foi possível localizar a ação. Tente novamente']);
+            return;
+        }
     } else {
-        echo json_encode(['status' => 0, 'msg' => 'Não foi possível localizar a ação. Tente novamente']);
+        echo json_encode(['status' => '2', 'msg' => 'Erro! Página restrita a usuários logados.']);
         return;
     }
-
 ?>

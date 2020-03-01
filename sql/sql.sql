@@ -22,11 +22,12 @@ create table products (
 );
 
 create table purchaseOrder (
+    id int not null auto_increment,
     clientId int not null,
     productId int not null,
-    quantity smallint not null,
+    qtd smallint not null,
     status enum('Em aberto', 'Pago', 'Cancelado'),
     foreign key (clientId) references clients(id),
     foreign key (productId) references products(id),
-    primary key (productId, clientId)
+    primary key (id, productId, clientId)
 )

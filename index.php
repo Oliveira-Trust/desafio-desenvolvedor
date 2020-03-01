@@ -1,9 +1,11 @@
-<?php 
+<?php
 
-// Define controller padrão
-$controller = (isset($_GET['controller']) && file_exists(__DIR__ . '/controllers/'.$controller.'.php')) ? $_GET['controller'].'Controller' : 'PurchaseOrderController';
+    include_once(__DIR__ . '/utils/functions.php');
 
-// Inclui arquivo
-require_once(__DIR__ . '/controllers/'.$controller.'.php');
+    if (!isLogged()) {
+        header('Location: views/login.php');
+    } else {
+        header('Location: views/purchaseOrder.php');
+    }
 
-?>
+    ?>

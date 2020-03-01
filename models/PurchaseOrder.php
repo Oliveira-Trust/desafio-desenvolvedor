@@ -14,20 +14,31 @@
         // Seleciona todos os registros da tabela
         public function findAll($field = null, $order){
             if ($this->conn !== false) {
-                $queryTxt = ($field === null) ? 'SELECT * FROM clients' 
-                                              : 'SELECT * FROM clients WHERE '.$field['name'].' = :fieldValue';
-                if ($order !== null) {
-                    $queryTxt .= ' ORDER BY '.$order['fieldName']. ' '.$order['orderType'];
-                }
-                $arr = [];
-                if ($field !== null) {
-                    $arr = ['fieldValue' => $field['value']];
-                }
+                try {
+                    $join = 'INNER JOIN clients c ON c.id = po.clientId ';
+                    $join .= 'INNER JOIN products p ON p.id = po.productId';
 
-                $query = $this->conn->prepare($queryTxt);
-                $query->execute($arr);
-                $data = $query->fetchAll(PDO::FETCH_ASSOC);
-                return $data;
+
+                    $queryTxt = ($field === null) ? "SELECT po.id, po.qtd, po.status, c.name AS clientName, p.name AS productName, p.price 
+                                                        FROM purchaseorder po $join" 
+                                                : 'SELECT po.id, po.qtd, po.status, c.name AS clientName, p.name AS productName, p.price 
+                                                        FROM purchaseorder po '.$join.' WHERE '.$field['name'].' = :fieldValue';
+                    if ($order !== null) {
+                        $queryTxt .= ' ORDER BY '.$order['fieldName']. ' '.$order['orderType'];
+                    }
+                    $arr = [];
+                    if ($field !== null) {
+                        $arr = ['fieldValue' => $field['value']];
+                    }
+
+                    $query = $this->conn->prepare($queryTxt);
+                    $query->execute($arr);
+                    $data = $query->fetchAll(PDO::FETCH_ASSOC);
+                    return $data;
+                }
+                catch(PDOException $e) {
+                    return false;
+                }
             } else {
                 return false;
             }
@@ -36,10 +47,19 @@
         // Seleciona por ID
         public function findById($id){
             if ($this->conn !== false) {
-                $query = $this->conn->prepare('SELECT * FROM clients WHERE id = :id');
-                $query->execute(['id' => $id]);
-                $data = $query->fetch(PDO::FETCH_ASSOC);
-                return $data;
+                try {
+                    $join = 'INNER JOIN clients c ON c.id = po.clientId ';
+                    $join .= 'INNER JOIN products p ON p.id = po.productId';
+
+                    $query = $this->conn->prepare("SELECT po.qtd, po.status, c.name AS clientName, p.name AS productName, p.price 
+                                                    FROM purchaseorder po $join WHERE clientId = :clientId AND productId = :productId");
+                    $query->execute(['clientId' => $id['client'], 'productId' => $id['product']]);
+                    $data = $query->fetch(PDO::FETCH_ASSOC);
+                    return $data;
+                }
+                catch(PDOException $e) {
+                    return false;
+                }
             } else {
                 return false;
             }
@@ -49,8 +69,12 @@
         public function insert($fields){
             if ($this->conn !== false) {
                 try {
-                    $query = $this->conn->prepare('INSERT INTO clients (name, email) values (:name, :email)');
-                    $query->execute(['name' => $fields['name'], 'email' => $fields['email']]);
+                    $query = $this->conn->prepare('INSERT INTO purchaseorder (clientId, productId, qtd, status) 
+                                                    VALUES (:clientId, :productId, :qtd, :status)');
+                    $query->execute(['clientId' => $fields['clientId'], 
+                                    'productId' => $fields['productId'], 
+                                    'qtd' => $fields['qtd'],
+                                    'status' => $fields['status']]);
                     return true;
                 }
                 catch(PDOException $e) {
@@ -65,8 +89,8 @@
         public function updateById($id, $fields){
             if ($this->conn !== false) {
                 try {
-                    $query = $this->conn->prepare('UPDATE clients SET name = :name, email = :email where id = :id');
-                    $query->execute(['id' => $id, 'name' => $fields['name'], 'email' => $fields['email']]);
+                    $query = $this->conn->prepare('UPDATE purchaseorder SET qtd = :qtd, status = :status WHERE id = :id');
+                    $query->execute(['id' => $id, 'qtd' => $fields['qtd'], 'status' => $fields['status']]);
                     return true;
                 }
                 catch(PDOException $e) {
@@ -81,7 +105,7 @@
         public function deleteById($id){
             if ($this->conn !== false) {
                 try {
-                    $query = $this->conn->prepare('DELETE FROM clients WHERE id = :id');
+                    $query = $this->conn->prepare('DELETE FROM purchaseorder WHERE id = :id');
                     $query->execute(['id' => $id]);
                     return true;
                 }
@@ -97,7 +121,7 @@
         public function deleteSelected($ids){
             if ($this->conn !== false) {
                 try {
-                    $this->conn->query('DELETE FROM clients WHERE id IN ('.implode(',', $ids).')');
+                    $this->conn->query('DELETE FROM purchaseorder WHERE id IN ('.implode(',', $ids).')');
                     return true;
                 }
                 catch(PDOException $e) {

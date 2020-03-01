@@ -14,20 +14,25 @@
         // Seleciona todos os registros da tabela
         public function findAll($field = null, $order){
             if ($this->conn !== false) {
-                $queryTxt = ($field === null) ? 'SELECT * FROM clients' 
-                                              : 'SELECT * FROM clients WHERE '.$field['name'].' = :fieldValue';
-                if ($order !== null) {
-                    $queryTxt .= ' ORDER BY '.$order['fieldName']. ' '.$order['orderType'];
-                }
-                $arr = [];
-                if ($field !== null) {
-                    $arr = ['fieldValue' => $field['value']];
-                }
+                try {
+                    $queryTxt = ($field === null) ? 'SELECT * FROM clients' 
+                                                : 'SELECT * FROM clients WHERE '.$field['name'].' = :fieldValue';
+                    if ($order !== null) {
+                        $queryTxt .= ' ORDER BY '.$order['fieldName']. ' '.$order['orderType'];
+                    }
+                    $arr = [];
+                    if ($field !== null) {
+                        $arr = ['fieldValue' => $field['value']];
+                    }
 
-                $query = $this->conn->prepare($queryTxt);
-                $query->execute($arr);
-                $data = $query->fetchAll(PDO::FETCH_ASSOC);
-                return $data;
+                    $query = $this->conn->prepare($queryTxt);
+                    $query->execute($arr);
+                    $data = $query->fetchAll(PDO::FETCH_ASSOC);
+                    return $data;
+                }
+                catch(PDOException $e) {
+                    return false;
+                }
             } else {
                 return false;
             }
@@ -36,10 +41,15 @@
         // Seleciona por ID
         public function findById($id){
             if ($this->conn !== false) {
-                $query = $this->conn->prepare('SELECT * FROM clients WHERE id = :id');
-                $query->execute(['id' => $id]);
-                $data = $query->fetch(PDO::FETCH_ASSOC);
-                return $data;
+                try {
+                    $query = $this->conn->prepare('SELECT * FROM clients WHERE id = :id');
+                    $query->execute(['id' => $id]);
+                    $data = $query->fetch(PDO::FETCH_ASSOC);
+                    return $data;
+                }
+                catch(PDOException $e) {
+                    return false;
+                }
             } else {
                 return false;
             }
