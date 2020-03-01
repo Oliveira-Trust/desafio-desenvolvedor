@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('clients', 'ClientController');
+//Route::post('clients/update', 'ClientController:update');
