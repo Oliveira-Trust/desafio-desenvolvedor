@@ -10,7 +10,7 @@ function Cadastro() {
 
         if (json.status != undefined) {
 
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 alert('Usuário cadastrado com sucesso.');

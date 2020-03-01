@@ -18,7 +18,7 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 alert('Cliente cadastrado com sucesso.')
@@ -39,7 +39,7 @@ function Client() {
         
         if (json.status != undefined) {
 
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 $('#clientData').html('Nenhum registro');
                 $('#deleteSelected').hide();
             } else {
@@ -80,7 +80,7 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 this.getData();
@@ -103,7 +103,7 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 this.getData();
@@ -128,7 +128,7 @@ function Client() {
         var clientDataById = this.findById(id);
 
 
-        if (clientDataById.status != 0) {
+        if (clientDataById.status != 0 && clientDataById.status != 2) {
             $('#name').val(clientDataById.data.name);
             $('#email').val(clientDataById.data.email);
         }
@@ -143,7 +143,7 @@ function Client() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 alert('Cliente atualizado com sucesso.')

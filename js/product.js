@@ -18,7 +18,7 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 alert('Produto cadastrado com sucesso.')
@@ -39,7 +39,7 @@ function Product() {
         
         if (json.status != undefined) {
 
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 $('#productData').html('Nenhum registro');
                 $('#deleteSelected').hide();
             } else {
@@ -80,7 +80,7 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 this.getData();
@@ -103,7 +103,7 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 this.getData();
@@ -128,7 +128,7 @@ function Product() {
         var productDataById = this.findById(id);
 
 
-        if (productDataById.status != 0) {
+        if (productDataById.status != 0 && productDataById.status != 2) {
             $('#name').val(productDataById.data.name);
             $('#price').val(productDataById.data.price);
         }
@@ -143,7 +143,7 @@ function Product() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 alert('Produto atualizado com sucesso.')

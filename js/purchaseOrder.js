@@ -10,7 +10,7 @@ function PurchaseOrder() {
         
         if (json.status != undefined) {
 
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 $('#purchaseOrderData').html('Nenhum registro');
                 $('#deleteSelected').hide();
             } else {
@@ -55,7 +55,7 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 this.getData();
@@ -78,7 +78,7 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 this.getData();
@@ -97,14 +97,14 @@ function PurchaseOrder() {
         var clientOptions = '';
         var productOptions = '';
 
-        if (clientList.status != 0) {
+        if (clientList.status != 0 && clientList.status != 2) {
 
             for (var i in clientList.data) {
                 clientOptions += '<option value="'+clientList.data[i].id+'">'+clientList.data[i].name+'</option>';
             }
         }
 
-        if (productList.status != 0) {
+        if (productList.status != 0 && productList.status != 2) {
 
             for (var i in productList.data) {
                 productOptions += '<option value="'+productList.data[i].id+'">'+productList.data[i].name+'</option>';
@@ -124,7 +124,7 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 alert('Pedido de compra cadastrado com sucesso.')
@@ -155,14 +155,14 @@ function PurchaseOrder() {
 
 
 
-        if (clientList.status != 0) {
+        if (clientList.status != 0 && clientList.status != 2) {
 
             for (var i in clientList.data) {
                 clientOptions += '<option value="'+clientList.data[i].id+'">'+clientList.data[i].name+'</option>';
             }
         }
 
-        if (productList.status != 0) {
+        if (productList.status != 0 && productList.status != 2) {
 
             for (var i in productList.data) {
                 productOptions += '<option value="'+productList.data[i].id+'">'+productList.data[i].name+'</option>';
@@ -172,7 +172,7 @@ function PurchaseOrder() {
         $('#clientId').append(clientOptions);
         $('#productId').append(productOptions);
 
-        if (purchaseOrderDataById.status != 0) {
+        if (purchaseOrderDataById.status != 0 && purchaseOrderDataById.status != 2) {
             $('#qtd').val(purchaseOrderDataById.data.qtd);
             $('#clientId > option').each(function() {
                 if ($(this).val() == purchaseOrderDataById.data.clientId) {
@@ -203,7 +203,7 @@ function PurchaseOrder() {
         var json = response;
 
         if (json.status != undefined) {
-            if (json.status == 0) {
+            if (json.status == 0 || json.status == 2) {
                 alert(json.msg);
             } else {
                 alert('Pedido de compra atualizado com sucesso.')
