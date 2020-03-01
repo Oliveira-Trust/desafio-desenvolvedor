@@ -96,7 +96,7 @@
                     return true;
                 }
                 catch(PDOException $e) {
-                    return false;
+                    return -1;
                 }
             } else {
                 return false;
@@ -107,11 +107,11 @@
         public function deleteSelected($ids){
             if ($this->conn !== false) {
                 try {
-                    $this->conn->query('DELETE FROM products WHERE id IN ('.implode(',', $ids).')');
+                    $this->conn->query('DELETE FROM products WHERE id IN ('.$ids.')');
                     return true;
                 }
                 catch(PDOException $e) {
-                    return false;
+                    return -1;
                 }
             } else {
                 return false;

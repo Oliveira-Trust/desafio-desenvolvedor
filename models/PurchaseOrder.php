@@ -127,7 +127,7 @@
         public function deleteSelected($ids){
             if ($this->conn !== false) {
                 try {
-                    $this->conn->query('DELETE FROM purchaseorder WHERE id IN ('.implode(',', $ids).')');
+                    $this->conn->query('DELETE FROM purchaseorder WHERE id IN ('.$ids.')');
                     return true;
                 }
                 catch(PDOException $e) {

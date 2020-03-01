@@ -68,15 +68,15 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownClientes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownClientes">
-                            <a class="dropdown-item" href="#">Cadastrar</a>
-                            <a class="dropdown-item" href="#">Listar</a>
+                            <a class="dropdown-item" href="clientRegister.php">Cadastrar</a>
+                            <a class="dropdown-item" href="clientList.php">Listar</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProdutos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produtos</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownProdutos">
-                            <a class="dropdown-item" href="#">Cadastrar</a>
-                            <a class="dropdown-item" href="#">Listar</a>
+                            <a class="dropdown-item" href="productRegister.php">Cadastrar</a>
+                            <a class="dropdown-item" href="productList.php">Listar</a>
                         </div>
                     </li>
                     <li class="nav-item">

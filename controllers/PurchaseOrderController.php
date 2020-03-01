@@ -140,9 +140,7 @@
                 return;
             }
 
-            $arrIds = explode(',', $_POST['ids']);
-
-            $deleteSelected = $this->model->deleteSelected($arrIds);
+            $deleteSelected = $this->model->deleteSelected($_POST['ids']);
             if ($deleteSelected) {
                 echo json_encode(['status' => '1']);
                 return;
