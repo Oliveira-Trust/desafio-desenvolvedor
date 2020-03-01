@@ -26,7 +26,7 @@
     </div>
 
     <script>
-        new Client().getDataEdit(<?=$id?>);
+        new Client().getDataById(<?=$id?>, 'input');
     </script>
 
 <?php

@@ -130,14 +130,20 @@ function Client() {
         return json;
     }
 
-    this.getDataEdit = function(id) {
+    // type = input ou text
+    this.getDataById = function(id, type) {
 
         var clientDataById = this.findById(id);
 
         // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (clientDataById.status != 0 && clientDataById.status != 2) {
-            $('#name').val(clientDataById.data.name);
-            $('#email').val(clientDataById.data.email);
+            if (type == 'input') {
+                $('#name').val(clientDataById.data.name);
+                $('#email').val(clientDataById.data.email);
+            } else {
+                $('#name').text(clientDataById.data.name);
+                $('#email').text(clientDataById.data.email);
+            }
         }
     }
 

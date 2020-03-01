@@ -130,14 +130,19 @@ function Product() {
         return json;
     }
 
-    this.getDataEdit = function(id) {
+    this.getDataById = function(id, type) {
 
         var productDataById = this.findById(id);
 
         // Status 0 = Erro  -  Status 2 = Usuário não logado
         if (productDataById.status != 0 && productDataById.status != 2) {
-            $('#name').val(productDataById.data.name);
-            $('#price').val(productDataById.data.price);
+            if (type == 'input') {
+                $('#name').val(productDataById.data.name);
+                $('#price').val(productDataById.data.price);
+            } else {
+                $('#name').text(productDataById.data.name);
+                $('#price').text(productDataById.data.price);
+            }
         }
     }
 

@@ -26,7 +26,7 @@
     </div>
 
     <script>
-        new Product().getDataEdit(<?=$id?>);
+        new Product().getDataById(<?=$id?>, 'input');
     </script>
 
 <?php

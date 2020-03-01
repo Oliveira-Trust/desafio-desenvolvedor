@@ -23,8 +23,8 @@ function PurchaseOrder() {
                                         <input type="checkbox" class="form-check-input" name="deleteSelected" value="`+json.data[i].id+`" />
                                     </div>
                                 </td>
-                                <td>`+json.data[i].clientName+`</td>
-                                <td>`+json.data[i].productName+`</td>
+                                <td><a href='clientDetail.php?id=`+json.data[i].clientId+`'>`+json.data[i].clientName+`</a></td>
+                                <td><a href='productDetail.php?id=`+json.data[i].productId+`'>`+json.data[i].productName+`</a></td>
                                 <td>`+json.data[i].status+`</td>
                                 <td>`+json.data[i].qtd+`</td>
                                 <td>R$ `+parseFloat(json.data[i].price).toFixed(2)+`</td>
