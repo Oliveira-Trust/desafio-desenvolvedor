@@ -18,7 +18,7 @@
                     <input type="email" name="email" id="email" class="form-control" placeholder="Seu endereço de email" required>
                     <label for="password" class="sr-only">Senha</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Sua senha" required>
-                    <button class="btn btn-lg btn-primary btn-block mt-3" type="button" onclick="new Cadastro().cadastrarUsuario()">Fazer login</button>
+                    <button class="btn btn-lg btn-primary btn-block mt-3" type="button" onclick="new Cadastro().cadastrarUsuario()">Cadastrar-se</button>
                     <div class="text-center">
                         Já possui cadastro? <a href="login.php">Faça login</a>
                     </div>
