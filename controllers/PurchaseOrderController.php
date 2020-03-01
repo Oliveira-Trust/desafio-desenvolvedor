@@ -33,7 +33,13 @@
 
         // Exibe os detalhes do registro selecionado
         public function show() {
-            $findById = $this->model->findById(1);
+
+            if (!isset($_POST['id']) || !is_numeric($_POST['id']) || $_POST['id'] == 0) {
+                echo json_encode(['status' => '0', 'msg' => 'Id não possui um valor válido, tente novamente.']);
+                return;
+            }
+
+            $findById = $this->model->findById($_POST['id']);
             if (is_array($findById) && count($findById)) {
                 echo json_encode(['status' => '1', 'data' => $findById]);
                 return;
@@ -75,10 +81,33 @@
         }
 
         public function update() {
-            $arr['qtd'] = '5';
-            $arr['status'] = 'Cancelado';
 
-            $updateById = $this->model->updateById(1, $arr);
+            if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Id inválido, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['productId']) || !is_numeric($_POST['productId'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Produto inválido, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['clientId']) || !is_numeric($_POST['clientId'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Cliente inválido, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['qtd']) || !is_numeric($_POST['qtd'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Quantidade inválida, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['status']) || ! $_POST['status'] === 'Selecione') {
+                echo json_encode(['status' => '0', 'msg' => 'Status inválido, tente novamente.']);
+                return;
+            }
+
+            $updateById = $this->model->updateById($_POST['id'], $_POST);
             if ($updateById) {
                 echo json_encode(['status' => '1']);
                 return;

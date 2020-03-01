@@ -134,4 +134,83 @@ function PurchaseOrder() {
         }
 
     }
+
+    this.findById = function(id) {
+        
+        returnData('controllers/PurchaseOrderController.php?acao=show', 'post', 'id='+id);
+
+        var json = response;
+
+        return json;
+    }
+
+    this.getDataEdit = function(id) {
+
+        var clientList = new Client().getClientList();
+        var productList = new Product().getProductList();
+        var purchaseOrderDataById = this.findById(id);
+
+        var clientOptions = '';
+        var productOptions = '';
+
+
+
+        if (clientList.status != 0) {
+
+            for (var i in clientList.data) {
+                clientOptions += '<option value="'+clientList.data[i].id+'">'+clientList.data[i].name+'</option>';
+            }
+        }
+
+        if (productList.status != 0) {
+
+            for (var i in productList.data) {
+                productOptions += '<option value="'+productList.data[i].id+'">'+productList.data[i].name+'</option>';
+            }
+        }
+
+        $('#clientId').append(clientOptions);
+        $('#productId').append(productOptions);
+
+        if (purchaseOrderDataById.status != 0) {
+            $('#qtd').val(purchaseOrderDataById.data.qtd);
+            $('#clientId > option').each(function() {
+                if ($(this).val() == purchaseOrderDataById.data.clientId) {
+                    $(this).attr('selected', true);
+                }
+            });
+            
+            $('#productId > option').each(function() {
+                if ($(this).val() == purchaseOrderDataById.data.productId) {
+                    $(this).attr('selected', true);
+                }
+            });
+
+            $('#status > option').each(function() {
+                if ($(this).val() == purchaseOrderDataById.data.status) {
+                    $(this).attr('selected', true);
+                }
+            });
+        }
+    }
+
+    this.updateOrder = function(id) {
+
+        var form = $('#formPurchaseOrderGetData').serialize();
+
+        returnData('controllers/PurchaseOrderController.php?acao=update', 'post', form+'&id='+id);
+
+        var json = response;
+
+        if (json.status != undefined) {
+            if (json.status == 0) {
+                alert(json.msg);
+            } else {
+                alert('Pedido de compra atualizado com sucesso.')
+            }
+        } else {
+            alert('Erro ao efetuar operação.');
+        }
+
+    }
 }
