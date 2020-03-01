@@ -20,6 +20,8 @@
             <script src="../js/cadastro.js"></script>
             <script src="../js/login.js"></script>
             <script src="../js/purchaseOrder.js"></script>
+            <script src="../js/client.js"></script>
+            <script src="../js/product.js"></script>
 
         </head>
         <body>

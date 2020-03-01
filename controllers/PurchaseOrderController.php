@@ -43,18 +43,35 @@
         }
 
         public function store() {
-            $arr['productId'] = '1';
-            $arr['clientId'] = '1';
-            $arr['qtd'] = '5';
-            $arr['status'] = 'Pago';
 
-            $insert = $this->model->insert($arr);
+            if (!isset($_POST['productId']) || !is_numeric($_POST['productId'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Produto inválido, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['clientId']) || !is_numeric($_POST['clientId'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Cliente inválido, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['qtd']) || !is_numeric($_POST['qtd'])) {
+                echo json_encode(['status' => '0', 'msg' => 'Quantidade inválida, tente novamente.']);
+                return;
+            }
+
+            if (!isset($_POST['status']) || ! $_POST['status'] === 'Selecione') {
+                echo json_encode(['status' => '0', 'msg' => 'Status inválido, tente novamente.']);
+                return;
+            }
+
+
+            $insert = $this->model->insert($_POST);
             if ($insert) {
                 echo json_encode(['status' => '1']);
                 return;
             }
 
-            echo json_encode(['status' => '0', 'msg' => 'Erro ao localizar registro, tente novamente.']);
+            echo json_encode(['status' => '0', 'msg' => 'Erro ao inserir registro, tente novamente.']);
         }
 
         public function update() {

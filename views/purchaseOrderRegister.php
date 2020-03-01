@@ -13,32 +13,35 @@
             <h1 class="h3 mb-3 mt-3 font-weight-normal">Cadastro de Pedidos de Compra</h1>
             <div class="form-group">
                 <label for="cliente">Cliente:</label>
-                <select class="form-control" id="cliente">
+                <select class="form-control" name="clientId" id="clientId">
                     <option>Selecione</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="produto">Produto:</label>
-                <select class="form-control" id="produto">
+                <select class="form-control" name="productId" id="productId">
                     <option>Selecione</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="status">Status:</label>
-                <select class="form-control" id="status">
+                <select class="form-control" name="status" id="status">
                     <option>Selecione</option>
+                    <option>Em aberto</option>
+                    <option>Pago</option>
+                    <option>Cancelado</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="qtd">Quantidade:</label>
                 <input type="number" id="qtd" name="qtd" class="form-control" min="1" />
             </div>
-            <button type="button" class="btn btn-primary">Cadastrar</button>
+            <button type="button" class="btn btn-primary" onclick="new PurchaseOrder().registerOrder()">Cadastrar</button>
         </form>
     </div>
 
     <script>
-        //new PurchaseOrder().getDataRegister();
+        new PurchaseOrder().getDataRegister();
     </script>
 
 <?php

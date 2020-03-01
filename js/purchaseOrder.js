@@ -29,7 +29,7 @@ function PurchaseOrder() {
                                 <td>R$ `+parseFloat(json.data[i].price).toFixed(2)+`</td>
                                 <td>R$ `+parseFloat(json.data[i].totalPrice).toFixed(2)+`</td>
                                 <td>
-                                    <a href='purchaseOrderEdit.php?id=`+json.data[i].id+`'><button class="btn btn-primary btn-sm">Editar</button></a>
+                                    <a href='purchaseOrderEdit.php?id=`+json.data[i].id+`'><button class="btn btn-primary btn-sm" type="button">Editar</button></a>
                                 </td>
                                 <td>
                                     <button class="btn btn-danger btn-sm" type='button' name='delete' onclick='new PurchaseOrder().delete(`+json.data[i].id+`)'>Deletar</button>
@@ -67,8 +67,6 @@ function PurchaseOrder() {
 
     this.deleteSelected = function() {
 
-        debugger;
-
         var data = []
 
         $.each($('input[name=deleteSelected]:checked'), function(){
@@ -84,6 +82,52 @@ function PurchaseOrder() {
                 alert(json.msg);
             } else {
                 this.getData();
+            }
+        } else {
+            alert('Erro ao efetuar operação.');
+        }
+
+    }
+
+    this.getDataRegister = function() {
+
+        var clientList = new Client().getClientList();
+        var productList = new Product().getProductList();
+
+        var clientOptions = '';
+        var productOptions = '';
+
+        if (clientList.status != 0) {
+
+            for (var i in clientList.data) {
+                clientOptions += '<option value="'+clientList.data[i].id+'">'+clientList.data[i].name+'</option>';
+            }
+        }
+
+        if (productList.status != 0) {
+
+            for (var i in productList.data) {
+                productOptions += '<option value="'+productList.data[i].id+'">'+productList.data[i].name+'</option>';
+            }
+        }
+
+        $('#clientId').append(clientOptions);
+        $('#productId').append(productOptions);
+    }
+
+    this.registerOrder = function() {
+
+        var form = $('#formPurchaseOrderGetData').serialize();
+
+        returnData('controllers/PurchaseOrderController.php?acao=store', 'post', form);
+
+        var json = response;
+
+        if (json.status != undefined) {
+            if (json.status == 0) {
+                alert(json.msg);
+            } else {
+                alert('Pedido de compra cadastrado com sucesso.')
             }
         } else {
             alert('Erro ao efetuar operação.');
