@@ -38,7 +38,8 @@
             $product =findById($products, $formFields.product_id);
             
             $box = $('.order-products').find('.media:first-child').clone();
-            $box.find('.product_id').val($product.id);
+            $box.find('.product_id').attr('name', 'products['+$product.id+']').val($product.id);
+            $box.find('.inpQuantity').attr('name', 'quantity['+$product.id+']').val($formFields.quantity);
             $box.find('.name').html($product.name);
             $box.find('.price').html($product.price);
             $box.find('.quantity').html($formFields.quantity);
@@ -108,7 +109,7 @@
 <div class="form-group row">
     <label for="client_id" class="col-md-4 col-form-label text-md-right">Client</label>
     <div class="col-md-6">
-        <select class="custom-select mr-sm-2" id="client_id">
+        <select class="custom-select mr-sm-2" id="client_id" name="client_id">
             <option value="">Choose...</option>
             @foreach ($clients->pluck('name', 'id')->toArray() as $id => $value)
                 <option value="{{$id}}">{{$value}}</option>    
@@ -136,7 +137,8 @@
     <div class="col-md-12 order-products">
         
             <div class="media" style="display:none">
-                <input type="hidden" name="order_products[]" class="product_id" />
+                <input type="hidden" class="product_id" />
+                <input type="hidden" class="inpQuantity" />
                 <div class="media-body">
                     <h5 class="mt-0 name">Produto 1</h5>
                 </div>

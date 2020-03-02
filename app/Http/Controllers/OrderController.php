@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Client;
-use Illuminate\Http\Request;
+use App\Http\Requests\Order as RequestsOrder;
+use App\Models\OrderProducts;
 
 class OrderController extends Controller
 {
@@ -37,12 +38,22 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\RequestsOrder  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestsOrder $request)
     {
-        //
+        $order = Order::create($request->all('client_id'));
+        foreach ($request->all('products')['products'] as $product_id) {
+            $product = Product::find($product_id);
+            $order->products()->create([
+                'product_id' => $product_id,
+                'quantity' => $request->all('quantity')['quantity'][$product_id],
+                'unit_price' => $product->price
+            ]);
+        }
+        return redirect('orders')
+        ->with('success', 'create success');
     }
 
     /**
@@ -70,11 +81,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\RequestsOrder  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(RequestsOrder $request, Order $order)
     {
         //
     }
