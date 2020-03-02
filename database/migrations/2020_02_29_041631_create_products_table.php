@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('brand');
+            $table->float('price', 11, 2);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
