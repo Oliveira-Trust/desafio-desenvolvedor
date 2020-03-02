@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', ucfirst(explode('/', Route::current()->uri)[0]))
 @section('content')
     <div class="container">
         <h1>{{ucfirst(explode('/', Route::current()->uri)[0])}}</h1>
@@ -22,8 +22,11 @@
                 @include(explode('/', Route::current()->uri)[0].'._list')                
             </div>
         </div>
-    </div>
 
-    {{ $model->links() }}
+        <div class="row justify-content-center mt-3">
+            {{ $model->links() }}
+        </div>
+    </div>
+    
 
 @endsection
