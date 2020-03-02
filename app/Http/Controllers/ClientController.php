@@ -15,7 +15,9 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::paginate(15);
-        return view('clients/index', ['clients' => $clients]);
+        return view('list')
+        ->with('model', $clients);
+        //return view('clients/index', ['clients' => $clients]);
     }
 
     /**
@@ -38,7 +40,8 @@ class ClientController extends Controller
     public function store(RequestsClient $request)
     {
         Client::create($request->all('name'));
-        return redirect('clients');
+        return redirect('clients')
+        ->with('success', 'create success');
     }
 
     /**
@@ -74,7 +77,8 @@ class ClientController extends Controller
     public function update(RequestsClient $request, Client $client)
     {
         $client->update($request->all('name'));
-        return redirect('clients');
+        return redirect('clients')
+        ->with('success', 'save success');
     }
 
     /**
@@ -86,6 +90,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect('clients')->with('success','Product has been  deleted');
+        return redirect('clients')->with('success','Client has been  deleted');
     }
 }

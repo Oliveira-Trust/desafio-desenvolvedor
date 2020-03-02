@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h1>Clients</h1>
+        <h1>{{ucfirst(explode('/', Route::current()->uri)[0])}}</h1>
         <div class="row">
             <div class="col-9 col-md-11">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{URL::to(explode('/', Route::current()->uri)[0])}}">Clients</a></li>
+                        <li class="breadcrumb-item"><a href="{{URL::to(explode('/', Route::current()->uri)[0])}}">{{ucfirst(explode('/', Route::current()->uri)[0])}}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Create</li>
                     </ol>
                 </nav>
