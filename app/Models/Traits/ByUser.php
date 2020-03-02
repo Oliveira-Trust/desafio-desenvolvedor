@@ -20,4 +20,8 @@ trait ByUser
     public static function paginate($limit) {
         return parent::byUser(auth()->user()->id)->paginate($limit);
     }
+
+    public static function get() {
+        return parent::byUser(auth()->user()->id)->get();
+    }
 }
