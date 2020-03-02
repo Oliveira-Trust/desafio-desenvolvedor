@@ -6,17 +6,17 @@ Projeto desenvolvido em Laravel e Mysql implementando um CRUD simples para Clien
 ## O que foi feito/falta ser feito
 
 **Básico:**
--  - [x] CRUD de Clientes
--  - [x] CRUD de Produtos
+-  - [x] ~~CRUD de Clientes~~
+-  - [x] ~~CRUD de Produtos~~
 -  - [ ] CRUD de Pedidos de Compra
 -  - [ ] Filtrar e Ordenar listagens por qualquer campo
--  - [x] Barra de Navegação entre CRUDs
+-  - [x] ~~Barra de Navegação entre CRUDs~~
 -  - [ ] Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)
 
 **Bônus:**
--  - [x] Implementar autenticação de usuário na aplicação.
+-  - [x] ~~Implementar autenticação de usuário na aplicação.~~
 -  - [ ] Permitir deleção em massa de itens nos CRUDs.
--  - [x] Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.
+-  - [x] ~~Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.~~
 -  - [ ] API Rest JSON para todos os CRUDS listados acima.
 
 ## Instalação
