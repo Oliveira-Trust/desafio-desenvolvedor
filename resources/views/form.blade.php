@@ -3,12 +3,20 @@
 @section('content')
     <div class="container">
         <h1>Clients</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{URL::to('clients')}}">Clients</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Create</li>
-            </ol>
-        </nav>
+        <div class="row">
+            <div class="col-9 col-md-11">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{URL::to(explode('/', Route::current()->uri)[0])}}">Clients</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-3 col-md-1 text-right">
+            <a href="{{URL::to(explode('/', Route::current()->uri)[0])}}" class="btn btn-primary"><i class="fas fa-level-up-alt"></i></a>
+            </div>
+        </div>
+        
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @include('partials/errors')

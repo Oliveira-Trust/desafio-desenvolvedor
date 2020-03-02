@@ -40,7 +40,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @foreach (['clients', 'products'] as $area)
+                            <li class="nav-item @if(explode('/', Route::current()->uri)[0]==$area) active @endif">
+                                <a class="nav-link" href="{{URL::to('/'.$area)}}">
+                                    {{ucfirst($area)}}
+                                    @if (explode('/', Route::current()->uri)[0]==$area)
+                                        &nbsp;<span class="sr-only">(current)</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
 
                     <!-- Right Side Of Navbar -->
