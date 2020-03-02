@@ -11,7 +11,9 @@ trait ByUser
     }
 
     public function save(array $options=[]) {
-        $this->user_id = auth()->user()->id;
+        if (empty($this->user_id)) {
+            $this->user_id = auth()->user()->id;
+        }
         parent::save($options);
     }
 
