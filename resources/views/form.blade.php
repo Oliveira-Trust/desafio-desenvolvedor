@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', ucfirst(explode('/', Route::current()->uri)[0]))
 @section('content')
     <div class="container">
         <h1>{{ucfirst(explode('/', Route::current()->uri)[0])}}</h1>
@@ -22,7 +22,7 @@
                 @include('partials/errors')
                 
                 <div class="card">
-                    <div class="card-header">{{ __('Create Client') }}</div>
+                    <div class="card-header">{{ __('Create').' '.ucfirst(explode('/', Route::current()->uri)[0]) }}</div>
                     <div class="card-body">
                         @if (isset($model->id))
                             <form action="{{'/'.explode('/', Route::current()->uri)[0].'/'.$model->id}}" method="post">
