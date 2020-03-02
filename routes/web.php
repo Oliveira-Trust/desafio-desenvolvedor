@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->resource('clients', 'ClientController');
 Route::middleware('auth')->resource('products', 'ProductController');
+Route::middleware('auth')->resource('orders', 'OrderController');
 //Route::post('clients/update', 'ClientController:update');
 
 Auth::routes();
