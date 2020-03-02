@@ -91,6 +91,7 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('modal')
         </main>
     </div>
 </body>

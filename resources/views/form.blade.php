@@ -25,10 +25,10 @@
                     <div class="card-header">{{ __('Create').' '.ucfirst(explode('/', Route::current()->uri)[0]) }}</div>
                     <div class="card-body">
                         @if (isset($model->id))
-                            <form action="{{'/'.explode('/', Route::current()->uri)[0].'/'.$model->id}}" method="post">
+                            <form id="principal" action="{{'/'.explode('/', Route::current()->uri)[0].'/'.$model->id}}" method="post">
                                 @method('PUT')
                         @else
-                            <form action="{{'/'.explode('/', Route::current()->uri)[0]}}" method="post">
+                            <form id="principal" action="{{'/'.explode('/', Route::current()->uri)[0]}}" method="post">
                         @endif
                             @csrf
                             @include(explode('/', Route::current()->uri)[0].'._form')
