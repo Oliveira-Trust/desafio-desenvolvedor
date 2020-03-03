@@ -79,7 +79,7 @@
     <div class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <form>
-                <input type="text" name="product_id" id="product_id">
+                <input type="hidden" name="product_id" id="product_id">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Modal title</h5>
