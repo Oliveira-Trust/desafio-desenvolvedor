@@ -9,9 +9,9 @@ Projeto desenvolvido em Laravel e Mysql implementando um CRUD simples para Clien
 -  - [x] ~~CRUD de Clientes~~
 -  - [x] ~~CRUD de Produtos~~
 -  - [x] ~~CRUD de Pedidos de Compra~~
--  - [ ] Filtrar e Ordenar listagens por qualquer campo
+-  - [x] ~~Filtrar e Ordenar listagens por qualquer campo~~
 -  - [x] ~~Barra de Navegação entre CRUDs~~
--  - [ ] Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)
+-  - [x] ~~Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)~~
 
 **Bônus:**
 -  - [x] ~~Implementar autenticação de usuário na aplicação.~~
