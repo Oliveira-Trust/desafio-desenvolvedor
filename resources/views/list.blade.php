@@ -19,12 +19,8 @@
         
         <div class="row">            
             <div class="col-md-12">
-                @include(explode('/', Route::current()->uri)[0].'._list')                
+                {{$table}}
             </div>
-        </div>
-
-        <div class="row justify-content-center mt-3">
-            {{ $model->links() }}
         </div>
     </div>
     

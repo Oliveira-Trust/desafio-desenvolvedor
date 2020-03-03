@@ -14,10 +14,21 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(15);
+        $table = (new \Okipa\LaravelTable\Table)->model(Client::class)->routes([
+            'index'   => ['name' => 'clients.index'],
+            'edit'    => ['name' => 'clients.edit'],
+            'destroy' => ['name' => 'clients.destroy'],
+        ])->destroyConfirmationHtmlAttributes(function (Client $client) {
+            return [
+                'data-confirm' => 'Are you sure you want to delete the user ' . $client->name . ' ?',
+            ];
+        })->query(function($query){
+            $query->byAuthorizedUser();
+        });
+        $table->column('name')->title('Name')->sortable(true)->searchable();
+        
         return view('list')
-        ->with('model', $clients);
-        //return view('clients/index', ['clients' => $clients]);
+        ->with('table', $table);
     }
 
     /**

@@ -5,6 +5,11 @@ namespace App\Models\Traits;
 trait ByUser 
 {
 
+    public function scopeByAuthorizedUser($query)
+    {
+        return $query->where('user_id', auth()->user()->id);
+    }
+
     public function scopeByUser($query, $user)
     {
         return $query->where('user_id', $user);

@@ -14,9 +14,23 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(15);
+        $table = (new \Okipa\LaravelTable\Table)->model(Product::class)->routes([
+            'index'   => ['name' => 'products.index'],
+            'edit'    => ['name' => 'products.edit'],
+            'destroy' => ['name' => 'products.destroy'],
+        ])->destroyConfirmationHtmlAttributes(function (Product $product) {
+            return [
+                'data-confirm' => 'Are you sure you want to delete the user ' . $product->name . ' ?',
+            ];
+        })->query(function($query){
+            $query->byAuthorizedUser();
+        });
+        $table->column('name')->title('Name')->sortable(true)->searchable();
+        $table->column('brand')->title('Brand')->sortable()->searchable();
+        $table->column('price')->title('Price')->sortable()->searchable();
+        
         return view('list')
-        ->with('model', $products);
+        ->with('table', $table);
     }
 
     /**

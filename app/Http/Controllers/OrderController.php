@@ -17,9 +17,25 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::paginate(15);
+        $table = (new \Okipa\LaravelTable\Table)->model(Order::class)->routes([
+            'index'   => ['name' => 'orders.index'],
+        ])->destroyConfirmationHtmlAttributes(function (Order $order) {
+            return [
+                'data-confirm' => 'Are you sure you want to delete the user ' . $order->name . ' ?',
+            ];
+        })->query(function($query){
+            $query->byAuthorizedUser();
+        });
+        $table->column('id')->title('Id')->sortable(true)->searchable();
+        $table->column()->title('Client')->link(function($client){
+            return route('clients.edit', $client);
+        })->value(function($order){
+            return $order->client->name;
+        });
+        $table->column('price')->title('Price');
+        
         return view('list')
-        ->with('model', $orders);
+        ->with('table', $table);
     }
 
     /**
