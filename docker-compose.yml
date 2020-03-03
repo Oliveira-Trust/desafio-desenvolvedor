@@ -36,6 +36,9 @@ services:
     image: mysql:5.7
     container_name: cadCliente_mysql
     restart: always
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+      - ./volumes/mysql:/etc/mysql/mysql.conf.d
     environment:
       - MYSQL_ROOT_PASSWORD=A123456
       - MYSQL_DATABASE=webadm
