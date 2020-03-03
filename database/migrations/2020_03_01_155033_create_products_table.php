@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('ean')->unique();
             $table->string('name');
-            $table->float('price');
+            $table->longText('description')->nullable();
+            $table->float('price',8,2);
             $table->timestamps();
         });
     }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use Illuminate\Http\Request;
+
 
 class ProductsController extends Controller
 {
@@ -13,7 +15,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -23,7 +25,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('productForm');
     }
 
     /**
@@ -34,7 +37,9 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $prodSave = new Products();
+        $prodSave->saveProducts($request);
+        return $this->create();
     }
 
     /**
