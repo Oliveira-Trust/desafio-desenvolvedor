@@ -18,5 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/produto/cadastrar', 'ProductsController@create');
+Route::get('/produto/cadastrar', 'ProductsController@create')->name('produto.cadastrar');
 Route::post('/produto/salvar', 'ProductsController@store')->name('produto.salvar');
+Route::get('/produto/editar/{id}','ProductsController@show')->name('produto.editar');
+Route::get('/produto/excluir/{id}','ProductsController@destroy')->name('produto.excluir');
+Route::get('/produtos','ProductsController@index')->name('produtos');

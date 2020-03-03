@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
-
 class ProductsController extends Controller
 {
     /**
@@ -13,7 +12,7 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
     }
@@ -25,8 +24,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-
-        return view('productForm');
+        $products =  Products::all();
+        return view('productForm')->with(compact('products'));
     }
 
     /**
@@ -38,8 +37,8 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $prodSave = new Products();
-        $prodSave->saveProducts($request);
-        return $this->create();
+        $savedReturn = $prodSave->saveProducts($request);
+        return view('productForm')->with(compact('savedReturn'));
     }
 
     /**
@@ -50,7 +49,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product =  Products::find($id);
+        return view('productForm')->with(compact('product'));
     }
 
     /**

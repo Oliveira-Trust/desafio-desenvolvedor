@@ -14,6 +14,9 @@ class Products extends Model
     public function saveProducts($request)
     {
         $this->validate($request);
+        if(!empty($request->productID)){
+            return $this->editProducts($request);
+        }
         $this->fill([
             "name" => $request->post('name'),
             "price" => $request->post('price'),
@@ -23,6 +26,18 @@ class Products extends Model
 
         $this->save();
         return $this;
+    }
+
+    public function editProducts($request){
+        $edit = Products::find($request->productID);
+        $edit->name = $request->post('name');
+        $edit->price = $request->post('price');
+        $edit->description = $request->post('description');
+        $edit->ean = $request->post('ean');
+        if($edit->save()){
+            return ["success" => "Produto editado com sucesso!"];
+        }
+        return ["error" => "Produto não pode ser editado!"];
     }
 
     private function validate(Request $request){
