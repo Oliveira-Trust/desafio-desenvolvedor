@@ -3,31 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Grid\GridManagement;
-use App\Models\Order;
-use App\Models\OrderProducts;
-use App\Models\Products;
+use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Okipa\LaravelTable\Table as OkipaTable;
 
-class OrderController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $table = GridManagement::OrderGrid();
+        $clientGrind = GridManagement::ClientGrid();
 
-        return view('createOrder')->with('order',$table);
+        return view('listClient')->with('clientGrid',$clientGrind);
     }
 
     /**
@@ -37,7 +27,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientForm');
     }
 
     /**
@@ -48,12 +38,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->products);
-        //@todo salvar id do pedido na sessao para os proximos produtos e adicionar evento jquery mostrando o carrinho/
-        $order = new Order();
-
-        return $order->saveOrder($request);
-
+        $client = new Client();
+        $client->saveAndValidate($request);
+        return $this->index();
     }
 
     /**

@@ -34,7 +34,7 @@ class Order extends Model
         if($this->save())
         {
             $orderID = $this->id;
-            session([Auth::id() => $orderID]);
+            //$request->session()->put(Auth::id(), $orderID);
             $this->products()->create(
                 [
                     'product_id' => $request->productId,
