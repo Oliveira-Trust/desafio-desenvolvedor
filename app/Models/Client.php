@@ -14,6 +14,13 @@ class Client extends Model
     public function saveAndValidate($request)
     {
         $this->validate($request);
+        if(!empty($request->clientId)){
+            $client = new Client();
+            $clientSave = $client->find($request->clientId);
+            $clientSave->name = $request->name;
+            $clientSave->email = $request->email;
+            return $clientSave->save();
+        }
         $this->fill([
             'name' => $request->name,
             'email' => $request->email

@@ -15,7 +15,7 @@
                         @endif
                         <form method="post" action="{{route('cliente.salvar')}}">
                             @csrf
-                            <input type="hidden" name="productID" value="{{empty($client["id"])?"":$client["id"]}}">
+                            <input type="hidden" name="clientId" value="{{empty($client["id"])?"":$client["id"]}}">
                             <div class="form-group">
                                 <label>Nome</label>
                                 <input type="text" name="name" class="form-control" placeholder="Nome do Cliente" required value="{{empty($client["name"])?"":$client["name"]}}">

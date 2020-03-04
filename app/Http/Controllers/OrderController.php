@@ -25,9 +25,9 @@ class OrderController extends Controller
 
     public function index()
     {
-        $table = GridManagement::OrderGrid();
+        $table = GridManagement::ListOrdersGrid();
 
-        return view('createOrder')->with('order',$table);
+        return view('listOrders')->with('listOrders',$table);
     }
 
     /**
@@ -37,7 +37,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $table = GridManagement::OrderGrid();
+
+        return view('createOrder')->with('order',$table);
     }
 
     /**
@@ -48,10 +50,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->products);
-        //@todo salvar id do pedido na sessao para os proximos produtos e adicionar evento jquery mostrando o carrinho/
-        $order = new Order();
 
+        $order = new Order();
         return $order->saveOrder($request);
 
     }

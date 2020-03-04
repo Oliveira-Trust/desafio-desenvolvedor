@@ -5,6 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    @if (!empty($success))
+                        <div class="alert alert-success" role="alert">
+                            {{ $success }}
+                        </div>
+                    @endif
                     <div class="card-header">Clientes</div>
 
                     <div class="card-body">

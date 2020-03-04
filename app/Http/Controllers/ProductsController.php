@@ -105,6 +105,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $products = new Products();
+        $product = $products->find($id);
+        $product->delete();
+        return redirect('produtos')->with("success","Produto Deletado com sucesso");
     }
 }

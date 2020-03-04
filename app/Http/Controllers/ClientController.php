@@ -51,7 +51,9 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $formCliente = new Client();
+        $client = $formCliente->find($id);
+        return view('clientForm')->with(compact('client'));
     }
 
     /**
@@ -85,6 +87,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $formCliente = new Client();
+        $client = $formCliente->find($id);
+        $client->delete();
+        return redirect('clientes')->with("success","Cliente Deletado com sucesso");
     }
 }

@@ -25,7 +25,6 @@ class Order extends Model
 
     public function saveOrder(Request $request)
     {
-        $this->validate($request);
         $this->fill([
             "user_id" => Auth::id(),
             "status" => self::PEDIDO_ABERTO,
@@ -33,33 +32,26 @@ class Order extends Model
 
         if($this->save())
         {
-            $orderID = $this->id;
-            //$request->session()->put(Auth::id(), $orderID);
-            $this->products()->create(
-                [
-                    'product_id' => $request->productId,
-                    'order_id' => $orderID,
-                    'quantity' => $request->productQuantity
-                ]
-            );
+            $products = json_decode($request->products,true);
+
+            foreach ($products as $product){
+                if(empty($product)){
+                    continue;
+                }
+                $this->products()->create(
+                    [
+                        'product_id' => $product["productId"],
+                        'quantity' => $product["productQuantity"]
+                    ]
+                );
+            }
+
             return $this;
         }
         return false;
 
     }
 
-    public function finishOrder(){
-        $order = self::findOrFail($orderID);
-        $order->status = self::PEDIDO_PAGO;
-        return $order->save();
 
-    }
-
-    private function validate(Request $request)
-    {
-        $request->validate([
-            'productQuantity' => 'required',
-        ]);
-    }
 
 }
