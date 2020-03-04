@@ -26,3 +26,4 @@ Route::get('/produtos','ProductsController@index')->name('produtos');
 
 
 Route::get('/pedidos','OrderController@index')->name('pedidos');
+Route::post('/pedidos/salvar','OrderController@store')->name('pedidos.salvar');

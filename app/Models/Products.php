@@ -30,7 +30,8 @@ class Products extends Model
         return ["error" => "Produto não pode ser criado!"];
     }
 
-    public function editProducts($request){
+    public function editProducts($request)
+    {
         $edit = Products::find($request->productID);
         $edit->name = $request->post('name');
         $edit->price = $request->post('price');
@@ -42,7 +43,8 @@ class Products extends Model
         return ["error" => "Produto não pode ser editado!"];
     }
 
-    private function validate(Request $request){
+    private function validate(Request $request)
+    {
        $request->validate([
             'name' => 'required',
             'ean' => 'required',
