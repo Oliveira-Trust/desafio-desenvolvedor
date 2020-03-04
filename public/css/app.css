@@ -10884,3 +10884,9 @@ a.text-dark:focus {
   }
 }
 
+form #destroy button.btn.btn-link.p-0.text-primary{
+    height: 30px;
+    width: 30px;
+    background-color: red;
+}
+

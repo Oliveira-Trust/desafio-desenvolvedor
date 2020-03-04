@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use Illuminate\Http\Request;
+use Okipa\LaravelTable\Table as OkipaTable;
 
 class OrderController extends Controller
 {
@@ -13,7 +15,28 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $table = (new OkipaTable)->model(Products::class)->routes([
+            'index'   => ['name' => 'produtos'],
+            'create'  => ['name' => 'produto.cadastrar'],
+            'edit'    => ['name' => 'produto.editar'],
+            'destroy' => ['name' => 'produto.excluir'],
+        ]);
+        $table->column('id')->classes(['idProduto'])->title('Id')->sortable(true)->searchable();
+        $table->column('price')->classes(['precoProduto'])->title('Preço')->sortable()->searchable();
+        $table->column('name')->classes(['nameProduto'])->title('Nome')->sortable()->searchable();
+        $table->column('ean')->classes(['eanProduto'])->title('Ean')->sortable()->searchable();
+        $table->column('quantity')->title('Quantidade')->html(
+            function(){
+                return '<input type="number" name="orderQuantity" class="form-group orderQuantity" id="orderQuantity">';
+            }
+        );
+        $table->column('action')->title('adiciona ao carrinho')->html(
+            function(){
+                return '<button  name="orderQuantity" class="btn btn-success" id="btnAddCart"></button>';
+            }
+        );
+
+        return view('createOrder')->with('order',$table);
     }
 
     /**

@@ -2,5 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {!! $grid !!}
+    <div class="container">
+        {{$table}}
+    </div>
 @endsection

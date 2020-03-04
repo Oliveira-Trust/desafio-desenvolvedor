@@ -1,0 +1,51 @@
+version: "3.0"
+
+services:
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+     - ./config/docker/nginx_conf:/etc/nginx/conf.d
+     - ./:/var/www/html
+     -  /usr/bin/ssh:/usr/bin/ssh
+    links:
+     - php:php
+    ports:
+     - "80:80"
+    networks:
+     - devTest
+    container_name: devTest_nginx
+
+  php:
+    build: ./
+    restart: always
+    #command: bash -c "sed -i \"s/memory_limit = 128M/memory_limit = 2048M/\" /usr/local/etc/php/php.ini && sed -i \"s/short_open_tag = Off/short_open_tag = On/\" /usr/local/etc/php/php.ini && sed -i \"s/max_execution_time = 30/max_execution_time = 300/\" /usr/local/etc/php/php.ini && sed -i \"s/upload_max_filesize = 2M/upload_max_filesize = 30M/\" /usr/local/etc/php/php.ini && sed -i \"s/post_max_size = 8M/post_max_size = 30M/\" /usr/local/etc/php/php.ini && php-fpm"
+    environment:
+        PHP_XDEBUG_ENABLED: 1 # Set 1 to enable.
+        PHP_IDE_CONFIG: "serverName=docker"
+        XDEBUG_CONFIG: "remote_host=172.17.0.1"
+    volumes:
+     - ./:/var/www/html
+     -  /usr/bin/ssh:/usr/bin/ssh
+     - ./docker/logs/xdebug/:/tmp/xdebug_log #Logs for Xdebug
+    networks:
+     - devTest
+    container_name: devTest_php
+
+  mysql:
+    image: mysql:5.7
+    container_name: devTest_mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=A123456
+      - MYSQL_DATABASE=laravel
+      - MYSQL_USER=webadm
+      - MYSQL_PASSWORD=A123456
+      - MYSQL_ROOT_HOST=%
+    networks:
+     - devTest
+
+
+networks:
+  devTest:
+    driver: bridge

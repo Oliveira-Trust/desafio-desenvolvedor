@@ -23,3 +23,6 @@ Route::post('/produto/salvar', 'ProductsController@store')->name('produto.salvar
 Route::get('/produto/editar/{id}','ProductsController@show')->name('produto.editar');
 Route::get('/produto/excluir/{id}','ProductsController@destroy')->name('produto.excluir');
 Route::get('/produtos','ProductsController@index')->name('produtos');
+
+
+Route::get('/pedidos','OrderController@index')->name('pedidos');

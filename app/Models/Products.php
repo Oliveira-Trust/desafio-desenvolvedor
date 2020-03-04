@@ -24,8 +24,10 @@ class Products extends Model
             "ean" => $request->post('ean'),
         ]);
 
-        $this->save();
-        return $this;
+        if($this->save()){
+            return ["success" => "Produto Criado com sucesso!"];
+        }
+        return ["error" => "Produto não pode ser criado!"];
     }
 
     public function editProducts($request){
