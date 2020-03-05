@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 class Order extends Model
 {
-    //
+    // Como pedido é algo importante a deleção e feita por softdelete
     use SoftDeletes;
 
     protected $table = 'orders';
