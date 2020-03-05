@@ -25,9 +25,9 @@ class OrderController extends Controller
 
     public function index()
     {
-        $table = GridManagement::ListOrdersGrid();
+        $table = GridManagement::listOrdersGrid();
 
-        return view('listOrders')->with('listOrders',$table);
+        return view('Lists.listOrders')->with('listOrders',$table);
     }
 
     /**
@@ -37,7 +37,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $table = GridManagement::OrderGrid();
+        $table = GridManagement::orderGrid();
 
         return view('createOrder')->with('order',$table);
     }
@@ -98,6 +98,13 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = new Order();
+        $softDelete = $order->find($id);
+        if($softDelete->delete()){
+            return redirect('pedidos')->with("success","Pedido Deletado com sucesso");
+        }
+
+        return redirect('pedidos')->with("errors","Pedido Não deletado");
     }
+
 }

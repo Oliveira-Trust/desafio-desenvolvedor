@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Grid\GridManagement;
+use App\Models\Order;
 use App\Models\OrderProducts;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class OrderProductController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -46,7 +48,9 @@ class OrderProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderProduct =  new Order();
+        $orderProductProducts = $orderProduct->find($id);
+        return view('orderProductDetails')->with('fullOrder',$orderProductProducts);
     }
 
     /**
@@ -78,9 +82,7 @@ class OrderProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $orderProduct = new OrderProducts();
-        $orderProduct->findAndDestroy($request);
     }
 }

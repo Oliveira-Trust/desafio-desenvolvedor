@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -30,6 +30,7 @@ Route::get('/produtos','ProductsController@index')->name('produtos');
 Route::get('/pedidos','OrderController@index')->name('pedidos');
 Route::get('/pedidos/criacao','OrderController@create')->name('pedidos.criacao');
 Route::post('/pedidos/salvar','OrderController@store')->name('pedidos.salvar');
+Route::delete('/pedidos/softdelete/{id}','OrderController@destroy')->name('pedidos.softdelete');
 
 Route::post('/produto/pedido/remover','OrderProductController@destroy')->name('produto.pedido.remover');
 
@@ -40,3 +41,6 @@ Route::get('/clientes/editar/{id}','ClientController@show')->name('cliente.edita
 Route::get('/cliente/cadastrar','ClientController@create')->name('cliente.cadastrar');
 Route::delete('/cliente/excluir/{id}','ClientController@destroy')->name('cliente.excluir');
 Route::post('/cliente/salvar','ClientController@store')->name('cliente.salvar');
+
+
+Route::get('/order/detail/{id}','OrderProductController@show')->name('order.detail');

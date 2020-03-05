@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Grid\GridManagement;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Okipa\LaravelTable\Table as OkipaTable;
@@ -21,22 +22,9 @@ class ProductsController extends Controller
 
     public function index(Request $request)
     {
-        $table = (new OkipaTable)->model(Products::class)->routes([
-            'index'   => ['name' => 'produtos'],
-            'create'  => ['name' => 'produto.cadastrar'],
-            'edit'    => ['name' => 'produto.editar'],
-            'destroy' => ['name' => 'produto.excluir'],
-        ])->destroyConfirmationHtmlAttributes(function (Products $products) {
-            return [
-                'data-confirm' => 'Are you sure you want to delete the user ' . $products->name . ' ?',
-            ];
-        });
-        $table->column('id')->title('Id')->sortable(true)->searchable();
-        $table->column('price')->title('Preço')->sortable()->searchable();
-        $table->column('name')->title('Nome')->sortable()->searchable();
-        $table->column('ean')->title('Ean')->sortable()->searchable();
+        $table = GridManagement::productsGrid();
 
-        return view('productsList')->with('table',$table);
+        return view('Lists.productsList')->with('table',$table);
     }
 
     /**
@@ -46,7 +34,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('productForm');
+        return view('Forms.productForm');
     }
 
     /**
@@ -59,7 +47,7 @@ class ProductsController extends Controller
     {
         $prodSave = new Products();
         $savedReturn = $prodSave->saveProducts($request);
-        return view('productForm')->with(compact('savedReturn'));
+        return view('Forms.productForm')->with(compact('savedReturn'));
     }
 
     /**
@@ -71,7 +59,7 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product =  Products::find($id);
-        return view('productForm')->with(compact('product'));
+        return view('Forms.productForm')->with(compact('product'));
     }
 
     /**
@@ -107,7 +95,9 @@ class ProductsController extends Controller
     {
         $products = new Products();
         $product = $products->find($id);
-        $product->delete();
-        return redirect('produtos')->with("success","Produto Deletado com sucesso");
+        if($product->delete()){
+            return redirect('produtos')->with("success","Produto Deletado com sucesso");
+        }
+        return redirect('produtos')->with("success","Produto  não Deletado");
     }
 }

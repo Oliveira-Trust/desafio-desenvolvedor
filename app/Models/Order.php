@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -10,8 +11,10 @@ use Symfony\Component\HttpFoundation\Cookie;
 class Order extends Model
 {
     //
+    use SoftDeletes;
+
     protected $table = 'orders';
-    protected $fillable = ['user_id','status'];
+    protected $fillable = ['client_id'];
 
     const PEDIDO_ABERTO = "aberto";
     const PEDIDO_PAGO = "pago";
@@ -23,32 +26,37 @@ class Order extends Model
         return $this->hasMany(OrderProducts::class);
     }
 
+    public function client(){
+        return $this->hasOne(Client::class,'id','client_id');
+    }
+
     public function saveOrder(Request $request)
     {
-        $this->fill([
-            "user_id" => Auth::id(),
-            "status" => self::PEDIDO_ABERTO,
-        ]);
 
-        if($this->save())
-        {
-            $products = json_decode($request->products,true);
+        $productsOrders = json_decode($request->products,true);
 
-            foreach ($products as $product){
-                if(empty($product)){
-                    continue;
-                }
-                $this->products()->create(
-                    [
-                        'product_id' => $product["productId"],
-                        'quantity' => $product["productQuantity"]
-                    ]
-                );
+        foreach ($productsOrders as $productsOrder){
+            if(empty($productsOrder)){
+                continue;
             }
+            $this->fill([
+                'client_id' => $productsOrder["selectClient"],
 
-            return $this;
+            ]);
+            $this->save();
+
+            $this->products()->create(
+                [
+                    'status' => $productsOrder["statusOrder"],
+                    'product_id' => $productsOrder["productId"],
+                    'quantity' => $productsOrder["productQuantity"]
+                ]
+            );
+
         }
-        return false;
+
+        return $this;
+
 
     }
 

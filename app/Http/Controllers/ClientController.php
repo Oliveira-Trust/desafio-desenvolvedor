@@ -15,9 +15,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clientGrind = GridManagement::ClientGrid();
+        $clientGrind = GridManagement::clientGrid();
 
-        return view('listClient')->with('clientGrid',$clientGrind);
+        return view('Lists.listClient')->with('clientGrid',$clientGrind);
     }
 
     /**
@@ -27,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clientForm');
+        return view('Forms.clientForm');
     }
 
     /**
@@ -53,7 +53,7 @@ class ClientController extends Controller
     {
         $formCliente = new Client();
         $client = $formCliente->find($id);
-        return view('clientForm')->with(compact('client'));
+        return view('Forms.clientForm')->with(compact('client'));
     }
 
     /**
@@ -89,7 +89,10 @@ class ClientController extends Controller
     {
         $formCliente = new Client();
         $client = $formCliente->find($id);
-        $client->delete();
+        if($client->delete()){
+            return redirect('clientes')->with("success","Cliente Deletado com sucesso");
+        }
+
         return redirect('clientes')->with("success","Cliente Deletado com sucesso");
     }
 }
