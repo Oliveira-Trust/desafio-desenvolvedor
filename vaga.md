@@ -16,7 +16,7 @@ Projeto desenvolvido em Laravel e Mysql implementando um CRUD simples para Clien
 **Bônus:**
 -  - [x] Implementar autenticação de usuário na aplicação.
 -  - [ ] Permitir deleção em massa de itens nos CRUDs.
--  - [x] ~~Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.~~
+-  - [x] Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.
 -  - [ ] API Rest JSON para todos os CRUDS listados acima.
 
 ## Instalação
