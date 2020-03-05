@@ -92,7 +92,9 @@
         });
 
         $("#containerPedido").on('click','#finalizaPedido',function() {
-
+            if(products.length == 0){
+                return false;
+            }
             jQuery.ajax({
                 url: "{{ route('pedidos.salvar') }}",
                 method: 'post',
