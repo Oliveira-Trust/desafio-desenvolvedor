@@ -43,12 +43,6 @@ class Order extends Model
     {
 
         $productsOrders = json_decode($request->products,true);
-        $validate = $this->validate($productsOrders);
-
-        if(!empty($validate)){
-            dd($validate);
-            return $validate;
-        }
 
         foreach ($productsOrders as $productsOrder){
             if(empty($productsOrder)){
