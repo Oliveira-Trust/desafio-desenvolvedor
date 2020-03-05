@@ -46,6 +46,11 @@
                 alert('Produto não pode ser adicionado com quantidade vazia.');
                 return false;
             }
+
+            if(!selectClient || selectClient == 0){
+                alert('Produto não pode ser cliente');
+                return false;
+            }
             products[productId] = {
                 "productId":productId,
                 "productQuantity" : productQuantity,
@@ -95,14 +100,16 @@
                     products: JSON.stringify(products),
                 },
                 success: function(result){
+                    localStorage.removeItem('product');
                     alert('Pedido Realizado com Sucesso!');
                     location.reload();
                 },
                 failure: function (result) {
                     if(result.errors){
-                        $("#containerPedido").html('<div class="alert alert-danger">'+result.erros+'</div>');
+                        $("#containerPedido").html('<div class="alert alert-danger">'+result.errors+'</div>');
                     }
             }});
+
         });
 
     });

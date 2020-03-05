@@ -1,48 +1,62 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
 
-## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
-Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento. Abaixo explicaremos tudo o que será necessário.
+# Controle de Clientes e Pedidos de Compra
 
-## Instruções:
-O desafio consiste em implementar uma aplicação Web utilizando algum framework PHP, e um banco de dados relacional MySQL ou Postgres, a criação das tabelas é livre para sua implementação.
+Projeto desenvolvido em Laravel e Mysql implementando um CRUD simples para Clientes, Produtos e Pedidos de Compra
 
-Você vai criar uma aplicação de cadastro de pedidos de compra, a partir de uma modelagem inicial, com as seguintes funcionalidades:
+## O que foi feito/falta ser feito
 
-+ CRUD de clientes.
-+ CRUD de produtos.
-+ CRUD de pedidos de compra, com status (Em Aberto, Pago ou Cancelado).
-  + Cada CRUD:
-    + deve ser filtrável e ordenável por qualquer campo.
-    + deve possuir formulários para criação e atualização de seus itens.
-    + deve permitir a deleção de qualquer item de sua lista.
-    + Barra de navegação entre os CRUDs.
-    + Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)
+**Básico:**
+-  - [x] CRUD de Clientes
+-  - [x] CRUD de Produtos
+-  - [x] CRUD de Pedidos de Compra
+-  - [x] Filtrar e Ordenar listagens por qualquer campo
+-  - [x] Barra de Navegação entre CRUDs
+-  - [x] Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)
 
-## Tecnologias a serem utilizadas
-* HTML
-* CSS
-* Javascript
-* PHP (Laravel, Yii, Lumen, etc...)
+**Bônus:**
+-  - [x] Implementar autenticação de usuário na aplicação.
+-  - [ ] Permitir deleção em massa de itens nos CRUDs.
+-  - [x] ~~Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.~~
+-  - [ ] API Rest JSON para todos os CRUDS listados acima.
 
-## Entrega:
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo e depois envie-nos o pull request. Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
+## Instalação
 
-Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
+Clone o Repositório(`desafio-desenvlvedor`)  
 
-### Bônus:
+Entre no diretório `desafio-desenvolvedor`.
 
-* Implementar autenticação de usuário na aplicação.
-* Permitir deleção em massa de itens nos CRUDs.
-* Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.
-* API Rest JSON para todos os CRUDS listados acima.
+> cd desafio-desenvolvedor
 
-## Nossa análise
-* Organização do código.
-* Separação de módulos.
-* Legibilidade.
-* Comentários.
+Gere o arquivo `.env` baseado no `.env.example`
+
+> cp .env.example .env
+
+"Suba" com o container
+
+> docker-composer up -d --build
+
+Instale as dependências utilizando o `composer`
+> docker-composer exec php bash -c "composer install"
+
+Gere a `APP_KEY` do Projeto
+> docker-composer exec php bash -c "php artisan key:generate"
+
+De permissões de escrita e leitura para as pastas dentro de `/storage` 
+> chmod -R 777 storage
+
+Crie os Bancos de dados referente a aplicação e aos testes
+> docker-composer exec mysql mysql -p
+> CREATE DATABASE laravel
+> CREATE DATABASE laravel_tests
+
+Configure as variáveis de ambiente no .env
+* `DB_` Dados de conexão com o mysql
+* `TEST_DB_` Dados de conexão com o mysql para testes unitários
+
+Execute as migrations(se quiser execute com `--seed` que irá executar os seeders)
+> docker-composer exec php bash -c "php artisan migrate"
 
 
-#Boa sorte!
+### Testing  
+
+>docker-compose exec php bash -c "./vendor/bin/phpunit tests"

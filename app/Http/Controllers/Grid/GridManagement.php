@@ -74,6 +74,9 @@ class GridManagement
         $grid->column()->title('Cliente')->value(function($order){
             return $order->client->name;
         });
+        $grid->column()->title('Valor Total')->value(function($order){
+            return $order->orderValue($order->id);
+        });
 
 
         return $grid;

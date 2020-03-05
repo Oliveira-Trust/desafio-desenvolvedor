@@ -30,10 +30,25 @@ class Order extends Model
         return $this->hasOne(Client::class,'id','client_id');
     }
 
+    public function orderValue($id){
+        $order = self::find($id);
+        $total = 0;
+        foreach ($order->products as $product){
+            $total += $product->product->price * $product->quantity;
+        }
+        return $total;
+    }
+
     public function saveOrder(Request $request)
     {
 
         $productsOrders = json_decode($request->products,true);
+        $validate = $this->validate($productsOrders);
+
+        if(!empty($validate)){
+            dd($validate);
+            return $validate;
+        }
 
         foreach ($productsOrders as $productsOrder){
             if(empty($productsOrder)){
@@ -60,6 +75,15 @@ class Order extends Model
 
     }
 
-
+    private function validate($request)
+    {
+        $errors = [];
+        foreach($request as $field => $value){
+            if(empty($field)){
+                $errors[] = "Field ".$field." is required!";
+            }
+        }
+        return $errors;
+    }
 
 }
