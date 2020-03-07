@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header">Grid de {{ucfirst(explode('/', Route::current()->uri)[0])}}
+            <div class="card-header">{{ucfirst(explode('/', Route::current()->uri)[0])}}s
                     <div class="text-right float-right">
-                            <a href="{{URL::to(explode('/', Route::current()->uri)[0].'/create')}}" class="btn btn-success"><i class="fas fa-plus"></i></a>
-                        </div>
+                        <a href="{{URL::to(explode('/', Route::current()->uri)[0].'/create')}}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                    </div>
             </div>
 
                 <div class="card-body">
