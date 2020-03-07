@@ -1,0 +1,4 @@
+#!/bin/sh
+
+nohup php /var/www/html/artisan horizon &
+php-fpm
