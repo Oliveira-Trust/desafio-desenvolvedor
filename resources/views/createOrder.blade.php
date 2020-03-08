@@ -32,6 +32,16 @@
 
         var products = [];
         var precoCalculado = 0;
+        $(".table-responsive").on('change','#selectClient',function(){
+            var row = $(this).closest("tr");
+            var choosen = $(this).val();
+            $(".table-responsive tr").find('.clientChoose select option').each(function() {
+                if(choosen == $(this).val()){
+                    $(this).attr('selected',true);
+                }
+            });
+        });
+
         $(".table-responsive").on('click','#btnAddCart',function()
         {
             var row = $(this).closest("tr");    // Find the row
@@ -41,6 +51,7 @@
             var productQuantity = row.find(".productQuantity").val(); // Find the orderQuantity
             var selectClient = row.find("#selectClient").val(); // Find the selectClient
             var statusOrder = row.find("#statusOrder").val(); // Find the selectClient
+
 
             if(!productQuantity || productQuantity == 0){
                 alert('Produto não pode ser adicionado com quantidade vazia.');
