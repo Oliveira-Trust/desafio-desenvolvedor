@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          //$this->call(UsersTableSeeder::class);
-         factory(User::class, 5)->create()->each(function ($user) {
-            factory(Client::class, rand(11, 15))->make()->each(function ($client) use ($user){
+         factory(User::class, 1)->create()->each(function ($user) {
+            factory(Client::class, rand(2, 3))->make()->each(function ($client) use ($user){
                 $user->clients()->save($client);
                 });
-            factory(Product::class, rand(11, 15))->make()->each(function ($product) use ($user){
+            factory(Product::class, rand(2, 3))->make()->each(function ($product) use ($user){
                 $user->products()->save($product);
             });
         });

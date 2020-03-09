@@ -2,10 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+
             <div class="card">
-                <div class="card-header">Client</div>
+                <div class="card-header">Client
+
+                    <a href={{ URL::previous() }}>
+                        <button class="btn btn-danger float-right">
+                            <i class="fas fa-window-close"></i>
+                            {{ __('Back') }}
+                        </button>
+                    </a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,40 +23,60 @@
 
                     @if ($show ?? false)
                     <fieldset disabled="disabled">
-                    @else
-                    <fieldset>
-                    @endif
+                        @else
+                        <fieldset>
+                            @endif
 
                             @if (isset($model->id))
-                            <form id="principal" action="{{'/'.explode('/', Route::current()->uri)[0].'/'.$model->id}}"
+                                <form id="principal" action="{{'/'.explode('/', Route::current()->uri)[0].'/'.$model->id}}"
                                 method="post">
                                 @method('PUT')
-                                @else
+                            @else
                                 <form id="principal" action="{{route('client.store')}}" method="post">
-                                    @endif
+                            @endif
                                     <div class="form-group">
+
+
+
+
+
                                         @csrf
                                         <label for="name" class="">Name</label>
-                                        <input type="text" name="name" id="name" value="{{$model->name}}"
-                                            class="form-control">
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if ($model->name) {{$model->name}} @endif{{old('name')}}" required autocomplete="name" autofocus>
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <br />
                                         <label for="phone" class="">Phone</label>
-                                        <input type="text" name="phone" id="phone" value="{{$model->phone}}"
-                                            class="form-control">
+                                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="@if ($model->phone) {{$model->phone}} @endif{{old('phone')}}" required autocomplete="phone" autofocus>
+                                        @error('phone')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <br />
                                         <label for="address" class="">Address</label>
-                                        <input type="text" name="address" id="address" value="{{$model->address}}"
-                                            class="form-control">
+                                        <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="@if ($model->address) {{$model->address}} @endif{{old('address')}}" required autocomplete="address" autofocus>
+                                        @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
+                                    @if ($show ?? false)
+                                    @else
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-save"></i>
                                         {{ __('Save') }}
                                     </button>
+                                    @endif
+
                                 </form>
-                            </fieldset>
+                        </fieldset>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
 @endsection

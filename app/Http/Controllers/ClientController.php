@@ -12,8 +12,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dd(stristr($request->userAgent(),'mobile'))
         $table = (new \Okipa\LaravelTable\Table)->model(Client::class)->routes([
             'index'   => ['name' => 'client.index'],
             'edit'    => ['name' => 'client.edit'],
@@ -24,17 +25,18 @@ class ClientController extends Controller
             return [
                 'data-confirm' => 'Are you sure you want to delete the user ' . $client->name . ' ?',
             ];
+        })->query(function($query){
+            $query->byAuthorizedUser();
         });
         $table->column('name')->title('Name')->sortable(true)->searchable();
-        $table->column('phone')->title('Phone Number')->sortable()->searchable();
-        $table->column('address')->title('Complete Address')->sortable()->searchable();
-        $table->column('user_id')->title('Usuário responsável')->sortable()->searchable()
-        ->value(function($client){
-            return $client->user->name;
-        })
-        ->link(function($client) {
-            // return route('users.show', $client->user->id);
-        });
+        if (!stristr($request->userAgent(),'mobile')){
+
+            $table->column('phone')->title('Phone Number')->sortable()->searchable();
+            $table->column('address')->title('Complete Address')->sortable()->searchable();
+            if (auth()->user()->admin){
+                $table->column('user_id')->title('Usuário responsável')->sortable()->searchable();
+            }
+        }
 
         return view('list')
         ->with('table', $table);
@@ -58,7 +60,12 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = new Client($request->except('_token'));
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'address' =>'required|max:255'
+        ]);
+        $client = new Client($validatedData);
         $client->save();
         return redirect()->route('client.index')
         ->with('success', "Cliente $client->name criado com Sucesso");
