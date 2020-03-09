@@ -16,7 +16,7 @@ há um usuário criado com permissões administrativas:
 
 > senha: os numeros de 1 a 8. (escreva os numeros por favor).
 
-nele, você tem acesso a todos os pedidos de todos os usuários, e o cadastro de produtos
+nele, você tem acesso a todos os pedidos, de todos os usuários e o cadastro de produtos
 
 
 ## O que foi feito/falta ser feito
