@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Api de clientes
+//endPoint de clientes
 Route::get('clientes', function() {
     return \App\Models\Client::all();
 });
@@ -39,7 +39,7 @@ Route::delete('clientes/{id}', function($id) {
     return 204;
 });
 
-//Api de produtos
+//endPoint de produtos
 Route::get('produtos', function() {
     return \App\Models\Products::all();
 });
@@ -56,5 +56,25 @@ Route::put('produtos/{id}', function(Request $request, $id) {
 });
 Route::delete('produtos/{id}', function($id) {
     \App\Models\Products::find($id)->delete();
+    return 204;
+});
+
+//endPoint de produtos
+Route::get('pedidos', function() {
+    return \App\Models\Order::all();
+});
+Route::get('pedidos/{id}', function($id) {
+    return \App\Models\Order::find($id);
+});
+Route::post('pedidos', function(Request $request) {
+    return \App\Models\Order::create($request->all);
+});
+Route::put('pedidos/{id}', function(Request $request, $id) {
+    $pedidos = \App\Models\Order::findOrFail($id);
+    $pedidos->update($request->all());
+    return $pedidos;
+});
+Route::delete('produtos/{id}', function($id) {
+    \App\Models\Order::find($id)->delete();
     return 204;
 });
