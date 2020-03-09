@@ -21,20 +21,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('clientes', function() {
     return \App\Models\Client::all();
 });
-Route::get('clientes/{id}', function($id) {
+Route::get('cliente/{id}', function($id) {
     return \App\Models\Client::find($id);
 });
-Route::post('clientes', function(Request $request) {
+Route::post('cliente', function(Request $request) {
     return \App\Models\Client::create($request->all);
 });
-Route::put('clientes/{id}', function(Request $request, $id) {
+Route::put('cliente/{id}', function(Request $request, $id) {
     $clientes = \App\Models\Client::findOrFail($id);
     $clientes->update($request->all());
 
     return $clientes;
 });
-
-Route::delete('clientes/{id}', function($id) {
+Route::delete('cliente/{id}', function($id) {
     \App\Models\Client::find($id)->delete();
     return 204;
 });
@@ -43,18 +42,18 @@ Route::delete('clientes/{id}', function($id) {
 Route::get('produtos', function() {
     return \App\Models\Products::all();
 });
-Route::get('produtos/{id}', function($id) {
+Route::get('produto/{id}', function($id) {
     return \App\Models\Products::find($id);
 });
-Route::post('produtos', function(Request $request) {
+Route::post('produto', function(Request $request) {
     return \App\Models\Products::create($request->all);
 });
-Route::put('produtos/{id}', function(Request $request, $id) {
+Route::put('produto/{id}', function(Request $request, $id) {
     $produtos = \App\Models\Products::findOrFail($id);
     $produtos->update($request->all());
     return $produtos;
 });
-Route::delete('produtos/{id}', function($id) {
+Route::delete('produto/{id}', function($id) {
     \App\Models\Products::find($id)->delete();
     return 204;
 });
@@ -63,18 +62,18 @@ Route::delete('produtos/{id}', function($id) {
 Route::get('pedidos', function() {
     return \App\Models\Order::all();
 });
-Route::get('pedidos/{id}', function($id) {
+Route::get('pedido/{id}', function($id) {
     return \App\Models\Order::find($id);
 });
-Route::post('pedidos', function(Request $request) {
+Route::post('pedido', function(Request $request) {
     return \App\Models\Order::create($request->all);
 });
-Route::put('pedidos/{id}', function(Request $request, $id) {
+Route::put('pedido/{id}', function(Request $request, $id) {
     $pedidos = \App\Models\Order::findOrFail($id);
     $pedidos->update($request->all());
     return $pedidos;
 });
-Route::delete('produtos/{id}', function($id) {
+Route::delete('produto/{id}', function($id) {
     \App\Models\Order::find($id)->delete();
     return 204;
 });

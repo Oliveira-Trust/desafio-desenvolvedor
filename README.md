@@ -19,6 +19,22 @@ Projeto desenvolvido em Laravel e Mysql implementando um CRUD simples para Clien
 -  - [x] Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.
 -  - [x] API Rest JSON para todos os CRUDS listados acima. para usar use localhost/api/ "produtos" , "clientes",""pedidos"
 
+
+##Usando Apis
+
+GET: requisitar recursos
+POST: inserir recursos
+PUT: atualizar recursos
+DELETE: deletar recursos
+
+> Para ver os Produtos localhost/api/pedidos para ver todos os pedidos
+> Para ver os Produtos localhost/api/pedido/ID para manipular requisicoes get post put e delete
+> Para ver os Produtos localhost/api/produtos para ver todos os pedidos
+> Para ver os Produtos localhost/api/produto/ID para manipular requisicoes get post put e delete
+> Para ver os Produtos localhost/api/clientes para ver todos os pedidos
+> Para ver os Produtos localhost/api/cliente/ID para manipular requisicoes get post put e delete
+
+
 ## Instalação
 
 Clone o Repositório(`desafio-desenvlvedor`)  
