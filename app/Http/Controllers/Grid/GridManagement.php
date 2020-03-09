@@ -23,7 +23,7 @@ class GridManagement
         $grid->column('price')->classes(['productPrice'])->title('Preço')->sortable()->searchable();
         $grid->column('name')->classes(['productName'])->title('Nome')->sortable()->searchable();
         $grid->column('ean')->classes(['productEan'])->title('Ean')->sortable()->searchable();
-        $grid->column('client')->classes(['productEan'])->title('Cliente')->html(function (){
+        $grid->column('client')->classes(['clientChoose'])->title('Cliente')->html(function (){
             $option ="<select name='selectClient' class='form-control' id='selectClient'>";
             $option .= "<option value=''>Escolha um Cliente</option>";
             foreach (Client::all() as $client){
@@ -64,16 +64,19 @@ class GridManagement
         $grid =  (new OkipaTable)->model(Order::class)->routes([
             'index'   => ['name' => 'pedidos'],
             'destroy'   => ['name' => 'pedidos.softdelete']
-        ]);
+        ])->query(function($query){
+            $query->select('Orders.*');
+            $query->addSelect('clients.name as name');
+            $query->join('clients', 'orders.client_id', '=', 'clients.id');
+        });
         $grid->column('id')->classes(['orderId'])->title('Id')->sortable(true)->searchable();
         $grid->column()->title('Produtos')->link(function($order){
             return route('order.detail', $order->id);
         })->value(function(){
             return "Produtos do Pedido";
         });
-        $grid->column()->title('Cliente')->value(function($order){
-            return $order->client->name;
-        });
+        $grid->column('name')->title('Cliente')->searchable('clients', ['name']);
+
         $grid->column()->title('Valor Total')->value(function($order){
             return $order->orderValue($order->id);
         });
