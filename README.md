@@ -17,7 +17,7 @@ Projeto desenvolvido em Laravel e Mysql implementando um CRUD simples para Clien
 -  - [x] Implementar autenticação de usuário na aplicação.
 -  - [ ] Permitir deleção em massa de itens nos CRUDs.
 -  - [x] Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.
--  - [x] API Rest JSON para todos os CRUDS listados acima. Parcialmente Aplicado apenas para Clientes e Produtos para acessar use localhost/api/ "produtos" ou "clientes"
+-  - [x] API Rest JSON para todos os CRUDS listados acima. para usar use localhost/api/ "produtos" , "clientes",""pedidos"
 
 ## Instalação
 
