@@ -3,6 +3,22 @@
 
 Projeto desenvolvido em Laravel e Mysql implementando um CRUD simples para Clientes, Produtos, além do fluxo de Pedidos de Compra com STATUS e aprovação do pedido via usuário Administrador.
 
+
+## Deploy
+A Aplicação está com deploy automático no endereço:
+> desafiodev.herokuapp.com
+
+para acessar faca seu cadastro e crie um cliente.
+depois entre na tela de pedidos e faça um pedido.
+
+há um usuário criado com permissões administrativas:
+> administrador@administrador.com
+
+> senha: os numeros de 1 a 8. (escreva os numeros por favor).
+
+nele, você tem acesso a todos os pedidos de todos os usuários, e o cadastro de produtos
+
+
 ## O que foi feito/falta ser feito
 
 **Básico:**
