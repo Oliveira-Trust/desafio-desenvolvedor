@@ -28,6 +28,9 @@ class Client extends Model
 
     public function scopeByAuthorizedUser($query)
     {
+        if (auth()->user()->admin){
+            return $query;
+        }
         return $query->where('user_id', auth()->user()->id);
     }
 }

@@ -60,10 +60,14 @@ class OrderController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->admin){
+            return view('order.step1')
+            ->with('clients', Client::all());
+        }
         return view('order.step1')
             ->with('clients', auth()->user()->clients);
     }
-
+    
     public function step2(Request $request, Order $order)
     {
         // dd($order);
