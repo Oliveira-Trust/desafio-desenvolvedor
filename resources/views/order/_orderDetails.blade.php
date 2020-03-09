@@ -14,7 +14,7 @@
                 Cliente:
             </div>
             <div class="col-md-8">
-                <a href="{{ route('client.show', ['client'=>1]) }}">{{$order->client->name}}</a>
+                <a href="{{ route('client.show', ['client' => $order->client->id]) }}">{{$order->client->name}}</a>
             </div>
 
         </div>
