@@ -39,7 +39,7 @@ class OrderController extends Controller
             if (auth()->user()->admin){
                 $table->column('user_id')->title('Usuário')->sortable()->searchable()
                     ->value(function ($order) {
-                        return $order->user->name;
+                        return $order->user->email;
                     });
             }
         $table->column('status')->title('Status')->sortable(true)->searchable();
@@ -67,7 +67,7 @@ class OrderController extends Controller
         return view('order.step1')
             ->with('clients', auth()->user()->clients);
     }
-    
+
     public function step2(Request $request, Order $order)
     {
         // dd($order);
