@@ -8,8 +8,9 @@
         });
 </script>
 <div class="container">
-
+        @desktop
         @include('order._orderDetails')
+        @enddesktop
         @include('order._insertProduct')
 
         @include('order._listOrderProducts')
