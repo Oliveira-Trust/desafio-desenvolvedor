@@ -41,7 +41,7 @@
 
 
                                         @csrf
-                                        <label for="name" class="">Name</label>
+                                        <label for="name" class="">Nome de quem vai receber</label>
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if ($model->name) {{$model->name}} @endif{{old('name')}}" required autocomplete="name" autofocus>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                                             </span>
                                         @enderror
                                         <br />
-                                        <label for="phone" class="">Phone</label>
+                                        <label for="phone" class="">Telefone</label>
                                         <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="@if ($model->phone) {{$model->phone}} @endif{{old('phone')}}" required autocomplete="phone" autofocus>
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                                             </span>
                                         @enderror
                                         <br />
-                                        <label for="address" class="">Address</label>
+                                        <label for="address" class="">Endereço completo com referencia</label>
                                         <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="@if ($model->address) {{$model->address}} @endif{{old('address')}}" required autocomplete="address" autofocus>
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">

@@ -5,10 +5,10 @@
 
     <div class="card">
         <div class="card-header">{{ucfirst(explode('/', Route::current()->uri)[0])}}s
-            <div class="text-right float-right">
+            {{-- <div class="text-right float-right">
                 <a href="{{URL::to(explode('/', Route::current()->uri)[0].'/create')}}" class="btn btn-success"><i
                         class="fas fas fa-plus-circle fa-fw "></i> Create</a>
-            </div>
+            </div> --}}
         </div>
 
         <div class="card-body">

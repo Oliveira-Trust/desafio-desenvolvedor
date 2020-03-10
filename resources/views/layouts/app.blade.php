@@ -29,7 +29,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-            <a class="navbar-brand" href="{{route('home')}}">
+                <a class="navbar-brand" href="{{route('home')}}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -41,22 +41,32 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @if (auth()->user())
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('client.index')  }}">{{ __('Cliente') }}</a>
-                            </li>
-                            @if (auth()->user()->admin ?? false)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('product.index')  }}">{{ __('Product') }}</a>
-                            </li>
-                            @endif
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('order.index')  }}">{{ __('Order') }}</a>
-                            </li>
-                        </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('client.index')  }}">{{ __('Meus Endereços') }}</a>
+                        </li>
+                        @if (auth()->user()->admin ?? false)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('product.index')  }}">{{ __('Product') }}</a>
+                        </li>
+                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('order.index')  }}">{{ __('Meus Pedidos') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <div class="text-right float-right pl-5">
+                                <a href="{{route('order.create')}}" class="btn btn-success"><i
+                                        class="fas fas fa-plus-circle fa-fw "></i>Novo pedido</a>
+                            </div>
+                        </li>
+
+
+                    </ul>
                     @endif
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
