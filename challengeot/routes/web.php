@@ -23,11 +23,13 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'clientes'], function(){
         Route::post('/create','ClienteController@clienteCreate')->name('cliente.create');
-        Route::post('/edit/{id}','ClienteController@clienteUpdate')->name('cliente.edit');
-        Route::post('/delete/{id}','ClienteController@clienteDelete')->name('cliente.delete');
+        Route::get('/update/{id}','ClienteController@clienteUpdate')->name('cliente.update');
+        Route::get('/delete/{id}','ClienteController@clienteDelete')->name('cliente.delete');
 
-        Route::get('/','ClienteController@clientesGet')->name('clientes.get');
-        Route::get('/{id}','ClienteController@clienteGet')->name('cliente.get');
+        Route::get('/', 'ClienteController@clientePage')->name('clientes');
+
+        // Route::get('/','ClienteController@clientesGet')->name('clientes.get');
+        // Route::get('/{id}','ClienteController@clienteGet')->name('cliente.get');
     });    
 
     Route::group(['prefix' => 'produtos'], function(){
