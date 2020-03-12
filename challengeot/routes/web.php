@@ -17,7 +17,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
 
@@ -45,10 +45,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'pedidos'], function(){
         Route::post('/create','PedidoController@pedidoCreate')->name('pedido.create');
-        Route::post('/edit/{id}','PedidoController@pedidoUpdate')->name('pedido.edit');
-        Route::post('/delete/{id}','PedidoController@pedidoDelete')->name('pedido.delete');
+        Route::get('/update/{id}','PedidoController@pedidoUpdate')->name('pedido.edit');
+        Route::get('/delete/{id}','PedidoController@pedidoDelete')->name('pedido.delete');
 
-        Route::get('/','PedidoController@pedidosGet')->name('pedidos.get');
-        Route::get('/{id}','PedidoController@pedidoGet')->name('pedido.get'); 
+        Route::get('/', 'PedidoController@pedidoPage')->name('pedidos');
+
+        // Route::get('/','PedidoController@pedidosGet')->name('pedidos.get');
+        // Route::get('/{id}','PedidoController@pedidoGet')->name('pedido.get'); 
     });  
 });

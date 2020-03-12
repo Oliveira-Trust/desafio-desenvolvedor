@@ -10,10 +10,10 @@ class Pedido extends Model
     protected $fillable     = ['nome', 'cliente_id'];
     protected $primaryKey   = 'id';
 
-    protected function getCliente(){
-        return $this->hasOne('App/Models/Cliente', 'id', 'cliente_id');
+    public function getCliente(){
+        return $this->hasOne('App\Models\Cliente', 'id', 'cliente_id');
     }
-    protected function getProdutos(){
-        return $this->hasMany('App/Models/ProdutoPedido', 'pedido_id', 'id');
+    public function getProdutosPed(){
+        return $this->hasMany('App\Models\ProdutoPedido', 'pedido_id', 'id');
     }
 }

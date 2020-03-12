@@ -17,21 +17,15 @@ class ProdutoController extends Controller
 
     public function produtoPage(){
         $produto = $this->produto->all();
-
         return view('produtos', compact('produto'));
     }
 
     public function produtosGet(){
         $produto = $this->produto->all();
-
-        dd($produto);
     }
 
     public function produtoGet($id){
-
         $produto = $this->produto->findOrFail($id);
-
-        dd($produto);
     }
 
     public function produtoCreate(Request $request){
