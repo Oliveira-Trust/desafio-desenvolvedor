@@ -34,11 +34,13 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'produtos'], function(){
         Route::post('/create','ProdutoController@produtoCreate')->name('produto.create');
-        Route::post('/edit/{id}','ProdutoController@produtoUpdate')->name('produto.edit');
-        Route::post('/delete/{id}','ProdutoController@produtoDelete')->name('produto.delete');
+        Route::get('/update/{id}','ProdutoController@produtoUpdate')->name('produto.edit');
+        Route::get('/delete/{id}','ProdutoController@produtoDelete')->name('produto.delete');
 
-        Route::get('/','ProdutoController@produtosGet')->name('produtos.get');
-        Route::get('/{id}','ProdutoController@produtoGet')->name('produto.get'); 
+        Route::get('/', 'ProdutoController@produtoPage')->name('produtos');
+
+        //Route::get('/','ProdutoController@produtosGet')->name('produtos.get');
+        //Route::get('/{id}','ProdutoController@produtoGet')->name('produto.get'); 
     }); 
 
     Route::group(['prefix' => 'pedidos'], function(){
