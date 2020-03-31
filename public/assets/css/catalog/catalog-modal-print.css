@@ -1,0 +1,11 @@
+@media print {
+    .border{margin-top: 20px;}
+    .border tr td.value-total{font-weight: 700;font-size: 1.3rem;}
+    .border tr th, .border tr td{border: 1px solid #e3ebf3 !important;}
+    .btn-print{display: none;}
+    .name-recipe, .logo{display: block;}
+    .logo{display: block;}
+    .logo img{width: 308px;height: 80px;}
+    .image-datasheet{display: block;margin-top: 20px;}
+    img.datasheet {text-align: center;}
+}

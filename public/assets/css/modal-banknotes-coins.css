@@ -1,0 +1,24 @@
+.bkcoins-img-note-100{width: 100%;}
+.bkcoins-img-note-50{width: 100%;}
+.bkcoins-img-note-20{width: 100%;}
+.bkcoins-img-note-10{width: 95%;}
+.bkcoins-img-note-5{width: 92%;}
+.bkcoins-img-note-2{width: 88%;}
+.bkcoins-img-coins-1{width: 54%;}
+.bkcoins-img-coins-05{width: 54%;}
+.bkcoins-img-coins-025{width: 54%;}
+.bkcoins-img-coins-01{width: 54%;}
+.bkcoins-img-coins-005{width: 54%;}
+.bkcoins-img-coins-001{width: 54%;}
+.bkcoins-input{margin-top:2px;}
+.bkcoins-value-tt{width: 100%;font-size: 1.7rem;font-weight: bold;}
+
+@media only screen and (min-width: 768px) {
+    .bkcoins-modal-down {top: 90px;}
+}
+@media only screen and (min-width: 1024px) {
+    .bkcoins-modal-down {top: 120px;}
+}
+@media only screen and (min-width: 1300px) {
+    .bkcoins-modal-down {top: 200px;}
+}

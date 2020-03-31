@@ -1,0 +1,179 @@
+/* General styles for all menus */
+.cbp-spmenu {
+    background: #2C313B;
+    position: fixed;
+}
+
+.cbp-spmenu h3 {
+    font-size: 1.1em;
+    padding: 12px 8px 20px 28px;
+    margin: 0;
+    font-weight: 300;
+    background: #2C313B;
+    opacity: 0.6;
+}
+
+.cbp-spmenu a {
+    display: block;
+    color: #dcdcdc;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.cbp-spmenu a:hover {
+    //background: #7b879d;
+    color: white;
+}
+
+/* Orientation-dependent styles for the content of the menu */
+
+.cbp-spmenu-vertical {
+    width: 340px;
+    height: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.cbp-spmenu-vertical a {
+    border-bottom: 1px solid #a6a6a6;
+    padding: 1em;
+}
+
+.cbp-spmenu-horizontal {
+    width: 100%;
+    height: 150px;
+    left: 0;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.cbp-spmenu-horizontal h3 {
+    height: 100%;
+    width: 2%;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+.cbp-spmenu-horizontal a {
+    float: left;
+    width: auto;
+    padding: 0.5em 0.8em 0 0.5em;
+    border-left: 1px dashed #a6a6a6;
+}
+
+.cbp-spmenu-horizontal a i {
+    font-size: 1.1em!important;
+}
+
+.cbp-spmenu-horizontal a button {
+    padding: 10px 10px 10px 5px;
+    border: none;
+}
+.cbp-spmenu-horizontal a button:hover {
+    background: white;
+}
+
+/* Vertical menu that slides from the left or right */
+
+.cbp-spmenu-left {
+    left: -240px;
+}
+
+.cbp-spmenu-right {
+    right: -240px;
+}
+
+.cbp-spmenu-left.cbp-spmenu-open {
+    left: 0;
+}
+
+.cbp-spmenu-right.cbp-spmenu-open {
+    right: 0;
+}
+
+/* Horizontal menu that slides from the top or bottom */
+
+.cbp-spmenu-top {
+    top: -150px;
+}
+
+.cbp-spmenu-bottom {
+    bottom: -150px;
+}
+
+.cbp-spmenu-top.cbp-spmenu-open {
+    top: 0;
+}
+
+.cbp-spmenu-bottom.cbp-spmenu-open {
+    bottom: 0;
+}
+
+/* Push classes applied to the body */
+
+.cbp-spmenu-push {
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+}
+
+.cbp-spmenu-push-toright {
+    left: 240px;
+}
+
+.cbp-spmenu-push-toleft {
+    left: -240px;
+}
+
+/* Transitions */
+
+.cbp-spmenu,
+.cbp-spmenu-push {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* Example media queries */
+
+@media screen and (max-width: 55.1875em){
+
+    .cbp-spmenu-horizontal {
+        font-size: 75%;
+        height: 110px;
+    }
+
+    .cbp-spmenu-top {
+        top: -110px;
+    }
+
+    .cbp-spmenu-bottom {
+        bottom: -110px;
+    }
+
+}
+
+@media screen and (max-height: 26.375em){
+
+    .cbp-spmenu-vertical {
+        font-size: 90%;
+        width: 190px;
+    }
+
+    .cbp-spmenu-left,
+    .cbp-spmenu-push-toleft {
+        left: -190px;
+    }
+
+    .cbp-spmenu-right {
+        right: -190px;
+    }
+
+    .cbp-spmenu-push-toright {
+        left: 190px;
+    }
+}

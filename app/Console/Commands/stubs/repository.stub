@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use Danganf\MyClass\Json\Contracts\JsonAbstract;
+use Danganf\Repositories\Contracts\RepositoryAbstract;
+
+class DummyClass extends RepositoryAbstract
+{
+    public function __construct(){
+        parent::__construct( __CLASS__ );
+        return $this;
+    }
+
+    public function createOrUpdate( JsonAbstract $jsonValues, $id ){
+
+    }
+}

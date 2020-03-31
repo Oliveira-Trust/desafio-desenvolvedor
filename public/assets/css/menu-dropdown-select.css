@@ -1,0 +1,11 @@
+/*MENU MODAL CASHIER*/
+.menu-dropdown-select {position: relative;width: 215px;}
+.menu-dropdown-select select {display: none;}
+.select-selected {background-color: #FC9148;}
+.select-selected:after {position: absolute;content: "";top: 14px;right: 10px;width: 0;height: 0;border: 6px solid transparent;border-color: #fee1cd transparent transparent transparent;}
+.select-selected.select-arrow-active:after {border-color: transparent transparent #fff transparent;top: 7px;}
+.select-items div,.select-selected {color: #ffffff;padding: 8px 16px;border: 1px solid #fdb381;cursor: pointer;font-size: 1.3rem;}
+.select-items {position: absolute;background-color: #FC9148;top: 100%;left: 0;right: 0;z-index: 99;}
+.select-hide {display: none;}
+.select-items div:hover, .same-as-selected {background-color: rgba(0, 0, 0, 0.1);}
+/*END MENU MODAL CASHIER*/
