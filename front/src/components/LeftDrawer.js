@@ -92,7 +92,7 @@ const LeftDrawer = props => {
     <div>
       <div className={classes.logo}> 
         {/* <Logo style={{height: 40, fill: 'white'}}/> */}
-        CHALLENGE
+        Desafio
       </div>
       <div className={classNames(classes.avatarRoot, !navDrawerOpen && classes.avatarRootMini)} onClick={handleRedirect}>
         <Avatar src={props.user.avatar ? props.user.avatar_url : null} size={navDrawerOpen ? 48 : 32} 
