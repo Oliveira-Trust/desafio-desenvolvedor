@@ -1,0 +1,186 @@
+$gray-100: #f8f9fc !default;
+$gray-200: #eaecf4 !default;
+$gray-600: #858796 !default;
+$gray-900: #3a3b45 !default;
+
+$blue: #4e73df !default;
+$red: #e74a3b !default;
+
+html {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-size: 15px;
+  margin: 0;
+  line-height: 24px;
+}
+
+body {
+  margin: 0;
+  background-color: $gray-900 !important;
+}
+
+body, html, #app, #app > div{
+  height: 100%;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.m-b-15 {
+  margin-bottom: 15px
+}
+
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.button:active, 
+ button:active,
+.button:focus, 
+ button:focus,
+.button:hover, 
+ button:hover{
+    border:none !important;
+    outline:none !important;
+}
+
+.customlogo {
+  font-family: 'Titillium Web', sans-serif
+}
+
+// Editor mode on rule page
+.editorStyle {
+  cursor: pointer;
+  border-radius: 2px;
+  // border: 0.5px solid black;
+  &:hover {
+      background-color: $gray-900 !important;
+      -webkit-transition: background-color 200ms linear;
+      -ms-transition: background-color 200ms linear;
+      transition: background-color 200ms linear;
+      color: white !important;
+  }
+}
+
+//Glitch effect on 404 error
+.glitch {
+  color: $gray-100;
+  font-size: 7rem;
+  position: relative;
+  line-height: 1;
+  width: 12.5rem;
+}
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -1px 0 $red;
+  top: 0;
+  color: $gray-100;
+  background: $gray-900;
+  overflow: hidden;
+  clip: rect(0,900px,0,0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 1px 0 $blue;
+  top: 0;
+  color: $gray-100;
+  background: $gray-900;
+  overflow: hidden;
+  clip: rect(0,900px,0,0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+// Pulsating button
+.pulse-button {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  display: block;
+  width: 100px;
+  height: 100px;
+  font-size: 1.3em;
+  font-weight: light;
+  font-family: 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 100px;
+  letter-spacing: -1px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-animation: pulse 1.0s infinite;
+}
+.pulse-button:hover {
+  -webkit-animation: none;
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    @include transform(scale(.9));
+  }
+  70% {
+    @include transform(scale(1));
+    box-shadow: 0 0 0 40px rgba($gray-900, 0);
+  }
+    100% {
+    @include transform(scale(.9));
+    box-shadow: 0 0 0 0 rgba($gray-900, 0);
+  }
+}
+.search-highlight {
+  background-color: $gray-600;
+  animation-name: color;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes color {
+  0% {
+    background-color: $gray-600;
+  }
+  50% {
+    background-color: $gray-200;
+  }
+  100% {
+    background-color: $gray-600;
+  }
+}
