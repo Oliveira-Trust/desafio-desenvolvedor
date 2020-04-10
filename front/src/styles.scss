@@ -53,10 +53,6 @@ a:hover {
     outline:none !important;
 }
 
-.customlogo {
-  font-family: 'Titillium Web', sans-serif
-}
-
 // Editor mode on rule page
 .editorStyle {
   cursor: pointer;
@@ -119,68 +115,4 @@ a:hover {
   overflow: hidden;
   clip: rect(0,900px,0,0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;
-}
-
-// Pulsating button
-.pulse-button {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  margin-left: -50px;
-  margin-top: -50px;
-  display: block;
-  width: 100px;
-  height: 100px;
-  font-size: 1.3em;
-  font-weight: light;
-  font-family: 'Trebuchet MS', sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 100px;
-  letter-spacing: -1px;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  -webkit-animation: pulse 1.0s infinite;
-}
-.pulse-button:hover {
-  -webkit-animation: none;
-}
-
-@mixin transform($property) {
-  -webkit-transform: $property;
-  -ms-transform: $property;
-  transform: $property;
-}
-
-@-webkit-keyframes pulse {
-  0% {
-    @include transform(scale(.9));
-  }
-  70% {
-    @include transform(scale(1));
-    box-shadow: 0 0 0 40px rgba($gray-900, 0);
-  }
-    100% {
-    @include transform(scale(.9));
-    box-shadow: 0 0 0 0 rgba($gray-900, 0);
-  }
-}
-.search-highlight {
-  background-color: $gray-600;
-  animation-name: color;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-@keyframes color {
-  0% {
-    background-color: $gray-600;
-  }
-  50% {
-    background-color: $gray-200;
-  }
-  100% {
-    background-color: $gray-600;
-  }
 }

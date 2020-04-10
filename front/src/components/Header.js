@@ -58,17 +58,6 @@ const useStyles = makeStyles(theme => ({
 
 function Header(props) {
   const classes = useStyles();
-
-  const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = useState(null)
-  // Notifications
-  const handleNotificationMenuOpen = event => {
-    setNotificationMenuAnchorEl(event.currentTarget);
-  };
-
-  const handleNotificationMenuClose = () => {
-    setNotificationMenuAnchorEl(null);
-  };
-
   return (
     <div>
       <AppBar
@@ -85,51 +74,6 @@ function Header(props) {
           >
             <MenuIcon />
           </IconButton>
-
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-
-            {/* NOTIFICATIONS */}
-            <IconButton color="inherit" onClick={handleNotificationMenuOpen}>
-              <Badge
-                className={classes.margin}
-                badgeContent={0}
-                color="secondary"
-              >
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-
-            {/* NOTIFICATIONS MOBILE */}
-            <IconButton color="inherit" onClick={handleNotificationMenuOpen}>
-              <Badge
-                className={classes.margin}
-                badgeContent={0}
-                color="secondary"
-              >
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-
-            {/* NOTIFICATIONS MENU */}
-            <Menu
-              anchorEl={notificationMenuAnchorEl}
-              anchorOrigin={{ vertical: "top", horizontal: "right" }}
-              transformOrigin={{ vertical: "top", horizontal: "right" }}
-              open={Boolean(notificationMenuAnchorEl)}
-              onClose={handleNotificationMenuClose}
-            >
-              <MenuItem>
-                {/* <ListItemIcon>
-                  <NotificationsIcon />
-                </ListItemIcon>
-                <ListItemText primary="Nenhuma notificação" /> */}
-                Nenhuma notificação
-              </MenuItem>
-            </Menu>
-          </div>
         </Toolbar>
       </AppBar>
     </div>

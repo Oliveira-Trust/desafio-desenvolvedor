@@ -1,8 +1,8 @@
-import React, { forwardRef, useState, useEffect }  from 'react';
-import MaterialTable from 'material-table';
+import React, { useState, useEffect }  from 'react';
 import api from "../../../services/api";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import Chip from '@material-ui/core/Chip';
 import DataTable from '../../../components/DataTable'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -17,27 +17,31 @@ const styles = {
   }
 };
 
-export default function ClientList(props) {
-
+export default function ProductList(props) {
+    
   const [columns, setColumns] = useState([
       { title: 'Name', field: 'name' },
-      { title: 'E-mail', field: 'email' },
-      { title: 'Documento', field: 'document', type: 'numeric' },
-      { title: 'Data de nascimento', field: 'birth' },
+      { title: 'Preço', field: 'price', type: 'numeric', render: rowData => rowData.price.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}) },
+      { title: 'Quantidade Estoque', field: 'available_quantity', type: 'numeric' },
+      { 
+        title: 'Tags', 
+        field: 'tags',  
+        render: rowData => (
+          rowData.tags.map((tag, i) => <Chip key={i} label={tag} />)
+        ), 
+      },
   ])
-
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get('/client')
+    api.get('/product')
       .then((res) => {
-        let clients = res.data.data
-        clients.forEach(client => {
-          const d = new Date(client.birth)
-          client.birth = `${d.getDate()+1}/${d.getMonth()+1}/${d.getFullYear()}`
+        let products = res.data.data
+        products.forEach(product => {
+          product.tags = JSON.parse(product.tags)
         })
-        setData(clients)
+        setData(products)
         setLoading(false)
       })
   },[])
@@ -62,17 +66,17 @@ export default function ClientList(props) {
         <DataTable
           columns={columns}
           data={data}
-          title="Cliente"
+          title="Produto"
           editFunc={handleEdit}
           deleteFunc={handleDelete}
         />
       }
       <Fab 
         color="primary" 
-        style={styles.fab} 
+        style={styles.fab}
         aria-label="add"
-        onClick={() => props.history.push("/criar-cliente")}
-        title="Adicionar Cliente"
+        onClick={() => props.history.push("/criar-produto")}
+        title="Adicionar Produto"
       >
         <AddIcon />
       </Fab>

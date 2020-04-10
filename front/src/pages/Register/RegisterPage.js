@@ -14,16 +14,20 @@ import { useDispatch } from "react-redux";
 import api from "../../services/api";
 import { login } from "../../services/auth";
 
-function RegisterPage(props) {
+function RegisterPage() {
+
   const dispatch = useDispatch()
+
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: ""
   })
+
   const [error, setError] = useState({
     errorMessages:""
   })
+
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
   const [loaded, setLoaded] = useState(false)
   

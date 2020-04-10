@@ -5,8 +5,6 @@ import Button from "@material-ui/core/Button";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import Help from "@material-ui/icons/Help";
 import TextField from "@material-ui/core/TextField";
-// import Checkbox from "@material-ui/core/Checkbox";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Fade from '@material-ui/core/Fade';
 import Collapse from '@material-ui/core/Collapse';
 
@@ -18,18 +16,19 @@ import { login } from "../../services/auth";
 
 import { useDispatch } from "react-redux";
 
-function LoginPage(props) {
-  // const userState = useSelector(state => state.user)
+function LoginPage() {
   const dispatch = useDispatch()
 
   const [user, setUser] = useState({
     email: "",
     password: ""
   })
+
   const [error, setError] = useState({
     value: false,
     errorMessage:""
   })
+
   const [loaded, setLoaded] = useState(false)
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
   
@@ -55,10 +54,6 @@ function LoginPage(props) {
           setError({ value: true, errorMessage: err.response.data.message });
         }
       });
-  }
-
-  const handleForgotPass = () => {
-    dispatch({type: 'SNACKBAR_SHOW', message: "Email enviado com sucesso!"})
   }
 
   const handleFieldChange = (field, value) => {

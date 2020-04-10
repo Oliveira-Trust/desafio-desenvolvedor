@@ -7,8 +7,10 @@ import Header from "../components/Header";
 import LeftDrawer from "../components/LeftDrawer";
 import Data from "../data";
 import NotFound from "./NotFoundPage/NotFoundPage";
-import UserProfile from "./User/UserProfile/UserProfile";
+import UserProfile from "./UserProfile/UserProfile";
 import ClientList from "./Clients/ClientList/ClientList";
+import ProductList from "./Products/ProductList/ProductList";
+import OrderList from "./Orders/OrderList/OrderList";
 import Logout from "./Logout";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
@@ -105,13 +107,9 @@ function App(props) {
       />
       <div className={classNames(classes.container, !state.navDrawerOpen && classes.containerFull)}>
         <Switch>
-          {/* <Route path="/dashboard" component={Dashboard} /> */}
-          {/* <Route path="/form" component={Form} /> */}
-          {/* <Route path="/regra/:rule/busca/:elementlabel/:elementid" component={Rule} /> */}
-          {/* <Route path="/regra/:rule" component={Rule} /> */}
           <Route path="/clientes" component={ClientList} />
-          {/* <Route path="/table/basic" component={BasicTable} />
-          <Route path="/table/data" component={DataTable} /> */}
+          <Route path="/produtos" component={ProductList} />
+          <Route path="/pedidos" component={OrderList} />
           <Route path="/perfil/:user" component={UserProfile} />
           <Route path="/logout" component={Logout} />
           <Route component={NotFound} />

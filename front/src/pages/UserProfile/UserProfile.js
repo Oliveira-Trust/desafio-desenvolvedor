@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import PageBase from "../../../components/PageBase";
+import PageBase from "../../components/PageBase";
 import styles from "./styles";
 import { Row, Col } from 'react-bootstrap';
 import CreateIcon from '@material-ui/icons/Create';
 
-import api from "../../../services/api";
+import api from "../../services/api";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import FileUploadModal from "../../../components/FileUploadModal";
+import FileUploadModal from "../../components/FileUploadModal";
 
 function UserProfile (props) {
   const userState = useSelector(state => state.user)
@@ -124,7 +124,7 @@ function UserProfile (props) {
                     <img 
                       style={styles.avatarImg}
                       alt="user-profile"
-                      src={user.avatar ? user.avatar_url : require('../../../images/user-profile.png')}
+                      src={user.avatar ? user.avatar_url : require('../../images/user-profile.png')}
                       onMouseEnter={() => { return isAuth ? setAvatarHover(true) : null}}
                       onClick={() => { return isAuth ? handleAvatarChange() : null}}
                     />
