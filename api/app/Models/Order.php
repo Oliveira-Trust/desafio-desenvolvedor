@@ -17,6 +17,22 @@ class Order extends Model
     ];
 
     /**
+    * The attributes that should be hidden for arrays.
+    *
+    * @var array
+    */
+    protected $hidden = [
+        'product_id', 'client_id',
+    ];
+
+    /**
+    * The relationships that should always be loaded.
+    *
+    * @var array
+    */
+    protected $with = ['client', 'product'];
+
+    /**
     * Client relationship
     */
     public function client()
