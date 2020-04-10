@@ -19,8 +19,10 @@ class CreateOrdersTable extends Migration
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->bigInteger('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('status', 20);
+            $table->string('status', 20)->default('OPEN');
             $table->mediumInteger('quantity_ordered');
+            $table->float('total', 8, 2)->nullable();
+            $table->timestamps();
         });
     }
 

@@ -17,6 +17,8 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 200);
             $table->string('email')->unique();
+            $table->string('document', 9);
+            $table->date('birth');
             $table->timestamps();
 
         });
