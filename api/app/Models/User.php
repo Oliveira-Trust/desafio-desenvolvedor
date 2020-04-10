@@ -66,6 +66,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    /**
+    * Get the full avatar URL
+    */
     public function getAvatarUrlAttribute()
     {
         if($this->avatar || $this->avatar !== '') {

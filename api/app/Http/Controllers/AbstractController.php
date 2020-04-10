@@ -11,17 +11,6 @@ abstract class AbstractController extends Controller
     abstract protected function modelValidation(Request $request);
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        $items = ($this->getModel())::all();
-        return response()->json(['success' => true, 'data' => $items]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
