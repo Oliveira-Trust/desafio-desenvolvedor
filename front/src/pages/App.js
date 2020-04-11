@@ -9,6 +9,7 @@ import Data from "../data";
 import NotFound from "./NotFoundPage/NotFoundPage";
 import UserProfile from "./UserProfile/UserProfile";
 import ClientList from "./Clients/ClientList/ClientList";
+import ClientForm from "./Clients/ClientForm/ClientForm";
 import ProductList from "./Products/ProductList/ProductList";
 import OrderList from "./Orders/OrderList/OrderList";
 import Logout from "./Logout";
@@ -108,8 +109,11 @@ function App(props) {
       <div className={classNames(classes.container, !state.navDrawerOpen && classes.containerFull)}>
         <Switch>
           <Route path="/clientes" component={ClientList} />
+          <Route path="/criar-cliente" component={ClientForm} />
           <Route path="/produtos" component={ProductList} />
+          {/* /criar-produto */}
           <Route path="/pedidos" component={OrderList} />
+          {/* /criar-pedido */}
           <Route path="/perfil/:user" component={UserProfile} />
           <Route path="/logout" component={Logout} />
           <Route component={NotFound} />

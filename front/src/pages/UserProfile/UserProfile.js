@@ -6,6 +6,8 @@ import PageBase from "../../components/PageBase";
 import styles from "./styles";
 import { Row, Col } from 'react-bootstrap';
 import CreateIcon from '@material-ui/icons/Create';
+import Fade from '@material-ui/core/Fade';
+import Collapse from '@material-ui/core/Collapse';
 
 import api from "../../services/api";
 
@@ -102,71 +104,76 @@ function UserProfile (props) {
             show={uploadModalShow}
             onHide={handleUploadSave}
           />
-        }
-        <form onSubmit={handleSubmit}>
-          <Row>
-            <Col xs={12} sm={12} md={12} lg={12} >
-              <Row>
-                <Col xs={12} sm={12} md={4} lg={4}>
-                  {/* Div on avatar hover */}
-                  {avatarHover && 
-                    <div 
-                      style={styles.hoverCircle} 
-                      onClick={() => { return isAuth ? handleAvatarChange() : null}}
-                      onMouseLeave={() => setAvatarHover(false)}>
-                      <div style={{marginTop: 70}}>
-                        <CreateIcon fontSize="large" />
-                      </div>
-                    </div> 
-                  }
-                  {/* Avatar div */}
-                  <div style={styles.userAvatar}>
-                    <img 
-                      style={styles.avatarImg}
-                      alt="user-profile"
-                      src={user.avatar ? user.avatar_url : require('../../images/user-profile.png')}
-                      onMouseEnter={() => { return isAuth ? setAvatarHover(true) : null}}
-                      onClick={() => { return isAuth ? handleAvatarChange() : null}}
-                    />
-                  </div>
-                </Col>
-                <Col xs={12} sm={12} md={8} lg={8}>
-                <TextField
-                  label="Nome"
-                  fullWidth={true}
-                  margin="normal"
-                  value={user.name}
-                  onChange={(e) => setUser({...user, name: e.target.value})}
-                />
+        }  
+        <Fade
+          in={true}
+          style={{ transformOrigin: '0 0 0' }}
+          {...(true ? { timeout: (1000)  } : {})}>
+          <form onSubmit={handleSubmit}>
+            <Row>
+              <Col xs={12} sm={12} md={12} lg={12} >
+                <Row>
+                  <Col xs={12} sm={12} md={4} lg={4}>
+                    {/* Div on avatar hover */}
+                    {avatarHover && 
+                      <div 
+                        style={styles.hoverCircle} 
+                        onClick={() => { return isAuth ? handleAvatarChange() : null}}
+                        onMouseLeave={() => setAvatarHover(false)}>
+                        <div style={{marginTop: 70}}>
+                          <CreateIcon fontSize="large" />
+                        </div>
+                      </div> 
+                    }
+                    {/* Avatar div */}
+                    <div style={styles.userAvatar}>
+                      <img 
+                        style={styles.avatarImg}
+                        alt="user-profile"
+                        src={user.avatar ? user.avatar_url : require('../../images/user-profile.png')}
+                        onMouseEnter={() => { return isAuth ? setAvatarHover(true) : null}}
+                        onClick={() => { return isAuth ? handleAvatarChange() : null}}
+                      />
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={8}>
+                  <TextField
+                    label="Nome"
+                    fullWidth={true}
+                    margin="normal"
+                    value={user.name}
+                    onChange={(e) => setUser({...user, name: e.target.value})}
+                  />
 
-                <TextField
-                  label="E-mail"
-                  fullWidth={true}
-                  margin="normal"
-                  value={user.email}
-                  onChange={(e) => setUser({...user, email: e.target.value})}
-                />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+                  <TextField
+                    label="E-mail"
+                    fullWidth={true}
+                    margin="normal"
+                    value={user.email}
+                    onChange={(e) => setUser({...user, email: e.target.value})}
+                  />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
 
 
-          <div style={styles.buttons}>
-            <Link to={isAuth ? "/" : "/usuarios"}>
-              <Button variant="contained">Voltar</Button>
-            </Link>
+            <div style={styles.buttons}>
+              <Link to={isAuth ? "/" : "/usuarios"}>
+                <Button variant="contained">Voltar</Button>
+              </Link>
 
-            <Button
-              style={styles.saveButton}
-              variant="contained"
-              type="submit"
-              color="primary"
-            >
-              {isAuth ? "Salvar" : "Alterar" }
-            </Button>
-          </div>
-        </form>
+              <Button
+                style={styles.saveButton}
+                variant="contained"
+                type="submit"
+                color="primary"
+              >
+                {isAuth ? "Salvar" : "Alterar" }
+              </Button>
+            </div>
+          </form>
+        </Fade>
       </div>
     </PageBase>
   );

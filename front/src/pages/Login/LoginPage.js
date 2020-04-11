@@ -47,7 +47,7 @@ function LoginPage() {
       .then(async (res) => {
         await dispatch({type: 'SAVE_USER_DATA', user: res.data.data})
         login(res.data.data);
-        window.location.href = "/";
+        window.location.href = "/clientes";
       })
       .catch((err) => {
         if(err.response) {
