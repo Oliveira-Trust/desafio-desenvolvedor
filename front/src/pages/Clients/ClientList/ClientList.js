@@ -5,6 +5,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import DataTable from '../../../components/DataTable'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useDispatch } from "react-redux";
 
 const styles = {
   fab: {
@@ -18,7 +19,7 @@ const styles = {
 };
 
 export default function ClientList(props) {
-
+  const dispatch = useDispatch()
   const [columns, setColumns] = useState([
       { title: 'Name', field: 'name' },
       { title: 'E-mail', field: 'email' },
@@ -42,12 +43,30 @@ export default function ClientList(props) {
       })
   },[])
 
-  const handleEdit = (data) => {
-    console.log('edit', data)
+  const handleEdit = (editData) => {
+    if (editData.length === 1) {
+      props.history.push(`/editar-cliente/${editData[0].id}`)
+    } else {
+      dispatch({type: 'SNACKBAR_SHOW', message: 'Selecione somente um item para editar'})
+    }
   }
 
-  const handleDelete = (data) => {
-    console.log('delete', data)
+  const handleDelete = (deleteData) => {
+    let newData = data
+    Promise.all(deleteData.map(async (client) => {
+      await api.delete(`/client/${client.id}`)
+        .then(() => {
+          newData = newData.filter((item) => {
+            return item.id !== client.id
+          })
+          setLoading(true)
+        })
+    }))
+      .then(() => {
+        setData(newData)
+        setLoading(false)
+        dispatch({type: 'SNACKBAR_SHOW', message: 'Usuário(s) excluído(s) com sucesso'})
+      })
   }
 
   return (

@@ -1,47 +1,102 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import InputMask from 'react-input-mask'
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
-import Switch from "@material-ui/core/Switch";
 import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
 import PageBase from "../../../components/PageBase";
 import styles from "./styles";
 import DateFnsUtils from '@date-io/date-fns';
+import moment from 'moment'
+import { useDispatch } from "react-redux";
+import api from "../../../services/api";
 
-const FormPage = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
+const ClientForm = (props) => {
+  const dispatch = useDispatch()
+  const [selectedDate, setSelectedDate] = useState(null)
+  const [documentInput, setDocumentInput] = useState('')
+  
+  const [editMode, setEditMode] = useState(false)
+  
+  const [client, setClient] = useState({
+    name: '',
+    email: '',
+    document:'',
+    birth: null
+  })
+
+  useEffect(() => {
+    if (props.match.params.client) {
+      setEditMode(true)
+      api.get(`/client/${props.match.params.client}`)
+        .then((res) => {
+          let editClient = res.data.data
+          setSelectedDate(moment(editClient.birth))
+          setDocumentInput(editClient.document)
+          setClient(editClient)
+        })
+    }
+  },[])
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+    setSelectedDate(date)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    client.document =  documentInput.replace(/[^\d]/g, "")
+    client.birth = moment(selectedDate).format('YYYY-MM-DD')
+    if (editMode) {
+      api.patch(`/client/${client.id}`, client)
+      .then((res) => {
+          dispatch({type: 'SNACKBAR_SHOW', message: `Cliente ${res.data.data.name} alterado com sucesso`})
+          props.history.push('/clientes')
+        })
+    } else {
+      api.post('/client', client)
+      .then((res) => {
+          dispatch({type: 'SNACKBAR_SHOW', message: `Cliente ${res.data.data.name} criado com sucesso`})
+          props.history.push('/clientes')
+        })
+    }
+  }
+
   return (
-    <PageBase title="Novo Cliente">
-      <form noValidate autoComplete="off">
+    <PageBase title={editMode ? "Editar cliente" : "Novo Cliente"}>
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <TextField
-          // hintText="Name"
-          label="Name"
+          label="Nome"
           fullWidth={true}
           margin="normal"
+          value={client.name}
+          required
+          onChange={(e) => setClient({...client, name: e.target.value})}
         />
          <TextField
-          // hintText="Name"
           label="E-mail"
+          type="email"
           fullWidth={true}
           margin="normal"
+          value={client.email}
+          required
+          onChange={(e) => setClient({...client, email: e.target.value})}
         />
-        <TextField
-          // hintText="Name"
-          label="Documento"
-          fullWidth={true}
-          margin="normal"
-        >
-          {/* <InputMask mask="(0)999 999 99 99" maskChar=" " /> */}
-        </TextField>
         <FormControl>
+          <InputMask
+            mask="99.999.999-9"
+            value={documentInput}
+            onChange={(e) => setDocumentInput(e.target.value)}
+          >
+            {() => <TextField
+              label="Documento"
+              name="document"
+              margin="normal"
+              required
+              type="text"
+              />}
+          </InputMask>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
@@ -51,6 +106,7 @@ const FormPage = () => {
               id="date-picker-inline"
               label="Data de Nascimento"
               value={selectedDate}
+              required
               onChange={handleDateChange}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
@@ -58,15 +114,11 @@ const FormPage = () => {
             />
           </MuiPickersUtilsProvider>
         </FormControl>
-
-        <div style={styles.toggleDiv}>
-          <FormControlLabel control={<Switch />} label="Disabled" />
-        </div>
         <Divider />
 
         <div style={styles.buttons}>
-          <Link to="/">
-            <Button variant="contained">Cancel</Button>
+          <Link to="/clientes">
+            <Button variant="contained">Cancelar</Button>
           </Link>
 
           <Button
@@ -75,7 +127,7 @@ const FormPage = () => {
             type="submit"
             color="primary"
           >
-            Save
+            Salvar
           </Button>
         </div>
       </form>
@@ -83,4 +135,4 @@ const FormPage = () => {
   );
 };
 
-export default FormPage;
+export default ClientForm;

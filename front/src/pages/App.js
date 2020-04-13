@@ -11,6 +11,7 @@ import UserProfile from "./UserProfile/UserProfile";
 import ClientList from "./Clients/ClientList/ClientList";
 import ClientForm from "./Clients/ClientForm/ClientForm";
 import ProductList from "./Products/ProductList/ProductList";
+import ProductForm from "./Products/ProductForm/ProductForm";
 import OrderList from "./Orders/OrderList/OrderList";
 import Logout from "./Logout";
 import { useSelector, useDispatch } from "react-redux";
@@ -110,7 +111,10 @@ function App(props) {
         <Switch>
           <Route path="/clientes" component={ClientList} />
           <Route path="/criar-cliente" component={ClientForm} />
+          <Route path="/editar-cliente/:client" component={ClientForm} />
           <Route path="/produtos" component={ProductList} />
+          <Route path="/criar-produto" component={ProductForm} />
+          <Route path="/editar-produto/:product" component={ProductForm} />
           {/* /criar-produto */}
           <Route path="/pedidos" component={OrderList} />
           {/* /criar-pedido */}
