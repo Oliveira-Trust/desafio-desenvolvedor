@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: desafio_web    
+    ports:
+     - 8000:80
+    links:
+      - mysql
+    volumes:
+      - .:/var/www/html  
+    networks:
+      - lan
+  mysql:
+    image: mysql:5.7
+    container_name: desafio_mysql
+    ports:
+     - 3307:3306  
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+     - MYSQL_USER=root
+     - MYSQL_ROOT_PASSWORD=root
+    command: --innodb-flush-method=O_DSYNC --innodb-use-native-aio=0
+    networks:
+     - lan
+volumes:
+  mysqldata:
+    driver: local
+networks:
+  lan:
