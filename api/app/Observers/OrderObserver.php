@@ -34,6 +34,18 @@ class OrderObserver
             $product = \App\Models\Product::find($order->product_id);
             $product->available_quantity += $order->quantity_ordered;
             $product->save();
+        } elseif ($order->status === 'OPEN') {
+            if($order->getOriginal('quantity_ordered') > $order->quantity_ordered) {
+                $newQuantity = $order->getOriginal('quantity_ordered') - $order->quantity_ordered;
+                $product = \App\Models\Product::find($order->product_id);
+                $product->available_quantity += $newQuantity;
+                $product->save();
+            } elseif ($order->getOriginal('quantity_ordered') < $order->quantity_ordered) {
+                $newQuantity = $order->quantity_ordered - $order->getOriginal('quantity_ordered');
+                $product = \App\Models\Product::find($order->product_id);
+                $product->available_quantity -= $newQuantity;
+                $product->save();
+            }
         }
     }
 
@@ -45,9 +57,11 @@ class OrderObserver
      */
     public function deleted(Order $order)
     {
-        $product = \App\Models\Product::find($order->product_id);
-        $product->available_quantity += $order->quantity_ordered;
-        $product->save();
+        if ($order->status === 'OPEN') {
+            $product = \App\Models\Product::find($order->product_id);
+            $product->available_quantity += $order->quantity_ordered;
+            $product->save();
+        }
     }
 
     /**

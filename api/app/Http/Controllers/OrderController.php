@@ -82,4 +82,24 @@ class OrderController extends AbstractController
         $order->save();
         return response()->json(['success' => true, 'data' => $order]);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function update(Request $request, $orderId)
+     {
+         $order = Order::find($orderId);
+         if($order) {
+            if($order->status === 'PAID' || $order->status === 'CANCELLED') {
+                return response()->json(['success' => false, 'data' => [], 'message' => 'O pedido já foi pago']);
+            }
+            $order->update($request->all());
+            return response()->json(['success' => true, 'data' => $order]);
+         } else {
+             return response()->json(['success' => false, 'data' => [], 'message' => 'Não encontrado'], 404);
+         }
+     }
 }

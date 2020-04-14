@@ -13,7 +13,8 @@ class Order extends Model
      */
      protected $fillable = [
         'status', // Possible statuses: PAID, OPEN, CANCELLED 
-        'quantity_ordered'
+        'quantity_ordered',
+        'total'
     ];
 
     /**
@@ -22,7 +23,7 @@ class Order extends Model
     * @var array
     */
     protected $hidden = [
-        'product_id', 'client_id',
+        'product_id', 'client_id'
     ];
 
     /**

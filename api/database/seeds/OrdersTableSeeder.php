@@ -14,13 +14,16 @@ class OrdersTableSeeder extends Seeder
         \DB::table('orders')->delete();
         
         \DB::table('orders')->insert([
-            'id' => 1,
-            'client_id' => 1,
-            'product_id' => 1,
-            'status' => 'PAID',
-            'quantity_ordered' => 20,
-            'created_at' => '2020-02-15 04:28:14',
-            'updated_at' => '2020-02-15 04:31:03',
+            0 => [
+                'id' => 1,
+                'client_id' => 1,
+                'product_id' => 1,
+                'status' => 'OPEN',
+                'quantity_ordered' => 20,
+                'total' => 39.80,
+                'created_at' => '2020-02-15 04:28:14',
+                'updated_at' => '2020-02-15 04:31:03',
+            ]
         ]);
     }
 }
