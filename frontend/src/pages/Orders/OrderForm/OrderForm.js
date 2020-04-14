@@ -236,9 +236,7 @@ const OrderForm = (props) => {
         }
         <Divider />
         <div style={styles.buttons}>
-          <Link to="/pedidos">
-            <Button variant="contained">Voltar</Button>
-          </Link>
+          <Button variant="contained" onClick={() => props.history.goBack()}>Voltar</Button>
 
           <Button
             style={styles.saveButton}

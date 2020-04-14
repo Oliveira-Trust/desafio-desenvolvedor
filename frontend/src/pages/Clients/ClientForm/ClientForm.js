@@ -125,9 +125,7 @@ const ClientForm = (props) => {
         <Divider />
 
         <div style={styles.buttons}>
-          <Link to="/clientes">
-            <Button variant="contained">Voltar</Button>
-          </Link>
+          <Button variant="contained" onClick={() => props.history.goBack()}>Voltar</Button>
 
           <Button
             style={styles.saveButton}

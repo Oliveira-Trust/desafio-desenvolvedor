@@ -158,9 +158,7 @@ function UserProfile (props) {
 
 
             <div style={styles.buttons}>
-              <Link to={isAuth ? "/" : "/usuarios"}>
-                <Button variant="contained">Voltar</Button>
-              </Link>
+              <Button variant="contained" onClick={() => props.history.goBack()}>Voltar</Button>
 
               <Button
                 style={styles.saveButton}

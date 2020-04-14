@@ -24,8 +24,8 @@ export default function OrderList(props) {
 
   const [columns, setColumns] = useState([
       { title: 'Status', field: 'status' },
-      { title: 'Cliente', field: 'client', render: rowData => rowData.client.name },
-      { title: 'Produto', field: 'product', render: rowData => rowData.product.name },
+      { title: 'Cliente', field: 'client', render: rowData => <div style={{cursor: 'pointer'}} onClick={() => props.history.push(`/editar-cliente/${rowData.client.id}`)}>{rowData.client.name}</div> },
+      { title: 'Produto', field: 'product', render: rowData => <div style={{cursor: 'pointer'}} onClick={() => props.history.push(`/editar-produto/${rowData.product.id}`)}>{rowData.product.name}</div> },
       { title: 'Quantidade', field: 'quantity_ordered', type: 'numeric' },
       { title: 'Total', field: 'total', type: 'numeric', render: rowData => rowData.total.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"})},
       { title: 'Data', field: 'created_at', render: rowData => moment(rowData.created_at).format('D/MM/Y HH:m:s')},

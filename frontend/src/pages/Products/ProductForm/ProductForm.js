@@ -183,9 +183,7 @@ const ProductForm = (props) => {
         <Divider />
 
         <div style={styles.buttons}>
-          <Link to="/produtos">
-            <Button variant="contained">Voltar</Button>
-          </Link>
+          <Button variant="contained" onClick={() => props.history.goBack()}>Voltar</Button>
 
           <Button
             style={styles.saveButton}
