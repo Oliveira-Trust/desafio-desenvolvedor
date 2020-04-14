@@ -16,17 +16,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Chamar ClientRepository
+        // ClientRepository
         $this->app->bind(
             'App\Repositories\Contracts\ClientRepositoryInterface', 
             'App\Repositories\ClientRepository'
         );
-        // Chamar ProductRepository
+        // ProductRepository
         $this->app->bind(
             'App\Repositories\Contracts\ProductRepositoryInterface', 
             'App\Repositories\ProductRepository'
         );
-        // Chamar OrderRepository
+        // OrderRepository
         $this->app->bind(
             'App\Repositories\Contracts\OrderRepositoryInterface', 
             'App\Repositories\OrderRepository'

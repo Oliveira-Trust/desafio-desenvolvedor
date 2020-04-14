@@ -21,13 +21,13 @@ class JWTMiddleware
         } catch (Exception $e) {
             if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
                 return $next($request);
-                return response()->json(['error'=>'Token is Invalid']);
+                return response()->json(['error' => 'Token is Invalid']);
             }else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
                 return $next($request);
-                return response()->json(['error'=>'Token is Expired']);
+                return response()->json(['error' => 'Token is Expired']);
             }else{
                 return $next($request);
-                return response()->json(['error'=>'Something is wrong']);
+                return response()->json(['error' => 'Something is wrong']);
             }
         }
         return $next($request);

@@ -13,9 +13,8 @@ class AuthController extends Controller
   private function getToken($email, $password)
   {
     $token = null;
-    //$credentials = $request->only('email', 'password');
     try {
-      if (!$token = JWTAuth::attempt( ['email'=>$email, 'password'=>$password])) {
+      if (!$token = JWTAuth::attempt(['email'=>$email, 'password'=>$password])) {
         return response()->json([
           'response' => 'error',
           'message' => 'Password or email is invalid',
