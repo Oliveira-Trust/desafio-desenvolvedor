@@ -18,6 +18,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import Grid from '@material-ui/core/Grid';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const useStyles = makeStyles((theme) => ({
   formPadding: {
@@ -45,26 +46,35 @@ const ProductForm = (props) => {
       tags: []
   })
 
+  const [loading, setLoading] = useState(false)
   const [newTag, setNewTag] = useState('')
 
   useEffect(() => {
     if (props.match.params.product) {
       setEditMode(true)
       api.get(`/product/${props.match.params.product}`)
+        .then((res) => {
+          let newProduct = res.data.data
+          newProduct.tags = JSON.parse(newProduct.tags)
+          setProduct(newProduct)
+        })
     }
   },[])
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setLoading(true)
+    let productData = {...product}
+    productData.tags = JSON.stringify(product.tags)
 
     if (editMode) {
-      api.patch(`/product/${product.id}`, product)
+      api.patch(`/product/${product.id}`, productData)
       .then((res) => {
           dispatch({type: 'SNACKBAR_SHOW', message: `Produto ${res.data.data.name} alterado com sucesso`})
           props.history.push('/produtos')
         })
     } else {
-      api.post('/product', product)
+      api.post('/product', productData)
       .then((res) => {
           dispatch({type: 'SNACKBAR_SHOW', message: `Produto ${res.data.data.name} criado com sucesso`})
           props.history.push('/produtos')
@@ -72,12 +82,20 @@ const ProductForm = (props) => {
     }
   }
 
-  const handleDeleteTag = () => {
-    console.log('excluir uma tag')
+  const handleDeleteTag = (deleteIndex) => {
+    let allTags = product.tags
+    allTags = allTags.filter((tag, index) => index !== deleteIndex)
+    setProduct({...product, tags: allTags})
   }
 
-  const handleClickNewTag = () => {
-    console.log('adicionar uma tag nova')
+  const handleClickNewTag = (e) => {
+    e.preventDefault();
+    if (newTag !== '') {
+      const allTags = product.tags
+      allTags.push(newTag)
+      setNewTag('')
+      setProduct({...product, tags: allTags})
+    }
   };
 
   const handleMouseDownNewTag = (event) => {
@@ -87,6 +105,7 @@ const ProductForm = (props) => {
   return (
     <PageBase title={editMode ? "Editar Produto" : "Novo Produto"}>
       <form autoComplete="off" onSubmit={handleSubmit}>
+        {/* Name */}
         <TextField
           label="Nome"
           fullWidth={true}
@@ -95,10 +114,13 @@ const ProductForm = (props) => {
           required
           onChange={(e) => setProduct({...product, name: e.target.value})}
         />
+
         <FormControl>
           <Grid container spacing={2}>
-            <Grid item md={6} sm={12} xs={12}>
+            <Grid item lg={6} md={6} sm={6} xs={12}>
+              {/* Price */}
               <CurrencyTextField
+                required
                 label="Preço"
                 fullWidth={true}
                 value={product.price}
@@ -108,7 +130,8 @@ const ProductForm = (props) => {
                 onChange={(e, value) => setProduct({...product, price: value})}
               />
             </Grid>
-            <Grid item md={6} sm={12} xs={12} >
+            {/* Available Quantity */}
+            <Grid item lg={6} md={6} sm={6} xs={12} >
               <TextField
                 label="Quantidade disponível"
                 value={product.available_quantity}
@@ -120,6 +143,7 @@ const ProductForm = (props) => {
             </Grid>
           </Grid>
         </FormControl>
+        {/* New Tag */}
         <FormControl fullWidth className={classes.formPadding}>
           <InputLabel htmlFor="add-new-tag" className={classes.formPadding}>Nova Tag</InputLabel>
           <Input
@@ -128,7 +152,9 @@ const ProductForm = (props) => {
             fullWidth={true}
             value={newTag}
             onChange={(e) => setNewTag(e.target.value)}
+            onKeyPress={(e) => { e.key === 'Enter' && handleClickNewTag(e) }}
             endAdornment={
+              newTag !== '' &&
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
@@ -141,20 +167,24 @@ const ProductForm = (props) => {
             }
           />
         </FormControl>
+        {/* Tag List */}
+        
+        <FormHelperText>Tags</FormHelperText>
         <FormControl fullWidth>
-          <Paper variant="outlined" className={classes.tagPaper}>
-            <Chip size="small" label="Basic" variant="outlined" className={classes.tagChip} onDelete={handleDeleteTag} />
-            <Chip size="small" label="Basic" variant="outlined" className={classes.tagChip} onDelete={handleDeleteTag} />
-            <Chip size="small" label="Basic" variant="outlined" className={classes.tagChip} onDelete={handleDeleteTag} />
-            <Chip size="small" label="Basic" variant="outlined" className={classes.tagChip} onDelete={handleDeleteTag} />
-            <Chip size="small" label="Basic" variant="outlined" className={classes.tagChip} onDelete={handleDeleteTag} />
-          </Paper>
+          {product.tags.length > 0 && 
+            <Paper variant="outlined" className={classes.tagPaper}>
+              {product.tags.map((tag, index) => (
+                <Chip key={index} size="small" color="primary" label={tag} variant="outlined" className={classes.tagChip} onDelete={() => handleDeleteTag(index)} />
+              ))}
+            </Paper>
+          }
         </FormControl>
+
         <Divider />
 
         <div style={styles.buttons}>
           <Link to="/produtos">
-            <Button variant="contained">Cancelar</Button>
+            <Button variant="contained">Voltar</Button>
           </Link>
 
           <Button
@@ -162,6 +192,7 @@ const ProductForm = (props) => {
             variant="contained"
             type="submit"
             color="primary"
+            disabled={loading}
           >
             Salvar
           </Button>

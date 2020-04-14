@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import classNames from "classnames";
 import defaultTheme from "../theme";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -13,6 +13,7 @@ import ClientForm from "./Clients/ClientForm/ClientForm";
 import ProductList from "./Products/ProductList/ProductList";
 import ProductForm from "./Products/ProductForm/ProductForm";
 import OrderList from "./Orders/OrderList/OrderList";
+import OrderForm from "./Orders/OrderForm/OrderForm";
 import Logout from "./Logout";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
@@ -109,15 +110,18 @@ function App(props) {
       />
       <div className={classNames(classes.container, !state.navDrawerOpen && classes.containerFull)}>
         <Switch>
+          <Route exact path="/">
+            <Redirect to="/clientes" />
+          </Route>
           <Route path="/clientes" component={ClientList} />
           <Route path="/criar-cliente" component={ClientForm} />
           <Route path="/editar-cliente/:client" component={ClientForm} />
           <Route path="/produtos" component={ProductList} />
           <Route path="/criar-produto" component={ProductForm} />
           <Route path="/editar-produto/:product" component={ProductForm} />
-          {/* /criar-produto */}
           <Route path="/pedidos" component={OrderList} />
-          {/* /criar-pedido */}
+          <Route path="/criar-pedido" component={OrderForm} />
+          <Route path="/editar-pedido/:order" component={OrderForm} />
           <Route path="/perfil/:user" component={UserProfile} />
           <Route path="/logout" component={Logout} />
           <Route component={NotFound} />

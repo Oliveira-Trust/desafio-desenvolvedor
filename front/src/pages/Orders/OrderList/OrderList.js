@@ -4,8 +4,9 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import DataTable from '../../../components/DataTable'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import { useDispatch } from "react-redux";
 import moment from 'moment';
+import translateStatus from '../helpers'
 
 const styles = {
   fab: {
@@ -19,6 +20,7 @@ const styles = {
 };
 
 export default function OrderList(props) {
+  const dispatch = useDispatch()
 
   const [columns, setColumns] = useState([
       { title: 'Status', field: 'status' },
@@ -31,19 +33,6 @@ export default function OrderList(props) {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const translateStatus = status => {
-    switch (status) {
-      case 'PAID':
-        return 'Pago'
-      case 'OPEN':
-        return 'Aberto'
-      case 'CANCELLED':
-        return 'Cancelado'
-      default:
-        return 'Aberto'
-    }
-  }
 
   useEffect(() => {
     api.get('/order')
@@ -60,12 +49,30 @@ export default function OrderList(props) {
       })
   },[])
 
-  const handleEdit = (data) => {
-    console.log('edit', data)
+  const handleEdit = (editData) => {
+    if (editData.length === 1) {
+      props.history.push(`/editar-pedido/${editData[0].id}`)
+    } else {
+      dispatch({type: 'SNACKBAR_SHOW', message: 'Selecione somente um item para editar'})
+    }
   }
 
-  const handleDelete = (data) => {
-    console.log('delete', data)
+  const handleDelete = (deleteData) => {
+    let newData = data
+    Promise.all(deleteData.map(async (order) => {
+      await api.delete(`/order/${order.id}`)
+        .then(() => {
+          newData = newData.filter((item) => {
+            return item.id !== order.id
+          })
+          setLoading(true)
+        })
+    }))
+      .then(() => {
+        setData(newData)
+        setLoading(false)
+        dispatch({type: 'SNACKBAR_SHOW', message: 'Pedido(s) excluído(s) com sucesso'})
+      })
   }
 
   return (

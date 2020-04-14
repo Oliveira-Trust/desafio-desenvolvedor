@@ -1,5 +1,4 @@
-import React, { forwardRef, useState, useEffect }  from 'react';
-import MaterialTable from 'material-table';
+import React, { useState, useEffect }  from 'react';
 import api from "../../../services/api";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
@@ -65,7 +64,7 @@ export default function ClientList(props) {
       .then(() => {
         setData(newData)
         setLoading(false)
-        dispatch({type: 'SNACKBAR_SHOW', message: 'Usuário(s) excluído(s) com sucesso'})
+        dispatch({type: 'SNACKBAR_SHOW', message: 'Cliente(s) excluído(s) com sucesso'})
       })
   }
 

@@ -7,7 +7,6 @@ import styles from "./styles";
 import { Row, Col } from 'react-bootstrap';
 import CreateIcon from '@material-ui/icons/Create';
 import Fade from '@material-ui/core/Fade';
-import Collapse from '@material-ui/core/Collapse';
 
 import api from "../../services/api";
 

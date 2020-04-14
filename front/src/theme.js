@@ -5,7 +5,8 @@ export const availableThemes = [
   {
     title: "Default",
     primary: blue,
-    secondary: grey
+    secondary: grey,
+    type: 'dark'
   },
   {
     title: "Sunset",

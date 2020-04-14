@@ -26,6 +26,7 @@ const ClientForm = (props) => {
     document:'',
     birth: null
   })
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (props.match.params.client) {
@@ -46,6 +47,7 @@ const ClientForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setLoading(true)
     client.document =  documentInput.replace(/[^\d]/g, "")
     client.birth = moment(selectedDate).format('YYYY-MM-DD')
     if (editMode) {
@@ -66,6 +68,7 @@ const ClientForm = (props) => {
   return (
     <PageBase title={editMode ? "Editar cliente" : "Novo Cliente"}>
       <form autoComplete="off" onSubmit={handleSubmit}>
+        {/* Name */}
         <TextField
           label="Nome"
           fullWidth={true}
@@ -74,7 +77,8 @@ const ClientForm = (props) => {
           required
           onChange={(e) => setClient({...client, name: e.target.value})}
         />
-         <TextField
+        {/* Email */}
+        <TextField
           label="E-mail"
           type="email"
           fullWidth={true}
@@ -83,7 +87,9 @@ const ClientForm = (props) => {
           required
           onChange={(e) => setClient({...client, email: e.target.value})}
         />
+
         <FormControl>
+          {/* Document */}
           <InputMask
             mask="99.999.999-9"
             value={documentInput}
@@ -97,6 +103,7 @@ const ClientForm = (props) => {
               type="text"
               />}
           </InputMask>
+          {/* Birth */}
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
@@ -114,11 +121,12 @@ const ClientForm = (props) => {
             />
           </MuiPickersUtilsProvider>
         </FormControl>
+
         <Divider />
 
         <div style={styles.buttons}>
           <Link to="/clientes">
-            <Button variant="contained">Cancelar</Button>
+            <Button variant="contained">Voltar</Button>
           </Link>
 
           <Button
@@ -126,6 +134,7 @@ const ClientForm = (props) => {
             variant="contained"
             type="submit"
             color="primary"
+            disabled={loading}
           >
             Salvar
           </Button>
