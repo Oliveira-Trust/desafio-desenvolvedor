@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
@@ -209,6 +208,7 @@ const OrderForm = (props) => {
             {order.status === 'OPEN' && 
             <Grid item lg={6} md={6} sm={12} xs={12}>
               <ThemeProvider theme={theme}>
+                {/* Set order as PAID */}
                 <Button
                   size="small"
                   style={styles.payButton}
@@ -219,6 +219,7 @@ const OrderForm = (props) => {
                 >
                   Pagar
                 </Button>
+                {/* Set order as CANCELLED */}
                 <Button
                   size="small"
                   style={styles.saveButton}
