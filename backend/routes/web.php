@@ -16,7 +16,7 @@ Route::get('/', function () {
         "data" => [
             "app_env" => "dev",
             "app_name" => "challenge",
-            "app_description" => "Aplicativo de consulta técnica para advogados",
+            "app_description" => "A Product, Client and Order CRUD",
         ]
     ];
 
