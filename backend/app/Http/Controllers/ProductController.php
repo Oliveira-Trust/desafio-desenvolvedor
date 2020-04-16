@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductValidation;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 
 class ProductController extends AbstractController
@@ -41,23 +42,15 @@ class ProductController extends AbstractController
     }
 
     /**
-    * Validate the request for abstract Controller
+    * Store a newly created resource in storage.
     *
-    * @param  Request  $request
+    * @param  \App\Http\Requests\ProductValidation  $request
+    * @return \Illuminate\Http\Response
     */
-    protected function modelValidation(Request $request)
+    public function store(ProductValidation $request)
     {
-        $request->validate([
-            'name' => 'required|max:200',
-            'price' => 'required|numeric',
-            'available_quantity' => 'required|numeric',
-        ],
-        [
-            'name.required' => 'Nome é obrigatório',
-            'name.max' => 'Nome é muito grande',
-            'price.required' => 'Preço é obrigatório',
-            'price.numeric' => 'Preço inválido',
-            'available_quantity.required' => 'A quantidade disponível é obrigatória',
-        ]);
+        $data = $request->all();
+        $item = Product::create($data);
+        return response()->json(['success' => true, 'data' => $item]);
     }
 }

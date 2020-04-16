@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientValidation;
 use App\Repositories\Contracts\ClientRepositoryInterface;
 
 class ClientController extends AbstractController
@@ -41,26 +42,15 @@ class ClientController extends AbstractController
     }
 
     /**
-    * Validate the request for abstract Controller
+    * Store a newly created resource in storage.
     *
-    * @param  Request  $request
+    * @param  \App\Http\Requests\ClientValidation  $request
+    * @return \Illuminate\Http\Response
     */
-    protected function modelValidation(Request $request)
+    public function store(ClientValidation $request)
     {
-        $request->validate([
-            'name' => 'required|max:200',
-            'email' => 'required|email|unique:clients',
-            'document' => 'required',
-            'birth' => 'required',
-        ],
-        [
-            'name.required' => 'Nome é obrigatório',
-            'name.max' => 'Nome é muito grande',
-            'email.required' => 'E-mail é obrigatório',
-            'email.email' => 'E-mail inválido',
-            'email.unique' => 'E-mail já existe',
-            'document.required' => 'Documento é obrigatório',
-            'birth.required' => 'Data de nascimento é obrigatório',
-        ]);
+        $data = $request->all();
+        $item = Client::create($data);
+        return response()->json(['success' => true, 'data' => $item]);
     }
 }

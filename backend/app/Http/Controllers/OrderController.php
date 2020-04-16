@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderValidation;
 use App\Repositories\Contracts\OrderRepositoryInterface;
 
 class OrderController extends AbstractController
@@ -41,34 +42,13 @@ class OrderController extends AbstractController
     }
 
     /**
-    * Validate the request for abstract Controller
-    *
-    * @param  Request  $request
-    */
-    protected function modelValidation(Request $request)
-    {
-        $request->validate([
-            'client' => 'required|numeric',
-            'product' => 'required|numeric',
-            'quantity_ordered' => 'required|numeric',
-        ],
-        [
-            'client.required' => 'Especifique o cliente',
-            'product.required' => 'Especifique o produto',
-            'quantity_ordered.required' => 'Quantidade encomendada é obrigatória',
-        ]);
-    }
-
-    /**
     * Store a newly created resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\Http\Requests\OrderValidation  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function store(OrderValidation $request)
     {
-        $this->modelValidation($request);
-
         $data = $request->all();
         $order = new Order;
         $request->client ? $order->client()->associate($request->client) : null;

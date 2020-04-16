@@ -7,24 +7,6 @@ use Illuminate\Http\Request;
 abstract class AbstractController extends Controller
 {
     abstract protected function getModel();
-    
-    abstract protected function modelValidation(Request $request);
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-     public function store(Request $request)
-     {
-        $this->modelValidation($request);
-
-        $data = $request->all();
-        $item = ($this->getModel())::create($data);
-        return response()->json(['success' => true, 'data' => $item]);
-     }
-
 
     /**
      * Display the specified resource.
