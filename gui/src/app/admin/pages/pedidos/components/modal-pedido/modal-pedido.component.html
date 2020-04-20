@@ -1,0 +1,90 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">
+      {{ tituloModal }}
+  </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="overflow:auto">
+    <form [formGroup]="pedidoForm" (ngSubmit)="salvar()">
+      <div *ngIf="!conteudoModal" class="form-group row">
+        <div class="col-md-4">
+          <select class="custom-select" #slcClientes>
+            <option value="">Clientes</option>
+            <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome + ' ' + cliente.sobrenome }}</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select #slcProdutos class="custom-select">
+            <option value="">Produtos</option>
+            <option *ngFor="let produto of produtos" [value]="produto.id">{{produto.descricao}}</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input #inQuantidade type="text" class="form-control" name="quantidade" placeholder="Qtd">
+        </div>
+        <div class="col-md-2">
+          <button *ngIf="!conteudoModal" class="btn btn-primary" type="button" (click)="adicionar()"><fa-icon [icon]="faPlus"></fa-icon></button>
+        </div>
+      </div>
+      <div *ngIf="conteudoModal" class="form-group row">
+        <div class="col-md-12">
+          <h3>Cliente: {{ conteudoModal.cliente.nome }} {{ conteudoModal.cliente.sobrenome }}</h3>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <div *ngIf="enviado && f.itens.errors" class="invalid-feedback">
+            <div *ngIf="f.itens.errors.required">É preciso adicionar pelo menos um item!</div>
+          </div>
+          <div class="card table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Descrição</th>
+                  <th>Quantidade</th>
+                  <th>Valor</th>
+                  <th *ngIf="!conteudoModal">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="itens.length === 0">
+                  <td colspan="3">Sem itens para este pedido!</td>
+                </tr>
+                <tr *ngFor="let item of itens;let i = index">
+                  <td>{{ item.descricao }}</td>
+                  <td>{{ item.quantidade }}</td>
+                  <td>{{ item.preco }}</td>
+                  <td *ngIf="!conteudoModal"><a (click)="remover(i)"><fa-icon [icon]="faTimes"></fa-icon></a></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2" class="text-right mr-2">Total</td>
+                  <td>{{ total }}</td>
+                  <td *ngIf="!conteudoModal"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="conteudoModal">
+        <div class="col-md-4 text-right">
+          <select class="custom-select" formControlName="status_id">
+            <option value="">Status</option>
+            <option *ngFor="let status of statuses" [value]="status.id">{{status.descricao}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12 text-right">
+          <button #btnEnviar class="btn btn-primary" type="submit"><fa-icon [icon]="faSave"></fa-icon></button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  </div> -->
