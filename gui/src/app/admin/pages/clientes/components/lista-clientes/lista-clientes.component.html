@@ -1,0 +1,42 @@
+
+<div class="card mt-3 mb-3 table-responsive">
+
+  <app-busca-cliente [titulo]="titulo" (listarClientes)="buscarClientes($event)" class="card-header">
+  </app-busca-cliente>
+
+  <div class="d-flex justify-content-between">
+    <span class="mt-2 mb-2 ml-2"> {{ qtdRegistros | number }} de registros encontrados</span>
+    <a (click)="executarAcao(null, 'i')" class="mt-2 mr-2 apontador"  alt="Incluir" title="Incluir"><fa-icon [icon]="faPlus"></fa-icon></a>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width: 10%">#&nbsp;<fa-icon [icon]="sortIcon" (click)="ordenar('id', sortOrder)"></fa-icon></th>
+        <th style="width: 50%">Nome&nbsp;<fa-icon [icon]="sortIcon" (click)="ordenar('nome', sortOrder)"></fa-icon></th>
+        <th style="width: 40%">Email&nbsp;<fa-icon [icon]="sortIcon" (click)="ordenar('email', sortOrder)"></fa-icon></th>
+        <th style="width: 10%">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="loading">
+        <td colspan="4">
+          <app-loading></app-loading>
+        </td>
+      </tr>
+      <tr *ngFor="let cliente of clientes;let i = index">
+        <td>{{ cliente.id }}</td>
+        <td>{{ cliente.nome }} {{ cliente.sobrenome }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>
+          <a (click)="executarAcao(cliente, 'a')" class="apontador" alt="Editar" title="Editar"><fa-icon [icon]="faPen"></fa-icon></a>&nbsp;
+          <a (click)="executarAcao(cliente, 'e')" class="apontador" alt="Apagar" title="Apagar"><fa-icon [icon]="faTrashAlt"></fa-icon></a>&nbsp;
+        </td>
+      </tr>
+      <tr *ngIf="!loading && clientes?.length == 0">
+        <td colspan="6" class="text-center">Nenhum cliente encontrado!</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

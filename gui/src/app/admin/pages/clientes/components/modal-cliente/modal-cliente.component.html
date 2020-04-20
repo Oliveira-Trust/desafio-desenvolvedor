@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">
+      {{ tituloModal }}
+  </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="overflow:auto">
+    <form [formGroup]="clienteForm" (ngSubmit)="salvar()">
+      <div class="form-group row">
+        <label for="nome" class="col-md-2 col-form-label text-right">Nome</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="nome" formControlName="nome" [ngClass]="{ 'is-invalid': enviado && f.nome.errors }">
+          <div *ngIf="enviado && f.nome.errors" class="invalid-feedback">
+            <div *ngIf="f.nome.errors.required">O campo nome é obrigatório!</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label text-right" for="sobrenome">Sobrenome</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="sobrenome" formControlName="sobrenome" [ngClass]="{ 'is-invalid': enviado && f.sobrenome.errors }">
+          <div *ngIf="enviado && f.sobrenome.errors" class="invalid-feedback">
+            <div *ngIf="f.sobrenome.errors.required">O campo sobrenome é obrigatório!</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label text-right" for="email">Email</label>
+        <div class="col-md-10">
+          <input type="email" class="form-control" name="email" formControlName="email" [ngClass]="{ 'is-invalid': enviado && f.email.errors }">
+          <div *ngIf="enviado && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">O campo email é obrigatório!</div>
+            <div *ngIf="f.email.errors.email">O campo email precisa conter um email válido!</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12 text-right">
+          <button class="btn btn-primary" type="submit"><fa-icon [icon]="faSave"></fa-icon></button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  </div> -->
