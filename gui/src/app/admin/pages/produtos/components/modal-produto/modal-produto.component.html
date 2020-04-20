@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">
+      {{ tituloModal }}
+  </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="overflow:auto">
+    <form [formGroup]="produtoForm" (ngSubmit)="salvar()">
+      <div class="form-group row">
+        <label for="descricao" class="col-md-2 col-form-label text-right">Descrição</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="descricao" formControlName="descricao" [ngClass]="{ 'is-invalid': enviado && f.descricao.errors }">
+          <div *ngIf="enviado && f.descricao.errors" class="invalid-feedback">
+            <div *ngIf="f.descricao.errors.required">O campo descrição é obrigatório!</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label text-right" for="quantidade">Quantidade</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="quantidade" formControlName="quantidade" [ngClass]="{ 'is-invalid': enviado && f.quantidade.errors }">
+          <div *ngIf="enviado && f.quantidade.errors" class="invalid-feedback">
+            <div *ngIf="f.quantidade.errors.required">O campo quantidade é obrigatório!</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label text-right" for="preco">Preco</label>
+        <div class="col-md-10">
+          <input type="preco" class="form-control" name="preco" formControlName="preco" [ngClass]="{ 'is-invalid': enviado && f.preco.errors }">
+          <div *ngIf="enviado && f.preco.errors" class="invalid-feedback">
+            <div *ngIf="f.preco.errors.required">O campo preço é obrigatório!</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12 text-right">
+          <button class="btn btn-primary" type="submit"><fa-icon [icon]="faSave"></fa-icon></button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  </div> -->

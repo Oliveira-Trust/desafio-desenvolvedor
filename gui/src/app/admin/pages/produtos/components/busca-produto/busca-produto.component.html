@@ -1,0 +1,28 @@
+<form [formGroup]="produtoForm" (ngSubmit)="buscar(produtoForm.value)">
+  <fieldset>
+    <legend><h4 class="text-center">{{ titulo }}</h4></legend>
+    <div class="form-group row">
+      <div class="col-md-1">
+        <label for="id">Id</label>
+        <input type="text" class="form-control" name="id" formControlName="id">
+      </div>
+      <div class="col-md-2">
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" name="descricao" formControlName="descricao">
+      </div>
+      <div class="col-sm-2">
+        <label for="quantidade">Quantidade</label>
+        <input type="text" class="form-control" name="quantidade" formControlName="quantidade">
+      </div>
+      <div class="col-sm-3">
+        <label for="preco">Preço</label>
+        <input type="text" class="form-control" name="preco" formControlName="preco">
+      </div>
+      <div class="col-sm-3 d-flex align-items-end">
+        <button class="btn btn-primary" type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
+      </div>
+    </div>
+  </fieldset>
+
+
+</form>
