@@ -71,10 +71,17 @@ class ClienteRepository
     public static function delete($id) {
       $response = array();
       try {
+
+        $cliente = Cliente::find($id);
+
+        if ($cliente->pedidos->count() > 0) {
+          throw new \Exception("Apague os pedidos deste cliente primeiro!");
+        }
+
         Cliente::destroy($id);
         $response['data'] = "OK";
       } catch (\Exception $e) {
-        $response['error'] = "Houve um erro inesperado!";
+        $response['error'] = "Houve um erro inesperado!{$e->getMessage()}";
       }
       return $response;
     }

@@ -6,10 +6,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ModalApagarComponent } from './components/modal-apagar/modal-apagar.component';
+import { ModalAvisoComponent } from './components/modal-aviso/modal-aviso.component';
 
 
 @NgModule({
-  declarations: [LoadingComponent, ErrorComponent, ModalApagarComponent],
+  declarations: [LoadingComponent, ErrorComponent, ModalApagarComponent, ModalAvisoComponent],
   imports: [
     HttpClientModule,
     FormsModule,

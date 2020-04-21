@@ -12,6 +12,7 @@ import { ClienteService } from 'src/app/shared/services/cliente.service';
 import { ModalClienteComponent } from './../modal-cliente/modal-cliente.component';
 import { ModalApagarComponent } from 'src/app/shared/components/modal-apagar/modal-apagar.component';
 import { BuscaClienteComponent } from '../busca-cliente/busca-cliente.component';
+import { ModalAvisoComponent } from 'src/app/shared/components/modal-aviso/modal-aviso.component';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -98,13 +99,26 @@ export class ListaClientesComponent implements OnInit {
         this.clienteService
           .apagar(obj)
           .subscribe((res) => {
-            console.log(res);
-          if (!res.error) {
-            this.busca.buscar({});
-          }
+            if (res.error) {
+              this.abrirAviso2(res.error);
+            } else {
+              this.busca.buscar({});
+            }
         });
       }
     });
+  }
+
+  abrirAviso2(mensagem) {
+    const initialState = {
+      tituloModal: 'Atenção!',
+      conteudoModal: mensagem
+    };
+
+    this.bsModalRef = this.modalService.show(ModalAvisoComponent, {
+      initialState,
+      class: 'gray modal-lg'
+    });    
   }
 
   setSortOrder(sortOrder) {

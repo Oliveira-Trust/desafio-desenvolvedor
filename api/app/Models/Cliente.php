@@ -13,5 +13,9 @@ class Cliente extends Model
     public function setSenhaAttribute($value)
     {
         $this->attributes['senha'] = \Hash::make($value);
-    }    
+    }
+
+    public function pedidos() {
+        return $this->hasMany('App\Models\Pedido');
+    }
 }

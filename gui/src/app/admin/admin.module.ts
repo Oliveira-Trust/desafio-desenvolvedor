@@ -21,6 +21,7 @@ import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { ListaPedidoComponent } from './pages/pedidos/components/lista-pedido/lista-pedido.component';
 import { BuscaPedidoComponent } from './pages/pedidos/components/busca-pedido/busca-pedido.component';
 import { ModalPedidoComponent } from './pages/pedidos/components/modal-pedido/modal-pedido.component';
+import { ModalAvisoComponent } from '../shared/components/modal-aviso/modal-aviso.component';
 
 @NgModule({
   declarations: [
@@ -42,10 +43,11 @@ import { ModalPedidoComponent } from './pages/pedidos/components/modal-pedido/mo
   imports: [CommonModule, AdminRoutingModule, SharedModule],
   exports: [],
   entryComponents: [
+    ModalAvisoComponent,
     ModalApagarComponent,
     ModalClienteComponent,
     ModalProdutoComponent,
-    ModalPedidoComponent
+    ModalPedidoComponent,
   ]
 })
 export class AdminModule {}
