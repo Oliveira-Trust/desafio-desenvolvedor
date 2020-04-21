@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   faSignInAlt = faSignInAlt;
   loginForm: FormGroup;
   token: any;
+  erro: any;
 
   constructor(private fb: FormBuilder, private acessoService: AcessoService, private router: Router) {
   }
@@ -29,9 +30,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.acessoService.login(this.loginForm.value)
-      .subscribe((res) => {
-      this.router.navigate(['admin']);
-    });
+      .subscribe(
+        res => {
+          this.router.navigate(['admin']);
+        },
+        err => {
+          this.erro = err
+        }
+    );
   }
 
 }

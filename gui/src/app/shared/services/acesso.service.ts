@@ -15,20 +15,28 @@ export class AcessoService {
 
   public usuario: any;
 
+  public getLocalStorage() : any {
+    return JSON.parse(localStorage.getItem('usuario'));
+  }
+
+  setLocalStorage(item) {
+    localStorage.setItem('usuario', JSON.stringify(item));
+  }
+
+  removeLocalStorage(id) {
+    localStorage.removeItem(id);
+  }
+
   login(usuario) {
     return this.httpClient
       .post(`${this.url}/login`, usuario)
       .pipe(map((res: any) => {
-        console.log(res);
-        if (!res.message) {
-          localStorage.setItem('usuario', res);
-          this.usuario = res;
-        }
+        this.setLocalStorage(res);
       }));
   }
 
   logout() {
-    localStorage.removeItem('usuario');
+    this.removeLocalStorage('usuario');
   }
 
 }

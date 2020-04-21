@@ -3,7 +3,8 @@
   <div class="box-login row">
 
     <div class="col-md-3 offset-md-4">
-      <p class="credenciais">Usuário: admin@admin.com Senha: 123456 </p>
+      <p class="credenciais text-center">Email/Senha<br/> admin@admin.com/123456</p>
+      <p *ngIf="erro" class="text-danger text-center">{{ erro }}</p>
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="input-group mb-3">
           <div class="input-group-prepend">

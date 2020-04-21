@@ -12,11 +12,11 @@ export class AdminInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add authorization header with jwt token if available
-    const usuarioAtual = this.acessoService.usuario;
-    if (usuarioAtual && usuarioAtual.token) {
+    const usuarioAtual = this.acessoService.getLocalStorage();
+    if (usuarioAtual && usuarioAtual.jwt.token) {
         request = request.clone({
             setHeaders: {
-                Authorization: `Bearer ${usuarioAtual.token}`
+                Authorization: `Bearer ${usuarioAtual.jwt.token}`
             }
         });
     }

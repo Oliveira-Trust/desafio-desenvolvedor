@@ -45,13 +45,11 @@ export class ModalClienteComponent implements OnInit {
     this.enviado = true;
 
     // stop here if form is invalid
-    console.log('1', this.clienteForm.valid, this.clienteForm.invalid);
     if (this.clienteForm.invalid) {
         return;
     }
 
     const cliente = this.clienteForm.value;
-    console.log(2);
     this.clienteService.salvar(cliente).subscribe((res) => {
       this.bsModalRef.hide();
       this.action.emit(true);

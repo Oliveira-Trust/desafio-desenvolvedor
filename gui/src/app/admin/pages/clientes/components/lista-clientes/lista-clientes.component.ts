@@ -95,8 +95,13 @@ export class ListaClientesComponent implements OnInit {
 
     this.bsModalRef.content.action.subscribe((value) => {
       if (value) {
-        this.clienteService.apagar(obj).subscribe((res) => {
-          this.busca.buscar({});
+        this.clienteService
+          .apagar(obj)
+          .subscribe((res) => {
+            console.log(res);
+          if (!res.error) {
+            this.busca.buscar({});
+          }
         });
       }
     });

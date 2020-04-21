@@ -10,14 +10,16 @@ export class AuthGuardChildService implements CanActivateChild {
 
   private isAuthenticated: boolean = false;
 
-  // private authenticationService: AuthenticationService
-
   constructor(private router: Router, private acessoService: AcessoService) {}
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    this.isAuthenticated = this.acessoService.usuario && this.acessoService.usuario.token ? true : false;
+
+    const userAuthenticated = this.acessoService.getLocalStorage();
+
+    this.isAuthenticated = userAuthenticated && userAuthenticated.jwt.token ? true : false;
 
     if (!this.isAuthenticated) {
+      this.acessoService.logout();
       this.router.navigate(['/login']);
     }
 
