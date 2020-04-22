@@ -78,7 +78,8 @@ class ClienteRepository
           throw new \Exception("Apague os pedidos deste cliente primeiro!");
         }
 
-        Cliente::destroy($id);
+        $cliente->delete();
+        // Cliente::destroy($id);
         $response['data'] = "OK";
       } catch (\Exception $e) {
         $response['error'] = "Houve um erro inesperado!{$e->getMessage()}";

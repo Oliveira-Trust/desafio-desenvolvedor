@@ -12,6 +12,7 @@ import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { ModalApagarComponent } from 'src/app/shared/components/modal-apagar/modal-apagar.component';
 import { ModalProdutoComponent } from './../modal-produto/modal-produto.component';
 import { BuscaProdutoComponent } from './../busca-produto/busca-produto.component';
+import { ModalAvisoComponent } from 'src/app/shared/components/modal-aviso/modal-aviso.component';
 
 @Component({
   selector: 'app-lista-produto',
@@ -35,7 +36,7 @@ export class ListaProdutoComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService,
-    private clienteService: ProdutoService
+    private produtoService: ProdutoService
   ) {
     this.qtdRegistros = this.produtos.length;
   }
@@ -95,12 +96,29 @@ export class ListaProdutoComponent implements OnInit {
 
     this.bsModalRef.content.action.subscribe((value) => {
       if (value) {
-        this.clienteService.apagar(obj).subscribe((res) => {
-          this.busca.buscar({});
+        this.produtoService.apagar(obj)
+          .subscribe((res) => {
+            if(res.error) {
+              this.abrirAviso2(res.error);
+            } else { 
+              this.busca.buscar({});
+            }
         });
       }
     });
   }
+
+  abrirAviso2(mensagem) {
+    const initialState = {
+      tituloModal: 'Atenção!',
+      conteudoModal: mensagem
+    };
+
+    this.bsModalRef = this.modalService.show(ModalAvisoComponent, {
+      initialState,
+      class: 'gray modal-lg'
+    });    
+  }  
 
   setSortOrder(sortOrder) {
     this.sortOrder = sortOrder === 0 ? 1 : 0;

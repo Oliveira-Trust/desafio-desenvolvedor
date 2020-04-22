@@ -66,10 +66,18 @@ class ProdutoRepository
     public static function delete($id) {
       $response = array();
       try {
-        Produto::destroy($id);
+
+        $produto = Produto::find($id);
+
+        if ($produto->itensPedido->count() > 0) {
+          throw new \Exception("Apague os pedidos que incluem este produto primeiro!");
+        }
+
+        $produto->delete();
+        // Produto::destroy($id);
         $response['data'] = "OK";
       } catch (\Exception $e) {
-        $response['error'] = "Houve um erro inesperado!";
+        $response['error'] = "Houve um erro inesperado!{$e->getMessage()}";
       }
       return $response;
     }
