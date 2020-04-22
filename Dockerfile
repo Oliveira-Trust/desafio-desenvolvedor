@@ -9,7 +9,7 @@ LABEL maintainer="Newton Gonzaga Costa<ncosta@proadv.com>" \
 VOLUME [ "/var/www/html" ]
 
 # Workdir
-WORKDIR /var/www/html
+WORKDIR /var/www/html/api
 
 # Basic packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -63,7 +63,7 @@ ENV LC_ALL pt_BR.UTF-8
 # Apache configuration
 COPY assets/conf/000-default.conf /etc/apache2/sites-available
 
-#RUN echo "Listen 80\nServerName localhost" >> /etc/apache2/apache2.conf
+# RUN echo "Listen 80\nServerName localhost" >> /etc/apache2/apache2.conf
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && apt-get update && apt-get install -y nodejs \ 
