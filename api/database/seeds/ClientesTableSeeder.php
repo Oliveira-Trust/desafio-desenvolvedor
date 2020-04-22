@@ -16,11 +16,6 @@ class ClientesTableSeeder extends Seeder
                 'email' => 'ncosta@gmail.com',
                 'nome' => "Newton",
                 'sobrenome' => "Costa"
-            ],
-            [
-                'email' => 'heric@gmail.com',
-                'nome' => "Heric",
-                'sobrenome' => "Branco"
             ]
         ]);
     }
