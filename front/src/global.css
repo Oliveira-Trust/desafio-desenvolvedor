@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,400;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    outline: 0;
+    box-sizing: border-box;
+}
+body{
+    font: 400 14px Rubik, sans-serif;
+    background: #f0f0f5;
+    -webkit-font-smoothing:antialiased;
+}
+
+input,textarea,button{
+    font: 400 18px Rubik, sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+form input{
+  width: 100%;
+  height: 60px;
+  color:#333;
+  border: 1px,solid #dcdce6;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  padding: 0 24px;
+  margin-bottom: 10px;
+}
+
+form textarea{
+    width: 100%;
+    resize: vertical;
+    min-height: 140px;
+    color:#333;
+    border: 1px,solid #dcdce6;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding: 0 24px;
+    margin-bottom: 10px;
+  }
+
+.button{
+    width: 100%;
+    height: 60px;
+    background-color: blue;
+    border: 0;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    transition: filter 0.4s;
+    -webkit-transition: filter 0.4s;
+    -moz-transition: filter 0.4s;
+    -ms-transition: filter 0.4s;
+    -o-transition: filter 0.4s;
+}
+
+.button:hover{
+    filter: brightness(80%);
+    -webkit-filter: brightness(80%);
+}
+
+.logo{
+    font: 700 70px Rubik, sans-serif;
+    text-shadow: 2px 2px 5px red;
+    animation-name: logo;
+    animation-duration: 2s;
+    animation-delay: 0.2s;
+    animation-iteration-count: infinite;
+    
+}
+
+@keyframes logo {
+    0%   {text-shadow: 2px 2px 5px red;}
+    25%  {text-shadow: 2px 2px 5px yellow;}
+    50%  {text-shadow: 2px 2px 5px backgroun blue;}
+    100% {text-shadow: 2px 2px 5px  green;}
+  }
+
+
+.back-link{
+    display: flex;
+    align-items: center;
+    margin-top: 45px;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #e24608;
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -ms-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+}
+.back-link svg{
+    margin-right: 9px;
+}.back-link:hover{
+    opacity: 0.8;
+}
+
+
+

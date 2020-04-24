@@ -1,0 +1,44 @@
+.novo-usuario-conteiner{
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.novo-usuario-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 96px;
+  background: #f0f0f5;
+  
+}
+
+.novo-usuario-content section{
+    width: 100%;
+    max-width: 380px;
+}
+.novo-usuario-content section h1{
+    margin: 64px 0 32px;
+    font-size: 32px;
+}
+.novo-usuario-content section p{
+    font-size: 18;
+    color: #737380;
+    line-height: 32px;
+}
+
+.novo-usuario-content form{
+    width: 100%;
+    max-width: 450px;
+}
+
+.grup-input{
+  display: flex;
+}
+.grup-input input + input{
+    margin-left: 8px;
+}
+  

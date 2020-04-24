@@ -1,0 +1,45 @@
+ nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    box-shadow: 0 0 100px rgba(0,0,0, 0.2);
+}
+
+ nav li{
+    float: left;
+}
+
+.logout  {
+   float: right;
+   
+}
+
+.logout a{
+    color:white;
+    background-color: red;
+}
+
+.logout a:hover:not(.active){
+    opacity: 0.8;
+    background-color: rgb(199, 10, 10);
+    cursor: pointer;
+}
+ nav li a{
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ nav li a:hover:not(.active){
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+  }
