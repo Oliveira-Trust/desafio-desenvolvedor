@@ -12,6 +12,9 @@ export default function Usuarios() {
   const history = useHistory();
 
   const [usuarios, setUsuarios] = useState([]);
+  const [page, setPage] = useState([]);
+  const [lastPage, setLastPage] = useState([]);
+
 
    
   useEffect(()=>{
@@ -19,11 +22,14 @@ export default function Usuarios() {
           headers: {"Authorization" : `Bearer ${token}`} 
       }).then((response)=>{
         
-         setUsuarios(response.data.users)
+         console.log(response)
+         setUsuarios(response.data.users.data)
+         setPage(response.data.users.current_page)
+         setLastPage(response.data.users.last_page)
 
       }).catch((error)=>{
           ErroApi(error);
-        //   history.push('/')
+          history.push('/')
       })
   },[token]);
 
@@ -43,12 +49,34 @@ export default function Usuarios() {
      history.push('/edit-usuario/'+id)
   }
 
+
+  async function paginacao(pag) {
+   let next = page +pag
+   setPage(next)
+
+   await Api.get(`users?page=${next}`,{
+      headers: {"Authorization" : `Bearer ${token}`} 
+      })
+      .then((response)=>{
+         
+         setUsuarios(response.data.users.data)
+         setPage(response.data.users.current_page)
+         setLastPage(response.data.users.last_page)
+
+      })
+      .catch((error)=>{
+            ErroApi(error);
+            history.push('/')
+      })
+
+ }
+
   return (
    <div className='conteiner-home'>
        <Navegacao  listaUsuario="active" />
         <header>
            <span>Bem Vindo {user}</span>
-           
+           <Link className="button" to='/cadastrar-usuario/'>Cadastrar Novo Usuario</Link>
         </header>
 
         <h1> Lista de usuarios</h1>
@@ -74,7 +102,11 @@ export default function Usuarios() {
              })
            }
         </ul>
-       
+        <div class="pagination">
+            {page > 1 ? <a onClick={()=>paginacao(-1)} >&laquo;</a> : ""}
+            <a href="#" class="active">{page}</a>
+            {page != lastPage ? <a onClick={()=>paginacao(1)}>&raquo;</a> : ""}
+       </div>
   </div>  
   );
 }

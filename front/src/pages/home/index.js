@@ -12,16 +12,22 @@ export default function Home() {
   const history = useHistory();
 
   const [produtos, setProdutos] = useState([]);
+  const [page, setPage] = useState([]);
+  const [lastPage, setLastPage] = useState([]);
 
    
   useEffect(()=>{
       Api.get('products',{
           headers: {"Authorization" : `Bearer ${token}`} 
-      }).then((response)=>{
+      })
+      .then((response)=>{
         console.log(response.data)
          setProdutos(response.data.data)
+         setPage(response.data.from)
+         setLastPage(response.data.last_page)
 
-      }).catch((error)=>{
+      })
+      .catch((error)=>{
           ErroApi(error);
           history.push('/')
       })
@@ -42,8 +48,7 @@ export default function Home() {
   function goToEditProduct(id) {
      history.push('/edit-produto/'+id)
   }
-
-
+  
   async function requestproduct(id){
       try {
          const data={
@@ -61,6 +66,27 @@ export default function Home() {
       } 
   }
 
+  async function paginacao(pag) {
+   let next = page +pag
+   setPage(next)
+
+   await Api.get(`products?page=${next}`,{
+      headers: {"Authorization" : `Bearer ${token}`} 
+      })
+      .then((response)=>{
+         
+         setProdutos(response.data.data)
+         setPage(response.data.current_page)
+         setLastPage(response.data.last_page)
+
+      })
+      .catch((error)=>{
+            ErroApi(error);
+            history.push('/')
+      })
+
+ }
+
   async function pesquisaProduct() {
      let dataPesquisa = document.querySelector('#pesquisa').value;
      
@@ -68,6 +94,8 @@ export default function Home() {
        let response=await Api.get(`/products/pesquise?title=${dataPesquisa}`,{ headers: {"Authorization" : `Bearer ${token}`}})
 
        setProdutos(response.data.data)
+       setPage(response.data.current_page)
+       setLastPage(response.data.last_page)
 
      } catch (error) {
          ErroApi(error);
@@ -81,6 +109,7 @@ export default function Home() {
        <Navegacao  home="active" />
         <header>
            <span>Bem Vindo {user}</span>
+          <Link className="button" to='/cadastrar-produto/'>Cadastrar Novo Produto</Link>
         </header>
          <div className ="barra-de-pesquisa">
             <h1> Lista de Produtos</h1>
@@ -115,11 +144,9 @@ export default function Home() {
            }
         </ul>
         <div class="pagination">
-            <a href="#">&laquo;</a>
-            
-            <a href="#" class="active">2</a>
-            
-            <a href="#">&raquo;</a>
+            {page > 1 ? <a onClick={()=>paginacao(-1)} >&laquo;</a> : ""}
+            <a href="#" class="active">{page}</a>
+            {page != lastPage ? <a onClick={()=>paginacao(1)}>&raquo;</a> : ""}
        </div>
   </div>  
   );

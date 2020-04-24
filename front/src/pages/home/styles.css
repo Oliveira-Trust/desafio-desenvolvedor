@@ -11,8 +11,14 @@
 }
 .conteiner-home header span{
     font-size: 20px;
-    
+    margin-left: 24px;
     margin-top: 20px;
+}
+
+.conteiner-home header a{
+ width: 256px;
+ margin-left: auto;
+ margin-top: 20px;
 }
 
 .conteiner-home header h1{
@@ -93,6 +99,7 @@
 }
 .pesquisa-content{
     display: flex;
+    margin-top: 40px;
 }
 .pesquisa-content input {
     width: 100%;
@@ -106,25 +113,3 @@
     width: 25%;
 }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-.pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
-  }
-  
-  .pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-  }
-  
-  .pagination a:hover:not(.active) {background-color: #ddd;}
