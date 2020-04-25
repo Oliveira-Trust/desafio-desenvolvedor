@@ -6,8 +6,8 @@ o Banco de Dados já está populado com informações de usuarios, produtos e pe
 
 login para teste:
 
-//matheus.sant4l@gmail.com
-//cpassos
+usuarios:matheus.sant4l@gmail.com
+senha: cpassos
 
 # Front
 
