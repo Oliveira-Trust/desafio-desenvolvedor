@@ -11,7 +11,7 @@ login para teste:
 
 # Front
 
-Entre na Pasta    
+Entre na pasta    
 ```
 cd front
 ```
