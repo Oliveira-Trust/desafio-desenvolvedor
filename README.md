@@ -45,7 +45,7 @@ Gerar link simbolico
 ```
 ln -s public html
 ```
-Para Ativar o Servidor de teste
+Para ativar o servidor de teste
 ```
 php -S localhost:8004 -t public
 ```
