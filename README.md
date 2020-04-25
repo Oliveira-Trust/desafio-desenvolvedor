@@ -46,9 +46,9 @@ Gerar link simbolico
 ln -s public html
 ```
 Para Ativar o Servidor de teste
-...
-php -S localhost:8004 -t public
-...
+```
+sudo docker-compose up -d --build
+```
 
 Gerar a key JWT
 ```
