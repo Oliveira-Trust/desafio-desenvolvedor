@@ -22,7 +22,7 @@ export default function Usuarios() {
           headers: {"Authorization" : `Bearer ${token}`} 
       }).then((response)=>{
         
-         console.log(response)
+         
          setUsuarios(response.data.users.data)
          setPage(response.data.users.current_page)
          setLastPage(response.data.users.last_page)
@@ -33,7 +33,7 @@ export default function Usuarios() {
       })
   },[token]);
 
-  console.log(usuarios)
+
   async function deleteUsuarios(id){
      try {
         await Api.delete(`/users/${id}`,{ headers: {"Authorization" : `Bearer ${token}`}} );
@@ -85,7 +85,7 @@ export default function Usuarios() {
            {
              usuarios.map((usuario)=>{
                 return(
-                        <li key={usuarios.id}>
+                        <li key={usuario.id}>
                         <strong> Nome:</strong>
                         <p>{usuario.name}</p>
          
@@ -94,7 +94,11 @@ export default function Usuarios() {
          
                        
                         <div className='options'>
-                           <button type='button' onClick={() => goToEditUser(usuario.id)} ><FiEdit2 size={20}  color="#a8a8b3"/></button>
+                           <Link to={`/edit-usuario/${usuario.id}`}>
+                              <button type='button' onClick={() => goToEditUser(usuario.id)} >
+                                 <FiEdit2 size={20}  color="#a8a8b3"/>
+                               </button>
+                           </Link>
                            <button type='button' onClick={() => deleteUsuarios(usuario.id)}><FiTrash2 size={20} color='#a8a8b3' /></button>
                         </div>
                      </li>

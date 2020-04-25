@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class Controller extends BaseController
 {
     
-    //Add this method to the Controller class
-    protected function respondWithToken($token)
+    
+    protected function respondWithToken($token)//gerando o token de acesso
     {
         return response()->json([
             'token' => $token,

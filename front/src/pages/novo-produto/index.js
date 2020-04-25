@@ -31,7 +31,7 @@ export default function NovoProduto() {
       }  
       try{
          let Response=await Api.post('/products',data, {headers: {"Authorization" : `Bearer ${token}`} } ) 
-         console.log(Response)
+         
          history.push('/home/'); 
         
       }catch(erro){
@@ -40,10 +40,9 @@ export default function NovoProduto() {
          history.push('/');
       }
      
-
     }
   return (
-    <div>
+    <div className="conteiner-novo-produto">
     <Navegacao novoProduto="active" />
       <div className="novo-produtos-conteiner">
           <div className="novo-produtos-content">

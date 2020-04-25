@@ -10,14 +10,14 @@ use  App\Models\User;
 class AuthController extends Controller
 {
     /**
-     * Store a new user.
+     * Criando um novo Usuario.
      *
      * @param  Request  $request
      * @return Response
      */
     public function register(Request $request)
     {
-        //validate incoming request 
+        //validando os inputs que veio no $request 
         $this->validate($request, [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
@@ -34,24 +34,24 @@ class AuthController extends Controller
 
             $user->save();
 
-            //return successful response
+           
             return response()->json(['user' => $user, 'message' => 'CREATED'], 201);
 
         } catch (\Exception $e) {
-            //return error message
+           
             return response()->json(['message' => 'User Registration Failed!'], 409);
         }
 
     }
     /**
-     * Get a JWT via given credentials.
+     *Pega um JWT com as credencias
      *
      * @param  Request  $request
      * @return Response
      */
     public function login(Request $request)
     {
-          //validate incoming request 
+          //validando os inputs que veio no $request 
         $this->validate($request, [
             'email' => 'required|string',
             'password' => 'required|string',
@@ -63,9 +63,9 @@ class AuthController extends Controller
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
-        // dd($token);
+        
         return response()->json(['token'=>$token,'token_type'=>'bearer', 'user'=>Auth::user()]);
-        // return $this->respondWithToken($token,['user'=>Auth::user()]);
+        
     }
 
 

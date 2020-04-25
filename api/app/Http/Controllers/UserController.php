@@ -8,65 +8,73 @@ use  App\Models\User;
 
 class UserController extends Controller
 {
-     /**
-     * Instantiate a new UserController instance.
-     *
-     * @return void
-     */
+     
     private $user;
 
-    public function __construct(User $users){
+    public function __construct(User $users){// 
         $this->middleware('auth');
         $this->user=$users;
     }
 
+    
     /**
-     * Get the authenticated User.
-     *
-     * @return Response
-     */
-    public function profile(){
-        return response()->json(['user' => Auth::user()], 200);
-    }
-
-    /**
-     * Get all User.
+     * Pega todos os usuarios.
      *
      * @return Response
      */
     public function index(){
-        return response()->json(['users' =>  $this->user->paginate(4)], 200);
+        try {
+            return response()->json(['users' =>  $this->user->paginate(4)], 200);
+
+        } catch (\PDOException $e) {
+            
+            return response()->json(['msgerro'=>$e->getMessage()],406);
+        }
+       
     }
 
-
-    public function store(Request $request){
-        try {
-               $this->user->create($request->all());
-               
-               return response()->json(['msg'=>$request->all()]);
-            
-            } catch (\PDOException $e) {
-
-               return response()->json(['msgerro'=>$e->getMessage()],406);
-            }
-     }
     /**
-     * Get one user.
+     * \cria um  usuario.
+     *
+     * @return Response
+     */
+    public function store(Request $request){
+        
+        try {
+            $this->user->create($request->all());
+
+            return response()->json(['msg'=>$request->all()]);
+            
+        } catch (\PDOException $e) {
+
+            return response()->json(['msgerro'=>$e->getMessage()],406);
+        }
+        
+     }
+
+    /**
+     * pega apenas um  usuario.
      *
      * @return Response
      */
     public function show($id){
         try {
-                $user = $this->user->findOrFail($id);
+             $user = $this->user->findOrFail($id);
             
-                return response()->json(['user' => $user], 200);
+             return response()->json(['user' => $user], 200);
 
         } catch (\Exception $e) {
 
-            return response()->json(['message' => 'user not found!'], 404);
+             return response()->json(['message' => 'user not found!'], 404);
         }
     }
 
+
+     /**
+     * Atualiza um usuario.
+     *
+     * @return Response
+     */
     public function update(Request $request, $id){
         try {
 
@@ -81,6 +89,11 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * deleta um usuario.
+     *
+     * @return Response
+     */
     public function delete($id){
        
         try{

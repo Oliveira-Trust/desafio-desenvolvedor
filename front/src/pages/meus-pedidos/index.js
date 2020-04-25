@@ -18,7 +18,7 @@ export default function MeusPedidos() {
       Api.get('request-of-product/products-user/',{
           headers: {"Authorization" : `Bearer ${token}`} 
       }).then((response)=>{
-        console.log(response.data.Product)
+
          setProdutos(response.data.Product)
 
       }).catch((error)=>{
@@ -27,10 +27,10 @@ export default function MeusPedidos() {
       })
   },[token]);
 
-  async function deletePedidos(id){
+  async function deletePedidos(id){//função que deleta o pedido 
      try {
         await Api.delete(`request-of-product/${id}`,{ headers: {"Authorization" : `Bearer ${token}`}} );
-        setProdutos(produtos.filter(produto => produto.id!==id ));
+        setProdutos(produtos.filter(produto => produto.id!==id )); //aqui e atualizado o state sem o produto excluido
 
      } catch (error) {
             ErroApi(error);
@@ -38,39 +38,33 @@ export default function MeusPedidos() {
      }   
   }
 
-  function goToEditProduct(id) {
-     history.push('/edit-produto/'+id)
-  }
 
-
-  async function requestproduct(id){
+  async function requestproduct(id){  //função que finaliza o pedido
       try {
          const data={
             status:"Produto em roda de entrega",
             product_id:id
          }
-         let response=await Api.put(`request-of-product/${id}`,data,{ headers: {"Authorization" : `Bearer ${token}`}} );
+         await Api.put(`request-of-product/${id}`,data,{ headers: {"Authorization" : `Bearer ${token}`}} );
          window.location.reload();
-         //  setProdutos(produtos.filter(produto => produto.id!==id ));
-         
 
       } catch (error) {
             ErroApi(error);
             history.push('/');
       } 
   }
+
   return (
    <div className='conteiner-home'>
-       <Navegacao  meusPedidos="active" />
+       <Navegacao  meusPedidos="active" />{/* Menu de navegação  */}
         <header>
            <span>Bem Vindo {user}</span>
         </header>
-
         <h1> Meus Pedidos</h1>
 
         <ul className="card">
            {
-             produtos.map((produto)=>{
+             produtos.map((produto)=>{ // listando todos os produtos com o map
                 return(
                         <li key={produtos.id}>
                         <strong> Titulo:</strong>
@@ -85,8 +79,8 @@ export default function MeusPedidos() {
                         <strong>status:</strong>
                         <p>{produto.pivot.status}</p>
 
-                        
-                        {produto.pivot.status=="Em Aberto "?
+                        {/* A condcional abaixo serve para direfenciar o produto em aberto do produto finalizado,exibindo  os butões "Finalizar Compra" e "Pedido Finalizado" */}
+                        {produto.pivot.status=="Em Aberto "? 
                             <>
                               <div className='options'>
                                 <button type='button' onClick={() => deletePedidos(produto.id)}><FiTrash2 size={20} color='red' />Cancelar Pedido</button>

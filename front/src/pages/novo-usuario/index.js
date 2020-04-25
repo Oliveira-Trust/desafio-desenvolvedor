@@ -39,7 +39,7 @@ export default function NovoUsuario() {
      
     }
   return (
-    <div>
+    <div className="conteiner-novo-usuario">
        <Navegacao novoUsuario="active" />
    
       <div className="novo-usuario-conteiner">

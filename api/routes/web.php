@@ -21,8 +21,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     //login
     $router->post('/register', 'AuthController@register');
     $router->post('login', 'AuthController@login');
-   
-    //User
+    
+    //pesqisa 
+    $router->get('products/pesquise', 'ProductController@search'); 
+
+    //User 
     $router->group(['prefix'=>'users'],function() use ($router){
 
         $router->get('/',     'UserController@index');
@@ -45,10 +48,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('/{id}', 'ProductController@delete');
         $router->delete('/', 'ProductController@deleteAll');
 
-        $router->get('/pesquise', 'ProductController@search');
-
     });
-
+       
     //Request of product
     $router->group(['prefix'=>'request-of-product'],function() use ($router){
 
@@ -65,6 +66,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     });
 
 
-    $router->get('profile', 'UserController@profile');
+    
    
  });

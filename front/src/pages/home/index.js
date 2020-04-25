@@ -12,18 +12,18 @@ export default function Home() {
   const history = useHistory();
 
   const [produtos, setProdutos] = useState([]);
-  const [page, setPage] = useState([]);
+  const [page, setPage] = useState('');
   const [lastPage, setLastPage] = useState([]);
 
    
-  useEffect(()=>{
+  useEffect(()=>{ // pega todos o pedidos antes de montar o html
       Api.get('products',{
           headers: {"Authorization" : `Bearer ${token}`} 
       })
       .then((response)=>{
-        console.log(response.data)
+       
          setProdutos(response.data.data)
-         setPage(response.data.from)
+         setPage(response.data.current_page)
          setLastPage(response.data.last_page)
 
       })
@@ -45,9 +45,7 @@ export default function Home() {
      }   
   }
 
-  function goToEditProduct(id) {
-     history.push('/edit-produto/'+id)
-  }
+
   
   async function requestproduct(id){
       try {
@@ -134,10 +132,18 @@ export default function Home() {
                         <p>R$ {produto.price}</p>
          
                         <div className='options'>
-                           <button type='button' onClick={() => goToEditProduct(produto.id)} ><FiEdit2 size={20}  color="#a8a8b3"/></button>
-                           <button type='button' onClick={() => deleteProdutos(produto.id)}><FiTrash2 size={20} color='#a8a8b3' /></button>
+                           <Link to={`/edit-produto/${produto.id}`}>
+                              <button type='button'>
+                                 <FiEdit2 size={20}  color="#a8a8b3"/>
+                              </button>
+                           </Link>
+                           <button type='button' onClick={() => deleteProdutos(produto.id)}>
+                              <FiTrash2 size={20} color='#a8a8b3' />
+                           </button>
                         </div>
-                        <button className='button' onClick={()=>requestproduct(produto.id)} style={{width: '40%',float:'right'}}>Eu Quero</button>
+                        <button className='button' onClick={()=>requestproduct(produto.id)} style={{width: '40%',float:'right'}}>
+                           Eu Quero
+                        </button>
                      </li>
                 )
              })
@@ -145,7 +151,7 @@ export default function Home() {
         </ul>
         <div class="pagination">
             {page > 1 ? <a onClick={()=>paginacao(-1)} >&laquo;</a> : ""}
-            <a href="#" class="active">{page}</a>
+               <a href="#" class="active">{page}</a>
             {page != lastPage ? <a onClick={()=>paginacao(1)}>&raquo;</a> : ""}
        </div>
   </div>  

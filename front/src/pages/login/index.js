@@ -14,24 +14,26 @@ export default function Login() {
 
    async function handleLogin(e) {
 
-    e.preventDefault()
+    e.preventDefault() //previni o carregamento da pagina apos o submit
 
      const data={
        email,
        password
      }
       try {
+        /*
+           Salvando dados do usuario logado  para pegar depois em outro modulo da aplicação
+        */
           const response= await Api.post('login', data)
          
           localStorage.setItem('token',response.data.token)
-          localStorage.setItem('type_token',response.data.token_type)
           localStorage.setItem('user-name',response.data.user.name)
           localStorage.setItem('user-id',response.data.user.id)
 
           history.push('/home/')
 
       } catch (error) {
-         console.log(error)
+         
          alert('Houve um erro tente mais tarde')
       }
   }
@@ -51,7 +53,6 @@ export default function Login() {
             <FiLogIn size={16} color="#e24608" />
             Não tenho Cadastro
           </Link>
-          
           
        </form>
 

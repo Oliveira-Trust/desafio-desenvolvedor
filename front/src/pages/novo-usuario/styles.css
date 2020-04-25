@@ -1,3 +1,9 @@
+.conteiner-novo-usuario{
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
 .novo-usuario-conteiner{
     width: 100%;
     max-width: 1120px;

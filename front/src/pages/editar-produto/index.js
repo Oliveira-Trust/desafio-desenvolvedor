@@ -22,15 +22,16 @@ export default function NovoProduto(pros) {
     const history = useHistory();
 
     useEffect(()=>{
-       Api.get(`products/${id}`,{headers:{"Authorization" : `Bearer ${token}`} }).
-       then((response)=>{
+       Api.get(`products/${id}`,{headers:{"Authorization" : `Bearer ${token}`} })
+       .then((response)=>{
+
            setTitle(response.data.Product.title)
            setSubTitle(response.data.Product.sub_title)
            setDescription(response.data.Product.description)
            setPrice(response.data.Product.price)
            
        }).catch((error)=>{
-           console.log(error)
+    
             ErroApi(error)
             history.push('/');
        }) 
@@ -46,10 +47,11 @@ export default function NovoProduto(pros) {
           description,
           price,
           "url_image":"/public/imagem/01.png"
-      }  
+      }
+
       try{
-         let Response=await Api.put(`/products/${id}`,data, {headers: {"Authorization" : `Bearer ${token}`} } ) 
-         console.log(Response)
+         
+         await Api.put(`/products/${id}`,data, {headers: {"Authorization" : `Bearer ${token}`} } ) 
          alert('Atualizado com sucesso');
          history.push('/home/'); 
         

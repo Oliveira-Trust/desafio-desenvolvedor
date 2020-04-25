@@ -15,120 +15,147 @@ namespace App\Http\Controllers;
      *
      * @return void
      */
-     private $product;
+   private $product;
 
-     public function __construct(Product $product){
+   public function __construct(Product $product){
           $this->product = $product;
           $this->middleware('auth');
-     }
-
-     /**
-     * Get the all the product.
-     *
-     * @return Response
-     */
-     public function index(){ 
-         try {
-              
-               return $this->product->paginate(4);
-
-            } catch (\PDOException $e){
-
-               return response()->json(['msg'=>$e->getMessage()]);
-            }
-       
-        
-     }
-
-     public function search(Request $request){
-         try {
-            return $this->product->where('title','LIKE','%'.$request->query('title').'%')->paginate(4);
-
-         } catch (\PDOException $e){
-
-            return response()->json(['msg'=>$e->getMessage()]);
-         }
-     }
-
-
-     public function store(Request $request){
-         try {
-            
-               $this->product->create($request->all());
-               return response()->json(['msg'=>'Registered']);
-            
-            } catch (\PDOException $e) {
-
-               return response()->json(['msg'=>$e->getMessage()]);
-            }
-       
-     }
-
-   /**
-     * Get one Product.
-     *
-     * @return Response
-     */
-     public function show($id){
-         try {
-               $product = $this->product->findOrFail($id);
-            
-               return response()->json(['Product' => $product], 200);
-
-            } catch (\Exception $e) {
-
-               return response()->json(['message' => 'Product not found!'], 404);
-            }
-     }
-
-    
-    public function update(Request $request, $id){
-         try {
-
-               $product = $this->product->findOrFail($id);
-               $product->update($request->all());
-
-               return response()->json(['msg'=>'Updated successfully'],201);
-
-            } catch (\PDOException $e) {
-
-               return response()->json(['msg'=>$e->getMessage()]);
-            }
-      
-    }
-
-    
-    public function delete($id){
-         try{
-               $products = $this->product->findOrFail($id);
-               $products->delete();
-
-               return response()->json('product removed successfully');
-
-            } catch(\PDOException $e){
-
-               return response()->json(['msg'=>$e->getMessage()]);
-            }
-    }
-
-    public function deleteAll(){
-      try{
-            $products=$this->product->all();
-
-            //pega cada produto e delata 
-            $products->map(function($product){
-              $product->delete();
-            });
-
-            
-            return response()->json('all product removed successfully');
-
-         } catch(\PDOException $e){
-
-            return response()->json(['msg'=>$e->getMessage()]);
-         }
    }
 
+      /**
+     * Pega todos os Produtos.
+     *
+     * @return Response
+     */
+   public function index(){ 
+      try {
+         return $this->product->paginate(4);
+
+      } catch (\PDOException $e) {
+
+         return response()->json(['msg'=>$e->getMessage()]);
+      }
+        
+        
+   }
+
+      /**
+     * Pesquisa por um Produto.
+     *
+     * @return Response
+     */
+   public function search(Request $request){
+      try {
+         return $this->product->where('title','LIKE','%'.$request->query('title').'%')->paginate(4);
+
+      } catch (\PDOException $e) {
+
+         return response()->json(['msg'=>$e->getMessage()]);
+      }
+         
+   }
+
+     /**
+     *  Cria um produto.
+     *
+     * @return Response
+     */
+   public function store(Request $request){
+      try {
+         
+         $this->product->create($request->all());
+
+         return response()->json(['msg'=>'Registered']);
+         
+      } catch (\PDOException $e) {
+
+         return response()->json(['msg'=>$e->getMessage()]);
+      }
+       
+   }
+
+    /**
+     * Exibe apenas um Produto.
+     *
+     * @return Response
+     */
+   public function show($id){
+      try {
+
+         $product = $this->product->findOrFail($id);
+      
+         return response()->json(['Product' => $product], 200);
+
+      } catch (\Exception $e) {
+
+         return response()->json(['message' => 'Product not found!'], 404);
+      }
+      
+   }
+
+    
+    /**
+     * Atualiza um produto.
+     *
+     * @return Response
+     */
+   public function update(Request $request, $id){
+      try {
+         
+         $product = $this->product->findOrFail($id);
+
+         $product->update($request->all());
+
+         return response()->json(['msg'=>'Updated successfully'],201);
+
+      } catch (\PDOException $e) {
+         
+         return response()->json(['msg'=>$e->getMessage()]);
+      }
+          
+   }
+
+     /**
+     * Deleta um Produto.
+     *
+     * @return Response
+     */
+   public function delete($id){
+      try {
+         $products = $this->product->findOrFail($id);
+
+         $products->delete();
+
+         return response()->json('product removed successfully');
+
+      } catch (\PDOException $e) {
+        
+         return response()->json(['msg'=>$e->getMessage()]);
+      }
+        
+   }
+
+    /**
+     * Deleta todos os produtos.
+     *
+     * @return Response
+     */
+   public function deleteAll(){
+      try {
+         $products=$this->product->all();
+
+         $products->map(function($product){  //pega cada produto e delata 
+           $product->delete();
+         });
+         
+         return response()->json('all product removed successfully');
+
+      } catch (\PDOException $e) {
+
+         return response()->json(['msg'=>$e->getMessage()]);
+      }
+      
+   }
 
  }
  
