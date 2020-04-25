@@ -47,7 +47,7 @@ ln -s public html
 ```
 Para Ativar o Servidor de teste
 ```
-sudo docker-compose up -d --build
+php -S localhost:8004 -t public
 ```
 
 Gerar a key JWT
