@@ -6,7 +6,7 @@
   </head>
   <body>
       <h1>Oliveira TRUST</h1>
-      <h2>Compras</h2>
-      <a href="compras" target="web">Pedido de compras</a>
+      <h2>Desafio para desenvolvedores</h2>
+      <a href="https://golinelli.eti.br/Projetos/OliveiraTRUST/desafio-desenvolvedor/home/" target="web">Página de início do desafio</a>
   </body>
 </html>
