@@ -7,34 +7,40 @@ https://www.linkedin.com/in/abreulandre/
 Cronograma
 
 03/06/2020
-OK - ISSUE #001 - CLONAR REPOSITORIO - 30
-OK - ISSUE #002 - CRIAR PROJETO LARAVEL E AJUSTES DE BANCO - 30
-OK - ISSUE #003 - CRIAR API-CRUD CLIENTES - 30
-OK - ISSUE #004 - CRIAR CRUD CLIENTES - 30
-OK - ISSUE #005 - CRIAR CRUD PRODUTOS - 30
-OK - ISSUE #006 - CRIAR CRUD PEDIDOS  - 30
-OK - ISSUE #008 - CRIAR API-CRUD PRODUTOS - 30
-OK - ISSUE #007 - CRIAR API-CRUD CLIENTES - 30
-OK - ISSUE #009 - CRIAR API-CRUD PEDIDOS  - 30
-OK - ISSUE #010 - TESTE API-CRUD CLIENTES - 30
-OK - ISSUE #011 - TESTE API-CRUD PRODUTOS - 30
-OK - ISSUE #012 - TESTE API-CRUD PEDIDOS  - 30
+OK - ISSUE #001 - CLONAR REPOSITORIO - 0.5h
+OK - ISSUE #002 - CRIAR PROJETO LARAVEL E AJUSTES DE BANCO - 0.5h
+OK - ISSUE #003 - CRIAR API-CRUD CLIENTES - 0.5h
+OK - ISSUE #004 - CRIAR CRUD CLIENTES - 0.5h
+OK - ISSUE #005 - CRIAR CRUD PRODUTOS - 0.5h
+OK - ISSUE #006 - CRIAR CRUD PEDIDOS  - 0.5h
+OK - ISSUE #008 - CRIAR API-CRUD PRODUTOS - 0.5h
+OK - ISSUE #007 - CRIAR API-CRUD CLIENTES - 0.5h
+OK - ISSUE #009 - CRIAR API-CRUD PEDIDOS  - 0.5h
+OK - ISSUE #010 - TESTE API-CRUD CLIENTES - 0.5h
+OK - ISSUE #011 - TESTE API-CRUD PRODUTOS - 0.5h
+OK - ISSUE #012 - TESTE API-CRUD PEDIDOS  - 0.5h
 
 04/06/2020
-OK - ISSUE #013 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD CLIENTES - 1
-OK - ISSUE #014 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PRODUTOS - 1
-OK - ISSUE #015 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PEDIDOS - 1
-ISSUE #016 - FILTROS E ORDEM VIEW CLIENTES - 1
-ISSUE #017 - FILTROS E ORDEM VIEW PRODUTOS - 1
-ISSUE #018 - FILTROS E ORDEM VIEW PEDIDOS - 1
+OK - ISSUE #013 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD CLIENTES - 1h
+OK - ISSUE #014 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PRODUTOS - 1h
+OK - ISSUE #015 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PEDIDOS - 1h
+OK - ISSUE #020 - APLICAR AUTENTICAÇÃO - 2h
+OK - ISSUE #021 - APLICAR NAVEGAÇÃO - 1h
 
 05/06/2020
-ISSUE #019 - APLICAR CORRELACAO BANCO TABELA PEDIDOS - 2
-ISSUE #020 - TESTAR VIEW CORRELACAO PEDIDOS - 1
-OK - ISSUE #020 - APLICAR AUTENTICAÇÃO - 1
-OK - ISSUE #021 - APLICAR NAVEGAÇÃO - 1
-ISSUE #022 - TESTES FINAIS - 30
-ISSUE #022 - ENTREGA - 30
+ISSUE #019 - APLICAR CORRELACAO BANCO TABELA PEDIDOS - 6h
+
+06/06/2020
+ISSUE #019 - APLICAR CORRELACAO BANCO TABELA PEDIDOS - 6h
+
+09/06/2020
+ISSUE #020 - TESTAR VIEW CORRELACAO PEDIDOS - 1h
+ISSUE #016 - FILTROS E ORDEM VIEW CLIENTES - 1h
+ISSUE #017 - FILTROS E ORDEM VIEW PRODUTOS - 1h
+ISSUE #018 - FILTROS E ORDEM VIEW PEDIDOS - 1h
+ISSUE #022 - TESTES FINAIS - 0.5h
+ISSUE #022 - ENTREGA - 0.5h
+
 
 */
 
@@ -112,17 +118,12 @@ php artisan crud:api Clientes --fields="cliente_nome#text; cliente_email#text; c
 
 php artisan crud:api Produtos --fields="produto_nome#text; produto_val#date; produto_forn#text; produto_cont#text; produto_preco#double" --controller-namespace=Api
 
-php artisan crud:api Pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer; produto_id#integer" --controller-namespace=Api
-
-
 API CONTROLLER
 -------------------------
 
 php artisan crud:api-controller Api\\ClientesController --crud-name=clientes --model-name=Clientes
 
 php artisan crud:api-controller Api\\ProdutosController --crud-name=produtos --model-name=Produtos
-
-php artisan crud:api-controller Api\\PedidosController --crud-name=pedidos --model-name=Pedidos
 
 
 IMPORTANTE - deVIDO A REFERENCIA ESTE DEVE SER UM SEGUNDO MIGRATE
@@ -140,6 +141,9 @@ php artisan crud:view Pedidos --fields="pedido_ident#integer; pedido_data#date; 
 
 php artisan migrate
 
+php artisan crud:api Pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer; produto_id#integer" --controller-namespace=Api
+
+php artisan crud:api-controller Api\\PedidosController --crud-name=pedidos --model-name=Pedidos
 
 User Interface 
 ------------------------
@@ -159,6 +163,9 @@ vim routes/web.php
 		Route::get('admin/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
 
 		[!] ADICIONAR ->middleware('auth') AO FIM DAS LINHAS RESOURCES.
+
+
+
 
 Sort/Order View 
 ------------------------

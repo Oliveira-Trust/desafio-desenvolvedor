@@ -25,6 +25,7 @@ class pedidosController extends Controller
                 ->orWhere('pedido_data', 'LIKE', "%$keyword%")
                 ->orWhere('cliente_id', 'LIKE', "%$keyword%")
                 ->orWhere('produto_id', 'LIKE', "%$keyword%")
+                ->orWhere('pedido_status', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
             $pedidos = pedido::latest()->paginate($perPage);

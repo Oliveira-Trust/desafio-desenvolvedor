@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Kyslik\ColumnSortable\Sortable;
 
 class cliente extends Model
 {
@@ -30,8 +29,5 @@ class cliente extends Model
      */
     protected $fillable = ['cliente_nome', 'cliente_email', 'cliente_tel', 'cliente_aniv'];
 
-    use Sortable;
-
-    public $sortable = ['cliente_nome', 'cliente_email', 'cliente_tel', 'cliente_aniv'];
-
+    
 }

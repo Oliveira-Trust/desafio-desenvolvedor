@@ -21,9 +21,9 @@ class PedidosController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $pedidos = Pedidos::sortable()->paginate($perPage);
+            $pedidos = Pedidos::latest()->paginate($perPage);
         } else {
-            $pedidos = Pedidos::sortable()->paginate($perPage);
+            $pedidos = Pedidos::latest()->paginate($perPage);
         }
 
         return view('pedidos.index', compact('pedidos'));

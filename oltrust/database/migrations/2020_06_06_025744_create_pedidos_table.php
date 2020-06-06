@@ -13,13 +13,21 @@ class CreatePedidosTable extends Migration
     public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->timestamps();
             $table->softDeletes();
             $table->integer('pedido_ident')->nullable();
             $table->date('pedido_data')->nullable();
-            $table->integer('cliente_id')->nullable();
-            $table->integer('produto_id')->nullable();
+            
+            //Relação
+            $table->integer('cliente_id')->unsigned();
+            $table->integer('produto_id')->unsigned();
+            
+            $table->string('pedido_status');
+            
+            //Referencia
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('produto_id')->references('id')->on('produtos');
             });
     }
 
