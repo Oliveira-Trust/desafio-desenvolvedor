@@ -21,10 +21,7 @@ Route::resource('admin/clientes', 'Clientes\\clientesController')->middleware('a
 Route::resource('admin/produtos', 'Produtos\\produtosController')->middleware('auth');
 Route::resource('admin/pedidos', 'Pedidos\\pedidosController')->middleware('auth');
 
-Route::get('admin/clientes', 'Clientes\\clientesController@index')->middleware('auth');
-Route::get('admin/produtos', 'Produtos\\produtosController@index')->middleware('auth');
-Route::get('admin/pedidos', 'Pedidos\\pedidosController@index')->middleware('auth');
-
 Auth::routes();
 
 Route::get('admin/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
+

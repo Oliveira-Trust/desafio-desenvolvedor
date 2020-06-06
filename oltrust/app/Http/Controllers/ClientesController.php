@@ -21,9 +21,9 @@ class ClientesController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $clientes = Clientes::sortable()->paginate($perPage);
+            $clientes = Clientes::latest()->paginate($perPage);
         } else {
-            $clientes = Clientes::sortable()->paginate($perPage);
+            $clientes = Clientes::latest()->paginate($perPage);
         }
 
         return view('clientes.index', compact('clientes'));

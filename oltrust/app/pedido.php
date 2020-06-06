@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Kyslik\ColumnSortable\Sortable;
 
 class pedido extends Model
 {
@@ -28,10 +27,7 @@ class pedido extends Model
      *
      * @var array
      */
-    protected $fillable = ['pedido_ident', 'pedido_data', 'cliente_id', 'produto_id'];
+    protected $fillable = ['pedido_ident', 'pedido_data', 'cliente_id', 'produto_id', 'pedido_status'];
 
-    use Sortable;
-
-    public $sortable = ['pedido_ident', 'pedido_data', 'cliente_id', 'produto_id'];
     
 }

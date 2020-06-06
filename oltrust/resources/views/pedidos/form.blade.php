@@ -18,6 +18,15 @@
     <input class="form-control" name="produto_id" type="number" id="produto_id" value="{{ isset($pedido->produto_id) ? $pedido->produto_id : ''}}" >
     {!! $errors->first('produto_id', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group {{ $errors->has('pedido_status') ? 'has-error' : ''}}">
+    <label for="pedido_status" class="control-label">{{ 'Pedido Status' }}</label>
+    <select name="pedido_status" class="form-control" id="pedido_status" >
+    @foreach (json_decode('{aberto: Aberto, aguardando: Aguardando, finalizado: Finalizado}', true) as $optionKey => $optionValue)
+        <option value="{{ $optionKey }}" {{ (isset($pedido->pedido_status) && $pedido->pedido_status == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+    @endforeach
+</select>
+    {!! $errors->first('pedido_status', '<p class="help-block">:message</p>') !!}
+</div>
 
 
 <div class="form-group">

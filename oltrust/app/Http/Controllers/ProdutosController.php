@@ -21,9 +21,9 @@ class ProdutosController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $produtos = Produtos::sortable()->paginate($perPage);
+            $produtos = Produtos::latest()->paginate($perPage);
         } else {
-            $produtos = Produtos::sortable()->paginate($perPage);
+            $produtos = Produtos::latest()->paginate($perPage);
         }
 
         return view('produtos.index', compact('produtos'));

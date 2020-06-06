@@ -30,7 +30,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                    <th>@sortablelink('id')</th><th>@sortablelink('pedido_ident')</th><th>@sortablelink('pedido_data')</th><th>@sortablelink('cliente_id')</th><th>Actions</th>
+                                        <th>#</th><th>Pedido Ident</th><th>Pedido Data</th><th>Cliente Id</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
