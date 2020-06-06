@@ -56,6 +56,18 @@ vim .env
 	DB_USERNAME=desafdev
 	DB_PASSWORD=devpass!123
 
+Locale pt-br
+------------------------
+
+composer require lucascudo/laravel-pt-br-localization
+
+php artisan vendor:publish --tag=laravel-pt-br-localization
+
+vim config/app.php (linha 83)
+	'locale' => 'pt_BR',
+
+CRUD Generator
+------------------------
 composer require appzcoder/crud-generator
 vim config/app.php	
 	config/app.php
@@ -76,9 +88,6 @@ php artisan crud:generate clientes --fields="cliente_nome#text; cliente_email#te
 
 php artisan crud:generate produtos --fields="produto_nome#text; produto_val#date; produto_forn#text; produto_cont#text; produto_preco#double"  --controller-namespace=Produtos --route-group=admin --form-helper=html --soft-deletes=yes
 
-php artisan crud:generate pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer; produto_id#integer" --controller-namespace=Pedidos --route-group=admin --form-helper=html --soft-deletes=yes
-
-
 CONTROLLER
 -------------------------
 
@@ -86,17 +95,12 @@ php artisan crud:controller ClientesController --crud-name=clientes --model-name
 
 php artisan crud:controller ProdutosController --crud-name=produtos --model-name=Produtos --route-group=admin
 
-php artisan crud:controller PedidosController --crud-name=pedidos --model-name=Pedidos --route-group=admin
-
-
 VIEWS
 -------------------------
 
 php artisan crud:view Clientes --fields="cliente_nome#text; cliente_email#text; cliente_tel#text; cliente_aniv#date" --route-group=admin --form-helper=html
 
 php artisan crud:view Produtos --fields="produto_nome#text; produto_val#date; produto_forn#text; produto_cont#text; produto_preco#double" --route-group=admin --form-helper=html
-
-php artisan crud:view Pedidos --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer; produto_id#integer" --route-group=admin --form-helper=html
 
 php artisan migrate
 
@@ -121,6 +125,22 @@ php artisan crud:api-controller Api\\ProdutosController --crud-name=produtos --m
 php artisan crud:api-controller Api\\PedidosController --crud-name=pedidos --model-name=Pedidos
 
 
+IMPORTANTE - deVIDO A REFERENCIA ESTE DEVE SER UM SEGUNDO MIGRATE
+-------------------------
+-------------------------
+
+php artisan crud:generate pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer#unsigned; produto_id#integer#unsigned; pedido_status#select#options={"aberto": "Aberto", "aguardando": "Aguardando", "finalizado": "Finalizado"}" --foreign-keys="cliente_id#id#clientes" --foreign-keys="produto_id#id#produtos" --controller-namespace=Pedidos --route-group=admin --form-helper=html --soft-deletes=yes
+
+vim database/migration/*_create_pedidos_table.php
+	CORRIGIR AS REFERENCIAS MANUALMENTE, TALVEZ POR UM BUG, SOMENTE É REGISTRADO UMA REFERENCIA (produtos) E A OUTRA (clientes) É IGNORADA. DEVE-SE FAZER ESSA CORREÇÃO.
+
+php artisan crud:controller PedidosController --crud-name=pedidos --model-name=Pedidos --route-group=admin
+
+php artisan crud:view Pedidos --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer; produto_id#integer; pedido_status#select#options={"aberto": "Aberto", "aguardando": "Aguardando", "finalizado": "Finalizado"}" --route-group=admin --form-helper=html
+
+php artisan migrate
+
+
 User Interface 
 ------------------------
 
@@ -133,6 +153,12 @@ npm install
 npm run dev
 npm install font-awesome --save
 
+
+vim routes/web.php
+		Auth::routes();
+		Route::get('admin/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
+
+		[!] ADICIONAR ->middleware('auth') AO FIM DAS LINHAS RESOURCES.
 
 Sort/Order View 
 ------------------------
