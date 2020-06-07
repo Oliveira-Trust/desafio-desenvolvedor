@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Clientes</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/clientes/create') }}" class="btn btn-success btn-sm" title="Add New Cliente">
+                        <a href="{{ url('/admin/clientes/create') }}" class="btn btn-success btn-sm" title="Add New cliente">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -39,13 +39,13 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->cliente_nome }}</td><td>{{ $item->cliente_email }}</td><td>{{ $item->cliente_tel }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/clientes/' . $item->id) }}" title="View Cliente"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/clientes/' . $item->id . '/edit') }}" title="Edit Cliente"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/clientes/' . $item->id) }}" title="View cliente"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/clientes/' . $item->id . '/edit') }}" title="Edit cliente"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/clientes' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Cliente" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete cliente" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>

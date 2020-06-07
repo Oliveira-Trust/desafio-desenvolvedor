@@ -1,16 +1,16 @@
 <div class="form-group {{ $errors->has('cliente_nome') ? 'has-error' : ''}}">
     <label for="cliente_nome" class="control-label">{{ 'Cliente Nome' }}</label>
-    <textarea class="form-control" rows="5" name="cliente_nome" type="textarea" id="cliente_nome" >{{ isset($cliente->cliente_nome) ? $cliente->cliente_nome : ''}}</textarea>
+    <input class="form-control" name="cliente_nome" type="text" id="cliente_nome" value="{{ isset($cliente->cliente_nome) ? $cliente->cliente_nome : ''}}" >
     {!! $errors->first('cliente_nome', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('cliente_email') ? 'has-error' : ''}}">
     <label for="cliente_email" class="control-label">{{ 'Cliente Email' }}</label>
-    <textarea class="form-control" rows="5" name="cliente_email" type="textarea" id="cliente_email" >{{ isset($cliente->cliente_email) ? $cliente->cliente_email : ''}}</textarea>
+    <input class="form-control" name="cliente_email" type="text" id="cliente_email" value="{{ isset($cliente->cliente_email) ? $cliente->cliente_email : ''}}" >
     {!! $errors->first('cliente_email', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('cliente_tel') ? 'has-error' : ''}}">
     <label for="cliente_tel" class="control-label">{{ 'Cliente Tel' }}</label>
-    <textarea class="form-control" rows="5" name="cliente_tel" type="textarea" id="cliente_tel" >{{ isset($cliente->cliente_tel) ? $cliente->cliente_tel : ''}}</textarea>
+    <input class="form-control" name="cliente_tel" type="text" id="cliente_tel" value="{{ isset($cliente->cliente_tel) ? $cliente->cliente_tel : ''}}" >
     {!! $errors->first('cliente_tel', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('cliente_aniv') ? 'has-error' : ''}}">

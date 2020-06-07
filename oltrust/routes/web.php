@@ -25,3 +25,5 @@ Auth::routes();
 
 Route::get('admin/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
 
+
+Route::resource('admin/clientes', 'Clientes\\clientesController');
