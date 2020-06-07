@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('clientes', 'Api\\ClientesController', ['except' => ['create', 'edit']]);
+Route::resource('produtos', 'Api\\ProdutosController', ['except' => ['create', 'edit']]);
+Route::resource('condicoes', 'Api\\CondicoesController', ['except' => ['create', 'edit']]);
