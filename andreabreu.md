@@ -61,12 +61,11 @@ composer create-project laravel/laravel oliveiratrust
 ```bash
 mysql -uroot
 ```
-```sql
-mysql> CREATE DATABASE oltrust_db CHARACTER SET utf8 COLLATE utf8_general_ci;
-mysql> CREATE USER 'desafdev'@'localhost' IDENTIFIED BY 'devpass!123';
-mysql> GRANT ALL ON *.oltrust_db TO 'desafdev'@'localhost';
-mysql> FLUSH PRIVILEGES;
-mysql> exit
+```mysql
+CREATE DATABASE oltrust_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE USER 'desafdev'@'localhost' IDENTIFIED BY 'devpass!123';
+GRANT ALL ON *.oltrust_db TO 'desafdev'@'localhost';
+FLUSH PRIVILEGES;
 ```
 ```bash
 vim .env
