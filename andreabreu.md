@@ -160,6 +160,7 @@ php artisan crud:api Produtos --fields="produto_nome#text; produto_val#date; pro
 ```bash
 php artisan crud:api Condicoes --fields="condicoes#string;" --controller-namespace=Api
 ```
+
 API CONTROLLER
 -------------------------
 ```bash
@@ -178,16 +179,43 @@ IMPORTANTE - DEVIDO A REFERENCIA ESTE DEVE SER UM SEGUNDO MIGRATE
 ```bash
 php artisan crud:generate pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer#unsigned; produto_id#integer#unsigned; condicoes_id#integer#unsigned" --foreign-keys="cliente_id#id#clientes; produto_id#id#produtos; condicoes_id#id#condicoes" --controller-namespace=Pedidos --route-group=admin --form-helper=html --soft-deletes=yes
 ```
+
+É NECESSARIO EDITAR O ARQUIVO DE MIGRACAO PARA QUE A RELACAO ENTRE TABELAS SEJAM FEITA CORRETAMENTE.
+-------------------------
 ```bash
 vim database/migration/*_create_pedidos_table.php
 ```
-	~~CORRIGIR AS REFERENCIAS MANUALMENTE, TALVEZ POR UM BUG, SOMENTE É REGISTRADO UMA REFERENCIA (produtos) E A OUTRA (clientes) É IGNORADA. DEVE-SE FAZER ESSA CORREÇÃO.~~
+```php
+public function up()
+{
+	Schema::create('pedidos', function (Blueprint $table) {
+		$table->increments('id');
+		$table->timestamps();
+		$table->softDeletes();
+		$table->integer('pedido_ident')->nullable();
+		$table->date('pedido_data')->nullable();
 
+		/*
+		*   RELAÇÃO DE PEDIDO
+		*/
+		$table->integer('cliente_id')->unsigned();
+		$table->integer('produto_id')->unsigned();
+		$table->integer('condicoes_id')->unsigned();
+
+		/*
+		*   REFERENCIA DAS RELAÇÕES
+		*/
+		$table->foreign('cliente_id')->references('id')->on('clientes');
+		$table->foreign('produto_id')->references('id')->on('produtos');
+		$table->foreign('condicoes_id')->references('id')->on('condicoes');
+		});
+}
+```
 ```bash
 php artisan crud:controller PedidosController --crud-name=pedidos --model-name=Pedidos --route-group=admin
 ```
 ```bash
-php artisan crud:view Pedidos --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer; produto_id#integer; pedido_status#select#options={"aberto": "Aberto", "aguardando": "Aguardando", "finalizado": "Finalizado"}" --route-group=admin --form-helper=html
+php artisan crud:view Pedidos --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer; produto_id#integer; condicoes_id#integer" --route-group=admin --form-helper=html
 ```
 ```bash
 php artisan migrate
@@ -208,10 +236,11 @@ Select pedidos.id, pedidos.pedido_ident,
   clientes.cliente_nome,
   produtos.produto_nome,
   produtos.produto_preco,
-  pedidos.pedido_status
+  condicoes.condicoes
 From pedidos
   Inner Join clientes On clientes.id = pedidos.cliente_id
   Inner Join produtos On produtos.id = pedidos.produto_id
+  Inner Join condicoes On condicoes.id = pedidos.condicoes_id
 Order By pedidos.id
 ```
 

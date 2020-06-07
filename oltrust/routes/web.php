@@ -23,3 +23,4 @@ Route::resource('admin/status', 'Status\\statusController');
 Route::resource('admin/condicao', 'Condicao\\condicaoController');
 Route::resource('admin/statuses', 'Statuses\\statusesController');
 Route::resource('admin/condicoes', 'Condicoes\\condicoesController');
+Route::resource('admin/pedidos', 'Pedidos\\pedidosController');
