@@ -118,7 +118,7 @@ php artisan crud:generate clientes --fields="cliente_nome#string; cliente_email#
 php artisan crud:generate produtos --fields="produto_nome#string; produto_val#date; produto_forn#string; produto_cont#string; produto_preco#double"  --controller-namespace=Produtos --route-group=admin --form-helper=html --soft-deletes=yes
 ```
 ```bash
-php artisan crud:generate status --fields="status#string;"  --controller-namespace=Status --route-group=admin --form-helper=html --soft-deletes=yes
+php artisan crud:generate condicoes --fields="condicoes#string;"  --controller-namespace=condicoes --route-group=admin --form-helper=html --soft-deletes=yes
 ```
 CONTROLLER
 -------------------------
@@ -129,7 +129,7 @@ php artisan crud:controller ClientesController --crud-name=clientes --model-name
 php artisan crud:controller ProdutosController --crud-name=produtos --model-name=Produtos --route-group=admin
 ```
 ```bash
-php artisan crud:controller StatusController --crud-name=status --model-name=Status --route-group=admin
+php artisan crud:controller CondicoesController --crud-name=condicoes --model-name=Statuses --route-group=admin
 ```
 
 VIEWS
@@ -141,7 +141,7 @@ php artisan crud:view Clientes --fields="cliente_nome#text; cliente_email#text; 
 php artisan crud:view Produtos --fields="produto_nome#text; produto_val#date; produto_forn#text; produto_cont#text; produto_preco#double" --route-group=admin --form-helper=html
 ```
 ```bash
-php artisan crud:view Status --fields="status#string;" --route-group=admin --form-helper=html
+php artisan crud:view Condicoes --fields="condicoes#string" --route-group=admin --form-helper=html
 ```
 
 ```bash
@@ -158,7 +158,7 @@ php artisan crud:api Clientes --fields="cliente_nome#text; cliente_email#text; c
 php artisan crud:api Produtos --fields="produto_nome#text; produto_val#date; produto_forn#text; produto_cont#text; produto_preco#double" --controller-namespace=Api
 ```
 ```bash
-php artisan crud:api Status --fields="status#string;" --controller-namespace=Api
+php artisan crud:api Condicoes --fields="condicoes#string;" --controller-namespace=Api
 ```
 API CONTROLLER
 -------------------------
@@ -169,14 +169,14 @@ php artisan crud:api-controller Api\\ClientesController --crud-name=clientes --m
 php artisan crud:api-controller Api\\ProdutosController --crud-name=produtos --model-name=Produtos
 ```
 ```bash
-php artisan crud:api-controller Api\\StatusController --crud-name=status --model-name=Status
+php artisan crud:api-controller Api\\CondicoesController --crud-name=status --model-name=Condicoes
 ```
 
 IMPORTANTE - DEVIDO A REFERENCIA ESTE DEVE SER UM SEGUNDO MIGRATE
 -------------------------
 
 ```bash
-php artisan crud:generate pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer#unsigned; produto_id#integer#unsigned; status_id#integer#unsigned" --foreign-keys="cliente_id#id#clientes; produto_id#id#produtos; status_id#id#status" --controller-namespace=Pedidos --route-group=admin --form-helper=html --soft-deletes=yes
+php artisan crud:generate pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer#unsigned; produto_id#integer#unsigned; condicoes_id#integer#unsigned" --foreign-keys="cliente_id#id#clientes; produto_id#id#produtos; condicoes_id#id#condicoes" --controller-namespace=Pedidos --route-group=admin --form-helper=html --soft-deletes=yes
 ```
 ```bash
 vim database/migration/*_create_pedidos_table.php
