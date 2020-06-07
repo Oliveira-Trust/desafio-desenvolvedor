@@ -1,37 +1,38 @@
-ANDRE ABREU - andrea.abreu@gmail.com
-Desafio Desenvolvedor Oliveira-Trust
-https://www.linkedin.com/in/abreulandre/
+# Desafio Desenvolvedor Oliveira-Trust #
+* ANDRE ABREU - andrea.abreu@gmail.com *
+* https://www.linkedin.com/in/abreulandre/ *
 
-##Cronograma##
+## Cronograma ##
 
-###03/06/2020###
-- ISSUE #001 - CLONAR REPOSITORIO - 0.5h
-- ISSUE #002 - CRIAR PROJETO LARAVEL E AJUSTES DE BANCO - 0.5h
-- ISSUE #003 - CRIAR API-CRUD CLIENTES - 0.5h
-- ISSUE #004 - CRIAR CRUD CLIENTES - 0.5h
-- ISSUE #005 - CRIAR CRUD PRODUTOS - 0.5h
-- ISSUE #006 - CRIAR CRUD PEDIDOS  - 0.5h
-- ISSUE #008 - CRIAR API-CRUD PRODUTOS - 0.5h
-- ISSUE #007 - CRIAR API-CRUD CLIENTES - 0.5h
-- ISSUE #009 - CRIAR API-CRUD PEDIDOS  - 0.5h
-- ISSUE #010 - TESTE API-CRUD CLIENTES - 0.5h
-- ISSUE #011 - TESTE API-CRUD PRODUTOS - 0.5h
-- ISSUE #012 - TESTE API-CRUD PEDIDOS  - 0.5h
+### 03/06/2020 ###
+- [X] ISSUE #001 - CLONAR REPOSITORIO - 0.5h
+- [X] ISSUE #002 - CRIAR PROJETO LARAVEL E AJUSTES DE BANCO - 0.5h
+- [X] ISSUE #003 - CRIAR API-CRUD CLIENTES - 0.5h
+- [X] ISSUE #004 - CRIAR CRUD CLIENTES - 0.5h
+- [X] ISSUE #005 - CRIAR CRUD PRODUTOS - 0.5h
+- [X] ISSUE #006 - CRIAR CRUD PEDIDOS  - 0.5h
+- [X] ISSUE #008 - CRIAR API-CRUD PRODUTOS - 0.5h
+- [X] ISSUE #007 - CRIAR API-CRUD CLIENTES - 0.5h
+- [X] ISSUE #009 - CRIAR API-CRUD PEDIDOS  - 0.5h
+- [X] ISSUE #010 - TESTE API-CRUD CLIENTES - 0.5h
+- [X] ISSUE #011 - TESTE API-CRUD PRODUTOS - 0.5h
+- [X] ISSUE #012 - TESTE API-CRUD PEDIDOS  - 0.5h
 
-###04/06/2020###
-- ISSUE #013 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD CLIENTES - 1h
-- ISSUE #014 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PRODUTOS - 1h
-- ISSUE #015 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PEDIDOS - 1h
-- ISSUE #020 - APLICAR AUTENTICAÇÃO - 2h
-- ISSUE #021 - APLICAR NAVEGAÇÃO - 1h
+### 04/06/2020 ###
+- [X] ISSUE #013 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD CLIENTES - 1h
+- [X] ISSUE #014 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PRODUTOS - 1h
+- [X] ISSUE #015 - ANALIZE VIEW BOOTSTRAP E TESTE CRUD PEDIDOS - 1h
+- [X] ISSUE #020 - APLICAR AUTENTICAÇÃO - 2h
+- [X] ISSUE #021 - APLICAR NAVEGAÇÃO - 1h
 
-###05/06/2020###
-- ISSUE #019 - APLICAR CORRELACAO BANCO TABELA PEDIDOS - 6h
+### 05/06/2020 ###
+- [X] ISSUE #019 - APLICAR CORRELACAO BANCO TABELA PEDIDOS - 6h
 
 ###06/06/2020###
-- ISSUE #019 - APLICAR CORRELACAO BANCO TABELA PEDIDOS - 6h
+- [X] ISSUE #019 - APLICAR CORRELACAO BANCO TABELA PEDIDOS - 6h
 
-###09/06/2020###
+### 08/06/2020 ###
+### 09/06/2020 ###
 - ISSUE #020 - TESTAR VIEW CORRELACAO PEDIDOS - 1h
 - ISSUE #016 - FILTROS E ORDEM VIEW CLIENTES - 1h
 - ISSUE #017 - FILTROS E ORDEM VIEW PRODUTOS - 1h
@@ -40,49 +41,62 @@ https://www.linkedin.com/in/abreulandre/
 - ISSUE #022 - ENTREGA - 0.5h
 
 
+Github
+------------------------
 
-```sh
+```bash
 git clone add desafio-desenvolvedor https://github.com/andreabreu76/desafio-desenvolvedor.git
 cd desafio-desenvolvedor
 git checkout -b andreabreu
 ```
 
-```sh
+Projeto
+------------------------
+Criando projeto.
+
+```bash
 composer create-project laravel/laravel oliveiratrust
 ```
 
-```sh
+```bash
 mysql -uroot
 ```
 ```sql
-	mysql> CREATE DATABASE oltrust_db CHARACTER SET utf8 COLLATE utf8_general_ci;
-	mysql> CREATE USER 'desafdev'@'localhost' IDENTIFIED BY 'devpass!123';
-	mysql> GRANT ALL ON *.oltrust_db TO 'desafdev'@'localhost';
-	mysql> FLUSH PRIVILEGES;
-	mysql> exit
+mysql> CREATE DATABASE oltrust_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+mysql> CREATE USER 'desafdev'@'localhost' IDENTIFIED BY 'devpass!123';
+mysql> GRANT ALL ON *.oltrust_db TO 'desafdev'@'localhost';
+mysql> FLUSH PRIVILEGES;
+mysql> exit
 ```
-
-cd
+```bash
 vim .env
+```
+	CONTEUDO
+	-----------------------
 	DB_DATABASE=oltrust_db
 	DB_USERNAME=desafdev
 	DB_PASSWORD=devpass!123
 
+
 Locale pt-br
 ------------------------
-
+```bash
 composer require lucascudo/laravel-pt-br-localization
-
+```
+```bash
 php artisan vendor:publish --tag=laravel-pt-br-localization
-
+```
+```bash
 vim config/app.php (linha 83)
+```
 	'locale' => 'pt_BR',
 
 CRUD Generator
 ------------------------
 composer require appzcoder/crud-generator
+
 vim config/app.php
-	config/app.php
+
 		PROVIDERS
 		----------------------------
 		Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
