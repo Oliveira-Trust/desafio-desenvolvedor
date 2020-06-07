@@ -74,7 +74,7 @@ vim .env
 ```
 	CONTEUDO
 	-----------------------
-	DB_DATABASE=oltrust_db
+	DB_DATABASE=oltrust_db2
 	DB_USERNAME=desafdev
 	DB_PASSWORD=devpass!123
 
@@ -128,6 +128,10 @@ php artisan crud:controller ClientesController --crud-name=clientes --model-name
 ```bash
 php artisan crud:controller ProdutosController --crud-name=produtos --model-name=Produtos --route-group=admin
 ```
+```bash
+php artisan crud:controller StatusController --crud-name=status --model-name=Status --route-group=admin
+```
+
 VIEWS
 -------------------------
 ```bash
@@ -136,6 +140,10 @@ php artisan crud:view Clientes --fields="cliente_nome#text; cliente_email#text; 
 ```bash
 php artisan crud:view Produtos --fields="produto_nome#text; produto_val#date; produto_forn#text; produto_cont#text; produto_preco#double" --route-group=admin --form-helper=html
 ```
+```bash
+php artisan crud:view Status --fields="status#string;" --route-group=admin --form-helper=html
+```
+
 ```bash
 php artisan migrate
 ```
@@ -149,6 +157,9 @@ php artisan crud:api Clientes --fields="cliente_nome#text; cliente_email#text; c
 ```bash
 php artisan crud:api Produtos --fields="produto_nome#text; produto_val#date; produto_forn#text; produto_cont#text; produto_preco#double" --controller-namespace=Api
 ```
+```bash
+php artisan crud:api Status --fields="status#string;" --controller-namespace=Api
+```
 API CONTROLLER
 -------------------------
 ```bash
@@ -157,12 +168,15 @@ php artisan crud:api-controller Api\\ClientesController --crud-name=clientes --m
 ```bash
 php artisan crud:api-controller Api\\ProdutosController --crud-name=produtos --model-name=Produtos
 ```
+```bash
+php artisan crud:api-controller Api\\StatusController --crud-name=status --model-name=Status
+```
 
 IMPORTANTE - DEVIDO A REFERENCIA ESTE DEVE SER UM SEGUNDO MIGRATE
 -------------------------
 
 ```bash
-php artisan crud:generate pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer#unsigned; produto_id#integer#unsigned; status_id#integer#unsigned" --foreign-keys="cliente_id#id#clientes" --foreign-keys="produto_id#id#produtos" --controller-namespace=Pedidos --route-group=admin --form-helper=html --soft-deletes=yes
+php artisan crud:generate pedidos  --fields="pedido_ident#integer; pedido_data#date; cliente_id#integer#unsigned; produto_id#integer#unsigned; status_id#integer#unsigned" --foreign-keys="cliente_id#id#clientes; produto_id#id#produtos; status_id#id#status" --controller-namespace=Pedidos --route-group=admin --form-helper=html --soft-deletes=yes
 ```
 ```bash
 vim database/migration/*_create_pedidos_table.php
