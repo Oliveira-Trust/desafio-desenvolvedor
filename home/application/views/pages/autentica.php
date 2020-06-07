@@ -1,3 +1,4 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 
 <div class="container" style="height:200px;">
   <div class="row bg-primary text-white">
@@ -31,7 +32,7 @@
 function MontaFormLogin(){
     
     //Carrega as funções
-    echo form_open("valida");
+    echo form_open("/sysot/valida");
     
     //Campo usuario
     echo form_label('','usuario');

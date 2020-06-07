@@ -1,8 +1,11 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+
+
 <div style="margin:0 auto;width: 70%;text-align: center;">
     <img src="<?=base_url('assets/img/Logo.png')?>" width="200px;" height="100px;">
 </div>
 <div class="jumbotron text-center">
-    <h1><a href="home/autentica">Sistema de Pedidos XPTO</a></h1>
+    <h1><a href="home/index.php/sysot/autentica">Sistema de Pedidos XPTO</a></h1>
   <p>Seu dia mais fácil e ágil</p> 
 </div>
   
@@ -20,14 +23,14 @@
     </div>
     <div class="col-sm-3">
       <h3>Pedidos</h3>        
-      <p>Cliente já cadastrado?</p>
+      <p>Pedidos online</p>
       <p>Faça seu pedido e receba em casa hoje mesmo.</p>
     </div>
     <div class="col-sm-3">
       <h3>ADM</h3>        
       <p>Administração do sistema</p>
       <p>Veja, acompanhe e faça manutenção do sistema</p>
-      <p><a href="home/autentica">Autenticar</a></p>
+      <p><a href="home/index.php/sysot/autentica">Autenticar</a></p>
     </div>
   </div>
 </div>

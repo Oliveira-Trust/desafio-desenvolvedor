@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Sysot extends CI_Controller {
     
     function __construct(){
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('CRUD_model','CRUD');
+
     }
 
     public function index()
@@ -34,6 +34,17 @@ class Home extends CI_Controller {
         $dados["titulo"] = "Formulário de autenticação";
         $this->load->view('includes/header',$dados);
         $this->load->view('pages/autentica');
+        $this->load->view('includes/footer');
+    }
+    
+    // Chama formulário de autenticação
+    public function valida()
+    {
+
+        $dados["titulo"] = "SYSOT";
+        $this->load->view('includes/header',$dados);
+        $this->load->view('includes/menu');
+        $this->load->view('pages/inicial');
         $this->load->view('includes/footer');
     }
 }
