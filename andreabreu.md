@@ -57,7 +57,7 @@ Projeto
 Criando projeto.
 
 ```bash
-composer create-project laravel/laravel oliveiratrust
+composer create-project laravel/laravel oltrust
 ```
 
 ```bash
@@ -66,7 +66,7 @@ mysql -uroot
 ```mysql
 CREATE DATABASE oltrust_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE USER 'desafdev'@'localhost' IDENTIFIED BY 'devpass!123';
-GRANT ALL ON *.oltrust_db TO 'desafdev'@'localhost';
+GRANT ALL ON oltrust_db.* TO 'desafdev'@'localhost';
 FLUSH PRIVILEGES;
 ```
 ```bash
