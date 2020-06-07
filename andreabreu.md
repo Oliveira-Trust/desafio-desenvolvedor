@@ -33,6 +33,7 @@
 
 ### 08/06/2020 ###
 - [X] ISSUE #023 - APLICAR FORMATACAO DESSE MARKDOWN - 2h
+- [X] ISSUE #023 - ATUALIZAÇÃO REPOSITORIO - 2h
 
 ### 09/06/2020 ###
 - [ ] ISSUE #020 - TESTAR VIEW CORRELACAO PEDIDOS - 1h
@@ -271,19 +272,3 @@ vim routes/web.php
 		Route::get('admin/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
 
 		~~ADICIONAR ->middleware('auth') AO FIM DAS LINHAS RESOURCES.~~
-
-Sort/Order View
-------------------------
-```bash
-composer require kyslik/column-sortable
-```
-```bash
-vim config/app.php
-```
-		PROVIDERS
-		----------------------------
-		Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
-
-```bash
-php artisan vendor:publish --provider="Kyslik\ColumnSortable\ColumnSortableServiceProvider" --tag="config"
-```

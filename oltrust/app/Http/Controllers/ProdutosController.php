@@ -48,9 +48,9 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
         Produtos::create($requestData);
 
         return redirect('admin/produtos')->with('flash_message', 'Produtos added!');
@@ -94,9 +94,9 @@ class ProdutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $produto = Produtos::findOrFail($id);
         $produto->update($requestData);
 

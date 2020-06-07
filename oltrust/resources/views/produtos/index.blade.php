@@ -10,7 +10,7 @@
                     <div class="card-header">Produtos</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/produtos/create') }}" class="btn btn-success btn-sm" title="Add New Produto">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Novo
                         </a>
 
                         <form method="GET" action="{{ url('/admin/produtos') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -30,7 +30,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Produto Nome</th><th>Produto Val</th><th>Produto Forn</th><th>Actions</th>
+                                        <th>#</th><th>Nome</th><th>Validade</th><th>Fornecedor</th><th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>

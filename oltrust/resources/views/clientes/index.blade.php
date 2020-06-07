@@ -10,7 +10,7 @@
                     <div class="card-header">Clientes</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/clientes/create') }}" class="btn btn-success btn-sm" title="Add New Cliente">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Novo
                         </a>
 
                         <form method="GET" action="{{ url('/admin/clientes') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -30,7 +30,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Cliente Nome</th><th>Cliente Email</th><th>Cliente Tel</th><th>Actions</th>
+                                        <th>#</th><th>Nome</th><th>Email</th><th>Celular</th><th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
