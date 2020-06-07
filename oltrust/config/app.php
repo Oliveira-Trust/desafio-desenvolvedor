@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+        *   Requisito para o CRUD-GENERATOR
+        */
+        Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
+    	Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -227,6 +232,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+        *   Requisito para o CRUD-GENERATOR
+        */
+        'Form'      => Collective\Html\FormFacade::class,
+    	'HTML'      => Collective\Html\HtmlFacade::class,
     ],
 
 ];
