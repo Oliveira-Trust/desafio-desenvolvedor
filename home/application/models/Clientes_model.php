@@ -39,6 +39,25 @@ class Clientes_model extends CI_Model
         
     } 
     
+    //Atualizar um cliente na tabela clientes
+    public function editaCliente($dados=NULL, $id=NULL)
+    {
+    //Verifica se foi passado $dados e $id    
+    if ($dados != NULL && $id != NULL):
+        //Se foi passado ele vai a atualização
+        $this->db->update('clientes', $dados, array('id'=>$id));      
+    endif;
+    }  
+    
+    //Apaga um cliente na tabela cliente 
+    public function apagaCliente($id=NULL){
+        //Verificamos se foi passado o a ID como parametro
+        if ($id != NULL):
+            //Executa a função DB DELETE para apagar o cliente
+            $this->db->delete('clientes', array('id'=>$id));            
+        endif;
+    } 
+    
 }
 
 ?>

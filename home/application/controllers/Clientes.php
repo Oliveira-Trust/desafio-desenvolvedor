@@ -56,18 +56,27 @@ class Clientes extends CI_Controller {
         }else
         {
             $dados["formerror"] = NULL;
+           
             
-            //Guarda os campos
-            $dadosForm["nome"] = $this->input->post("txtNome");
-            $dadosForm["senha"] = $this->input->post("pasSenha");
-            $dadosForm["email"] = $this->input->post("txtEmail");
-            $dadosForm["ativo"] = 1;
-            
-            //Verifica se foi passado via post a id do produtos
-            if ($this->input->post('id') != NULL) {		
+            //Verifica se foi passado via post a id do cliente
+            if ($this->input->post('id') != NULL) {
+                
+                //Guarda os campos
+                $dadosForm["nome"] = $this->input->post("txtNome");
+                $dadosForm["senha"] = $this->input->post("pasSenha");
+                $dadosForm["email"] = $this->input->post("txtEmail");
+                
                 //Se foi passado ele vai fazer atualização no registro.	
                 $this->clientes->editaCliente($dadosForm, $this->input->post('id'));
+                
             } else {
+                
+                //Guarda os campos
+                $dadosForm["nome"] = $this->input->post("txtNome");
+                $dadosForm["senha"] = $this->input->post("pasSenha");
+                $dadosForm["email"] = $this->input->post("txtEmail");
+                $dadosForm["ativo"] = 1;
+                
                 // Enviar os dados para função cadastracliente
                 $this->clientes->addCliente($dadosForm);
             }
@@ -106,5 +115,32 @@ class Clientes extends CI_Controller {
         $this->load->view('includes/footer');
 
         }
+        
+        //Função Apagar cliente
+	public function excluicliente($id=NULL)
+	{
+		//Verifica se foi passado um ID, se não vai para a página listar produtos
+		if($id == NULL) {
+                    redirect('/clientes/');
+		}
+
+		//Consulta no banco de dados pra verificar se existe
+		$query = $this->clientes->getClienteByID($id);
+
+		//Verifica se foi encontrado um registro com a ID passada
+		if($query != NULL) {
+			
+                    //Executa a função Clientes_model
+                    $this->clientes->apagaCliente($query->id);
+                    
+                    redirect('/clientes/');
+
+		} else {
+                    //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar produtos
+                    redirect('/clientes/');
+		}
+                
+
+	}
 
 }

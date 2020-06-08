@@ -19,7 +19,14 @@
 function MontaFormLogin($clientes){
     
     //Carrega as funções
-    echo form_open("/clientes/salva");
+    echo form_open("/clientes/salva/");
+    
+    $campoId= array(
+        'name' => 'id',
+        'value' => $clientes->id,
+        'type' => 'hidden'
+    );
+    echo form_input($campoId, set_value('id'));
     
     //Campo nome
     echo form_label('','Nome');

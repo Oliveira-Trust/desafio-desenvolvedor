@@ -20,7 +20,7 @@
           <td><?=$cliente->email;?></td>
           <td>
               <a href="<?=base_url('/clientes/editacliente/')?><?=$cliente->id;?>"><button type="button" class="btn btn-warning">Edita</button></a>
-              <a href="<?=base_url('/clientes/exclui/')?><?=$cliente->id;?>"><button type="button" class="btn btn-danger">Exclui</button></a>
+              <a href="<?=base_url('/clientes/excluicliente/')?><?=$cliente->id;?>"><button type="button" class="btn btn-danger">Exclui</button></a>
               
           </td>
         </tr>
