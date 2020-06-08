@@ -1,28 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 
 <?php
-class Clientes_model extends CI_Model
+class Pedidos_model extends CI_Model
 {
     
-    public function getClientes($ordem)
+    public function getPedidos($ordem)
     {
 
-        $query = $this->db->select("*")
-                  ->from("clientes c")
-                  ->where("c.ativo = 1")
-                  ->order_by("c.$ordem", "ASC")
-                  ->get();
-
-        return $query->result();
-        
-    } 
-    
-    public function getNomesClientes()
-    {
-
-        $query = $this->db->select("*")
-                  ->from("clientes c")
-                  ->where("c.ativo = 1")
+        $query = $this->db->select("*, p1.id as idPedido")
+                  ->from("pedidos p1")
+                  ->join('clientes c', 'p1.idClientes = c.id')
+                  ->join('produtos p2', 'p1.idProdutos = p2.id')
+                  ->order_by("$ordem", "ASC")
                   ->order_by("c.nome", "ASC")
                   ->get();
 
@@ -30,29 +19,31 @@ class Clientes_model extends CI_Model
         
     } 
     
-    public function addCliente($dados=NULL) 
+    public function addPedido($dados=NULL) 
     {
         
         if($dados!=NULL):
             
-            $this->db->insert('clientes',$dados);
+            $this->db->insert('pedidos',$dados);
         
         endif;
         
     }
     
-    public function getClienteById($id=NULL)
+    public function getPedidoById($id=NULL)
     {
     
         if ($id != NULL):
-            //Verifica se a ID no banco de dados
-            $this->db->where('id', $id);
-            //limita para apenas um cliente    
-            $this->db->limit(1);
-            //pega os cliente
-            $query = $this->db->get("clientes");
-            //retornamos o cliente
-            return $query->row();
+            
+            $query = $this->db->select("*, p1.id as idPedido")
+                  ->from("pedidos p1")
+                  ->join('clientes c', 'p1.idClientes = c.id')
+                  ->join('produtos p2', 'p1.idProdutos = p2.id')
+                  ->where('p1.id', $id)
+                  ->get();
+            
+            return $query->result();
+                
         endif;
         
     } 

@@ -11,10 +11,10 @@ class Clientes extends CI_Controller {
         $this->load->model('clientes_model','clientes');
     }
 
-    public function index()
+    public function index($ordem = 'nome')
     {
         // Busca dados dos clientes
-        $dados["clientes"] = $this->clientes->getClientes();
+        $dados["clientes"] = $this->clientes->getClientes($ordem);
 
         $dados["titulo"] = "SYSOT - Clientes";
         $this->load->view('includes/header',$dados);
@@ -91,7 +91,7 @@ class Clientes extends CI_Controller {
     
     public function editacliente($id = NULL)
     {
-	//Verifica se foi passado um ID, se não vai para a página listar produtos
+	//Verifica se foi passado um ID, se não vai para a página listar clientes
 	if($id == NULL) {
 		redirect('/clientes/');
 	}
@@ -99,7 +99,7 @@ class Clientes extends CI_Controller {
 	//Faz a consulta no banco de dados pra verificar se existe
 	$query = $this->clientes->getClienteByID($id);
 
-	//Verifica que a consulta voltar um registro, se não vai para a página listar produtos
+	//Verifica que a consulta voltar um registro, se não vai para a página listar clientes
 	if($query == NULL) {
 		redirect('/clientes/');
 	}
@@ -119,7 +119,7 @@ class Clientes extends CI_Controller {
         //Função Apagar cliente
 	public function excluicliente($id=NULL)
 	{
-		//Verifica se foi passado um ID, se não vai para a página listar produtos
+		//Verifica se foi passado um ID, se não vai para a página listar clientes
 		if($id == NULL) {
                     redirect('/clientes/');
 		}
@@ -136,7 +136,7 @@ class Clientes extends CI_Controller {
                     redirect('/clientes/');
 
 		} else {
-                    //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar produtos
+                    //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar clientes
                     redirect('/clientes/');
 		}
                 

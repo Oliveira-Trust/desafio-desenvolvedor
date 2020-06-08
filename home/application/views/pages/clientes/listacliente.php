@@ -6,9 +6,9 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>E-mail</th>
+        <th><a href="<?=base_url('/clientes/index/id')?>">ID</a></th>
+        <th><a href="<?=base_url('/clientes/index/nome')?>">Nome</a></th>
+        <th><a href="<?=base_url('/clientes/index/email')?>">E-mail</a></th>
         <th><a href="<?=base_url('/clientes/novo')?>"><button type="button" class="btn btn-primary">Novo</button></a></th>
       </tr>
     </thead>

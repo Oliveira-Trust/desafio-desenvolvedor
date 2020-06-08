@@ -13,7 +13,7 @@
       <a class="nav-link" href="<?=base_url('/produtos')?>"">Produtos</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<?=base_url('/eedidos')?>"">Pedidos</a>
+      <a class="nav-link" href="<?=base_url('/pedidos')?>"">Pedidos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<?=base_url('')?>"">Sair</a>
