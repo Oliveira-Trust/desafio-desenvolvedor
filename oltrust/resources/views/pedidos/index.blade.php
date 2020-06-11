@@ -30,14 +30,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Pedido Ident</th><th>Pedido Data</th><th>Cliente Id</th><th>Actions</th>
+                                        <th>#</th><th>Pedido Nº</th><th>Data do Pedido</th><th>Cliente</th><th>Produto</th><th>Status</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($pedidos as $item)
+                                    $nome_cliente = DB::select('SELECT cliente_nome FROM clientes Where id ='{{$item}} );
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->pedido_ident }}</td><td>{{ $item->pedido_data }}</td><td>{{ $item->cliente_id }}</td>
+                                        <td>{{ $item->pedido_ident }}</td><td>{{ $item->pedido_data }}</td><td>{{ $item->cliente_id }}</td><td>{{ $item->produto_id }}</td><td>{{ $item->condicoes_id }}</td>
                                         <td>
                                             <a href="{{ url('/admin/pedidos/' . $item->id) }}" title="View Pedido"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/pedidos/' . $item->id . '/edit') }}" title="Edit Pedido"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

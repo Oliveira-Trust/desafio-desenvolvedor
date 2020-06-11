@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::resource('admin/clientes', 'Clientes\\clientesController')->middleware('auth');
 Route::resource('admin/produtos', 'Produtos\\produtosController')->middleware('auth');
 Route::resource('admin/pedidos', 'Pedidos\\pedidosController')->middleware('auth');
+Route::resource('admin/condicoes', 'Pedidos\\condicoesController')->middleware('auth');
 
 Route::get('admin/clientes', 'Clientes\\clientesController@index')->middleware('auth');
 Route::get('admin/produtos', 'Produtos\\produtosController@index')->middleware('auth');
