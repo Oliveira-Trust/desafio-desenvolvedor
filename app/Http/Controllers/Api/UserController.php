@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Repository\UserRepository;
 use App\User;
@@ -25,11 +26,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->user->paginate(10);
+        try {
+            $userRepository = new UserRepository($this->user);
 
-        return response()->json($users);
+            if($request->has("coditions")) {
+                $userRepository->selectCoditions($request->coditions);
+            }
+
+            if($request->has("fields")) {
+                $userRepository->selectFilter($request->fields);
+            }
+
+            return new UserCollection($userRepository->getResult()->paginate(10));
+
+        } catch (QueryException $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
     }
 
     /**
@@ -92,7 +107,7 @@ class UserController extends Controller
                 $user = $this->user->findOrFail($id);
                 $user->update($data);
             }
-            
+
             $message = new ApiMessages("User successfully updated");
             return response()->json($message->getMessage());
         } catch (QueryException $e) {
