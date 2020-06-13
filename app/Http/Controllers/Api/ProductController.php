@@ -4,21 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
-use App\Http\Resources\UserCollection;
-use App\Http\Resources\UserResource;
-use App\Repository\UserRepository;
-use App\User;
+use App\Http\Requests\ProductRequest;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
+use App\Product;
+use App\Repository\ProductRepository;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
-    private $user;
+    private $product;
 
-    public function __construct(User $user)
+    public function __construct(Product $product)
     {
-        $this->user = $user;
+        $this->product = $product;
     }
 
     /**
@@ -29,17 +29,17 @@ class UserController extends Controller
     public function index(Request $request)
     {
         try {
-            $userRepository = new UserRepository($this->user);
+            $productRepository = new ProductRepository($this->product);
 
             if($request->has("coditions")) {
-                $userRepository->selectCoditions($request->coditions);
+                $productRepository->selectCoditions($request->coditions);
             }
 
             if($request->has("fields")) {
-                $userRepository->selectFilter($request->fields);
+                $productRepository->selectFilter($request->fields);
             }
 
-            return new UserCollection($userRepository->getResult()->paginate(10));
+            return new ProductCollection($productRepository->getResult()->paginate(10));
 
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
@@ -53,15 +53,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(ProductRequest $request)
     {
         try {
-            $data = $request->all();
+            $this->product->create($request->all());
 
-            $data["password"] = bcrypt($data["password"]);
-            $this->user->create($data);
+            $message = new ApiMessages("Product sucessfully created");
 
-            $message = new ApiMessages("User successfully created");
             return response()->json($message->getMessage());
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
@@ -78,9 +76,9 @@ class UserController extends Controller
     public function show($id)
     {
         try {
-            $user = $this->user->findOrFail($id);
+            $product = $this->product->findOrFail($id);
 
-            return new UserResource($user);
+            return new ProductResource($product);
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
             return response()->json($message->getMessage(), 401);
@@ -97,18 +95,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $userRepository = new UserRepository($this->user);
+            $productRepository = new ProductRepository($this->product);
 
-            if($userRepository->validationUpdate($request, $id)) {
-
-                $data = $request->all();
-                $data["password"] = bcrypt($data["password"]);
-
-                $user = $this->user->findOrFail($id);
-                $user->update($data);
+            if($productRepository->validationUpdate($request, $id)) {
+                $product = $this->product->findOrFail($id);
+                $product->update($request->all());
             }
 
-            $message = new ApiMessages("User successfully updated");
+            $message = new ApiMessages("Product sucessfully updated");
             return response()->json($message->getMessage());
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
@@ -126,11 +120,12 @@ class UserController extends Controller
     {
         try {
             $ids = explode(',', $id);
-            $this->user->findOrFail($ids)->each(function($u, $key) {
-                $u->delete();
+            $this->product->findOrFail($ids)->each(function($p, $key){
+                $p->delete();
             });
+            
 
-            $message = new ApiMessages("User successfully deleted");
+            $message = new ApiMessages("Product sucessfully removed");
             return response()->json($message->getMessage());
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
