@@ -6,7 +6,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th><a href="<?=base_url('/produtos/index/id')?>">ID</a></th>
+        <th>ID</th>
         <th><a href="<?=base_url('/produtos/index/descricao')?>">Produto</a></th>
         <th><a href="<?=base_url('/produtos/index/preco')?>">Preço</a></th>
         <th><a href="<?=base_url('/produtos/novo')?>"><button type="button" class="btn btn-primary">Novo</button></a></th>

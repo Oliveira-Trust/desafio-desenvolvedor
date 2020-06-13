@@ -21,15 +21,6 @@ class Sysot extends CI_Controller {
     // Chama formulário de autenticação
     public function autentica()
     {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('usuario','Usuário','trim|required|numeric|exact_length[6]');
-        $this->form_validation->set_rules('senha','Senha','trim|required|numeric|exact_length[6]');
-        if ( $this->form_validation->run() == FALSE ){
-            $dados["formerror"] = validation_errors();
-        }else{
-            $dados["formerror"] = NULL;
-        }
 
         $dados["titulo"] = "Formulário de autenticação";
         $this->load->view('includes/header',$dados);
@@ -40,11 +31,34 @@ class Sysot extends CI_Controller {
     // Chama formulário de autenticação
     public function valida()
     {
+        
 
-        $dados["titulo"] = "SYSOT";
-        $this->load->view('includes/header',$dados);
-        $this->load->view('includes/menu');
-        $this->load->view('pages/inicial');
-        $this->load->view('includes/footer');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('usuario','Usuário','trim|required|exact_length[6]');
+        $this->form_validation->set_rules('senha','Senha','trim|required|exact_length[6]');
+        
+        if ( $this->form_validation->run() == FALSE ){
+            
+            $dados["formerror"] = validation_errors();
+            
+            $dados["titulo"] = "SYSOT";
+            $this->load->view('includes/header',$dados);
+            $this->load->view('pages/autentica');
+            $this->load->view('includes/footer');
+            
+        }else{
+            $dados["formerror"] = NULL;
+            
+            $dados["titulo"] = "SYSOT";
+            $this->load->view('includes/header',$dados);
+            $this->load->view('includes/menu');
+            $this->load->view('pages/inicial');
+            $this->load->view('includes/footer');
+
+        }
+
+
+
     }
 }

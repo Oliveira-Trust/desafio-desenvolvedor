@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 
-<div class="container" style="height:200px;">
+<div class="container" style="height:250px;">
   <div class="row bg-primary text-white">
     <div class="col-sm-3">
         <img src="<?=base_url('assets/img/Logo.png')?>" width="200px;" height="100px;">
@@ -12,8 +12,10 @@
 
 <div class="container">
   <div class="jumbotron">
-        <?php if(isset($mensagens)) echo $mensagens; ?>
       <p>Acesse o sistema</p>
+          
+      <p class="text-danger"><?php if(isset($formerror)) echo $formerror; ?></p>
+      
       <?php MontaFormLogin(); ?>
       <br>
   </div>

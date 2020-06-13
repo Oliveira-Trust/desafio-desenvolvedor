@@ -8,7 +8,7 @@
       
       <h2>Edita Cliente</h2>
       
-      <?php MontaFormLogin($clientes); ?>
+      <?php MontaForm($clientes); ?>
       
       <br>
   </div>
@@ -16,7 +16,7 @@
 </div>
 
 <?php
-function MontaFormLogin($clientes){
+function MontaForm($clientes){
     
     //Carrega as funções
     echo form_open("/clientes/salva/");

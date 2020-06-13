@@ -7,13 +7,13 @@ class Pedidos extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         
-        // Model para carregar clientes
+        // Model para carregar pedidos
         $this->load->model('pedidos_model','pedidos');
         
         // Model para carregar clientes
         $this->load->model('clientes_model','clientes');
         
-        // Model para carregar clientes
+        // Model para carregar produtos
         $this->load->model('produtos_model','produtos');
     }
 
@@ -37,7 +37,7 @@ class Pedidos extends CI_Controller {
         
         // Busca produtos
         $dados["produtos"] = $this->produtos->getDescricaoProdutos();
-        
+                
         $dados["titulo"] = "SYSOT - Pedido Novo";
         $this->load->view('includes/header',$dados);
         $this->load->view('includes/menu');
@@ -51,10 +51,52 @@ class Pedidos extends CI_Controller {
         $this->load->library('form_validation');
         
         // Valida campos do formulário
-        $this->form_validation->set_rules('slcCliente','Cliente','trim|required');
-        $this->form_validation->set_rules('slcProduto','Senha','trim|required');
-        $this->form_validation->set_rules('numValor','Valor','trim|required');
+        $this->form_validation->set_rules('slcCliente','Cliente','required');
+        $this->form_validation->set_rules('slcProduto','Senha','required');
+        $this->form_validation->set_rules('numValor','Valor','trim|required|decimal');
+        $this->form_validation->set_rules('slcStatus','Status','required');
+
+        // Se erro na validação, exiba o erro
+        if ( $this->form_validation->run() == FALSE )
+        {
+            $dados["formerror"] = validation_errors();
+            
+            $intIDPedido = $this->input->post('hidIdPedido');
+            
+            redirect("/pedidos/editapedido/$intIDPedido");
+
+        }else{
+            
+            $dados["formerror"] = NULL;
+            
+            //Guarda os campos
+            $dadosForm["idClientes"] = $this->input->post("slcCliente");
+            $dadosForm["idProdutos"] = $this->input->post("slcProduto");
+            $dadosForm["valor"] = $this->input->post("numValor");
+            $dadosForm["status"] = $this->input->post("slcStatus"); // Status 1 -ABERTO, 2 -PAGO, 3 -CANCELADO
+
+            //Se foi passado ele vai fazer atualização no registro.	
+            if ($this->pedidos->editaPedido($dadosForm, $this->input->post('hidIdPedido'))):
+                echo "<script>alert('asasas')</script>";
+                redirect("/pedidos/");
+            else:
+                redirect("/pedidos/novo");
+            endif;
+
+        }
+    }
+    
+    
+    public function salvaNovo()
+    {
+        // Chama biblioteca de validação
+        $this->load->library('form_validation');
         
+        // Valida campos do formulário
+        $this->form_validation->set_rules('slcCliente','Cliente','required');
+        $this->form_validation->set_rules('slcProduto','Senha','required');
+        $this->form_validation->set_rules('numValor','Valor','trim|required');
+
         // Se erro na validação, exiba o erro
         if ( $this->form_validation->run() == FALSE )
         {
@@ -66,42 +108,23 @@ class Pedidos extends CI_Controller {
             $this->load->view('pages/pedidos/novopedido');
             $this->load->view('includes/footer');
             
-        }else
-        {
+        }else{
+            
             $dados["formerror"] = NULL;
            
-            
-            //Verifica se foi passado via post a id do cliente
-            if ($this->input->post('id') != NULL) {
+            //Guarda os campos
+            $dadosForm["idClientes"] = $this->input->post("slcCliente");
+            $dadosForm["idProdutos"] = $this->input->post("slcProduto");
+            $dadosForm["valor"] = $this->input->post("numValor");
+            $dadosForm["dataPedido"] = date("Y-m-d H:i:s");
+            $dadosForm["status"] = 1; // Pedido ABERTO
                 
-                //Guarda os campos
-                $dadosForm["idcliente"] = $this->input->post("slcCliente");
-                $dadosForm["idproduto"] = $this->input->post("slcProduto");
-                $dadosForm["valor"] = $this->input->post("numValor");
-                $dadosForm["status"] = $this->input->post("numValor"); // Pedido 2 -PAGO, 3 - CANCELADO
-                
-                //Se foi passado ele vai fazer atualização no registro.	
-                $this->pedidos->editaPedido($dadosForm, $this->input->post('id'));
-                
-            } else {
-                
-                //Guarda os campos
-                $dadosForm["idClientes"] = $this->input->post("slcCliente");
-                $dadosForm["idProdutos"] = $this->input->post("slcProduto");
-                $dadosForm["valor"] = $this->input->post("numValor");
-                $dadosForm["dataPedido"] = date("Y-m-d H:i:s");
-                $dadosForm["status"] = 1; // Pedido ABERTO
-                
-                // Enviar os dados para função cadastracliente
-                $this->pedidos->addPedido($dadosForm);
-            }
-            
+            // Enviar os dados para função adiciona pedido
+            $this->pedidos->addPedido($dadosForm);
 
             redirect("/pedidos/");
 
         }
-
-
     }
     
     public function editapedido($id = NULL)
@@ -138,7 +161,7 @@ class Pedidos extends CI_Controller {
 
         }
         
-        //Função Apagar cliente
+        //Função Apagar Pedido
 	public function excluipedido($id=NULL)
 	{
 		//Verifica se foi passado um ID, se não vai para a página listar pedidos
@@ -147,15 +170,15 @@ class Pedidos extends CI_Controller {
 		}
 
 		//Consulta no banco de dados pra verificar se existe
-		$query = $this->pedidos->getPedidosByID($id);
-
+		$query = $this->pedidos->getPedidoByID($id);
+                
 		//Verifica se foi encontrado um registro com a ID passada
 		if($query != NULL) {
-			
-                    //Executa a função Clientes_model
+		
+                    //Executa a função Pedidos_model
                     $this->pedidos->apagaPedido($query->id);
                     
-                    redirect('/pedidos/');
+                    redirect('/pedidos/novo');
 
 		} else {
                     //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar pedidos

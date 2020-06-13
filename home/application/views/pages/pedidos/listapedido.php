@@ -6,7 +6,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th><a href="<?=base_url('/pedidos/index/id')?>">ID</a></th>
+        <th>ID</th>
         <th><a href="<?=base_url('/pedidos/index/nome')?>">Cliente</a></th>
         <th><a href="<?=base_url('/pedidos/index/descricao')?>">Produto</a></th>
         <th><a href="<?=base_url('/pedidos/index/dataPedido')?>">Data do Pedido</a></th>
@@ -15,16 +15,17 @@
       </tr>
     </thead>
     <tbody>
+        <?php //print_r($pedidos);?>
         <?php foreach ($pedidos as $pedido){ ?>
         <tr>
           <td><?=$pedido->idPedido;?></td>
-          <td><?=$pedido->nome;?></td>
-          <td><?=$pedido->descricao;?></td>
+          <td><a href="<?=base_url('/clientes/editacliente/'.$pedido->idClientes)?>"'><span class="glyphicon glyphicon-pencil"></span></i></a> <?=$pedido->nome;?></td>
+          <td><a href="<?=base_url('/produtos/editaproduto/'.$pedido->idProdutos)?>"'><span class="glyphicon glyphicon-pencil"></span></i></a> <?=$pedido->descricao;?></td>
           <td><?=$pedido->dataPedido;?></td>
-          <td><?=$pedido->status;?></td>
+          <td><?=exibeStatus($pedido->status);?></td>
           <td>
-              <a href="<?=base_url('/pedidos/editapedido/')?><?=$pedido->id;?>"><button type="button" class="btn btn-warning">Edita</button></a>
-              <a href="<?=base_url('/pedidos/excluipedido/')?><?=$pedido->id;?>"><button type="button" class="btn btn-danger">Exclui</button></a>
+              <a href="<?=base_url('/pedidos/editapedido/')?><?=$pedido->idPedido;?>"><button type="button" class="btn btn-warning">Edita</button></a>
+              <a href="<?=base_url('/pedidos/excluipedido/')?><?=$pedido->idPedido;?>"><button type="button" class="btn btn-danger">Exclui</button></a>
               
           </td>
         </tr>
@@ -32,3 +33,22 @@
     </tbody>
   </table>
 </div>
+
+
+<?php
+function exibeStatus($intStatus){
+    
+    switch ($intStatus) {
+      case 1:
+        return "Aberto";
+        break;
+      case 2:
+        return "Pago";
+        break;
+      case 3:
+        return "Cancelado";
+        break;
+    }
+    
+}
+?>

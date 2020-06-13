@@ -8,7 +8,7 @@
       
       <h2>Edita Produto</h2>
       
-      <?php MontaFormLogin($produtos); ?>
+      <?php MontaForm($produtos); ?>
       
       <br>
   </div>
@@ -16,7 +16,7 @@
 </div>
 
 <?php
-function MontaFormLogin($produtos){
+function MontaForm($produtos){
     
     //Carrega as funções
     echo form_open("/produtos/salva/");

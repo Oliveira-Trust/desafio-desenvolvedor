@@ -12,6 +12,7 @@
       <h4>OBS.2: As exclusões de clientes e pedidos não analisa a tabela pedidos.</h4>
       <h4>OBS.3: Inclusões de clientes devem avaliar se e-mail já existe.</h4>
       <h4>OBS.4: Inclusões de produtos devem avaliar se produto já existe.</h4>
+      <h4>OBS.5: Regras diferenciadas para Pedido pago ou cancelado.</h4>
       <a href="https://golinelli.eti.br/Projetos/OliveiraTRUST/desafio-desenvolvedor/home/" target="web">Página de início do desafio</a>
   </body>
 </html>
