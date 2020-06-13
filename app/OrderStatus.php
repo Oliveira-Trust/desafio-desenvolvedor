@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderStatus extends Model
 {
-    private $table = "order_status";
+    protected $table = "order_status";
+
+    function order()
+    {
+        return $this->hasOne(Order::class);
+    }
 }
