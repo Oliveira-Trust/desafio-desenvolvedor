@@ -7,9 +7,12 @@
   <body>
       <h1>Oliveira TRUST</h1>
       <h2>Desafio para desenvolvedores</h2>
+      <a href="https://golinelli.eti.br/Projetos/OliveiraTRUST/desafio-desenvolvedor/home/" target="web">Página de início do desafio</a>
       <h3>Criado em Codeigniter versão 3</h3>
       <ul>
-          <li>Clientes / Produtos / Pedidos</li>
+          <li>Autenticação</li>
+            <ul>Apenas um formulário com teste de quantidade de caracteres</ul>
+          <li>Menu Clientes / Produtos / Pedidos</li>
           <ul>
               <li>Lista</li>
               <ul>
