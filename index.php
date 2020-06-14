@@ -18,7 +18,7 @@
               <ul>
                   <li>Botão Novo, cria novo item.</li>
                   <li>Botão Edita, edita o item daquela linha.</li>
-                  <li>Botão Exclui, apaga os itens marcados que não façam parte de um pedido.
+                  <li>Botão Exclui, apaga os itens marcados (em massa) que não façam parte de um pedido.
                   <li>Botão Exclui, apaga os pedidos marcados apenas com status ABERTO.
                   <li>Pode ser ordenado por nome ou e-mail clicando nos títulos das colunas.</li>
               </ul>
