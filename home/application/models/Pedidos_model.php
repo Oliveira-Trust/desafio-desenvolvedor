@@ -19,6 +19,46 @@ class Pedidos_model extends CI_Model
         
     } 
     
+    public function getPedidosByCliente($idCliente)
+    {
+
+        $query = $this->db->select("*, p1.id as idPedido")
+                  ->from("pedidos p1")
+                  ->join('clientes c', 'p1.idClientes = c.id')
+                  ->join('produtos p2', 'p1.idProdutos = p2.id')
+                  ->where('p1.idClientes', $idCliente)
+                  ->get();
+
+        return $query->result();
+        
+    } 
+    
+    public function getPedidosByIdProduto($idProduto)
+    {
+
+        $query = $this->db->select("*")
+                  ->from("pedidos p1")
+                  ->join('clientes c', 'p1.idClientes = c.id')
+                  ->join('produtos p2', 'p1.idProdutos = p2.id')
+                  ->where('p1.idProdutos', $idProduto)
+                  ->get();
+
+        return $query->result();
+        
+    } 
+    
+    public function getPedidosById($id)
+    {
+
+        $query = $this->db->select("*")
+                  ->from("pedidos")
+                  ->where('id', $id)
+                  ->get();
+
+        return $query->result();
+        
+    } 
+    
     public function addPedido($dados=NULL) 
     {
         

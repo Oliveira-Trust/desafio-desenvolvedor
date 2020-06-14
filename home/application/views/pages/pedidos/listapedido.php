@@ -2,7 +2,7 @@
 
 <div class="container">
   <h2>Lista de Pedidos</h2>
-  <p></p>            
+  <p><?php if(isset($_SESSION["mensagem"])) echo $_SESSION["mensagem"]; unset($_SESSION["mensagem"]); ?></p>          
   <table class="table table-hover">
     <thead>
       <tr>
@@ -15,6 +15,7 @@
       </tr>
     </thead>
     <tbody>
+        <?php echo form_open("/pedidos/excluipedidoLOTE/");?>
         <?php //print_r($pedidos);?>
         <?php foreach ($pedidos as $pedido){ ?>
         <tr>
@@ -25,11 +26,16 @@
           <td><?=exibeStatus($pedido->status);?></td>
           <td>
               <a href="<?=base_url('/pedidos/editapedido/')?><?=$pedido->idPedido;?>"><button type="button" class="btn btn-warning">Edita</button></a>
-              <a href="<?=base_url('/pedidos/excluipedido/')?><?=$pedido->idPedido;?>"><button type="button" class="btn btn-danger">Exclui</button></a>
-              
           </td>
+          <td><?=form_checkbox('chkDeleta[]', $pedido->idPedido );?></td>
         </tr>
         <?php } ?>
+        <tr>
+            <td colspan="8" align="right">
+                <?php $botaoSubmit = array('class' => 'btn btn-danger');?>
+                <?php echo form_submit('exlui','Exclui',$botaoSubmit);?>
+            </td>
+        </tr>
     </tbody>
   </table>
 </div>

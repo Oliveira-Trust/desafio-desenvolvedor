@@ -113,31 +113,76 @@ class Produtos extends CI_Controller {
 
         }
         
-        //Função Apagar Produto
-	public function excluiproduto($id=NULL)
-	{
-		//Verifica se foi passado um ID, se não vai para a página listar produtos
-		if($id == NULL) {
-                    redirect('/produtos/');
-		}
+    //Função Apagar Produto
+    public function excluiproduto($id=NULL)
+    {
+            //Verifica se foi passado um ID, se não vai para a página listar produtos
+            if($id == NULL) {
+                redirect('/produtos/');
+            }
 
-		//Consulta no banco de dados pra verificar se existe
-		$query = $this->produtos->getProdutoByID($id);
+            //Consulta no banco de dados pra verificar se existe
+            $query = $this->produtos->getProdutoByID($id);
 
-		//Verifica se foi encontrado um registro com a ID passada
-		if($query != NULL) {
-			
+            //Verifica se foi encontrado um registro com a ID passada
+            if($query != NULL) {
+
+                //Executa a função Clientes_model
+                $this->produtos->apagaProduto($query->id);
+
+                redirect('/produtos/');
+
+            } else {
+                //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar produtos
+                redirect('/produtos/');
+            }
+
+
+    }
+        
+    //Função Apagar clientes em LOTE
+    public function exluiprodutoLOTE()
+    {
+
+        // Model para carregar pedidos
+        $this->load->model('pedidos_model','pedidos');
+
+        // Recebe ids dos produtos que serão apagados
+        $listaID = $this->input->post('chkDeleta');
+
+        //Verifica se foi passado um ID, se não vai para a página listar produtos
+        if($listaID == NULL) :
+
+            redirect('/produtos/');
+
+        else:
+
+            $_SESSION["mensagem"] = "";
+
+            foreach ($listaID as $id){
+
+                // Busca dados dos pedidos com o produto
+                $query = $this->pedidos->getPedidosByIdProduto($id);
+
+                //Verifica se foi encontrado um registro com a ID passada
+                if($query == NULL) {
+
                     //Executa a função Clientes_model
-                    $this->produtos->apagaProduto($query->id);
-                    
-                    redirect('/produtos/');
+                    $this->produtos->apagaProduto($id);
 
-		} else {
-                    //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar produtos
-                    redirect('/produtos/');
-		}
-                
+                } else {
 
-	}
+                    // Mensagem para o redirect
+                    $_SESSION["mensagem"] =  $_SESSION["mensagem"] . "<br>Produto ID $id está em um pedido.";
+
+                }
+
+            };
+
+            redirect('/produtos/');
+
+        endif;
+
+    }
 
 }

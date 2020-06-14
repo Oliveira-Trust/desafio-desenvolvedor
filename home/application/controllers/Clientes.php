@@ -119,27 +119,83 @@ class Clientes extends CI_Controller {
         //Função Apagar cliente
 	public function excluicliente($id=NULL)
 	{
-		//Verifica se foi passado um ID, se não vai para a página listar clientes
-		if($id == NULL) {
-                    redirect('/clientes/');
-		}
 
-		//Consulta no banco de dados pra verificar se existe
-		$query = $this->clientes->getClienteByID($id);
+            // Model para carregar pedidos
+            $this->load->model('pedidos_model','pedidos');
 
-		//Verifica se foi encontrado um registro com a ID passada
-		if($query != NULL) {
-			
-                    //Executa a função Clientes_model
-                    $this->clientes->apagaCliente($query->id);
-                    
-                    redirect('/clientes/');
+            //Verifica se foi passado um ID, se não vai para a página listar clientes
+            if($id == NULL) {
+                redirect('/clientes/');
+            }
 
-		} else {
-                    //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar clientes
-                    redirect('/clientes/');
-		}
+            //Consulta no banco de dados pra verificar se existe
+            $query = $this->clientes->getClienteByID($id);
+
+            // Busca dados dos pedidos do cliente
+            $query2 = $this->pedidos->getPedidosByCliente($id);
+
+            //Verifica se foi encontrado um registro com a ID passada
+            if($query != NULL && $query2 == NULL) {
+
+                //Executa a função Clientes_model
+                $this->clientes->apagaCliente($query->id);
+
+                redirect('/clientes/');
+
+            } else {
+
+                // Mensagem para o redirect
+                $_SESSION["mensagem"] = "Cliente já fez um pedido.";
                 
+                redirect('/clientes/');
+            }
+                
+
+	}
+        
+        
+        //Função Apagar clientes em LOTE
+	public function exluiclienteLOTE()
+	{
+
+            // Model para carregar pedidos
+            $this->load->model('pedidos_model','pedidos');
+            
+            // Recebe ids dos clientes que serão apagados
+            $listaID = $this->input->post('chkDeleta');
+            
+            //Verifica se foi passado um ID, se não vai para a página listar clientes
+            if($listaID == NULL) :
+                
+                redirect('/clientes/');
+            
+            else:
+                
+                $_SESSION["mensagem"] = "";
+                
+                foreach ($listaID as $id){
+
+                    // Busca dados dos pedidos do cliente
+                    $query = $this->pedidos->getPedidosByCliente($id);
+   
+                    //Verifica se foi encontrado um registro com a ID passada
+                    if($query == NULL) {
+
+                        //Executa a função Clientes_model
+                        $this->clientes->apagaCliente($id);
+
+                    } else {
+
+                        // Mensagem para o redirect
+                        $_SESSION["mensagem"] =  $_SESSION["mensagem"] . "<br>Cliente ID $id já fez um pedido.";
+
+                    }
+
+                };
+                
+                redirect('/clientes/');
+                
+            endif;
 
 	}
 

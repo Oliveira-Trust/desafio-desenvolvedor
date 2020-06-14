@@ -159,33 +159,76 @@ class Pedidos extends CI_Controller {
         $this->load->view('pages/pedidos/editapedido');
         $this->load->view('includes/footer');
 
-        }
+    }
         
-        //Função Apagar Pedido
-	public function excluipedido($id=NULL)
-	{
-		//Verifica se foi passado um ID, se não vai para a página listar pedidos
-		if($id == NULL) {
-                    redirect('/pedidos/');
-		}
+    //Função Apagar Pedido
+    public function excluipedido($id=NULL)
+    {
+            //Verifica se foi passado um ID, se não vai para a página listar pedidos
+            if($id == NULL) {
+                redirect('/pedidos/');
+            }
 
-		//Consulta no banco de dados pra verificar se existe
-		$query = $this->pedidos->getPedidoByID($id);
-                
-		//Verifica se foi encontrado um registro com a ID passada
-		if($query != NULL) {
-		
-                    //Executa a função Pedidos_model
-                    $this->pedidos->apagaPedido($query->id);
-                    
-                    redirect('/pedidos/novo');
+            //Consulta no banco de dados pra verificar se existe
+            $query = $this->pedidos->getPedidoByID($id);
 
-		} else {
-                    //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar pedidos
-                    redirect('/pedidos/');
-		}
-                
+            //Verifica se foi encontrado um registro com a ID passada
+            if($query != NULL) {
 
-	}
+                //Executa a função Pedidos_model
+                $this->pedidos->apagaPedido($query->id);
+
+                redirect('/pedidos/novo');
+
+            } else {
+                //Se não encontrou nenhum registro no banco de dados com a ID passada ele volta para página listar pedidos
+                redirect('/pedidos/');
+            }
+
+
+    }
+    
+    
+//Função Apagar Pedido
+    public function excluipedidoLOTE()
+    {
+
+        // Recebe ids dos clientes que serão apagados
+        $listaID = $this->input->post('chkDeleta');
+
+        //Verifica se foi passado um ID, se não vai para a página listar clientes
+        if($listaID == NULL) :
+
+            redirect('/pedidos/');
+
+        else:
+
+            $_SESSION["mensagem"] = "";
+
+            foreach ($listaID as $id){
+
+                // Busca dados dos pedidos do cliente
+                $query = $this->pedidos->getPedidosById($id);
+
+                //Verifica se foi encontrado um registro com a ID e status Aberto, apagar pedido
+                if($query != NULL && $query[0]->status == 1) {
+
+                    //Executa a função Clientes_model
+                    $this->pedidos->apagaPedido($id);
+
+                } else {
+
+                    // Mensagem para o redirect
+                    $_SESSION["mensagem"] =  $_SESSION["mensagem"] . "<br>Pedido ID ".$query[0]->id." está como PAGO ou CANCELADO.";
+
+                }
+
+            };
+
+            redirect('/pedidos/');
+
+        endif;
+
+    }
 
 }
