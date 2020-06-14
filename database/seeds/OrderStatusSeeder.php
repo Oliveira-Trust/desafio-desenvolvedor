@@ -13,7 +13,7 @@ class OrderStatusSeeder extends Seeder
     public function run()
     {
         DB::table('order_status')->insert([
-            'status' => "Aberto",
+            'status' => "Em Aberto",
         ]);
 
         DB::table('order_status')->insert([

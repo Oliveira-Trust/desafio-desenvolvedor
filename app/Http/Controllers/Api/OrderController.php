@@ -4,21 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
-use App\Http\Resources\ProductCollection;
-use App\Http\Resources\ProductResource;
-use App\Product;
-use App\Repository\ProductRepository;
+use App\Http\Requests\OrderRequest;
+use App\Http\Resources\OrderCollection;
+use App\Http\Resources\OrderResource;
+use App\Order;
+use App\Repository\OrderRepository;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
-    private $product;
+    private $order;
 
-    public function __construct(Product $product)
+    public function __construct(Order $order)
     {
-        $this->product = $product;
+        $this->order = $order;
     }
 
     /**
@@ -29,17 +29,21 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         try {
-            $productRepository = new ProductRepository($this->product);
+            $orderRepository = new OrderRepository($this->order);
 
             if($request->has("coditions")) {
-                $productRepository->selectCoditions($request->coditions);
+                $orderRepository->selectCoditions($request->coditions);
             }
 
             if($request->has("fields")) {
-                $productRepository->selectFilter($request->fields);
+                $orderRepository->selectFilter($request->fields);
             }
 
-            return new ProductCollection($productRepository->getResult()->paginate(10));
+            $orders = $orderRepository->getResult()
+                            ->with(['user', 'product', 'orderStatus'])
+                            ->paginate(10);
+
+            return new OrderCollection($orders);
 
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
@@ -53,13 +57,13 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(OrderRequest $request)
     {
         try {
-            $this->product->create($request->all());
+            $order = new OrderRepository($this->order);
+            $order->storeOrder($request);
 
-            $message = new ApiMessages("Product sucessfully created");
-
+            $message = new ApiMessages("Order sucessfully created");
             return response()->json($message->getMessage());
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
@@ -76,9 +80,9 @@ class ProductController extends Controller
     public function show($id)
     {
         try {
-            $product = $this->product->findOrFail($id);
+            $order = $this->order->findOrFail($id);
 
-            return new ProductResource($product);
+            return new OrderResource($order);
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
             return response()->json($message->getMessage(), 401);
@@ -95,14 +99,12 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $productRepository = new ProductRepository($this->product);
-
-            if($productRepository->validationUpdate($request, $id)) {
-                $product = $this->product->findOrFail($id);
-                $product->update($request->all());
+            $orderRepository = new OrderRepository($this->order);
+            if($orderRepository->validationUpdate($request)) {
+                $orderRepository->updateOrder($request, $id);
             }
 
-            $message = new ApiMessages("Product sucessfully updated");
+            $message = new ApiMessages("Order sucessfully updated");
             return response()->json($message->getMessage());
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
@@ -116,15 +118,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idOrder, Request $request)
     {
         try {
-            $ids = explode(',', $id);
-            $this->product->findOrFail($ids)->each(function($p, $key){
-                $p->delete();
-            });
-
-            $message = new ApiMessages("Product sucessfully removed");
+            $orderRepository = new OrderRepository($this->order);
+            if($orderRepository->validationRemoveProducts($request)) {
+                $orderRepository->removeProductOrder($idOrder, $request->products_id);
+            }
+            
+            $message = new ApiMessages("Order sucessfully updated");
             return response()->json($message->getMessage());
         } catch (QueryException $e) {
             $message = new ApiMessages($e->getMessage());
