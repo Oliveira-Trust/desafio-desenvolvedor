@@ -2,7 +2,7 @@ var Login = (function(){
     "use strict";
     
     var init = function(){
-        _load.geral();
+        _load.begin();
     },
     _clickButton = {
         login: function(){
@@ -20,7 +20,7 @@ var Login = (function(){
         },
     },
     _load = {
-        geral: function(){
+        begin: function(){
             _clickButton.login();
         }
     };

@@ -1,0 +1,23 @@
+/*Rules for sizing the icon*/
+.material-icons.md-17 { font-size: 17px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-64 { font-size: 64px; }
+.material-icons.md-72 { font-size: 72px; }
+
+.btn-xs {
+    padding: 0.05rem 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+.vertical-align-middle {
+    vertical-align: middle;
+}
+
+.vertical-align-sub {
+    vertical-align: sub;
+}

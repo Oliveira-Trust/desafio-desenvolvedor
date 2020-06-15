@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -13,6 +14,7 @@ class ClientController extends Controller
 
     public function formView()
     {
-        return view('client.view');
+        $listUsers = User::all();
+        return view('client.view', compact('listUsers'));
     }
 }
