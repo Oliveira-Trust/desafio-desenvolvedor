@@ -20,7 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/client', 'ClientController@formView')->name('formViewClient');
+Route::get('/client/{user_id}', 'ClientController@formEdit')->name('formEditClient');
+
+
 Route::get('/product', 'ProductController@formView')->name('formViewProduct');
+
+
 Route::get('/order', 'OrderController@formView')->name('formViewOrder');
 

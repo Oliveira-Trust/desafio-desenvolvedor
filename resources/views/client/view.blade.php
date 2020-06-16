@@ -32,26 +32,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($listUsers as $user)
-                                        <tr>
-                                            <td>
-                                                <button type="button" user_id="{{ $user->id }}" class="btn btn-xs btn-outline-danger destroyClient" title="Excluir Cliente">
-                                                    <i class="material-icons vertical-align-sub md-17">person_add_disabled</i> 
-                                                </button>
-                                                <button type="button" user_id="{{ $user->id }}" class="btn btn-xs btn-outline-success" title="Editar Cliente">
-                                                    <i class="material-icons vertical-align-sub md-17">edit</i> 
-                                                </button>
-                                            </td>
-                                            <td>{{ $user->id }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->created_at }}</td>
-                                        </tr>
-                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                </div>
+                <div class="card-footer">
+                    <nav id="paginationNav">
+                        <ul class="pagination"></ul>
+                    </nav>
                 </div>
             </div>
         </div>
