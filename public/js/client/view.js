@@ -32,7 +32,7 @@ var ClientView = (function(){
     },
     _clickButton = {
         destroy: function(){
-            $(".destroyClient").click(function() {
+            $("table > tbody").on("click", ".destroyClient", function() {
                 var userId = $(this).attr("user_id");
 
                 _configurationGeneral.submitPost("/api/v1/users/" + userId, {}, "DELETE");

@@ -10,16 +10,21 @@
                 <div class="card-body">
                     <div class="form-row">
                         <div class="form-group col-sm-2">
-                            <label class="font-weight-bolder">Produto:</label>
-                            <input type="text" name="title" id="txtTitle" class="form-control form-control-sm" value="" />
+                            <label class="font-weight-bolder">Cliente:</label>
+                            <input type="text" name="user" id="txtUser" class="form-control form-control-sm" value="" />
                         </div>
                         <div class="form-group col-sm-4">
-                            <label class="font-weight-bolder">Descrição</label>
-                            <input type="text" name="description" id="txtDescription" class="form-control form-control-sm" value="" />
+                            <label class="font-weight-bolder">Total:</label>
+                            <input type="text" name="total" id="txtTotal" class="form-control form-control-sm" value="" />
                         </div>
-                        <div class="form-group col-sm-1">
-                            <label class="font-weight-bolder">Valor</label>
-                            <input type="text" name="price" id="txtPrice" class="form-control form-control-sm" value="" />
+                        <div class="form-group col-sm-2">
+                            <label class="font-weight-bolder">Status</label>
+                            <select name="selStatus" id="selStatus" class="custom-select form-control-xs">
+                                <option value="" selected>Todos...</option>
+                                <option value="1">Em Aberto</option>
+                                <option value="2">Pago</option>
+                                <option value="3">Cancelado</option>
+                            </select>
                         </div>
                     </div>
                     
