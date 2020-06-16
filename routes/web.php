@@ -19,15 +19,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function() {
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/client', 'ClientController@formView')->name('formViewClient');
+    Route::get('/client/{user_id}', 'ClientController@formEdit')->name('formEditClient');
 
 
-Route::get('/client', 'ClientController@formView')->name('formViewClient');
-Route::get('/client/{user_id}', 'ClientController@formEdit')->name('formEditClient');
+    Route::get('/product', 'ProductController@formView')->name('formViewProduct');
+    Route::get('/product/{product_id}', 'ProductController@formEdit')->name('formEditProduct');
+    Route::get('/productt/create', 'ProductController@formCreate');
 
 
-Route::get('/product', 'ProductController@formView')->name('formViewProduct');
-
-
-Route::get('/order', 'OrderController@formView')->name('formViewOrder');
-
+    Route::get('/order', 'OrderController@formView')->name('formViewOrder');
+});

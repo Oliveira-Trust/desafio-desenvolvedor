@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editar Cliente </div>
+                <div class="card-header">Editar Cliente</div>
 
                 <div class="card-body">
                         <div id="divMessage" class="alert d-none"></div>
@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="form-group col-sm-8">
                                     <label class="font-weight-bolder">Cliente:</label>
-                                    <input type="text" name="name" id="txtName" class="form-control form-control-sm" value="" maxlength="50" required />
+                                    <input type="text" name="name" id="txtName" class="form-control form-control-sm" value="" required />
                                 </div>
                             </div>
                             <div class="form-row">
