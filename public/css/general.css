@@ -14,6 +14,14 @@
     border-radius: 0.2rem;
 }
 
+.form-control-xs {
+    height: calc(1.0em + 0.5rem + 2px);
+    padding: 0.1rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
 .vertical-align-middle {
     vertical-align: middle;
 }

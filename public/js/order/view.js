@@ -1,11 +1,11 @@
-var ProductView = (function(){
+var OrderView = (function(){
     "use strict";
     
     var init = function(){
         _load.begin();
     },
     _autoLoading = {
-        dataProducts: function(page=1) {
+        dataOrders: function(page=1) {
             var coditions = "",
                 fields = {page: page},
                 json = "";
@@ -32,27 +32,37 @@ var ProductView = (function(){
                 fields = {coditions: coditions};
             }
 
-            json = _configurationGeneral.submitPost("/api/v1/product", fields, "GET");
+            json = _configurationGeneral.submitPost("/api/v1/order", fields, "GET");
             _configurationGeneral.createDataTable(json);
         },
     },
     _clickButton = {
         destroy: function(){
-            $("table > tbody").on("click", ".destroyProduct", function() {
-                var productId = $(this).attr("product_id");
+            $("table > tbody").on("click", ".destroyOrder", function() {
+                var orderId = $(this).attr("order_id"),
+                    fields = {order_condition: "payment_cancel"};
 
-                _configurationGeneral.submitPost("/api/v1/product/" + productId, {}, "DELETE");
+                _configurationGeneral.submitPost("/api/v1/order/" + orderId, fields, "PUT");
+                location.reload();
+            });
+        },
+        paidOrder: function(){
+            $("table > tbody").on("click", ".paidOrder", function() {
+                var orderId = $(this).attr("order_id"),
+                    fields = {order_condition: "payment_done"};
+
+                _configurationGeneral.submitPost("/api/v1/order/" + orderId, fields, "PUT");
                 location.reload();
             });
         },
         nextPage: function(){
             $("#paginationNav").on("click", ".page-link", function() {
-                _autoLoading.dataProducts($(this).attr("page"));
+                _autoLoading.dataOrders($(this).attr("page"));
             });
         },
         search: function() {
             $("#btnSearch").click(function() {
-                _autoLoading.dataProducts();
+                _autoLoading.dataOrders();
             });
         },
     },
@@ -63,17 +73,20 @@ var ProductView = (function(){
             $(json.data).each(function(i, data) {
                 html += "<tr>" +
                             "<td>" +
-                                "<button type='button' product_id='" + data.id + "' class='btn btn-xs btn-outline-danger destroyProduct' title='Excluir Produto'>" +
+                                "<button type='button' order_id='" + data.id + "' class='btn btn-xs btn-outline-danger destroyOrder' title='Cancelar Pedido'>" +
                                     "<i class='material-icons vertical-align-sub md-17'>close</i>" +
                                 "</button>" +
-                                "<a href='/product/" + data.id + "' class='btn btn-xs btn-outline-success' title='Editar Produto'>" +
+                                "<a href='/order/" + data.id + "' class='btn btn-xs btn-outline-success' title='Editar Pedido'>" +
                                     "<i class='material-icons vertical-align-sub md-17'>edit</i>" +
                                 "</a>" +
+                                "<button type='button' order_id='" + data.id + "' class='btn btn-xs btn-outline-primary paidOrder' title='Efetuar baixa Pagamento'>" +
+                                    "<i class='material-icons vertical-align-sub md-17'>done_outline</i>" +
+                                "</button>" +
                             "</td>" +
                             "<td>" + data.id + "</td>" +
-                            "<td>" + data.title + "</td>" +
-                            "<td>" + data.description + "</td>" +
-                            "<td>R$ " + data.price + "</td>" +
+                            "<td>" + data.user.name + "</td>" +
+                            "<td>R$ " + data.total + "</td>" +
+                            "<td>" + data.order_status.status + "</td>" +
                             "<td>" + data.created_at + "</td>" +
                         "</tr>";
             });
@@ -106,9 +119,10 @@ var ProductView = (function(){
     },
     _load = {
         begin: function(){
-            _autoLoading.dataProducts();
+            _autoLoading.dataOrders();
             _clickButton.destroy();
             _clickButton.nextPage();
+            _clickButton.paidOrder();
             _clickButton.search();
         }
     };

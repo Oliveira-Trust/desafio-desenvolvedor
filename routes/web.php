@@ -33,4 +33,5 @@ Route::group(['middleware' => ['auth']], function() {
 
 
     Route::get('/order', 'OrderController@formView')->name('formViewOrder');
+    Route::get('/order/create', 'OrderController@formCreate')->name('formCreateOrder');
 });

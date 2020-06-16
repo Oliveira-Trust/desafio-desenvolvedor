@@ -8,12 +8,26 @@ use Illuminate\Validation\Rule;
 
 class OrderRepository extends AbstractRepository
 {
-    public function validationUpdate($request) 
+    private function validationUpdate($request) 
     {
         return $request->validate([
             'order_condition'   => ['required', 'string'],
             'users_id'          => ['required', 'numeric'],
             'products'          => ['required'],
+        ]);
+    }
+
+    private function validationOrderCancel($request) 
+    {
+        return $request->validate([
+            'order_condition'   => ['required', 'string'],
+        ]);
+    }
+
+    private function validationOrderPaid($request) 
+    {
+        return $request->validate([
+            'order_condition'   => ['required', 'string'],
         ]);
     }
 
@@ -32,7 +46,8 @@ class OrderRepository extends AbstractRepository
         $order->users_id = $request->users_id;
         $order->save();
 
-        $this->addProduct($order, $request->products);
+        $this->addProduct($order->id, $request->products);
+        $this->totalOrderAmount($order->id);
 
         return true;
     }
@@ -41,18 +56,24 @@ class OrderRepository extends AbstractRepository
     {
         switch ($request->order_condition) {
             case 'payment_done':
-                $this->paidOrder($id, $request->products);
-                $this->totalOrderAmount($id);
+                if ($this->validationOrderPaid($request)) {
+                    $this->paidOrder($id, $request->products);
+                    $this->totalOrderAmount($id);
+                }
                 break;
 
             case 'payment_cancel':
-                $this->cancelOrder($id);
+                if ($this->validationOrderCancel($request)) {
+                    $this->cancelOrder($id);
+                }
                 break;
             
             default:
-                $this->removeAllProduct($id);
-                $this->addProduct($id, $request->products);
-                $this->totalOrderAmount($id);
+                if ($this->validationUpdate($request)) {
+                    $this->removeAllProduct($id);
+                    $this->addProduct($id, $request->products);
+                    $this->totalOrderAmount($id);
+                }
                 break;
         }
     }

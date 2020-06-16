@@ -8,9 +8,31 @@
                 <div class="card-header">Visualizar Produtos</div>
 
                 <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-sm-2">
+                            <label class="font-weight-bolder">Produto:</label>
+                            <input type="text" name="title" id="txtTitle" class="form-control form-control-sm" value="" />
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="font-weight-bolder">Descrição</label>
+                            <input type="text" name="description" id="txtDescription" class="form-control form-control-sm" value="" />
+                        </div>
+                        <div class="form-group col-sm-1">
+                            <label class="font-weight-bolder">Valor</label>
+                            <input type="text" name="price" id="txtPrice" class="form-control form-control-sm" value="" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="col-sm-3">
+                            <button type="button" id="btnSearch" class="btn btn-sm btn-primary">
+                                <i class="material-icons vertical-align-middle">search</i>Pesquisar
+                            </button>
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <div class="col-sm-4 offset-sm-8 text-md-right">
-                            <a href="/productt/create" class="btn btn-sm btn-primary">
+                            <a href="/productt/create" class="btn btn-sm btn-dark">
                                 <i class="material-icons vertical-align-middle">note_add</i> Novo Produto
                             </a>
                         </div>

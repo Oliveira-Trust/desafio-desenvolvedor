@@ -100,9 +100,7 @@ class OrderController extends Controller
     {
         try {
             $orderRepository = new OrderRepository($this->order);
-            if($orderRepository->validationUpdate($request)) {
-                $orderRepository->updateOrder($request, $id);
-            }
+            $orderRepository->updateOrder($request, $id);
 
             $message = new ApiMessages("Order sucessfully updated");
             return response()->json($message->getMessage());
@@ -112,6 +110,7 @@ class OrderController extends Controller
         }
     }
 
+   
     /**
      * Remove the specified resource from storage.
      *
