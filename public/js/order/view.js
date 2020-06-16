@@ -73,6 +73,9 @@ var OrderView = (function(){
             $(json.data).each(function(i, data) {
                 html += "<tr>" +
                             "<td>" +
+                                "<a href='/order/detail/" + data.id + "' class='btn btn-xs btn-outline-info' title='Detalhes do  Pedido'>" +
+                                    "<i class='material-icons vertical-align-sub md-17'>find_in_page</i>" +
+                                "</a>" +
                                 "<button type='button' order_id='" + data.id + "' class='btn btn-xs btn-outline-danger destroyOrder' title='Cancelar Pedido'>" +
                                     "<i class='material-icons vertical-align-sub md-17'>close</i>" +
                                 "</button>" +

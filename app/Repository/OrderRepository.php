@@ -48,7 +48,7 @@ class OrderRepository extends AbstractRepository
 
         $this->addProduct($order->id, $request->products);
         $this->totalOrderAmount($order->id);
-
+        
         return true;
     }
 

@@ -15,4 +15,14 @@ class OrderController extends Controller
     {
         return view('order.create');
     }
+
+    public function formDetail($idOrder)
+    {
+        return view('order.detail', compact("idOrder"));
+    }
+
+    public function formEdit($order_id)
+    {
+        return view('order.edit', compact("order_id"));
+    }
 }
