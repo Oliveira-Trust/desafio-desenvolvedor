@@ -11,5 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig(webpack => {
+    return {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery',
+                moment: 'moment',
+                'window.jQuery': 'jquery',
+            }),
+            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+        ]
+    };
+});
+
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .copyDirectory('resources/fonts', 'public/fonts');

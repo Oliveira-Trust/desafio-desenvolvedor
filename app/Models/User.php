@@ -1,14 +1,31 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
+use YourAppRocks\EloquentUuid\Traits\HasUuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasUuid;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'uuid';
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +33,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**

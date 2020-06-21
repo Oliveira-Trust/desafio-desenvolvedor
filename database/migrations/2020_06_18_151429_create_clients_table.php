@@ -14,8 +14,20 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('uuid')->primary();
+            $table->string('name');
+            $table->date('dob');
+            $table->string('user_id');
+            $table->string('status_id');
             $table->timestamps();
+        });
+        Schema::table('clients', function (Blueprint $table) {
+            $table->foreign('user_id')
+                ->references('uuid')
+                ->on('users');
+            $table->foreign('status_id')
+                ->references('uuid')
+                ->on('statuses');
         });
     }
 
@@ -26,6 +38,10 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
+        Schema::table('clients', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['status_id']);
+        });
         Schema::dropIfExists('clients');
     }
 }
