@@ -33,8 +33,10 @@ class StatusController extends Controller
     public function index(StatusDataTable $dataTable)
     {
         $refs = $this->statusRepository->getRefTables();
+        $status = $this->statusRepository->getStatuses();
         return $dataTable->render('painel.status.index', [
-            'ref_tables' => $refs
+            'ref_tables' => $refs,
+            'status' => $status
         ]);
     }
 

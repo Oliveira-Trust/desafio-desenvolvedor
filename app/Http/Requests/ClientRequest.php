@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
 
 class ClientRequest extends FormRequest
 {
@@ -28,6 +26,9 @@ class ClientRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'dob' => 'date',
+            'email' => 'required|email',
+            'address' => 'required',
+            'contact' => 'required',
             'user_id' => 'required',
             'status_id' => 'required',
         ];
@@ -42,27 +43,12 @@ class ClientRequest extends FormRequest
     {
         return [
             'name.required' => __('client.validate.name'),
+            'dob.required' => __('client.validate.dob'),
+            'email.required' => __('client.validate.email'),
+            'address.required' => __('client.validate.address'),
+            'contact.required' => __('client.validate.contact'),
             'user_id.required' => __('client.validate.user_id'),
             'status_id.required' => __('client.validate.status_id'),
         ];
-    }
-
-    /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        session(['status' => [
-            'type' => 'danger',
-            'message' => __("Check form"),
-        ]]);
-        throw (new ValidationException($validator))
-                    ->errorBag($this->errorBag)
-                    ->redirectTo($this->getRedirectUrl());
     }
 }

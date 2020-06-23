@@ -9,6 +9,8 @@ interface IStatusRepository extends IBaseRepository
 {
     public function getRefTables() : array;
 
+    public function getStatuses() : array;
+
     public function getDatatable();
 
     public function filterByRef(string $refTable, array $filter = []) : Collection;

@@ -1,19 +1,5 @@
 var show_path = 'status/#UUID#';
 
-function getEnable(value) {
-    if (value) {
-        return '<h4><span class="badge badge-pill badge-success">Enable</span></h4>';
-    }
-    return '<h4><span class="badge badge-pill badge-danger">Disable</span></h4>';
-}
-
-function getStatus(value) {
-    if (value) {
-        return '<h4><span class="badge badge-pill badge-success">Active</span></h4>';
-    }
-    return '<h4><span class="badge badge-pill badge-danger">Inactive</span></h4>';
-}
-
 async function saveItem() {
     let dataJson = {
         'name': $('#name').val(),
@@ -32,10 +18,7 @@ async function saveItem() {
 
 async function sendItem(url, dataJson, type = 'POST') {
     let httpCall = await postData(url, dataJson, type);
-    if ($('#open-insert').hasClass('collapsed') && type != 'DELETE') {
-        $('#open-insert').click();
-    }
-    if (!$('#open-insert').hasClass('collapsed') && type == 'DELETE') {
+    if (!$('#open-insert').hasClass('collapsed')) {
         $('#open-insert').click();
     }
     $('.buttons-reload').click();

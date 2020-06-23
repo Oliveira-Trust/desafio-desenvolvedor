@@ -116,7 +116,7 @@ class StatusDataTable extends DataTable
                 ->printable(false)
                 ->width('120px')
                 ->addClass('text-center')
-                ->render('\'<span class="btn btn-sm btn-primary" onclick="editData(this)" data-uuid="\' + data + \'">'. __("Edit") .'</span><span class="btn btn-sm btn-danger" onclick="deleteData(this)" data-uuid="\' + data + \'">'. __("Delete") .'</span>\''),
+                ->render('\'<a href="javascript:void(0);" class="btn btn-sm btn-primary" onclick="editData(this)" data-uuid="\' + data + \'">'. __("Edit") .'</a><a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="deleteData(this)" data-uuid="\' + data + \'">'. __("Delete") .'</a>\''),
         ];
     }
 

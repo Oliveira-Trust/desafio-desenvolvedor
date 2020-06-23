@@ -18,7 +18,7 @@ class CreateStatusesTable extends Migration
             $table->string('name');
             $table->string('ref_table');
             $table->boolean('enable');
-            $table->boolean('status');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

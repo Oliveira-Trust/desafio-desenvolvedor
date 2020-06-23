@@ -23,6 +23,19 @@ return [
         'name' => 'Nome é Obrigatório!',
         'ref_table' => 'A Tabela de Referência é Obrigatória',
     ],
+    'state' => [
+        'status' => [
+            'Inativo',
+            'Ativo',
+            'Aberto',
+            'Pago',
+            'Cancelado',
+        ],
+        'enable' => [
+            'Desabilitado',
+            'Habilitado',
+        ],
+    ],
     'status_error' => 'Essa tabela de referência já possui um status :status',
 
 ];

@@ -10,18 +10,6 @@ class StatusBaseSeeder extends Seeder
      */
     protected $statusRepository;
     protected $statusBase = [
-        'addresses_active' => [
-            'name' => 'Ativo',
-            'ref_table' => 'addresses',
-            'enable' => 1,
-            'status' => 1,
-        ],
-        'addresses_inactive' => [
-            'name' => 'Inativo',
-            'ref_table' => 'addresses',
-            'enable' => 1,
-            'status' => 0,
-        ],
         'clients_active' => [
             'name' => 'Ativo',
             'ref_table' => 'clients',
@@ -34,29 +22,35 @@ class StatusBaseSeeder extends Seeder
             'enable' => 1,
             'status' => 0,
         ],
-        'contacts_active' => [
+        'products_active' => [
             'name' => 'Ativo',
-            'ref_table' => 'contacts',
+            'ref_table' => 'products',
             'enable' => 1,
             'status' => 1,
         ],
-        'contacts_inactive' => [
+        'products_inactive' => [
             'name' => 'Inativo',
-            'ref_table' => 'contacts',
+            'ref_table' => 'products',
             'enable' => 1,
             'status' => 0,
         ],
-        'documents_active' => [
-            'name' => 'Ativo',
-            'ref_table' => 'documents',
+        'purchase_orders_open' => [
+            'name' => 'Aberto',
+            'ref_table' => 'purchase_orders',
             'enable' => 1,
-            'status' => 1,
+            'status' => 2,
         ],
-        'documents_inactive' => [
-            'name' => 'Inativo',
-            'ref_table' => 'documents',
+        'purchase_orders_paid' => [
+            'name' => 'Pago',
+            'ref_table' => 'purchase_orders',
             'enable' => 1,
-            'status' => 0,
+            'status' => 3,
+        ],
+        'purchase_orders_canceled' => [
+            'name' => 'Cancelado',
+            'ref_table' => 'purchase_orders',
+            'enable' => 1,
+            'status' => 4,
         ],
     ];
 

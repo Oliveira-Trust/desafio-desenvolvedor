@@ -10,6 +10,7 @@ try {
     window.Popper = require('popper.js').default;
     global.moment = require('moment');
     global.$ = global.jQuery = require('jquery');
+    require('jquery-mask-plugin');
     require('bootstrap');
     require('datatables.net-bs4');
     require('datatables.net-buttons-bs4');

@@ -58,8 +58,9 @@
             class="col-md-4 col-form-label text-md-right">{{ __('status.columns.status_input') }}</label>
         <div class="col-md-6">
             <select id="status" class="form-control @error('status') is-invalid @enderror" name="status">
-                <option value="1">{{ __("Active") }}</option>
-                <option value="0">{{ __("Inactive") }}</option>
+                @foreach($status as $value => $name)
+                <option value="{{ $value }}">{{ $name }}</option>
+                @endforeach
             </select>
 
             @error('status')

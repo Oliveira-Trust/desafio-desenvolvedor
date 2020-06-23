@@ -85,6 +85,27 @@ class ClientDataTable extends DataTable
                 ->printable(true)
                 ->addClass('text-center')
                 ->render('moment(new Date(data)).format("DD/MM/YYYY")'),
+            Column::make('email')
+                ->title(__("client.columns.email"))
+                ->footer(__("client.columns.email"))
+                ->searchable(true)
+                ->exportable(true)
+                ->printable(true)
+                ->addClass('text-center'),
+            Column::make('address')
+                ->title(__("client.columns.address"))
+                ->footer(__("client.columns.address"))
+                ->searchable(true)
+                ->exportable(true)
+                ->printable(true)
+                ->addClass('text-center'),
+            Column::make('contact')
+                ->title(__("client.columns.contact"))
+                ->footer(__("client.columns.contact"))
+                ->searchable(true)
+                ->exportable(true)
+                ->printable(true)
+                ->addClass('text-center'),
             Column::make('status.status')
                 ->title(__("client.columns.status_id"))
                 ->footer(__("client.columns.status_id"))
@@ -108,7 +129,7 @@ class ClientDataTable extends DataTable
                 ->printable(false)
                 ->width('120px')
                 ->addClass('text-center')
-                ->render('\'<span class="btn btn-sm btn-primary" onclick="editData(this)" data-uuid="\' + data + \'">'. __("Edit") .'</span><span class="btn btn-sm btn-danger" onclick="deleteData(this)" data-uuid="\' + data + \'">'. __("Delete") .'</span>\''),
+                ->render('\'<a href="javascript:void(0);" class="btn btn-sm btn-primary" onclick="editData(this)" data-uuid="\' + data + \'">'. __("Edit") .'</a><a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="deleteData(this)" data-uuid="\' + data + \'">'. __("Delete") .'</a>\''),
         ];
     }
 

@@ -25,6 +25,7 @@
     "dependencies": {
         "datatables.net-bs4": "^1.10.21",
         "datatables.net-buttons-bs4": "^1.6.2",
+        "jquery-mask-plugin": "^1.14.16",
         "moment": "^2.27.0"
     }
 }

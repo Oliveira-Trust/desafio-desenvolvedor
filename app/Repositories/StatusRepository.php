@@ -2,12 +2,14 @@
 
 namespace App\Repositories;
 
+use App\Models\Order;
 use App\Models\Client;
 use App\Models\Status;
-use App\Models\Address;
-use App\Models\Contact;
-use App\Models\Document;
+use App\Models\Product;
+use App\Models\OrderProducts;
 use App\Response\JsonResponse;
+use App\Repositories\BaseRepository;
+use App\Repositories\StatusRepository;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Database\Eloquent\Collection;
 use App\Repositories\Interfaces\IStatusRepository;
@@ -51,7 +53,7 @@ class StatusRepository extends BaseRepository implements IStatusRepository
      */
     public function update(string $uuid, array $attr) : JsonResponse
     {
-        if ($attr['status'] == 1 && $this->validStatus($attr, $uuid)) {
+        if ($attr['status'] > 0 && $this->validStatus($attr, $uuid)) {
             $statusName = $attr['status'] ? __("Active") : __("Inactive");
             return JsonResponse::success(false, __("status.status_error", ['status' => $statusName]));
         }
@@ -69,11 +71,20 @@ class StatusRepository extends BaseRepository implements IStatusRepository
     public function getRefTables() : array
     {
         return [
-            Address::getTableName() => __('Address'),
             Client::getTableName() => __('Client'),
-            Contact::getTableName() => __('Contact'),
-            Document::getTableName() => __('Document'),
+            Product::getTableName() => __('Product'),
+            Order::getTableName() => __('Order'),
         ];
+    }
+
+    /**
+     * Get Statuses list
+     *
+     * @return array
+     */
+    public function getStatuses() : array
+    {
+        return __("status.state.status");
     }
 
     /**
@@ -118,7 +129,7 @@ class StatusRepository extends BaseRepository implements IStatusRepository
     {
         $statusCount = $this->modelClass::where('ref_table', $attr['ref_table'])
         ->where('enable', Status::ENABLED)
-        ->where('status', Status::ENABLED)
+        ->where('status', $attr['status'])
         ->when(!empty($uuid), function ($q) use ($uuid) { 
             return $q->where('uuid', '<>', $uuid);
         })

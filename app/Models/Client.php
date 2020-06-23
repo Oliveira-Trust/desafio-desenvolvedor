@@ -39,7 +39,7 @@ class Client extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'dob', 'user_id', 'status_id'
+        'name', 'dob', 'email', 'address', 'contact', 'user_id', 'status_id'
     ];
     
     /**
@@ -61,19 +61,11 @@ class Client extends Model
     }
 
     /**
-     * Get the address record associated with the client.
+     * Get the user record associated with the client.
      */
-    public function address()
+    public function user()
     {
-        return $this->hasMany('App\Models\Address', 'client_id', 'uuid');
-    }
-
-    /**
-     * Get the contact record associated with the client.
-     */
-    public function contact()
-    {
-        return $this->hasMany('App\Models\Contact', 'client_id', 'uuid');
+        return $this->hasOne('App\Models\User', 'uuid', 'user_id');
     }
 
     /**
@@ -81,6 +73,6 @@ class Client extends Model
      */
     public function status()
     {
-        return $this->belongsTo('App\Models\Status', 'status_id', 'uuid');
+        return $this->hasOne('App\Models\Status', 'uuid', 'status_id');
     }
 }

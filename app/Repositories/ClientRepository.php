@@ -3,10 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Client;
-use App\Models\Status;
-use App\Models\Address;
-use App\Models\Contact;
-use App\Models\Document;
 use App\Response\JsonResponse;
 use App\Repositories\BaseRepository;
 use App\Repositories\ClientRepository;
