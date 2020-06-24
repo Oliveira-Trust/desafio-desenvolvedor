@@ -12,7 +12,7 @@
 
     <body class="painel">
         <div id="app">
-            @include('layouts.back.nav')
+            @include('layouts.nav')
             <main class="py-4">
                 @include('layouts.back.alert-session')
                 @yield('content')

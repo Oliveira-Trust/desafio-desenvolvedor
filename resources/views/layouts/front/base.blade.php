@@ -6,6 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Styles -->
     <style>
         html,
@@ -63,9 +64,12 @@
 </head>
 <body>
     <div id="app">
-        <main>
-            @yield('content')
-        </main>
+        <div id="app">
+            @include('layouts.nav')
+            <main>
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
 </html>

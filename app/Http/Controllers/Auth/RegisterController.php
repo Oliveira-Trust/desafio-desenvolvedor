@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Response\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
+use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -58,7 +60,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -72,6 +74,23 @@ class RegisterController extends Controller
     {
         return $this->userRepository->create($data);
     }
+
+    /**
+     * Register function
+     *
+     * @param Request $request
+     */
+    public function register(Request $request)
+    { 
+        $this->validator($request->all())->validate();
+        
+        event(new Registered($user = $this->create($request->all())));
+        
+        $this->guard()->login($user);
+        
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
     
     /**
      * The user has been registered.
@@ -82,15 +101,23 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        session(['status' => [
-            'type' => 'success',
-            'message' => __("Welcome"),
-        ]]);
         session(['userData' => [
             'uuid' => $user->getUuid(),
             'name' => $user->name,
             'email' => $user->email,
             'api_token' => $user->api_token,
+        ]]);
+        if ($request->wantsJson()) {
+            return JsonResponse::success(
+                true, 
+                __("User login!"), 
+                $user->toArray(), 
+                201
+            );
+        }
+        session(['status' => [
+            'type' => 'success',
+            'message' => __("Welcome"),
         ]]);
     }
 }

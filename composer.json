@@ -16,8 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "yajra/laravel-datatables": "^1.5",
-        "your-app-rocks/eloquent-uuid": "^2.2",
-        "zircote/swagger-php": "^3.0"
+        "your-app-rocks/eloquent-uuid": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

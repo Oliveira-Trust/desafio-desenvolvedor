@@ -41,7 +41,7 @@ class StatusRepository extends BaseRepository implements IStatusRepository
             return JsonResponse::success(false, __("status.status_error", ['status' => $statusName]));
         }
         $modelSave = $this->modelClass::create($attr);
-        return JsonResponse::success(true, __("Message Success Insert"), $modelSave->toArray());
+        return JsonResponse::success(true, __("Message Success Insert"), []);
     }
 
     /**

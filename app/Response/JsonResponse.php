@@ -30,15 +30,17 @@ class JsonResponse extends JsonResponseIlluminate
 
     /**
      * @param string $errorMessage
+     * @param array $errorDetail
      * @param int $httpCode
      * @param array $headers
      * @return JsonResponse
      */
-    public static function error(string $errorMessage, int $httpCode = JsonResponse::HTTP_INTERNAL_SERVER_ERROR, array $headers = [])
+    public static function error(string $errorMessage, array $errorDetail = [], int $httpCode = JsonResponse::HTTP_INTERNAL_SERVER_ERROR, array $headers = [])
     {
         return new JsonResponse([
             self::ERROR => [
-                'message' => $errorMessage
+                'message' => $errorMessage,
+                'detail' => $errorDetail
             ]
         ], $httpCode, $headers);
     }
