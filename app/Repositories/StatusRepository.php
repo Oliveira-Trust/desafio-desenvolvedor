@@ -2,65 +2,43 @@
 
 namespace App\Repositories;
 
-use App\Models\Order;
-use App\Models\Client;
 use App\Models\Status;
-use App\Models\Product;
-use App\Models\OrderProducts;
-use App\Response\JsonResponse;
 use App\Repositories\BaseRepository;
-use App\Repositories\StatusRepository;
-use Yajra\DataTables\Services\DataTable;
-use Illuminate\Database\Eloquent\Collection;
-use App\Repositories\Interfaces\IStatusRepository;
 
-class StatusRepository extends BaseRepository implements IStatusRepository
+/**
+ * Class StatusRepository
+ * @package App\Repositories
+ * @version June 25, 2020, 2:53 am UTC
+*/
+
+class StatusRepository extends BaseRepository
 {
-    protected $modelClass;
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'name',
+        'ref_table',
+        'enable',
+        'status'
+    ];
 
     /**
-     * Create a new StatusRepository instance.
+     * Return searchable fields
      *
-     * @return void
+     * @return array
      */
-    public function __construct()
+    public function getFieldsSearchable()
     {
-        $this->modelClass = app(Status::class);
+        return $this->fieldSearchable;
     }
 
     /**
-     * Create a new model instance
-     *
-     * @param  array  $data
-     * @return JsonResponse
-     */
-    public function create(array $attr) : JsonResponse
+     * Configure the Model
+     **/
+    public function model()
     {
-        if ($attr['status'] == 1 && $this->validStatus($attr)) {
-            $statusName = $attr['status'] ? __("Active") : __("Inactive");
-            return JsonResponse::success(false, __("status.status_error", ['status' => $statusName]));
-        }
-        $modelSave = $this->modelClass::create($attr);
-        return JsonResponse::success(true, __("Message Success Insert"), []);
-    }
-
-    /**
-     * Update a model instance
-     *
-     * @param  string  $uuid
-     * @param  array  $data
-     * @return JsonResponse
-     */
-    public function update(string $uuid, array $attr) : JsonResponse
-    {
-        if ($attr['status'] > 0 && $this->validStatus($attr, $uuid)) {
-            $statusName = $attr['status'] ? __("Active") : __("Inactive");
-            return JsonResponse::success(false, __("status.status_error", ['status' => $statusName]));
-        }
-        $modelSave = $this->modelClass::where('uuid', $uuid)
-            ->update($attr);
-
-        return JsonResponse::success(true, __("Message Success Update"), $this->getById($uuid)->toArray());
+        return Status::class;
     }
 
     /**
@@ -71,9 +49,9 @@ class StatusRepository extends BaseRepository implements IStatusRepository
     public function getRefTables() : array
     {
         return [
-            Client::getTableName() => __('Client'),
-            Product::getTableName() => __('Product'),
-            Order::getTableName() => __('Order'),
+            'clients' => __('Client'),
+            'products' => __('Product'),
+            'purchase_orders' => __('Order'),
         ];
     }
 
@@ -85,56 +63,5 @@ class StatusRepository extends BaseRepository implements IStatusRepository
     public function getStatuses() : array
     {
         return __("status.state.status");
-    }
-
-    /**
-     * Get Datatable instance
-     *
-     * @return Yajra\DataTables\EloquentDataTable
-     */
-    public function getDatatable()
-    {
-        return datatables()
-            ->eloquent($this->modelClass::query())
-            ->addColumn('action', 'status.action');
-    }
-
-    /**
-     * Filter by Ref Table and parameters
-     *
-     * @param string $refTable
-     * @param array $filter
-     * @return Collection 
-     */
-    public function filterByRef(string $refTable, array $filter = []) : Collection 
-    {
-        $statusFiltered = $this->modelClass::where('ref_table', $refTable);
-        if (!empty($filter)) {
-            foreach ($filter as $column => $value) {
-                $statusFiltered->where($column, $value);
-            }
-        }
-
-        return $statusFiltered->get();
-    }
-
-    /**
-     * Validates if there is another Status with the same reference table
-     *
-     * @param string $uuid
-     * @param array $filter
-     * @return bool
-     */
-    private function validStatus(array $attr, string $uuid = '') : bool
-    {
-        $statusCount = $this->modelClass::where('ref_table', $attr['ref_table'])
-        ->where('enable', Status::ENABLED)
-        ->where('status', $attr['status'])
-        ->when(!empty($uuid), function ($q) use ($uuid) { 
-            return $q->where('uuid', '<>', $uuid);
-        })
-        ->first();
-
-        return empty($statusCount) ? false : true;
     }
 }

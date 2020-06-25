@@ -14,22 +14,23 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
+            $table->id();
             $table->string('name');
             $table->date('dob');
             $table->string('email');
             $table->string('address');
             $table->string('contact');
-            $table->string('user_id');
-            $table->string('status_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('status_id');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
         Schema::table('clients', function (Blueprint $table) {
             $table->foreign('user_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('users');
             $table->foreign('status_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('statuses');
         });
     }

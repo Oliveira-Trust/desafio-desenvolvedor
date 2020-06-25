@@ -3,91 +3,43 @@
 namespace App\Repositories;
 
 use App\Models\Product;
-use App\Response\JsonResponse;
 use App\Repositories\BaseRepository;
-use App\Repositories\ProductRepository;
-use App\Repositories\StatusRepository;
-use Yajra\DataTables\Services\DataTable;
-use App\Repositories\Interfaces\IProductRepository;
 
-class ProductRepository extends BaseRepository implements IProductRepository
+/**
+ * Class ProductRepository
+ * @package App\Repositories
+ * @version June 25, 2020, 2:56 am UTC
+*/
+
+class ProductRepository extends BaseRepository
 {
-    protected $modelClass;
-
     /**
-     * Create a new ProductRepository instance.
-     *
-     * @return void
+     * @var array
      */
-    public function __construct()
-    {
-        $this->modelClass = app(Product::class);
-    }
+    protected $fieldSearchable = [
+        'name',
+        'description',
+        'image',
+        'price',
+        'user_id',
+        'status_id'
+    ];
 
     /**
-     * Create a new model instance
-     *
-     * @param  array  $data
-     * @return JsonResponse
-     */
-    public function create(array $attr) : JsonResponse
-    {
-        $modelSave = $this->modelClass::create($attr);
-        return JsonResponse::success(true, __("Message Success Insert"), $modelSave->toArray());
-    }
-
-    /**
-     * Update a model instance
-     *
-     * @param  string  $uuid
-     * @param  array  $data
-     * @return JsonResponse
-     */
-    public function update(string $uuid, array $attr) : JsonResponse
-    {
-        $modelSave = $this->modelClass::where('uuid', $uuid)
-            ->update($attr);
-
-        return JsonResponse::success(true, __("Message Success Update"), $this->getById($uuid)->toArray());
-    }
-
-    /**
-     * Get images from public folder
+     * Return searchable fields
      *
      * @return array
      */
-    public function getProductImages() : array
+    public function getFieldsSearchable()
     {
-        $productImages = [];
-        foreach (glob(public_path() . "/img/products/*.png") as $filename) {
-            $crashPath = explode('public/', $filename);
-            $file = str_replace(".png", "", str_replace("img/products/", "", $crashPath[1]));
-            $productImages[$crashPath[1]] = $file;
-        }
-        return $productImages;
+        return $this->fieldSearchable;
     }
 
     /**
-     * Get Statuses to Slients
-     *
-     * @return array
-     */
-    public function getProductStatuses() : array
+     * Configure the Model
+     **/
+    public function model()
     {
-        $statusRepository = app(StatusRepository::class);
-        $statuses = $statusRepository->filterByRef($this->modelClass::getTableName(), ['enable' => 1]);
-        return $statuses->toArray();
-    }
-
-    /**
-     * Get Datatable instance
-     *
-     * @return Yajra\DataTables\EloquentDataTable
-     */
-    public function getDatatable()
-    {
-        return datatables()
-            ->eloquent($this->modelClass::query())
-            ->addColumn('action', 'product.action');
+        return Product::class;
     }
 }

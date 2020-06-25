@@ -14,11 +14,12 @@ class CreateStatusesTable extends Migration
     public function up()
     {
         Schema::create('statuses', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
+            $table->id();
             $table->string('name');
             $table->string('ref_table');
             $table->boolean('enable');
             $table->tinyInteger('status');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
     }

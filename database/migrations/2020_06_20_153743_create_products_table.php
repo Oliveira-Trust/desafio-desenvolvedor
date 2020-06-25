@@ -14,21 +14,22 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
+            $table->id();
             $table->string('name');
             $table->text('description');
             $table->string('image');
             $table->decimal('price', 10, 2);
-            $table->string('user_id');
-            $table->string('status_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('status_id');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('user_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('users');
             $table->foreign('status_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('statuses');
         });
     }

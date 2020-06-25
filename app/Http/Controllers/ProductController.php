@@ -2,97 +2,150 @@
 
 namespace App\Http\Controllers;
 
-use App\Response\JsonResponse;
 use App\DataTables\ProductDataTable;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests;
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Repositories\ProductRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
-class ProductController extends Controller
+class ProductController extends AppBaseController
 {
-    /**
-     * Access to User Repository
-     */
-    protected $productRepository;
+    /** @var  ProductRepository */
+    private $productRepository;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepo)
     {
-        $this->middleware('auth');
-        $this->productRepository = $productRepository;
+        $this->productRepository = $productRepo;
     }
 
     /**
-     * Show the Product table.
+     * Display a listing of the Product.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param ProductDataTable $productDataTable
+     * @return Response
      */
-    public function index(ProductDataTable $dataTable)
+    public function index(ProductDataTable $productDataTable)
     {
-        $statuses = $this->productRepository->getProductStatuses();
-        $images = $this->productRepository->getProductImages();
-        return $dataTable->render('painel.product.index', [
-            'statuses' => $statuses,
-            'images' => $images
-        ]);
+        return $productDataTable->render('products.index');
     }
 
     /**
-     * Show the Product table.
+     * Show the form for creating a new Product.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Response
      */
-    public function allData()
+    public function create()
     {
-        return $this->productRepository->all();
+        return view('products.create');
     }
 
     /**
-     * Show the Product item.
+     * Store a newly created Product in storage.
      *
-     * @return JsonResponse
+     * @param CreateProductRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateProductRequest $request)
+    {
+        $input = $request->all();
+
+        $product = $this->productRepository->create($input);
+
+        Flash::success('Product saved successfully.');
+
+        return redirect(route('products.index'));
+    }
+
+    /**
+     * Display the specified Product.
+     *
+     * @param  int $id
+     *
+     * @return Response
      */
     public function show($id)
     {
-        return JsonResponse::success(
-            true, 
-            '', 
-            $this->productRepository->getById($id)->toArray()
-        );
+        $product = $this->productRepository->find($id);
+
+        if (empty($product)) {
+            Flash::error('Product not found');
+
+            return redirect(route('products.index'));
+        }
+
+        return view('products.show')->with('product', $product);
     }
-    
+
     /**
-     * Create a Product item.
+     * Show the form for editing the specified Product.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function store(ProductRequest $request)
+    public function edit($id)
     {
-        $validFields = $request->validated();
-        return $this->productRepository->create($validFields);
+        $product = $this->productRepository->find($id);
+
+        if (empty($product)) {
+            Flash::error('Product not found');
+
+            return redirect(route('products.index'));
+        }
+
+        return view('products.edit')->with('product', $product);
     }
-    
+
     /**
-     * Update a Product item.
+     * Update the specified Product in storage.
      *
-     * @return JsonResponse
+     * @param  int              $id
+     * @param UpdateProductRequest $request
+     *
+     * @return Response
      */
-    public function update($id, ProductRequest $request)
+    public function update($id, UpdateProductRequest $request)
     {
-        $validFields = $request->validated();
-        return $this->productRepository->update($id, $validFields);
+        $product = $this->productRepository->find($id);
+
+        if (empty($product)) {
+            Flash::error('Product not found');
+
+            return redirect(route('products.index'));
+        }
+
+        $product = $this->productRepository->update($request->all(), $id);
+
+        Flash::success('Product updated successfully.');
+
+        return redirect(route('products.index'));
     }
-    
+
     /**
-     * Delete a Product item.
+     * Remove the specified Product from storage.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        return $this->productRepository->delete($id);
+        $product = $this->productRepository->find($id);
+
+        if (empty($product)) {
+            Flash::error('Product not found');
+
+            return redirect(route('products.index'));
+        }
+
+        $this->productRepository->delete($id);
+
+        Flash::success('Product deleted successfully.');
+
+        return redirect(route('products.index'));
     }
 }

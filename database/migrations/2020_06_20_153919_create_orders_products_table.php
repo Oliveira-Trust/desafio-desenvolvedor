@@ -14,19 +14,20 @@ class CreateOrdersProductsTable extends Migration
     public function up()
     {
         Schema::create('orders_products', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
+            $table->id();
             $table->integer('qnt');
             $table->decimal('price', 10, 2);
-            $table->string('order_id');
-            $table->string('product_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
         Schema::table('orders_products', function (Blueprint $table) {
             $table->foreign('order_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('purchase_orders');
             $table->foreign('product_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('products');
        });
     }

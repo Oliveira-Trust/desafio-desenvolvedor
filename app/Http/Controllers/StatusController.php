@@ -2,97 +2,159 @@
 
 namespace App\Http\Controllers;
 
-use App\Response\JsonResponse;
 use App\DataTables\StatusDataTable;
-use App\Http\Requests\StatusRequest;
+use App\Http\Requests;
+use App\Http\Requests\CreateStatusRequest;
+use App\Http\Requests\UpdateStatusRequest;
 use App\Repositories\StatusRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
-class StatusController extends Controller
+class StatusController extends AppBaseController
 {
-    /**
-     * Access to User Repository
-     */
-    protected $statusRepository;
+    /** @var  StatusRepository */
+    private $statusRepository;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(StatusRepository $statusRepository)
+    public function __construct(StatusRepository $statusRepo)
     {
-        $this->middleware('auth');
-        $this->statusRepository = $statusRepository;
+        $this->statusRepository = $statusRepo;
     }
 
     /**
-     * Show the Status table.
+     * Display a listing of the Status.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param StatusDataTable $statusDataTable
+     * @return Response
      */
-    public function index(StatusDataTable $dataTable)
+    public function index(StatusDataTable $statusDataTable)
     {
-        $refs = $this->statusRepository->getRefTables();
-        $status = $this->statusRepository->getStatuses();
-        return $dataTable->render('painel.status.index', [
-            'ref_tables' => $refs,
-            'status' => $status
-        ]);
+        return $statusDataTable->render('statuses.index');
     }
 
     /**
-     * Show the Status table.
+     * Show the form for creating a new Status.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Response
      */
-    public function allData()
+    public function create()
     {
-        return $this->statusRepository->all();
+        $ref_tables = $this->statusRepository->getRefTables();
+        $statuses = $this->statusRepository->getStatuses();
+        return view('statuses.create')
+        ->with('ref_tables', $ref_tables)
+        ->with('statuses', $statuses);
     }
 
     /**
-     * Show the Status item.
+     * Store a newly created Status in storage.
      *
-     * @return JsonResponse
+     * @param CreateStatusRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateStatusRequest $request)
+    {
+        $input = $request->all();
+
+        $status = $this->statusRepository->create($input);
+
+        Flash::success('Status saved successfully.');
+
+        return redirect(route('statuses.index'));
+    }
+
+    /**
+     * Display the specified Status.
+     *
+     * @param  int $id
+     *
+     * @return Response
      */
     public function show($id)
     {
-        return JsonResponse::success(
-            true, 
-            '', 
-            $this->statusRepository->getById($id)->toArray()
-        );
+        $status = $this->statusRepository->find($id);
+
+        if (empty($status)) {
+            Flash::error('Status not found');
+
+            return redirect(route('statuses.index'));
+        }
+
+        return view('statuses.show')->with('status', $status);
     }
-    
+
     /**
-     * Create a Status item.
+     * Show the form for editing the specified Status.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function store(StatusRequest $request)
+    public function edit($id)
     {
-        $validFields = $request->validated();
-        return $this->statusRepository->create($validFields);
+        $status = $this->statusRepository->find($id);
+        $ref_tables = $this->statusRepository->getRefTables();
+        $statuses = $this->statusRepository->getStatuses();
+
+        if (empty($status)) {
+            Flash::error('Status not found');
+
+            return redirect(route('statuses.index'));
+        }
+
+        return view('statuses.edit')
+        ->with('ref_tables', $ref_tables)
+        ->with('statuses', $statuses)
+        ->with('status', $status);
     }
-    
+
     /**
-     * Update a Status item.
+     * Update the specified Status in storage.
      *
-     * @return JsonResponse
+     * @param  int              $id
+     * @param UpdateStatusRequest $request
+     *
+     * @return Response
      */
-    public function update($id, StatusRequest $request)
+    public function update($id, UpdateStatusRequest $request)
     {
-        $validFields = $request->validated();
-        return $this->statusRepository->update($id, $validFields);
+        $status = $this->statusRepository->find($id);
+
+        if (empty($status)) {
+            Flash::error('Status not found');
+
+            return redirect(route('statuses.index'));
+        }
+
+        $status = $this->statusRepository->update($request->all(), $id);
+
+        Flash::success('Status updated successfully.');
+
+        return redirect(route('statuses.index'));
     }
-    
+
     /**
-     * Delete a Status item.
+     * Remove the specified Status from storage.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        return $this->statusRepository->delete($id);
+        $status = $this->statusRepository->find($id);
+
+        if (empty($status)) {
+            Flash::error('Status not found');
+
+            return redirect(route('statuses.index'));
+        }
+
+        $this->statusRepository->delete($id);
+
+        Flash::success('Status deleted successfully.');
+
+        return redirect(route('statuses.index'));
     }
 }

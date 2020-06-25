@@ -2,95 +2,150 @@
 
 namespace App\Http\Controllers;
 
-use App\Response\JsonResponse;
 use App\DataTables\ClientDataTable;
-use App\Http\Requests\ClientRequest;
+use App\Http\Requests;
+use App\Http\Requests\CreateClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 use App\Repositories\ClientRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
-class ClientController extends Controller
+class ClientController extends AppBaseController
 {
-    /**
-     * Access to User Repository
-     */
-    protected $clientRepository;
+    /** @var  ClientRepository */
+    private $clientRepository;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(ClientRepository $clientRepository)
+    public function __construct(ClientRepository $clientRepo)
     {
-        $this->middleware('auth');
-        $this->clientRepository = $clientRepository;
+        $this->clientRepository = $clientRepo;
     }
 
     /**
-     * Show the Client table.
+     * Display a listing of the Client.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param ClientDataTable $clientDataTable
+     * @return Response
      */
-    public function index(ClientDataTable $dataTable)
+    public function index(ClientDataTable $clientDataTable)
     {
-        $statuses = $this->clientRepository->getClientStatuses();
-        return $dataTable->render('painel.client.index', [
-            'statuses' => $statuses
-        ]);
+        return $clientDataTable->render('clients.index');
     }
 
     /**
-     * Show the Client table.
+     * Show the form for creating a new Client.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Response
      */
-    public function allData()
+    public function create()
     {
-        return $this->clientRepository->all();
+        return view('clients.create');
     }
 
     /**
-     * Show the Client item.
+     * Store a newly created Client in storage.
      *
-     * @return JsonResponse
+     * @param CreateClientRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateClientRequest $request)
+    {
+        $input = $request->all();
+
+        $client = $this->clientRepository->create($input);
+
+        Flash::success('Client saved successfully.');
+
+        return redirect(route('clients.index'));
+    }
+
+    /**
+     * Display the specified Client.
+     *
+     * @param  int $id
+     *
+     * @return Response
      */
     public function show($id)
     {
-        return JsonResponse::success(
-            true, 
-            '', 
-            $this->clientRepository->getById($id)->toArray()
-        );
+        $client = $this->clientRepository->find($id);
+
+        if (empty($client)) {
+            Flash::error('Client not found');
+
+            return redirect(route('clients.index'));
+        }
+
+        return view('clients.show')->with('client', $client);
     }
-    
+
     /**
-     * Create a Client item.
+     * Show the form for editing the specified Client.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function store(ClientRequest $request)
+    public function edit($id)
     {
-        $validFields = $request->validated();
-        return $this->clientRepository->create($validFields);
+        $client = $this->clientRepository->find($id);
+
+        if (empty($client)) {
+            Flash::error('Client not found');
+
+            return redirect(route('clients.index'));
+        }
+
+        return view('clients.edit')->with('client', $client);
     }
-    
+
     /**
-     * Update a Client item.
+     * Update the specified Client in storage.
      *
-     * @return JsonResponse
+     * @param  int              $id
+     * @param UpdateClientRequest $request
+     *
+     * @return Response
      */
-    public function update($id, ClientRequest $request)
+    public function update($id, UpdateClientRequest $request)
     {
-        $validFields = $request->validated();
-        return $this->clientRepository->update($id, $validFields);
+        $client = $this->clientRepository->find($id);
+
+        if (empty($client)) {
+            Flash::error('Client not found');
+
+            return redirect(route('clients.index'));
+        }
+
+        $client = $this->clientRepository->update($request->all(), $id);
+
+        Flash::success('Client updated successfully.');
+
+        return redirect(route('clients.index'));
     }
-    
+
     /**
-     * Delete a Client item.
+     * Remove the specified Client from storage.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        return $this->clientRepository->delete($id);
+        $client = $this->clientRepository->find($id);
+
+        if (empty($client)) {
+            Flash::error('Client not found');
+
+            return redirect(route('clients.index'));
+        }
+
+        $this->clientRepository->delete($id);
+
+        Flash::success('Client deleted successfully.');
+
+        return redirect(route('clients.index'));
     }
 }

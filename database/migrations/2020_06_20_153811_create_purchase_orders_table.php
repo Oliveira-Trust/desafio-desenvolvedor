@@ -14,21 +14,22 @@ class CreatePurchaseOrdersTable extends Migration
     public function up()
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
-            $table->string('user_id');
-            $table->string('client_id');
-            $table->string('status_id');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('status_id');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
         Schema::table('purchase_orders', function (Blueprint $table) {
             $table->foreign('user_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('users');
             $table->foreign('client_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('clients');
             $table->foreign('status_id')
-                ->references('uuid')
+                ->references('id')
                 ->on('statuses');
        });
     }

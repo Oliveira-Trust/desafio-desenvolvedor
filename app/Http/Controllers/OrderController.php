@@ -2,109 +2,150 @@
 
 namespace App\Http\Controllers;
 
-use App\Response\JsonResponse;
 use App\DataTables\OrderDataTable;
-use App\Http\Requests\OrderRequest;
+use App\Http\Requests;
+use App\Http\Requests\CreateOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
 use App\Repositories\OrderRepository;
-use App\Repositories\ClientRepository;
-use App\Repositories\ProductRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
-class OrderController extends Controller
+class OrderController extends AppBaseController
 {
-    /**
-     * Access to User Repository
-     */
-    protected $orderRepository;
-    protected $clientRepository;
-    protected $productRepository;
+    /** @var  OrderRepository */
+    private $orderRepository;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(OrderRepository $orderRepository)
+    public function __construct(OrderRepository $orderRepo)
     {
-        $this->middleware('auth');
-        $this->orderRepository = $orderRepository;
-        $this->clientRepository = app(ClientRepository::class);
-        $this->productRepository = app(ProductRepository::class);
+        $this->orderRepository = $orderRepo;
     }
 
     /**
-     * Show the Order table.
+     * Display a listing of the Order.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param OrderDataTable $orderDataTable
+     * @return Response
      */
-    public function index(OrderDataTable $dataTable)
+    public function index(OrderDataTable $orderDataTable)
     {
-        $statuses = $this->orderRepository->getOrderStatuses();
-        $clients = $this->clientRepository->all()
-            ->where('status.status', 1)
-            ->sortBy('name');
-        $products = $this->productRepository->all()
-            ->where('status.status', 1)
-            ->sortBy('name');
-        return $dataTable->render('painel.order.index', [
-            'statuses' => $statuses,
-            'clients' => $clients,
-            'products' => $products
-        ]);
+        return $orderDataTable->render('orders.index');
     }
 
     /**
-     * Show the Order table.
+     * Show the form for creating a new Order.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Response
      */
-    public function allData()
+    public function create()
     {
-        return $this->orderRepository->all();
+        return view('orders.create');
     }
 
     /**
-     * Show the Order item.
+     * Store a newly created Order in storage.
      *
-     * @return JsonResponse
+     * @param CreateOrderRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateOrderRequest $request)
+    {
+        $input = $request->all();
+
+        $order = $this->orderRepository->create($input);
+
+        Flash::success('Order saved successfully.');
+
+        return redirect(route('orders.index'));
+    }
+
+    /**
+     * Display the specified Order.
+     *
+     * @param  int $id
+     *
+     * @return Response
      */
     public function show($id)
     {
-        return JsonResponse::success(
-            true, 
-            '', 
-            $this->orderRepository->getById($id)->toArray()
-        );
+        $order = $this->orderRepository->find($id);
+
+        if (empty($order)) {
+            Flash::error('Order not found');
+
+            return redirect(route('orders.index'));
+        }
+
+        return view('orders.show')->with('order', $order);
     }
-    
+
     /**
-     * Create a Order item.
+     * Show the form for editing the specified Order.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function store(OrderRequest $request)
+    public function edit($id)
     {
-        $validFields = $request->validated();
-        return $this->orderRepository->create($validFields);
+        $order = $this->orderRepository->find($id);
+
+        if (empty($order)) {
+            Flash::error('Order not found');
+
+            return redirect(route('orders.index'));
+        }
+
+        return view('orders.edit')->with('order', $order);
     }
-    
+
     /**
-     * Update a Order item.
+     * Update the specified Order in storage.
      *
-     * @return JsonResponse
+     * @param  int              $id
+     * @param UpdateOrderRequest $request
+     *
+     * @return Response
      */
-    public function update($id, OrderRequest $request)
+    public function update($id, UpdateOrderRequest $request)
     {
-        $validFields = $request->validated();
-        return $this->orderRepository->update($id, $validFields);
+        $order = $this->orderRepository->find($id);
+
+        if (empty($order)) {
+            Flash::error('Order not found');
+
+            return redirect(route('orders.index'));
+        }
+
+        $order = $this->orderRepository->update($request->all(), $id);
+
+        Flash::success('Order updated successfully.');
+
+        return redirect(route('orders.index'));
     }
-    
+
     /**
-     * Delete a Order item.
+     * Remove the specified Order from storage.
      *
-     * @return JsonResponse
+     * @param  int $id
+     *
+     * @return Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        return $this->orderRepository->delete($id);
+        $order = $this->orderRepository->find($id);
+
+        if (empty($order)) {
+            Flash::error('Order not found');
+
+            return redirect(route('orders.index'));
+        }
+
+        $this->orderRepository->delete($id);
+
+        Flash::success('Order deleted successfully.');
+
+        return redirect(route('orders.index'));
     }
 }

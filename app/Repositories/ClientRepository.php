@@ -3,75 +3,44 @@
 namespace App\Repositories;
 
 use App\Models\Client;
-use App\Response\JsonResponse;
 use App\Repositories\BaseRepository;
-use App\Repositories\ClientRepository;
-use App\Repositories\StatusRepository;
-use Yajra\DataTables\Services\DataTable;
-use App\Repositories\Interfaces\IClientRepository;
 
-class ClientRepository extends BaseRepository implements IClientRepository
+/**
+ * Class ClientRepository
+ * @package App\Repositories
+ * @version June 25, 2020, 2:54 am UTC
+*/
+
+class ClientRepository extends BaseRepository
 {
-    protected $modelClass;
-
     /**
-     * Create a new ClientRepository instance.
-     *
-     * @return void
+     * @var array
      */
-    public function __construct()
-    {
-        $this->modelClass = app(Client::class);
-    }
+    protected $fieldSearchable = [
+        'name',
+        'dob',
+        'email',
+        'address',
+        'contact',
+        'user_id',
+        'status_id'
+    ];
 
     /**
-     * Create a new model instance
-     *
-     * @param  array  $data
-     * @return JsonResponse
-     */
-    public function create(array $attr) : JsonResponse
-    {
-        $modelSave = $this->modelClass::create($attr);
-        return JsonResponse::success(true, __("Message Success Insert"), $modelSave->toArray());
-    }
-
-    /**
-     * Update a model instance
-     *
-     * @param  string  $uuid
-     * @param  array  $data
-     * @return JsonResponse
-     */
-    public function update(string $uuid, array $attr) : JsonResponse
-    {
-        $modelSave = $this->modelClass::where('uuid', $uuid)
-            ->update($attr);
-
-        return JsonResponse::success(true, __("Message Success Update"), $this->getById($uuid)->toArray());
-    }
-
-    /**
-     * Get Statuses to Slients
+     * Return searchable fields
      *
      * @return array
      */
-    public function getClientStatuses() : array
+    public function getFieldsSearchable()
     {
-        $statusRepository = app(StatusRepository::class);
-        $statuses = $statusRepository->filterByRef($this->modelClass::getTableName(), ['enable' => 1]);
-        return $statuses->toArray();
+        return $this->fieldSearchable;
     }
 
     /**
-     * Get Datatable instance
-     *
-     * @return Yajra\DataTables\EloquentDataTable
-     */
-    public function getDatatable()
+     * Configure the Model
+     **/
+    public function model()
     {
-        return datatables()
-            ->eloquent($this->modelClass::query())
-            ->addColumn('action', 'client.action');
+        return Client::class;
     }
 }

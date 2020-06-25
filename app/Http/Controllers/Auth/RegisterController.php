@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Response\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
-use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -33,20 +30,15 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-    /**
-     * Access to User Repository
-     */
-    protected $userRepository;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct()
     {
         $this->middleware('guest');
-        $this->userRepository = $userRepository;
     }
 
     /**
@@ -60,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -68,56 +60,14 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\User
      */
     protected function create(array $data)
     {
-        return $this->userRepository->create($data);
-    }
-
-    /**
-     * Register function
-     *
-     * @param Request $request
-     */
-    public function register(Request $request)
-    { 
-        $this->validator($request->all())->validate();
-        
-        event(new Registered($user = $this->create($request->all())));
-        
-        $this->guard()->login($user);
-        
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
-    }
-    
-    /**
-     * The user has been registered.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
-     */
-    protected function registered(Request $request, $user)
-    {
-        session(['userData' => [
-            'uuid' => $user->getUuid(),
-            'name' => $user->name,
-            'email' => $user->email,
-            'api_token' => $user->api_token,
-        ]]);
-        if ($request->wantsJson()) {
-            return JsonResponse::success(
-                true, 
-                __("User login!"), 
-                $user->toArray(), 
-                201
-            );
-        }
-        session(['status' => [
-            'type' => 'success',
-            'message' => __("Welcome"),
-        ]]);
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 }

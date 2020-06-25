@@ -28,13 +28,13 @@
                 @endif
                 @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('client') }}">{{ __('Client List') }}</a>
+                    <a class="nav-link" href="{{ route('clients.index') }}">{{ __('Client List') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('product') }}">{{ __('Product List') }}</a>
+                    <a class="nav-link" href="{{ route('products.index') }}">{{ __('Product List') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('order') }}">{{ __('Order List') }}</a>
+                    <a class="nav-link" href="{{ route('orders.index') }}">{{ __('Order List') }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -43,7 +43,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('status') }}">{{ __('Status List') }}</a>
+                        <a class="dropdown-item" href="{{ route('statuses.index') }}">{{ __('Status List') }}</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

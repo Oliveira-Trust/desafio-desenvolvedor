@@ -7,16 +7,24 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [{
+        "type": "vcs",
+        "url": "git@github.com:InfyOmLabs/swaggervel.git"
+    }],
     "require": {
         "php": "^7.2.5",
+        "doctrine/dbal": "~2.3",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "infyomlabs/adminlte-templates": "7.0.x-dev",
+        "infyomlabs/laravel-generator": "7.0.x-dev",
+        "appointer/swaggervel": "dev-master",
+        "infyomlabs/swagger-generator": "dev-master",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "yajra/laravel-datatables": "^1.5",
-        "your-app-rocks/eloquent-uuid": "^2.2"
+        "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
