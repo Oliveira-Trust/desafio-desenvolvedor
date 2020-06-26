@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
-use Illuminate\Container\Container as Application;
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Container\Container as Application;
 
 
 abstract class BaseRepository
@@ -189,5 +191,44 @@ abstract class BaseRepository
         $model = $query->findOrFail($id);
 
         return $model->delete();
+    }
+
+    /**
+     * Get images from public/$folder
+     *
+     * @param string $folder
+     * @return array 
+     */
+    public function getImages(string $folder) : array
+    {
+        $listImages = [];
+        foreach (glob(public_path() . "/img/{$folder}/*.png") as $filename) {
+            $crashPath = explode('public/', $filename);
+            $file = str_replace(".png", "", str_replace("img/{$folder}/", "", $crashPath[1]));
+            $listImages[$crashPath[1]] = $file;
+        }
+        return $listImages;
+    }
+
+    /**
+     * Filter status by Ref Table and parameters
+     *
+     * @param string $refTable
+     * @param array $filter
+     * @return Collection 
+     */
+    public function filterByRef(string $refTable = '', array $filter = []) : Collection 
+    {
+        if (empty($refTable)) {
+            $refTable = $this->model::getTableName();
+        }
+        $statusFiltered = Status::where('ref_table', $refTable);
+        if (!empty($filter)) {
+            foreach ($filter as $column => $value) {
+                $statusFiltered->where($column, $value);
+            }
+        }
+
+        return $statusFiltered->get();
     }
 }

@@ -1,19 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Order
-        </h1>
-    </section>
-    <div class="content">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-light">
+                    {{__("order.columns.id")}}: #{{ $order->id }}
+                </div>
+                <div class="card-body">
                     @include('orders.show_fields')
-                    <a href="{{ route('orders.index') }}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

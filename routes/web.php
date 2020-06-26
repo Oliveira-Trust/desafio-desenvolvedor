@@ -24,6 +24,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
+Route::get('{model}/erase', 'HomeController@erase')->name('erase');
+
 Route::resource('statuses', 'StatusController');
 
 Route::resource('clients', 'ClientController');

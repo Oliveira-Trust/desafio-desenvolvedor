@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ClientDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\Models\Client;
+use App\DataTables\ClientDataTable;
+use App\Repositories\ClientRepository;
 use App\Http\Requests\CreateClientRequest;
 use App\Http\Requests\UpdateClientRequest;
-use App\Repositories\ClientRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ClientController extends AppBaseController
 {
@@ -39,7 +40,12 @@ class ClientController extends AppBaseController
      */
     public function create()
     {
-        return view('clients.create');
+        $status = $this->clientRepository->filterByRef(Client::getTableName(), [
+            'enable' => 1
+        ])->pluck('name', 'id');
+        return view('clients.create', [
+            'statuses' => $status
+        ]);
     }
 
     /**
@@ -90,6 +96,9 @@ class ClientController extends AppBaseController
     public function edit($id)
     {
         $client = $this->clientRepository->find($id);
+        $status = $this->clientRepository->filterByRef(Client::getTableName(), [
+            'enable' => 1
+        ])->pluck('name', 'id');
 
         if (empty($client)) {
             Flash::error('Client not found');
@@ -97,7 +106,8 @@ class ClientController extends AppBaseController
             return redirect(route('clients.index'));
         }
 
-        return view('clients.edit')->with('client', $client);
+        return view('clients.edit')->with('client', $client)
+        ->with('statuses', $status);
     }
 
     /**

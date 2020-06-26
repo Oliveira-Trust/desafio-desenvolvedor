@@ -48,11 +48,7 @@ class StatusRepository extends BaseRepository
      */
     public function getRefTables() : array
     {
-        return [
-            'clients' => __('Client'),
-            'products' => __('Product'),
-            'purchase_orders' => __('Order'),
-        ];
+        return $this->model::getRefTables();
     }
 
     /**
@@ -62,6 +58,26 @@ class StatusRepository extends BaseRepository
      */
     public function getStatuses() : array
     {
-        return __("status.state.status");
+        return $this->model::getStatusLabel();
+    }
+
+    /**
+     * Validates if there is another Status with the same reference table
+     *
+     * @param string $uuid
+     * @param array $filter
+     * @return bool
+     */
+    private function validStatus(array $attr, string $id = '') : bool
+    {
+        $statusCount = $this->model::where('ref_table', $attr['ref_table'])
+        ->where('enable', Status::ENABLED)
+        ->where('status', $attr['status'])
+        ->when(!empty($id), function ($q) use ($id) { 
+            return $q->whereNotIn('id', [$id]);
+        })
+        ->first();
+
+        return empty($statusCount) ? false : true;
     }
 }

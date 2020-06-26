@@ -8,9 +8,10 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'title' => 'Lista de Ordens de Compra',
-    'name' => 'Ordens de Compra',
+    'title' => 'Lista de Pedidos de Compra',
+    'name' => 'Pedidos de Compra',
     'columns' => [
+        'id' => 'Número do Pedido',
         'products' => 'Total de Produtos',
         'total' => 'Total',
         'client_id' => 'Cliente',
@@ -24,6 +25,6 @@ return [
         'user_id' => 'Usuário é Obrigatório!',
         'products' => 'Você não pode fazer uma ordem sem Produtos!',
     ],
-    'client_error' => 'Essa tabela de referência já possui um client :client',
+    'order_error' => 'Essa tabela de referência já possui um ordem :order',
 
 ];

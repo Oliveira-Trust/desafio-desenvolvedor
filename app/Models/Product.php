@@ -121,6 +121,27 @@ class Product extends Model
     ];
 
     /**
+     * Get table name
+     *
+     * @return string
+     */
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
+
+    /**
+     * Get image url
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getImageAttribute($value)
+    {
+        return url($value);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function status()
@@ -133,7 +154,7 @@ class Product extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
+        return $this->belongsTo(\App\User::class, 'user_id');
     }
 
     /**

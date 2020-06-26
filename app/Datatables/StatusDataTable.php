@@ -2,13 +2,14 @@
 
 namespace App\DataTables;
 
+use Carbon\Carbon;
 use App\Models\Status;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
+use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use Yajra\DataTables\EloquentDataTable;
 
 class StatusDataTable extends DataTable
 {
@@ -46,6 +47,7 @@ class StatusDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
+            ->addAction(['title' => __("Action"), 'width' => '120px', 'printable' => false])
             ->dom('<"row"<"col-sm-12"B>><"row"<"col-sm-6"l><"col-sm-6"f>><"row"<"col-sm-12"tr>><"row"<"col-sm-5"i><"col-sm-7"p>>')
             ->orderBy(1, 'asc')
             ->parameters([
@@ -57,10 +59,11 @@ class StatusDataTable extends DataTable
             ->buttons(
                 Button::make('create')
                 ->text(__("Add") . " " . __("status.name")),
-                Button::make('excel')
-                ->text(__("Excel Export")),
                 Button::make('reload')
-                ->text(__("Reload"))
+                ->text(__("Reload")),
+                Button::make('create')
+                ->action("window.location = '".route('erase', ['model' => 'statuses'])."';")
+                ->text(__("Erase"))
             );
     }
 
@@ -85,7 +88,8 @@ class StatusDataTable extends DataTable
                 ->searchable(true)
                 ->exportable(true)
                 ->printable(true)
-                ->addClass('text-center'),
+                ->addClass('text-center')
+                ->render('getRefTables(data)'),
             Column::make('enable')
                 ->title(__("status.columns.enable"))
                 ->footer(__("status.columns.enable"))
@@ -110,25 +114,6 @@ class StatusDataTable extends DataTable
                 ->printable(true)
                 ->addClass('text-center')
                 ->render('moment(new Date(data)).format("DD/MM/YYYY HH:mm")'),
-            Column::make('id', __("Action"))
-                ->title(__("Action"))
-                ->footer(__("Action"))
-                ->searchable(false)
-                ->exportable(false)
-                ->printable(false)
-                ->width('120px')
-                ->addClass('text-center')
-                ->render('\'<a href="statuses/\' + data + \'/edit" class="btn btn-sm btn-primary">'. __("Edit") .'</a><a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="deleteData(this)" data-uuid="\' + data + \'">'. __("Delete") .'</a>\''),
         ];
-    }
-
-    /**
-     * Get filename for export.
-     *
-     * @return string
-     */
-    protected function filename()
-    {
-        return '$MODEL_NAME_PLURAL_SNAKE_$datatable_' . time();
     }
 }

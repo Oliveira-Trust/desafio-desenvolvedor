@@ -28,12 +28,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @SWG\Property(
  *          property="enable",
  *          description="enable",
- *          type="boolean"
+ *          type="integer"
  *      ),
  *      @SWG\Property(
  *          property="status",
  *          description="status",
- *          type="boolean"
+ *          type="integer"
  *      ),
  *      @SWG\Property(
  *          property="deleted_at",
@@ -100,6 +100,61 @@ class Status extends Model
         'enable' => 'required',
         'status' => 'required'
     ];
+
+    /**
+     * Get table name
+     *
+     * @return string
+     */
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
+
+    /**
+     * Get status ref
+     *
+     * @return string
+     */
+    public static function getRefTables()
+    {
+        return [
+            'clients' => __('Client'),
+            'products' => __('Product'),
+            'purchase_orders' => __('Order'),
+        ];
+    }
+
+    /**
+     * Get status label
+     *
+     * @return string
+     */
+    public static function getStatusLabel()
+    {
+        return __("status.state.status");
+    }
+
+    /**
+     * Get enable label
+     *
+     * @return string
+     */
+    public static function getEnableLabel()
+    {
+        return __("status.state.enable");
+    }
+
+    /**
+     * Get image url
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getReferenciaAttribute($value)
+    {
+        return url($value);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

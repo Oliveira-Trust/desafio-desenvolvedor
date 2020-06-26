@@ -2,23 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\OrderDataTable;
+use Flash;
+use Response;
+use App\Models\Order;
 use App\Http\Requests;
+use App\DataTables\OrderDataTable;
+use App\Repositories\OrderRepository;
+use App\Repositories\ClientRepository;
+use App\Repositories\ProductRepository;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
-use App\Repositories\OrderRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
-use Response;
 
 class OrderController extends AppBaseController
 {
     /** @var  OrderRepository */
     private $orderRepository;
+    private $clientRepository;
+    private $productRepository;
 
     public function __construct(OrderRepository $orderRepo)
     {
         $this->orderRepository = $orderRepo;
+        $this->clientRepository = app(ClientRepository::class);
+        $this->productRepository = app(ProductRepository::class);
     }
 
     /**
@@ -39,7 +46,21 @@ class OrderController extends AppBaseController
      */
     public function create()
     {
-        return view('orders.create');
+        $status = $this->orderRepository->filterByRef(Order::getTableName(), [
+            'enable' => 1
+        ])->pluck('name', 'id');
+        $clients = $this->clientRepository->all()
+            ->where('status.status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+        $products = $this->productRepository->all()
+            ->where('status.status', 1)
+            ->sortBy('name');
+
+        return view('orders.create')
+        ->with('clients', $clients)
+        ->with('products', $products)
+        ->with('statuses', $status);
     }
 
     /**
@@ -90,6 +111,16 @@ class OrderController extends AppBaseController
     public function edit($id)
     {
         $order = $this->orderRepository->find($id);
+        $status = $this->orderRepository->filterByRef(Order::getTableName(), [
+            'enable' => 1
+        ])->pluck('name', 'id');
+        $clients = $this->clientRepository->all()
+            ->where('status.status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+        $products = $this->productRepository->all()
+            ->where('status.status', 1)
+            ->sortBy('name');
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -97,7 +128,11 @@ class OrderController extends AppBaseController
             return redirect(route('orders.index'));
         }
 
-        return view('orders.edit')->with('order', $order);
+        return view('orders.edit')
+        ->with('clients', $clients)
+        ->with('products', $products)
+        ->with('statuses', $status)
+        ->with('order', $order);
     }
 
     /**

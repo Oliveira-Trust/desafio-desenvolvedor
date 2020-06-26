@@ -2,9 +2,15 @@
 
 namespace App\DataTables;
 
+use Carbon\Carbon;
 use App\Models\Order;
-use Yajra\DataTables\Services\DataTable;
+use Yajra\DataTables\Html\Button;
+use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Html\Editor\Editor;
+use Yajra\DataTables\Html\Editor\Fields;
+use Yajra\DataTables\Services\DataTable;
+
 
 class OrderDataTable extends DataTable
 {
@@ -18,7 +24,8 @@ class OrderDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'orders.datatables_actions');
+        return $dataTable
+        ->addColumn('action', 'orders.datatables_actions');
     }
 
     /**
@@ -29,7 +36,7 @@ class OrderDataTable extends DataTable
      */
     public function query(Order $model)
     {
-        return $model->newQuery();
+        return $model->with('status')->newQuery();
     }
 
     /**
@@ -40,21 +47,26 @@ class OrderDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->columns($this->getColumns())
-            ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
-            ->parameters([
-                'dom'       => 'Bfrtip',
-                'stateSave' => true,
-                'order'     => [[0, 'desc']],
-                'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
-                ],
-            ]);
+                    ->columns($this->getColumns())
+                    ->minifiedAjax()
+                    ->addAction(['title' => __("Action"), 'width' => '120px', 'printable' => false])
+                    ->dom('<"row"<"col-sm-12"B>><"row"<"col-sm-6"l><"col-sm-6"f>><"row"<"col-sm-12"tr>><"row"<"col-sm-5"i><"col-sm-7"p>>')
+                    ->orderBy(0, 'asc')
+                    ->parameters([
+                        'searchDelay' => 350,
+                        'language' => [
+                            'url' => url('vendor/dataTables/lang-pt.json')
+                        ],
+                    ])
+                    ->buttons(
+                        Button::make('create')
+                        ->text(__("Add") . " " . __("order.name")),
+                        Button::make('reload')
+                        ->text(__("Reload")),
+                        Button::make('create')
+                        ->action("window.location = '".route('erase', ['model' => 'purchase_orders'])."';")
+                        ->text(__("Erase"))
+                    );
     }
 
     /**
@@ -65,19 +77,30 @@ class OrderDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'user_id',
-            'client_id',
-            'status_id'
+            Column::make('id')
+                ->title(__("order.columns.id"))
+                ->footer(__("order.columns.id"))
+                ->searchable(true)
+                ->exportable(true)
+                ->printable(true)
+                ->addClass('text-center')
+                ->render('\'#\' + data'),
+            Column::make('status.status')
+                ->title(__("order.columns.status_id"))
+                ->footer(__("order.columns.status_id"))
+                ->searchable(true)
+                ->exportable(true)
+                ->printable(true)
+                ->addClass('text-center')
+                ->render('getStatus(data)'),
+            Column::make('created_at')
+                ->title(__("order.columns.created_at"))
+                ->footer(__("order.columns.created_at"))
+                ->searchable(true)
+                ->exportable(true)
+                ->printable(true)
+                ->addClass('text-center')
+                ->render('moment(new Date(data)).format("DD/MM/YYYY HH:mm")'),
         ];
-    }
-
-    /**
-     * Get filename for export.
-     *
-     * @return string
-     */
-    protected function filename()
-    {
-        return '$MODEL_NAME_PLURAL_SNAKE_$datatable_' . time();
     }
 }

@@ -19,6 +19,7 @@
                 @yield('content')
             </main>
         </div>
+        @include('layouts.modal')
     </body>
 
     <script src="{{ asset('js/app.js') }}"></script>

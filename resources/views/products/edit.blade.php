@@ -1,23 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Product
-        </h1>
-   </section>
-   <div class="content">
-       @include('adminlte-templates::common.errors')
-       <div class="box box-primary">
-           <div class="box-body">
-               <div class="row">
-                   {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'patch']) !!}
-
-                        @include('products.fields')
-
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-light">
+                    {{ __('Edit') }} {{ __('product.name') }}
+                </div>
+                <div class="card-body">
+                    {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'patch']) !!}
+                    @include('products.fields')
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

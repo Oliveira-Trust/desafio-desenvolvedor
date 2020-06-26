@@ -65,8 +65,6 @@ class Order extends Model
 
     protected $dates = ['deleted_at'];
 
-
-
     public $fillable = [
         'user_id',
         'client_id',
@@ -97,6 +95,16 @@ class Order extends Model
     ];
 
     /**
+     * Get table name
+     *
+     * @return string
+     */
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function client()
@@ -117,7 +125,7 @@ class Order extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
+        return $this->belongsTo(\App\User::class, 'user_id');
     }
 
     /**
@@ -125,6 +133,6 @@ class Order extends Model
      **/
     public function ordersProducts()
     {
-        return $this->hasMany(\App\Models\OrdersProduct::class, 'order_id');
+        return $this->hasMany(\App\Models\OrderProducts::class, 'order_id');
     }
 }

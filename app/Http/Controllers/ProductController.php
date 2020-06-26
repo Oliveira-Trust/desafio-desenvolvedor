@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ProductDataTable;
+use Flash;
+use Response;
 use App\Http\Requests;
+use App\Models\Product;
+use App\DataTables\ProductDataTable;
+use App\Repositories\ProductRepository;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Repositories\ProductRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ProductController extends AppBaseController
 {
@@ -39,7 +40,13 @@ class ProductController extends AppBaseController
      */
     public function create()
     {
-        return view('products.create');
+        $status = $this->productRepository->filterByRef(Product::getTableName(), [
+            'enable' => 1
+        ])->pluck('name', 'id');
+        $images = $this->productRepository->getImages('products');
+        return view('products.create')
+        ->with('images', $images)
+        ->with('statuses', $status);
     }
 
     /**
@@ -52,7 +59,7 @@ class ProductController extends AppBaseController
     public function store(CreateProductRequest $request)
     {
         $input = $request->all();
-
+        $input['price'] = str_replace(',', '.', str_replace('.', '', $input['price']));
         $product = $this->productRepository->create($input);
 
         Flash::success('Product saved successfully.');
@@ -90,14 +97,20 @@ class ProductController extends AppBaseController
     public function edit($id)
     {
         $product = $this->productRepository->find($id);
-
+        $status = $this->productRepository->filterByRef(Product::getTableName(), [
+            'enable' => 1
+        ])->pluck('name', 'id');
+        $images = $this->productRepository->getImages('products');
         if (empty($product)) {
             Flash::error('Product not found');
 
             return redirect(route('products.index'));
         }
 
-        return view('products.edit')->with('product', $product);
+        return view('products.edit')
+            ->with('images', $images)
+            ->with('product', $product)
+            ->with('statuses', $status);
     }
 
     /**
@@ -111,14 +124,15 @@ class ProductController extends AppBaseController
     public function update($id, UpdateProductRequest $request)
     {
         $product = $this->productRepository->find($id);
-
+        $input = $request->all();
+        $input['price'] = str_replace(',', '.', str_replace('.', '', $input['price']));
         if (empty($product)) {
             Flash::error('Product not found');
 
             return redirect(route('products.index'));
         }
 
-        $product = $this->productRepository->update($request->all(), $id);
+        $product = $this->productRepository->update($input, $id);
 
         Flash::success('Product updated successfully.');
 

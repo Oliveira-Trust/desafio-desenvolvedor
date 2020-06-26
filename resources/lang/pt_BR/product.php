@@ -8,8 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'title' => 'Lista de Clientes',
-    'name' => 'Cliente',
+    'title' => 'Lista de Produtos',
+    'name' => 'Produto',
     'columns' => [
         'name' => 'Nome',
         'description' => 'Descrição',
@@ -27,6 +27,6 @@ return [
         'status_id' => 'Status é Obrigatório!',
         'user_id' => 'Usuário é Obrigatório!',
     ],
-    'client_error' => 'Essa tabela de referência já possui um client :client',
+    'product_error' => 'Essa tabela de referência já possui um product :product',
 
 ];

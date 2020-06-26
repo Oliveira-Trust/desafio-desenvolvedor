@@ -21,3 +21,10 @@
     </div>
 @endsection
 
+@push('scripts')
+    <script>
+        var ref_tables = {!! json_encode(App\Models\Status::getRefTables()) !!}
+    </script>
+@endpush
+
+

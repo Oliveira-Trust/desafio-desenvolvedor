@@ -105,6 +105,20 @@ class OrderProducts extends Model
         'product_id' => 'required'
     ];
 
+    protected $with = [
+        'product'
+    ];
+
+    /**
+     * Get table name
+     *
+     * @return string
+     */
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/

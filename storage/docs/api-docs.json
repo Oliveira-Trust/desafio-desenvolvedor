@@ -1243,11 +1243,11 @@
                 },
                 "enable": {
                     "description": "enable",
-                    "type": "boolean"
+                    "type": "integer"
                 },
                 "status": {
                     "description": "status",
-                    "type": "boolean"
+                    "type": "integer"
                 },
                 "deleted_at": {
                     "description": "deleted_at",
