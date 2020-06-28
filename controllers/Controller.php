@@ -18,7 +18,7 @@ class Controller{
     public function listar(){
 
 
-        $dados = $this->model->listarCliente();
+        $dados = $this->model->listar();
 
 
         if($dados === false){
@@ -33,7 +33,9 @@ class Controller{
 
 
     public function deletar(){
-        $statusValidacao = $this->valida->validaDeletarCliente();
+
+        $statusValidacao = $this->valida->validaDeletar($_POST);
+
 
 
         if($statusValidacao['res'] == '0'){
@@ -42,7 +44,8 @@ class Controller{
         }
 
 
-        $statusRequisicao = $this->model->deletarCliente($_POST['prkCliente']);
+
+        $statusRequisicao = $this->model->deletar($_POST['prkProduto']);
 
         if($statusRequisicao === false){
             json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao deletar. Tente novamente mais tarde.']);
@@ -56,7 +59,7 @@ class Controller{
     }
 
     public function inserir(){
-        $statusValidacao =  $this->valida->validaInserirCliente();
+        $statusValidacao =  $this->valida->validaInserir();
 
 
         if($statusValidacao['res'] == '0'){
@@ -65,7 +68,7 @@ class Controller{
         }
 
 
-        $statusRequisicao = $this->model->inserirCliente($_POST['nomeCliente']);
+        $statusRequisicao = $this->model->inserir($_POST['nomeCliente']);
 
         if($statusRequisicao === false){
             echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao inserir. Tente novamente mais tarde.']);
@@ -84,14 +87,14 @@ class Controller{
     public function editar(){
 
 //       var_dump($_POST['prkCliente'],$_POST['nomeCliente']);exit();
-        $statusValidacao = $this->valida->validaEditarCliente();
+        $statusValidacao = $this->valida->validaEditar();
 
         if($statusValidacao['res'] == '0'){
             echo json_encode(['res'=>'0','msg'=> $statusValidacao['msg']]);
             return;
         }
 
-        $statusRequisicao = $this->model->editarCliente($_POST['prkCliente'],$_POST['nomeCliente']);
+        $statusRequisicao = $this->model->editar($_POST['prkCliente'],$_POST['nomeCliente']);
 
         if($statusRequisicao === false){
             echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao editar. Tente novamente mais tarde.']);

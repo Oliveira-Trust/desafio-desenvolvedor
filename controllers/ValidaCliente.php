@@ -4,7 +4,7 @@
 class ValidaCliente
 {
 
-    public function validaInserirCliente(){
+    public function validaInserir(){
 
 
         if(!isset($_POST['nomeCliente']) || trim($_POST['nomeCliente']) === ''){
@@ -23,7 +23,7 @@ class ValidaCliente
 
     }
 
-    public function validaDeletarCliente(){
+    public function validaDeletar(){
 
         if(!isset($_POST['prkCliente'])){
             return ['res' =>'0', 'msg'=>'O id do cliente não pode ser vazio.'];
@@ -37,7 +37,7 @@ class ValidaCliente
 
     }
 
-    public function validaEditarCliente(){
+    public function validaEditar(){
 
         if(!isset($_POST['nomeCliente']) || trim($_POST['nomeCliente']) === ''){
             return ['res' =>'0', 'msg'=>'O nome do cliente não pode ser vazio.'];

@@ -13,7 +13,7 @@ class ModelCliente
         $this->banco = new Banco();
     }
 
-    public function listarCliente(){
+    public function listar(){
         $sql = "SELECT prk AS prkCliente, nomeCliente As nomeCliente FROM clientes";
 
 
@@ -33,7 +33,7 @@ class ModelCliente
 
     }
 
-    public function deletarCliente($prkCliente){
+    public function deletar($prkCliente){
         $sql = "DELETE FROM clientes WHERE prk='$prkCliente'";
 
 
@@ -53,7 +53,7 @@ class ModelCliente
     }
 
 
-    public function inserirCliente($nomeCliente){
+    public function inserir($nomeCliente){
 
         $sql = "INSERT INTO clientes (nomeCliente) VALUES ('$nomeCliente')";
 
@@ -75,7 +75,7 @@ class ModelCliente
     }
 
 
-    public function editarCliente($prkCliente, $nomeCliente){
+    public function editar($prkCliente, $nomeCliente){
 
         $sql = "UPDATE clientes SET nomeCliente = '$nomeCliente' WHERE prk = $prkCliente";
 

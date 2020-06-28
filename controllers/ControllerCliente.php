@@ -23,11 +23,10 @@ class ControllerCliente extends Controller{
 
 if(isset($_GET['acao']) and trim($_GET['acao']) != ''){
 
-
     $acao = $_GET['acao'];
     $obj = new ControllerCliente();
     $obj->$acao();
 
 }else{
-   json_encode(['msg'=>'Ação não encontrada.']);
+  echo json_encode(['msg'=>'Ação não encontrada.']);
 }

@@ -22,6 +22,7 @@
                 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
                 crossorigin="anonymous"></script>
         <script type="text/javascript" src="../js/Cliente.js"></script>
+        <script type="text/javascript" src="../js/Produto.js"></script>
         <script type="text/javascript" src="../js/ajax.js"></script>
         <script type="text/javascript" src="../js/Gerais.js"></script>
 
@@ -33,6 +34,7 @@
               crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
         <link href="../css/simple-sidebar.css" rel="stylesheet">
+
 
 
     </head>
@@ -47,6 +49,9 @@
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action bg-light" onclick="new Cliente().listarCliente();">
                     Clientes
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-light" onclick="new Produto().listarProduto();">
+                    Produtos
                 </a>
             </div>
         </div>

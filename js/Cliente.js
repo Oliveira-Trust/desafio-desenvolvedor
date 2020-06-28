@@ -1,12 +1,14 @@
 function Cliente() {
 
     this.init = function () {
-        this.listarCliente();
+        var primeiraVez = true;
+
+        this.listarCliente(primeiraVez);
         this.montaModalInserirCliente();
         this.montaModalEditarCliente();
     };
 
-    this.listarCliente = function () {
+    this.listarCliente = function (primeiraVez = false) {
 
         carregarDados('../controllers/ControllerCliente.php?acao=listar','POST');
 
@@ -59,6 +61,10 @@ function Cliente() {
                     });
                     $("#nomeTabelaAtual").html('Clientes');
                     $("#abreModal").html('Inserir novo cliente');
+
+
+                    this.limpaModal(primeiraVez);
+                    this.montaModalEditarCliente();
 
 
 
@@ -132,7 +138,6 @@ function Cliente() {
 
     this.montaModalEditarCliente = function (){
 
-
         var html =  '<form id="formModalEditarCliente">'+
             '<div class="form-group">'+
             '<label for="recipient-name" class="col-form-label">Nome do cliente</label>'+
@@ -140,8 +145,20 @@ function Cliente() {
             '</div>'+
             '</form>';
 
-        $('#modalEditarGenerico #formularioModalEditarGenerico').html(html);
+         $('#formularioModalGenerico').html(html);
 
-    }
+    };
+
+    this.limpaModal = function(primeiraVez){
+
+        var form =  document.querySelectorAll('#formularioModalGenerico')[0].firstChild;
+
+        if(primeiraVez === true){
+            return;
+        }
+
+        form.remove();
+
+    };
 
 }
