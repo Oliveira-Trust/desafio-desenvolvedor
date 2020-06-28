@@ -77,6 +77,30 @@ class ModelProduto
             return false;
         }
 
+    }
+
+    public function editar(){
+
+        $nomeProduto = $_POST['nomeProduto'];
+        $precoProduto = $_POST['precoProduto'];
+        $prkProduto = $_POST['prkProduto'];
+
+
+        $sql = "UPDATE produtos SET nomeProduto= '$nomeProduto', precoProduto = '$precoProduto'  WHERE prk = $prkProduto";
+
+
+        if($this->banco !== false){
+            try{
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+
 
     }
 

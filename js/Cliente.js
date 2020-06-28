@@ -33,7 +33,7 @@ function Cliente() {
                         html += '<td>'+jsonDados.dados[i].nomeCliente+'</td>';
 
                         html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="editar"  ' +
-                            'onclick="new Gerais().abreModalEditarGenerico(\''+jsonDados.dados[i].nomeCliente+'\' , '+jsonDados.dados[i].prkCliente+');">Editar</button></td>';
+                            'onclick="new Cliente().abreModalEditarCliente(\''+jsonDados.dados[i].nomeCliente+'\' , '+jsonDados.dados[i].prkCliente+');">Editar</button></td>';
 
                         html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="excluir" ' +
                             'onclick="new Cliente().deletarCliente('+jsonDados.dados[i].prkCliente+')">Excluir</button></td>';
@@ -63,8 +63,10 @@ function Cliente() {
                     $("#abreModal").html('Inserir novo cliente');
 
 
-                    this.limpaModal(primeiraVez);
+                    this.limpaModalEditar(primeiraVez);
+                    this.limpaModalInserir(primeiraVez);
                     this.montaModalInserirCliente();
+                    this.montaModalEditarCliente();
 
 
 
@@ -73,8 +75,6 @@ function Cliente() {
     this.inserirCliente = function () {
 
         var form = $('#modalInserirGenerico #formModalInserirCliente').serialize();
-
-
 
 
         carregarDados('../controllers/ControllerCliente.php?acao=inserir',
@@ -117,15 +117,10 @@ function Cliente() {
             this.listarCliente();
         }
 
-
-
-        this.listarCliente();
-
     };
 
     this.montaModalInserirCliente = function () {
 
-        console.log('teste');
 
         var html =  '<form id="formModalInserirCliente">'+
                     '<div class="form-group">'+
@@ -137,7 +132,9 @@ function Cliente() {
 
 
         $('#modalInserirGenerico #formularioModalInserirGenerico').html(html);
+        $('#labelModalInserirGenerico').html('Novo Cliente');
         $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Cliente().inserirCliente()");
+
     };
 
     this.montaModalEditarCliente = function (){
@@ -145,29 +142,46 @@ function Cliente() {
         var html =  '<form id="formModalEditarCliente">'+
             '<div class="form-group">'+
             '<label for="recipient-name" class="col-form-label">Nome do cliente</label>'+
-            '<input type="text" class="form-control" id="editarNomeCliente" name="NomeCliente">'+
+            '<input type="text" class="form-control" id="editarNomeCliente" name="nomeCliente">'+
             '</div>'+
             '</form>';
 
-         $('#formularioModalGenerico').html(html);
-         $('#labelModalInserirGenerico').html('Novo cliente');
+         $('#formularioModalEditarGenerico').html(html);
+         $('#modalEditarGenericoLabel').html('Editar cliente');
 
     };
 
-    this.limpaModal = function(primeiraVez){
+    this.limpaModalInserir = function(primeiraVez){
 
         var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
-
-
 
         if(primeiraVez === true){
             return;
         }
 
-        console.log('aqui');
+        form.remove();
+
+    };
+
+
+    this.limpaModalEditar = function(primeiraVez){
+
+        var form =  document.querySelectorAll('#formularioModalEditarGenerico')[0].firstChild;
+
+        if(primeiraVez === true){
+            return;
+        }
 
         form.remove();
 
     };
+
+
+    this.abreModalEditarCliente = function (nomeCliente, prkCliente) {
+        $('#modalEditarGenerico #editarNomeCliente').val(nomeCliente);
+        $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Cliente().editarCliente("+prkCliente+")");
+        $("#modalEditarGenerico").modal();
+    };
+
 
 }

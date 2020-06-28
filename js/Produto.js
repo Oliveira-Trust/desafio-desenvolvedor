@@ -31,7 +31,8 @@ function Produto() {
             html += '<td>'+jsonDados.dados[i].precoProduto+'</td>';
 
             html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="editar"  ' +
-                'onclick="new Produto().abreModalEditarGenerico(\''+jsonDados.dados[i].nomeCliente+'\' , '+jsonDados.dados[i].prkCliente+');">Editar</button></td>';
+                'onclick="new Produto().abreModalEditarProduto(\''+jsonDados.dados[i].nomeProduto+'\' ' +
+                ', '+jsonDados.dados[i].prkProduto+' , '+jsonDados.dados[i].precoProduto+');">Editar</button></td>';
 
             html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="excluir" ' +
                 'onclick="new Produto().deletarProduto('+jsonDados.dados[i].prkProduto+')">Excluir</button></td>';
@@ -62,6 +63,11 @@ function Produto() {
         $("#nomeTabelaAtual").html('Produtos');
         $("#abreModal").html('Inserir novo produto');
 
+
+
+        this.limpaModalInserir();
+        this.limpaModalEditar();
+        this.montaModalEditarProduto();
         this.montaModalInserirProduto();
 
     };
@@ -99,7 +105,20 @@ function Produto() {
 
     };
 
-    this.editarProduto = function () {
+    this.editarProduto = function (prkProduto) {
+
+        var nomeProduto = $('#editarNomeProduto').val();
+        var precoProduto = $('#editarPrecoProduto').val();
+
+        carregarDados('../controllers/ControllerProduto.php?acao=editar',
+            'POST','&prkProduto='+prkProduto+'&nomeProduto='+nomeProduto+'&precoProduto='+precoProduto);
+
+        var json = jsonDados;
+
+        if(json.res == '1'){
+            $('#modalEditarGenerico').modal('toggle');
+            this.listarProduto();
+        }
 
 
     };
@@ -111,12 +130,6 @@ function Produto() {
     };
 
     this.montaModalInserirProduto= function (){
-
-        var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
-
-        if(form !== undefined){
-            form.remove();
-        }
 
         var html =  '<form id="formModalInserirProduto">'+
             '<div class="form-group">'+
@@ -132,5 +145,49 @@ function Produto() {
         $('#labelModalInserirGenerico').html('Novo Produto');
         $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Produto().inserirProduto()");
 
+    };
+
+    this.montaModalEditarProduto = function (){
+
+        var html =  '<form id="formModalEditarProduto">'+
+            '<div class="form-group">'+
+            '<label for="recipient-name" class="col-form-label">Nome do produto</label>'+
+            '<input type="text" class="form-control" id="editarNomeProduto" name="nomeProduto">'+
+            '<label for="recipient-name" class="col-form-label">Preco Produto</label>'+
+            '<input type="text" class="form-control" id="editarPrecoProduto" name="precoProduto">'+
+            '</div>'+
+            '</form>';
+
+        $('#formularioModalEditarGenerico').html(html);
+        $('#modalEditarGenericoLabel').html('Editar produto');
+
+
+    };
+
+
+    this.limpaModalInserir = function() {
+        var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
+
+        if(form !== undefined){
+            form.remove();
+        }
+    };
+
+    this.limpaModalEditar = function() {
+        var form =  document.querySelectorAll('#formularioModalEditarGenerico')[0].firstChild;
+
+        if(form !== undefined){
+            form.remove();
+        }
+    };
+
+
+    this.abreModalEditarProduto = function (nomeProduto,prkProduto,precoProduto) {
+        $('#modalEditarGenerico #editarNomeProduto').val(nomeProduto);
+        $('#modalEditarGenerico #editarPrecoProduto').val(precoProduto);
+        $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Produto().editarProduto("+prkProduto+")");
+        $("#modalEditarGenerico").modal();
     }
+
+
 }

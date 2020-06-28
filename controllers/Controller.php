@@ -93,7 +93,9 @@ class Controller{
             return;
         }
 
-        $statusRequisicao = $this->model->editar($_POST['prkCliente'],$_POST['nomeCliente']);
+
+
+        $statusRequisicao = $this->model->editar();
 
         if($statusRequisicao === false){
             echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao editar. Tente novamente mais tarde.']);
