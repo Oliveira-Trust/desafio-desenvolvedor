@@ -1,7 +1,7 @@
 function Gerais() {
 
     this.abreModalInserirGenerico = function () {
-        $("#modalGenerico").modal();
+        $("#modalInserirGenerico").modal();
     };
 
     this.abreModalEditarGenerico = function (nomeCliente, prkCliente) {

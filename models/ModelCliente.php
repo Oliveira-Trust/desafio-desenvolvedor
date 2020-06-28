@@ -33,7 +33,10 @@ class ModelCliente
 
     }
 
-    public function deletar($prkCliente){
+    public function deletar(){
+
+        $prkCliente = $_POST['prkCliente'];
+
         $sql = "DELETE FROM clientes WHERE prk='$prkCliente'";
 
 
@@ -53,7 +56,9 @@ class ModelCliente
     }
 
 
-    public function inserir($nomeCliente){
+    public function inserir(){
+
+        $nomeCliente = $_POST['nomeCliente'];
 
         $sql = "INSERT INTO clientes (nomeCliente) VALUES ('$nomeCliente')";
 
@@ -75,7 +80,10 @@ class ModelCliente
     }
 
 
-    public function editar($prkCliente, $nomeCliente){
+    public function editar(){
+
+        $prkCliente = $_POST['prkCliente'];
+        $nomeCliente = $_POST['nomeCliente'];
 
         $sql = "UPDATE clientes SET nomeCliente = '$nomeCliente' WHERE prk = $prkCliente";
 

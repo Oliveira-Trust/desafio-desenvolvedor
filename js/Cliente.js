@@ -64,7 +64,7 @@ function Cliente() {
 
 
                     this.limpaModal(primeiraVez);
-                    this.montaModalEditarCliente();
+                    this.montaModalInserirCliente();
 
 
 
@@ -72,7 +72,9 @@ function Cliente() {
 
     this.inserirCliente = function () {
 
-        var form = $('#modalGenerico #formModalInserirCliente').serialize();
+        var form = $('#modalInserirGenerico #formModalInserirCliente').serialize();
+
+
 
 
         carregarDados('../controllers/ControllerCliente.php?acao=inserir',
@@ -82,7 +84,7 @@ function Cliente() {
 
 
         if(json.res == '1'){
-            $('#modalGenerico').modal('toggle');
+            $('#modalInserirGenerico').modal('toggle');
             this.listarCliente();
         }
 
@@ -123,6 +125,8 @@ function Cliente() {
 
     this.montaModalInserirCliente = function () {
 
+        console.log('teste');
+
         var html =  '<form id="formModalInserirCliente">'+
                     '<div class="form-group">'+
                     '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
@@ -132,8 +136,8 @@ function Cliente() {
 
 
 
-        $('#modalGenerico #formularioModalGenerico').html(html);
-        $('#modalGenerico #botaoSalvarModal').attr("onClick" ,"new Cliente().inserirCliente()");
+        $('#modalInserirGenerico #formularioModalInserirGenerico').html(html);
+        $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Cliente().inserirCliente()");
     };
 
     this.montaModalEditarCliente = function (){
@@ -141,21 +145,26 @@ function Cliente() {
         var html =  '<form id="formModalEditarCliente">'+
             '<div class="form-group">'+
             '<label for="recipient-name" class="col-form-label">Nome do cliente</label>'+
-            '<input type="text" class="form-control" id="editarNomeCliente" name="editarNomeCliente">'+
+            '<input type="text" class="form-control" id="editarNomeCliente" name="NomeCliente">'+
             '</div>'+
             '</form>';
 
          $('#formularioModalGenerico').html(html);
+         $('#labelModalInserirGenerico').html('Novo cliente');
 
     };
 
     this.limpaModal = function(primeiraVez){
 
-        var form =  document.querySelectorAll('#formularioModalGenerico')[0].firstChild;
+        var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
+
+
 
         if(primeiraVez === true){
             return;
         }
+
+        console.log('aqui');
 
         form.remove();
 

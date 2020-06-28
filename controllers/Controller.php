@@ -34,7 +34,7 @@ class Controller{
 
     public function deletar(){
 
-        $statusValidacao = $this->valida->validaDeletar($_POST);
+        $statusValidacao = $this->valida->validaDeletar();
 
 
 
@@ -45,7 +45,7 @@ class Controller{
 
 
 
-        $statusRequisicao = $this->model->deletar($_POST['prkProduto']);
+        $statusRequisicao = $this->model->deletar();
 
         if($statusRequisicao === false){
             json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao deletar. Tente novamente mais tarde.']);
@@ -68,13 +68,12 @@ class Controller{
         }
 
 
-        $statusRequisicao = $this->model->inserir($_POST['nomeCliente']);
+        $statusRequisicao = $this->model->inserir();
 
         if($statusRequisicao === false){
             echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao inserir. Tente novamente mais tarde.']);
             return;
         }
-
 
 
 
@@ -86,7 +85,7 @@ class Controller{
 
     public function editar(){
 
-//       var_dump($_POST['prkCliente'],$_POST['nomeCliente']);exit();
+
         $statusValidacao = $this->valida->validaEditar();
 
         if($statusValidacao['res'] == '0'){

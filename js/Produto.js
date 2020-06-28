@@ -62,11 +62,26 @@ function Produto() {
         $("#nomeTabelaAtual").html('Produtos');
         $("#abreModal").html('Inserir novo produto');
 
-        this.montaModalEditarProduto();
+        this.montaModalInserirProduto();
 
     };
 
     this.inserirProduto = function () {
+
+        var form = $('#modalInserirGenerico #formModalInserirProduto').serialize();
+
+
+        carregarDados('../controllers/ControllerProduto.php?acao=inserir',
+            'POST',form);
+
+        var json = jsonDados;
+
+
+        if(json.res == '1'){
+            $('#modalInserirGenerico').modal('toggle');
+            this.listarProduto();
+        }
+
 
 
     };
@@ -95,22 +110,27 @@ function Produto() {
 
     };
 
-    this.montaModalEditarProduto= function (){
+    this.montaModalInserirProduto= function (){
 
-        var form =  document.querySelectorAll('#formularioModalGenerico')[0].firstChild;
+        var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
 
         if(form !== undefined){
             form.remove();
         }
 
-        var html =  '<form id="formModalEditarProduto">'+
+        var html =  '<form id="formModalInserirProduto">'+
             '<div class="form-group">'+
             '<label for="recipient-name" class="col-form-label">Nome do produto</label>'+
-            '<input type="text" class="form-control" id="editarNomeProduto" name="editarNomeProduto">'+
+            '<input type="text" class="form-control" id="inserirNomeProduto" name="nomeProduto">'+
+            '<label for="recipient-name" class="col-form-label">Preco</label>'+
+            '<input type="text" class="form-control" id="inserirPrecoProduto" name="precoProduto">'+
             '</div>'+
             '</form>';
 
-        $('#formularioModalGenerico').html(html);
+
+        $('#formularioModalInserirGenerico').html(html);
+        $('#labelModalInserirGenerico').html('Novo Produto');
+        $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Produto().inserirProduto()");
 
     }
 }

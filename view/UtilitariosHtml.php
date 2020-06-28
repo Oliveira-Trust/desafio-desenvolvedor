@@ -6,18 +6,18 @@ class UtilitariosHtml
 
     public function modalInserirGenerico(){
 
-        $html = '<div class="modal fade" id="modalGenerico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        $html = '<div class="modal fade" id="modalInserirGenerico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                      aria-hidden="true" >
              
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalGenericoLabel">Cadastro de Clientes</h5>
+                                <h5 class="modal-title" id="labelModalInserirGenerico"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body" id="formularioModalGenerico">
+                            <div class="modal-body" id="formularioModalInserirGenerico">
                                 
                             </div>
                             <div class="modal-footer">
@@ -47,7 +47,7 @@ class UtilitariosHtml
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalGenericoLabel">Editar cliente</h5>
+                                <h5 class="modal-title" id="modalGenericoLabel"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
