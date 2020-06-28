@@ -57,7 +57,7 @@ function Cliente() {
                             ]
                     });
                     $("#nomeTabelaAtual").html('Clientes');
-                    $("#abreModalInserir").html('Inserir novo cliente');
+                    $("#abreModal").html('Inserir novo cliente');
 
 
 
@@ -65,15 +65,27 @@ function Cliente() {
 
     this.inserirCliente = function () {
 
-        carregarDados('../controllers/ControllerCliente.php?acao=inserir');
-        this.listarCliente();
+        var form = $('#modalGenerico #formModalInserirCliente').serialize();
+
+
+        carregarDados('../controllers/ControllerCliente.php?acao=inserir',
+            'POST',form);
+
+        var json = jsonDados;
+
+
+        if(json.res == '1'){
+            $('#modalGenerico').modal('toggle');
+            this.listarCliente();
+        }
+
 
     };
 
-    this.deletarCliente = function ($prkCliente) {
+    this.deletarCliente = function (prkCliente) {
 
         carregarDados('../controllers/ControllerCliente.php?acao=deletar',
-            'POST','&prkCliente='+$prkCliente);
+            'POST','&prkCliente='+prkCliente);
 
         var json = jsonDados;
 
@@ -82,23 +94,26 @@ function Cliente() {
 
     };
 
-    this.editarCliente = function ($prkCliente) {
+    this.editarCliente = function (prkCliente) {
 
         carregarDados('../controllers/ControllerCliente.php?acao=editar');
-        this.listarCliente();
 
+        this.listarCliente();
     };
 
     this.montaModalInserirCliente = function () {
 
-        var html = '<div class="form-group">'+
+        var html =  '<form id="formModalInserirCliente">'+
+                    '<div class="form-group">'+
                     '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
                     '<input type="text" class="form-control" id="nomeCliente" name="nomeCliente">'+
-                    '</div>';
+                    '</div>'+
+                    '</form>';
 
 
 
-        $('#modalGenerico #formGenerico').html(html);
+        $('#modalGenerico #formularioModalGenerico').html(html);
+        $('#modalGenerico #botaoSalvarModal').attr("onClick" ,"new Cliente().inserirCliente()");
     };
 
 }

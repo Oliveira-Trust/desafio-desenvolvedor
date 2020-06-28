@@ -56,10 +56,26 @@ class Controller{
     }
 
     public function inserir(){
-        $this->valida->validaInserirCliente();
+        $statusValidacao =  $this->valida->validaInserirCliente();
 
 
-        echo json_encode(['res'=>'1','dados' ]);
+        if($statusValidacao['res'] == '0'){
+            echo json_encode(['res'=>'0','msg'=> $statusValidacao['msg']]);
+            return;
+        }
+
+
+        $statusRequisicao = $this->model->inserirCliente($_POST['nomeCliente']);
+
+        if($statusRequisicao === false){
+            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao inserir. Tente novamente mais tarde.']);
+            return;
+        }
+
+
+
+
+        echo json_encode(['res'=>'1']);
         return;
 
     }
@@ -69,7 +85,7 @@ class Controller{
     public function editar(){
         $this->valida->validaEditarCliente();
 
-        echo json_encode(['res'=>'1','dados' ]);
+        echo json_encode(['res'=>'1']);
         return;
 
     }

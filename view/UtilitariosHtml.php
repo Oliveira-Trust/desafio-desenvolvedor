@@ -17,14 +17,18 @@ class UtilitariosHtml
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <form id="formGenerico">
+                            <div class="modal-body" id="formularioModalGenerico">
                                 
-                                </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary">Salvar</button>
+                                <button id="botaoCancelarModal" type="button" class="btn btn-secondary" 
+                                    data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                
+                                <button id="botaoSalvarModal" type="button" class="btn btn-primary">
+                                    Inserir
+                                </button>
                             </div>
                         </div>
                     </div>

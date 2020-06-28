@@ -53,7 +53,24 @@ class ModelCliente
     }
 
 
-    public function inserirCliente($prkCliente, $nomeCliente){
+    public function inserirCliente($nomeCliente){
+
+        $sql = "INSERT INTO clientes (nomeCliente) VALUES ('$nomeCliente')";
+
+
+        if($this->banco !== false){
+            try{
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+
 
     }
 

@@ -73,7 +73,7 @@
             </nav>
 
             <div class="container-fluid">
-                <button class="btn btn-primary" id="abreModalInserir" style="float:right;"
+                <button class="btn btn-primary" id="abreModal" style="float:right;"
                         onclick="new Gerais().abreModal();">
 
                 </button>
@@ -83,7 +83,6 @@
                 </div>
 
                 <div id="tabelaPrincipal" style="margin-top:150px;">
-
 
                 </div>
 
