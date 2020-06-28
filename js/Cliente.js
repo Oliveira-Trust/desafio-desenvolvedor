@@ -3,6 +3,7 @@ function Cliente() {
     this.init = function () {
         this.listarCliente();
         this.montaModalInserirCliente();
+        this.montaModalEditarCliente();
     };
 
     this.listarCliente = function () {
@@ -30,7 +31,7 @@ function Cliente() {
                         html += '<td>'+jsonDados.dados[i].nomeCliente+'</td>';
 
                         html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="editar"  ' +
-                            'onclick="new Cliente().editarCliente('+jsonDados.dados[i].prkCliente+')">Editar</button></td>';
+                            'onclick="new Gerais().abreModalEditarGenerico(\''+jsonDados.dados[i].nomeCliente+'\' , '+jsonDados.dados[i].prkCliente+');">Editar</button></td>';
 
                         html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="excluir" ' +
                             'onclick="new Cliente().deletarCliente('+jsonDados.dados[i].prkCliente+')">Excluir</button></td>';
@@ -96,9 +97,22 @@ function Cliente() {
 
     this.editarCliente = function (prkCliente) {
 
-        carregarDados('../controllers/ControllerCliente.php?acao=editar');
+        var nomeCliente = $('#editarNomeCliente').val();
+
+        carregarDados('../controllers/ControllerCliente.php?acao=editar',
+            'POST','&prkCliente='+prkCliente+'&nomeCliente='+nomeCliente);
+
+        var json = jsonDados;
+
+        if(json.res == '1'){
+            $('#modalEditarGenerico').modal('toggle');
+            this.listarCliente();
+        }
+
+
 
         this.listarCliente();
+
     };
 
     this.montaModalInserirCliente = function () {
@@ -115,5 +129,19 @@ function Cliente() {
         $('#modalGenerico #formularioModalGenerico').html(html);
         $('#modalGenerico #botaoSalvarModal').attr("onClick" ,"new Cliente().inserirCliente()");
     };
+
+    this.montaModalEditarCliente = function (){
+
+
+        var html =  '<form id="formModalEditarCliente">'+
+            '<div class="form-group">'+
+            '<label for="recipient-name" class="col-form-label">Nome do cliente</label>'+
+            '<input type="text" class="form-control" id="editarNomeCliente" name="editarNomeCliente">'+
+            '</div>'+
+            '</form>';
+
+        $('#modalEditarGenerico #formularioModalEditarGenerico').html(html);
+
+    }
 
 }

@@ -74,8 +74,7 @@
 
             <div class="container-fluid">
                 <button class="btn btn-primary" id="abreModal" style="float:right;"
-                        onclick="new Gerais().abreModal();">
-
+                        onclick="new Gerais().abreModalInserirGenerico();">
                 </button>
 
                 <div id="nomeTabelaAtual" style="margin-top:10px;border:1px solid red;width: 70px;">
@@ -91,7 +90,8 @@
 
         <?php
             $modal = new UtilitariosHtml();
-            $modal->modalGenerico();
+            $modal->modalInserirGenerico();
+            $modal->modalEditarGenerico();
         ?>
 
     </div>

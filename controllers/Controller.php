@@ -81,9 +81,22 @@ class Controller{
     }
 
 
-
     public function editar(){
-        $this->valida->validaEditarCliente();
+
+//       var_dump($_POST['prkCliente'],$_POST['nomeCliente']);exit();
+        $statusValidacao = $this->valida->validaEditarCliente();
+
+        if($statusValidacao['res'] == '0'){
+            echo json_encode(['res'=>'0','msg'=> $statusValidacao['msg']]);
+            return;
+        }
+
+        $statusRequisicao = $this->model->editarCliente($_POST['prkCliente'],$_POST['nomeCliente']);
+
+        if($statusRequisicao === false){
+            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao editar. Tente novamente mais tarde.']);
+            return;
+        }
 
         echo json_encode(['res'=>'1']);
         return;

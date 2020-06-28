@@ -77,6 +77,23 @@ class ModelCliente
 
     public function editarCliente($prkCliente, $nomeCliente){
 
+        $sql = "UPDATE clientes SET nomeCliente = '$nomeCliente' WHERE prk = $prkCliente";
+
+
+        if($this->banco !== false){
+            try{
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+
+
     }
 
 }
