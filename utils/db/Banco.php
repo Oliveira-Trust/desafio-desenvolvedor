@@ -10,8 +10,13 @@ class Banco
 
     public function conexao(){
 
-        $banco = new pdo('mysql:host='.$this->host.';dbname='.$this->banco , $this->usuario, $this->senha);
-        return $banco;
+        try{
+            $banco = new pdo('mysql:host='.$this->host.';dbname='.$this->banco , $this->usuario, $this->senha);
+            return $banco;
+        }
+        catch (PDOException $e){
+            return false;
+        }
 
     }
 

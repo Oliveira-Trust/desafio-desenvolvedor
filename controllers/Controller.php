@@ -22,7 +22,7 @@ class Controller{
 
 
         if($dados === false){
-            json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao listar']);
+            json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao listar. Tente novamente mais tarde.']);
             return;
         }
 
@@ -31,25 +31,46 @@ class Controller{
 
     }
 
+
+    public function deletar(){
+        $statusValidacao = $this->valida->validaDeletarCliente();
+
+
+        if($statusValidacao['res'] == '0'){
+            json_encode(['res'=>'0','msg'=> $statusValidacao['msg']]);
+            return;
+        }
+
+
+        $statusRequisicao = $this->model->deletarCliente($_POST['prkCliente']);
+
+        if($statusRequisicao === false){
+            json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao deletar. Tente novamente mais tarde.']);
+            return;
+        }
+
+
+        echo json_encode(['res'=>'1']);
+        return;
+
+    }
+
     public function inserir(){
         $this->valida->validaInserirCliente();
 
 
-        json_encode(['res'=>'1','']);
+        echo json_encode(['res'=>'1','dados' ]);
+        return;
 
     }
 
-    public function deletar(){
-        $this->valida->validaDeletarCliente();
 
-        json_encode(['res'=>'1']);
-
-    }
 
     public function editar(){
         $this->valida->validaEditarCliente();
 
-        json_encode(['res'=>'1']);
+        echo json_encode(['res'=>'1','dados' ]);
+        return;
 
     }
 

@@ -14,27 +14,49 @@ class ModelCliente
     }
 
     public function listarCliente(){
-        $sql = 'SELECT prk AS prkUsuario, nomeCliente As nomeCliente FROM clientes';
+        $sql = "SELECT prk AS prkCliente, nomeCliente As nomeCliente FROM clientes";
 
 
-        $prepara = $this->banco->conexao()->prepare($sql);
-        $prepara->execute();
-        $dados = $prepara->fetchAll(PDO::FETCH_ASSOC);
+        if($this->banco !== false) {
+            try {
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+                $dados = $prepara->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                return false;
+            }
+        }else{
+            return false;
+        }
 
-//
-//        var_dump($dados);exit();
         return $dados;
+
+    }
+
+    public function deletarCliente($prkCliente){
+        $sql = "DELETE FROM clientes WHERE prk='$prkCliente'";
+
+
+        if($this->banco !== false){
+            try{
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
 
 
     }
+
 
     public function inserirCliente($prkCliente, $nomeCliente){
 
     }
 
-    public function deletarCliente($prkCliente){
-
-    }
 
     public function editarCliente($prkCliente, $nomeCliente){
 
