@@ -14,6 +14,17 @@ class ModelCliente
     }
 
     public function listarCliente(){
+        $sql = 'SELECT prk AS prkUsuario, nomeCliente As nomeCliente FROM clientes';
+
+
+        $prepara = $this->banco->conexao()->prepare($sql);
+        $prepara->execute();
+        $dados = $prepara->fetchAll(PDO::FETCH_ASSOC);
+
+//
+//        var_dump($dados);exit();
+        return $dados;
+
 
     }
 

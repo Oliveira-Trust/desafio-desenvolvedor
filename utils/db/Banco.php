@@ -3,13 +3,14 @@
 
 class Banco
 {
-    private $usuario = "";
+    private $usuario = "root";
     private $senha = "";
-    private $banco = "";
+    private $banco = "OliveiraTrust";
+    private $host = "localhost";
 
-    public function banco(){
+    public function conexao(){
 
-        $banco = new pdo();
+        $banco = new pdo('mysql:host='.$this->host.';dbname='.$this->banco , $this->usuario, $this->senha);
         return $banco;
 
     }
