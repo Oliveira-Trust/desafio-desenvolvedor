@@ -1,4 +1,5 @@
 <?php
+    include_once ('../view/UtilitariosHtml.php');
 
 ?>
 
@@ -22,6 +23,7 @@
                 crossorigin="anonymous"></script>
         <script type="text/javascript" src="../js/Cliente.js"></script>
         <script type="text/javascript" src="../js/ajax.js"></script>
+        <script type="text/javascript" src="../js/Gerais.js"></script>
 
 
 
@@ -35,7 +37,7 @@
 
     </head>
 
-    <body>
+    <body onload="new Cliente().init();">
 
     <div class="d-flex" id="wrapper">
 
@@ -71,9 +73,16 @@
             </nav>
 
             <div class="container-fluid">
+                <button class="btn btn-primary" id="abreModalInserir" style="float:right;"
+                        onclick="new Gerais().abreModal();">
+
+                </button>
+
+                <div id="nomeTabelaAtual" style="margin-top:10px;border:1px solid red;width: 70px;">
+
+                </div>
 
                 <div id="tabelaPrincipal" style="margin-top:150px;">
-
 
 
                 </div>
@@ -81,6 +90,10 @@
             </div>
         </div>
 
+        <?php
+            $modal = new UtilitariosHtml();
+            $modal->modalGenerico();
+        ?>
 
     </div>
 

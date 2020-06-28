@@ -1,6 +1,9 @@
 function Cliente() {
 
-
+    this.init = function () {
+        this.listarCliente();
+        this.montaModalInserirCliente();
+    };
 
     this.listarCliente = function () {
 
@@ -53,6 +56,8 @@ function Cliente() {
 
                             ]
                     });
+                    $("#nomeTabelaAtual").html('Clientes');
+                    $("#abreModalInserir").html('Inserir novo cliente');
 
 
 
@@ -83,4 +88,17 @@ function Cliente() {
         this.listarCliente();
 
     };
+
+    this.montaModalInserirCliente = function () {
+
+        var html = '<div class="form-group">'+
+                    '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
+                    '<input type="text" class="form-control" id="nomeCliente" name="nomeCliente">'+
+                    '</div>';
+
+
+
+        $('#modalGenerico #formGenerico').html(html);
+    };
+
 }
