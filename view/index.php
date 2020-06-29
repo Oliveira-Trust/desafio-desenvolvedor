@@ -1,5 +1,13 @@
 <?php
-    include_once ('../view/UtilitariosHtml.php');
+
+    session_start();
+
+    if(!isset($_SESSION['nomeCliente'])){
+        echo 'acesso negado';
+        return;
+    }
+
+    include_once('../view/UtilitariosHtml.php');
 
 ?>
 
@@ -25,6 +33,7 @@
         <script type="text/javascript" src="../js/Produto.js"></script>
         <script type="text/javascript" src="../js/ajax.js"></script>
         <script type="text/javascript" src="../js/Gerais.js"></script>
+        <script type="text/javascript" src="../js/login.js"></script>
 
 
 
@@ -70,7 +79,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Desconectar <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="#" onclick="new login().deslogarCliente();">Desconectar <span class="sr-only">(current)</span></a>
                         </li>
 
                     </ul>

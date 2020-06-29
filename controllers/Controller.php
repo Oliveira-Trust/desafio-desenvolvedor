@@ -1,6 +1,7 @@
 <?php
 
 
+session_start();
 
 class Controller{
 
@@ -106,6 +107,42 @@ class Controller{
         return;
 
     }
+
+    public function login(){
+
+        $statusValidacao =  $this->valida->Login();
+
+
+        if($statusValidacao['res'] == '0'){
+            echo json_encode(['res'=>'0','msg'=> $statusValidacao['msg']]);
+            return;
+        }
+
+
+        $statusRequisicao = $this->model->login();
+
+
+
+        if($statusRequisicao === false || empty($statusRequisicao)){
+            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao fazer login. Tente novamente mais tarde.']);
+            return;
+        }
+
+        $_SESSION['nomeCliente'] = $statusRequisicao['nomeCliente'];
+
+
+        echo json_encode(['res'=>'1']);
+    }
+
+    public function deslogar(){
+
+        unset($_SESSION['nomeCliente']);
+
+        echo json_encode(['res'=>'1']);
+    }
+
+
+
 
 
 }
