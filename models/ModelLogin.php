@@ -16,13 +16,10 @@ class ModelLogin
     public function login(){
 
 
-        $nomeCliente = $_POST['nomeCliente'];
-        $senhaCliente = $_POST['senhaCliente'];
+        $email = $_POST['email'];
+        $senha = sha1($_POST['senha']);
 
-        $sql = "SELECT nomeCliente, senhaCliente FROM clientes WHERE nomeCliente ='$nomeCliente'AND senhaCliente = '$senhaCliente'";
-
-
-
+        $sql = "SELECT email, senha FROM usuarios WHERE email ='$email'AND senha = '$senha'";
 
 
         if ($this->banco !== false) {
@@ -30,6 +27,7 @@ class ModelLogin
                 $prepara = $this->banco->conexao()->prepare($sql);
                 $prepara->execute();
                 $dados = $prepara->fetch(PDO::FETCH_ASSOC);
+
 
                 return $dados;
             } catch (PDOException $e) {
@@ -40,6 +38,31 @@ class ModelLogin
         }
 
 
+    }
+
+    public function cadastrar(){
+
+        $email = $_POST['email'];
+        $senha = sha1($_POST['senha']);
+
+        $sql = "INSERT INTO usuarios (email,senha) VALUES ('$email','$senha')";
+
+
+
+
+        if ($this->banco !== false) {
+            try {
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+
+
+                return true;
+            } catch (PDOException $e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
 
 
     }

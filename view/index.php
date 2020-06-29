@@ -2,12 +2,12 @@
 
     session_start();
 
-    if(isset($_SESSION['nomeCliente'])){
-        echo 'acesso negado';
+    if(!isset($_SESSION['acessoPermitido']) || $_SESSION['acessoPermitido'] === false){
+        header("Location:../view/login.php");
         return;
     }
 
-    include_once('../view/UtilitariosHtml.php');
+    include_once('../utils/UtilitariosHtml.php');
 
 ?>
 
@@ -63,7 +63,6 @@
                 <a href="#" class="list-group-item list-group-item-action bg-light" onclick="new Produto().listarProduto();">
                     Produtos
                 </a>
-
                 <a href="#" class="list-group-item list-group-item-action bg-light" onclick="new Pedido().listarPedido();">
                     Pedidos
                 </a>

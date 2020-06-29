@@ -4,7 +4,11 @@
 class ValidaLogin
 {
 
-    public function Login(){
+    public function login(){
+
+    }
+
+    public function cadastrar(){
 
     }
 }

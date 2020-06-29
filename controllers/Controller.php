@@ -110,7 +110,9 @@ class Controller{
 
     public function login(){
 
-        $statusValidacao =  $this->valida->Login();
+        $_SESSION['acessoPermitido'] = false;
+
+        $statusValidacao =  $this->valida->login();
 
 
         if($statusValidacao['res'] == '0'){
@@ -124,11 +126,11 @@ class Controller{
 
 
         if($statusRequisicao === false || empty($statusRequisicao)){
-            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao fazer login. Tente novamente mais tarde.']);
+            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao fazer login. Tente novamente']);
             return;
         }
 
-        $_SESSION['nomeCliente'] = $statusRequisicao['nomeCliente'];
+        $_SESSION['acessoPermitido'] = true;
 
 
         echo json_encode(['res'=>'1']);
@@ -136,7 +138,7 @@ class Controller{
 
     public function deslogar(){
 
-        unset($_SESSION['nomeCliente']);
+        unset($_SESSION['acessoPermitido']);
 
         echo json_encode(['res'=>'1']);
     }
@@ -154,6 +156,31 @@ class Controller{
          }
 
          echo json_encode(['res'=>'1','dados' => $statusRequisicao]);
+         return;
+
+     }
+
+     public function cadastrar(){
+
+         $statusValidacao =  $this->valida->cadastrar();
+
+
+         if($statusValidacao['res'] == '0'){
+             echo json_encode(['res'=>'0','msg'=> $statusValidacao['msg']]);
+             return;
+         }
+
+
+         $statusRequisicao = $this->model->cadastrar();
+
+
+
+         if($statusRequisicao === false || empty($statusRequisicao)){
+             echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao fazer o cadastro. Tente novamente']);
+             return;
+         }
+
+         echo json_encode(['res'=>'1']);
          return;
 
      }

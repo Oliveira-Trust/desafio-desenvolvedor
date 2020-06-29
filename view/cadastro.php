@@ -34,9 +34,9 @@
             integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
             crossorigin="anonymous"></script>
     <script
-            src="https://code.jquery.com/jquery-3.5.1.min.js"
-            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-            crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
             integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
@@ -51,34 +51,31 @@
 </head>
 
 <body>
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Login form</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="formLogin" class="form">
-                            <h3 class="text-center text-info">Login</h3>
+<div id="cadastro">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="formCadastro" class="form">
+                        <h3 class="text-center text-info">Cadastro</h3>
 
-                            <div class="form-group">
-                                <label  class="text-info" >Email:</label><br>
-                                <input type="text" id="email" class="form-control" name="email">
-                            </div>
+                        <div class="form-group">
+                            <label  class="text-info" >Email:</label><br>
+                            <input type="text" id="email" class="form-control" name="email">
+                        </div>
 
-                            <div class="form-group">
-                                <label class="text-info">Senha:</label><br>
-                                <input type="text"  id="senha" class="form-control" name="senha">
-                            </div>
+                        <div class="form-group">
+                            <label class="text-info">Senha:</label><br>
+                            <input type="text"  id="senha" class="form-control" name="senha">
+                        </div>
 
-                            <div id="register-link" class="text-right">
-                                <a href="../view/cadastro.php" class="text-info">Cadastrar-se</a>
-                            </div>
-                        </form>
 
-                        <button type="submit" class="btn btn-primary" id="login" onclick="new login().loginCliente(); " value="submit">Login</button>
-                    </div>
+                    </form>
+
+                    <button type="submit" class="btn btn-primary" id="botaoCadastro" onclick="new login().cadastrar(); " value="submit">Login</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
