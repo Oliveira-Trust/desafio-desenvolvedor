@@ -73,10 +73,6 @@ class UtilitariosHtml
 
     }
 
-    public function redirecionaLogin(){
 
-//        header("Location:http://localhost/desafio-desenvolvedor/view/index.php");exit();
-
-    }
 
 }

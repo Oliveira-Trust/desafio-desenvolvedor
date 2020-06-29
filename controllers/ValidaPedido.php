@@ -4,15 +4,15 @@
 class ValidaPedido
 {
 
-    public function validaInserirPedido(){
+    public function validaInserir(){
 
     }
 
-    public function validaDeletarPedido(){
+    public function validaDeletar(){
 
     }
 
-    public function validaEditarPedido(){
+    public function validaEditar(){
 
     }
 

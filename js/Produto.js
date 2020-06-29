@@ -30,11 +30,11 @@ function Produto() {
 
             html += '<td>'+jsonDados.dados[i].precoProduto+'</td>';
 
-            html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="editar"  ' +
+            html += '<td><button class="btn btn-primary" value="editar"  ' +
                 'onclick="new Produto().abreModalEditarProduto(\''+jsonDados.dados[i].nomeProduto+'\' ' +
                 ', '+jsonDados.dados[i].prkProduto+' , '+jsonDados.dados[i].precoProduto+');">Editar</button></td>';
 
-            html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="excluir" ' +
+            html += '<td><button class="btn btn-primary"  value="excluir" ' +
                 'onclick="new Produto().deletarProduto('+jsonDados.dados[i].prkProduto+')">Excluir</button></td>';
 
 

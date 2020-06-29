@@ -2,7 +2,7 @@
 
     session_start();
 
-    if(!isset($_SESSION['nomeCliente'])){
+    if(isset($_SESSION['nomeCliente'])){
         echo 'acesso negado';
         return;
     }
@@ -34,6 +34,7 @@
         <script type="text/javascript" src="../js/ajax.js"></script>
         <script type="text/javascript" src="../js/Gerais.js"></script>
         <script type="text/javascript" src="../js/login.js"></script>
+        <script type="text/javascript" src="../js/Pedido.js"></script>
 
 
 
@@ -61,6 +62,10 @@
                 </a>
                 <a href="#" class="list-group-item list-group-item-action bg-light" onclick="new Produto().listarProduto();">
                     Produtos
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action bg-light" onclick="new Pedido().listarPedido();">
+                    Pedidos
                 </a>
             </div>
         </div>
@@ -91,7 +96,7 @@
                         onclick="new Gerais().abreModalInserirGenerico();">
                 </button>
 
-                <div id="nomeTabelaAtual" style="margin-top:10px;border:1px solid red;width: 70px;">
+                <div id="nomeTabelaAtual" style="margin-top:10px; width: 110px; font-size: 25px;">
 
                 </div>
 

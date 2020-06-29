@@ -32,10 +32,10 @@ function Cliente() {
 
                         html += '<td>'+jsonDados.dados[i].nomeCliente+'</td>';
 
-                        html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="editar"  ' +
+                        html += '<td><button class="btn btn-primary"  value="editar"  ' +
                             'onclick="new Cliente().abreModalEditarCliente(\''+jsonDados.dados[i].nomeCliente+'\' , '+jsonDados.dados[i].prkCliente+');">Editar</button></td>';
 
-                        html += '<td><button class="btn btn-primary" id="botaoAdiciona" value="excluir" ' +
+                        html += '<td><button class="btn btn-primary"  value="excluir" ' +
                             'onclick="new Cliente().deletarCliente('+jsonDados.dados[i].prkCliente+')">Excluir</button></td>';
 
                         html += '</tr>';

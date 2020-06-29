@@ -142,6 +142,22 @@ class Controller{
     }
 
 
+     public function getDadosModalInserir(){
+
+
+         $statusRequisicao = $this->model->getDadosModalInserir();
+
+
+         if($statusRequisicao === false || empty($statusRequisicao)){
+             echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao buscar as informações do modal. Tente novamente mais tarde.']);
+             return;
+         }
+
+         echo json_encode(['res'=>'1','dados' => $statusRequisicao]);
+         return;
+
+     }
+
 
 
 

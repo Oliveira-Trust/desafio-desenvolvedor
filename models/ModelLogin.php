@@ -19,7 +19,9 @@ class ModelLogin
         $nomeCliente = $_POST['nomeCliente'];
         $senhaCliente = $_POST['senhaCliente'];
 
-        $sql = "SELECT nomeCliente, senhaCliente FROM clientes WHERE nomeCliente ='$nomeCliente'AND senhaCliente = $senhaCliente";
+        $sql = "SELECT nomeCliente, senhaCliente FROM clientes WHERE nomeCliente ='$nomeCliente'AND senhaCliente = '$senhaCliente'";
+
+
 
 
 
@@ -28,6 +30,7 @@ class ModelLogin
                 $prepara = $this->banco->conexao()->prepare($sql);
                 $prepara->execute();
                 $dados = $prepara->fetch(PDO::FETCH_ASSOC);
+
                 return $dados;
             } catch (PDOException $e) {
                 return false;
