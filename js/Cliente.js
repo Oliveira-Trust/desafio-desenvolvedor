@@ -211,6 +211,9 @@ function Cliente() {
         }
 
 
+        prkCliente = new Gerais().removePosicaoVazia(prkCliente);
+
+
         if(prkCliente === null){
             return;
         }

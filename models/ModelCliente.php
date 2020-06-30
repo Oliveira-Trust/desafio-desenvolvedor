@@ -60,11 +60,6 @@ class ModelCliente
         $prkCliente = explode(",",$_POST['prkCliente']);
 
 
-
-
-
-
-
         if($this->banco !== false){
             try{
                 foreach($prkCliente as $i => $val){
@@ -79,10 +74,6 @@ class ModelCliente
         }else{
             return false;
         }
-
-
-
-
 
 
     }

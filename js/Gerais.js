@@ -14,6 +14,16 @@ function Gerais() {
         });
     };
 
+    this.removePosicaoVazia = function (array) {
+
+        array = array.filter(function (el) {
+            return el != null;
+        });
+
+        return array;
+
+    }
+
 
 
 }

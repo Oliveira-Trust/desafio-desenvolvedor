@@ -54,6 +54,28 @@ class ModelProduto
             return false;
         }
 
+    }
+
+    public function deletarVarios(){
+
+        $prkProduto = explode(",",$_POST['prkProduto']);
+
+
+        if($this->banco !== false){
+            try{
+                foreach($prkProduto as $i => $val){
+                    $sql = "DELETE FROM produtos WHERE prk= $prkProduto[$i]";
+                    $prepara = $this->banco->conexao()->prepare($sql);
+                    $prepara->execute();
+                }
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+
 
     }
 

@@ -71,5 +71,9 @@ class ValidaProduto
 
     }
 
+    public function validaDeletarVarios(){
+
+    }
+
 
 }

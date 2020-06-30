@@ -18,6 +18,7 @@ function Produto() {
             '<th >Preco</th>'+
             '<th ></th>'+
             '<th ></th>'+
+            '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
             '</tr>'+
             '</thead>'+
             '<tbody>';
@@ -36,6 +37,8 @@ function Produto() {
 
             html += '<td><button class="btn btn-primary"  value="excluir" ' +
                 'onclick="new Produto().deletarProduto('+jsonDados.dados[i].prkProduto+')">Excluir</button></td>';
+
+            html += '<td><input  type="checkbox" class="form-check-input-prkProduto"  value="'+jsonDados.dados[i].prkProduto+'"></td>';
 
 
 
@@ -56,6 +59,11 @@ function Produto() {
                     "targets": 4,
                     "orderable": false,
                     "searchable": false,
+                },
+                {
+                    "targets": 5,
+                    "orderable": false,
+                    "searchable": false,
                 }
 
             ]
@@ -69,6 +77,7 @@ function Produto() {
         this.limpaModalEditar();
         this.montaModalEditarProduto();
         this.montaModalInserirProduto();
+        new Gerais().ativaTodosChecksClientes();
 
     };
 
@@ -187,7 +196,43 @@ function Produto() {
         $('#modalEditarGenerico #editarPrecoProduto').val(precoProduto);
         $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Produto().editarProduto("+prkProduto+")");
         $("#modalEditarGenerico").modal();
-    }
+    };
+
+
+
+    this.deletarTodosProdutosSelecionados = function (){
+
+        var checksSelecionados = document.querySelectorAll("#tabelaProdutos_wrapper .form-check-input-prkProduto");
+        var prkProduto = [];
+
+
+        for(var i = 0; i < checksSelecionados.length; i++){
+
+            if(checksSelecionados[i].checked === false){
+                continue;
+            }
+
+            prkProduto[i] =  checksSelecionados[i].value;
+        }
+
+        prkProduto = new Gerais().removePosicaoVazia(prkProduto);
+
+        if(prkProduto === null){
+            return;
+        }
+
+
+        carregarDados('../controllers/ControllerProduto.php?acao=deletarVarios',
+            'POST','&prkProduto='+prkProduto);
+
+        var json = jsonDados;
+
+        if(json.res == '1'){
+            this.listarProduto();
+        }
+
+
+    };
 
 
 }
