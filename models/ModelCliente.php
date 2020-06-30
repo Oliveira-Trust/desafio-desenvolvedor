@@ -55,6 +55,38 @@ class ModelCliente
 
     }
 
+    public function deletarVarios(){
+
+        $prkCliente = explode(",",$_POST['prkCliente']);
+
+
+
+
+
+
+
+        if($this->banco !== false){
+            try{
+                foreach($prkCliente as $i => $val){
+                    $sql = "DELETE FROM clientes WHERE prk= $prkCliente[$i]";
+                    $prepara = $this->banco->conexao()->prepare($sql);
+                    $prepara->execute();
+                }
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+
+
+
+
+
+    }
+
 
     public function inserir(){
 

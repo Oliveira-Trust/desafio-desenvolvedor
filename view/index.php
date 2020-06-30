@@ -74,6 +74,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <button class="btn btn-primary" id="menu-toggle">Abrir menu</button>
+                <button class="btn btn-primary" id="menu-toggle" onclick="new Cliente().deletarTodosClientesSelecionados();">Deletar todos</button>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,6 +121,9 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+
+
+
     </script>
 
     </body>

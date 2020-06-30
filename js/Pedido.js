@@ -46,12 +46,12 @@ function Pedido() {
         $("#tabelaPedidos").DataTable({
             "columnDefs": [
                 {
-                    "targets": 2,
+                    "targets": 4,
                     "orderable": false,
                     "searchable": false,
                 },
                 {
-                    "targets": 3,
+                    "targets": 5,
                     "orderable": false,
                     "searchable": false,
                 }

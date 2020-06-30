@@ -56,4 +56,8 @@ class ValidaCliente
 
     }
 
+    public function validaDeletarVarios(){
+
+    }
+
 }

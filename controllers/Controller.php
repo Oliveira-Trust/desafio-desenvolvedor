@@ -59,6 +59,33 @@ class Controller{
 
     }
 
+
+    public function deletarVarios(){
+
+        $statusValidacao = $this->valida->validaDeletarVarios();
+
+
+        if($statusValidacao['res'] == '0'){
+            json_encode(['res'=>'0','msg'=> $statusValidacao['msg']]);
+            return;
+        }
+
+
+        $statusRequisicao = $this->model->DeletarVarios();
+
+        if($statusRequisicao === false){
+            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao deletar varios. Tente novamente mais tarde.']);
+            return;
+        }
+
+
+
+
+        echo json_encode(['res'=>'1']);
+        return;
+
+    }
+
     public function inserir(){
         $statusValidacao =  $this->valida->validaInserir();
 
@@ -184,6 +211,8 @@ class Controller{
          return;
 
      }
+
+
 
 
 

@@ -22,6 +22,7 @@ function Cliente() {
                         '<th >nome</th>'+
                         '<th ></th>'+
                         '<th ></th>'+
+                        '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
                         '</tr>'+
                     '</thead>'+
                      '<tbody>';
@@ -38,6 +39,9 @@ function Cliente() {
                         html += '<td><button class="btn btn-primary"  value="excluir" ' +
                             'onclick="new Cliente().deletarCliente('+jsonDados.dados[i].prkCliente+')">Excluir</button></td>';
 
+                        html += '<td><input  type="checkbox" class="form-check-input-prkCliente"  value="'+jsonDados.dados[i].prkCliente+'"></td>';
+
+
                         html += '</tr>';
 
                     }
@@ -46,13 +50,20 @@ function Cliente() {
                     $("#tabelaPrincipal").html(html);
                     $("#tabelaClientes").DataTable({
                             "columnDefs": [
+
                                 {
                                     "targets": 2,
                                     "orderable": false,
                                     "searchable": false,
+
                                 },
                                 {
                                     "targets": 3,
+                                    "orderable": false,
+                                    "searchable": false,
+                                },
+                                {
+                                    "targets": 4,
                                     "orderable": false,
                                     "searchable": false,
                                 }
@@ -67,7 +78,7 @@ function Cliente() {
                     this.limpaModalInserir(primeiraVez);
                     this.montaModalInserirCliente();
                     this.montaModalEditarCliente();
-
+                    new Gerais().ativaTodosChecksClientes();
 
 
     };
@@ -182,6 +193,41 @@ function Cliente() {
         $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Cliente().editarCliente("+prkCliente+")");
         $("#modalEditarGenerico").modal();
     };
+
+
+    this.deletarTodosClientesSelecionados = function (){
+
+        var checksSelecionados = document.querySelectorAll("#tabelaClientes_wrapper .form-check-input-prkCliente");
+        var prkCliente = [];
+
+
+        for(var i = 0; i < checksSelecionados.length; i++){
+
+            if(checksSelecionados[i].checked === false){
+                continue;
+            }
+
+            prkCliente[i] =  checksSelecionados[i].value;
+        }
+
+
+        if(prkCliente === null){
+            return;
+        }
+
+
+        carregarDados('../controllers/ControllerCliente.php?acao=deletarVarios',
+            'POST','&prkCliente='+prkCliente);
+
+        var json = jsonDados;
+
+        if(json.res == '1'){
+            this.listarCliente();
+        }
+
+
+    };
+
 
 
 }
