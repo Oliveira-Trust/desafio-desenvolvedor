@@ -87,6 +87,31 @@ class ModelPedido
 
     }
 
+    public function deletarVarios(){
+
+
+        $prkPedido = explode(",",$_POST['prkPedido']);
+
+
+        if($this->banco !== false){
+            try{
+                foreach($prkPedido as $i => $val){
+                    $sql = "DELETE FROM pedidos WHERE prk= $prkPedido[$i]";
+                    $prepara = $this->banco->conexao()->prepare($sql);
+                    $prepara->execute();
+                }
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+
+    }
+
+
 
     public function getDadosModalInserir(){
 

@@ -19,6 +19,7 @@ function Pedido() {
             '<th >status</th>'+
             '<th ></th>'+
             '<th ></th>'+
+            '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
             '</tr>'+
             '</thead>'+
             '<tbody>';
@@ -37,6 +38,8 @@ function Pedido() {
             html += '<td><button class="btn btn-primary"  value="excluir" ' +
                 'onclick="new Pedido().deletarPedido('+jsonDados.dados[i].prkPedido+')">Excluir</button></td>';
 
+            html += '<td><input  type="checkbox" class="form-check-input-prkPedido"  value="'+jsonDados.dados[i].prkPedido+'"></td>';
+
             html += '</tr>';
 
         }
@@ -54,6 +57,11 @@ function Pedido() {
                     "targets": 5,
                     "orderable": false,
                     "searchable": false,
+                },
+                {
+                    "targets": 6,
+                    "orderable": false,
+                    "searchable": false,
                 }
 
             ]
@@ -63,6 +71,7 @@ function Pedido() {
         this.montaModalInserirCliente();
         $("#nomeTabelaAtual").html('Pedidos');
         $("#abreModal").html('Inserir novo pedido');
+        new Gerais().ativaTodosChecksClientes();
 
 
 
@@ -169,5 +178,39 @@ function Pedido() {
             form.remove();
         }
     };
+
+    this.deletarTodosPedidosSelecionados = function () {
+
+        var checksSelecionados = document.querySelectorAll("#tabelaPedidos_wrapper .form-check-input-prkPedido");
+        var prkPedido = [];
+
+
+        for(var i = 0; i < checksSelecionados.length; i++){
+
+            if(checksSelecionados[i].checked === false){
+                continue;
+            }
+
+            prkPedido[i] =  checksSelecionados[i].value;
+        }
+
+        prkPedido = new Gerais().removePosicaoVazia(prkPedido);
+
+        if(prkPedido === null){
+            return;
+        }
+
+
+        carregarDados('../controllers/ControllerPedido.php?acao=deletarVarios',
+            'POST','&prkPedido='+prkPedido);
+
+        var json = jsonDados;
+
+        if(json.res == '1'){
+            this.listarPedido();
+        }
+
+
+    }
 }
 

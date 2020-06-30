@@ -16,4 +16,10 @@ class ValidaPedido
 
     }
 
+    public function validaDeletarVarios(){
+
+    }
+
+
+
 }

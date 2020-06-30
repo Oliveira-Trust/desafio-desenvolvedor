@@ -27,5 +27,5 @@ if(isset($_GET['acao']) and trim($_GET['acao']) != ''){
     $obj->$acao();
 
 }else{
-    echo json_encode(['msg'=>'Ação não encontrada.']);
+    echo json_encode(['res'=>'0', 'msg'=>'Ação não encontrada.']);
 }
