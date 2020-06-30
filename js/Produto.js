@@ -73,11 +73,14 @@ function Produto() {
 
 
 
-        this.limpaModalInserir();
-        this.limpaModalEditar();
+        new Gerais().limpaModalInserir();
+        new Gerais().limpaModalEditar();
+        new Gerais().ativaTodosChecksClientes();
         this.montaModalEditarProduto();
         this.montaModalInserirProduto();
-        new Gerais().ativaTodosChecksClientes();
+
+
+
 
     };
 
@@ -176,14 +179,6 @@ function Produto() {
 
     this.limpaModalInserir = function() {
         var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
-
-        if(form !== undefined){
-            form.remove();
-        }
-    };
-
-    this.limpaModalEditar = function() {
-        var form =  document.querySelectorAll('#formularioModalEditarGenerico')[0].firstChild;
 
         if(form !== undefined){
             form.remove();

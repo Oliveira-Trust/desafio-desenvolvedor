@@ -74,11 +74,12 @@ function Cliente() {
                     $("#abreModal").html('Inserir novo cliente');
 
 
-                    this.limpaModalEditar(primeiraVez);
-                    this.limpaModalInserir(primeiraVez);
+                    new Gerais().limpaModalEditar(primeiraVez);
+                    new Gerais().limpaModalInserir(primeiraVez);
+                    new Gerais().ativaTodosChecksClientes();
                     this.montaModalInserirCliente();
                     this.montaModalEditarCliente();
-                    new Gerais().ativaTodosChecksClientes();
+
 
 
     };
@@ -159,31 +160,6 @@ function Cliente() {
 
          $('#formularioModalEditarGenerico').html(html);
          $('#modalEditarGenericoLabel').html('Editar cliente');
-
-    };
-
-    this.limpaModalInserir = function(primeiraVez){
-
-        var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
-
-        if(primeiraVez === true){
-            return;
-        }
-
-        form.remove();
-
-    };
-
-
-    this.limpaModalEditar = function(primeiraVez){
-
-        var form =  document.querySelectorAll('#formularioModalEditarGenerico')[0].firstChild;
-
-        if(primeiraVez === true){
-            return;
-        }
-
-        form.remove();
 
     };
 

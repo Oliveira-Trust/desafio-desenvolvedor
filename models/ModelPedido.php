@@ -111,6 +111,32 @@ class ModelPedido
 
     }
 
+    public function editar(){
+
+        $frkProduto = $_POST['frkProduto'];
+        $frkCliente = $_POST['frkCliente'];
+        $status = $_POST['status'];
+        $prkPedido = $_POST['prkPedido'];
+
+
+        $sql = "UPDATE pedidos SET frkProduto= $frkProduto, frkCliente = $frkCliente, status = '$status'  WHERE prk = $prkPedido";
+
+
+        if($this->banco !== false){
+            try{
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+                return true;
+            }catch (PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+
+    }
+
 
 
     public function getDadosModalInserir(){

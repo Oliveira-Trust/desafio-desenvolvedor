@@ -22,7 +22,37 @@ function Gerais() {
 
         return array;
 
-    }
+    };
+
+
+    this.limpaModalEditar = function(primeiraVez = false){
+
+        var form =  document.querySelectorAll('#formularioModalEditarGenerico')[0].firstChild;
+
+        if(primeiraVez === true){
+            return;
+        }
+
+        if(form !== undefined && form !== null){
+            form.remove();
+        }
+
+    };
+
+    this.limpaModalInserir = function(primeiraVez = false){
+
+        var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
+
+
+        if(primeiraVez === true){
+            return;
+        }
+
+        if(form !== undefined && form !== null){
+            form.remove();
+        }
+
+    };
 
 
 

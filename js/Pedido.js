@@ -33,7 +33,7 @@ function Pedido() {
             html += '<td>'+jsonDados.dados[i].status+'</td>';
 
             html += '<td><button class="btn btn-primary"  value="editar"  ' +
-                'onclick="new Cliente().abreModalEditarCliente(\''+jsonDados.dados[i].nomeCliente+'\' , '+jsonDados.dados[i].prkCliente+');">Editar</button></td>';
+                'onclick="new Pedido().abreModalEditarPedido('+jsonDados.dados[i].prkPedido+');">Editar</button></td>';
 
             html += '<td><button class="btn btn-primary"  value="excluir" ' +
                 'onclick="new Pedido().deletarPedido('+jsonDados.dados[i].prkPedido+')">Excluir</button></td>';
@@ -66,13 +66,14 @@ function Pedido() {
 
             ]
         });
-
-        this.limpaModalInserir();
-        this.montaModalInserirCliente();
         $("#nomeTabelaAtual").html('Pedidos');
         $("#abreModal").html('Inserir novo pedido');
-        new Gerais().ativaTodosChecksClientes();
 
+        new Gerais().limpaModalInserir();
+        new Gerais().limpaModalEditar();
+        new Gerais().ativaTodosChecksClientes();
+        this.montaModalInserirPedido();
+        this.montaModalEditarPedido();
 
 
 
@@ -114,14 +115,30 @@ function Pedido() {
 
     };
 
-    this.editarPedido = function () {
+    this.editarPedido = function (prkPedido) {
+
+        var frkProduto = $('#modalEditarGenerico #formModalEditarPedido #selectProdutoMoldalEditar').find('option:selected').attr('id');
+        var frkCliente = $('#modalEditarGenerico #formModalEditarPedido #selectClienteMoldalEditar').find('option:selected').attr('id');
+        var status = $('#modalEditarGenerico #formModalEditarPedido #selectStatusMoldalEditar').find('option:selected').attr('name');
+
+
+        carregarDados('../controllers/ControllerPedido.php?acao=editar',
+            'POST','&frkProduto='+frkProduto+'&frkCliente='+frkCliente+'&status='+status+'&prkPedido='+prkPedido);
+
+        var json = jsonDados;
+
+
+        if(json.res == '1'){
+            $('#modalEditarGenerico').modal('toggle');
+            this.listarPedido();
+        }
 
 
     };
 
 
 
-    this.montaModalInserirCliente = function () {
+    this.montaModalInserirPedido = function () {
 
         carregarDados('../controllers/ControllerPedido.php?acao=getDadosModalInserir','POST');
 
@@ -165,7 +182,54 @@ function Pedido() {
 
         $('#modalInserirGenerico #formularioModalInserirGenerico').html(html);
         $('#labelModalInserirGenerico').html('Novo Pedido');
-        $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Pedido().inserirPedido()");
+
+    };
+
+    this.montaModalEditarPedido = function () {
+
+        carregarDados('../controllers/ControllerPedido.php?acao=getDadosModalInserir','POST');
+
+
+        var json = jsonDados;
+
+
+        var html =
+            '<form id="formModalEditarPedido">'+
+            '<div class="form-group">'+
+            '<label for="recipient-name" class="col-form-label">Produtos Cadastrados</label>'+
+
+            '<select class="form-control" id="selectProdutoMoldalEditar" name="frkProduto">';
+        for(var i in json.dados[0]){
+            html += '<option id='+json.dados[0][i].prkProduto+'>'+json.dados[0][i].nomeProduto+'</option>';
+        }
+        html +=     '</select>';
+
+        html +=     '<label for="recipient-name" class="col-form-label">Clientes Cadastrados</label>';
+
+        html +=         '<select class="form-control" id="selectClienteMoldalEditar" name="frkCliente">';
+        for(var i in json.dados[1]){
+            html += '<option id='+json.dados[1][i].prkCliente+'>'+json.dados[1][i].nomeCliente+'</option>';
+        }
+        html +=         '</select>';
+
+        html +=     '<label for="recipient-name" class="col-form-label">Status do pedido</label>';
+        html +=         '<select class="form-control" id="selectStatusMoldalEditar" name="status">';
+        html +=             '<option name="A" id="pedidoStatusAberto">Aberto</option>';
+        html +=             '<option name="P" id="pedidoStatusPago">Pago</option>';
+        html +=             '<option name="C" id="pedidoStatusCancelado">Cancelado</option>';
+        html +=         '</select>';
+
+
+
+
+        html +=  '</div>';
+        html +=  '</form>';
+
+
+
+        $('#modalEditarGenerico #formularioModalEditarGenerico').html(html);
+        $('#labelModalEditarGenerico').html('Editar Pedido');
+        $('#modalEditarGenerico #botaoSalvarModal').attr("onClick" ,"new Pedido().editarPedido()");
 
     };
 
@@ -210,7 +274,14 @@ function Pedido() {
             this.listarPedido();
         }
 
+    };
 
+
+    this.abreModalEditarPedido = function (prkPedido){
+        $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Pedido().editarPedido("+prkPedido+")");
+        $("#modalEditarGenerico").modal();
     }
+
+
 }
 
