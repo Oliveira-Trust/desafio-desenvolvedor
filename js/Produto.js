@@ -118,7 +118,6 @@ function Produto() {
         }
 
 
-        $('#modalInserirGenerico').modal('toggle');
         this.listarProduto();
 
 

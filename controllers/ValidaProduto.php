@@ -7,9 +7,8 @@ class ValidaProduto
     public function validaInserir(){
 
 
-        //validações nomeProduto
 
-        if(!isset($_POST['nomeProduto']) || trim($_POST['nomeProduto']) === ''){
+        if(!isset($_POST['nomeProduto']) || trim($_POST['nomeProduto']) === '' || $_POST['nomeProduto'] == 'undefined'){
             return ['res' =>'0', 'msg'=>'O nome do produto não pode ser vazio.'];
         }
 
@@ -21,7 +20,6 @@ class ValidaProduto
             return ['res' =>'0', 'msg'=>'O nome do produto deve conter no máximo 50 caracteres.'];
         }
 
-        //validações precoProduto
 
         if(!isset($_POST['precoProduto']) || trim($_POST['precoProduto']) === ''){
             return ['res' =>'0', 'msg'=>'O preco do produto não pode ser vazio.'];
@@ -54,7 +52,7 @@ class ValidaProduto
 
     public function validaEditar(){
 
-        if(!isset($_POST['nomeProduto']) || trim($_POST['nomeProduto']) === ''){
+        if(!isset($_POST['nomeProduto']) || trim($_POST['nomeProduto']) === '' || $_POST['nomeProduto'] == 'undefined'){
             return ['res' =>'0', 'msg'=>'O nome do produto não pode ser vazio.'];
         }
 
@@ -72,6 +70,26 @@ class ValidaProduto
     }
 
     public function validaDeletarVarios(){
+
+
+        $prkProduto = explode(",",$_POST['prkProduto']);
+
+
+
+        if(!isset($_POST['prkProduto']) || trim($_POST['prkProduto']) === ''){
+            return ['res' =>'0', 'msg'=>'O id do produto não pode ser vazio.'];
+        }
+
+
+        foreach ($prkProduto as $val){
+            if(!is_numeric($val)){
+                return ['res' =>'0', 'msg'=>'O id do produto deve ser numérico.'];
+            }
+        }
+
+
+        return ['res' => '1'];
+
 
     }
 

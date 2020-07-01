@@ -7,7 +7,7 @@ class ValidaCliente
     public function validaInserir(){
 
 
-        if(!isset($_POST['nomeCliente']) || trim($_POST['nomeCliente']) === ''){
+        if(!isset($_POST['nomeCliente']) || trim($_POST['nomeCliente']) === '' || $_POST['nomeCliente'] == 'undefined'){
             return ['res' =>'0', 'msg'=>'O nome do cliente não pode ser vazio.'];
         }
 
@@ -39,7 +39,7 @@ class ValidaCliente
 
     public function validaEditar(){
 
-        if(!isset($_POST['nomeCliente']) || trim($_POST['nomeCliente']) === ''){
+        if(!isset($_POST['nomeCliente']) || trim($_POST['nomeCliente']) === '' || $_POST['nomeCliente'] == 'undefined'){
             return ['res' =>'0', 'msg'=>'O nome do cliente não pode ser vazio.'];
         }
 
@@ -57,6 +57,20 @@ class ValidaCliente
     }
 
     public function validaDeletarVarios(){
+
+        $prkCliente= explode(",",$_POST['prkCliente']);
+
+        if(!isset($_POST['prkCliente'])){
+            return ['res' =>'0', 'msg'=>'O id do cliente não pode ser vazio.'];
+        }
+
+        foreach ($prkCliente as $val){
+            if(!is_numeric($val)){
+                return ['res' =>'0', 'msg'=>'O id do cliente deve ser numérico.'];
+            }
+        }
+
+        return ['res' => '1'];
 
     }
 

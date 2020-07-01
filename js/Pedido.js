@@ -213,30 +213,30 @@ function Pedido() {
         var html =
             '<form id="formModalEditarPedido">'+
             '<div class="form-group">'+
-            '<label for="recipient-name" class="col-form-label">Produtos Cadastrados</label>'+
+                '<label for="recipient-name" class="col-form-label">Produtos Cadastrados</label>'+
 
-            '<select class="form-control" id="selectProdutoMoldalEditar" name="frkProduto">';
-        for(var i in json.dados[0]){
-            html += '<option id='+json.dados[0][i].prkProduto+'>'+json.dados[0][i].nomeProduto+'</option>';
-        }
-        html +=     '</select>';
+                '<select class="form-control" id="selectProdutoMoldalEditar" name="frkProduto">';
+                    for(var i in json.dados[0])
+                    {
+                        html += '<option id='+json.dados[0][i].prkProduto+'>'+json.dados[0][i].nomeProduto+'</option>';
+                    }
+        html +=  '</select>';
 
-        html +=     '<label for="recipient-name" class="col-form-label">Clientes Cadastrados</label>';
+        html +=  '<label for="recipient-name" class="col-form-label">Clientes Cadastrados</label>';
 
-        html +=         '<select class="form-control" id="selectClienteMoldalEditar" name="frkCliente">';
-        for(var i in json.dados[1]){
-            html += '<option id='+json.dados[1][i].prkCliente+'>'+json.dados[1][i].nomeCliente+'</option>';
-        }
-        html +=         '</select>';
+        html +=  '<select class="form-control" id="selectClienteMoldalEditar" name="frkCliente">';
+                    for(var i in json.dados[1])
+                    {
+                        html += '<option id='+json.dados[1][i].prkCliente+'>'+json.dados[1][i].nomeCliente+'</option>';
+                    }
+        html +=  '</select>';
 
-        html +=     '<label for="recipient-name" class="col-form-label">Status do pedido</label>';
-        html +=         '<select class="form-control" id="selectStatusMoldalEditar" name="status">';
-        html +=             '<option name="A" id="pedidoStatusAberto">Aberto</option>';
-        html +=             '<option name="P" id="pedidoStatusPago">Pago</option>';
-        html +=             '<option name="C" id="pedidoStatusCancelado">Cancelado</option>';
-        html +=         '</select>';
-
-
+        html +=   '<label for="recipient-name" class="col-form-label">Status do pedido</label>';
+        html +=    '<select class="form-control" id="selectStatusMoldalEditar" name="status">';
+        html +=        '<option name="A" id="pedidoStatusAberto">Aberto</option>';
+        html +=       '<option name="P" id="pedidoStatusPago">Pago</option>';
+        html +=       '<option name="C" id="pedidoStatusCancelado">Cancelado</option>';
+        html +=    '</select>';
 
 
         html +=  '</div>';

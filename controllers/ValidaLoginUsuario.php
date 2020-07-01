@@ -22,6 +22,8 @@ class ValidaLoginUsuario
             return ['res' =>'0', 'msg'=>'O email deve conter no máximo 50 caracteres.'];
         }
 
+        return ['res' => '1'];
+
 
     }
 
@@ -46,6 +48,8 @@ class ValidaLoginUsuario
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             return ['res' =>'0', 'msg'=>'Digite um email valido.'];
         }
+
+        return ['res' => '1'];
 
 
     }
