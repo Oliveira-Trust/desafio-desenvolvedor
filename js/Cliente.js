@@ -73,7 +73,6 @@ function Cliente() {
 
                 $("#nomeTabelaAtual").html('Clientes');
                 $("#abreModal").html('Inserir novo cliente');
-                $("#abreModal").html('Inserir novo cliente');
                 $("#deletarSelecionados").attr("onClick" ,"new Cliente().deletarTodosClientesSelecionados();");
 
 

@@ -19,6 +19,7 @@ function Pedido() {
                 '<th >status</th>'+
                 '<th ></th>'+
                 '<th ></th>'+
+                '<th ></th>'+
                 '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
             '</tr>'+
             '</thead>'+
@@ -37,6 +38,9 @@ function Pedido() {
 
                         html += '<td><button class="btn btn-primary"  value="excluir" ' +
                             'onclick="new Pedido().deletarPedido('+jsonDados.dados[i].prkPedido+')">Excluir</button></td>';
+
+                        html += '<td><button class="btn btn-primary"  value="excluir" ' +
+                            'onclick="new Pedido().abreModalInformacoesPedido('+jsonDados.dados[i].prkPedido+')">+ info</button></td>';
 
                         html += '<td><input  type="checkbox" class="form-check-input-prkPedido"  value="'+jsonDados.dados[i].prkPedido+'"></td>';
 
@@ -59,7 +63,7 @@ function Pedido() {
                     "searchable": false,
                 },
                 {
-                    "targets": 6,
+                    "targets": 7,
                     "orderable": false,
                     "searchable": false,
                 }
@@ -76,6 +80,7 @@ function Pedido() {
         new Gerais().ativaTodosChecksClientes();
         this.montaModalInserirPedido();
         this.montaModalEditarPedido();
+        this.montaModalInformacoesPedido();
 
 
 
@@ -247,6 +252,47 @@ function Pedido() {
         $('#modalEditarGenerico #formularioModalEditarGenerico').html(html);
         $('#labelModalEditarGenerico').html('Editar Pedido');
         $('#modalEditarGenerico #botaoSalvarModal').attr("onClick" ,"new Pedido().editarPedido()");
+
+    };
+
+    this.montaModalInformacoesPedido = function () {
+
+
+        var html ='<form id="formModalInformacoesPedido">'+
+            '<div class="form-group">'+
+            '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
+            '<input type="text" class="form-control" id="infoNomeCliente" name="nomeCliente" disabled>'+
+            '<label for="recipient-name" class="col-form-label">Valor Pago</label>'+
+            '<input type="text" class="form-control" id="infoPrecoProduto" name="nomeCliente" disabled>'+
+            '<label for="recipient-name" class="col-form-label">Status</label>'+
+            '<input type="text" class="form-control" id="infoStatusCliente" name="nomeCliente" disabled>'+
+            '<label for="recipient-name" class="col-form-label">Produto</label>'+
+            '<input type="text" class="form-control" id="infoNomeProduto" name="nomeCliente" disabled>'+
+            '</div>'+
+            '</form>';
+
+
+
+
+        $('#modalInformacoesGenerico #formularioModalInformacoesGenerico').html(html);
+        $('#modalInformacoesGenericoLabel').html('Informações do cliente');
+
+
+    };
+
+    this.abreModalInformacoesPedido = function (prkPedido) {
+
+        carregarDados('../controllers/ControllerPedido.php?acao=getDadosModalInfoCliente','POST',
+            '&prkPedido='+prkPedido);
+
+        var json = jsonDados;
+
+
+        $('#modalInformacoesGenerico #infoNomeCliente').val(json.dados[0].nomeCliente);
+        $('#modalInformacoesGenerico #infoPrecoProduto').val(json.dados[0].precoProduto);
+        $('#modalInformacoesGenerico #infoStatusCliente').val(json.dados[0].status);
+        $('#modalInformacoesGenerico #infoNomeProduto').val(json.dados[0].nomeProduto);
+        $("#modalInformacoesGenerico").modal();
 
     };
 

@@ -168,6 +168,37 @@ class ModelPedido
     }
 
 
+    public function getDadosModalInfoCliente(){
+
+
+        $prkPedido = $_POST['prkPedido'];
+
+        $sql = "SELECT p.frkCliente AS frkCliente,nomeCliente,p.prk,frkProduto,precoProduto,status,nomeProduto
+                 FROM pedidos AS p
+                 JOIN clientes AS c ON  p.frkCliente = c.prk
+                 JOIN produtos AS pr ON  p.frkProduto = pr.prk
+                 WHERE p.prk  = $prkPedido";
+
+
+
+        if ($this->banco !== false) {
+            try {
+                $prepara = $this->banco->conexao()->prepare($sql);
+                $prepara->execute();
+                $dados[] = $prepara->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+
+        return $dados;
+
+    }
+
+
 
 
 

@@ -29,6 +29,24 @@ class ControllerPedido extends Controller{
 
     }
 
+    public function getDadosModalInfoCliente(){
+
+        //var_dump($_POST);exit();
+
+
+        $statusRequisicao = $this->model->getDadosModalInfoCliente();
+
+
+        if($statusRequisicao === false || empty($statusRequisicao)){
+            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao buscar as informações . Tente novamente mais tarde.']);
+            return;
+        }
+
+        echo json_encode(['res'=>'1','dados' => $statusRequisicao]);
+        return;
+
+    }
+
 }
 
 

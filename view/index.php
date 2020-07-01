@@ -113,6 +113,7 @@
             $modal = new UtilitariosHtml();
             $modal->modalInserirGenerico();
             $modal->modalEditarGenerico();
+            $modal->modalInformacoesGenerico();
         ?>
 
         <div id="exibiMensagemErro" class="alert alert-primary" role="alert"

@@ -154,7 +154,7 @@ function Produto() {
                         '<label for="recipient-name" class="col-form-label">Nome do produto</label>'+
                         '<input type="text" class="form-control" id="inserirNomeProduto" name="nomeProduto">'+
                         '<label for="recipient-name" class="col-form-label">Preco</label>'+
-                        '<input type="text" class="form-control" id="inserirPrecoProduto" name="precoProduto">'+
+                        '<input type="text" class="form-control" id="inserirPrecoProduto" name="precoProduto" placeholder="ex: 500.00">'+
                     '</div>'+
                  '</form>';
 
