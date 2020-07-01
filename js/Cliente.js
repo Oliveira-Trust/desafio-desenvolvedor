@@ -97,10 +97,17 @@ function Cliente() {
         var json = jsonDados;
 
 
-        if(json.res == '1'){
-            $('#modalInserirGenerico').modal('toggle');
-            this.listarCliente();
+        if(json.res == '0') {
+           new Gerais().exibirMensagemErro(json.msg);
+           return;
         }
+
+
+
+        $('#modalInserirGenerico').modal('toggle');
+        this.listarCliente();
+
+
 
 
     };
@@ -112,10 +119,15 @@ function Cliente() {
 
         var json = jsonDados;
 
-
-        if(json.res == '1'){
-            this.listarCliente();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+
+
+        this.listarCliente();
+
 
     };
 
@@ -128,10 +140,15 @@ function Cliente() {
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            $('#modalEditarGenerico').modal('toggle');
-            this.listarCliente();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+
+        $('#modalEditarGenerico').modal('toggle');
+        this.listarCliente();
+
 
     };
 
@@ -204,9 +221,13 @@ function Cliente() {
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            this.listarCliente();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+        this.listarCliente();
+
 
 
     };

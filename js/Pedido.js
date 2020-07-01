@@ -94,11 +94,16 @@ function Pedido() {
 
         var json = jsonDados;
 
-
-        if(json.res == '1'){
-            $('#modalInserirGenerico').modal('toggle');
-            this.listarPedido();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+
+
+        $('#modalInserirGenerico').modal('toggle');
+        this.listarPedido();
+
 
 
 
@@ -110,6 +115,11 @@ function Pedido() {
             'POST','&prkPedido='+prkPedido);
 
         var json = jsonDados;
+
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
+        }
 
 
 
@@ -129,11 +139,15 @@ function Pedido() {
 
         var json = jsonDados;
 
-
-        if(json.res == '1'){
-            $('#modalEditarGenerico').modal('toggle');
-            this.listarPedido();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+
+
+        $('#modalEditarGenerico').modal('toggle');
+        this.listarPedido();
 
 
     };
@@ -264,9 +278,13 @@ function Pedido() {
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            this.listarPedido();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+        this.listarPedido();
+
 
     };
 

@@ -11,9 +11,13 @@ function LoginUsuario(){
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            window.location.replace("../view/index.php");
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+        window.location.replace("../view/index.php");
+
     };
 
     this.deslogar = function (){
@@ -23,9 +27,14 @@ function LoginUsuario(){
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            window.location.replace("../view/login.php");
+
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+        window.location.replace("../view/login.php");
+
     };
 
     this.cadastrar = function () {
@@ -38,9 +47,14 @@ function LoginUsuario(){
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            window.location.replace("../view/index.php");
+
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+        window.location.replace("../view/index.php");
+
 
     };
 }

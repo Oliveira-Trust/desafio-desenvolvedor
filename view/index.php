@@ -115,7 +115,14 @@
             $modal->modalEditarGenerico();
         ?>
 
+        <div id="exibiMensagemErro" class="alert alert-primary" role="alert"
+             style=" z-index:10000;display:none; margin-bottom: 0px; position: absolute; width: 100%">
+
+        </div>
+
     </div>
+
+
 
 
     <script>

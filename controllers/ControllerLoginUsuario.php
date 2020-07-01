@@ -2,7 +2,7 @@
 
 
 include_once ('../controllers/Controller.php');
-include_once ('../models/ModelLogin.php');
+include_once('../models/ModelLoginUsuario.php');
 include_once('../controllers/ValidaLoginUsuario.php');
 
 class ControllerLoginUsuario extends Controller
@@ -10,7 +10,7 @@ class ControllerLoginUsuario extends Controller
 
     public function __construct()
     {
-        parent::__construct(new modelLogin(), new ValidaLoginUsuario());
+        parent::__construct(new ModelLoginUsuario(), new ValidaLoginUsuario());
     }
 
 
@@ -32,7 +32,7 @@ class ControllerLoginUsuario extends Controller
 
 
         if($statusRequisicao === false || empty($statusRequisicao)){
-            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao fazer login. Tente novamente']);
+            echo json_encode(['res'=>'0','msg'=>'Login ou senha incorretos.']);
             return;
         }
 

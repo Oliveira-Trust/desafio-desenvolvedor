@@ -54,6 +54,16 @@ function Gerais() {
 
     };
 
+    this.exibirMensagemErro = function (mensagem) {
+        $('#exibiMensagemErro').css({display: "block"});
+        $('#exibiMensagemErro').html(mensagem);
+
+        setTimeout(function () {
+            $('#exibiMensagemErro').fadeOut();
+        }, 1500);
+
+    }
+
 
 
 }

@@ -90,11 +90,16 @@ function Produto() {
 
         var json = jsonDados;
 
-
-        if(json.res == '1'){
-            $('#modalInserirGenerico').modal('toggle');
-            this.listarProduto();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+
+
+        $('#modalInserirGenerico').modal('toggle');
+        this.listarProduto();
+
 
 
     };
@@ -107,10 +112,14 @@ function Produto() {
         var json = jsonDados;
 
 
-        if(json.res == '1'){
-            $('#modalInserirGenerico').modal('toggle');
-            this.listarProduto();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+
+        $('#modalInserirGenerico').modal('toggle');
+        this.listarProduto();
 
 
     };
@@ -125,10 +134,14 @@ function Produto() {
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            $('#modalEditarGenerico').modal('toggle');
-            this.listarProduto();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+        $('#modalEditarGenerico').modal('toggle');
+        this.listarProduto();
+
 
 
     };
@@ -207,9 +220,13 @@ function Produto() {
 
         var json = jsonDados;
 
-        if(json.res == '1'){
-            this.listarProduto();
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
         }
+
+        this.listarProduto();
+
 
 
     };

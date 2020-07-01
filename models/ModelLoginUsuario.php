@@ -3,7 +3,7 @@
 
 include_once ('../utils/db/Banco.php');
 
-class ModelLogin
+class ModelLoginUsuario
 {
     private $banco;
 
@@ -53,10 +53,10 @@ class ModelLogin
         if ($this->banco !== false) {
             try {
                 $prepara = $this->banco->conexao()->prepare($sql);
-                $prepara->execute();
+                $status = $prepara->execute();
 
 
-                return true;
+                return $status;
             } catch (PDOException $e) {
                 return false;
             }
