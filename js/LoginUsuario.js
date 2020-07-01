@@ -1,12 +1,12 @@
-function login(){
+function LoginUsuario(){
 
 
-    this.loginCliente = function (){
+    this.login = function (){
 
         var formLogin =  $('#formLogin').serialize();
 
 
-        carregarDados('../controllers/ControllerLogin.php?acao=login',
+        carregarDados('../controllers/ControllerLoginUsuario.php?acao=login',
             'POST',formLogin);
 
         var json = jsonDados;
@@ -16,9 +16,9 @@ function login(){
         }
     };
 
-    this.deslogarCliente = function (){
+    this.deslogar = function (){
 
-        carregarDados('../controllers/ControllerLogin.php?acao=deslogar',
+        carregarDados('../controllers/ControllerLoginUsuario.php?acao=deslogar',
             'POST');
 
         var json = jsonDados;
@@ -26,14 +26,14 @@ function login(){
         if(json.res == '1'){
             window.location.replace("../view/login.php");
         }
-    }
+    };
 
     this.cadastrar = function () {
 
         var formLogin =  $('#formCadastro').serialize();
 
 
-        carregarDados('../controllers/ControllerLogin.php?acao=cadastrar',
+        carregarDados('../controllers/ControllerLoginUsuario.php?acao=cadastrar',
             'POST',formLogin);
 
         var json = jsonDados;
@@ -42,5 +42,5 @@ function login(){
             window.location.replace("../view/index.php");
         }
 
-    }
+    };
 }

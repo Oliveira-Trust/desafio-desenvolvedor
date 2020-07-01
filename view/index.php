@@ -33,7 +33,7 @@
         <script type="text/javascript" src="../js/Produto.js"></script>
         <script type="text/javascript" src="../js/ajax.js"></script>
         <script type="text/javascript" src="../js/Gerais.js"></script>
-        <script type="text/javascript" src="../js/login.js"></script>
+        <script type="text/javascript" src="../js/LoginUsuario.js"></script>
         <script type="text/javascript" src="../js/Pedido.js"></script>
 
 
@@ -74,7 +74,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <button class="btn btn-primary" id="menu-toggle">Abrir menu</button>
-                <button class="btn btn-primary" id="menu-toggle" onclick="new Pedido().deletarTodosPedidosSelecionados();">Deletar todos</button>
+
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,13 +84,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#" onclick="new login().deslogarCliente();">Desconectar <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="#" onclick="new LoginUsuario().deslogar();">Desconectar <span class="sr-only">(current)</span></a>
                         </li>
 
                     </ul>
                 </div>
             </nav>
 
+            <!--Aqui é construida todas as tabelas-->
             <div class="container-fluid">
                 <button class="btn btn-primary" id="abreModal" style="float:right;"
                         onclick="new Gerais().abreModalInserirGenerico();">
@@ -104,6 +105,7 @@
 
                 </div>
 
+                <button class="btn btn-primary"  id="deletarSelecionados">Deletar selecionados</button>
             </div>
         </div>
 
@@ -121,9 +123,6 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
-
-
-
     </script>
 
     </body>

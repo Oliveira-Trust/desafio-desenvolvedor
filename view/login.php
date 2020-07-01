@@ -1,84 +1,73 @@
-<?php
-
-
-?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #17a2b8;
-            height: 100vh;
-        }
-        #login .container #login-row #login-column #login-box {
-            margin-top: 120px;
-            max-width: 600px;
-            height: 320px;
-            border: 1px solid #9C9C9C;
-            background-color: #EAEAEA;
-        }
-        #login .container #login-row #login-column #login-box #login-form {
-            padding: 20px;
-        }
-        #login .container #login-row #login-column #login-box #login-form #register-link {
-            margin-top: -85px;
-        }
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
 
 
-    </style>
+	<script type="text/javascript" src="../js/ajax.js"></script>
+	<script type="text/javascript" src="../js/LoginUsuario.js"></script>
 
-    <script type="text/javascript" src="../js/ajax.js"></script>
-    <script src="../js/login.js"></script>
+	<script
+			src="https://code.jquery.com/jquery-3.5.1.min.js"
+			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-            crossorigin="anonymous"></script>
-    <script
-            src="https://code.jquery.com/jquery-3.5.1.min.js"
-            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-            crossorigin="anonymous"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-            crossorigin="anonymous"></script>
-
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
 
 </head>
-
 <body>
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Login form</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="formLogin" class="form">
-                            <h3 class="text-center text-info">Login</h3>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form" id="formLogin">
+					<span class="login100-form-title p-b-34">
+						Login
+					</span>
+					
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+						<input id="first-name" class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+						<input class="input100" type="password" name="senha" placeholder="Senha">
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" onclick="new LoginUsuario().login(); " type="submit">
+							Entrar
+						</button>
+					</div>
 
-                            <div class="form-group">
-                                <label  class="text-info" >Email:</label><br>
-                                <input type="text" id="email" class="form-control" name="email">
-                            </div>
+					<div class="w-full text-center p-t-27 p-b-239">
 
-                            <div class="form-group">
-                                <label class="text-info">Senha:</label><br>
-                                <input type="text"  id="senha" class="form-control" name="senha">
-                            </div>
 
-                            <div id="register-link" class="text-right">
-                                <a href="../view/cadastro.php" class="text-info">Cadastrar-se</a>
-                            </div>
-                        </form>
+					</div>
 
-                        <button type="submit" class="btn btn-primary" id="login" onclick="new login().loginCliente(); " value="submit">Login</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div class="w-full text-center">
+						<a href="../view/cadastro.php" class="txt3">
+							Criar conta
+						</a>
+					</div>
+				</form>
+
+				<div class="login100-more" style="background-image: url('../img/ot.png');  background-size: 500px 350px;"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script>
+		$("#formLogin").submit(function(e) {
+			e.preventDefault();
+		});
+	</script>
+
+
 </body>
+</html>

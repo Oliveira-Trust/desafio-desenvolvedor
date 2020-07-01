@@ -13,9 +13,21 @@ class ControllerPedido extends Controller{
         parent::__construct(new modelPedido(), new validaPedido());
     }
 
+    public function getDadosModalInserir(){
 
 
+        $statusRequisicao = $this->model->getDadosModalInserir();
 
+
+        if($statusRequisicao === false || empty($statusRequisicao)){
+            echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao buscar as informações . Tente novamente mais tarde.']);
+            return;
+        }
+
+        echo json_encode(['res'=>'1','dados' => $statusRequisicao]);
+        return;
+
+    }
 
 }
 

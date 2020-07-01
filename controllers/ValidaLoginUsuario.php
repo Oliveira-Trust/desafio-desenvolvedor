@@ -1,7 +1,7 @@
 <?php
 
 
-class ValidaLogin
+class ValidaLoginUsuario
 {
 
     public function login(){

@@ -13,36 +13,36 @@ function Pedido() {
         var html =  '<table id="tabelaPedidos"  class="table"  style="width:100%">'+
             '<thead>'+
             '<tr>'+
-            '<th >id</th>'+
-            '<th >nomeCliente</th>'+
-            '<th >nomeProduto</th>'+
-            '<th >status</th>'+
-            '<th ></th>'+
-            '<th ></th>'+
-            '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
+                '<th >id</th>'+
+                '<th >nomeCliente</th>'+
+                '<th >nomeProduto</th>'+
+                '<th >status</th>'+
+                '<th ></th>'+
+                '<th ></th>'+
+                '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
             '</tr>'+
             '</thead>'+
             '<tbody>';
 
-        for(var i in jsonDados.dados){
-            html += '<tr>';
-            html += '<th scope="row">'+jsonDados.dados[i].prkPedido+'</th>';
+                    for(var i in jsonDados.dados){
+                        html += '<tr>';
+                        html += '<th scope="row">'+jsonDados.dados[i].prkPedido+'</th>';
 
-            html += '<td>'+jsonDados.dados[i].nomeCliente+'</td>';
-            html += '<td>'+jsonDados.dados[i].nomeProduto+'</td>';
-            html += '<td>'+jsonDados.dados[i].status+'</td>';
+                        html += '<td>'+jsonDados.dados[i].nomeCliente+'</td>';
+                        html += '<td>'+jsonDados.dados[i].nomeProduto+'</td>';
+                        html += '<td>'+jsonDados.dados[i].status+'</td>';
 
-            html += '<td><button class="btn btn-primary"  value="editar"  ' +
-                'onclick="new Pedido().abreModalEditarPedido('+jsonDados.dados[i].prkPedido+');">Editar</button></td>';
+                        html += '<td><button class="btn btn-primary"  value="editar"  ' +
+                            'onclick="new Pedido().abreModalEditarPedido('+jsonDados.dados[i].prkPedido+');">Editar</button></td>';
 
-            html += '<td><button class="btn btn-primary"  value="excluir" ' +
-                'onclick="new Pedido().deletarPedido('+jsonDados.dados[i].prkPedido+')">Excluir</button></td>';
+                        html += '<td><button class="btn btn-primary"  value="excluir" ' +
+                            'onclick="new Pedido().deletarPedido('+jsonDados.dados[i].prkPedido+')">Excluir</button></td>';
 
-            html += '<td><input  type="checkbox" class="form-check-input-prkPedido"  value="'+jsonDados.dados[i].prkPedido+'"></td>';
+                        html += '<td><input  type="checkbox" class="form-check-input-prkPedido"  value="'+jsonDados.dados[i].prkPedido+'"></td>';
 
-            html += '</tr>';
+                        html += '</tr>';
 
-        }
+                    }
         html += '</tbody>';
 
         $("#tabelaPrincipal").html(html);
@@ -66,8 +66,10 @@ function Pedido() {
 
             ]
         });
+
         $("#nomeTabelaAtual").html('Pedidos');
         $("#abreModal").html('Inserir novo pedido');
+        $("#deletarSelecionados").attr("onClick" ,"new Pedido().deletarTodosPedidosSelecionados();");
 
         new Gerais().limpaModalInserir();
         new Gerais().limpaModalEditar();
@@ -182,6 +184,7 @@ function Pedido() {
 
         $('#modalInserirGenerico #formularioModalInserirGenerico').html(html);
         $('#labelModalInserirGenerico').html('Novo Pedido');
+        $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Pedido().inserirPedido()");
 
     };
 
@@ -233,15 +236,6 @@ function Pedido() {
 
     };
 
-
-
-    this.limpaModalInserir = function() {
-        var form =  document.querySelectorAll('#formularioModalInserirGenerico')[0].firstChild;
-
-        if(form !== undefined){
-            form.remove();
-        }
-    };
 
     this.deletarTodosPedidosSelecionados = function () {
 

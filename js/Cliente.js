@@ -18,68 +18,70 @@ function Cliente() {
         var html =  '<table id="tabelaClientes"  class="table"  style="width:100%">'+
                     '<thead>'+
                         '<tr>'+
-                        '<th >id</th>'+
-                        '<th >nome</th>'+
-                        '<th ></th>'+
-                        '<th ></th>'+
-                        '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
+                            '<th >id</th>'+
+                            '<th >nome</th>'+
+                            '<th ></th>'+
+                            '<th ></th>'+
+                            '<th><input type="checkbox" class="form-check-input" id="ativaTodosChecksClientes" style="top:50px;"></th>'+
                         '</tr>'+
                     '</thead>'+
                      '<tbody>';
 
-                    for(var i in jsonDados.dados){
-                        html += '<tr>';
-                        html += '<th scope="row">'+jsonDados.dados[i].prkCliente+'</th>';
+                        for(var i in jsonDados.dados){
+                            html += '<tr>';
+                            html += '<th scope="row">'+json.dados[i].prkCliente+'</th>';
 
-                        html += '<td>'+jsonDados.dados[i].nomeCliente+'</td>';
+                            html += '<td>'+json.dados[i].nomeCliente+'</td>';
 
-                        html += '<td><button class="btn btn-primary"  value="editar"  ' +
-                            'onclick="new Cliente().abreModalEditarCliente(\''+jsonDados.dados[i].nomeCliente+'\' , '+jsonDados.dados[i].prkCliente+');">Editar</button></td>';
+                            html += '<td><button class="btn btn-primary"  value="editar"  ' +
+                                'onclick="new Cliente().abreModalEditarCliente(\''+json.dados[i].nomeCliente+'\' , '+json.dados[i].prkCliente+');">Editar</button></td>';
 
-                        html += '<td><button class="btn btn-primary"  value="excluir" ' +
-                            'onclick="new Cliente().deletarCliente('+jsonDados.dados[i].prkCliente+')">Excluir</button></td>';
+                            html += '<td><button class="btn btn-primary"  value="excluir" ' +
+                                'onclick="new Cliente().deletarCliente('+json.dados[i].prkCliente+')">Excluir</button></td>';
 
-                        html += '<td><input  type="checkbox" class="form-check-input-prkCliente"  value="'+jsonDados.dados[i].prkCliente+'"></td>';
-
-
-                        html += '</tr>';
-
-                    }
-                    html += '</tbody>';
-
-                    $("#tabelaPrincipal").html(html);
-                    $("#tabelaClientes").DataTable({
-                            "columnDefs": [
-
-                                {
-                                    "targets": 2,
-                                    "orderable": false,
-                                    "searchable": false,
-
-                                },
-                                {
-                                    "targets": 3,
-                                    "orderable": false,
-                                    "searchable": false,
-                                },
-                                {
-                                    "targets": 4,
-                                    "orderable": false,
-                                    "searchable": false,
-                                }
-
-                            ]
-                    });
-                    $("#nomeTabelaAtual").html('Clientes');
-                    $("#abreModal").html('Inserir novo cliente');
+                            html += '<td><input  type="checkbox" class="form-check-input-prkCliente"  value="'+json.dados[i].prkCliente+'"></td>';
 
 
-                    new Gerais().limpaModalEditar(primeiraVez);
-                    new Gerais().limpaModalInserir(primeiraVez);
-                    new Gerais().ativaTodosChecksClientes();
-                    this.montaModalInserirCliente();
-                    this.montaModalEditarCliente();
+                            html += '</tr>';
 
+                        }
+                html += '</tbody>';
+
+                $("#tabelaPrincipal").html(html);
+                $("#tabelaClientes").DataTable({
+                        "columnDefs": [
+
+                            {
+                                "targets": 2,
+                                "orderable": false,
+                                "searchable": false,
+
+                            },
+                            {
+                                "targets": 3,
+                                "orderable": false,
+                                "searchable": false,
+                            },
+                            {
+                                "targets": 4,
+                                "orderable": false,
+                                "searchable": false,
+                            }
+
+                        ]
+                });
+
+                $("#nomeTabelaAtual").html('Clientes');
+                $("#abreModal").html('Inserir novo cliente');
+                $("#abreModal").html('Inserir novo cliente');
+                $("#deletarSelecionados").attr("onClick" ,"new Cliente().deletarTodosClientesSelecionados();");
+
+
+                new Gerais().limpaModalEditar(primeiraVez);
+                new Gerais().limpaModalInserir(primeiraVez);
+                new Gerais().ativaTodosChecksClientes();
+                this.montaModalInserirCliente();
+                this.montaModalEditarCliente();
 
 
     };
@@ -111,7 +113,9 @@ function Cliente() {
         var json = jsonDados;
 
 
-        this.listarCliente();
+        if(json.res == '1'){
+            this.listarCliente();
+        }
 
     };
 
@@ -134,12 +138,12 @@ function Cliente() {
     this.montaModalInserirCliente = function () {
 
 
-        var html =  '<form id="formModalInserirCliente">'+
-                    '<div class="form-group">'+
-                    '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
-                    '<input type="text" class="form-control" id="nomeCliente" name="nomeCliente">'+
-                    '</div>'+
-                    '</form>';
+        var html ='<form id="formModalInserirCliente">'+
+                        '<div class="form-group">'+
+                            '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
+                            '<input type="text" class="form-control" id="nomeCliente" name="nomeCliente">'+
+                        '</div>'+
+                  '</form>';
 
 
 
