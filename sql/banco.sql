@@ -27,7 +27,7 @@ create table produtos
     prk  int auto_increment
 	primary key,
     nomeProduto  varchar(50)   not null,
-    precoProduto decimal(5, 2) not null
+    precoProduto decimal(7, 2) not null
 );
 
 
