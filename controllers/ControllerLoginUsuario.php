@@ -5,9 +5,10 @@ include_once ('../controllers/Controller.php');
 include_once('../models/ModelLoginUsuario.php');
 include_once('../validations/ValidaLoginUsuario.php');
 
+//controller filho
 class ControllerLoginUsuario extends Controller
 {
-
+    //passa como parametro as instancias corretas a serem utilizadas pelo controller pai;
     public function __construct()
     {
         parent::__construct(new ModelLoginUsuario(), new ValidaLoginUsuario());
@@ -56,6 +57,11 @@ class ControllerLoginUsuario extends Controller
         $statusRequisicao = $this->model->cadastrar();
 
 
+        if($statusRequisicao === 'emailExistente'){
+            echo json_encode(['res'=>'0','msg'=>'O email inserido já esta cadastrado. Por favor insira outro email.']);
+            return;
+        }
+
 
         if($statusRequisicao === false || empty($statusRequisicao)){
             echo json_encode(['res'=>'0','msg'=>'Ocorreu um erro ao fazer o cadastro. Tente novamente']);
@@ -81,7 +87,7 @@ class ControllerLoginUsuario extends Controller
 }
 
 
-
+//checa se a ação existe, se não exisitir retorna erro.
 if(isset($_GET['acao']) and trim($_GET['acao']) != ''){
 
     $acao = $_GET['acao'];

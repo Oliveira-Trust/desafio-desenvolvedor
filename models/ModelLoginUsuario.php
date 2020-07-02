@@ -46,12 +46,23 @@ class ModelLoginUsuario
         $senha = sha1($_POST['senha']);
 
         $sql = "INSERT INTO usuarios (email,senha) VALUES ('$email','$senha')";
+        $sqlChecaEmailExistente = "SELECT email FROM usuarios  WHERE email = '$email'";
 
 
 
 
         if ($this->banco !== false) {
             try {
+
+                $prepara = $this->banco->conexao()->prepare($sqlChecaEmailExistente);
+                $prepara->execute();
+                $dados = $prepara->fetch(PDO::FETCH_ASSOC);
+
+
+                if(isset($dados) && $dados != false){
+                    return 'emailExistente';
+                }
+
                 $prepara = $this->banco->conexao()->prepare($sql);
                 $status = $prepara->execute();
 

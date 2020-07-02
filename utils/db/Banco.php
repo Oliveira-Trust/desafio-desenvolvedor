@@ -5,7 +5,7 @@ class Banco
 {
     private $usuario = "root";
     private $senha = "";
-    private $banco = "OliveiraTrust";
+    private $banco = "oliveiratrust";
     private $host = "localhost";
 
     public function conexao(){

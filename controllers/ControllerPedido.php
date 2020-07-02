@@ -5,9 +5,11 @@ include_once ('../controllers/Controller.php');
 include_once ('../models/ModelPedido.php');
 include_once ('../validations/ValidaPedido.php');
 
+
+//controller filho
 class ControllerPedido extends Controller{
 
-
+    //passa como parametro as instancias corretas a serem utilizadas pelo controller pai;
     public function __construct()
     {
         parent::__construct(new modelPedido(), new validaPedido());
@@ -46,7 +48,7 @@ class ControllerPedido extends Controller{
 
 }
 
-
+//checa se a ação existe, se não exisitir retorna erro.
 if(isset($_GET['acao']) and trim($_GET['acao']) != ''){
 
     $acao = $_GET['acao'];

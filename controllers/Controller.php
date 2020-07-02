@@ -9,6 +9,7 @@ class Controller{
     protected $model;
     protected $valida;
 
+    //parametros recebidos pelo controller filho para utilizar o model e o validador correto da requisição.
     public function __construct($model, $valida)
     {
         $this->model = $model;

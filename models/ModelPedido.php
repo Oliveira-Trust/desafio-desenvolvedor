@@ -49,7 +49,7 @@ class ModelPedido
         $status = $_POST['status'];
 
 
-        $sql = "INSERT INTO pedidos (frkCliente, frkProduto, status) VALUES ('$frkCliente','$frkProduto','$status')";
+        $sql = "INSERT INTO pedidos (frkCliente, frkProduto, status) VALUES ($frkCliente,$frkProduto,'$status')";
 
 
         if($this->banco !== false){

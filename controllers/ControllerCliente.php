@@ -6,9 +6,11 @@ include_once ('../controllers/Controller.php');
 include_once ('../models/ModelCliente.php');
 include_once ('../validations/ValidaCliente.php');
 
+//controller filho
 class ControllerCliente extends Controller{
 
 
+    //passa como parametro as instancias corretas a serem utilizadas pelo controller pai.
     public function __construct()
     {
         parent::__construct(new modelCliente(), new validaCliente());
@@ -16,12 +18,10 @@ class ControllerCliente extends Controller{
 
 
 
-
-
 }
 
 
-
+//checa se a ação existe, se não exisitir retorna erro.
 if(isset($_GET['acao']) and trim($_GET['acao']) != ''){
 
     $acao = $_GET['acao'];
