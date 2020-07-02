@@ -16,6 +16,8 @@
 
     <head>
 
+        <title>Desafio desenvolverdor</title>
+
         <script
                 src="https://code.jquery.com/jquery-3.5.1.min.js"
                 integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -44,6 +46,7 @@
               crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
         <link href="../css/simple-sidebar.css" rel="stylesheet">
+        <link href="../css/gerais.css" rel="stylesheet">
 
 
 
@@ -73,7 +76,7 @@
         <div id="page-content-wrapper">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-primary" id="menu-toggle">Abrir menu</button>
+                <button class="btn btn-primary" id="abreMenu">Abrir menu</button>
 
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -91,7 +94,7 @@
                 </div>
             </nav>
 
-            <!--Aqui é construida todas as tabelas-->
+            <!--Aqui é aonde são contruidas as tabelas de acordo com cada arquivo js-->
             <div class="container-fluid">
                 <button class="btn btn-primary" id="abreModal" style="float:right;"
                         onclick="new Gerais().abreModalInserirGenerico();">
@@ -109,6 +112,8 @@
             </div>
         </div>
 
+
+        <!--Modais genericos utilzados pelo js para exibição dos dados-->
         <?php
             $modal = new UtilitariosHtml();
             $modal->modalInserirGenerico();
@@ -116,8 +121,7 @@
             $modal->modalInformacoesGenerico();
         ?>
 
-        <div id="exibiMensagemErro" class="alert alert-primary" role="alert"
-             style=" z-index:10000;display:none; margin-bottom: 0px; position: absolute; width: 100%">
+        <div id="exibiMensagemErro" class="alert alert-primary" role="alert">
 
         </div>
 
@@ -127,7 +131,7 @@
 
 
     <script>
-        $("#menu-toggle").click(function(e) {
+        $("#abreMenu").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });

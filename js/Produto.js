@@ -8,6 +8,7 @@ function Produto() {
 
         var json = jsonDados;
 
+        //Monta a tabela de produtos.
         var html =  '<table id="tabelaProdutos"  class="table"  style="width:100%">'+
             '<thead>'+
             '<tr>'+
@@ -21,22 +22,22 @@ function Produto() {
             '</thead>'+
             '<tbody>';
 
-                    for(var i in jsonDados.dados){
+                    for(var i in json.dados){
                         html += '<tr>';
-                        html += '<th scope="row">'+jsonDados.dados[i].prkProduto+'</th>';
+                        html += '<th scope="row">'+json.dados[i].prkProduto+'</th>';
 
-                        html += '<td>'+jsonDados.dados[i].nomeProduto+'</td>';
+                        html += '<td>'+json.dados[i].nomeProduto+'</td>';
 
-                        html += '<td>'+jsonDados.dados[i].precoProduto+'</td>';
+                        html += '<td>'+json.dados[i].precoProduto+'</td>';
 
                         html += '<td><button class="btn btn-primary" value="editar"  ' +
-                            'onclick="new Produto().abreModalEditarProduto(\''+jsonDados.dados[i].nomeProduto+'\' ' +
-                            ', '+jsonDados.dados[i].prkProduto+' , '+jsonDados.dados[i].precoProduto+');">Editar</button></td>';
+                            'onclick="new Produto().abreModalEditarProduto(\''+json.dados[i].nomeProduto+'\' ' +
+                            ', '+json.dados[i].prkProduto+' , '+json.dados[i].precoProduto+');">Editar</button></td>';
 
                         html += '<td><button class="btn btn-primary"  value="excluir" ' +
-                            'onclick="new Produto().deletarProduto('+jsonDados.dados[i].prkProduto+')">Excluir</button></td>';
+                            'onclick="new Produto().deletarProduto('+json.dados[i].prkProduto+')">Excluir</button></td>';
 
-                        html += '<td><input  type="checkbox" class="form-check-input-prkProduto"  value="'+jsonDados.dados[i].prkProduto+'"></td>';
+                        html += '<td><input  type="checkbox" class="form-check-input-prkProduto"  value="'+json.dados[i].prkProduto+'"></td>';
 
 
                         html += '</tr>';
@@ -45,7 +46,8 @@ function Produto() {
             html += '</tbody>';
 
             $("#tabelaPrincipal").html(html);
-            $("#tabelaProdutos").DataTable({
+            $("#tabelaProdutos").DataTable({ //Adiciona o dataTables na tabela gerada.
+
                 "columnDefs": [
                     {
                         "targets": 3,
@@ -66,12 +68,14 @@ function Produto() {
                 ]
             });
 
+            //Adiciona caracterização da tabela atual.
             $("#nomeTabelaAtual").html('Produtos');
             $("#abreModal").html('Inserir novo produto');
             $("#deletarSelecionados").attr("onClick" ,"new Produto().deletarTodosProdutosSelecionados();");
 
 
 
+            //Rotinas padrões para remoção/inserção dos modais da tabela atual.
             new Gerais().limpaModalInserir();
             new Gerais().limpaModalEditar();
             new Gerais().ativaTodosChecksClientes();
@@ -90,6 +94,7 @@ function Produto() {
 
         var json = jsonDados;
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
@@ -97,6 +102,7 @@ function Produto() {
 
 
 
+        //Caso a resposta seja positiva fecha o modal de inserção e lista novamnete os pedidos.
         $('#modalInserirGenerico').modal('toggle');
         this.listarProduto();
 
@@ -112,12 +118,14 @@ function Produto() {
         var json = jsonDados;
 
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
         }
 
 
+        //lista novamente a lista com os dados atualizados.
         this.listarProduto();
 
 
@@ -133,15 +141,17 @@ function Produto() {
 
         var json = jsonDados;
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
         }
 
+
+
+        //Caso a resposta seja positiva fecha o modal de edição e lista novamnete os produtos.
         $('#modalEditarGenerico').modal('toggle');
         this.listarProduto();
-
-
 
     };
 
@@ -149,6 +159,7 @@ function Produto() {
     this.montaModalInserirProduto= function (){
 
 
+        //monta o modal de inserção de produtos.
         var html ='<form id="formModalInserirProduto">'+
                     '<div class="form-group">'+
                         '<label for="recipient-name" class="col-form-label">Nome do produto</label>'+
@@ -159,6 +170,7 @@ function Produto() {
                  '</form>';
 
 
+        //Adiciona o modal de inserção de produtos ao modalInserirGenerico e o caracteriza.
         $('#formularioModalInserirGenerico').html(html);
         $('#labelModalInserirGenerico').html('Novo Produto');
         $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Produto().inserirProduto()");
@@ -167,6 +179,8 @@ function Produto() {
 
     this.montaModalEditarProduto = function (){
 
+
+        //monta o modal de edição de produtos.
         var html ='<form id="formModalEditarProduto">'+
                         '<div class="form-group">'+
                             '<label for="recipient-name" class="col-form-label">Nome do produto</label>'+
@@ -176,6 +190,9 @@ function Produto() {
                         '</div>'+
                     '</form>';
 
+
+
+        //Adiciona o modal de edição de produtos ao modalEditarGenerico e o caracteriza.
         $('#formularioModalEditarGenerico').html(html);
         $('#modalEditarGenericoLabel').html('Editar produto');
 
@@ -184,6 +201,7 @@ function Produto() {
 
 
     this.abreModalEditarProduto = function (nomeProduto,prkProduto,precoProduto) {
+        //pega as informações da linha clicada, adiciona o evente ao botão de editar e abre o modal.
         $('#modalEditarGenerico #editarNomeProduto').val(nomeProduto);
         $('#modalEditarGenerico #editarPrecoProduto').val(precoProduto);
         $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Produto().editarProduto("+prkProduto+")");

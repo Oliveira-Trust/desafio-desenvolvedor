@@ -1,0 +1,13 @@
+
+
+#exibiMensagemErro{
+    z-index:10000;
+    display:none;
+    margin-bottom: 0px;
+    position: absolute;
+    width: 100%;
+    color:#000000;
+    background-color:#ffccd3;
+    border-color:#ffccd3;
+
+}

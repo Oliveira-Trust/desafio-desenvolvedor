@@ -25,15 +25,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <link href="../css/gerais.css" rel="stylesheet">
 
 
 </head>
 <body>
 
 <div class="limiter">
-    <div id="exibiMensagemErro" class="alert alert-primary" role="alert"
-         style=" z-index:10000;display:none; margin-bottom: 0px; position: absolute; width: 100%">
+    <div id="exibiMensagemErro" class="alert alert-primary" role="alert">
     </div>
+
     <div class="container-login100">
         <div class="wrap-login100">
             <form class="login100-form" id="formCadastro">

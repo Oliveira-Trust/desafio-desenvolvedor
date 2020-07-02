@@ -1,8 +1,10 @@
 function Cliente() {
 
     this.init = function () {
+        // Parametro utilizado para controlar a inicialização da tabela; Caso for a primeira vez não limpa os modais.
         var primeiraVez = true;
 
+        // inicialização da tabela.
         this.listarCliente(primeiraVez);
         this.montaModalInserirCliente();
         this.montaModalEditarCliente();
@@ -15,6 +17,7 @@ function Cliente() {
 
         var json = jsonDados;
 
+        //Monta a tabela de clientes.
         var html =  '<table id="tabelaClientes"  class="table"  style="width:100%">'+
                     '<thead>'+
                         '<tr>'+
@@ -27,7 +30,7 @@ function Cliente() {
                     '</thead>'+
                      '<tbody>';
 
-                        for(var i in jsonDados.dados){
+                        for(var i in json.dados){
                             html += '<tr>';
                             html += '<th scope="row">'+json.dados[i].prkCliente+'</th>';
 
@@ -48,7 +51,7 @@ function Cliente() {
                 html += '</tbody>';
 
                 $("#tabelaPrincipal").html(html);
-                $("#tabelaClientes").DataTable({
+                $("#tabelaClientes").DataTable({ //Adiciona o dataTables na tabela gerada.
                         "columnDefs": [
 
                             {
@@ -71,11 +74,13 @@ function Cliente() {
                         ]
                 });
 
+                //Adiciona caracterização da tabela atual.
                 $("#nomeTabelaAtual").html('Clientes');
                 $("#abreModal").html('Inserir novo cliente');
                 $("#deletarSelecionados").attr("onClick" ,"new Cliente().deletarTodosClientesSelecionados();");
 
 
+                //Rotinas padrões para remoção/inserção dos modais da tabela atual.
                 new Gerais().limpaModalEditar(primeiraVez);
                 new Gerais().limpaModalInserir(primeiraVez);
                 new Gerais().ativaTodosChecksClientes();
@@ -95,7 +100,7 @@ function Cliente() {
 
         var json = jsonDados;
 
-
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
            new Gerais().exibirMensagemErro(json.msg);
            return;
@@ -103,10 +108,9 @@ function Cliente() {
 
 
 
+        //Caso a resposta seja positiva fecha o modal de inserção e lista novamnete os clientes.
         $('#modalInserirGenerico').modal('toggle');
         this.listarCliente();
-
-
 
 
     };
@@ -118,6 +122,7 @@ function Cliente() {
 
         var json = jsonDados;
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
@@ -125,6 +130,7 @@ function Cliente() {
 
 
 
+        //lista novamente a lista com os dados atualizados.
         this.listarCliente();
 
 
@@ -139,12 +145,15 @@ function Cliente() {
 
         var json = jsonDados;
 
+
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
         }
 
 
+        //Caso a resposta seja positiva fecha o modal de inserção e lista novamnete os clientes.
         $('#modalEditarGenerico').modal('toggle');
         this.listarCliente();
 
@@ -153,7 +162,7 @@ function Cliente() {
 
     this.montaModalInserirCliente = function () {
 
-
+        //Monta o modal de inserção de clientes.
         var html ='<form id="formModalInserirCliente">'+
                         '<div class="form-group">'+
                             '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
@@ -163,6 +172,7 @@ function Cliente() {
 
 
 
+        //Adiciona o modal de inserção de clientes ao modalGenerico e o caracteriza.
         $('#modalInserirGenerico #formularioModalInserirGenerico').html(html);
         $('#labelModalInserirGenerico').html('Novo Cliente');
         $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Cliente().inserirCliente()");
@@ -171,13 +181,16 @@ function Cliente() {
 
     this.montaModalEditarCliente = function (){
 
+        //Monta o modal de edição de clientes.
         var html =  '<form id="formModalEditarCliente">'+
-            '<div class="form-group">'+
-            '<label for="recipient-name" class="col-form-label">Nome do cliente</label>'+
-            '<input type="text" class="form-control" id="editarNomeCliente" name="nomeCliente">'+
-            '</div>'+
-            '</form>';
+                        '<div class="form-group">'+
+                            '<label for="recipient-name" class="col-form-label">Nome do cliente</label>'+
+                            '<input type="text" class="form-control" id="editarNomeCliente" name="nomeCliente">'+
+                        '</div>'+
+                   '</form>';
 
+
+         //Adiciona o modal de edição de clientes ao modalEditarGenerico e o caracteriza.
          $('#formularioModalEditarGenerico').html(html);
          $('#modalEditarGenericoLabel').html('Editar cliente');
 
@@ -185,6 +198,8 @@ function Cliente() {
 
 
     this.abreModalEditarCliente = function (nomeCliente, prkCliente) {
+
+        //Pega o nome do cliente da linha clicada, adiciona o evento de editar o cliente da linha clicada e abre o modal.
         $('#modalEditarGenerico #editarNomeCliente').val(nomeCliente);
         $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Cliente().editarCliente("+prkCliente+")");
         $("#modalEditarGenerico").modal();
@@ -197,6 +212,7 @@ function Cliente() {
         var prkCliente = [];
 
 
+        //Busca  checks selecionados e pega o prk deles.
         for(var i = 0; i < checksSelecionados.length; i++){
 
             if(checksSelecionados[i].checked === false){
@@ -207,9 +223,11 @@ function Cliente() {
         }
 
 
+        //Caso tenha alguma posição vazia no array.
         prkCliente = new Gerais().removePosicaoVazia(prkCliente);
 
 
+        //Se o array for null não faz a request.
         if(prkCliente === null){
             return;
         }
@@ -220,11 +238,13 @@ function Cliente() {
 
         var json = jsonDados;
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
         }
 
+        //Caso a resposta seja positiva lista novamente os clientes.
         this.listarCliente();
 
 

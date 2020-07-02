@@ -10,6 +10,7 @@ function Pedido() {
         var json = jsonDados;
 
 
+        //Monta a tabela de pedidos.
         var html =  '<table id="tabelaPedidos"  class="table"  style="width:100%">'+
             '<thead>'+
             '<tr>'+
@@ -25,24 +26,24 @@ function Pedido() {
             '</thead>'+
             '<tbody>';
 
-                    for(var i in jsonDados.dados){
+                    for(var i in json.dados){
                         html += '<tr>';
                         html += '<th scope="row">'+jsonDados.dados[i].prkPedido+'</th>';
 
-                        html += '<td>'+jsonDados.dados[i].nomeCliente+'</td>';
-                        html += '<td>'+jsonDados.dados[i].nomeProduto+'</td>';
-                        html += '<td>'+jsonDados.dados[i].status+'</td>';
+                        html += '<td>'+json.dados[i].nomeCliente+'</td>';
+                        html += '<td>'+json.dados[i].nomeProduto+'</td>';
+                        html += '<td>'+json.dados[i].status+'</td>';
 
                         html += '<td><button class="btn btn-primary"  value="editar"  ' +
-                            'onclick="new Pedido().abreModalEditarPedido('+jsonDados.dados[i].prkPedido+');">Editar</button></td>';
+                            'onclick="new Pedido().abreModalEditarPedido('+json.dados[i].prkPedido+');">Editar</button></td>';
 
                         html += '<td><button class="btn btn-primary"  value="excluir" ' +
-                            'onclick="new Pedido().deletarPedido('+jsonDados.dados[i].prkPedido+')">Excluir</button></td>';
+                            'onclick="new Pedido().deletarPedido('+json.dados[i].prkPedido+')">Excluir</button></td>';
 
                         html += '<td><button class="btn btn-primary"  value="excluir" ' +
-                            'onclick="new Pedido().abreModalInformacoesPedido('+jsonDados.dados[i].prkPedido+')">+ info</button></td>';
+                            'onclick="new Pedido().abreModalInformacoesPedido('+json.dados[i].prkPedido+')">+ info</button></td>';
 
-                        html += '<td><input  type="checkbox" class="form-check-input-prkPedido"  value="'+jsonDados.dados[i].prkPedido+'"></td>';
+                        html += '<td><input  type="checkbox" class="form-check-input-prkPedido"  value="'+json.dados[i].prkPedido+'"></td>';
 
                         html += '</tr>';
 
@@ -50,7 +51,7 @@ function Pedido() {
         html += '</tbody>';
 
         $("#tabelaPrincipal").html(html);
-        $("#tabelaPedidos").DataTable({
+        $("#tabelaPedidos").DataTable({ //Adiciona o dataTables na tabela gerada.
             "columnDefs": [
                 {
                     "targets": 4,
@@ -71,10 +72,14 @@ function Pedido() {
             ]
         });
 
+        //Adiciona caracterização da tabela atual.
         $("#nomeTabelaAtual").html('Pedidos');
         $("#abreModal").html('Inserir novo pedido');
         $("#deletarSelecionados").attr("onClick" ,"new Pedido().deletarTodosPedidosSelecionados();");
 
+
+
+        //Rotinas padrões para remoção/inserção dos modais da tabela atual.
         new Gerais().limpaModalInserir();
         new Gerais().limpaModalEditar();
         new Gerais().ativaTodosChecksClientes();
@@ -88,6 +93,7 @@ function Pedido() {
 
     this.inserirPedido = function () {
 
+        //Seleciona as opções atuais de cada select do modalInserirPedido
         var frkProduto = $('#modalInserirGenerico #formModalInserirPedido #selectProdutoMoldalInserir').find('option:selected').attr('id');
         var frkCliente = $('#modalInserirGenerico #formModalInserirPedido #selectClienteMoldalInserir').find('option:selected').attr('id');
         var status = $('#modalInserirGenerico #formModalInserirPedido #selectStatusMoldalInserir').find('option:selected').attr('name');
@@ -99,6 +105,7 @@ function Pedido() {
 
         var json = jsonDados;
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
@@ -106,6 +113,7 @@ function Pedido() {
 
 
 
+        //Caso a resposta seja positiva fecha o modal de inserção e lista novamnete os pedidos.
         $('#modalInserirGenerico').modal('toggle');
         this.listarPedido();
 
@@ -121,6 +129,7 @@ function Pedido() {
 
         var json = jsonDados;
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
@@ -128,6 +137,7 @@ function Pedido() {
 
 
 
+        //lista novamente a lista com os dados atualizados.
         this.listarPedido();
 
     };
@@ -144,6 +154,7 @@ function Pedido() {
 
         var json = jsonDados;
 
+        //Caso a reposta do back seja negativa exibe a mensagem de erro para o usuário.
         if(json.res == '0') {
             new Gerais().exibirMensagemErro(json.msg);
             return;
@@ -151,6 +162,7 @@ function Pedido() {
 
 
 
+        //Caso a resposta seja positiva fecha o modal de edição e lista novamnete os pedidos.
         $('#modalEditarGenerico').modal('toggle');
         this.listarPedido();
 
@@ -167,6 +179,7 @@ function Pedido() {
 
 
 
+        //monta modal de inserção de pedidos.
         var html =
             '<form id="formModalInserirPedido">'+
                 '<div class="form-group">'+
@@ -201,6 +214,7 @@ function Pedido() {
 
 
 
+        //Adiciona o modal de inserção de pedidos ao modalInserirGenerico e o caracteriza.
         $('#modalInserirGenerico #formularioModalInserirGenerico').html(html);
         $('#labelModalInserirGenerico').html('Novo Pedido');
         $('#modalInserirGenerico #botaoSalvarModal').attr("onClick" ,"new Pedido().inserirPedido()");
@@ -215,6 +229,7 @@ function Pedido() {
         var json = jsonDados;
 
 
+        //monta o modal de edição de pedidos.
         var html =
             '<form id="formModalEditarPedido">'+
             '<div class="form-group">'+
@@ -249,34 +264,42 @@ function Pedido() {
 
 
 
+        //Adiciona o modal de edição de pedidos ao modalEditarGenerico e o caracteriza.
         $('#modalEditarGenerico #formularioModalEditarGenerico').html(html);
         $('#labelModalEditarGenerico').html('Editar Pedido');
         $('#modalEditarGenerico #botaoSalvarModal').attr("onClick" ,"new Pedido().editarPedido()");
 
     };
 
+    this.abreModalEditarPedido = function (prkPedido){
+        //Pega o prk do pedido da linha clicada, adiciona o evento de editar o cliente da linha clicada e abre o modal.
+        $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Pedido().editarPedido("+prkPedido+")");
+        $("#modalEditarGenerico").modal();
+    };
+
     this.montaModalInformacoesPedido = function () {
 
 
+        //monta o modal de informações do pedido.
         var html ='<form id="formModalInformacoesPedido">'+
             '<div class="form-group">'+
-            '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
-            '<input type="text" class="form-control" id="infoNomeCliente" name="nomeCliente" disabled>'+
-            '<label for="recipient-name" class="col-form-label">Valor Pago</label>'+
-            '<input type="text" class="form-control" id="infoPrecoProduto" name="nomeCliente" disabled>'+
-            '<label for="recipient-name" class="col-form-label">Status</label>'+
-            '<input type="text" class="form-control" id="infoStatusCliente" name="nomeCliente" disabled>'+
-            '<label for="recipient-name" class="col-form-label">Produto</label>'+
-            '<input type="text" class="form-control" id="infoNomeProduto" name="nomeCliente" disabled>'+
+                '<label for="recipient-name" class="col-form-label">Nome do Cliente</label>'+
+                '<input type="text" class="form-control" id="infoNomeCliente" name="nomeCliente" disabled>'+
+                '<label for="recipient-name" class="col-form-label">Valor Pago</label>'+
+                '<input type="text" class="form-control" id="infoPrecoProduto" name="nomeCliente" disabled>'+
+                '<label for="recipient-name" class="col-form-label">Status</label>'+
+                '<input type="text" class="form-control" id="infoStatusCliente" name="nomeCliente" disabled>'+
+                '<label for="recipient-name" class="col-form-label">Produto</label>'+
+                '<input type="text" class="form-control" id="infoNomeProduto" name="nomeCliente" disabled>'+
             '</div>'+
             '</form>';
 
 
 
 
+        //Adiciona o modal de informações de pedidos ao modalInformacoesGenerico e o caracteriza.
         $('#modalInformacoesGenerico #formularioModalInformacoesGenerico').html(html);
         $('#modalInformacoesGenericoLabel').html('Informações do cliente');
-
 
     };
 
@@ -287,7 +310,12 @@ function Pedido() {
 
         var json = jsonDados;
 
+        if(json.res == '0') {
+            new Gerais().exibirMensagemErro(json.msg);
+            return;
+        }
 
+        //Adiciona as informações do pedido do cliente ao modal e abre o modalInformacoesGenerico.
         $('#modalInformacoesGenerico #infoNomeCliente').val(json.dados[0].nomeCliente);
         $('#modalInformacoesGenerico #infoPrecoProduto').val(json.dados[0].precoProduto);
         $('#modalInformacoesGenerico #infoStatusCliente').val(json.dados[0].status);
@@ -335,10 +363,6 @@ function Pedido() {
     };
 
 
-    this.abreModalEditarPedido = function (prkPedido){
-        $('#modalEditarGenerico #botaoSalvaAlteracoesModal').attr("onClick" ,"new Pedido().editarPedido("+prkPedido+")");
-        $("#modalEditarGenerico").modal();
-    }
 
 
 }

@@ -1,3 +1,5 @@
+//Metodo utlizados por todos os arquivos js
+
 function Gerais() {
 
     this.abreModalInserirGenerico = function () {

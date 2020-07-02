@@ -3,7 +3,7 @@
 
 include_once ('../controllers/Controller.php');
 include_once ('../models/ModelPedido.php');
-include_once ('../controllers/ValidaPedido.php');
+include_once ('../validations/ValidaPedido.php');
 
 class ControllerPedido extends Controller{
 
@@ -30,9 +30,6 @@ class ControllerPedido extends Controller{
     }
 
     public function getDadosModalInfoCliente(){
-
-        //var_dump($_POST);exit();
-
 
         $statusRequisicao = $this->model->getDadosModalInfoCliente();
 

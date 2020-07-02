@@ -3,7 +3,7 @@
 
 include_once ('../controllers/Controller.php');
 include_once ('../models/ModelProduto.php');
-include_once ('../controllers/ValidaProduto.php');
+include_once ('../validations/ValidaProduto.php');
 
 class ControllerProduto extends Controller
 {

@@ -4,7 +4,7 @@
 
 include_once ('../controllers/Controller.php');
 include_once ('../models/ModelCliente.php');
-include_once ('../controllers/ValidaCliente.php');
+include_once ('../validations/ValidaCliente.php');
 
 class ControllerCliente extends Controller{
 
