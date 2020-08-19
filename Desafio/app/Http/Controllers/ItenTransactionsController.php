@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ItenTransaction;
 use Illuminate\Http\Request;
 
 class ItenTransactionsController extends Controller
@@ -13,7 +14,7 @@ class ItenTransactionsController extends Controller
      */
     public function index()
     {
-        //
+        return ItenTransaction::all();
     }
 
     /**

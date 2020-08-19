@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItenTransaction extends Model
 {
-    protected $table = 'iten_tansactions';
+    protected $table = 'iten_transactions';
 
     protected $fillable = ['id', 'quantity','transaction_id','product_id'];
 
