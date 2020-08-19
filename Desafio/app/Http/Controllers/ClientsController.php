@@ -14,7 +14,8 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        return Client::all();
+        $clients = Client::all();
+        return $clients->toJson();
     }
 
     /**
