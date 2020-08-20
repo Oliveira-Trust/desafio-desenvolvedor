@@ -14,7 +14,8 @@ class ItenTransactionsController extends Controller
      */
     public function index()
     {
-        return ItenTransaction::all();
+        $itenTransaction = ItenTransaction::all();
+        return $itenTransaction->toJson();
     }
 
     /**
