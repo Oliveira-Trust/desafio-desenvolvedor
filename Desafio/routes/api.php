@@ -3,10 +3,24 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('client', "ClientsController@index")->name('client');
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::prefix('auth')->group(function() {
+    Route::post('record', 'AuthenticatorContrller@record');
+    Route::post('login', 'AuthenticatorContrller@login');
+    Route::get('record/activate/{id}/{token}', 
+               'AuthenticatorContrller@activateUpload');
+    Route::middleware('auth:api')->group(function() {
+        Route::post('logout', 'AuthenticatorContrller@logout');
+    });
+});
+
+Route::get('client', "ClientsController@index")->name('client')->middleware('auth:api');
 Route::get('client/show', "ClientsController@show")->name('client.show');
 Route::get('client/create', "ClientsController@create")->name('client.create');
-Route::get('client/store', "ClientsController@store")->name('client.store');
+Route::post('client/store', "ClientsController@store")->name('client.store');
 Route::get('client/edit', "ClientsController@edit")->name('client.edit');
 Route::get('client/update', "ClientsController@update")->name('client.update');
 Route::get('client/destroy', "ClientsController@destroy")->name('client.destroy');
@@ -34,3 +48,4 @@ Route::get('product/store', "ProductsController@store")->name('product.store');
 Route::get('product/edit', "ProductsController@edit")->name('product.edit');
 Route::get('product/update', "ProductsController@update")->name('product.update');
 Route::get('product/destroy', "ProductsController@destroy")->name('product.destroy');
+
