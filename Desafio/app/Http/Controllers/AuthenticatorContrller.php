@@ -10,7 +10,7 @@ use App\Events\EventNovoRegistro;
 
 class AuthenticatorContrller extends Controller
 {
-    public function record(Request $request) {
+    public function signup(Request $request) {
        
         if ($request->all()) {
   
@@ -33,15 +33,11 @@ class AuthenticatorContrller extends Controller
        }
     }
 
-    public function login(Request $request) {
-        
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string'
-        ]);
+    public function signin(Request $request) {
+     
         $credenciais = [
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => $request->passowrd,
             'active' => 1
         ];
 
@@ -54,6 +50,7 @@ class AuthenticatorContrller extends Controller
         $token = $user->createToken('Token de acesso')->accessToken;
 
         return response()->json([
+            'user'  => $user,
             'token' => $token
         ], 200);
     }

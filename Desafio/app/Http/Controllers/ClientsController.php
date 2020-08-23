@@ -14,18 +14,11 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
-        return $clients->toJson();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $client = Client::all();
+        return response()->Json([
+            'client' => $client,
+            'res' => ' O recurso solicitado foi processado e retornado com sucesso.'
+        ], 200);
     }
 
     /**
@@ -36,18 +29,21 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $dados = [              
+            'name' => $request->name,
+            'email' => $request->email,
+            'adress' => $request->adress,
+        ];           
+        $client = Client::create($dados);                          
+            if ($client) {
+                return response()->Json([
+                    'client'=> $client,
+                    'res'=>'O recurso informado foi criado com sucesso.'
+                ], 201);
+            }
+        return response()->Json([
+            'res'=>'A requisição foi recebida com sucesso, porém contém parâmetros inválidos.'
+        ], 422);     
     }
 
     /**
@@ -58,7 +54,11 @@ class ClientsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Client::findOrFail($id);     
+        return response()->Json([
+            'client'=> $client,
+            'res'=>'O recurso solicitado foi processado e retornado com sucesso.'
+        ], 200);
     }
 
     /**
@@ -70,7 +70,22 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($id) {           
+            $client = Client::findOrFail($id);
+
+            if($client){
+                 
+                $data = $request->all();           
+                $client->update($data);
+                return response()->Json([
+                    'client'=> $client,
+                    'res'=>'O recurso informado foi alterado com sucesso.'
+                ], 201);   
+            } 
+            return response()->Json([
+                'res'=>'A requisição foi recebida com sucesso, porém contém parâmetros inválidos.'
+            ], 422); 
+        }
     }
 
     /**
@@ -81,6 +96,15 @@ class ClientsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);        
+        if($client->delete()){
+            return response()->Json([
+                'client'=> $client,
+                'res'=>'O recurso informado foi deletado com sucesso.'
+            ], 201);;  
+        }
+        return response()->Json([
+            'res'=>'A requisição foi recebida com sucesso, porém contém parâmetros inválidos.'
+        ], 422);
     }
 }

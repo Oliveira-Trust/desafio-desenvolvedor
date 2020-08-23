@@ -3,6 +3,7 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ItenTransaction;
 
 class Product extends Model
 {
@@ -10,7 +11,7 @@ class Product extends Model
 
     protected $fillable = ['id', 'cost','name'];
 
-    public function clientes()
+    public function transactions()
     {
         return $this->hasMany(ItenTransaction::class, 'product_id', 'id');
     }

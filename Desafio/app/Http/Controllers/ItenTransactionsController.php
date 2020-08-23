@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Transaction;
 use App\Models\ItenTransaction;
 use Illuminate\Http\Request;
 
@@ -15,17 +17,10 @@ class ItenTransactionsController extends Controller
     public function index()
     {
         $itenTransaction = ItenTransaction::all();
-        return $itenTransaction->toJson();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->Json([
+            'itenTransaction'=> $itenTransaction,
+            'res'=>'O recurso solicitado foi processado e retornado com sucesso.'
+        ], 200);
     }
 
     /**
@@ -35,17 +30,6 @@ class ItenTransactionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ItenTransaction;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -15,17 +16,11 @@ class ProductsController extends Controller
     public function index()
     {
         $product = Product::all();
-        return $product->toJson();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $products =  $product->load('transactions');
+        return response()->Json([
+            'products' => $products,
+            'res' => ' O recurso solicitado foi processado e retornado com sucesso.'
+        ], 200);
     }
 
     /**
@@ -36,18 +31,20 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $dados = [              
+            'cost' => $request->cost,
+            'name'  => $request->name
+        ];           
+        $product = Product::create($dados);                          
+            if ($product) {
+                return response()->Json([
+                    'product'=> $product,
+                    'res'=>'O recurso informado foi criado com sucesso.'
+                ], 201);
+            }
+        return response()->Json([
+            'res'=>'A requisição foi recebida com sucesso, porém contém parâmetros inválidos.'
+        ], 422);
     }
 
     /**
@@ -58,7 +55,11 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);     
+        return response()->Json([
+            'product'=> $product,
+            'res'=>'O recurso solicitado foi processado e retornado com sucesso.'
+        ], 200);
     }
 
     /**
@@ -70,7 +71,22 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($id) {           
+            $product = Product::findOrFail($id);
+
+            if($product){
+                 
+                $data = $request->all();           
+                $product->update($data);
+                return response()->Json([
+                    'product'=> $product,
+                    'res'=>'O recurso informado foi alterado com sucesso.'
+                ], 201);   
+            } 
+            return response()->Json([
+                'res'=>'A requisição foi recebida com sucesso, porém contém parâmetros inválidos.'
+            ], 422); 
+        }
     }
 
     /**
@@ -81,6 +97,15 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);        
+        if($product->delete()){
+            return response()->Json([
+                'product'=> $product,
+                'res'=>'O recurso informado foi deletado com sucesso.'
+            ], 201);;  
+        }
+        return response()->Json([
+            'res'=>'A requisição foi recebida com sucesso, porém contém parâmetros inválidos.'
+        ], 422);
     }
 }
