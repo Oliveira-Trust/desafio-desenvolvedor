@@ -23,10 +23,9 @@ Route::put('client/{id}', "ClientsController@update")->name('client.update');
 Route::delete('client/{id}', "ClientsController@destroy")->name('client.destroy');
 
 Route::get('transaction', "TransactionsController@index")->name('transaction');
-Route::post('transaction/store', "TransactionsController@store")->name('transaction.store');
-Route::get('transaction/edit/{id}', "TransactionsController@edit")->name('transaction.edit');
-Route::put('transaction/update{id}', "TransactionsController@update")->name('transaction.update');
-Route::delete('transaction/destroy/{id}', "TransactionsController@destroy")->name('transaction.destroy');
+Route::post('transaction', "TransactionsController@store")->name('transaction.store');
+Route::put('transaction/{id}', "TransactionsController@update")->name('transaction.update');
+Route::delete('transaction/{id}', "TransactionsController@destroy")->name('transaction.destroy');
 
 Route::get('iten/transaction', "ItenTransactionsController@index")->name('iten.transaction');
 Route::post('iten/transaction/store', "ItenTransactionsController@store")->name('iten.transaction.store');
