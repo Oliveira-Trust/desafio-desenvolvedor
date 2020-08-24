@@ -62,7 +62,8 @@ export default {
         loadProducts() {
             const url = `${baseApiUrl}/api/product`
                 axios.get(url).then(res => {
-                this.produtos = res.data.data
+                this.produtos = res.data.products
+                
             })
             
         },

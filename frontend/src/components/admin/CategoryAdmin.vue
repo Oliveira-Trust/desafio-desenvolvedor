@@ -1,16 +1,16 @@
 <template>
     <div class="pedidos-admin">
         <b-form>
-            <input id="pedidos-id" type="hidden" v-model="pedidos.id" />
+            <input id="pedidos-id" type="hidden" v-model="transaction.id" />
             <b-form-group label="Nome:" label-for="pedidos-name">
                 <b-form-input id="pedidos-name" type="text"
-                    v-model="pedidos.name" required
+                    v-model="transaction.name" required
                     :readonly="mode === 'remove'"
                     placeholder="Informe o Nome da Produto..." />
             </b-form-group>
             <b-form-group label="status:" label-for="pedidos-name">
                 <b-form-input id="pedidos-name" type="number" min='1' max='3'
-                    v-model="pedidos.name" required
+                    v-model="transaction.name" required
                     :readonly="mode === 'remove'"
                     placeholder="Informe o Nome do Produto..." />
             </b-form-group>
@@ -48,8 +48,7 @@ export default {
             pedidos: [],
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
-                { key: 'satatus', label: 'status', sortable: true },
-                { key: 'name', label: 'nome', sortable: true },
+                { key: 'status', label: 'status', sortable: true },
                 { key: 'actions', label: 'Ações' }
             ]
         }
@@ -58,7 +57,7 @@ export default {
         loadTransaction() {
             const url = `${baseApiUrl}/api/transaction`
             axios.get(url).then(res => {
-                this.pedidos = res.data.data
+                this.pedidos = res.data.trasancitons
             
             })
         },

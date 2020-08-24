@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
@@ -12,7 +13,7 @@ class Transaction extends Model
 
     public function clientes()
     {
-        return $this->belongsTo(Cliente::class,'id', 'client_id');
+        return $this->belongsTo(Client::class,'client_id', 'id');
     }
 
     public function itensTransactions()
