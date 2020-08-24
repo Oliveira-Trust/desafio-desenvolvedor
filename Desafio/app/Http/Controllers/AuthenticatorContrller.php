@@ -10,7 +10,7 @@ use App\Events\EventNovoRegistro;
 
 class AuthenticatorContrller extends Controller
 {
-    public function signup(Request $request) {
+    public function record(Request $request) {
        
         if ($request->all()) {
   
@@ -34,10 +34,10 @@ class AuthenticatorContrller extends Controller
     }
 
     public function signin(Request $request) {
-     
+        
         $credenciais = [
             'email' => $request->email,
-            'password' => $request->passowrd,
+            'password' => $request->password,
             'active' => 1
         ];
 
