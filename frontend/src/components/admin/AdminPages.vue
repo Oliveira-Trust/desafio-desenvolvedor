@@ -6,13 +6,13 @@
             <b-card no-body>
                 <b-tabs card>
                     <b-tab title="Produtos" active>
-                        <ArticleAdmin />
+                        <Product />
                     </b-tab>
                     <b-tab title="Pedidos">
-                        <CategoryAdmin />
+                        <Transaction />
                     </b-tab>
                     <b-tab title="Clientes">
-                        <UserAdmin />
+                        <Client />
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -22,13 +22,13 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
-import ArticleAdmin from './ArticleAdmin'
-import CategoryAdmin from './CategoryAdmin'
-import UserAdmin from './UserAdmin'
+import Product from './Product'
+import Transaction from './Transaction'
+import Client from './Client'
 
 export default {
     name: 'AdminPages',
-    components: { PageTitle, ArticleAdmin, CategoryAdmin, UserAdmin }
+    components: { PageTitle, Product, Transaction, Client }
 }
 </script>
 

@@ -42,7 +42,7 @@ import { baseApiUrl} from '@/global'
 import axios from 'axios'
 
 export default {
-    name: 'Produtos',
+    name: 'Product',
     components: { VueEditor},
     data: function() {
         return {

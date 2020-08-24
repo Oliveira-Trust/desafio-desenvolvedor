@@ -41,10 +41,10 @@
         <hr>
         <b-table hover striped :items="clientes" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
+                <b-button variant="warning" @click="loadClients(data.item)" class="mr-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="danger" @click="loadUser(data.item, 'remove')">
+                <b-button variant="danger" @click="loadClients(data.item, 'remove')">
                     <i class="fa fa-trash"></i>
                 </b-button>
             </template>
@@ -57,7 +57,7 @@ import { baseApiUrl, showError } from '@/global'
 import axios from 'axios'
 
 export default {
-    name: 'UserAdmin',
+    name: 'Client',
     data: function() {
         return {
             mode: 'save',
@@ -87,7 +87,7 @@ export default {
         save() {
             const method = this.user.id ? 'put' : 'post'
             const id = this.user.id ? `/${this.user.id}` : ''
-            axios[method](`${baseApiUrl}/users${id}`, this.user)
+            axios[method](`${baseApiUrl}/api/client/${id}`, this.user)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
@@ -96,7 +96,7 @@ export default {
         },
         remove() {
             const id = this.user.id
-            axios.delete(`${baseApiUrl}/users/${id}`)
+            axios.delete(`${baseApiUrl}/api/client/${id}`)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
