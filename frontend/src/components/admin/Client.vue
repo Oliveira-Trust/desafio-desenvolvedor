@@ -2,29 +2,31 @@
     <div class="user-admin">
         <b-form>
             <b-row>
+                <input id="client-id" type="hidden" v-model="client.id" />
                 <b-col md="6" sm="12">
-                    <b-form-group label="Nome:" label-for="user-name">
-                        <b-form-input id="user-name" type="text"
+                    <b-form-group label="Nome:" label-for="client-name">
+                        <b-form-input id="client-name" type="text"
                             v-model="client.name" required
                             :readonly="mode === 'remove'"
                             placeholder="Informe o Nome do Usuário..." />
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group label="E-mail:" label-for="user-email">
-                        <b-form-input id="user-email" type="text"
+                    <b-form-group label="E-mail:" label-for="client-email">
+                        <b-form-input id="client-email" type="text"
                             v-model="client.email" required
                             :readonly="mode === 'remove'"
                             placeholder="Informe o E-mail do Usuário..." />
                     </b-form-group>
                 </b-col>
             </b-row>
-            <b-row v-show="mode === 'save'">
-                <b-col md="6" sm="12">
-                    <b-form-group label="Endereço:" label-for="user-password">
-                        <b-form-input id="user-password" type="text"
-                            v-model="client.password" required
-                            placeholder="Informe a Senha do Usuário..." />
+            <b-row>
+            <b-col md="6" sm="12">
+                    <b-form-group label="Endereço" label-for="client-address">
+                        <b-form-input id="client-address" type="text"
+                            v-model="client.address" required
+                            :readonly="mode === 'remove'"
+                            placeholder="Informe o endereço" />
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -41,10 +43,10 @@
         <hr>
         <b-table hover striped :items="clientes" :fields="fields">
             <template slot="actions" slot-scope="data">
-                <b-button variant="warning" @click="loadClients(data.item)" class="mr-2">
+                <b-button variant="warning" @click="loadClient(data.item)" class="mr-2">
                     <i class="fa fa-pencil"></i>
                 </b-button>
-                <b-button variant="danger" @click="loadClients(data.item, 'remove')">
+                <b-button variant="danger" @click="loadClient(data.item, 'remove')">
                     <i class="fa fa-trash"></i>
                 </b-button>
             </template>
@@ -75,19 +77,21 @@ export default {
     methods: {
         loadClients() {
             const url = `${baseApiUrl}/api/client`
-            axios.get(url).then(res => {
-                this.clientes = res.data.client
+                axios.get(url).then(res => {
+                this.clientes = res.data.client                
             })
+            
         },
+        
         reset() {
             this.mode = 'save'
-            this.user = {}
+            this.client = {}
             this.loadClients()
         },
         save() {
-            const method = this.user.id ? 'put' : 'post'
-            const id = this.user.id ? `/${this.user.id}` : ''
-            axios[method](`${baseApiUrl}/api/client/${id}`, this.user)
+            const method = this.client.id ? 'put' : 'post'
+            const id = this.client.id ? `/${this.client.id}` : ''
+            axios[method](`${baseApiUrl}/api/client${id}`, this.client)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
@@ -95,7 +99,7 @@ export default {
                 .catch(showError)
         },
         remove() {
-            const id = this.user.id
+            const id = this.client.id
             axios.delete(`${baseApiUrl}/api/client/${id}`)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
@@ -103,10 +107,10 @@ export default {
                 })
                 .catch(showError)
         },
-        loadUser(user, mode = 'save') {
+        loadClient(client, mode = 'save') {
             this.mode = mode
-            this.user = { ...user }
-        }
+            this.client = { ...client }
+        },
     },
     mounted() {
         this.loadClients()

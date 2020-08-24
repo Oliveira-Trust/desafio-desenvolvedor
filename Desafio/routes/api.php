@@ -18,10 +18,9 @@ Route::prefix('auth')->group(function() {
 });
 
 Route::get('client', "ClientsController@index")->name('client');
-Route::post('client/store', "ClientsController@store")->name('client.store');
-Route::get('client/edit/{id}', "ClientsController@edit")->name('client.edit');
-Route::put('client/update/{id}', "ClientsController@update")->name('client.update');
-Route::delete('client/destroy/{id}', "ClientsController@destroy")->name('client.destroy');
+Route::post('client', "ClientsController@store")->name('client.store');
+Route::put('client/{id}', "ClientsController@update")->name('client.update');
+Route::delete('client/{id}', "ClientsController@destroy")->name('client.destroy');
 
 Route::get('transaction', "TransactionsController@index")->name('transaction');
 Route::post('transaction/store', "TransactionsController@store")->name('transaction.store');
@@ -36,8 +35,7 @@ Route::put('iten/transaction/update/{id}', "ItenTransactionsController@update")-
 Route::delete('iten/transaction/destroy/{id}', "ItenTransactionsController@destroy")->name('iten.transaction.destroy');
 
 Route::get('product', "ProductsController@index")->name('product');
-Route::post('product/store', "ProductsController@store")->name('product.store');
-Route::get('product/edit/{id}', "ProductsController@edit")->name('product.edit');
-Route::put('product/update/{id}', "ProductsController@update")->name('product.update');
-Route::delete('product/destroy/{id}', "ProductsController@destroy")->name('product.destroy');
+Route::post('product', "ProductsController@store")->name('product.store');
+Route::put('product/{id}', "ProductsController@update")->name('product.update');
+Route::delete('product/{id}', "ProductsController@destroy")->name('product.destroy');
 

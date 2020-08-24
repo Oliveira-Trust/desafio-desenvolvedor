@@ -1,7 +1,7 @@
 <template>
     <div class="Produtos">
         <b-form>
-            <input id="product-name" type="hidden" v-model="product.id" />
+            <input id="product-id" type="hidden" v-model="product.id" />
             <b-form-group label="Nome:" label-for="product-name">
                 <b-form-input id="product-name" type="text"
                     v-model="product.name" required
@@ -62,8 +62,7 @@ export default {
         loadProducts() {
             const url = `${baseApiUrl}/api/product`
                 axios.get(url).then(res => {
-                this.produtos = res.data.products
-                
+                this.produtos = res.data.products                
             })
             
         },
@@ -71,12 +70,12 @@ export default {
         reset() {
             this.mode = 'save'
             this.product = {}
-            this.loadProduct()
+            this.loadProducts()
         },
         save() {
             const method = this.product.id ? 'put' : 'post'
             const id = this.product.id ? `/${this.product.id}` : ''
-            axios[method](`${baseApiUrl}/products${id}`, this.product)
+            axios[method](`${baseApiUrl}/api/product${id}`, this.product)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
@@ -84,18 +83,18 @@ export default {
                 .catch(showError)
         },
         remove() {
-            const id = this.article.id
-            axios.delete(`${baseApiUrl}/product/${id}`)
+            const id = this.product.id
+            axios.delete(`${baseApiUrl}/api/product/${id}`)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
                     this.reset()
                 })
                 .catch(showError)
         },
-        loadProduct(article, mode = 'save') {
+        loadProduct(product, mode = 'save') {
             this.mode = mode
-            axios.get(`${baseApiUrl}/product/${article.id}`)
-                .then(res => this.article = res.data)
+            this.product = { ...product }
+                                
         },
 
     },

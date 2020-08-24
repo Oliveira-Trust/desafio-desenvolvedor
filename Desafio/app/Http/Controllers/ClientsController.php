@@ -32,7 +32,7 @@ class ClientsController extends Controller
         $dados = [              
             'name' => $request->name,
             'email' => $request->email,
-            'adress' => $request->adress,
+            'address' => $request->address,
         ];           
         $client = Client::create($dados);                          
             if ($client) {
