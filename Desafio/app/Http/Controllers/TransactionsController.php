@@ -33,7 +33,8 @@ class TransactionsController extends Controller
     public function store(Request $request)
     {
         $dados = [              
-            'status' => $request->cost,
+            'status' => $request->status,
+            'quantity'=>$request->quantity
         ];           
         $transaction = Transaction::create($dados);                          
             if ($transaction) {

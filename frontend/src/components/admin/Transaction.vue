@@ -2,11 +2,11 @@
     <div class="pedidos-admin">
         <b-form>
             <input id="transaction-id" type="hidden" v-model="transaction.id" />
-            <b-form-group label="Nome:" label-for="transaction-name">
-                <b-form-input id="transaction-name" type="text"
-                    v-model="transaction.name" required
+            <b-form-group label="Qantidade:" label-for="transaction-quantity">
+                <b-form-input id="transaction-quantity" type="number" min='0'
+                    v-model="transaction.quantity" required
                     :readonly="mode === 'remove'"
-                    placeholder="Informe o Nome da Produto..." />
+                    placeholder="Informe a quantidade do Produto..." />
             </b-form-group>
             <b-form-group label="status:" label-for="transaction-name">
                 <b-form-input id="transaction-status" type="number" min='1' max='3'
@@ -49,6 +49,7 @@ export default {
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'status', label: 'status', sortable: true },
+                { key: 'quantity', label: 'quantidade', sortable: true },
                 { key: 'actions', label: 'Ações' }
             ]
         }
