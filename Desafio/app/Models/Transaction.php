@@ -9,7 +9,7 @@ class Transaction extends Model
 {
     protected $table = 'transactions';
 
-    protected $fillable = ['id', 'status','client_id'];
+    protected $fillable = ['id', 'status','quantity','client_id'];
 
     public function clientes()
     {
