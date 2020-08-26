@@ -1,8 +1,7 @@
 
 ## Desafio Oliveira Trust 
-&nbsp;
 
----
+
 ## Implementação concluída
 + CRUD de clientes.
 + CRUD de produtos.
@@ -10,9 +9,7 @@
 + **Bônus**: Deleção em massa de itens nos CRUDs.
 + **Bônus**: Uso de Bootstrap e responsividade das telas.
 
-&nbsp;
 
----
 ## Tecnologias utilizadas
 + PHP 7.1.3
 + MySQL 5.7.17
@@ -25,43 +22,61 @@
 + Moment.js 2.27.0
 + Toastr 2.1.3
 
-&nbsp;
 
----
 ## Organização dos arquivos
 + Models
+
 	/app
+
 + Views
+
 	/resources/views
+	
 + Controllers
+
 	/app/Http/Controllers
+	
 + js
+
 	/public/js
+	
 + css
+
 	/public/css
 
-&nbsp;
-	
----
+
+
 ## Execução
 	
 Acessar o sistema em https://desafiooliveiratrustrm.000webhostapp.com/
+
 Ou, para rodar localmente:
+
 1. **Criar o banco de dados**
+
     + Na raíz do projeto:
-        ```
-        php artisan migrate
-        ```
-    + Ou rodar o script de criação do banco em /dados/script-criacao-bd.sql
-2. **Verificar configurações**
-Abrir o arquivo /.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
-3. **Instalar depêndencias do Node**
-    ```
-	npm install
+    
 	```
+	php artisan migrate
+	```
+    
+    + Ou rodar o script de criação do banco em /dados/script-criacao-bd.sql
+
+2. **Verificar configurações**
+
+Abrir o arquivo /.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
+
+3. **Instalar depêndencias do Node**
+
+```
+npm install
+```
+	
 4. **Rodar**
+
 Na raiz do projeto:
-    ```
-    php artisan serve
-    ```
+
+```
+php artisan serve
+```
 
