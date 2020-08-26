@@ -54,29 +54,29 @@ Ou, para rodar localmente:
 
 1. **Criar o banco de dados**
 
-    + Na raíz do projeto:
+	+ Na raiz do projeto:
     
 	```
 	php artisan migrate
 	```
     
-    + Ou rodar o script de criação do banco em /dados/script-criacao-bd.sql
+	+ Ou rodar o script de criação do banco em /dados/script-criacao-bd.sql
 
 2. **Verificar configurações**
 
-Abrir o arquivo /.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
+	Abrir o arquivo /.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
 
 3. **Instalar depêndencias do Node**
 
-```
-npm install
-```
+	```
+	npm install
+	```
 	
 4. **Rodar**
 
-Na raiz do projeto:
+	Na raiz do projeto:
 
-```
-php artisan serve
-```
+	```
+	php artisan serve
+	```
 
