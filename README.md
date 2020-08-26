@@ -55,10 +55,10 @@ Ou, para rodar localmente:
 1. **Criar o banco de dados**
 
 	+ Na raiz do projeto:
-    
-	```
-	php artisan migrate
-	```
+    		
+		```
+		php artisan migrate
+		```
     
 	+ Ou rodar o script de criação do banco em /dados/script-criacao-bd.sql
 
