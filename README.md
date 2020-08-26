@@ -26,23 +26,23 @@
 ## Organização dos arquivos
 + Models
 
-	/app
+	/projeto/app
 
 + Views
 
-	/resources/views
+	/projeto/resources/views
 	
 + Controllers
 
-	/app/Http/Controllers
+	/projeto/app/Http/Controllers
 	
 + js
 
-	/public/js
+	/projeto/public/js
 	
 + css
 
-	/public/css
+	/projeto/public/css
 
 
 
@@ -64,10 +64,11 @@ Ou, para rodar localmente:
 
 2. **Verificar configurações**
 
-	Abrir o arquivo /.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
+	Abrir o arquivo /projeto/.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
 
 3. **Instalar depêndencias do Node**
 
+	Na raiz do projeto:
 	```
 	npm install
 	```
