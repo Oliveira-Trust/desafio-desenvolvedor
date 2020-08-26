@@ -116,9 +116,9 @@
 							targets: 0 
 						},
 						{ responsivePriority: 1, targets: 0 },	// nome
-						{ responsivePriority: 2, targets: -3 },	// ver mais
-						{ responsivePriority: 3, targets: -2 }, // alterar
-						{ responsivePriority: 4, targets: -1 }	// remover
+						{ responsivePriority: 9, targets: -3 },	// ver mais
+						{ responsivePriority: 9, targets: -2 }, // alterar
+						{ responsivePriority: 9, targets: -1 }	// remover
 					], responsive: true
 				};
 				$.extend(config, DT_DEFAULT_OPTIONS);

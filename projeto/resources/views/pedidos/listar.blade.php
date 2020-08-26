@@ -126,9 +126,9 @@
 							render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'DD/MM/YYYY HH:mm:ss')
 						},
 						{ responsivePriority: 1, targets: 0 },	// id
-						{ responsivePriority: 2, targets: -3 },	// ver mais
-						{ responsivePriority: 3, targets: -2 }, // alterar
-						{ responsivePriority: 4, targets: -1 }	// remover
+						{ responsivePriority: 9, targets: -3 },	// ver mais
+						{ responsivePriority: 9, targets: -2 }, // alterar
+						{ responsivePriority: 9, targets: -1 }	// remover
 					],
 					responsive: true
 				};
