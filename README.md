@@ -66,7 +66,7 @@ Ou, para rodar localmente:
 
 	Abrir o arquivo /projeto/.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
 
-3. **Instalar depêndencias do Node**
+3. **Instalar dependências do Node**
 
 	Na raiz do projeto:
 	```
