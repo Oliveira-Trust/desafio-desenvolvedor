@@ -1,0 +1,113 @@
+
+/* Ícones de 'ação' nas tabelas. */
+td.icone {
+	font-size:150%;
+}
+
+
+/* Botões com ícones à esquerda. */
+.link-retorno i, 
+.btn.btn-primary i,
+.btn.btn-danger i {
+	padding-right:15px;
+}
+
+
+/* Seleção de quantidade de elementos vísiveis nas tabelas. */ 
+.dataTables_length select {
+	margin-right:10px;
+}
+
+
+/* Div que bloqueia a tela ao ser executado um request. */
+.block-div {
+	position:fixed;
+	top:0px;
+	left:0px;
+	background-color:rgba(0,0,0,70%);
+	width:100%;
+	height:100%;
+	z-index:10;
+}
+
+
+/* logo-text e logo são elementos do menu. */
+#logo-text {
+    font-size:115%;
+    font-weight:bolder;
+    text-transform:uppercase;
+}
+#logo {
+    height:24px;
+}
+
+
+/* Botões de criar novo e remover em massa nas listagens. */
+#criar, #remover {
+	margin-bottom:20px;
+	margin-top:20px;
+}
+
+
+/* Campo de pesquisa inferior do DataTables. */
+input.tfoot-search {
+	max-width:50px;
+}
+@media only screen and (min-width: 600px) {
+	input.tfoot-search {
+		max-width:100px;
+	}
+}
+
+
+/* Campos falsos para formatação do CPF e telefone do cliente. */
+#placeholder-cpf, #placeholder-tel {
+	display:none;
+}
+
+
+/* Configurações gerais. */
+input {
+	border-radius:5px;
+	border-color:#ccc;
+}
+
+.row {
+    margin-bottom:15px;
+}
+
+table {
+	width:100% !important;
+    max-width:100% !important;
+}
+
+
+
+/* Estilos para produtos adicionados ao pedido. */
+#produtos-adicionados {
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+.produto-adicionado {
+    padding:5px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    margin:3px;
+}
+
+.produto-adicionado:hover {
+    background-color:#f3f3f3;
+}
+
+/* Ícone de exclusão do produto. */
+.produto-adicionado i.fa.fa-times {
+    float:right;
+    font-size:150%;
+    color:#f56464;
+    cursor:pointer;
+}
+
+#adicionar-produto {
+	margin-top:45px;
+}
