@@ -52,7 +52,16 @@ Acessar o sistema em https://desafiooliveiratrustrm.000webhostapp.com/
 
 Ou, para rodar localmente:
 
-1. **Criar o banco de dados**
+1. **Instalar as dependências**
+
+	Na raiz do projeto:
+	
+	```
+	composer install
+	npm install
+	```
+	
+2. **Criar o banco de dados**
 
 	+ Na raiz do projeto:
     		
@@ -65,13 +74,6 @@ Ou, para rodar localmente:
 2. **Verificar configurações**
 
 	Abrir o arquivo /projeto/.env e alterar APP_URL, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME e DB_PASSWORD de acordo com os parâmetros locais da máquina.
-
-3. **Instalar dependências do Node**
-
-	Na raiz do projeto:
-	```
-	npm install
-	```
 	
 4. **Rodar**
 
