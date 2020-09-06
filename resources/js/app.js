@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./dashboard.js');
 
 window.Vue = require('vue');
 
