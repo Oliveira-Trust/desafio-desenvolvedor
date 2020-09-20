@@ -10,7 +10,7 @@ class OrderItemRepository extends BaseRepository
 {
     protected $orderItem;
 
-    protected function __construct(OrderItem $orderItem)
+    public function __construct(OrderItem $orderItem)
     {
         parent::__construct($orderItem);
     }
