@@ -33,7 +33,7 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        //
+        return $this->orderService->show($id);
     }
 
     public function edit($id)

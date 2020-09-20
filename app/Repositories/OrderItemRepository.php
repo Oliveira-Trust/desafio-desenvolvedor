@@ -4,12 +4,14 @@
 namespace App\Repositories;
 
 
+use App\Models\OrderItem;
+
 class OrderItemRepository extends BaseRepository
 {
-    protected $order;
+    protected $orderItem;
 
-    protected function __construct(object $obj)
+    protected function __construct(OrderItem $orderItem)
     {
-        parent::__construct($obj);
+        parent::__construct($orderItem);
     }
 }
