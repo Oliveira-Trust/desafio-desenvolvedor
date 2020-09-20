@@ -41,7 +41,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        return $this->productService->update($id, $request->all());
+        return $this->productService->update($request->all(), $id);
     }
 
     public function destroy($id)

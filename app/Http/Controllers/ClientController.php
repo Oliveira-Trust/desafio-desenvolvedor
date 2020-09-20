@@ -42,11 +42,11 @@ class ClientController extends Controller
 
     public function update(Request $request, $id)
     {
-        return $this->clientService->update($id, $request->all());
+        return $this->clientService->update($request->all(), $id);
     }
 
     public function destroy($id)
     {
-        return $this->productService->destroy($id);
+        return  $this->clientService->destroy($id);
     }
 }
