@@ -9,9 +9,9 @@ class OrderController extends Controller
 {
     protected $orderService;
 
-    public function __construct(OrderService $clientService)
+    public function __construct(OrderService $orderService)
     {
-        $this->orderService = $clientService;
+        $this->orderService = $orderService;
         //$this->middleware('auth');
     }
 
@@ -27,7 +27,6 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         return $this->orderService->save($request->all());
     }
 
