@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductStoreRequest;
 use Illuminate\Http\Request;
 use \App\Services\ProductService;
 
@@ -29,7 +30,7 @@ class ProductController extends Controller
         return view('product.create');
     }
 
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
         return $this->productService->save($request->all());
     }
