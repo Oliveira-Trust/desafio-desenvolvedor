@@ -26,7 +26,7 @@ class BaseRepository
         return $this->obj->where($column, $value)->get();
     }
 
-    public function save(array $attributes): bool
+    public function save(array $attributes): object
     {
         return $this->obj->insert($attributes);
     }
@@ -39,5 +39,10 @@ class BaseRepository
     public function destroy(int $id): bool
     {
         return $this->obj->destroy($id);
+    }
+
+    public function create(array $attributes): object
+    {
+        return $this->obj->create($attributes);
     }
 }
