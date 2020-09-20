@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //retorna view
+
     }
 
     public function index()
@@ -26,13 +26,12 @@ class ProductController extends Controller
 
     public function create()
     {
-        //retorna view
+        return view('product.create');
     }
 
-    //todo adicionar validaçãp de request
     public function store(Request $request)
     {
-        $this->productService->save($request);
+        return $this->productService->save($request->all());
     }
 
     public function edit($id)
@@ -40,7 +39,6 @@ class ProductController extends Controller
 
     }
 
-    //todo adicionar validaçãp de request
     public function update(Request $request, $id)
     {
         return $this->productService->update($id, $request);
@@ -48,10 +46,6 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $destroidItem = $this->productService->destroy($id);
-
-        if (!$destroidItem) return "item não encontrado";
-
-        return "item deleteado";
+        return $this->productService->destroy($id);
     }
 }
