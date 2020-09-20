@@ -12,6 +12,7 @@ class OrderController extends Controller
     public function __construct(OrderService $clientService)
     {
         $this->orderService = $clientService;
+        //$this->middleware('auth');
     }
 
     public function index()
@@ -26,7 +27,8 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        return $this->orderService->save($request->all());
     }
 
 
