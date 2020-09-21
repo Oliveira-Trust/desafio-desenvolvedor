@@ -35,9 +35,8 @@ class OrderStoreRequest extends FormRequest
     {
         return [
             'client_id' => 'required',
-            'status' => 'required|in:pending',
-            'quantity' => 'required|numeric',
-            'price' => 'required|numeric',
+            'status' => 'required|',
+            'quantity' => 'required|numeric|min:1',
             'product_id' => 'required'
         ];
     }

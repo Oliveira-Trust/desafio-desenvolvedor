@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
     {
         for ($i = 1; $i <= 5; $i++) {
             DB::table('clients')->insert([
-                'name' => Str::random(10),
+                'name' => 'cliente '.$i,
                 'email' => Str::random(10).'@gmail.com',
             ]);
         }

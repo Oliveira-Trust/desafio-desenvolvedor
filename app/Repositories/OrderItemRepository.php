@@ -14,4 +14,9 @@ class OrderItemRepository extends BaseRepository
     {
         parent::__construct($orderItem);
     }
+
+    public function last()
+    {
+        return DB::table('order_itens')->latest()->first();
+    }
 }

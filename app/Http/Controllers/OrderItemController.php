@@ -16,6 +16,7 @@ class OrderItemController extends Controller
 
     public function show($id)
     {
-        return $this->orderItem->find($id);
+        $order = $this->orderItem->find($id);
+        return view('order.show')->with(["order" => $order]);
     }
 }

@@ -5,13 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Cadastrar Client</div>
+                    <div class="card-header">Pedido número: #{{$order->id}}</div>
 
                     <div class="card-body">
-                        <form method="post" action="{{route('client.store')}}">
-                            @include('product.form')
-                            <button type="submit" class="btn btn-primary">Cadastrar cliente</button>
-                        </form>
+                        @include('order.form')
+                        <button class="btn btn-primary" onclick="window.history.back()">Voltar</button>
                     </div>
                 </div>
             </div>

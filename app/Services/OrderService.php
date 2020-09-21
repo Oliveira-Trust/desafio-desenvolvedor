@@ -6,20 +6,17 @@ namespace App\Services;
 
 use App\Repositories\OrderItemRepository;
 use App\Repositories\OrderRepository;
+use App\Repositories\ProductRepository;
 
 class OrderService
 {
-    protected $orderRepository,$orderItemRepository;
+    protected $orderRepository, $productRepository, $orderItemRepository;
 
-    public function __construct(OrderRepository $orderRepository, OrderItemRepository $orderItemRepository)
+    public function __construct(OrderRepository $orderRepository, ProductRepository $productRepository, OrderItemRepository $orderItemRepository)
     {
         $this->orderRepository = $orderRepository;
+        $this->productRepository = $productRepository;
         $this->orderItemRepository = $orderItemRepository;
-    }
-
-    public function all()
-    {
-        return $this->orderRepository->all();
     }
 
     public function save(array $attributes)
@@ -28,11 +25,10 @@ class OrderService
         $order = $this->orderRepository->create([
             'client_id' => $attributes["client_id"]
         ]);
-
         //creating order item
         return $this->orderItemRepository->create([
             'quantity' => $attributes["quantity"],
-            'price' => $attributes["price"],
+            'price' => $this->calculateTotalPrice($attributes["product_id"],$attributes["quantity"]),
             'status' => $attributes["status"],
             'product_id' => $attributes["product_id"],
             'order_id' => $order->id
@@ -47,5 +43,15 @@ class OrderService
     public function destroy(int $id)
     {
         return $this->orderRepository->destroy($id);
+    }
+
+    public function last()
+    {
+        return $this->orderRepository->last();
+    }
+
+    private function calculateTotalPrice(int $productId, int $totalItens){
+        $product = $this->productRepository->find($productId);
+        return $totalItens * $product->price;
     }
 }

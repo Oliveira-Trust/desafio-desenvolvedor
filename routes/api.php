@@ -20,12 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'clients'], function() {
-    Route::get('', [ClientController::class,'index'])->name('clients.index');
-    Route::post('', [ClientController::class,'store'])->name("clients.store");
-    Route::patch('{client}', [ClientController::class,'update'])->name("clients.update");
-    Route::delete('{client}', [ClientController::class,'destroy'])->name("clients.destroy");
-});
+//Route::group(['prefix' => 'clients'], function() {
+//    Route::get('', [ClientController::class,'index'])->name('clients.index');
+//    Route::post('', [ClientController::class,'store'])->name("clients.store");
+//    Route::patch('{client}', [ClientController::class,'update'])->name("clients.update");
+//    Route::delete('{client}', [ClientController::class,'destroy'])->name("clients.destroy");
+//});
 
 //Route::group(['prefix' => 'products'], function() {
 //    Route::post('', [ProductController::class,'store'])->name("products.store");
@@ -34,8 +34,8 @@ Route::group(['prefix' => 'clients'], function() {
 //});
 
 Route::group(['prefix' => 'orders'], function() {
-    Route::get('', [OrderController::class,'index'])->name('orders.index');
-    Route::post('', [OrderController::class,'store'])->name("orders.store");
-    Route::patch('{order}', [OrderController::class,'update'])->name("orders.update");
-    Route::delete('{order}', [OrderController::class,'destroy'])->name("orders.destroy");
+    //Route::get('', [OrderController::class,'index'])->name('orders.index');
+    Route::post('', [OrderController::class,'store']);
+    //Route::patch('{order}', [OrderController::class,'update'])->name("orders.update");
+    //Route::delete('{order}', [OrderController::class,'destroy'])->name("orders.destroy");
 });

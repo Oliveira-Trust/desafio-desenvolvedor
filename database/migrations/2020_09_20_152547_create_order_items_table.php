@@ -23,6 +23,7 @@ class CreateOrderItemsTable extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

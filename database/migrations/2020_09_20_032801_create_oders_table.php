@@ -18,6 +18,7 @@ class CreateOdersTable extends Migration
             $table->unsignedBigInteger('client_id');
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients');
+            $table->softDeletes();
         });
     }
 

@@ -17,7 +17,7 @@ class ClientSeeder extends Seeder
     {
         for ($i = 1; $i <= 5; $i++) {
             DB::table('products')->insert([
-                'name' => Str::random(10),
+                'name' => 'produto '.$i,
                 'description' => Str::random(10),
                 'price' => (53.4*$i)
             ]);
