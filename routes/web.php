@@ -11,8 +11,12 @@ Route::get('/', function () {
 
 Route::prefix('clients')->group(function (){
     Route::get('create', [ClientController::class,'create'])->name("clients.create");
-    Route::get('{product}', [ClientController::class,'show'])->name('clients.show');
-    Route::get('{product}/edit', [ClientController::class,'edit'])->name('clients.edit');
+    Route::get('{client}', [ClientController::class,'show'])->name('clients.show');
+    Route::get('{client}/edit', [ClientController::class,'edit'])->name('clients.edit');
+    Route::get('', [ClientController::class,'index'])->name('clients.index');
+    Route::post('', [ClientController::class,'store'])->name("clients.store");
+    Route::patch('{client}', [ClientController::class,'update'])->name("clients.update");
+    Route::delete('{client}', [ClientController::class,'destroy'])->name("clients.destroy");
 });
 
 Route::prefix('products')->group(function (){
@@ -27,8 +31,8 @@ Route::prefix('products')->group(function (){
 
 Route::prefix('orders')->group(function (){
     Route::get('create', [OrderController::class,'create'])->name("orders.create");
-    Route::get('{product}', [OrderController::class,'show'])->name('orders.show');
-    Route::get('{product}/edit', [OrderController::class,'edit'])->name('orders.edit');
+    Route::get('{oder}', [OrderController::class,'show'])->name('orders.show');
+    Route::get('{oder}/edit', [OrderController::class,'edit'])->name('orders.edit');
 });
 
 Auth::routes();

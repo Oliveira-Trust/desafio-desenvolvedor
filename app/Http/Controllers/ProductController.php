@@ -34,7 +34,7 @@ class ProductController extends Controller
 
     public function store(ProductStoreRequest $request)
     {
-        $product = $this->productService->save($request->all());
+        $this->productService->save($request->all());
         return redirect()->back();
     }
 

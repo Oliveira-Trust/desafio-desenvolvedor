@@ -8,8 +8,9 @@ use App\Models\Client;
 
 class ClientRepository extends BaseRepository
 {
-    protected $client;
-    protected function __construct(Client $client)
+    protected $order;
+
+    public function __construct(Client $client)
     {
         parent::__construct($client);
     }

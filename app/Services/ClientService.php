@@ -34,4 +34,9 @@ class ClientService
     {
         return $this->clientRepository->destroy($id);
     }
+
+    public function find(int $id)
+    {
+        return $this->clientRepository->find($id);
+    }
 }

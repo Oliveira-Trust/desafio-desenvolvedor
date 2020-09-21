@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Produtos</div>
+                    <div class="card-header">Clientes</div>
 
                     <div class="col-12" style="margin-left: 15px; margin-top: 15px">
-                        <p><a href="{{ route('products.create') }}">Adicione um novo produto</a></p>
+                        <p><a href="{{ route('clients.create') }}">Adicione um novo cliente</a></p>
                     </div>
 
                     <div class="card-body">
@@ -17,21 +16,20 @@
                             <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Preço</th>
+                                <th>Email</th>
                                 <th>#</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
+                                @foreach($clients as $client)
                                     <tr>
-                                        <td><a href="{{ route('products.show', ['product' => $product]) }}">{{ $product->name }}</a></td>
-                                        <td>{{ $product->description }}</td>
-                                        <td>{{ $product->price }}</td>
+                                        <td><a href="{{ route('clients.show', ['client' => $client]) }}">{{ $client->name }}</a></td>
+
+                                        <td>{{ $client->email }}</td>
                                         <td>
                                             <div class="row">
-                                                <button class="btn btn-info"><a href="{{ route('products.edit', ['product' => $product]) }}">editar</a></button>
-                                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST">
+                                                <button class="btn btn-info"><a href="{{ route('clients.edit', ['client' => $client]) }}">editar</a></button>
+                                                <form action="{{ route('clients.destroy', ['client' => $client]) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button class="btn btn-danger" type="submit">Delete</button>

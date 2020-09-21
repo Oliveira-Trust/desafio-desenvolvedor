@@ -16,37 +16,42 @@ class ClientController extends Controller
 
     public function index()
     {
-        //
+        $clients = $this->clientService->all();
+        return view('client.index')->with(["clients" => $clients]);
     }
 
     public function create()
     {
-
+        return view('client.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $this->clientService->save($request->all());
+        return redirect()->back();
     }
-
 
     public function show($id)
     {
-        //
+        $client = $this->clientService->find($id);
+        return view('client.show')->with(["client" => $client]);
     }
 
     public function edit($id)
     {
-        //
+        $client = $this->clientService->find($id);
+        return view('client.edit')->with(["client" => $client]);
     }
 
     public function update(Request $request, $id)
     {
-        return $this->clientService->update($request->all(), $id);
+        $this->clientService->update($request->all(), $id);
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
-        return  $this->clientService->destroy($id);
+        $this->clientService->destroy($id);
+        return redirect()->back();
     }
 }
