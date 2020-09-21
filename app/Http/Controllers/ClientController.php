@@ -27,8 +27,11 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
-        $this->clientService->save($request->all());
-        return redirect()->back();
+        $this->clientService->save([
+            "name" => $request->get('name'),
+            "email" => $request->get('email')
+        ]);
+        return redirect('clients');
     }
 
     public function show($id)
@@ -46,12 +49,12 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $this->clientService->update($request->all(), $id);
-        return redirect()->back();
+        return redirect('clients');
     }
 
     public function destroy($id)
     {
         $this->clientService->destroy($id);
-        return redirect()->back();
+        return redirect('clients');
     }
 }

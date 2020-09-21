@@ -11,6 +11,7 @@
                         <form method="post" action="{{route('products.update', ["product" => $product])}}">
                             @method('PATCH')
                             @include('product.form')
+                            <button type="submit" class="btn btn-primary">Editar Produto</button>
                         </form>
                     </div>
                 </div>

@@ -14,4 +14,3 @@
     <input type="number" name="price" placeholder="Preço do produto" class="form-control"
            value="{{empty($product) ? "0" : $product->price}}" required>
 </div>
-<button type="submit" class="btn btn-primary">Editar Produto</button>

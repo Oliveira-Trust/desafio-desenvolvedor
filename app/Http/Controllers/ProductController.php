@@ -35,7 +35,7 @@ class ProductController extends Controller
     public function store(ProductStoreRequest $request)
     {
         $this->productService->save($request->all());
-        return redirect()->back();
+        return redirect('products');
     }
 
     public function edit($id)
@@ -47,12 +47,12 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->productService->update($request->all(), $id);
-        return redirect()->back();
+        return redirect('products');
     }
 
     public function destroy($id)
     {
         $this->productService->destroy($id);
-        return redirect()->back();
+        return redirect('products');
     }
 }

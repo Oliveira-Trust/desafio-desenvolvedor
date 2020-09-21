@@ -10,6 +10,7 @@
                     <div class="card-body">
                         <form method="post" action="{{route('products.store')}}">
                             @include('product.form')
+                            <button type="submit" class="btn btn-primary">adicionar Produto</button>
                         </form>
                     </div>
                 </div>
