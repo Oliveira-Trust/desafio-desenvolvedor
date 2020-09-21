@@ -27,12 +27,11 @@ Route::group(['prefix' => 'clients'], function() {
     Route::delete('{client}', [ClientController::class,'destroy'])->name("clients.destroy");
 });
 
-Route::group(['prefix' => 'products'], function() {
-    Route::get('', [ProductController::class,'index'])->name('products.index');
-    Route::post('', [ProductController::class,'store'])->name("products.store");
-    Route::patch('{product}', [ProductController::class,'update'])->name("products.update");
-    Route::delete('{product}', [ProductController::class,'destroy'])->name("products.destroy");
-});
+//Route::group(['prefix' => 'products'], function() {
+//    Route::post('', [ProductController::class,'store'])->name("products.store");
+//    Route::patch('{product}', [ProductController::class,'update'])->name("products.update");
+//    Route::delete('{product}', [ProductController::class,'destroy'])->name("products.destroy");
+//});
 
 Route::group(['prefix' => 'orders'], function() {
     Route::get('', [OrderController::class,'index'])->name('orders.index');

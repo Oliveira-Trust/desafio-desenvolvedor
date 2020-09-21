@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
+    <div class="container">
 
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    </head>
-    <body class="antialiased">
-        <div id="app">
-            <example-component></example-component>
-        </div>
-        <script src="{{asset('js/app.js')}}"></script>
-    </body>
-</html>
+    </div>
+@endsection

@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Produtos</div>
 
                     <div class="col-12" style="margin-left: 15px; margin-top: 15px">
-                        <p><a href="{{ route('products.create') }}">Add New Customer</a></p>
+                        <p><a href="{{ route('products.create') }}">Adicione um novo produto</a></p>
                     </div>
 
                     <div class="card-body">
@@ -29,8 +29,12 @@
                                         <td>{{ $product->description }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>
-                                            <a href="{{ route('products.edit', ['product' => $product]) }}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                            <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                            <button class="btn btn-info"><a href="{{ route('products.edit', ['product' => $product]) }}">editar</a></button>
+                                            <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger" type="submit">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

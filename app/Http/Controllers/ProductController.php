@@ -17,12 +17,14 @@ class ProductController extends Controller
 
     public function show($id)
     {
-
+        $product = $this->productService->find($id);
+        return view('product.show')->with(["product" => $product]);
     }
 
     public function index()
     {
-        return $this->productService->all();
+        $products = $this->productService->all();
+        return view('product.index')->with(["products" => $products]);
     }
 
     public function create()
@@ -32,21 +34,25 @@ class ProductController extends Controller
 
     public function store(ProductStoreRequest $request)
     {
-        return $this->productService->save($request->all());
+        $product = $this->productService->save($request->all());
+        return redirect()->back();
     }
 
     public function edit($id)
     {
-
+        $product = $this->productService->find($id);
+        return view('product.edit')->with(["product" => $product]);
     }
 
     public function update(Request $request, $id)
     {
-        return $this->productService->update($request->all(), $id);
+        $this->productService->update($request->all(), $id);
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
-        return $this->productService->destroy($id);
+        $this->productService->destroy($id);
+        return redirect()->back();
     }
 }

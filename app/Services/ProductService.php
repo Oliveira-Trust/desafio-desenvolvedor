@@ -32,4 +32,9 @@ class ProductService
     {
         return $this->productRepository->destroy($id);
     }
+
+    public function find(int $id)
+    {
+        return $this->productRepository->find($id);
+    }
 }
