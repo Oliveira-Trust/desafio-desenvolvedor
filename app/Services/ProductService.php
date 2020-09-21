@@ -20,7 +20,7 @@ class ProductService
 
     public function save(array $attributes)
     {
-        return $this->productRepository->save($attributes);
+        return $this->productRepository->create($attributes);
     }
 
     public function update(array $attributes, int $id)
