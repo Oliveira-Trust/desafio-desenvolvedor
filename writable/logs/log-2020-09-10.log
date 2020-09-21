@@ -1,0 +1,211 @@
+CRITICAL - 2020-09-10 06:58:05 --> Duplicate entry '1-rendavariavelnacional' for key 'id_login'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_meta...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_meta...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_meta...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(Object(App\Models\MetaModel))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-10 07:00:08 --> Duplicate entry '1-rendavariavelnacional' for key 'id_login'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_meta...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_meta...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_meta...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(Object(App\Models\MetaModel))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-10 07:00:10 --> Duplicate entry '1-rendavariavelnacional' for key 'id_login'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_meta...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_meta...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_meta...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(Object(App\Models\MetaModel))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-10 07:01:12 --> You must use the "set" method to update an entry.
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2384): CodeIgniter\Database\BaseBuilder->validateUpdate()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(true, Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-10 07:02:06 --> You must use the "set" method to update an entry.
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2384): CodeIgniter\Database\BaseBuilder->validateUpdate()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(true, Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-10 07:02:07 --> You must use the "set" method to update an entry.
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2384): CodeIgniter\Database\BaseBuilder->validateUpdate()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(true, Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-10 07:02:18 --> You must use the "set" method to update an entry.
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2384): CodeIgniter\Database\BaseBuilder->validateUpdate()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(true, Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-10 07:02:22 --> You must use the "set" method to update an entry.
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2384): CodeIgniter\Database\BaseBuilder->validateUpdate()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(51): CodeIgniter\Model->update(true, Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-10 07:02:42 --> Call to a member function set() on array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-10 07:03:12 --> Attempt to assign property 'nr_valor_nacional' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to assi...', 'C:\\xamppNOVO\\ht...', 48, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-10 07:03:25 --> Attempt to assign property 'nr_valor_nacional' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to assi...', 'C:\\xamppNOVO\\ht...', 48, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-10 07:03:34 --> Object of class stdClass could not be converted to string
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', 'C:\\xamppNOVO\\ht...', 443, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(443): strtr('UPDATE `tb_meta...', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(404): CodeIgniter\Database\Query->matchNamedBinds('UPDATE `tb_meta...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(197): CodeIgniter\Database\Query->compileBinds()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\Query->getQuery()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(50): CodeIgniter\Model->update(true, Array)
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-09-10 07:03:39 --> Object of class stdClass could not be converted to string
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', 'C:\\xamppNOVO\\ht...', 443, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(443): strtr('UPDATE `tb_meta...', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(404): CodeIgniter\Database\Query->matchNamedBinds('UPDATE `tb_meta...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(197): CodeIgniter\Database\Query->compileBinds()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\Query->getQuery()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(50): CodeIgniter\Model->update(true, Array)
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-09-10 07:03:49 --> Undefined property: stdClass::$nr_valor_nacional
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(48): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 48, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-10 07:04:14 --> Undefined property: stdClass::$nr_valor_nacional
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(48): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 48, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-10 07:04:31 --> Object of class stdClass could not be converted to string
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', 'C:\\xamppNOVO\\ht...', 443, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(443): strtr('UPDATE `tb_meta...', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(404): CodeIgniter\Database\Query->matchNamedBinds('UPDATE `tb_meta...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\Query.php(197): CodeIgniter\Database\Query->compileBinds()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\Query->getQuery()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(50): CodeIgniter\Model->update(true, Array)
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-09-10 07:05:26 --> Duplicate entry '13' for key 'PRIMARY'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_meta...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_meta...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_meta...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(49): CodeIgniter\Model->update(true, Array)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-10 07:06:14 --> Call to a member function set() on array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-10 07:07:50 --> Duplicate entry '1-rendavariavelnacional' for key 'id_login'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_meta...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_meta...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_meta...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(53): CodeIgniter\Model->update(true, Array)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-10 07:09:42 --> Duplicate entry '1-rendavariavelinternacional' for key 'id_login'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_meta...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_meta...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_meta...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(79): CodeIgniter\Model->update(true, Array)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-10 07:10:07 --> Duplicate entry '1-rendavariavelinternacional' for key 'id_login'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_meta...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_meta...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_meta...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_meta...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaVariavel.php(80): CodeIgniter\Model->update(true, Array)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaVariavel->meta()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaVariavel))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}

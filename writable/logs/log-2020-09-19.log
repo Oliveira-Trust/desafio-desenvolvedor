@@ -1,0 +1,616 @@
+CRITICAL - 2020-09-19 07:46:49 --> Column 'id_cliente' in where clause is ambiguous
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(120): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(81): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', 'L')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 07:47:13 --> Column 'id_cliente' in where clause is ambiguous
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(120): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(81): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', 'L')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 07:50:09 --> Unknown column 'pp.id_cliente' in 'on clause'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(119): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(81): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 07:50:10 --> Unknown column 'pp.id_cliente' in 'on clause'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(119): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(81): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', 'l')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 07:50:46 --> Column 'id_cliente' in where clause is ambiguous
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(120): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(81): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', 'lu')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 07:51:26 --> Column 'id_cliente' in where clause is ambiguous
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(128): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(81): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', 'lua')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 09:36:17 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('11')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:36:18 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('12')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:37:24 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('11')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:38:14 --> Object of class stdClass could not be converted to string
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(144): CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', 'C:\\xamppNOVO\\ht...', 144, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('11')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 09:38:46 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('11')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:39:27 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('11')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:40:30 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('11')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:40:32 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('11')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:48:09 --> Too few arguments to function App\Controllers\Cliente::editar_ajax(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:48:14 --> Too few arguments to function App\Controllers\Cliente::editar_ajax(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-19 09:52:49 --> Argument 1 passed to CodeIgniter\Model::doProtectFields() must be of the type array, string given, called in C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php on line 702
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(702): CodeIgniter\Model->doProtectFields('11')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(550): CodeIgniter\Model->insert('11', false)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(149): CodeIgniter\Model->save('11', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-19 09:54:18 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(157): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 157, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 09:55:05 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(157): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 157, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 09:56:32 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(158): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 158, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 09:56:50 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(158): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 158, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 09:57:08 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(158): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 158, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 09:57:24 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(158): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 158, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 09:59:57 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(162): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 162, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 10:00:07 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(162): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 162, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 10:01:40 --> syntax error, unexpected ';', expecting ')'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/cliente/lista')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/cliente/lista')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 10:04:44 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 10:04:47 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 10:16:06 --> unlink(C:\xamppNOVO\htdocs\oliveiraTrust\writable\debugbar/debugbar_1600528174.json): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\xampp...', 'C:\\xamppNOVO\\ht...', 106, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Debug\Toolbar\Collectors\History.php(106): unlink('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Debug\Toolbar.php(481): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles(1600528562, 20)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Debug\Toolbar.php(454): CodeIgniter\Debug\Toolbar->format(Array, 'html')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Config\Events.php(44): CodeIgniter\Debug\Toolbar->respond()
+#5 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\Events\Events.php(188): call_user_func(Object(Closure))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(287): CodeIgniter\Events\Events::trigger('pre_system')
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 10:31:07 --> Unknown column 'ativo' in 'where clause'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(17): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(346): App\Models\ClienteModel->listaClientes()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 10:41:15 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''..'
+                                '. order by nm_cliente asc.'
+         ...' at line 13
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(118): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(89): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 14:00:38 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'case
+                                from    tb_cliente as c
+              ...' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(120): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(89): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 14:00:54 --> Undefined property: stdClass::$total_pedidos
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(97): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 97, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 14:01:14 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'then 0
+                                                else pp.total_pedidos...' at line 3
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  c.*\r...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  c.*\r...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  c.*\r...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(120): CodeIgniter\Database\BaseConnection->query('   select  c.*\r...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(89): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 16:10:03 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  coun...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  coun...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  coun...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(39): CodeIgniter\Database\BaseConnection->query('   select  coun...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(107): App\Models\ClienteModel->totalClientes()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 16:10:12 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  coun...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  coun...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  coun...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(39): CodeIgniter\Database\BaseConnection->query('   select  coun...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(107): App\Models\ClienteModel->totalClientes()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 16:10:57 --> Trying to get property 'id_cliente' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 39, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(107): App\Models\ClienteModel->totalClientes()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-19 16:11:00 --> Trying to get property 'id_cliente' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(39): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 39, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(107): App\Models\ClienteModel->totalClientes()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-19 16:11:33 --> Trying to get property 'id_cliente' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 35, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(107): App\Models\ClienteModel->totalClientes()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-19 16:27:42 --> syntax error, unexpected '.'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/cliente/lista')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/cliente/lista')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 16:28:16 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clienteCadastro...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteCadastro', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(282): view('clienteCadastro', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->cadastro()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-19 16:28:36 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clienteCadastro...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteCadastro', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(282): view('clienteCadastro', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->cadastro()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-19 16:31:42 --> syntax error, unexpected '.'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/cliente/checaS...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/cliente/checaS...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 16:31:42 --> syntax error, unexpected '.'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/cliente/lista')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/cliente/lista')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 16:31:57 --> syntax error, unexpected '.'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/cliente/lista')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/cliente/lista')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 16:55:07 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pedidolista.php')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('pedidolista', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(31): view('pedidolista', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-19 16:56:46 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pedidolista.php')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('pedidolista', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(31): view('pedidolista', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-19 17:00:07 --> Undefined property: stdClass::$total_pedidos
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(68): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 68, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:00:50 --> Undefined property: stdClass::$total_pedidos
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 66, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:02:07 --> Undefined property: stdClass::$data_cadastro
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 66, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:03:07 --> Undefined property: stdClass::$data_cadastro
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 66, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:06:07 --> Undefined property: stdClass::$nm_status_pedido
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(68): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 68, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:06:59 --> Unknown column 'pp.nm_pedido_produto_status' in 'where clause'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(127): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'pp.id_status', 'a')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:12:35 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+                                 order by nm_cliente asc
+                ...' at line 10
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(129): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:13:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+                                 order by nm_cliente asc
+                ...' at line 10
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(129): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:13:31 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+                                 order by nm_cliente asc
+                ...' at line 10
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(129): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:14:04 --> FUNCTION pp.id_produto does not exist
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(131): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:14:54 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') or nr_quantidade like '%a%' ) or pp.id_status like '%a%' ) or c.id_cliente ...' at line 10
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(129): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', 'a')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:14:56 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') or nr_quantidade like '%as%' ) or pp.id_status like '%as%' ) or c.id_client...' at line 10
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(129): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', 'as')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:18:51 --> FUNCTION pp.id_produto does not exist
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(130): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:18:54 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  nm_cliente like '%a%' or nm_produto like '%a%' or nr_valor_frete like '%...' at line 10
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(130): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', 'a')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:19:08 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  nm_cliente like '%s%' or nm_produto like '%s%' or nr_valor_frete like '%...' at line 10
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\PedidoModel.php(130): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(55): App\Models\PedidoModel->listaPedidosAjax(10, 0, 'nm_cliente', 's')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-19 17:35:20 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(197): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 197, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('1')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:35:23 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(197): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 197, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->editar_ajax('1')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:50:50 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(177): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 177, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->editar_ajax('1')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 17:56:28 --> Trying to get property 'tx_senha' of non-object
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(177): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 177, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->editar_ajax('1')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 19:16:46 --> Cannot add or update a child row: a foreign key constraint fails (`oliveiratrust`.`tb_pedido_produto`, CONSTRAINT `tb_pedido_produto_ibfk_3` FOREIGN KEY (`id_produto`) REFERENCES `tb_produto` (`id_produto`))
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `tb...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(722): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(550): CodeIgniter\Model->insert(Array, false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(165): CodeIgniter\Model->save(Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->editar_ajax()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-19 19:19:14 --> Cannot add or update a child row: a foreign key constraint fails (`oliveiratrust`.`tb_pedido_produto`, CONSTRAINT `tb_pedido_produto_ibfk_3` FOREIGN KEY (`id_produto`) REFERENCES `tb_produto` (`id_produto`))
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `tb...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(722): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(550): CodeIgniter\Model->insert(Array, false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(165): CodeIgniter\Model->save(Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->editar_ajax()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-19 20:05:08 --> Undefined property: stdClass::$administrador
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Produto.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 66, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Produto->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Produto))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 20:05:18 --> Undefined property: stdClass::$administrador
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Produto.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 66, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Produto->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Produto))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-19 20:06:47 --> Undefined property: stdClass::$total
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Produto.php(81): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 81, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Produto->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Produto))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}

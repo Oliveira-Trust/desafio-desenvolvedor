@@ -1,0 +1,1111 @@
+CRITICAL - 2020-09-08 09:14:56 --> Function name must be a string
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(71): App\Models\PerguntaQuestionarioModel->removerPerguntaExtra('18', '1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('18')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 09:20:04 --> Too few arguments to function App\Controllers\DiagramaDoCerrado::removerPergunta(), 0 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-08 09:22:30 --> Too few arguments to function App\Controllers\DiagramaDoCerrado::removerPergunta(), 0 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-08 09:24:35 --> syntax error, unexpected 'exit' (T_EXIT), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/diagramadocerr...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/diagramadocerr...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 09:25:04 --> Deletes are not allowed unless they contain a "where" or "like" clause.
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(937): CodeIgniter\Database\BaseBuilder->delete()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Models\PerguntaQuestionarioModel.php(42): CodeIgniter\Model->delete('id_questionario...', true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(66): App\Models\PerguntaQuestionarioModel->removerPerguntaExtra('17', '1')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('17')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 09:25:35 --> Function name must be a string
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(66): App\Models\PerguntaQuestionarioModel->removerPerguntaExtra('17', '1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('17')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 09:29:03 --> Function name must be a string
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(66): App\Models\PerguntaQuestionarioModel->removerPerguntaExtra('21', '1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('21', '23')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 09:30:08 --> Function name must be a string
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(66): App\Models\PerguntaQuestionarioModel->removerPerguntaExtra('22', '1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('22', '23')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 09:30:41 --> Function name must be a string
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(66): App\Models\PerguntaQuestionarioModel->removerPerguntaExtra('23', '1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('23', '23')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 09:32:19 --> Function name must be a string
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(66): App\Models\PerguntaQuestionarioModel->removerPerguntaExtra('24', '1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('24', '23')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 09:47:00 --> Call to undefined method stdClass::find()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->form('24')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-08 10:01:36 --> Trying to get property 'pontuacao_final' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(62): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 62, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:02:22 --> Undefined offset: 8
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(62): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 62, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:02:29 --> Undefined offset: 8
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(62): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 62, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:03:34 --> Undefined offset: 8
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(63): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 63, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:04:29 --> Trying to get property 'pontuacao_final' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(63): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 63, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:31:09 --> strlen() expects parameter 1 to be string, array given
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'strlen() expect...', 'C:\\xamppNOVO\\ht...', 59, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:32:35 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:32:41 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:32:57 --> Undefined offset: 4
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:33:13 --> Undefined offset: 4
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 10:33:23 --> Undefined offset: 4
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\empresaLista.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 11:54:37 --> syntax error, unexpected ')'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 11:54:38 --> syntax error, unexpected ')'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('empresalista', Array, true)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(44): view('empresalista', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 12:39:53 --> Undefined variable: id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 13:17:29 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0) VALUES (('DÍVIDA RUIM','Se o GAF for maior que 1.0 ou Div. Liquida for ne...' at line 1
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `tb...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(722): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(518): CodeIgniter\Model->insert(Array)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(324): App\Controllers\Login->inserirPerguntasCerrado('2')
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->ativar('2')
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-08 13:44:49 --> Undefined variable: id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 13:44:51 --> Undefined variable: id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 13:45:27 --> Too few arguments to function App\Controllers\DiagramaDoCerrado::gerenciar(), 0 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php on line 910 and at least 1 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-08 13:46:53 --> Too few arguments to function App\Controllers\DiagramaDoCerrado::gerenciar(), 0 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php on line 910 and at least 1 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-08 13:47:12 --> Too few arguments to function App\Controllers\DiagramaDoCerrado::gerenciar(), 0 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php on line 910 and at least 1 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-08 13:47:50 --> Undefined variable: tabela
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:48:26 --> Undefined variable: tabela
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:48:28 --> Undefined variable: tabela
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:48:40 --> Undefined variable: tabela
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:48:47 --> Undefined variable: tabela
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:48:53 --> Undefined variable: tabela
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:48:59 --> Undefined property: stdClass::$id_questionario
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:49:05 --> Undefined property: stdClass::$id_questionario
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:49:09 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 13:49:10 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 13:49:27 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 13:49:36 --> Undefined property: stdClass::$id_questionario
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:49:55 --> Trying to get property 'id_questionario' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:50:05 --> Trying to get property 'id_questionario' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:50:50 --> Use of undefined constant id_questionario - assumed 'id_questionario' (this will throw an Error in a future version of PHP)
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(153): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\xamppNOVO\\ht...', 153, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 13:51:14 --> Undefined variable: id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(59): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 59, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:51:15 --> Undefined variable: id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(59): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 59, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:51:27 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(155): view('diagramadocerra...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 13:52:25 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(158): view('diagramadocerra...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 13:52:39 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(158): view('diagramadocerra...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 13:52:54 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(157): view('diagramadocerra...', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-08 13:53:07 --> Undefined variable: nm_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 83, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(157): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:53:20 --> Undefined variable: resultado
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(84): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 84, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(157): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 13:53:32 --> Trying to get property 'tx_criterio' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 100, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(157): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:00:18 --> Trying to get property 'id_login' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Models\PerguntaQuestionarioModel.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(158): App\Models\PerguntaQuestionarioModel->listaQuestionario()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 14:01:43 --> Trying to get property 'tx_criterio' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(100): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 100, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:02:03 --> Trying to get property 'id_questionario' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:02:37 --> Trying to get property 'id_questionario' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:02:44 --> Trying to get property 'id_questionario' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 58, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:03:34 --> Trying to get property 'tx_introducao' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 69, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:10:38 --> Unknown column 'e.id_login' in 'where clause'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT count(*)...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT count(*)...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT count(*)...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT count(*)...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Models\PerguntaQuestionarioModel.php(23): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Models\PerguntaQuestionarioModel.php(35): App\Models\PerguntaQuestionarioModel->checaExistencia('50', '1')
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(66): App\Models\PerguntaQuestionarioModel->removerPergunta('50', '1')
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->removerPergunta('50', '1')
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-08 14:11:32 --> Trying to get property 'id_login' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(104): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 104, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->visualizar('pe')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 14:16:25 --> Undefined property: stdClass::$id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(105): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 105, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:16:26 --> Undefined property: stdClass::$id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerradogerencia.php(105): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 105, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:17:33 --> Unknown column 'qp.id_empresa' in 'where clause'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT count(*)...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT count(*)...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT count(*)...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT count(*)...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Models\DiagramaDoCerradoModel.php(54): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(38): App\Models\DiagramaDoCerradoModel->retornaPontuacaoQuestionario('1', '24')
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-08 14:18:55 --> Undefined variable: id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Models\DiagramaDoCerradoModel.php(68): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 68, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(38): App\Models\DiagramaDoCerradoModel->retornaPontuacaoQuestionario('1')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 14:19:21 --> Unknown column 'qp.id_empresa' in 'where clause'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Models\DiagramaDoCerradoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(115): App\Models\DiagramaDoCerradoModel->retornaDadosQuestionario('24')
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->visualizar('24')
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-08 14:20:48 --> Undefined property: stdClass::$id_empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerrado.php(144): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 144, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(126): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->visualizar('24')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 14:55:47 --> Undefined offset: 1
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 41, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 14:55:49 --> Undefined offset: 1
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 41, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 14:59:39 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerrado.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 41, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(126): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->visualizar('26')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 15:00:06 --> Too few arguments to function App\Models\DiagramaDoCerradoModel::retornaPontuacaoQuestionario(), 1 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php on line 38 and exactly 2 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(38): App\Models\DiagramaDoCerradoModel->retornaPontuacaoQuestionario('1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 15:00:08 --> Too few arguments to function App\Models\DiagramaDoCerradoModel::retornaPontuacaoQuestionario(), 1 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php on line 38 and exactly 2 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(38): App\Models\DiagramaDoCerradoModel->retornaPontuacaoQuestionario('1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 15:00:10 --> Too few arguments to function App\Models\DiagramaDoCerradoModel::retornaPontuacaoQuestionario(), 1 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php on line 38 and exactly 2 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(38): App\Models\DiagramaDoCerradoModel->retornaPontuacaoQuestionario('1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 15:07:50 --> Too few arguments to function App\Models\DiagramaDoCerradoModel::retornaPontuacaoQuestionario(), 1 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php on line 38 and exactly 2 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(38): App\Models\DiagramaDoCerradoModel->retornaPontuacaoQuestionario('1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 15:08:18 --> Too few arguments to function App\Models\DiagramaDoCerradoModel::retornaPontuacaoQuestionario(), 1 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php on line 38 and exactly 2 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Empresa.php(38): App\Models\DiagramaDoCerradoModel->retornaPontuacaoQuestionario('1')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Empresa->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Empresa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 15:15:46 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\diagramadocerrado.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 41, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(126): view('diagramadocerra...', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->visualizar('24')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 16:30:22 --> syntax error, unexpected 'breadcrumb' (T_STRING)
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(160): view('diagramadocerra...', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->gerenciar()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 17:02:15 --> syntax error, unexpected '}', expecting end of file
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(45): view('rendaFixaLista', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 17:03:02 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 69, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(45): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 17:03:51 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 69, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(45): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 17:51:21 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 69, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(45): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:04:43 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 69, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(45): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:06:45 --> Undefined variable: j
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 69, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(34): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:06:47 --> Undefined variable: j
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 69, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(34): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:07:10 --> Undefined variable: j
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(34): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:07:31 --> Undefined variable: j
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(34): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:07:33 --> Undefined variable: j
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(34): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:07:34 --> Undefined variable: j
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(34): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:07:38 --> Undefined property: stdClass::$tx_valor
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaLista.php(74): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 74, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(34): view('rendaFixaLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:07:55 --> Trying to get property 'id_login' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(103): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 103, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 18:10:39 --> Undefined variable: renda
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(126): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:10:53 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(126): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:12:17 --> Undefined variable: renda
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(127): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:13:18 --> Undefined variable: renda
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(127): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:13:52 --> Undefined variable: renda
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(127): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:18:41 --> Undefined variable: renda
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:18:43 --> Undefined variable: renda
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:19:00 --> Undefined variable: renda
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:20:33 --> Undefined variable: empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 82, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:21:06 --> Undefined variable: empresa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 120, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:23:54 --> Undefined variable: rendafixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:24:01 --> Undefined variable: rendafixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:40:30 --> Undefined property: stdClass::$id_renda_fixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 120, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:41:16 --> Undefined property: stdClass::$id_renda_fixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 120, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:41:36 --> Undefined property: stdClass::$id_renda_fixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 120, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:41:37 --> Undefined property: stdClass::$id_renda_fixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 120, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:41:38 --> Undefined property: stdClass::$id_renda_fixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(120): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 120, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(137): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 18:56:06 --> Undefined variable: rendafixa
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 61, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(138): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('2', 'ok')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 19:15:29 --> Undefined property: stdClass::$id_login
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(98): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 98, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('2')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 19:17:24 --> Unknown column 'nr_valor_novo' in 'field list'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *, Conca...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *, Conca...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *, Conca...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *, Conca...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(381): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(95): CodeIgniter\Model->find('2')
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('2')
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-08 19:22:11 --> A non well formed numeric value encountered
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'C:\\xamppNOVO\\ht...', 99, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(99): number_format(' 13.500.00', 2, ',', '.')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('2')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 19:25:13 --> Undefined offset: 1
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(95): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 95, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('2', 'ok')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 19:30:59 --> syntax error, unexpected '$data' (T_VARIABLE)
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/rendaFixa/form...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/rendaFixa/form...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 19:31:31 --> Attempt to assign property 'nr_valor' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to assi...', 'C:\\xamppNOVO\\ht...', 133, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 19:31:32 --> Attempt to assign property 'nr_valor' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to assi...', 'C:\\xamppNOVO\\ht...', 133, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 19:35:24 --> Undefined offset: 1
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(94): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 94, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 19:36:46 --> A non well formed numeric value encountered
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'C:\\xamppNOVO\\ht...', 95, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(95): number_format(' 6.500.00', 2, ',', '.')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 19:39:10 --> Undefined offset: 1
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(59): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 59, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-08 19:43:59 --> preg_replace(): No ending delimiter '.' found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_replace():...', 'C:\\xamppNOVO\\ht...', 63, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(63): preg_replace('.', '', ' 1.500.00', 1)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form('1')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-08 19:48:29 --> Undefined property: stdClass::$tx_local_alocado
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(64): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 64, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(157): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-08 19:48:35 --> Undefined property: stdClass::$tx_local_alocado
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\rendaFixaForm.php(64): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 64, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('rendaFixaForm', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\RendaFixa.php(157): view('rendaFixaForm', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\RendaFixa->form()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RendaFixa))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

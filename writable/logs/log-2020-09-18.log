@@ -1,0 +1,1380 @@
+CRITICAL - 2020-09-18 12:51:18 --> Table 'oliveiratrust.tb_login' doesn't exist
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(445): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Login.php(97): CodeIgniter\Model->findAll()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 12:57:28 --> Table 'oliveiratrust.tb_login' doesn't exist
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(445): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Login.php(143): CodeIgniter\Model->findAll()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Login->cadastro()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 13:01:14 --> Class 'App\Models\loginModel' not found
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->cadastro()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 13:16:48 --> Undefined variable: nomeSistema
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\logincadastro.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 9, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('loginCadastro', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(120): view('loginCadastro', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->cadastro()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 13:18:45 --> Undefined variable: nomeSistema
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_header.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 9, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_header.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\login.php(1): CodeIgniter\View\View->include('_header.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('login', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(67): view('login', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 13:18:53 --> Undefined variable: nomeSistema
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_header.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 9, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_header.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\login.php(1): CodeIgniter\View\View->include('_header.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('login', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(67): view('login', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 13:18:57 --> Undefined variable: nomeSistema
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_header.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 9, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_header.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\login.php(1): CodeIgniter\View\View->include('_header.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('login', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(67): view('login', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 13:19:02 --> Undefined variable: nomeSistema
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_header.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 9, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_header.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\login.php(1): CodeIgniter\View\View->include('_header.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('login', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(67): view('login', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 13:29:51 --> Undefined property: stdClass::$nm_login
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(59): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 59, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 14:10:13 --> Object of class CodeIgniter\HTTP\RedirectResponse could not be converted to string
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(49): CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', 'C:\\xamppNOVO\\ht...', 49, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->form()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 14:10:14 --> Object of class CodeIgniter\HTTP\RedirectResponse could not be converted to string
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(49): CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', 'C:\\xamppNOVO\\ht...', 49, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->form()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 14:11:30 --> {0, string} route cannot be found while reverse-routing.
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\HTTP\RedirectResponse.php(92): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute('')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(798): CodeIgniter\HTTP\RedirectResponse->route(false)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(294): redirect('http://localhos...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(48): App\Controllers\Cliente->checaSessao()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->form()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 14:12:52 --> {0, string} route cannot be found while reverse-routing.
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\HTTP\RedirectResponse.php(92): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute('')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(287): CodeIgniter\HTTP\RedirectResponse->route(false)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(48): App\Controllers\Cliente->checaSessao()
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->form()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 14:13:00 --> {0, string} route cannot be found while reverse-routing.
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\HTTP\RedirectResponse.php(92): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute('')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(287): CodeIgniter\HTTP\RedirectResponse->route(false)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(48): App\Controllers\Cliente->checaSessao()
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->form()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 14:13:01 --> {0, string} route cannot be found while reverse-routing.
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\HTTP\RedirectResponse.php(92): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute('')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(287): CodeIgniter\HTTP\RedirectResponse->route(false)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(48): App\Controllers\Cliente->checaSessao()
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->form()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 14:13:36 --> {0, string} route cannot be found while reverse-routing.
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\HTTP\RedirectResponse.php(92): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute('')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(798): CodeIgniter\HTTP\RedirectResponse->route(false)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(287): redirect('login/2')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Pedido.php(48): App\Controllers\Cliente->checaSessao()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Pedido->form()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pedido))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 14:23:42 --> Too few arguments to function App\Controllers\Cliente::index(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 14:23:45 --> Too few arguments to function App\Controllers\Cliente::index(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 14:24:27 --> Too few arguments to function App\Controllers\Cliente::index(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 14:28:03 --> Too few arguments to function App\Controllers\Cliente::index(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 14:31:22 --> Too few arguments to function App\Controllers\Cliente::index(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 14:31:23 --> Too few arguments to function App\Controllers\Cliente::index(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 14:32:21 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login.php')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('login', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Login.php(83): view('login', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Login->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:16:34 --> Class 'App\Controllers\Login' not found
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:16:42 --> Class 'App\Controllers\Login' not found
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:16:51 --> Undefined variable: valorTotalRendaFixaFormatado
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\dashboard.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 60, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('dashboard', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Dashboard.php(25): view('dashboard', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 15:17:32 --> Undefined variable: valorTotalRendaFixa
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\dashboard.php(65): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 65, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('dashboard', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Dashboard.php(25): view('dashboard', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 15:18:04 --> Undefined variable: valorTotalRendaFixa
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\dashboard.php(82): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 82, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('dashboard', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Dashboard.php(25): view('dashboard', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 15:18:14 --> Undefined variable: soma_ativos_nacionais
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\dashboard.php(193): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 193, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('dashboard', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Dashboard.php(25): view('dashboard', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 15:20:23 --> Undefined variable: id_login
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(183): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 183, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 15:22:54 --> Undefined variable: id_login
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(182): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 182, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 15:23:13 --> Undefined variable: login
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\loginForm.php(55): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 55, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('loginForm', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(187): view('loginForm', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 15:43:47 --> Cannot add or update a child row: a foreign key constraint fails (`oliveiratrust`.`tb_cliente`, CONSTRAINT `tb_cliente_ibfk_1` FOREIGN KEY (`id_status`) REFERENCES `tb_cliente_status` (`id_cliente_status`))
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_clie...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_clie...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_clie...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_clie...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(165): CodeIgniter\Model->update(Array, Array)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 15:44:15 --> Cannot add or update a child row: a foreign key constraint fails (`oliveiratrust`.`tb_cliente`, CONSTRAINT `tb_cliente_ibfk_1` FOREIGN KEY (`id_status`) REFERENCES `tb_cliente_status` (`id_cliente_status`))
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_clie...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_clie...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_clie...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_clie...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(165): CodeIgniter\Model->update(Array, Array)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 15:44:40 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:44:42 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:44:43 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:44:47 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:44:52 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:44:55 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:44:55 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:45:04 --> Cannot add or update a child row: a foreign key constraint fails (`oliveiratrust`.`tb_cliente`, CONSTRAINT `tb_cliente_ibfk_1` FOREIGN KEY (`id_status`) REFERENCES `tb_cliente_status` (`id_cliente_status`))
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_clie...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_clie...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_clie...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_clie...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(165): CodeIgniter\Model->update(Array, Array)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 15:45:08 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:45:18 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:45:20 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:45:22 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 15:46:22 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clienteForm.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteForm', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clienteForm', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 15:46:30 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clienteForm.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteForm', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clienteForm', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 15:46:35 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clienteForm.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteForm', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clienteForm', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 15:46:38 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clienteForm.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteForm', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clienteForm', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index('2')
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 15:46:41 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clienteForm.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteForm', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clienteForm', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 15:46:48 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clienteForm.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clienteForm', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(64): view('clienteForm', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 15:51:12 --> Cannot add or update a child row: a foreign key constraint fails (`oliveiratrust`.`tb_cliente`, CONSTRAINT `tb_cliente_ibfk_1` FOREIGN KEY (`id_status`) REFERENCES `tb_cliente_status` (`id_cliente_status`))
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `tb_clie...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `tb_clie...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `tb_clie...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `tb_clie...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\Model.php(851): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(164): CodeIgniter\Model->update(Array, Array)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 15:53:39 --> Undefined variable: id_status
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(158): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 158, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form('11')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 15:57:05 --> Too few arguments to function App\Controllers\Cliente::form(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:58:16 --> Too few arguments to function App\Controllers\Cliente::form(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:58:29 --> Too few arguments to function App\Controllers\Cliente::form(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:58:30 --> Too few arguments to function App\Controllers\Cliente::form(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:58:37 --> Too few arguments to function App\Controllers\Cliente::form(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:58:47 --> Too few arguments to function App\Controllers\Cliente::form(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 15:58:48 --> Too few arguments to function App\Controllers\Cliente::form(), 0 passed in C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->form()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-18 16:01:39 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(44): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 16:01:46 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(44): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 16:02:31 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(44): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 16:02:55 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(44): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 16:03:00 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(44): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 16:03:18 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(44): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 16:03:34 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientecliente....')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientecliente', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(44): view('clientecliente', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->index()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 16:27:50 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Dashboard.php(27): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 27, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 16:27:52 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Dashboard.php(27): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 27, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 16:27:53 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Dashboard.php(27): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 27, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 16:53:03 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('clientelista.ph...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(216): view('clientelista', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 17:00:38 --> Unknown column 'a.id_cliente' in 'on clause'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*\nFR...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*\nFR...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*\nFR...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*\nFR...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:00:47 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(217): view('clientelista', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 17:01:07 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '*)
+FROM `tb_cliente` `c`
+LEFT JOIN `tb_pedido_produto` as `pp` ON `pp`.`id_cl...' at line 1
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, c...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, c...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, c...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, c...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:01:09 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '*)
+FROM `tb_cliente` `c`
+LEFT JOIN `tb_pedido_produto` as `pp` ON `pp`.`id_cl...' at line 1
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, c...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, c...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, c...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, c...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:01:21 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(217): view('clientelista', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 17:03:05 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ON `pp`.`id_cliente` = `c`.`id_cliente`' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, C...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, C...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, C...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, C...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(23): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:03:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ON `pp`.`id_cliente` = `c`.`id_cliente`' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, C...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, C...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, C...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, C...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(23): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:03:17 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ON `pp`.`id_cliente` = `c`.`id_cliente`' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, C...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, C...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, C...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, C...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(23): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:03:58 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ON `pp`.`id_cliente` = `c`.`id_cliente`' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, C...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, C...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, C...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, C...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:04:15 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ON `pp`.`id_cliente` = `c`.`id_cliente`' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, `...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:04:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as `myCount`
+FROM `tb_cliente` `c`
+LEFT JOIN (SELECT count(*) as c
+         ...' at line 1
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, `...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:04:33 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ON `pp`.`id_cliente` = `c`.`id_cliente`' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, (...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, (...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, (...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, (...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:05:00 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ON `pp`.`id_cliente` = `c`.`id_cliente`' at line 5
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `c`.*, (...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, (...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, (...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, (...', Array, false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(24): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-18 17:05:09 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::last_query()
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 17:06:32 --> Undefined variable: builder
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 23, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-18 17:06:46 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 17:09:29 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'on      pp.id_cliente = c.id_cliente' at line 7
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(20): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 17:10:02 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'on      pp.id_cliente = c.id_cliente' at line 8
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(20): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 17:10:16 --> Unknown column 'pp.id_cliente' in 'on clause'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(20): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(215): App\Models\ClienteModel->listaClientes()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 17:13:08 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(217): view('clientelista', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 17:13:12 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(217): view('clientelista', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 17:13:16 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(217): view('clientelista', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 17:13:18 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(217): view('clientelista', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 17:14:13 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\_topSideBar.php(45): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 45, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(217): view('clientelista', Array)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-18 17:15:42 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(36): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 36, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(220): view('clientelista', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 17:16:13 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(36): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 36, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(220): view('clientelista', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 17:16:14 --> Undefined variable: rendas
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(36): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 36, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(220): view('clientelista', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 17:17:11 --> Undefined variable: msg
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(38): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 38, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(220): view('clientelista', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 17:18:53 --> Undefined property: stdClass::$nr_compras
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(220): view('clientelista', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 17:45:27 --> Undefined variable: books
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Views\clientelista.php(104): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 104, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(220): view('clientelista', Array)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-18 17:58:50 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(228): view('clientelista', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 17:58:52 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(228): view('clientelista', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 17:58:59 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(228): view('clientelista', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 17:59:01 --> Cannot use object of type stdClass as array
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\View\View.php(236): include()
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Common.php(1071): CodeIgniter\View\View->render('clientelista', Array, true)
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(228): view('clientelista', Array)
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista()
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-18 18:25:03 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:27:29 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:28:31 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:28:36 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:28:45 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:30:09 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:31:29 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:34:41 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:35:06 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:40:55 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:48:44 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:50:08 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:50:12 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:50:39 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:50:48 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:52:51 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:53:12 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:54:32 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:54:50 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:55:13 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:55:50 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 18:55:52 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:21:00 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:21:32 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 76, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:22:11 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:23:17 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 72, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:23:27 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 72, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:23:29 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 72, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:23:30 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 72, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:23:40 --> Undefined property: App\Controllers\Cliente::$input
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 72, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:24:23 --> Illegal string offset 'value'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xamppNOVO\\ht...', 76, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 19:24:40 --> Undefined property: App\Controllers\Cliente::$getPost
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(75): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 75, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:29:03 --> Illegal string offset 'value'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xamppNOVO\\ht...', 76, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:29:17 --> Illegal string offset 'value'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xamppNOVO\\ht...', 76, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:29:32 --> Illegal string offset 'value'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xamppNOVO\\ht...', 73, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:30:13 --> Illegal string offset 'value'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xamppNOVO\\ht...', 76, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:30:35 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 82, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:30:37 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 82, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:30:39 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 82, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:31:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tx_cliente desc
+                                LIMIT 10 OFFSET 1' at line 4
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(103): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(79): App\Models\ClienteModel->listaClientesAjax(10, 1, 'tx_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 20:31:46 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tx_cliente desc
+                                LIMIT 10 OFFSET 1' at line 4
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(110): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(79): App\Models\ClienteModel->listaClientesAjax(10, 1, 'tx_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 20:32:38 --> Unknown column 'tx_cliente' in 'order clause'
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(105): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(79): App\Models\ClienteModel->listaClientesAjax(10, 1, 'tx_cliente', '')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 20:36:41 --> Undefined property: CodeIgniter\HTTP\IncomingRequest::$getPost
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 20:40:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'nm_clientelike 'l' or tx_email like 'l' or dt_cadastro like 'l' or tx_senha l...' at line 3
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(105): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(80): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', 'l')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 20:41:07 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'nm_clientelike 'lui' or tx_email like 'lui' or dt_cadastro like 'lui' or tx_s...' at line 3
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\MySQLi\Connection.php(330): mysqli->query('   select  *\r\n ...')
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('   select  *\r\n ...')
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('   select  *\r\n ...')
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\app\Models\ClienteModel.php(103): CodeIgniter\Database\BaseConnection->query('   select  *\r\n ...')
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(81): App\Models\ClienteModel->listaClientesAjax(10, 0, 'nm_cliente', 'lui')
+#5 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#6 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#7 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-09-18 20:48:19 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(98): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 98, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-18 21:05:16 --> Undefined property: stdClass::$pedidos
+#0 C:\xamppNOVO\htdocs\oliveiraTrust\app\Controllers\Cliente.php(89): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 89, Array)
+#1 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(910): App\Controllers\Cliente->lista_ajax()
+#2 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#3 C:\xamppNOVO\htdocs\oliveiraTrust\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\oliveiraTrust\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}

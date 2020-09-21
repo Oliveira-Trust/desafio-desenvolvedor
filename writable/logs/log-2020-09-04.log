@@ -1,0 +1,1651 @@
+CRITICAL - 2020-09-04 07:41:08 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:41:11 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:41:14 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:41:22 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:41:25 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:43:23 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:43:33 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:44:54 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:45:52 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:45:54 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 155, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:46:07 --> Creating default object from empty value
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(170): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Creating defaul...', 'C:\\xamppNOVO\\ht...', 170, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginAtivar('100')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:56:08 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 169, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:56:10 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 169, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:56:36 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 169, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:57:16 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 169, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 07:57:19 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(169): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 169, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->loginForm('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:01:49 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:02:01 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:02:02 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:02:36 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:02:56 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:02:59 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:03:01 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:03:42 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:04:49 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:13 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:23 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:24 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:38 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:46 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:50 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:53 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:05:55 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:08:31 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:13:59 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:14:01 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:14:03 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:14:19 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:14:47 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:14:48 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:15:23 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:17:03 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:31:19 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:31:36 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:32:20 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:32:22 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:32:38 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:33:11 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:34:44 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:34:46 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:35:01 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:35:02 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:35:15 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:35:24 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:35:53 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:36:09 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:36:19 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:36:44 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:36:46 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:37:26 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:37:49 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:42:32 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:42:35 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:43:15 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:43:40 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:43:55 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:43:56 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:43:59 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:44:01 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:44:20 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:45:55 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:46:29 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:46:37 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:48:00 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:48:26 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:48:27 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:49:56 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:50:30 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:50:48 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:50:50 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:50:54 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:50:56 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:50:59 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:51:01 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:51:15 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:51:17 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:51:29 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:52:08 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:52:55 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:53:21 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:53:40 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:54:35 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:54:48 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:55:02 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:55:24 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:55:39 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:55:57 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:55:58 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:56:00 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:56:01 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:56:19 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:56:37 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:56:39 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:57:05 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:57:24 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:57:29 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:57:48 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:58:52 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:58:56 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 08:59:13 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:01:37 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(163): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 163, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:04:29 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(166): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 166, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:04:31 --> Argument 2 passed to CodeIgniter\Model::delete() must be of the type bool, object given, called in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php on line 201
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(201): CodeIgniter\Model->delete('2', Object(stdClass))
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->remover('2')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:05:15 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(166): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 166, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:07:16 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(168): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 168, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:08:29 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:09:11 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(107): view('loginlista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 09:09:28 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= '0,1)'' at line 3
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(445): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(105): CodeIgniter\Model->findAll()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-04 09:09:34 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= '0,1'' at line 3
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(445): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(105): CodeIgniter\Model->findAll()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-04 09:09:37 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`in` = '0,1'' at line 3
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(445): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(105): CodeIgniter\Model->findAll()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-04 09:09:44 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:09:49 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:10:19 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:12:03 --> Call to a member function find() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:12:11 --> Operand should contain 1 column(s)
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(445): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(106): CodeIgniter\Model->findAll()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-09-04 09:12:49 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:14:25 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(108): view('loginlista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 09:14:36 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(108): view('loginlista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 09:14:38 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(108): view('loginlista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 09:14:39 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(108): view('loginlista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 09:16:28 --> syntax error, unexpected ';', expecting ')'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/login/lista')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/login/lista')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:16:43 --> Invalid argument supplied for foreach()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(109): view('loginlista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 09:17:00 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:17:12 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:18:49 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:18:57 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:21:18 --> syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/login/lista')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/login/lista')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:21:44 --> Call to a member function findAll() on null
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:22:35 --> Argument 1 passed to CodeIgniter\Database\BaseBuilder::whereIn() must be of the type string or null, array given, called in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php on line 1702
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Model.php(1702): CodeIgniter\Database\BaseBuilder->whereIn(Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(105): CodeIgniter\Model->__call('wherein', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-04 09:23:15 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(170): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 170, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:24:12 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(172): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 172, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:27:32 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(173): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 173, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:27:35 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(173): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 173, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:29:31 --> Creating default object from empty value
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(129): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Creating defaul...', 'C:\\xamppNOVO\\ht...', 129, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('5')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:29:32 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(173): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 173, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('5')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:29:33 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(173): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 173, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('5')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:29:35 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(173): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 173, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('5')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 09:29:38 --> Too few arguments to function App\Controllers\Login::form(), 0 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 09:53:34 --> syntax error, unexpected ';', expecting ')'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xamppNOVO\\ht...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(861): class_exists('\\App\\Controller...', true)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(388): CodeIgniter\CodeIgniter->startController()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 09:53:36 --> syntax error, unexpected ';', expecting ')'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xamppNOVO\\ht...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(861): class_exists('\\App\\Controller...', true)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(388): CodeIgniter\CodeIgniter->startController()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 10:00:57 --> syntax error, unexpected 'exit' (T_EXIT), expecting ',' or ';'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 10:10:39 --> Undefined variable: data
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(68): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 68, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 10:10:49 --> Argument 2 passed to view() must be of the type array, string given, called in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php on line 68
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(68): view('loginRecuperar', '')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 10:10:56 --> Undefined variable: nomeSistema
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_header.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 9, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_header.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginRecuperar.php(1): CodeIgniter\View\View->include('_header.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginRecuperar', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(68): view('loginRecuperar', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 10:14:11 --> Undefined variable: loginModel
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 70, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 10:14:22 --> Undefined variable: tx_email
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 71, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 10:50:22 --> Undefined index: u_link
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xamppNOVO\\ht...', 83, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 11:02:21 --> Undefined property: App\Controllers\Login::$load
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(103): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 103, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 11:02:30 --> Undefined property: App\Controllers\Login::$load
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(103): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 103, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->recuperar()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 11:18:39 --> Trying to get property 'administrador' of non-object
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xamppNOVO\\ht...', 53, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 11:18:52 --> Call to undefined method CodeIgniter\Session\Session::set_userdata()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 11:19:15 --> Call to undefined method CodeIgniter\Session\Session::set_userdata()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 11:58:13 --> Call to undefined method CodeIgniter\Session\Session::set_userdata()
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 12:16:10 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 76, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 12:16:11 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(76): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 76, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 12:41:48 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/lista.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/lista', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/lista', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:41:57 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/lista.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/lista', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/lista', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:42:23 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/lista.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/lista', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/lista', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:42:24 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/lista.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/lista', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/lista', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:42:31 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('lista.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('lista', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('lista', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:42:35 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sair.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('sair', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('sair', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:42:36 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sair.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('sair', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('sair', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:42:54 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/lista.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/lista', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/lista', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:43:16 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('recuperar.php')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('recuperar', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('recuperar', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:43:20 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/recuperar...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/recuperar', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/recuperar', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:43:33 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/cadastro....')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/cadastro', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/cadastro', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:43:40 --> Invalid file: {0}
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/cadastro....')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('login/cadastro', Array, true)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('login/cadastro', Array)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-04 12:43:58 --> Undefined variable: logins
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('loginlista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 12:44:04 --> Undefined variable: logins
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(51): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 51, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginLista', Array, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(72): view('loginLista', Array)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 12:44:56 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(258): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 258, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 12:46:11 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(264): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 264, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 12:46:14 --> Undefined offset: 0
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(264): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xamppNOVO\\ht...', 264, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('assets', 'images', 'avatars', '1.jpg')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 12:57:05 --> Too few arguments to function App\Controllers\Login::index(), 0 passed in C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php on line 910 and exactly 1 expected
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 13:28:23 --> Undefined variable: session
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_topSideBar.php(80): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 80, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(201): view('loginlista', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:30:54 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_topSideBar.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 83, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(204): view('loginlista', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:31:15 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_topSideBar.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 83, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(204): view('loginlista', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:31:17 --> Array to string conversion
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_topSideBar.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xamppNOVO\\ht...', 83, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginLista.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginlista', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(204): view('loginlista', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:36:00 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_topSideBar.php(80): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 80, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\dashboard.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('dashboard', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Dashboard.php(81): view('dashboard', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:36:49 --> Undefined variable: nomeSistema
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_header.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 9, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_header.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\dashboard.php(1): CodeIgniter\View\View->include('_header.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('dashboard', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Dashboard.php(35): view('dashboard', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:37:03 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_topSideBar.php(80): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 80, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\dashboard.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('dashboard', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Dashboard.php(35): view('dashboard', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Dashboard->index()
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:38:58 --> syntax error, unexpected '$this' (T_VARIABLE), expecting '('
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/login/lista')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/login/lista')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 13:38:59 --> syntax error, unexpected '$this' (T_VARIABLE), expecting '('
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/login/lista')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/login/lista')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 13:39:01 --> syntax error, unexpected '$this' (T_VARIABLE), expecting '('
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xamppNOVO\\ht...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(861): class_exists('\\App\\Controller...', true)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(388): CodeIgniter\CodeIgniter->startController()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 13:39:05 --> syntax error, unexpected '$this' (T_VARIABLE), expecting '('
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xamppNOVO\\ht...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(861): class_exists('\\App\\Controller...', true)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(388): CodeIgniter\CodeIgniter->startController()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 13:39:06 --> syntax error, unexpected '$this' (T_VARIABLE), expecting '('
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xamppNOVO\\ht...')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(861): class_exists('\\App\\Controller...', true)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(388): CodeIgniter\CodeIgniter->startController()
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-09-04 13:39:08 --> syntax error, unexpected '$this' (T_VARIABLE), expecting '('
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('/login/lista')
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('/login/lista')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 13:39:20 --> Undefined property: App\Controllers\Login::$permissao
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(182): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 182, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->lista()
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 13:39:43 --> Undefined variable: sessao
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\_topSideBar.php(80): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xamppNOVO\\ht...', 80, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(503): CodeIgniter\View\View->render('_topSidebar.php', NULL, true)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Views\loginForm.php(4): CodeIgniter\View\View->include('_topSidebar.php')
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\View\View.php(236): include('C:\\xamppNOVO\\ht...')
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('loginForm', Array, true)
+#6 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(281): view('loginForm', Array)
+#7 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('6')
+#8 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2020-09-04 13:48:52 --> Undefined property: stdClass::$nm_tx_email
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\Login.php(266): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xamppNOVO\\ht...', 266, Array)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\Login->form('6')
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-09-04 18:23:10 --> Class 'App\Models\DiagramaDoSerrado' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:23:27 --> Class 'App\Models\DiagramaDoSerrado' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:23:45 --> Class 'App\Models\DiagramaDoSerrado' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:24:02 --> Class 'App\Models\DiagramaDoSerradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:24:44 --> Class 'App\Models\DiagramaDoSerradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:02 --> Class 'App\Models\DiagramadoSerradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:17 --> Class 'App\Models\DiagramaDoSerradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:18 --> Class 'App\Models\DiagramaDoSerradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:22 --> Class 'App\Models\DiagramadoSerradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:30 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:36 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:37 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:43 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:25:58 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:26:13 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:26:19 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:26:20 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:27:38 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:27:39 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:27:40 --> Class 'App\Models\DiagramadoserradoModel' not found
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-09-04 18:40:42 --> syntax error, unexpected end of file
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(47): view('diagramadocerra...', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-09-04 18:41:15 --> syntax error, unexpected '?'
+#0 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\Common.php(1071): CodeIgniter\View\View->render('diagramadocerra...', Array, true)
+#1 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\app\Controllers\DiagramaDoCerrado.php(47): view('diagramadocerra...', Array)
+#2 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(910): App\Controllers\DiagramaDoCerrado->index()
+#3 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DiagramaDoCerrado))
+#4 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xamppNOVO\htdocs\planilhasRaulCodeIgniter\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
