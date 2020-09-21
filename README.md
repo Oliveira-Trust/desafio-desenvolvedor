@@ -1,61 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# Controle de Clientes e Pedidos de Compra
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Neste projeto, foram utilizados os princípios do SOLID visando separa-lo em camadas. O CRUD foi feito em PHP e Mysql, e foram realizados os seguintes pontos:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## O que foi feito/falta ser feito
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Básico:**
+-  - [x] CRUD de Clientes
+-  - [x] CRUD de Produtos
+-  - [x] CRUD de Pedidos de Compra
+-  - [] Filtrar e Ordenar listagens por qualquer campo
+-  - [x] Barra de Navegação entre CRUDs
+-  - [x] Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)
 
-## Learning Laravel
+**Bônus:**
+-  - [x] Implementar autenticação de usuário na aplicação.
+-  - [x] Permitir deleção em massa de itens nos CRUDs.
+-  - [x] Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.
+-  - [x] API Rest JSON para todos os CRUDS listados acima. para usar use localhost/api/ "produtos" , "clientes",""pedidos"
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Instalação
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Clone o Repositório
 
-### Premium Partners
+Entre no diretório.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+> cd desafio-desenvolvedor
 
-## Contributing
+Gere o arquivo `.env` baseado no `.env.example`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+> cp .env.example .env
 
-## Code of Conduct
+"Suba" com o container
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+> docker-compose up -d --build
 
-## Security Vulnerabilities
+Instale as dependências utilizando o `composer`
+> docker-compose exec php bash -c "composer install"
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Gere a `APP_KEY` do Projeto
+> docker-compose exec php bash -c "php artisan key:generate"
 
-## License
+De permissões de escrita e leitura para as pastas dentro de `/storage` 
+> chmod -R 777 storage
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Crie os Bancos de dados referente a aplicação e aos testes
+> docker-composer exec mysql mysql -p
+> CREATE DATABASE laravel
+> CREATE DATABASE laravel_tests
+
+Configure as variáveis de ambiente no .env
+* `DB_` Dados de conexão com o mysql
+* `TEST_DB_` Dados de conexão com o mysql para testes unitários
+
+Execute as migrations(se quiser execute com `--seed` que irá executar os seeders)
+> docker-composer exec php bash -c "php artisan migrate"
+
