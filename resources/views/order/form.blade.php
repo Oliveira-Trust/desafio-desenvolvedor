@@ -29,7 +29,50 @@
 
 <div class="form-group">
     <label for="quantity_id">quantidade</label>
-    <input type="number" name="quantity" placeholder="quantidade"
-           value="{{empty($order) ? "0" : $order->quantity}}" class="form-control" required>
+    <input type="number" name="quantity" placeholder="quantidade" id="quantity_id"
+           value="{{empty($order) ? "1" : $order->quantity}}" class="form-control" required>
 </div>
 
+<div class="form-group">
+    <label>Valor total do pedido</label>
+    <input type="number" name="price" id="price_id" placeholder="Preço do produto" class="form-control"
+           value="{{empty($order) ? "0" : $order->price}}" required>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $(function (){
+        var productId = $('#product_id').val()
+        var price = $('#price_id').val();
+
+        function callPrice(){
+            jQuery.ajax({
+                url: "{{ route('api.products.find')}}/"+productId,
+                method: 'post',
+                success: function(result){
+                    let quantity = $('#quantity_id').val()
+                    price=result.price * quantity
+                    $('#price_id').val(result.price * quantity)
+                    console.log(result.price, quantity)
+                    price = 0
+                },
+                failure: function (result) {
+                    alert("erro ao busca pedido");
+                }
+            });
+        }
+
+        $('#product_id').change(function (){
+            productId = $('#product_id').val()
+            callPrice()
+        })
+
+        $('#quantity_id').change(function (){
+            callPrice()
+        })
+
+        $(function (){
+            callPrice()
+        })
+    })
+</script>

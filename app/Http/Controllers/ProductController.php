@@ -55,4 +55,9 @@ class ProductController extends Controller
         $this->productService->destroy($id);
         return redirect('products');
     }
+
+    public function find($id)
+    {
+        return $this->productService->find((int) $id);
+    }
 }

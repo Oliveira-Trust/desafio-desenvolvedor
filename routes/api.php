@@ -20,22 +20,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::group(['prefix' => 'clients'], function() {
-//    Route::get('', [ClientController::class,'index'])->name('clients.index');
-//    Route::post('', [ClientController::class,'store'])->name("clients.store");
-//    Route::patch('{client}', [ClientController::class,'update'])->name("clients.update");
-//    Route::delete('{client}', [ClientController::class,'destroy'])->name("clients.destroy");
-//});
+Route::group(['prefix' => 'clients'], function() {
+    //Route::get('', [ClientController::class,'index'])->name('api.clients.index');
+    Route::post('', [ClientController::class,'store'])->name("api.clients.store");
+    Route::patch('{client}', [ClientController::class,'update'])->name("api.clients.update");
+    Route::delete('{client}', [ClientController::class,'destroy'])->name("api.clients.destroy");
+});
 
-//Route::group(['prefix' => 'products'], function() {
-//    Route::post('', [ProductController::class,'store'])->name("products.store");
-//    Route::patch('{product}', [ProductController::class,'update'])->name("products.update");
-//    Route::delete('{product}', [ProductController::class,'destroy'])->name("products.destroy");
-//});
+Route::group(['prefix' => 'products'], function() {
+    Route::post('find/{product?}', [ProductController::class,'find'])->name("api.products.find");
+    //Route::post('', [ProductController::class,'store'])->name("products.store");
+    Route::patch('{product}', [ProductController::class,'update'])->name("api.products.update");
+    Route::delete('{product}', [ProductController::class,'destroy'])->name("api.products.destroy");
+});
 
 Route::group(['prefix' => 'orders'], function() {
-    //Route::get('', [OrderController::class,'index'])->name('orders.index');
-    Route::post('', [OrderController::class,'store']);
-    //Route::patch('{order}', [OrderController::class,'update'])->name("orders.update");
-    //Route::delete('{order}', [OrderController::class,'destroy'])->name("orders.destroy");
+    //Route::get('', [OrderController::class,'index'])->name('api.orders.index');
+    Route::post('', [OrderController::class,'store'])->name('api.orders.store');
+    Route::patch('{order}', [OrderController::class,'update'])->name("api.orders.update");
+    Route::delete('{order}', [OrderController::class,'destroy'])->name("api.orders.destroy");
 });
