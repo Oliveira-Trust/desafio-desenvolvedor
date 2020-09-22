@@ -1,0 +1,40 @@
+{
+  "name": "yiibr/yii2-br-validator",
+  "description": "Provide validations and features for brazilian localization",
+  "keywords": ["yii", "validator", "model", "brasil", "brazil", "br", "cpf", "cnpj", "cei"],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/yiibr/yii2-br-validator/issues",
+    "source": "https://github.com/yiibr/yii2-br-validator"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Leandro Guindani Gehlen",
+      "email": "leandrogehlen@gmail.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.13"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "yiibr\\brvalidator\\": "src",
+      "yiibr\\brvalidator\\tests\\": "tests"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  }
+}

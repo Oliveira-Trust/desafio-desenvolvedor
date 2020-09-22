@@ -1,0 +1,17 @@
+imports:
+    - php
+checks:
+    php:
+        code_rating: true
+        duplication: true
+tools:
+    external_code_coverage:
+        timeout: 120 # Timeout in seconds.
+    php_sim: false
+    php_cpd: false
+    php_pdepend: true
+    php_analyzer: true
+    php_changetracking: true
+filter:
+    excluded_paths:
+        - vendor/*

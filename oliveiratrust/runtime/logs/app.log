@@ -1,0 +1,2978 @@
+2020-09-21 06:24:18 [::1][-][5cgndqiep8sr0d06igvf7ftigj][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\basico\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\basico\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\basico\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\basico\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\basico\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\basico\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 06:24:18 [::1][-][5cgndqiep8sr0d06igvf7ftigj][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '5cgndqiep8sr0d06igvf7ftigj'
+    '_csrf' => 'c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ismptnpLjSWlgp5zEwNFULvxHfcuPSVw\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\basico\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '55159'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\basico\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=5cgndqiep8sr0d06igvf7ftigj; _csrf=c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ismptnpLjSWlgp5zEwNFULvxHfcuPSVw%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600662258.8196
+    'REQUEST_TIME' => 1600662258
+]
+2020-09-21 06:27:54 [::1][-][5cgndqiep8sr0d06igvf7ftigj][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 06:27:54 [::1][-][5cgndqiep8sr0d06igvf7ftigj][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '5cgndqiep8sr0d06igvf7ftigj'
+    '_csrf' => 'c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ismptnpLjSWlgp5zEwNFULvxHfcuPSVw\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '55175'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=5cgndqiep8sr0d06igvf7ftigj; _csrf=c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ismptnpLjSWlgp5zEwNFULvxHfcuPSVw%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600662474.7521
+    'REQUEST_TIME' => 1600662474
+]
+2020-09-21 06:28:22 [::1][-][5cgndqiep8sr0d06igvf7ftigj][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 06:28:22 [::1][-][5cgndqiep8sr0d06igvf7ftigj][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '5cgndqiep8sr0d06igvf7ftigj'
+    '_csrf' => 'c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ismptnpLjSWlgp5zEwNFULvxHfcuPSVw\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '55199'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=5cgndqiep8sr0d06igvf7ftigj; _csrf=c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ismptnpLjSWlgp5zEwNFULvxHfcuPSVw%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600662502.5661
+    'REQUEST_TIME' => 1600662502
+]
+2020-09-21 06:28:47 [::1][-][5cgndqiep8sr0d06igvf7ftigj][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 06:28:47 [::1][-][5cgndqiep8sr0d06igvf7ftigj][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '5cgndqiep8sr0d06igvf7ftigj'
+    '_csrf' => 'c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ismptnpLjSWlgp5zEwNFULvxHfcuPSVw\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '55240'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=5cgndqiep8sr0d06igvf7ftigj; _csrf=c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ismptnpLjSWlgp5zEwNFULvxHfcuPSVw%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600662527.0765
+    'REQUEST_TIME' => 1600662527
+]
+2020-09-21 06:30:18 [::1][-][5cgndqiep8sr0d06igvf7ftigj][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 06:30:18 [::1][-][5cgndqiep8sr0d06igvf7ftigj][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '5cgndqiep8sr0d06igvf7ftigj'
+    '_csrf' => 'c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ismptnpLjSWlgp5zEwNFULvxHfcuPSVw\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '55263'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=5cgndqiep8sr0d06igvf7ftigj; _csrf=c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ismptnpLjSWlgp5zEwNFULvxHfcuPSVw%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600662618.1608
+    'REQUEST_TIME' => 1600662618
+]
+2020-09-21 06:32:50 [::1][-][5cgndqiep8sr0d06igvf7ftigj][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 06:32:50 [::1][-][5cgndqiep8sr0d06igvf7ftigj][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '5cgndqiep8sr0d06igvf7ftigj'
+    '_csrf' => 'c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ismptnpLjSWlgp5zEwNFULvxHfcuPSVw\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '55304'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=site%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=5cgndqiep8sr0d06igvf7ftigj; _csrf=c9a032d2750aa8a97e7b300eb35b7f25618b1fbf0889864d56d8c00bf64fad71a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ismptnpLjSWlgp5zEwNFULvxHfcuPSVw%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600662770.257
+    'REQUEST_TIME' => 1600662770
+]
+2020-09-21 18:22:06 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 18:22:06 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '57911'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600705326.0318
+    'REQUEST_TIME' => 1600705326
+]
+2020-09-21 18:23:08 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 18:23:08 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '58050'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600705388.7275
+    'REQUEST_TIME' => 1600705388
+]
+2020-09-21 18:23:14 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 18:23:13 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '58059'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600705393.9072
+    'REQUEST_TIME' => 1600705393
+]
+2020-09-21 18:25:49 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 18:25:49 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '58247'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600705549.3098
+    'REQUEST_TIME' => 1600705549
+]
+2020-09-21 18:26:47 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php:30
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php(30): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 30, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\PedidosController))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\PedidosController))
+#5 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(47): yii\base\Controller->render('index', Array)
+#6 [internal function]: app\controllers\PedidosController->actionIndex()
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#13 {main}
+2020-09-21 18:26:47 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '58289'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600705607.0103
+    'REQUEST_TIME' => 1600705607
+]
+2020-09-21 18:27:18 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "clientes/index". in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php:537
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('clientes/index', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2020-09-21 18:27:18 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'clientes/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '58300'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=clientes%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=clientes%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600705638.7613
+    'REQUEST_TIME' => 1600705638
+]
+2020-09-21 18:27:26 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php:30
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php(30): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 30, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\PedidosController))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\PedidosController))
+#5 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(47): yii\base\Controller->render('index', Array)
+#6 [internal function]: app\controllers\PedidosController->actionIndex()
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#13 {main}
+2020-09-21 18:27:26 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '58331'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600705646.7159
+    'REQUEST_TIME' => 1600705646
+]
+2020-09-21 18:52:07 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php:84
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(84): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 84, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(500): app\models\PedidoSearch->attributes()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\db\BaseActiveRecord.php(291): yii\db\BaseActiveRecord->hasAttribute('id')
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\validators\Validator.php(258): yii\db\BaseActiveRecord->__get('id')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(367): yii\validators\Validator->validateAttributes(Object(app\models\PedidoSearch), Array)
+#5 C:\xampp\htdocs\oliveiratrust\models\PedidoSearch.php(62): yii\base\Model->validate()
+#6 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(43): app\models\PedidoSearch->search(Array)
+#7 [internal function]: app\controllers\PedidosController->actionIndex()
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#12 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-09-21 18:52:07 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '59962'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600707127.1378
+    'REQUEST_TIME' => 1600707127
+]
+2020-09-21 18:54:49 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php:30
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php(30): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 30, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\PedidosController))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\PedidosController))
+#5 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(47): yii\base\Controller->render('index', Array)
+#6 [internal function]: app\controllers\PedidosController->actionIndex()
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#13 {main}
+2020-09-21 18:54:49 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '60019'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600707289.3819
+    'REQUEST_TIME' => 1600707289
+]
+2020-09-21 18:55:17 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:2] yii\base\ErrorException: Use of undefined constant attribute - assumed 'attribute' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php:30
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\views\pedidos\index.php(30): yii\base\ErrorHandler->handleError(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 30, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\PedidosController))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\PedidosController))
+#5 C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php(47): yii\base\Controller->render('index', Array)
+#6 [internal function]: app\controllers\PedidosController->actionIndex()
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#13 {main}
+2020-09-21 18:55:17 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '60042'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600707317.5094
+    'REQUEST_TIME' => 1600707317
+]
+2020-09-21 19:03:47 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: searchModel in C:\xampp\htdocs\oliveiratrust\views\produto\index.php:23
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\views\produto\index.php(23): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 23, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ProdutoController))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\ProdutoController))
+#5 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(102): yii\base\Controller->render('index', Array)
+#6 [internal function]: app\controllers\ProdutoController->actionList('10')
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#13 {main}
+2020-09-21 19:03:47 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '10'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '60679'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=10'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=10'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600707827.0859
+    'REQUEST_TIME' => 1600707827
+]
+2020-09-21 19:40:20 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: searchModel in C:\xampp\htdocs\oliveiratrust\views\produto\index.php:23
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\views\produto\index.php(23): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 23, Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ProdutoController))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\ProdutoController))
+#5 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(102): yii\base\Controller->render('index', Array)
+#6 [internal function]: app\controllers\ProdutoController->actionList('11')
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#13 {main}
+2020-09-21 19:40:20 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '11'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '62031'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=11'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=11'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600710020.4003
+    'REQUEST_TIME' => 1600710020
+]
+2020-09-21 20:11:04 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: searchModel in C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php:105
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(105): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 105, Array)
+#1 [internal function]: app\controllers\ProdutoController->actionList('10')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#8 {main}
+2020-09-21 20:11:03 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '10'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '63220'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=10'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=10'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600711863.9648
+    'REQUEST_TIME' => 1600711863
+]
+2020-09-21 20:49:48 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: searchModel in C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php:105
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(105): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 105, Array)
+#1 [internal function]: app\controllers\ProdutoController->actionList('10')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#8 {main}
+2020-09-21 20:49:48 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '10'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '64740'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=10'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=10'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600714188.8834
+    'REQUEST_TIME' => 1600714188
+]
+2020-09-21 20:52:50 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: searchModel in C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php:105
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(105): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 105, Array)
+#1 [internal function]: app\controllers\ProdutoController->actionList('10')
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#8 {main}
+2020-09-21 20:52:50 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '10'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '64921'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=10'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=10'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600714370.2923
+    'REQUEST_TIME' => 1600714370
+]
+2020-09-21 20:59:07 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: C:\xampp\htdocs\oliveiratrust\views\produto\list.php in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php:233
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ProdutoController))
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('list', Array, Object(app\controllers\ProdutoController))
+#2 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(104): yii\base\Controller->render('list', Array)
+#3 [internal function]: app\controllers\ProdutoController->actionList('10')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#10 {main}
+2020-09-21 20:59:07 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '10'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '65480'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=10'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=10'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600714747.7446
+    'REQUEST_TIME' => 1600714747
+]
+2020-09-21 21:01:32 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: C:\xampp\htdocs\oliveiratrust\views\produto\list.php in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php:233
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ProdutoController))
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('list', Array, Object(app\controllers\ProdutoController))
+#2 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(104): yii\base\Controller->render('list', Array)
+#3 [internal function]: app\controllers\ProdutoController->actionList('10')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#10 {main}
+2020-09-21 21:01:32 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '10'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '49212'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=10'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=10'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600714892.2455
+    'REQUEST_TIME' => 1600714892
+]
+2020-09-21 21:01:49 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: C:\xampp\htdocs\oliveiratrust\views\produto\list.php in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php:233
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ProdutoController))
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('list', Array, Object(app\controllers\ProdutoController))
+#2 C:\xampp\htdocs\oliveiratrust\controllers\ProdutoController.php(104): yii\base\Controller->render('list', Array)
+#3 [internal function]: app\controllers\ProdutoController->actionList('10')
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('list', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('produto/list', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#10 {main}
+2020-09-21 21:01:49 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = [
+    'r' => 'produto/list'
+    'id_pedido' => '10'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '49235'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=produto%2Flist&id_pedido=10'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=produto%2Flist&id_pedido=10'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=pedidos%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600714909.7656
+    'REQUEST_TIME' => 1600714909
+]
+2020-09-21 22:57:08 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][ParseError] ParseError: syntax error, unexpected end of file in C:\xampp\htdocs\oliveiratrust\views\site\index.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#4 [internal function]: app\controllers\SiteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-21 22:57:08 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '52821'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=produto%2Flist&id_pedido=10'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600721828.5543
+    'REQUEST_TIME' => 1600721828
+]
+2020-09-21 22:57:27 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/main in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php:151
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('main', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/main', Array)
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2020-09-21 22:57:27 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = [
+    'r' => 'site/main'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '52866'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=site%2Fmain'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=site%2Fmain'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600721847.1802
+    'REQUEST_TIME' => 1600721847
+]
+2020-09-21 22:57:40 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][ParseError] ParseError: syntax error, unexpected end of file in C:\xampp\htdocs\oliveiratrust\views\site\index.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#4 [internal function]: app\controllers\SiteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-21 22:57:40 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '52891'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600721860.5985
+    'REQUEST_TIME' => 1600721860
+]
+2020-09-21 23:01:21 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: C:\xampp\htdocs\oliveiratrust\views\pedido\index.php in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php:233
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\PedidoController))
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\PedidoController))
+#2 C:\xampp\htdocs\oliveiratrust\controllers\PedidoController.php(43): yii\base\Controller->render('index', Array)
+#3 [internal function]: app\controllers\PedidoController->actionIndex()
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedido/index', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#10 {main}
+2020-09-21 23:01:21 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedido/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '53048'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedido%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedido%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600722081.8917
+    'REQUEST_TIME' => 1600722081
+]
+2020-09-21 23:03:17 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][ParseError] ParseError: syntax error, unexpected end of file in C:\xampp\htdocs\oliveiratrust\views\site\index.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#4 [internal function]: app\controllers\SiteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/index', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-21 23:03:17 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'site/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '53086'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=site%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=site%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=site%2Flogin'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600722197.2664
+    'REQUEST_TIME' => 1600722197
+]
+2020-09-21 23:08:57 [::1][-][8tsolgrt9gkflgljjln5kkulkm][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: C:\xampp\htdocs\oliveiratrust\views\pedido\index.php in C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php:233
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\PedidoController))
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\PedidoController))
+#2 C:\xampp\htdocs\oliveiratrust\controllers\PedidoController.php(43): yii\base\Controller->render('index', Array)
+#3 [internal function]: app\controllers\PedidoController->actionIndex()
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedido/index', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#10 {main}
+2020-09-21 23:08:57 [::1][-][8tsolgrt9gkflgljjln5kkulkm][info][application] $_GET = [
+    'r' => 'pedido/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '8tsolgrt9gkflgljjln5kkulkm'
+    '_csrf' => '15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"17kwAvjtVGPAYJD6PQhKCgMysqKArbRi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '53173'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedido%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedido%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=8tsolgrt9gkflgljjln5kkulkm; _csrf=15f562015bf4c44f1c45e2e6209101aa3e7fdb89fe7ad963147123570f1b896ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2217kwAvjtVGPAYJD6PQhKCgMysqKArbRi%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600722537.87
+    'REQUEST_TIME' => 1600722537
+]
+2020-09-21 23:11:46 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][ParseError] ParseError: syntax error, unexpected end of file in C:\xampp\htdocs\oliveiratrust\views\site\index.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#4 [internal function]: app\controllers\SiteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-21 23:11:46 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '53208'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600722706.6953
+    'REQUEST_TIME' => 1600722706
+]
+2020-09-21 23:12:10 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][error][ParseError] ParseError: syntax error, unexpected end of file in C:\xampp\htdocs\oliveiratrust\views\site\index.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#4 [internal function]: app\controllers\SiteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/index', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-21 23:12:10 [::1][-][m1v44p7n5p3u5cg4vrbtkp9p5r][info][application] $_GET = [
+    'r' => 'site/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'm1v44p7n5p3u5cg4vrbtkp9p5r'
+    '_csrf' => '51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '53217'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=site%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=site%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=site%2Flogin'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=m1v44p7n5p3u5cg4vrbtkp9p5r; _csrf=51a7c52bb1a5d4c57e0dca791d3d37610f9a78c49555dff61f5f1ce7ddba1567a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22z4GqreEomhzcmxeTuhLqKUfo1UYL_uJp%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600722730.6152
+    'REQUEST_TIME' => 1600722730
+]
+2020-09-21 23:12:48 [::1][101][g78fboll4unmgorcopp8e5eu47][error][ParseError] ParseError: syntax error, unexpected end of file in C:\xampp\htdocs\oliveiratrust\views\site\index.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#4 [internal function]: app\controllers\SiteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-21 23:12:48 [::1][101][g78fboll4unmgorcopp8e5eu47][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'g78fboll4unmgorcopp8e5eu47'
+    '_identity' => 'd4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"101\",\"test101key\",2592000]\";}'
+    '_csrf' => 'f9cf7099ea67b24d798c4c680e89047debc6e4cfd516e1fa83ea24bb07362d8ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7fSAX0xIFf75Zci5OdxDxbuVgY_6pvi2\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '101'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '53257'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=site%2Flogin'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=g78fboll4unmgorcopp8e5eu47; _identity=d4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22101%22%2C%22test101key%22%2C2592000%5D%22%3B%7D; _csrf=f9cf7099ea67b24d798c4c680e89047debc6e4cfd516e1fa83ea24bb07362d8ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227fSAX0xIFf75Zci5OdxDxbuVgY_6pvi2%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600722768.3514
+    'REQUEST_TIME' => 1600722768
+]
+2020-09-21 23:13:06 [::1][101][g78fboll4unmgorcopp8e5eu47][error][ParseError] ParseError: syntax error, unexpected end of file in C:\xampp\htdocs\oliveiratrust\views\site\index.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#4 [internal function]: app\controllers\SiteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-21 23:13:06 [::1][101][g78fboll4unmgorcopp8e5eu47][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'g78fboll4unmgorcopp8e5eu47'
+    '_identity' => 'd4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"101\",\"test101key\",2592000]\";}'
+    '_csrf' => 'f9cf7099ea67b24d798c4c680e89047debc6e4cfd516e1fa83ea24bb07362d8ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7fSAX0xIFf75Zci5OdxDxbuVgY_6pvi2\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '101'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '53287'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=g78fboll4unmgorcopp8e5eu47; _identity=d4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22101%22%2C%22test101key%22%2C2592000%5D%22%3B%7D; _csrf=f9cf7099ea67b24d798c4c680e89047debc6e4cfd516e1fa83ea24bb07362d8ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227fSAX0xIFf75Zci5OdxDxbuVgY_6pvi2%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600722786.1503
+    'REQUEST_TIME' => 1600722786
+]
+2020-09-21 23:30:50 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][error][Error] Error: Class 'app\controllers\AccessControl' not found in C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php:24
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(733): app\controllers\ClienteController->behaviors()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(603): yii\base\Component->ensureBehaviors()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(299): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Controller.php(200): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(178): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/index', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#9 {main}
+2020-09-21 23:30:50 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"yIh_v3537GnIF-U_O2lw4435SiS7nTyp\";}'
+    'PHPSESSID' => 'mq9056ss5l7cfkfrurg8jbtmgg'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '54528'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_csrf=c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22yIh_v3537GnIF-U_O2lw4435SiS7nTyp%22%3B%7D; PHPSESSID=mq9056ss5l7cfkfrurg8jbtmgg'
+    'REQUEST_TIME_FLOAT' => 1600723850.6167
+    'REQUEST_TIME' => 1600723850
+]
+2020-09-21 23:31:20 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][error][Error] Error: Class 'app\controllers\AccessControl' not found in C:\xampp\htdocs\oliveiratrust\controllers\PedidosController.php:28
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(733): app\controllers\PedidosController->behaviors()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(603): yii\base\Component->ensureBehaviors()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(299): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Controller.php(200): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(178): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('pedidos/index', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#9 {main}
+2020-09-21 23:31:20 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][info][application] $_GET = [
+    'r' => 'pedidos/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"yIh_v3537GnIF-U_O2lw4435SiS7nTyp\";}'
+    'PHPSESSID' => 'mq9056ss5l7cfkfrurg8jbtmgg'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '54548'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=pedidos%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=pedidos%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_csrf=c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22yIh_v3537GnIF-U_O2lw4435SiS7nTyp%22%3B%7D; PHPSESSID=mq9056ss5l7cfkfrurg8jbtmgg'
+    'REQUEST_TIME_FLOAT' => 1600723880.2096
+    'REQUEST_TIME' => 1600723880
+]
+2020-09-21 23:34:19 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][error][Error] Error: Class 'app\controllers\AccessControl' not found in C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php:24
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(733): app\controllers\ClienteController->behaviors()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(603): yii\base\Component->ensureBehaviors()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(299): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Controller.php(200): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(178): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/index', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#9 {main}
+2020-09-21 23:34:19 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"yIh_v3537GnIF-U_O2lw4435SiS7nTyp\";}'
+    'PHPSESSID' => 'mq9056ss5l7cfkfrurg8jbtmgg'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '54669'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_csrf=c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22yIh_v3537GnIF-U_O2lw4435SiS7nTyp%22%3B%7D; PHPSESSID=mq9056ss5l7cfkfrurg8jbtmgg'
+    'REQUEST_TIME_FLOAT' => 1600724059.3056
+    'REQUEST_TIME' => 1600724059
+]
+2020-09-21 23:34:27 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][error][Error] Error: Class 'app\controllers\AccessControl' not found in C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php:24
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(733): app\controllers\ClienteController->behaviors()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(603): yii\base\Component->ensureBehaviors()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(299): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Controller.php(200): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(178): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/index', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#9 {main}
+2020-09-21 23:34:27 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"yIh_v3537GnIF-U_O2lw4435SiS7nTyp\";}'
+    'PHPSESSID' => 'mq9056ss5l7cfkfrurg8jbtmgg'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '54677'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_csrf=c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22yIh_v3537GnIF-U_O2lw4435SiS7nTyp%22%3B%7D; PHPSESSID=mq9056ss5l7cfkfrurg8jbtmgg'
+    'REQUEST_TIME_FLOAT' => 1600724067.0448
+    'REQUEST_TIME' => 1600724067
+]
+2020-09-21 23:35:30 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][error][Error] Error: Class 'app\controllers\AccessControl' not found in C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php:24
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(733): app\controllers\ClienteController->behaviors()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Component.php(603): yii\base\Component->ensureBehaviors()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(299): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Controller.php(200): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(178): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/index', Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#9 {main}
+2020-09-21 23:35:30 [::1][-][mq9056ss5l7cfkfrurg8jbtmgg][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"yIh_v3537GnIF-U_O2lw4435SiS7nTyp\";}'
+    'PHPSESSID' => 'mq9056ss5l7cfkfrurg8jbtmgg'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '54721'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_csrf=c375eeb551cb0b936fe6516410caeb99449bc343df024c79acbdabbe9656cbf6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22yIh_v3537GnIF-U_O2lw4435SiS7nTyp%22%3B%7D; PHPSESSID=mq9056ss5l7cfkfrurg8jbtmgg'
+    'REQUEST_TIME_FLOAT' => 1600724130.3366
+    'REQUEST_TIME' => 1600724130
+]
+2020-09-22 00:13:31 [::1][101][kilhd1hed2f64ap2umbjuh42uc][error][Error] Error: Class 'Html' not found in C:\xampp\htdocs\oliveiratrust\views\site\index.php:9
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#4 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#5 [internal function]: app\controllers\SiteController->actionIndex()
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/index', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2020-09-22 00:13:31 [::1][101][kilhd1hed2f64ap2umbjuh42uc][info][application] $_GET = [
+    'r' => 'site/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'kilhd1hed2f64ap2umbjuh42uc'
+    '_identity' => 'd4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"101\",\"test101key\",2592000]\";}'
+    '_csrf' => '26e0e60c64fcc3f664a9a02725d8543b4d2ca5f71d93ccfb08773ca181e9d94ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"wiB4jAmep_0y0jCD0I4FOJmAU2YoUHB4\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '101'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '57456'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=site%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=site%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=kilhd1hed2f64ap2umbjuh42uc; _identity=d4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22101%22%2C%22test101key%22%2C2592000%5D%22%3B%7D; _csrf=26e0e60c64fcc3f664a9a02725d8543b4d2ca5f71d93ccfb08773ca181e9d94ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22wiB4jAmep_0y0jCD0I4FOJmAU2YoUHB4%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600726411.7158
+    'REQUEST_TIME' => 1600726411
+]
+2020-09-22 00:14:09 [::1][101][kilhd1hed2f64ap2umbjuh42uc][error][Error] Error: Class 'Html' not found in C:\xampp\htdocs\oliveiratrust\views\site\index.php:9
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#4 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#5 [internal function]: app\controllers\SiteController->actionIndex()
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/index', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2020-09-22 00:14:09 [::1][101][kilhd1hed2f64ap2umbjuh42uc][info][application] $_GET = [
+    'r' => 'site/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'kilhd1hed2f64ap2umbjuh42uc'
+    '_identity' => 'd4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"101\",\"test101key\",2592000]\";}'
+    '_csrf' => '26e0e60c64fcc3f664a9a02725d8543b4d2ca5f71d93ccfb08773ca181e9d94ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"wiB4jAmep_0y0jCD0I4FOJmAU2YoUHB4\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '101'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '57481'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=site%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=site%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=kilhd1hed2f64ap2umbjuh42uc; _identity=d4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22101%22%2C%22test101key%22%2C2592000%5D%22%3B%7D; _csrf=26e0e60c64fcc3f664a9a02725d8543b4d2ca5f71d93ccfb08773ca181e9d94ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22wiB4jAmep_0y0jCD0I4FOJmAU2YoUHB4%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600726449.8937
+    'REQUEST_TIME' => 1600726449
+]
+2020-09-22 00:35:47 [::1][101][kilhd1hed2f64ap2umbjuh42uc][error][Error] Error: Class 'Html' not found in C:\xampp\htdocs\oliveiratrust\views\site\index.php:7
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#4 C:\xampp\htdocs\oliveiratrust\controllers\SiteController.php(64): yii\base\Controller->render('index')
+#5 [internal function]: app\controllers\SiteController->actionIndex()
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/index', Array)
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2020-09-22 00:35:47 [::1][101][kilhd1hed2f64ap2umbjuh42uc][info][application] $_GET = [
+    'r' => 'site/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'kilhd1hed2f64ap2umbjuh42uc'
+    '_identity' => 'd4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"101\",\"test101key\",2592000]\";}'
+    '_csrf' => '26e0e60c64fcc3f664a9a02725d8543b4d2ca5f71d93ccfb08773ca181e9d94ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"wiB4jAmep_0y0jCD0I4FOJmAU2YoUHB4\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '101'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '58821'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=site%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=site%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=kilhd1hed2f64ap2umbjuh42uc; _identity=d4a947a582e8386436026fe7356b3812c8463adc1c93e5e32eb6496ce0f8951ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22101%22%2C%22test101key%22%2C2592000%5D%22%3B%7D; _csrf=26e0e60c64fcc3f664a9a02725d8543b4d2ca5f71d93ccfb08773ca181e9d94ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22wiB4jAmep_0y0jCD0I4FOJmAU2YoUHB4%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600727747.4576
+    'REQUEST_TIME' => 1600727747
+]
+2020-09-22 01:36:26 [::1][100][ckdhe526bequdgfdttv7t2r0am][error][ParseError] ParseError: syntax error, unexpected '}', expecting ']' in C:\xampp\htdocs\oliveiratrust\views\layouts\main.php:66
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(424): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ClienteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(410): yii\base\Controller->renderContent('<div class="cli...')
+#3 C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php(58): yii\base\Controller->render('index', Array)
+#4 [internal function]: app\controllers\ClienteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/index', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-22 01:36:26 [::1][100][ckdhe526bequdgfdttv7t2r0am][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'ckdhe526bequdgfdttv7t2r0am'
+    '_identity' => '8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"100\",\"test100key\",2592000]\";}'
+    '_csrf' => '183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '100'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '62733'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=ckdhe526bequdgfdttv7t2r0am; _identity=8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22100%22%2C%22test100key%22%2C2592000%5D%22%3B%7D; _csrf=183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600731386.1156
+    'REQUEST_TIME' => 1600731386
+]
+2020-09-22 01:37:41 [::1][100][ckdhe526bequdgfdttv7t2r0am][error][ParseError] ParseError: syntax error, unexpected 'if' (T_IF), expecting ']' in C:\xampp\htdocs\oliveiratrust\views\layouts\main.php:49
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(424): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ClienteController))
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(410): yii\base\Controller->renderContent('<div class="cli...')
+#3 C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php(58): yii\base\Controller->render('index', Array)
+#4 [internal function]: app\controllers\ClienteController->actionIndex()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('index', Array)
+#8 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/index', Array)
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-09-22 01:37:41 [::1][100][ckdhe526bequdgfdttv7t2r0am][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'ckdhe526bequdgfdttv7t2r0am'
+    '_identity' => '8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"100\",\"test100key\",2592000]\";}'
+    '_csrf' => '183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '100'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '62760'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=ckdhe526bequdgfdttv7t2r0am; _identity=8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22100%22%2C%22test100key%22%2C2592000%5D%22%3B%7D; _csrf=183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600731461.0362
+    'REQUEST_TIME' => 1600731461
+]
+2020-09-22 01:45:32 [::1][100][ckdhe526bequdgfdttv7t2r0am][error][yii\base\ErrorException:64] yii\base\ErrorException: Cannot use yii\bootstrap\Nav as Nav because the name is already in use in C:\xampp\htdocs\oliveiratrust\views\layouts\main.php:12
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2020-09-22 01:45:32 [::1][100][ckdhe526bequdgfdttv7t2r0am][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'ckdhe526bequdgfdttv7t2r0am'
+    '_identity' => '8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"100\",\"test100key\",2592000]\";}'
+    '_csrf' => '183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '100'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '62904'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=ckdhe526bequdgfdttv7t2r0am; _identity=8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22100%22%2C%22test100key%22%2C2592000%5D%22%3B%7D; _csrf=183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600731932.4465
+    'REQUEST_TIME' => 1600731932
+]
+2020-09-22 01:52:39 [::1][100][ckdhe526bequdgfdttv7t2r0am][error][yii\base\ErrorException:64] yii\base\ErrorException: Cannot use yii\bootstrap\Nav as Nav because the name is already in use in C:\xampp\htdocs\oliveiratrust\views\layouts\main.php:12
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2020-09-22 01:52:39 [::1][100][ckdhe526bequdgfdttv7t2r0am][info][application] $_GET = [
+    'r' => 'cliente/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'ckdhe526bequdgfdttv7t2r0am'
+    '_identity' => '8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"100\",\"test100key\",2592000]\";}'
+    '_csrf' => '183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '100'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '63001'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Findex'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=ckdhe526bequdgfdttv7t2r0am; _identity=8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22100%22%2C%22test100key%22%2C2592000%5D%22%3B%7D; _csrf=183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600732359.5315
+    'REQUEST_TIME' => 1600732359
+]
+2020-09-22 04:46:22 [::1][100][ckdhe526bequdgfdttv7t2r0am][error][Error] Error: Class 'app\models\CpfValidator' not found in C:\xampp\htdocs\oliveiratrust\models\Cliente.php:36
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(464): app\models\Cliente->rules()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(420): yii\base\Model->createValidators()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(189): yii\base\Model->getValidators()
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(816): yii\base\Model->scenarios()
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(434): yii\base\Model->activeAttributes()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(494): yii\base\Model->getActiveValidators('nome')
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\widgets\ActiveField.php(929): yii\base\Model->isAttributeRequired('nome')
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\widgets\ActiveField.php(405): yii\widgets\ActiveField->addAriaAttributes('<span class="st...')
+#8 C:\xampp\htdocs\oliveiratrust\views\cliente\_form.php(15): yii\widgets\ActiveField->textInput('<span class="st...')
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, NULL)
+#12 C:\xampp\htdocs\oliveiratrust\views\cliente\create.php(17): yii\base\View->render('_form', Array)
+#13 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#14 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#15 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ClienteController))
+#16 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('create', Array, Object(app\controllers\ClienteController))
+#17 C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php(89): yii\base\Controller->render('create', Array)
+#18 [internal function]: app\controllers\ClienteController->actionCreate()
+#19 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#20 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('create', Array)
+#22 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/create', Array)
+#23 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#24 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#25 {main}
+2020-09-22 04:46:22 [::1][100][ckdhe526bequdgfdttv7t2r0am][info][application] $_GET = [
+    'r' => 'cliente/create'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'ckdhe526bequdgfdttv7t2r0am'
+    '_identity' => '8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"100\",\"test100key\",2592000]\";}'
+    '_csrf' => '183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '100'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '59205'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Fcreate'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Fcreate'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=ckdhe526bequdgfdttv7t2r0am; _identity=8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22100%22%2C%22test100key%22%2C2592000%5D%22%3B%7D; _csrf=183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600742782.6064
+    'REQUEST_TIME' => 1600742782
+]
+2020-09-22 04:47:45 [::1][100][ckdhe526bequdgfdttv7t2r0am][error][Error] Error: Class 'app\models\CpfValidator' not found in C:\xampp\htdocs\oliveiratrust\models\Cliente.php:36
+Stack trace:
+#0 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(464): app\models\Cliente->rules()
+#1 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(420): yii\base\Model->createValidators()
+#2 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(189): yii\base\Model->getValidators()
+#3 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(816): yii\base\Model->scenarios()
+#4 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(434): yii\base\Model->activeAttributes()
+#5 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Model.php(494): yii\base\Model->getActiveValidators('nome')
+#6 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\widgets\ActiveField.php(929): yii\base\Model->isAttributeRequired('nome')
+#7 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\widgets\ActiveField.php(405): yii\widgets\ActiveField->addAriaAttributes('<span class="st...')
+#8 C:\xampp\htdocs\oliveiratrust\views\cliente\_form.php(15): yii\widgets\ActiveField->textInput('<span class="st...')
+#9 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, NULL)
+#12 C:\xampp\htdocs\oliveiratrust\views\cliente\create.php(17): yii\base\View->render('_form', Array)
+#13 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(348): require('C:\\xampp\\htdocs...')
+#14 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#15 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\ClienteController))
+#16 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('create', Array, Object(app\controllers\ClienteController))
+#17 C:\xampp\htdocs\oliveiratrust\controllers\ClienteController.php(89): yii\base\Controller->render('create', Array)
+#18 [internal function]: app\controllers\ClienteController->actionCreate()
+#19 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#20 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Controller.php(180): yii\base\InlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('create', Array)
+#22 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('cliente/create', Array)
+#23 C:\xampp\htdocs\oliveiratrust\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#24 C:\xampp\htdocs\oliveiratrust\web\index.php(12): yii\base\Application->run()
+#25 {main}
+2020-09-22 04:47:45 [::1][100][ckdhe526bequdgfdttv7t2r0am][info][application] $_GET = [
+    'r' => 'cliente/create'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'ckdhe526bequdgfdttv7t2r0am'
+    '_identity' => '8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a:2:{i:0;s:9:\"_identity\";i:1;s:28:\"[\"100\",\"test100key\",2592000]\";}'
+    '_csrf' => '183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => '100'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\xampp\\htdocs\\oliveiratrust\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '59282'
+    'SERVER_SOFTWARE' => 'PHP 7.4.1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/index.php?r=cliente%2Fcreate'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\oliveiratrust\\web\\index.php'
+    'PHP_SELF' => '/index.php'
+    'QUERY_STRING' => 'r=cliente%2Fcreate'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/index.php?r=cliente%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=ckdhe526bequdgfdttv7t2r0am; _identity=8c2e535e3cc89b7e5c4c431eabaf87e8df1549b510387fe34e9a6cc61dfdf434a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A28%3A%22%5B%22100%22%2C%22test100key%22%2C2592000%5D%22%3B%7D; _csrf=183d8880693abde42b8db543ea847494017ba338c5877f2a6a1cf2be68a5c123a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PSuNCfDxGpS7_sMVnkE4sGoGvck8_jXy%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1600742865.6434
+    'REQUEST_TIME' => 1600742865
+]
