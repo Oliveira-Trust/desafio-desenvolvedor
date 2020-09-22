@@ -23,7 +23,7 @@ $this->title = 'Desafio Oliveira Trust';
             <div class="col-lg-4">
             <p><a class="btn btn-lg btn-success" href="<?php echo Url::toRoute(['cliente/index'])?>">Clientes</a></p></div>
             <div class="col-lg-4">
-            <p><a class="btn btn-lg btn-success" href="<?php echo Url::toRoute(['produtos/index'])?>">Produtos</a></p></div>
+            <p><a class="btn btn-lg btn-success" href="<?php echo Url::toRoute(['produto/index'])?>">Produtos</a></p></div>
             <div class="col-lg-4">  
             <p><a class="btn btn-lg btn-success" href="<?php echo Url::toRoute(['pedidos/index'])?>">Pedidos</a></p></div>
         </div>
