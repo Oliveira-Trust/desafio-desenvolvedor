@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teste de todas as operações da API</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <h3>Nessa tela é possível testar todas as operações da API</h3>
+    <blockquote>
+        <b>Operações acionadas pelos botões:</b> <br>
+        - Logar => oauth/token<br>
+        - Pesquisar => product.index<br>
+        - Cadastrar => product.store<br>
+        - Editar => product.show<br>
+        - Alterar => product.update<br>
+        - Apagar => product.destroy<br><br>
+        Obs: No carregar da tela é feita a autenticação do cliente para pegar o token de acesso e com isso é possível executar todas as operações de CRUD.
+    </blockquote>
+    <label for="">Token de acesso dessa aplicação</label><br>
+    <input type="text" id="token" readonly><br><br>
+    <!-- <input type="text" class="teste" name="campo1[]" >
+    <input type="text" class="teste" name="campo2[]" >
+    <input type="text" class="teste" name="campo3[]" >
+    
+    <button id="testa">Testando</button> -->
+
+    <div>
+        <h4>Logar</h4>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="usuario.teste@teste.com.br">
+        <label for="password"></label>
+        <input type="password" name="password" id="password" value="123">
+        <button id="logar">Logar</button>
+    </div>
+
+    <div>
+        <h4>Cadastrar / Editar</h4>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name">
+        
+        <label for="brand">Marca</label>
+        <input type="text" name="brand" id="brand">
+
+        <label for="price">Preço</label>
+        <input type="text" name="price" id="price">
+
+        <label for="quantity">Quantidade</label>
+        <input type="number" name="quantity" id="quantity">
+
+        <input type="hidden" id="product_id">
+
+        <button id="create">Cadastrar</button>
+        <button id="update">Alterar</button>
+    </div>
+    
+    
+
+    
+    
+    <div>
+        <h4>Pesquisar</h4>
+        <label for="">Pesquisar pele nome: </label>
+        <input type="text" id="find_name">
+        <input type="hidden" id="find_order" value="name|asc">
+        <button id="find">Pesquisar</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    <a href="#" class="order" field="name" sort="menor">
+                        Produto<span sort_field="name" class="sort">-menor</span>
+                    </a>
+                </th>
+                <th>
+                    <a href="#" class="order" field="brand" sort="menor">
+                        Marca<span sort_field="brand" class="sort">-menor</span>
+                    </a>
+                </th>
+                <th>
+                    <a href="#"class="order" field="price" sort="menor">
+                            Preço<span sort_field="price" class="sort">-menor</span>
+                    </a>
+                </th>
+                <th>
+                    <a href="#" class="order" field="quantity" sort="menor">
+                        Quantidade<span sort_field="price" class="sort">-menor</span>
+                    </a> 
+                </th>
+                <th>
+                    Ação
+                </th>
+            </tr>
+        </thead>
+        <tbody id="result"></tbody>
+    </table>
+</body>
+<script>
+/*  $("#testa").on("click",function(){
+ console.log($(".teste").serialize());
+ }); */
+
+ $("#update").hide();
+
+ $("#logar").on("click", function(){
+    let url = 'http://localhost/oauth/token';
+    $.post( url, {
+    "grant_type": "password",
+    "scope": "*",
+    "client_id": "2",
+    "client_secret": "1VUPQqxNSCVuYY00vhQ3obSTJeh5JpoAKipGwNOm",
+    "username": $("#email").val(),
+    "password": $("#password").val()
+    }, function( data ) {
+        if(data.access_token){
+            alert('Logado com sucesso! Seu token de acesso: '+data.access_token);
+        }
+    }, "json").fail(function() {
+        alert( "Login ou senha inválido!" );
+    });
+ });
+
+ $(".order").on("click", function(event){
+     event.preventDefault();
+     $(".sort").html("-maior");
+     if($(this).attr('sort') == 'maior'){
+        $("#find_order").val($(this).attr('field')+'|asc');
+        $(".order").attr("sort","maior");
+        $(this).attr('sort', 'menor');
+        $("span[sort_field='"+$(this).attr('field')+"']").html('-menor');
+     }else{
+        $("#find_order").val($(this).attr('field')+'|desc');
+        $(".order").attr("sort","maior");
+        $(this).attr('sort', 'maior');
+        $("span[sort_field='"+$(this).attr('field')+"']").html('-maior');
+     }
+     find();
+ });
+
+getToken();
+function getToken(){
+    let url = 'http://localhost/api/v1/oauth/token';
+    $.post( url, {
+            "grant_type": "client_credentials",
+            "scope": "*",
+            "client_id": "5",
+            "client_secret": "QD5Epk4BwkS8MzBs5Arn9J4Me2oDwQO5VA0Fxhiy"
+        }, function( data ) {
+            $("#token").val( data.access_token);
+    }, "json");
+}
+
+function find(){
+    let url = 'http://localhost/api/v1/products';
+    $("#result").html('');
+    $.ajax({
+        url: url,
+        data: {
+            "data": 'name='+$("#find_name").val(),
+            "order": $("#find_order").val()
+        },
+        headers: {
+            'Authorization': 'Bearer '+$("#token").val(),
+        },
+        method: 'GET',
+        success: function(data){
+            let content = '';
+            $.each(data.data, function() {
+                content += `
+                <tr>
+                <td>${this.id}</td>
+                <td>${this.name}</td>
+                <td>${this.brand}</td>
+                <td>${this.price}</td>
+                <td>${this.quantity}</td>
+                <td>
+                    <a href="#" class="edit" id="${this.id}">Editar</a>&nbsp&nbsp
+                    <a href="#" class="delete" id="${this.id}">Apagar</a>
+                    </td>
+                </tr>
+                `;
+            });
+            $("#result").html(content);
+
+            $(".delete").off("click");
+            $(".delete").on("click", function(event){ 
+                event.preventDefault();
+                let url = 'http://localhost/api/v1/products/'+$(this).attr('id');
+                $.ajax({
+                    url: url,
+                    data: {
+                        "_method": "delete"
+                    },
+                    headers: {
+                        'Authorization': 'Bearer '+$("#token").val(),
+                    },
+                    method: 'POST',
+                    success: function(data){
+                        if(data){
+                            alert('Apagado com sucesso');
+                        }else{
+                            alert('Erro ao apagar');
+                        }
+                        find();
+                    }
+                });
+            });
+
+            $(".edit").on("off");
+            $(".edit").on("click", function(event){
+                event.preventDefault();
+                $("#update").show();
+                $("#create").hide();
+                let url = 'http://localhost/api/v1/products/'+$(this).attr('id');
+                $.ajax({
+                    url: url,
+                    headers: {
+                        'Authorization': 'Bearer '+$("#token").val(),
+                    },
+                    method: 'GET',
+                    success: function(data){
+                        $("#name").val(data.name);
+                        $("#brand").val(data.brand);
+                        $("#price").val(data.price);
+                        $("#quantity").val(data.quantity);
+                        $("#product_id").val(data.id);
+                    }
+                });
+            });
+        }
+    });
+}
+
+
+$("#find").on("click", function(event){
+    event.preventDefault();
+    find();
+});
+
+$("#create").on("click", function(event){
+    event.preventDefault();
+    let url = 'http://localhost/api/v1/products';
+    $.ajax({
+        url: url,
+        data: {
+            "name": $("#name").val(),
+            "brand": $("#brand").val(),
+            "price": (parseFloat($("#price").val()))? parseFloat($("#price").val()): '0',
+            "quantity": (parseInt($("#quantity").val()))? parseInt($("#quantity").val()): '0'
+        },
+        headers: {
+            'Authorization': 'Bearer '+$("#token").val(),
+        },
+        method: 'POST',
+        success: function(data){
+            if(data){
+                alert('Cadastrado com sucesso');
+            }else{
+                alert('Erro ao cadastrar');
+            }
+            find();
+            $( ":input" ).not("#token").val('');
+        }
+    });
+});
+
+$("#update").on("click", function(event){
+    event.preventDefault();
+    let url = 'http://localhost/api/v1/products/'+$("#product_id").val();
+    $.ajax({
+        url: url,
+        data: {
+            "name": $("#name").val(),
+            "brand": $("#brand").val(),
+            "price": (parseFloat($("#price").val()))? parseFloat($("#price").val()): '0',
+            "quantity": (parseInt($("#quantity").val()))? parseInt($("#quantity").val()): '0'
+        },
+        headers: {
+            'Authorization': 'Bearer '+$("#token").val(),
+        },
+        method: 'PUT',
+        success: function(data){
+            if(data){
+                alert('Alterado com sucesso!');
+            }else{
+                alert('Erro ao alterar');
+            }
+            $("#update").hide();
+            $("#create").show();
+            $("#product_id").val("");
+            find();
+            $( ":input" ).not("#token").val('');
+        }
+    });
+});
+
+</script>
+</html>

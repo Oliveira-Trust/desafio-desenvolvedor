@@ -1,0 +1,28 @@
+<div>
+    <h4>Ficha produto</h4>
+    <form id="frm">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" name="name" maxlength="200" placeholder="Nome">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="brand">Marca</label>
+            <input type="text" class="form-control" id="brand" name="brand" maxlength="100" placeholder="Marca">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="price">Preço</label>
+            <input type="text" class="form-control" id="price" name="price" maxlength="10" placeholder="Preço">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="quantity">Qtd.</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" maxlength="10" placeholder="Qtd.">
+          </div>
+        </div>
+        <!--<input type="hidden" id="id" name="id">-->
+        <button type="button" id="save" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+<script src="../../aplicacao/assets/js/jquery.validate.min.js"></script>
+<script src="../../aplicacao/assets/js/jquery.mask.min.js"></script>
+<script src="../../aplicacao/assets/js/product/create.js"></script>

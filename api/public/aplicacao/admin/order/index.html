@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="../../aplicacao/assets/DataTables/datatables.min.css"/>
+
+<div>
+
+    <h6>Cliente: <span id="client"></span></h6>
+
+    <h6>Ficha pedido</h6>
+
+    <form id="frm">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="product_id">Produto</label>
+            <select class="form-control" name="product_id" id="product_id"></select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="status">Status</label>
+            <select class="form-control" name="status" id="status">
+                <option value="Em Aberto">Em Aberto</option>
+                <option value="Pago">Pago</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="quantity">Quantidade</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" maxlength="10" placeholder="Quantidade">
+          </div>
+        </div>
+        <input type="hidden" id="client_id" name="client_id">
+        <input type="hidden" id="order_id" name="order_id">
+        <button type="button" id="save" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+
+<div>
+    Lista de pedidos
+</div>
+
+<table id="list" class="table">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Status</th>
+            <th>Quantidade</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody id="result">
+    </tbody>
+</table>
+
+<script type="text/javascript" src="../../aplicacao/assets/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../../aplicacao/assets/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="../../aplicacao/assets/DataTables/datatables.min.js"></script>
+<script type="text/javascript" src="../../aplicacao/assets/js/order/index.js"></script>
