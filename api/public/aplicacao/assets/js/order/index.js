@@ -1,3 +1,5 @@
+var table = $('#list').DataTable();
+
 /**
  * Se existe ID do cliente carrega os dados
  */
@@ -22,6 +24,7 @@ function loadList(){
             $('#client_id').val(data.client.id);
             let content = '';
             loadComboProducts(data.products);
+            table.destroy();
             $.each(data.orders, function() {
                 content += `
                 <tr>
@@ -36,7 +39,8 @@ function loadList(){
                 `;
             });
             $("#result").html(content);
-            $('#list').DataTable();
+            
+            table = $('#list').DataTable();
             menu();
             edit();
             deleteItem();
