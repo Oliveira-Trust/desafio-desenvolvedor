@@ -1,0 +1,15 @@
+.modal-header{
+    display: block;
+}
+.modal-header h3{
+    font-size: 1.2rem;
+}
+.modal-body h4{
+    font-size: 1.0rem;
+}
+
+@media (max-width: 700px){
+    .cadastro{
+        margin-bottom: 50px;
+    }
+}
