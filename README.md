@@ -1,4 +1,4 @@
-# api-products
+# products-store
 
 Aplicação back-end que simula uma loja.
 
