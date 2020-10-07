@@ -49,6 +49,10 @@ php artisan migrate --path=/database/migrations/2020_10_05_163531_update_product
 php artisan migrate --path=/database/migrations/2020_10_06_121837_alterar_column_image.php
 php artisan migrate --path=/database/migrations/2020_10_06_125145_alter_table_products_sale.php
 ```
+Gerar chave específica para utilização da API:
+```
+php artisan key:generate
+```
 
 Inicializar a aplicação com o comando:
 ```
