@@ -29,15 +29,25 @@ git clone https://github.com/LucasMorais582/desafio-desenvolvedor.git
 
 ## Passos para inicializar a aplicação:
 
+Criar o arquivo .env inspirado no .env.example e configurar as informaçes do banco
+
 Instalar todas as dependencias:
 ```
 composer install
 ```
-Criar o arquivo .env inspirado no .env.example e configurar as informaçes do banco
 
-Após entrar no diretório do projeto pelo terminal, realizar a criação das tabelas do banco com o comando:
+Após entrar no diretório do projeto pelo terminal, realizar a criação das tabelas do banco com os comandos:
 ```
-php artisan migrate
+php artisan migrate --path=/database/migrations/2014_10_12_000000_create_users_table.php
+php artisan migrate --path=/database/migrations/2014_10_12_100000_create_password_resets_table.php
+php artisan migrate --path=/database/migrations/2019_08_19_000000_create_failed_jobs_table.php
+php artisan migrate --path=/database/migrations/2020_10_04_012330_create_categories_table.php
+php artisan migrate --path=/database/migrations/2020_10_04_012320_create_products_table.php
+php artisan migrate --path=/database/migrations/2020_10_04_012912_create_sales_table.php
+php artisan migrate --path=/database/migrations/2020_10_04_035138_create_product_sales_table.php
+php artisan migrate --path=/database/migrations/2020_10_05_163531_update_product_sales.php
+php artisan migrate --path=/database/migrations/2020_10_06_121837_alterar_column_image.php
+php artisan migrate --path=/database/migrations/2020_10_06_125145_alter_table_products_sale.php
 ```
 
 Inicializar a aplicação com o comando:
