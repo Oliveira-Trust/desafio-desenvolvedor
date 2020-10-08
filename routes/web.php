@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,7 @@ Route::get('/', function () {
 
 Route::prefix('clients')->group(function(){
     Route::get('', [ClientController::class, 'index'])
-    ->name('index_client');
+        ->name('index_client');
     Route::get('/create', [ClientController::class, 'create'])
         ->name('create_client');
     Route::post('', [ClientController::class, 'store'])
@@ -51,4 +52,21 @@ Route::prefix('products')->group(function(){
         ->name('update_product');
     Route::delete('/{product}', [ProductController::class, 'destroy'])
         ->name('destroy_product');
+});
+
+Route::prefix('orders')->group(function(){
+    Route::get('', [OrderController::class, 'index'])
+        ->name('index_order');
+    Route::get('/create', [OrderController::class, 'create'])
+        ->name('create_order');
+    Route::post('', [OrderController::class, 'store'])
+        ->name('store_order');
+    Route::get('/{order}', [OrderController::class, 'show'])
+        ->name('show_order');
+    Route::get('/{order}/edit', [OrderController::class, 'edit'])
+        ->name('edit_order');
+    Route::patch('/{order}', [OrderController::class, 'update'])
+        ->name('update_order');
+    Route::delete('/{order}', [OrderController::class, 'destroy'])
+        ->name('destroy_order');
 });
