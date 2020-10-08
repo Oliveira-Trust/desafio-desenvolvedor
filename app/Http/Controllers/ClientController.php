@@ -31,13 +31,12 @@ class ClientController extends Controller
     }
     public function update(Client $client)
     {
-        Client::query()->where('id', $client->id)->update(request()
-            ->only('name', 'email'));
+        Client::query()->where('id', $client->id)
+            ->update(request()->only('name', 'email'));
         return redirect()->route('index_client');
     }
-    public function destroy(Client $client)
+    public function delete(Client $client)
     {
         Client::query()->where('id', $client->id)->delete();
-        return redirect()->route('index_client');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +34,21 @@ Route::prefix('clients')->group(function(){
         ->name('update_client');
     Route::delete('/{client}', [ClientController::class, 'destroy'])
     ->name('destroy_client');
+});
+
+Route::prefix('products')->group(function(){
+    Route::get('', [ProductController::class, 'index'])
+        ->name('index_product');
+    Route::get('/create', [ProductController::class, 'create'])
+        ->name('create_product');
+    Route::post('', [ProductController::class, 'store'])
+        ->name('store_product');
+    Route::get('/{product}', [ProductController::class, 'show'])
+        ->name('show_product');
+    Route::get('/{product}/edit', [ProductController::class, 'edit'])
+        ->name('edit_product');
+    Route::patch('/{product}', [ProductController::class, 'update'])
+        ->name('update_product');
+    Route::delete('/{product}', [ProductController::class, 'destroy'])
+        ->name('destroy_product');
 });
