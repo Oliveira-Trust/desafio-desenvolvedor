@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72f679f8-1849-48a7-9e33-7a8ed266539e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order/show.blade.php" afterDir="false" />
+    <list default="true" id="72f679f8-1849-48a7-9e33-7a8ed266539e" name="Default Changelist" comment="Inserção do Datatable no CRUD Client">
+      <change afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/table.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +178,7 @@
       <workItem from="1602070006154" duration="639000" />
       <workItem from="1602072396879" duration="1643000" />
       <workItem from="1602120123837" duration="973000" />
-      <workItem from="1602122008174" duration="11268000" />
+      <workItem from="1602122008174" duration="15255000" />
     </task>
     <task id="LOCAL-00001" summary="Migrations, Models e Factories">
       <created>1602123653078</created>
@@ -200,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602130950607</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Order CRUD">
+      <created>1602133792519</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1602133792519</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,17 +219,19 @@
     <MESSAGE value="Migrations, Models e Factories" />
     <MESSAGE value="Client CRUD" />
     <MESSAGE value="Product CRUD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Product CRUD" />
+    <MESSAGE value="Order CRUD" />
+    <MESSAGE value="Inserção do Datatable no CRUD Client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inserção do Datatable no CRUD Client" />
   </component>
   <component name="WindowStateProjectService">
     <state x="410" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602131618105">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="410" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1360.728@0.0.1360.728" timestamp="1602131618105" />
-    <state x="289" y="0" key="CommitChangelistDialog2" timestamp="1602130948513">
+    <state x="289" y="0" key="CommitChangelistDialog2" timestamp="1602137695322">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="289" y="0" key="CommitChangelistDialog2/0.0.1360.728@0.0.1360.728" timestamp="1602130948513" />
+    <state x="289" y="0" key="CommitChangelistDialog2/0.0.1360.728@0.0.1360.728" timestamp="1602137695322" />
     <state x="460" y="119" key="FileChooserDialogImpl" timestamp="1602070662458">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
@@ -230,18 +240,18 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="525" y="262" key="Github.ShareDialog/0.0.1360.728@0.0.1360.728" timestamp="1602068469375" />
-    <state x="514" y="287" key="NewPhpFileDialog" timestamp="1602133288811">
+    <state x="514" y="287" key="NewPhpFileDialog" timestamp="1602135006164">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="514" y="287" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1602133288811" />
+    <state x="514" y="287" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1602135006164" />
     <state x="181" y="9" key="SettingsEditor" timestamp="1602122777372">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="181" y="9" key="SettingsEditor/0.0.1360.728@0.0.1360.728" timestamp="1602122777372" />
-    <state x="272" y="97" key="Vcs.Push.Dialog.v2" timestamp="1602130959466">
+    <state x="272" y="97" key="Vcs.Push.Dialog.v2" timestamp="1602133798284">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="272" y="97" key="Vcs.Push.Dialog.v2/0.0.1360.728@0.0.1360.728" timestamp="1602130959466" />
+    <state x="272" y="97" key="Vcs.Push.Dialog.v2/0.0.1360.728@0.0.1360.728" timestamp="1602133798284" />
     <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602120923853">
       <screen x="0" y="0" width="1360" height="728" />
     </state>

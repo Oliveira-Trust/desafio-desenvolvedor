@@ -35,8 +35,9 @@ class ClientController extends Controller
             ->update(request()->only('name', 'email'));
         return redirect()->route('index_client');
     }
-    public function delete(Client $client)
+    public function destroy(Client $client)
     {
         Client::query()->where('id', $client->id)->delete();
+        return redirect()->route('index_client');
     }
 }
