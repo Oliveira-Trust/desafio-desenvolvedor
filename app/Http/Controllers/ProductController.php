@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -15,9 +16,9 @@ class ProductController extends Controller
     {
         return view('product.create');
     }
-    public function store()
+    public function store(ProductRequest $request)
     {
-        Product::query()->create(request()->all());
+        Product::query()->create($request->validated());
         return redirect()->route('index_product');
     }
     public function show(Product $product)
@@ -28,10 +29,9 @@ class ProductController extends Controller
     {
         return view('product.edit', compact('product'));
     }
-    public function update(Product $product)
+    public function update(Product $product, ProductRequest $request)
     {
-        Product::query()->where('id', $product->id)->update(request()
-            ->only('name', 'price'));
+        Product::query()->where('id', $product->id)->update($request->validated());
         return redirect()->route('index_product');
     }
     public function destroy(Product $product)

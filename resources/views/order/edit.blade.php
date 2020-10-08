@@ -17,6 +17,10 @@
             @endforelse
         </select>
 
+        @error('client_id')
+            <div class="alert alert-danger">{{$message}}</div>
+        @enderror
+
         <label for="product">Products:</label>
         <select name="product_id" id="product" class="form-control">
             @forelse($products as $product)
@@ -28,6 +32,10 @@
             @endforelse
         </select>
 
+        @error('product_id')
+            <div class="alert alert-danger">{{$message}}</div>
+        @enderror
+
         <label for="status">Status:</label>
         <select name="status" id="status" class="form-control">
             <option value="Paid">Paid</option>
@@ -36,5 +44,8 @@
         </select>
         <button class="btn btn-success">Update</button>
 
+        @error('status')
+            <div class="alert alert-danger">{{$message}}</div>
+        @enderror
     </form>
 @endsection

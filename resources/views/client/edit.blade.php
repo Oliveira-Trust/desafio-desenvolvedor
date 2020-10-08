@@ -5,14 +5,14 @@
         @csrf
         @method('patch')
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Name:</label>
             <input class="form-control" type="text" id="name" name="name" value="{{$client->name}}">
 
             @error('name')
                 <div class="alert alert-danger">{{$message}}</div>
             @enderror
 
-            <label for="email">Email</label>
+            <label for="email">Email:</label>
             <input class="form-control" type="text" id="email" name="email" value="{{$client->email}}">
 
             @error('email')

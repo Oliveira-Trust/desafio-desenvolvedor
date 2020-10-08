@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 
 
@@ -16,9 +17,9 @@ class ClientController extends Controller
     {
         return view('client.create');
     }
-    public function store()
+    public function store(ClientRequest $request)
     {
-        Client::query()->create(request()->all());
+        Client::query()->create($request->validated());
         return redirect()->route('index_client');
     }
     public function show(Client $client)
@@ -29,10 +30,10 @@ class ClientController extends Controller
     {
         return view('client.edit', compact('client'));
     }
-    public function update(Client $client)
+    public function update(Client $client, ClientRequest $request)
     {
         Client::query()->where('id', $client->id)
-            ->update(request()->only('name', 'email'));
+            ->update($request->validated());
         return redirect()->route('index_client');
     }
     public function destroy(Client $client)

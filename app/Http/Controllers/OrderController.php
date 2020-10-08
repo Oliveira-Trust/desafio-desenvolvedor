@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderRequest;
 use App\Models\Client;
 use App\Models\Order;
 use App\Models\Product;
@@ -20,9 +21,9 @@ class OrderController extends Controller
         $products = Product::all();
         return view('order.create', compact('products', 'clients'));
     }
-    public function store()
+    public function store(OrderRequest $request)
     {
-        Order::query()->create(request()->all());
+        Order::query()->create($request->validated());
         return redirect()->route('index_order');
     }
     public function show(Order $order)
@@ -35,10 +36,9 @@ class OrderController extends Controller
         $products = Product::all();
         return view('order.edit', compact('order', 'products', 'clients'));
     }
-    public function update(Order $order)
+    public function update(Order $order, OrderRequest $request)
     {
-        Order::query()->where('id', $order->id)->update(request()
-            ->only('status', 'client_id', 'product_id'));
+        Order::query()->where('id', $order->id)->update($request->validated());
         return redirect()->route('index_order');
     }
     public function destroy(Order $order)
