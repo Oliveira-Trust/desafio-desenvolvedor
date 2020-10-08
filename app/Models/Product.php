@@ -12,7 +12,8 @@ class Product extends Model
     protected $fillable = ['name', 'price'];
 
 
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany('App\Models\Order');
     }
 }

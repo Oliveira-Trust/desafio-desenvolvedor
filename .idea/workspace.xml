@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72f679f8-1849-48a7-9e33-7a8ed266539e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ClientFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_012541_create_orders_table.php" afterDir="false" />
+    <list default="true" id="72f679f8-1849-48a7-9e33-7a8ed266539e" name="Default Changelist" comment="Client CRUD">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_012530_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_012352_create_clients_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,8 +175,16 @@
       <workItem from="1602070006154" duration="639000" />
       <workItem from="1602072396879" duration="1643000" />
       <workItem from="1602120123837" duration="973000" />
-      <workItem from="1602122008174" duration="1554000" />
+      <workItem from="1602122008174" duration="6238000" />
     </task>
+    <task id="LOCAL-00001" summary="Migrations, Models e Factories">
+      <created>1602123653078</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602123653078</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,12 +192,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Migrations, Models e Factories" />
+    <MESSAGE value="Client CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client CRUD" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="289" y="0" key="CommitChangelistDialog2" timestamp="1602072896765">
+    <state x="289" y="0" key="CommitChangelistDialog2" timestamp="1602128314301">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="289" y="0" key="CommitChangelistDialog2/0.0.1360.728@0.0.1360.728" timestamp="1602072896765" />
+    <state x="289" y="0" key="CommitChangelistDialog2/0.0.1360.728@0.0.1360.728" timestamp="1602128314301" />
     <state x="460" y="119" key="FileChooserDialogImpl" timestamp="1602070662458">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
@@ -200,10 +209,18 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="525" y="262" key="Github.ShareDialog/0.0.1360.728@0.0.1360.728" timestamp="1602068469375" />
+    <state x="514" y="287" key="NewPhpFileDialog" timestamp="1602126470792">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="514" y="287" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1602126470792" />
     <state x="181" y="9" key="SettingsEditor" timestamp="1602122777372">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="181" y="9" key="SettingsEditor/0.0.1360.728@0.0.1360.728" timestamp="1602122777372" />
+    <state x="272" y="97" key="Vcs.Push.Dialog.v2" timestamp="1602123665703">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="272" y="97" key="Vcs.Push.Dialog.v2/0.0.1360.728@0.0.1360.728" timestamp="1602123665703" />
     <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602120923853">
       <screen x="0" y="0" width="1360" height="728" />
     </state>

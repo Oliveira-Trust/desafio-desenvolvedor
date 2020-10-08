@@ -9,9 +9,10 @@ class Client extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['name'. 'email'];
+    protected $fillable = ['name',   'email'];
 
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany('App\Models\Order');
     }
 }
