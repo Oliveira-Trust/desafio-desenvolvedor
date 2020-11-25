@@ -1,0 +1,35 @@
+version: "3.1"
+services:
+  redis:
+    image: ewertonely/redis
+    container_name: redis
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    working_dir: /app
+    volumes:
+      - /home/ewerton/personal-projects/mysql-data:/var/lib/mysql
+      - /home/ewerton/personal-projects/mysql-log:/var/log/mysql
+      #- .:/application
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+
+  webserver:
+    image: ewertonely/nginx
+    container_name: webserver
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+
+  php-fpm:
+    image: ewertonely/php7.4-fpm
+    container_name: php-fpm
+    working_dir: /app
+    volumes:
+      - .:/app
