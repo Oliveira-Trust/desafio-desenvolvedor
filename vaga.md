@@ -1,11 +1,24 @@
 <p>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
  </p>
- 
-## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
-Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀 
 
-Não deixe de enviar o seu teste mesmo que incompleto!
+## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
+Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento. Abaixo explicaremos tudo o que será necessário.
+
+## Instruções:
+O desafio consiste em implementar uma aplicação Web utilizando algum framework PHP, e um banco de dados relacional MySQL ou Postgres, a criação das tabelas é livre para sua implementação.
+
+Você vai criar uma aplicação de cadastro de pedidos de compra, a partir de uma modelagem inicial, com as seguintes funcionalidades:
+
++ CRUD de clientes.
++ CRUD de produtos.
++ CRUD de pedidos de compra, com status (Em Aberto, Pago ou Cancelado).
+  + Cada CRUD:
+    + deve ser filtrável e ordenável por qualquer campo.
+    + deve possuir formulários para criação e atualização de seus itens.
+    + deve permitir a deleção de qualquer item de sua lista.
+    + Barra de navegação entre os CRUDs.
+    + Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)
 
 ## Tecnologias a serem utilizadas
 * HTML
