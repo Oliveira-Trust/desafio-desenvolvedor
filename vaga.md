@@ -1,6 +1,20 @@
 <p>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
  </p>
+ 
+## Benefícios em trabalhar conosco!
+
+* Vale Refeição;
+* Vale Alimentação;
+* Vale Transporte ou Vale Combustível;
+* Plano de Saude;
+* Seguro de vida;
+* Participação nos Lucros Semestral;
+* Bonus por Metas;
+* Horário Flexivel;
+* Dress Code Casual;
+* Home Office (algumas vezes por semana);
+* Frutas frescas diariamente e muito, mas muito café!!
 
 ## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
 Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento. Abaixo explicaremos tudo o que será necessário.
