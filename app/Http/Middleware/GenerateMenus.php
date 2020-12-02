@@ -20,8 +20,8 @@ class GenerateMenus
             $menu->add('<span>Dashboard</span>', ['route' => 'home'])
                 ->prepend('<i class="fas fa-home mr-2"></i>');
 
-            $menu->add('<span>Pedidos</span>', ['route' => 'home'])
-                ->active('home/*')
+            $menu->add('<span>'. __('Orders') .'</span>', ['route' => 'order.index'])
+                ->active('order/*')
                 ->prepend('<i class="fas fa-file mr-2"></i>');
 
             $menu->add('<span>'. __('Products') .'</span>', ['route' => 'product.index'])

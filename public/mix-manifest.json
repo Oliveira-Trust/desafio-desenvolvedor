@@ -1,5 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/dashboard.css": "/css/dashboard.css"
+    "/assets/js/app.js": "/assets/js/app.js",
+    "/assets/css/app.css": "/assets/css/app.css",
+    "/assets/js/custom.js": "/assets/js/custom.js",
+    "/assets/js/customers/product.js": "/assets/js/customers/product.js",
+    "/assets/css/dashboard.css": "/assets/css/dashboard.css"
 }

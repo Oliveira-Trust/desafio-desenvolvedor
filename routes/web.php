@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,5 +41,21 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/{id}/delete', [App\Http\Controllers\ProductController::class, 'destroy'])->name('destroy');
         Route::put('/{id}/restore', [App\Http\Controllers\ProductController::class, 'restore'])->name('restore');
         Route::delete('/{id}', [App\Http\Controllers\ProductController::class, 'delete'])->name('delete');
+
+        Route::get('show/{id}', App\Http\Controllers\ShowProduct::class);
+    });
+
+    Route::group(['prefix' => 'order', 'as' => 'order.'], function () {
+        Route::get('/', [App\Http\Controllers\OrderController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\OrderController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\OrderController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [App\Http\Controllers\OrderController::class, 'edit'])->name('edit');
+        Route::patch('/{id}', [App\Http\Controllers\OrderController::class, 'update'])->name('update');
+        Route::get('/{id}', [App\Http\Controllers\OrderController::class, 'show'])->name('show');
+        Route::delete('/{id}/delete', [App\Http\Controllers\OrderController::class, 'destroy'])->name('destroy');
+        Route::put('/{id}/restore', [App\Http\Controllers\OrderController::class, 'restore'])->name('restore');
+        Route::delete('/{id}', [App\Http\Controllers\OrderController::class, 'delete'])->name('delete');
+
+        Route::delete('product/{id}', App\Http\Controllers\DeleteOrderProduct::class);
     });
 });

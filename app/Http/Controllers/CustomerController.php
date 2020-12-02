@@ -77,8 +77,9 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = $this->customer->find($id);
+        $orders = $customer->orders()->get();
 
-        return view('customers.show', compact('customer'));
+        return view('customers.show', compact('customer', 'orders'));
     }
 
     /**
@@ -165,12 +166,18 @@ class CustomerController extends Controller
         }
     }
 
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         try {
             DB::beginTransaction();
             $this->customer->withTrashed()->find($id)->forceDelete();
             DB::commit();
+            if($request->ajax()){
+                return response()->json([
+                    'status' => __('Permanently deleted customer'),
+                    'status-type' => 'success'
+                ]);
+            }
             return redirect()->route('customer.index')
                 ->with('status', __('Permanently deleted customer'))
                 ->with('status-type', 'success');

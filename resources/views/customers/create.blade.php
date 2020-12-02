@@ -10,24 +10,24 @@
         {!! Form::open(['method' => "POST", "route" => "customer.store"]) !!}
             <div class="form-row mb-3">
                 <div class="col-md-6">
-                    {!! Form::label('name', 'Nome') !!}
+                    {!! Form::label('name', __('Name')) !!}
                     {!! Form::text('name', '', ['class' => "form-control " . ($errors->has('name') ? "is-invalid" : "")]) !!}
                     @if($errors->has('name')) <div class="invalid-feedback">{{ $errors->first('name') }}</div> @endif
                 </div>
                 <div class="col-md-6">
-                    {!! Form::label('email', 'E-mail') !!}
+                    {!! Form::label('email', __('E-mail')) !!}
                     {!! Form::email('email', '', ['class' => "form-control " . ($errors->has('email') ? "is-invalid" : "")]) !!}
                     @if($errors->has('email')) <div class="invalid-feedback">{{ $errors->first('email') }}</div> @endif
                 </div>
             </div>
             <div class="form-row mb-3">
                 <div class="col-md-4">
-                    {!! Form::label('phone', 'Contato') !!}
+                    {!! Form::label('phone', __('Contact')) !!}
                     {!! Form::text('phone', '', ['class' => "form-control " . ($errors->has('phone') ? "is-invalid" : "")]) !!}
                     @if($errors->has('phone')) <div class="invalid-feedback">{{ $errors->first('phone') }}</div> @endif
                 </div>
                 <div class="col-md-8">
-                    {!! Form::label('address', 'Endereço') !!}
+                    {!! Form::label('address', __('Address')) !!}
                     {!! Form::text('address', '', ['class' => "form-control " . ($errors->has('address') ? "is-invalid" : "")]) !!}
                     @if($errors->has('address')) <div class="invalid-feedback">{{ $errors->first('address') }}</div> @endif
                 </div>

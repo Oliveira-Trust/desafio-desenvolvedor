@@ -12,6 +12,7 @@
         <b>{{ __('Product List') }}</b>
         <div class="fa-pull-right">
             <a href="{{ route('product.create') }}" class="btn btn-sm btn-info"><i class="fas fa-plus"></i></a>
+            <a href="#" class="btn btn-sm btn-warning d-none" id="mass-delete"><i class="fas fa-minus"></i></a>
         </div>
     </div>
     <div class="card-body">
@@ -26,7 +27,7 @@
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
-                        <tr @if($product->trashed()) class="table-danger" @endif>
+                        <tr @if($product->trashed()) class="table-danger" @endif delete-id="{{route('product.delete',[$product->id])}}">
                             <th scope="row">{{ $product->code }}</th>
                             <td>{{ $product->name }}</td>
                             <td>R$ {{ $product->price }}</td>
@@ -70,11 +71,6 @@
             </table>
         </div>
     </div>
-    @if ($products->hasPages())
-    <div class="card-footer">
-        {{ $products->links() }}
-    </div>
-    @endif
 </div>
 @endsection
 

@@ -12,6 +12,7 @@
         <b>{{ __('Customer List') }}</b>
         <div class="fa-pull-right">
             <a href="{{ route('customer.create') }}" class="btn btn-sm btn-info"><i class="fas fa-plus"></i></a>
+            <a href="#" class="btn btn-sm btn-warning d-none" id="mass-delete"><i class="fas fa-minus"></i></a>
         </div>
     </div>
     <div class="card-body">
@@ -26,7 +27,7 @@
                 </thead>
                 <tbody>
                     @foreach ($customers as $customer)
-                        <tr @if($customer->trashed()) class="table-danger" @endif>
+                        <tr @if($customer->trashed()) class="table-danger" @endif delete-id="{{route('customer.delete',[$customer->id])}}">
                             <th scope="row">{{ $customer->id }}</th>
                             <td>{{ $customer->name }}</td>
                             <td>{{ $customer->email }}</td>
@@ -70,11 +71,6 @@
             </table>
         </div>
     </div>
-    @if ($customers->hasPages())
-    <div class="card-footer">
-        {{ $customers->links() }}
-    </div>
-    @endif
 </div>
 @endsection
 

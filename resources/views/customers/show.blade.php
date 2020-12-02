@@ -48,6 +48,14 @@
                 </tbody>
             </table>
         </div>
+        <div class="card">
+            <div class="card-header bg-dark text-light">
+                <b>{{ __('Order List') }}</b>
+            </div>
+            <div class="card-body">
+                @include('orders.table')
+            </div>
+        </div>
     </div>
 </div>
 @endsection

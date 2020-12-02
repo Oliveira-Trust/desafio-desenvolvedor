@@ -169,12 +169,18 @@ class ProductController extends Controller
         }
     }
 
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         try {
             DB::beginTransaction();
             $this->product->withTrashed()->find($id)->forceDelete();
             DB::commit();
+            if($request->ajax()){
+                return response()->json([
+                    'status' => __('Permanently deleted product'),
+                    'status-type' => 'success'
+                ]);
+            }
             return redirect()->route('product.index')
                 ->with('status', __('Permanently deleted product'))
                 ->with('status-type', 'success');
