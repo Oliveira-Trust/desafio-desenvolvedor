@@ -25,7 +25,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->order->withTrashed()->latest()->paginate(20);
+        $orders = $this->order->withTrashed()->latest()->get();
 
         return view('orders.index', compact('orders'));
     }

@@ -14,7 +14,7 @@ class Order extends Model
 
     public function setOrderTotalPriceAttribute($value)
     {
-        $this->attributes['order_total_price'] = str_replace(',', '.', str_replace('.', '', $value));
+        $this->attributes['order_total_price'] = str_replace('.', '', substr($value, 0, -3)) . str_replace(',', '.', substr($value, -3));
     }
 
     public function getOrderTotalPriceAttribute($value)

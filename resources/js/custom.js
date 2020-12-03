@@ -27,7 +27,7 @@ $("#btn-delete").on("click", function () {
 });
 
 setTimeout(function () {
-    $(".alert").alert('close');
+    $("#alert").alert('close');
 }, 3000);
 
 $('.select2').select2({
@@ -64,7 +64,7 @@ if ($('#table').length) {
                     url: $(this).attr('delete-id'),
                     dataType: 'json',
                     success: function (msg) {
-                        location.reload(true);
+                        location.reload();
                     }
                 });
             });

@@ -1,7 +1,11 @@
 {
     "/assets/js/app.js": "/assets/js/app.js",
     "/assets/css/app.css": "/assets/css/app.css",
+    "/assets/js/app.js.map": "/assets/js/app.js.map",
+    "/assets/css/app.css.map": "/assets/css/app.css.map",
     "/assets/js/custom.js": "/assets/js/custom.js",
+    "/assets/js/custom.js.map": "/assets/js/custom.js.map",
     "/assets/js/customers/product.js": "/assets/js/customers/product.js",
+    "/assets/js/customers/product.js.map": "/assets/js/customers/product.js.map",
     "/assets/css/dashboard.css": "/assets/css/dashboard.css"
 }

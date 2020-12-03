@@ -29,6 +29,7 @@ class HomeController extends Controller
         $customers = Customer::get();
         $products = Product::get();
         $orders = Order::get();
+        $ordersTotal = $orders->count();
 
         $infoCards = [
             [
@@ -43,32 +44,36 @@ class HomeController extends Controller
             ],
             [
                 'title' => __('Registered orders'),
-                'amount' => $orders->count(),
+                'amount' => $ordersTotal,
                 'text' => __('orders')
             ]
         ];
 
-        $infoBars = [
-            [
-                'title' => __('Opened'),
-                'percentage' => ($orders->where('status', 'Opened')->count() / $orders->count()) * 100,
-                'bg' => 'bg-info'
-            ],
-            [
-                'title' => __('Paid out'),
-                'percentage' => ($orders->where('status', 'Paid out')->count() / $orders->count()) * 100,
-                'bg' => 'bg-success'
-            ],
-            [
-                'title' => __('Canceled'),
-                'percentage' => ($orders->where('status', 'Canceled')->count() / $orders->count()) * 100,
-                'bg' => 'bg-danger'
-            ]
-        ];
+        $infoBars = array();
 
+        if (!empty($ordersTotal)) {
+            $infoBars = [
+                [
+                    'title' => __('Opened'),
+                    'percentage' => ($orders->where('status', 'Opened')->count() / $ordersTotal) * 100,
+                    'bg' => 'bg-info',
+                    'status_total' => $orders->where('status', 'Opened')->count(),
+                ],
+                [
+                    'title' => __('Paid out'),
+                    'percentage' => ($orders->where('status', 'Paid out')->count() / $ordersTotal) * 100,
+                    'bg' => 'bg-success',
+                    'status_total' => $orders->where('status', 'Paid out')->count(),
+                ],
+                [
+                    'title' => __('Canceled'),
+                    'percentage' => ($orders->where('status', 'Canceled')->count() / $ordersTotal) * 100,
+                    'bg' => 'bg-danger',
+                    'status_total' => $orders->where('status', 'Canceled')->count(),
+                ]
+            ];
+        }
 
-
-
-        return view('home', compact('infoCards', 'infoBars'));
+        return view('home', compact('infoCards', 'infoBars', 'ordersTotal'));
     }
 }

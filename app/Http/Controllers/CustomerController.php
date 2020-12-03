@@ -23,7 +23,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = $this->customer->withTrashed()->paginate(20);
+        $customers = $this->customer->withTrashed()->get();
 
         return view('customers.index', compact('customers'));
     }

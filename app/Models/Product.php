@@ -14,7 +14,7 @@ class Product extends Model
 
     public function setPriceAttribute($value)
     {
-        $this->attributes['price'] = str_replace(',', '.', str_replace('.', '', $value));
+        $this->attributes['price'] = str_replace('.', '', substr($value, 0, -3)) . str_replace(',', '.', substr($value, -3));
     }
 
     public function getPriceAttribute($value)

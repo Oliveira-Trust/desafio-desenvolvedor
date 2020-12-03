@@ -93,7 +93,7 @@
 
                 <div class="container-fluid">
                     @if (session('status'))
-                    <div class="alert alert-{{session('status-type')}} alert-dismissible fade show" role="alert" style="position: absolute; right: 5px; top: 60px; z-index: 10;">
+                    <div id="alert" class="alert alert-{{session('status-type')}} alert-dismissible fade show" role="alert" style="position: absolute; right: 5px; top: 60px; z-index: 10;">
                         {{ session('status') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->withTrashed()->paginate(20);
+        $products = $this->product->withTrashed()->get();
 
         return view('products.index', compact('products'));
     }

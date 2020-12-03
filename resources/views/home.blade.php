@@ -15,16 +15,16 @@
     <div class="card-body">
         <div class="row">
             @foreach ($infoCards as $infocard)
-                <div class="col-md-4">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $infocard['title']}} </h5>
-                            <p class="card-text">
-                                <p class="h2 d-inline">{{$infocard['amount']}}</p> {{ $infocard['text'] }}
-                            </p>
-                        </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $infocard['title']}} </h5>
+                        <p class="card-text">
+                            <p class="h2 d-inline">{{$infocard['amount']}}</p> {{ $infocard['text'] }}
+                        </p>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
         <div class="row">
@@ -33,14 +33,23 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ __('Order status')}}</h5>
                         <ul class="list-group list-group-flush">
+                            @empty($infoBars)
+                            <li class="list-group-item">
+                                <div class="alert alert-warning" role="alert">
+                                    {{ __('No orders registered') }}
+                                </div>
+                            </li>
+                            @else
                             @foreach ($infoBars as $infoBar)
-                                <li class="list-group-item">
-                                    <p class="h2 d-inline">{{$infoBar['title']}}</p>
-                                    <div class="progress" style="height: 2px;">
-                                        <div class="progress-bar {{$infoBar['bg']}}" role="progressbar" style="width: {{$infoBar['percentage']}}%;" aria-valuenow="{{$infoBar['percentage']}}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </li>
+                            <li class="list-group-item">
+                                <p class="h2 d-inline">{{$infoBar['title']}}</p>
+                                <p class="h5 d-inline ml-3">{{$infoBar['status_total'] . __(' of ') . $ordersTotal}}</p>
+                                <div class="progress" style="height: 2px;">
+                                    <div class="progress-bar {{$infoBar['bg']}}" role="progressbar" style="width: {{$infoBar['percentage']}}%;" aria-valuenow="{{$infoBar['percentage']}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
                             @endforeach
+                            @endempty
                         </ul>
                     </div>
                 </div>
