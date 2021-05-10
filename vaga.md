@@ -2,20 +2,6 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
  </p>
  
-## Benefícios em trabalhar conosco!
-
-* Vale Refeição;
-* Vale Alimentação;
-* Vale Transporte ou Vale Combustível;
-* Plano de Saude;
-* Seguro de vida;
-* Participação nos Lucros Semestral;
-* Bonus por Metas;
-* Horário Flexivel;
-* Dress Code Casual;
-* Home Office (algumas vezes por semana);
-* Frutas frescas diariamente e muito, mas muito café!!
-
 ## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
 Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento. Abaixo explicaremos tudo o que será necessário.
 
@@ -28,9 +14,9 @@ Você vai criar uma aplicação de cadastro de pedidos de compra, a partir de um
 + CRUD de produtos.
 + CRUD de pedidos de compra, com status (Em Aberto, Pago ou Cancelado).
   + Cada CRUD:
-    + deve ser filtrável e ordenável por qualquer campo.
-    + deve possuir formulários para criação e atualização de seus itens.
-    + deve permitir a deleção de qualquer item de sua lista.
+    + Deve ser filtrável e ordenável por qualquer campo.
+    + Deve possuir formulários para criação e atualização de seus itens.
+    + Deve permitir a deleção de qualquer item de sua lista.
     + Barra de navegação entre os CRUDs.
     + Links para os outros CRUDs nas listagens (Ex: link para o detalhe do cliente da compra na lista de pedidos de compra)
 
@@ -45,7 +31,7 @@ Para iniciar o teste, faça um fork deste repositório, crie uma branch com o se
 
 Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
 
-### Bônus:
+## Bônus:
 
 * Implementar autenticação de usuário na aplicação.
 * Permitir deleção em massa de itens nos CRUDs.
