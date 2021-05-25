@@ -1,0 +1,57 @@
+/* Borders */
+.border-top {
+	border-top: 1px solid #DADADA !important;
+}
+
+.border-bottom {
+	border-bottom: 1px solid #DADADA !important;
+}
+
+.border-left {
+	border-left: 1px solid #DADADA !important;
+}
+
+.border-right {
+	border-right: 1px solid #DADADA !important;
+}
+
+.border-all {
+	border: 1px solid #DADADA !important;
+}
+
+.border-top-light {
+	border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-bottom-light {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-left-light {
+	border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-right-light {
+	border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-all-light {
+	border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-white {
+	border-color: #FFF !important;
+}
+
+// Border Width
+@for $i from 1 through 10 {
+	.border-width-#{$i} {
+		border-width: unquote($i + 'px') !important;
+	}
+}
+
+@media(max-width: 767px) {
+	.border-sm-none {
+		border: 0 !important;
+	}
+}

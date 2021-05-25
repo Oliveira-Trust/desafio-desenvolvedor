@@ -1,0 +1,29 @@
+@import "variables";
+
+@border-radius: 0;
+
+@color-primary: #333b48;
+
+@color-secondary: #219cd2;
+
+@color-tertiary: #2bca6e;
+
+@color-quaternary: #FFF;
+
+@import "skin";
+
+// Mobile Menu Background Color
+@media(max-width: 991px) {
+	#header {
+		.header-nav-main{
+			&.header-nav-main-mobile-dark:before {
+				background-color: @color-primary;
+			}
+		}
+	}
+}
+
+// Pagination
+.pagination > a.page-link {
+	color: @color-primary;
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="fixed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<meta name="keywords" content="HTML5 Admin Template" />
+		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
+		<meta name="author" content="okler.net">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="/res/UserManagement/vendor/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="/res/UserManagement/vendor/animate/animate.compat.css">
+
+		<link rel="stylesheet" href="/res/UserManagement/vendor/font-awesome/css/all.min.css" />
+		<link rel="stylesheet" href="/res/UserManagement/vendor/boxicons/css/boxicons.min.css" />
+		<link rel="stylesheet" href="/res/UserManagement/vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="/res/UserManagement/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+
+		<!--(remove-empty-lines-end)-->
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="/res/UserManagement/css/theme.css" />
+
+
+		<!--(remove-empty-lines-end)-->
+
+
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="/res/UserManagement/css/custom.css">
+
+		<!-- Head Libs -->
+		<script src="/res/UserManagement/vendor/modernizr/modernizr.js"></script>
+
+
+	</head>
+  
+  <!-- start: page -->
+  <section class="body-sign">
+    <div class="center-sign">	
+      <a href="/" class="logo float-left">
+        <img src="/res/UserDashboard/assets/images/logo.png" height="85" alt="Admin Logo" />
+      </a>
+
+      <div class="panel card-sign">
+        <div class="card-title-sign mt-3 text-right ">
+          <h2 class="title text-uppercase font-weight-semibold m-0 bg-primary"><i class="bx bx-user-circle mr-1 text-6 position-relative top-5"></i> ADMIN LOGIN</h2>
+        </div>
+        <div class="card-body ">
+
+
+          <form action="/admin/login" method="post" class="form-style-3">
+
+            {if="$error"}
+
+            <div class="alert alert-danger  mb-1 mt-1 text-center" >
+            
+              <strong class="text-dark">Ocorreu um erro inesperado! </strong> 	<strong>{$error}.</strong>
+            </div>
+            
+            {/if}
+
+
+            <div class="form-group mb-3">
+              <label>Seu e-mail</label>
+              <div class="input-group">
+                <input name="deslogin" type="text" class="form-control form-control-lg " style="background-color: rgb(235, 235, 235);" />
+                <span class="input-group-append">
+                  <span class="input-group-text bg-primary">
+                    <i class="bx bx-user text-4 text-white"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+          
+          
+              <div class="clearfix">
+                <label class="float-left">Sua senha</label>        
+              </div>
+
+
+              <div class="input-group">
+             
+                <input name="despassword" type="password" class="form-control  form-control-lg" style="background-color: rgb(235, 235, 235);" />             
+               
+                <span class="input-group-append">
+               
+                    <span class="input-group-text bg-primary">
+                      <i class="bx bx-lock text-4 text-white"></i>
+                    </span>
+
+                </span>
+
+              </div>
+
+
+            </div>
+
+            <div class="row text-center justify-content-center ">
+                <button type="submit" class="btn btn-primary bg-primary mt-2 mb-3 text-white text-5">Conectar-se</button>
+            </div>
+
+         
+
+          </form>
+        </div>
+      </div>
+
+      <p class="text-center text-muted mt-3 mb-3">&copy; Copyright {$date}</php>. Todos os direitos reservados.</p>
+    </div>
+  </section>

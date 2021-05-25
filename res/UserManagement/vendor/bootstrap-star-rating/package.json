@@ -1,0 +1,61 @@
+{
+  "_args": [
+    [
+      "bootstrap-star-rating@4.0.6",
+      "E:\\_OKLER\\Templates\\Porto\\HTML"
+    ]
+  ],
+  "_from": "bootstrap-star-rating@4.0.6",
+  "_id": "bootstrap-star-rating@4.0.6",
+  "_inBundle": false,
+  "_integrity": "sha1-TsTMOo/cEmuElUVMnmQNP8ayoZM=",
+  "_location": "/bootstrap-star-rating",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "bootstrap-star-rating@4.0.6",
+    "name": "bootstrap-star-rating",
+    "escapedName": "bootstrap-star-rating",
+    "rawSpec": "4.0.6",
+    "saveSpec": null,
+    "fetchSpec": "4.0.6"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/bootstrap-star-rating/-/bootstrap-star-rating-4.0.6.tgz",
+  "_spec": "4.0.6",
+  "_where": "E:\\_OKLER\\Templates\\Porto\\HTML",
+  "author": {
+    "name": "Kartik Visweswaran",
+    "email": "kartikv2@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/kartik-v/bootstrap-star-rating/issues"
+  },
+  "description": "A simple yet powerful JQuery star rating plugin for Bootstrap.",
+  "homepage": "https://github.com/kartik-v/bootstrap-star-rating",
+  "keywords": [
+    "bootstrap",
+    "star",
+    "rating",
+    "font",
+    "awesome",
+    "glyphicon",
+    "svg"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "./js/star-rating.js",
+  "name": "bootstrap-star-rating",
+  "peerDependencies": {
+    "jquery": ">= 1.9.0",
+    "bootstrap": ">= 3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kartik-v/bootstrap-star-rating.git"
+  },
+  "style": "./css/star-rating.css",
+  "version": "4.0.6"
+}

@@ -1,0 +1,11 @@
+/* Cascading Images */
+.cascading-images-wrapper {
+	display: inline-block;
+	padding: 12% 20%;
+	.cascading-images {
+	    transform: translate3d(0, -35%, 0);
+	    img {
+	    	max-width: 100%;
+	    }
+	}
+}

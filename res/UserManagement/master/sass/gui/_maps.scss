@@ -1,0 +1,104 @@
+/* Maps */
+.google-map {
+	background: #E5E3DF;
+	height: 400px;
+	margin: -35px 0 30px 0;
+	width: 100%;
+	&.small {
+		height: 250px;
+		border-radius: 6px;
+		margin: 0;
+		clear: both;
+	}
+	img {
+		max-width: 9999px;
+	}
+}
+
+.google-map-borders {
+	border: 1px solid #DDD;
+	padding: 4px;
+	border-radius: 4px;
+}
+
+/* Map Pins */
+@keyframes mapPinPulse {
+	from {
+		transform: scale(1);
+		opacity: 0.7;
+	}
+	to {
+		transform: scale(10);
+		opacity: 0;
+	}
+}
+
+/* Map Info Window */
+.map-info-window {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    font-size: 0.8rem;
+    background: #FFF;
+    border-radius: 4px;
+    padding: 15px 20px;
+    white-space: nowrap;
+    transform: translate3d(-50%, 0, 0);
+    &:after {
+    	content: '';
+    	position: absolute;
+    	bottom: -7px;
+    	left: 50%;
+    	transform: translate3d(-50%, 0, 0);
+    	width: 0;
+    	height: 0;
+    	border-top: 7px solid #FFF;
+    	border-left: 7px solid transparent;
+    	border-right: 7px solid transparent;
+    }
+    .map-info-window-close {
+    	position: absolute;
+    	top: 3px;
+    	right: 3px;
+    }
+}
+
+.map-rounded-pin {
+	width: 13px;
+	height: 13px;
+	background: #CCC;
+	border-radius: 100%;
+
+	&.map-rounded-pin-animated {
+		position: relative;
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: inherit;
+			border-radius: inherit;
+			animation-name: mapPinPulse;
+			animation-duration: 1.5s;
+			animation-iteration-count: infinite;
+			animation-delay: 1s; 
+		}
+		&:after {
+			animation-delay: 1.250s;
+		}
+	}
+}
+
+/* Google Map on Footer */
+.google-map-footer {
+	margin: 35px 0 -50px !important;
+}
+
+/* RTL Popup */
+html[dir="rtl"] {
+	.gm-style .gm-style-iw-c {
+	    padding: 20px 20px 0 0 !important;
+	}
+}

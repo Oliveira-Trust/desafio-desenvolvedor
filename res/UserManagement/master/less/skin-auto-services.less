@@ -1,0 +1,155 @@
+@import "variables";
+
+@color-primary: #1c5fa8;
+
+@color-secondary: #e36159;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+/*
+* Icon Style
+*/
+.custom-icon-style-1 {
+	&:before {
+		border-color: @color-primary;
+	}
+}
+
+.custom-icon-box-style-1 {
+	&:hover {
+		.custom-icon-style-1 {
+			&:before {
+				background: @color-primary;
+			}
+			svg {
+				path {
+					fill: @color-primary-inverse !important;
+				}
+			}
+		}
+		h3 {
+			color: @color-primary !important;
+		}
+	}	
+}
+
+/*
+* Thumb Info
+*/
+.custom-thumb-info-style-1 {
+	&:hover {
+		.thumb-info-wrapper {
+			border-color: @color-primary !important;
+		}
+		h3 {
+			color: @color-primary !important;
+		}
+	}
+}
+
+/*
+* Testimonial
+*/
+.custom-testimonial-style-1 {
+	&.testimonial-with-quotes {
+		blockquote {
+			&:before {
+				color: @color-primary;
+			}
+		}
+	}
+}
+
+/*
+* Accordion
+*/
+.custom-accordion-style-1 {
+	> .card {
+		.card-header {
+			a {
+				&:not(.collapsed) {
+					background-color: @color-primary;
+					color: @color-primary-inverse !important;
+				}
+			}
+		}
+		&:hover {
+			.card-header {
+				a.collapsed {
+					color: @color-primary !important;
+				}
+			}
+		}
+	}
+}
+
+/*
+* Services Detail - Nav List
+*/
+.custom-nav-list-effect-1 {
+	> li {
+		> a {
+			&:before {
+				border-top-color: @color-primary;
+			}
+
+		}
+		&.active,
+		&.open,
+		&:hover {
+			> a {
+				color: @color-primary !important;
+			}
+		}
+	}
+}
+
+/*
+* Datepicker
+*/
+.datepicker {
+	thead tr:first-child th:hover,
+	tfoot tr th:hover,
+	table tr td span:hover {
+		background: @color-primary;
+	}
+
+	.datepicker-switch,
+	.prev,
+	.next {
+		&:hover {
+			background: @color-primary;
+		}
+	}
+
+	table {
+		thead {
+			tr:last-child {
+				th {
+					&:hover {
+						color: @color-primary;
+					}
+				}
+			}
+		}
+		tbody {
+			tr {
+				td {
+					&.day {
+						&:hover {
+							background: @color-primary;
+						}
+
+						&.active {
+							background: darken( @color-primary, 10% );
+						}
+					}
+				}
+			}
+		}
+	}
+}

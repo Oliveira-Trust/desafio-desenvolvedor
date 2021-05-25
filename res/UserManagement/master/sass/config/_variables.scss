@@ -1,0 +1,114 @@
+// =============================================================================
+// TYPOGRAPHY
+// =============================================================================
+$font-primary: "Poppins", Arial, sans-serif;
+$font-secondary: "Shadows Into Light", cursive;
+$font-tertiary: "Oswald", sans-serif;
+
+$body-font-size: 14;
+$root-font-size: 10;
+$body-line-height: 26;
+
+// weights
+$font-weight-thin: 100;
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+
+
+// spacement
+$spacement-increment: 5px;
+$spacement-xs: $spacement-increment;
+$spacement-sm: $spacement-xs + $spacement-increment;
+$spacement-md: $spacement-sm + $spacement-increment;
+$spacement-lg: $spacement-md + $spacement-increment;
+$spacement-xl: $spacement-lg + $spacement-increment;
+$spacement-xlg: $spacement-xl + $spacement-increment;
+
+// borders
+$border-thin: 3px;
+$border-normal: 5px;
+$border-thick: 7px;
+
+// =============================================================================
+// COLORS
+// =============================================================================
+$color-font-default: #777;
+
+$color-default: #f2f2f2;
+$color-default-inverse: #777;
+
+$color-muted: #999;
+
+$color-light: #FFF;
+$color-light-inverse: #212529;
+
+$color-grey: #EDEDED;
+
+$color-dark: #212529;
+$color-dark-inverse: #FFF;
+$color-dark-1: $color-dark;
+$color-dark-2: lighten($color-dark-1, 2%);
+$color-dark-3: lighten($color-dark-1, 5%);
+$color-dark-4: lighten($color-dark-1, 8%);
+$color-dark-5: lighten($color-dark-1, 3%);
+$color-darken-1: darken($color-dark-1, 2%);
+
+$color-primary: #CCC;
+$color-primary-inverse: #FFF;
+
+$color-secondary: #e36159;
+$color-secondary-inverse: #FFF;
+
+$color-tertiary: #2BAAB1;
+$color-tertiary-inverse: #FFF;
+
+$color-quaternary: $color-dark-4;
+$color-quaternary-inverse: #FFF;
+
+$color-success: #28a745;
+$color-success-inverse: #FFF;
+
+$color-warning: #ffc107;
+$color-warning-inverse: #FFF;
+
+$color-danger: #dc3545;
+$color-danger-inverse: #FFF;
+
+$color-info: #17a2b8;
+$color-info-inverse: #FFF;
+
+// colors list
+$colors-list: (primary $color-primary $color-primary-inverse) (secondary $color-secondary $color-secondary-inverse) (tertiary $color-tertiary $color-tertiary-inverse) (quaternary $color-quaternary $color-quaternary-inverse);
+
+// states list
+$states: (primary $color-primary $color-primary-inverse) (success $color-success $color-success-inverse) (warning $color-warning $color-warning-inverse) (danger $color-danger $color-danger-inverse) (info $color-info $color-info-inverse) (dark $color-dark $color-dark-inverse);
+
+// light version
+$light-bg: #FFF;
+$footer-bg: #1A1C1E;
+
+// dark version
+$dark-bg: $color-dark;
+$dark-default-text: #808697;
+
+// =============================================================================
+// SETTINGS
+// =============================================================================
+$border-radius: 5px;
+
+// =============================================================================
+// GRID BREAKPOINTS
+// =============================================================================
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;

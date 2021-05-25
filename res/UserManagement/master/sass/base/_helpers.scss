@@ -1,0 +1,634 @@
+/* Position */
+.p-relative {
+	position: relative !important
+}
+
+.p-absolute {
+	position: absolute !important
+}
+
+.p-fixed {
+	position: fixed !important
+}
+
+.p-static {
+	position: static !important
+}
+
+/* Box Shadow */
+.box-shadow-none {
+	box-shadow: none !important;
+}
+
+/* Background Clip */
+.bclip-border-box {
+	background-clip: border-box !important;
+}
+
+/* Inverted */
+.inverted {
+	color: #FFF;
+	display: inline-block;
+	padding-#{$left}: 10px;
+	padding-#{$right}: 10px;
+}
+
+h1 .inverted {
+	padding-#{$left}: 10px;
+	padding-#{$right}: 10px;
+}
+
+h2 .inverted {
+	padding-#{$left}: 7px;
+	padding-#{$right}: 7px;
+}
+
+h3 .inverted {
+	padding-#{$left}: 2px;
+	padding-#{$right}: 2px;;
+}
+
+h4 .inverted {
+	padding-#{$left}: 4px;
+	padding-#{$right}: 4px;
+}
+
+h5 .inverted {
+	padding-#{$left}: 2px;
+	padding-#{$right}: 2px;
+}
+
+h6 .inverted {
+	padding-#{$left}: 2px;
+	padding-#{$right}: 2px;
+}
+
+/* Letter Spacing */
+.ls-0 {
+	letter-spacing: 0 !important;
+}
+
+.negative-ls-05 {
+	letter-spacing: -0.05em;
+}
+
+.negative-ls-1 {
+	letter-spacing: -1px;
+}
+
+.negative-ls-2 {
+	letter-spacing: -2px;
+}
+
+.negative-ls-3 {
+	letter-spacing: -2.5px;
+}
+
+.positive-ls-1 {
+	letter-spacing: 1px;
+}
+
+.positive-ls-2 {
+	letter-spacing: 2px;
+}
+
+.positive-ls-3 {
+	letter-spacing: 2.5px;
+}
+
+/* Cursor */
+.cur-pointer {
+	cursor: pointer;
+}
+
+/* Pointer Events */
+.p-events-none {
+	pointer-events: none;
+}
+
+/* Font Size */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.text#{$infix}-0 {
+			font-size: .7em !important;
+		}
+
+		.text#{$infix}-1 {
+			font-size: .8em !important;
+		}
+
+		.text#{$infix}-2 {
+			font-size: .9em !important;
+		}
+
+		.text#{$infix}-2-3,
+		.text#{$infix}-2-5 {
+			font-size: .95em !important;
+		}
+
+		.text#{$infix}-3 {
+			font-size: 1em !important;
+		}
+
+		.text#{$infix}-3-4,
+		.text#{$infix}-3-5 {
+			font-size: 1.1em !important;
+		}
+
+		.text#{$infix}-4 {
+			font-size: 1.2em !important;
+		}
+
+		.text#{$infix}-4-5 {
+			font-size: 1.35em !important;
+		}
+
+		.text#{$infix}-5 {
+			font-size: 1.50em !important;
+		}
+
+		.text#{$infix}-5-6,
+		.text#{$infix}-5-5 {
+			font-size: 1.65em !important;
+		}
+
+		.text#{$infix}-6 {
+			font-size: 1.80em !important;
+		}
+
+		.text#{$infix}-6-7,
+		.text#{$infix}-6-5 {
+			font-size: 1.9em !important;
+		}
+
+		.text#{$infix}-7 {
+			font-size: 2em !important;
+		}
+
+		.text#{$infix}-8 {
+			font-size: 2.30em !important;
+		}
+
+		.text#{$infix}-9 {
+			font-size: 2.50em !important;
+		}
+
+		.text#{$infix}-10 {
+			font-size: 2.75em !important;
+		}
+
+		.text#{$infix}-11 {
+			font-size: 3em !important;
+		}
+
+		.text#{$infix}-12 {
+			font-size: 3.5em !important;
+		}
+
+		.text#{$infix}-12-13,
+		.text#{$infix}-12-5 {
+			font-size: 3.75em !important;
+		}
+
+		.text#{$infix}-13 {
+			font-size: 4em !important;
+		}
+
+		.text#{$infix}-14 {
+			font-size: 4.5em !important;
+		}
+
+		.text#{$infix}-15 {
+			font-size: 5em !important;
+		}
+
+	}
+}
+
+.text-1rem {
+	font-size: 1rem !important;
+}
+
+/* Line Height */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		.line-height#{$infix}-initial {
+			line-height: initial !important;
+		}
+
+		.line-height#{$infix}-1 {
+			line-height: 1 !important;
+		}
+
+		.line-height#{$infix}-1-1 {
+			line-height: 1.1 !important;
+		}
+
+		@for $i from 2 through 9 {
+			.line-height#{$infix}-#{$i} {
+				line-height: unquote('1.' + $i) !important;
+			}
+		}
+
+	}
+}
+
+/* Opacity */
+@for $i from 0 through 9 {
+	.opacity-#{$i} {
+		opacity: unquote('0.' + $i) !important;
+	}
+}
+
+.opacity-10 {
+	opacity: 1 !important;
+}
+
+/* Scale */
+@for $i from 1 through 6 {
+	.scale-#{$i} {
+		transform: scale(unquote('1.' + $i)) !important;
+	}
+}
+
+/* Top / Bottom / Left / Right */
+.top-auto {
+	top: auto !important;
+}
+
+.top-50pct {
+	top: 50%;
+}
+
+.bottom-auto {
+	top: auto !important;
+}
+
+.left-50pct {
+	left: 50%;
+}
+
+.left-100pct {
+	left: 100%;
+}
+
+.right-100pct {
+	right: 100%;
+}
+
+@for $i from 0 through 15 {
+	.top-#{$i} {
+		top: $i + px !important;
+	}
+
+	.bottom-#{$i} {
+		bottom: $i + px !important;
+	}
+
+	.left-#{$i} {
+		left: $i + px !important;
+	}
+
+	.right-#{$i} {
+		right: $i + px !important;
+	}
+}
+
+/* Transform */
+.transform3dx-n50 {
+	transform: translate3d(-50%, 0, 0);
+}
+
+.transform3dy-n50 {
+	transform: translate3d(0, -50%, 0);
+}
+
+.transform3dxy-n50 {
+	transform: translate3d(-50%, -50%, 0);
+}
+
+/* Outline */
+.outline-none {
+	outline: 0 !important;
+}
+
+/* Text Decoration */
+.text-decoration-none {
+	text-decoration: none !important;
+}
+
+.text-decoration-underline {
+    text-decoration: underline !important;
+}
+
+/* Text Transform */
+.text-uppercase {
+	text-transform: uppercase !important;
+}
+
+.text-lowercase {
+	text-transform: lowercase !important;
+}
+
+.text-capitalize {
+	text-transform: capitalize !important;
+}
+
+.text-transform-none {
+	text-transform: none !important;
+}
+
+/* States */
+.text-muted {
+	color: $color-muted !important;
+}
+
+html.dark {
+	.text-muted {
+		color: darken( $dark-default-text, 20% ) !important;
+	}
+}
+
+/* Overflow */
+.overflow-visible {
+	overflow: visible !important;
+}
+
+.overflow-hidden {
+	overflow: hidden !important;
+}
+
+/* Z-Index */
+.z-index-0 {
+	z-index: 0 !important;
+}
+
+.z-index-1 {
+	z-index: 1 !important;
+}
+
+.z-index-2 {
+	z-index: 2 !important;
+}
+
+.z-index-3 {
+	z-index: 3 !important;
+}
+
+@media(max-width: 991px) {
+	.z-index-mobile-0 {
+		z-index: 0 !important;
+	}
+}
+
+/* Colors */
+.text-dark {
+	color: $color-dark !important;
+}
+
+.text-light {
+	color: #FFF !important;
+}
+
+/* Weights */
+.font-weight-thin {
+	font-weight: 100 !important;
+}
+
+.font-weight-extralight,
+.font-weight-extra-light {
+	font-weight: 200 !important;
+}
+
+.font-weight-light {
+	font-weight: 300 !important;
+}
+
+.font-weight-regular,
+.font-weight-normal {
+	font-weight: 400 !important;
+}
+
+.font-weight-medium {
+	font-weight: 500 !important;
+}
+
+.font-weight-semibold,
+.font-weight-semi-bold {
+	font-weight: 600 !important;
+}
+
+.font-weight-bold {
+	font-weight: 700 !important;
+}
+
+.font-weight-extrabold,
+.font-weight-extra-bold {
+	font-weight: 800 !important;
+}
+
+.font-weight-black {
+	font-weight: 900 !important;
+}
+
+/* Letter Space */
+.letter-spacing-minus-1 {
+	letter-spacing: -1px;
+}
+
+/* Borders */
+.no-borders {
+	border: none !important;
+}
+
+.rounded {
+	border-radius: $border-radius !important;
+}
+
+.b-thin {
+	border-width: $border-thin !important;
+}
+
+.b-normal {
+	border-width: $border-normal !important;
+}
+
+.b-thick {
+	border-width: $border-thick !important;
+}
+
+/* General Helpers */
+.ws-nowrap {
+	white-space: nowrap !important;
+}
+
+.ws-normal {
+	white-space: normal !important;
+}
+
+.wb-all {
+	word-break: break-all !important;
+}
+
+/* Width */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.w#{$infix}-auto {
+			width: auto !important;
+		}
+
+		.w#{$infix}-25pct {
+			width: 25% !important;
+		}
+
+		.w#{$infix}-50pct {
+			width: 50% !important;
+		}
+
+		.w#{$infix}-75pct {
+			width: 75% !important;
+		}
+
+		.w#{$infix}-100pct {
+			width: 100% !important;
+		}
+
+	}
+}
+
+@media(max-width: 991px) {
+	.w-auto-mobile {
+		width: auto !important;
+	}
+
+	.w-100-mobile {
+		width: 100% !important;
+	}
+}
+
+.min-width-0 {
+	min-width: 0 !important;
+}
+
+/* Grid */
+// 5 Equal Columns
+.col-1-5, .col-sm-1-5, .col-md-1-5, .col-lg-1-5, .col-xl-1-5, .col-2-5, .col-sm-2-5, .col-md-2-5, .col-lg-2-5, .col-xl-2-5, .col-3-5, .col-sm-3-5, .col-md-3-5, .col-lg-3-5, .col-xl-3-5, .col-4-5, .col-sm-4-5, .col-md-4-5, .col-lg-4-5, .col-xl-4-5 {
+	position: relative;
+	min-height: 1px;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.col-1-5 {
+	@include flexbox(0, 0, 20%);
+}
+
+.col-2-5 {
+	@include flexbox(0, 0, 40%);
+}
+
+.col-3-5 {
+	@include flexbox(0, 0, 60%);
+}
+
+.col-4-5 {
+	@include flexbox(0, 0, 80%);
+}
+
+@media (min-width: 576px) {
+	.col-sm-1-5 {
+		@include flexbox(0, 0, 20%);
+	}
+
+	.col-sm-2-5 {
+		@include flexbox(0, 0, 40%);
+	}
+
+	.col-sm-3-5 {
+		@include flexbox(0, 0, 60%);
+	}
+
+	.col-sm-4-5 {
+		@include flexbox(0, 0, 80%);
+	}
+}
+
+@media (min-width: 768px) {
+	.col-md-1-5 {
+		@include flexbox(0, 0, 20%);
+	}
+
+	.col-md-2-5 {
+		@include flexbox(0, 0, 40%);
+	}
+
+	.col-md-3-5 {
+		@include flexbox(0, 0, 60%);
+	}
+
+	.col-md-4-5 {
+		@include flexbox(0, 0, 80%);
+	}
+}
+
+@media (min-width: 992px) {
+	.col-lg-1-5 {
+		@include flexbox(0, 0, 20%);
+	}
+
+	.col-lg-2-5 {
+		@include flexbox(0, 0, 40%);
+	}
+
+	.col-lg-3-5 {
+		@include flexbox(0, 0, 60%);
+	}
+
+	.col-lg-4-5 {
+		@include flexbox(0, 0, 80%);
+	}
+}
+
+@media (min-width: 1200px) {
+	.col-xl-1-5 {
+		@include flexbox(0, 0, 20%);
+	}
+
+	.col-xl-2-5 {
+		@include flexbox(0, 0, 40%);
+	}
+
+	.col-xl-3-5 {
+		@include flexbox(0, 0, 60%);
+	}
+
+	.col-xl-4-5 {
+		@include flexbox(0, 0, 80%);
+	}
+}
+
+/* RTL */
+@include if-rtl() {
+	
+	@each $breakpoint in map-keys($grid-breakpoints) {
+		@include media-breakpoint-up($breakpoint) {
+			$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+			
+			// Float
+			.float#{$infix}-left  { float: right !important; }
+			.float#{$infix}-right { float: left !important; }
+
+			// Text Align
+			.text#{$infix}-left   { text-align: right !important; }
+			.text#{$infix}-right  { text-align: left !important; }
+		}
+	}
+
+}

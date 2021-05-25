@@ -1,0 +1,30 @@
+@import "variables";
+
+@border-radius: 0;
+
+@color-primary: #3467ef;
+
+@color-secondary: #0e152f;
+
+@color-tertiary: #060c23;
+
+@color-quaternary: #222529;
+
+// Border
+.border-color-active-primary:active {
+	border-color: @color-primary !important;
+}
+
+// Header
+@media (min-width: 992px) {
+	#header .header-nav-main nav > ul > li.dropdown .dropdown-menu li {
+		&:hover > a,
+		&:focus > a,
+		&.active > a,
+		&:active > a {
+			color: @color-primary !important;
+		}
+	}
+}
+
+@import "skin";

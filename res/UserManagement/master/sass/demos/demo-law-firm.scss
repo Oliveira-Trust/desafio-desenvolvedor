@@ -1,0 +1,48 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+/* Slider */
+.slider {
+	.dione .tp-bullet.selected,
+	.dione .tp-bullet:hover {
+		background: #FFF;
+	}
+}
+
+@media (max-width: 991px) {
+	.tp-bullets {
+		display: none;
+	}
+}
+
+/* Custom Team Carousel */
+.owl-team-custom {
+	&.owl-carousel.show-nav-title {
+		.owl-nav {
+			margin-top: 140px;
+			right: auto;
+			top: 0;
+			width: 100%;
+			left: 0;
+			button.owl-prev {
+				#{$left}: -41px;
+				#{$right}: auto;
+			}
+			button.owl-next {
+				#{$right}: -32px;
+				#{$left}: auto;
+			}
+		}
+		img {
+			transform-style: unset;
+		}
+	}
+}
+
+/* Features Box */
+.feature-box.feature-box-style-2 {
+	.feature-box-icon {
+		height: 0;
+		top: 6px;
+	}
+}

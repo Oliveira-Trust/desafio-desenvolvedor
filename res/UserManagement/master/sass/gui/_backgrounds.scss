@@ -1,0 +1,57 @@
+/* Background Scales Overlay */
+.bg-color-scale-overlay {
+	position: relative;
+	&:before {
+		content: "";
+		display: block;
+		background: #000;
+		bottom: 0;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+		opacity: 0;
+	}
+
+	.bg-color-scale-overlay-wrapper {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+@for $i from 1 through 9 {
+	.bg-color-scale-overlay-#{$i} {
+		&:before {
+			$o: ($i/2);
+			opacity: unquote('0.' + str-replace(to-string($o), '.', '')) !important;
+		}
+	}
+}
+
+/* Background Transparent */
+.background-transparent,
+.bg-transparent {
+	background: transparent !important;
+}
+
+.bg-transparent-hover {
+	&:hover {
+		background-color: transparent !important;
+	}
+}
+
+.bg-color-transparent {
+	background-color: transparent !important;
+}
+
+/* Background White and Black */
+.bg-color-white {
+	background: #FFF !important;
+}
+
+.bg-color-black {
+	background: #000 !important;
+}

@@ -1,0 +1,92 @@
+html {
+	direction: $dir;
+	overflow-x: hidden;
+	box-shadow: none !important;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	background-color: $light-bg;
+	color: $color-font-default;
+	font-family: $font-primary;
+	font-size: $body-font-size + 0px;
+	line-height: $body-line-height + 0px;
+	margin: 0;
+	@include if-rtl() {
+		text-align: right;
+	}
+
+	a {
+		outline: none !important;
+	}
+
+}
+
+.body {
+	background-color: $light-bg;
+}
+
+html.safari:not(.no-safari-overflow-x-fix) .body {
+	overflow-x: hidden;
+}
+
+html[dir="rtl"] .body {
+	overflow-x: hidden;
+}
+
+li {
+	line-height: 24px;
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+
+	body {
+		font-size: 13px;
+	}
+
+}
+
+pre {
+    background: #f7f7f7;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+/* Envato Frame */
+.remove-envato-frame {
+	background: #404040;
+	border-radius: 0 0 4px 4px;
+	top: 0;
+	color: #FFF;
+	display: block;
+	height: 9px;
+	padding: 10px 20px 35px;
+	position: fixed;
+	right: 5px;
+	text-align: center;
+	text-decoration: none;
+	min-width: 50px;
+	z-index: 10000;
+	font-size: 0.8em;
+	opacity: 0.7;
+	&:hover {
+		opacity: 0.9;
+		text-decoration: none;
+		color: #FFF;
+	}
+	&:before {
+		font-family: 'Font Awesome 5 Free';
+		content: "\f00d" !important;
+		font-weight: 900;
+		display: inline-block;
+		padding-right: 5px;
+	}
+}
+
+@media (max-width: 991px) {
+	.remove-envato-frame {
+		display: none !important;
+	}
+}

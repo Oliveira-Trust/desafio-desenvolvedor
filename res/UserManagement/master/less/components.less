@@ -1,0 +1,1019 @@
+// Blockquote 
+blockquote.primary {
+	border-color: @color-primary;
+}
+
+// Nav Pills 
+.nav-pills > .active {
+	a {
+		&,
+		&:hover,
+		&:focus {
+			background-color: @color-primary;
+		}
+	}
+}
+
+.nav-pills-primary {
+	> li {
+		a:hover,
+		a:focus,
+		.nav-link:hover,
+		.nav-link:focus {
+			color: @color-primary-inverse;
+			background-color: lighten(@color-primary, 5%);
+		}
+		.nav-link.active {
+			color: @color-primary-inverse;
+			background-color: @color-primary;
+		}
+
+		& .active {
+			> a {
+				&,
+				&:hover,
+				&:active,
+				&:focus {
+					background-color: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+// Dropdown Menu 
+.dropdown-menu & >.active & > a,
+.dropdown-menu & >.active & > a:hover,
+.dropdown-menu & >.active & > a:focus {
+	background-color: @color-primary;
+}
+
+.open > .dropdown-toggle.btn-primary {
+	background: @color-primary;
+	border-color: darken(@color-primary, 5%);
+}
+
+body .btn-primary.dropdown-toggle {
+	border-left-color: lighten(@color-primary, 8%);
+}
+
+// Select 2 
+.select2-container--bootstrap {
+	.select2-results__option--highlighted[aria-selected] {
+		background-color: @color-primary;
+	}
+	.select2-dropdown {
+		border-color: lighten(@color-primary, 20%);
+	}
+}
+
+.select2-container--bootstrap.select2-container--focus .select2-selection,
+.select2-container--bootstrap.select2-container--open .select2-selection {
+	border-color: lighten(@color-primary, 20%);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(red(@color-primary), green(@color-primary), blue(@color-primary), 0.6);
+}
+
+// Buttons
+.btn-link {
+	color: @color-primary;
+	&:hover {
+		color: lighten(@color-primary, 5%);
+	}
+	&:active {
+		color: darken(@color-primary, 5%);
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+		@color-inverse:  extract(@value, 3);
+
+		.btn-@{name} {
+			.buttonBackground(@color, @color-inverse);
+		}
+
+		.btn-@{name}-scale-2 {
+			.buttonBackground(darken(@color, 5%), @color-inverse);
+		}
+
+		.show > .btn-@{name}.dropdown-toggle {
+			background-color: darken(@color, 7.5%);
+			background-image: none;
+			border-color: darken(@color, 10%) darken(@color, 10%) darken(@color, 20%);
+		}
+		
+	}
+}
+
+// Pagination
+.pagination {
+	> li > a,
+	> li > span,
+	> li > a:hover,
+	> li > span:hover,
+	> li > a:focus,
+	> li > span:focus {
+		color: @color-primary;
+	}
+	> .active > a,
+	> .active > span,
+	> .active > a:hover,
+	> .active > span:hover,
+	> .active > a:focus,
+	> .active > span:focus,
+	.page-item.active .page-link {
+		background-color: @color-primary !important;
+		border-color: @color-primary;
+	}
+}
+
+body.dark .pagination {
+	> li > a,
+	> li > span,
+	> li > a:hover,
+	> li > span:hover,
+	> li > a:focus,
+	> li > span:focus {
+		color: @color-primary;
+	}
+	> .active > a,
+	> .active > span,
+	> .active > a:hover,
+	> .active > span:hover,
+	> .active > a:focus,
+	> .active > span:focus {
+		background-color: @color-primary;
+		border-color: @color-primary;
+	}
+}
+
+.pagination > .active > a,
+body.dark .pagination > .active > a {
+	border-color: @color-primary @color-primary darken(@color-primary, 10%);
+	.buttonBackground(@color-primary);
+}
+
+// Switch
+.switch {
+	&.switch-primary {
+		.ios-switch .on-background {
+			background: @color-primary;
+		}
+	}
+}
+
+// Badge 
+.badge-primary {
+	background: @color-primary;
+}
+
+// Alternative Font Style 
+.alternative-font {
+	color: @color-primary;
+}
+
+// Hightlight 
+.highlight {
+	background-color: @color-primary;
+}
+
+// Drop Caps 
+p.drop-caps {
+	&:first-letter {
+		color: @color-primary;
+	}
+	&.drop-caps-style-2:first-letter {
+		background-color: @color-primary;
+	}
+}
+
+// Form 
+.form-control:focus {
+	border-color: lighten(@color-primary, 20%);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(red(@color-primary), green(@color-primary), blue(@color-primary), 0.3);
+}
+
+// Header 
+.header {
+	.toggle-sidebar-left {
+		background: @color-primary;
+	}
+}
+
+// Fullcalendar 
+.fc {
+
+	.fc-toolbar {
+		h2 {
+			&:before {
+				color: @color-primary;
+			}
+		}
+		.fc-button {
+			&.fc-state-active {
+				background-color: @color-primary;
+			}
+		}
+	}
+
+	.fc-day-grid-container {
+		height: auto !important;
+	}
+
+}
+
+.fc-event {
+	background: @color-primary;
+	border-color: @color-primary;
+}
+
+.fc-event.fc-event-primary {
+	background: @color-primary;
+	border-color: @color-primary;
+}
+
+// Maps 
+.jqvmap-zoomin,
+.jqvmap-zoomout {
+	background: @color-primary;
+}
+
+// Timeline 
+.timeline {
+
+	.tm-items {
+
+		& > li {
+
+			.tm-datetime {
+
+				.tm-datetime-time {
+					color: @color-primary;
+				}
+			}
+
+			.tm-icon {
+				border-color: @color-primary;
+				color: @color-primary;
+			}
+		}
+	}
+
+	&.timeline-simple {
+
+		.tm-body {
+
+			.tm-items {
+
+				& > li {
+
+					&:before {
+						background: @color-primary;
+						box-shadow: 0 0 0 3px #FFF, 0 0 0 6px @color-primary;
+					}
+
+				}
+			}
+		}
+
+	}
+}
+
+html.dark .timeline.timeline-simple .tm-body .tm-items > li:before {
+	background: @color-primary;
+	box-shadow: 0 0 0 3px lighten(#1d2127, 8%), 0 0 0 6px @color-primary;
+}
+
+// Pricing Tables
+.pricing-table {
+	.most-popular {
+		border-color: @color-primary;
+		h3 {
+			background-color: @color-primary;
+		}
+	}
+
+	&.princig-table-flat {
+		.plan {
+			h3 {
+				background-color: @color-primary;
+				span {
+					background: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+// Data Tables Loading 
+.dataTables_processing {
+	background-color: @color-primary;
+}
+
+// Accordion
+.accordion {
+	.card-header a {
+		color: @color-primary;
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+		@color-inverse:  extract(@value, 3);
+
+		.accordion {
+			&.accordion-@{name} {
+				.card-header {
+					background-color: @color !important;
+					a {
+						color: @color-inverse;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Toggle
+html {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+		@color-inverse:  extract(@value, 3);
+
+		.toggle-@{name} {
+			.toggle {
+				label {
+					color: @color;
+					border-left-color: @color;
+					border-right-color: @color;
+				}
+				&.active > label {
+					background-color: @color !important;
+					border-color: @color;
+					color: @color-inverse;
+				}
+			}
+			&.toggle-simple .toggle > label:after {
+				background-color: @color;
+			}
+		}
+	}
+}
+
+// Alerts 
+.alert-primary {
+	background-color: @color-primary;
+	border-color: darken(@color-primary, 3%);
+
+	.alert-link {
+		color: darken(@color-primary, 20%);
+	}
+}
+
+// Nestable 
+.dd-handle {
+	&:hover {
+		color: @color-primary !important;
+	}
+}
+
+.dd-placeholder {
+	background: lighten(@color-primary, 55%);
+	border-color: @color-primary;
+}
+
+// Cards 
+.card-highlight {
+
+	.card-header {
+		background-color: @color-primary;
+		border-color: @color-primary;
+	}
+
+	.card-body {
+		background-color: @color-primary;
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+		@color-inverse:  extract(@value, 3);
+	
+		.card-@{name} {
+			.card-header {
+				background: @color;
+				border-color: @color;
+			}
+		}
+
+		.card-featured-@{name} {
+			border-color: @color;
+
+			.card-title {
+				color: @color;
+			}
+		}
+
+		.card-group {
+			.card-accordion-@{name} {
+				background: @color;
+			}
+		}
+	}
+}
+
+// Progress Bar 
+.progress-bar {
+	background-color: @color-primary;
+}
+
+.progress {
+	.progress-bar-primary {
+		background-color: @color-primary;
+	}
+}
+
+// Toggle 
+.toggle {
+	&> {
+		label {
+			border-left-color: @color-primary;
+			color: @color-primary;
+		}
+	}
+	&.active {
+		> label {
+			background: @color-primary !important;
+			border-color: @color-primary;
+		}
+	}
+}
+
+// Treeview 
+.jstree-default {
+	.jstree-hovered {
+		background-color: lighten(@color-primary, 55%) !important;
+	}
+	.jstree-clicked {
+		background-color: lighten(@color-primary, 45%) !important;
+	}
+	.colored {
+		color: @color-primary !important;
+		.jstree-icon {
+			color: @color-primary !important;
+		}
+	}
+	.colored-icon {
+		.jstree-icon {
+			color: @color-primary !important;
+		}
+	}
+}
+
+// Widgets 
+.sidebar-widget {
+	&.widget-tasks {
+		ul {
+			li {
+				&:before {
+					border-color: @color-primary;
+				}
+
+			}
+		}
+	}
+}
+
+.widget-twitter-profile {
+	background-color: @color-primary;
+	.profile-quote {
+		background-color: lighten(@color-primary, 4%);
+		.quote-footer {
+			border-top-color: rgba(red(lighten(@color-primary, 10%)), green(lighten(@color-primary, 10%)), blue(lighten(@color-primary, 10%)), 0.7);
+		}
+	}
+}
+
+.widget-profile-info {
+	.profile-info {
+		.profile-footer {
+			border-top-color: rgba(red(lighten(@color-primary, 10%)), green(lighten(@color-primary, 10%)), blue(lighten(@color-primary, 10%)), 0.7);
+		}
+	}
+}
+
+// Thumb Info 
+.thumb-info {
+	.thumb-info-type {
+		background-color: @color-primary;
+	}
+}
+
+// Social Icons 
+.social-icons-list {
+	a {
+		background: @color-primary;
+	}
+}
+
+// Notifications 
+.notifications {
+	.notification-menu {
+		.notification-title {
+			background: @color-primary;
+			.badge-default {
+				background-color: darken(@color-primary, 10%);
+			}
+		}
+	}
+}
+
+.notifications .notification-menu,
+.notifications .notification-icon {
+	&:before {
+		border-bottom-color: @color-primary;
+	}
+}
+
+.ui-pnotify {
+	.notification-primary {
+		background: rgba(red(@color-primary), green(@color-primary), blue(@color-primary), 0.95);
+	}
+
+	&.stack-bar-top,
+	&.stack-bar-bottom {
+		.notification-primary {
+			background: @color-primary;
+		}
+	}
+}
+
+.ui-pnotify.notification-primary {
+	.notification,
+	.notification-primary {
+		background: rgba(red(@color-primary), green(@color-primary), blue(@color-primary), 0.95);
+	}
+
+	&.stack-bar-top,
+	&.stack-bar-bottom {
+		.notification,
+		.notification-primary {
+			background: @color-primary;
+		}
+	}
+}
+
+// Modal 
+.modal-block-primary {
+	.fa, .fab, .fal, .far, .fas {
+		color: @color-primary;
+	}
+	&.modal-header-color {
+		.card-header {
+			background-color: @color-primary;
+		}
+	}
+	&.modal-full-color {
+		.card {
+			background-color: lighten(@color-primary, 8%);
+		}
+		.card-header {
+			background-color: @color-primary;
+		}
+		.card-footer {
+			background-color: lighten(@color-primary, 8%);
+		}
+	}
+}
+
+// Modal Icon 
+.modal-block-primary .modal-icon {
+	.fa, .fab, .fal, .far, .fas {
+		color: @color-primary;
+	}
+}
+
+// Tabs
+html body,
+html.dark body {
+	.tabs {
+		.nav-tabs {
+			.nav-link, .nav-link:hover {
+				color: @color-primary;
+			}
+
+			.nav-link:hover,
+			.nav-link:focus {
+				border-top-color: @color-primary;
+			}
+
+			li.active .nav-link {
+				border-top-color: @color-primary;
+				color: @color-primary;
+			}
+			&.nav-justified {
+				.nav-link:hover,
+				.nav-link:focus {
+					border-top-color: @color-primary;
+				}
+			}
+		}
+		&.tabs-bottom {
+			.nav-tabs {
+				li .nav-link:hover,
+				li.active .nav-link,
+				li.active .nav-link:hover,
+				li.active .nav-link:focus {
+					border-bottom-color: @color-primary;
+				}
+			}
+		}
+		&.tabs-vertical.tabs-left {
+			.nav-tabs {
+				li .nav-link:hover,
+				li.active .nav-link,
+				li.active .nav-link:hover,
+				li.active .nav-link:focus {
+					border-left-color: @color-primary;
+				}
+			}
+		}
+		&.tabs-vertical.tabs-right {
+			.nav-tabs {
+				li .nav-link:hover,
+				li.active .nav-link,
+				li.active .nav-link:hover,
+				li.active .nav-link:focus {
+					border-right-color: @color-primary;
+				}
+			}
+		}
+		&.tabs-simple {
+			.nav-tabs {
+				> li.active .nav-link,
+				> li.active .nav-link:focus,
+				> li .nav-link:hover,
+				> li.active .nav-link:hover {
+					border-top-color: @color-primary;
+					color: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+html body,
+html.dark body {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+		@color-inverse:  extract(@value, 3);
+
+		.tabs-@{name} {
+			.nav-tabs {
+				&,
+				&.nav-justified {
+					li {
+						.nav-link {
+							&,
+							&:hover {
+								color: @color;
+							}
+
+							&:hover {
+								border-top-color: @color;
+							}
+						}
+
+						&.active {
+							.nav-link,
+							.nav-link:hover,
+							.nav-link:focus {
+								border-top-color: @color;
+								color: @color;
+							}
+						}
+					}
+				}
+			}
+
+			&.tabs-bottom {
+				.nav-tabs {
+					&,
+					&.nav-justified {
+						li {
+							.nav-link {
+								&:hover {
+									border-bottom-color: @color;
+								}
+							}
+
+							&.active {
+								.nav-link,
+								.nav-link:hover,
+								.nav-link:focus {
+									border-bottom-color: @color;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.tabs-vertical {
+				&.tabs-left {
+					li {
+						.nav-link {
+							&:hover {
+								border-left-color: @color;
+							}
+						}
+
+						&.active {
+							.nav-link,
+							.nav-link:hover,
+							.nav-link:focus {
+								border-left-color: @color;
+							}
+						}
+					}
+				}
+
+				&.tabs-right {
+					li {
+						.nav-link {
+							&:hover {
+								border-right-color: @color;
+							}
+						}
+
+						&.active {
+							.nav-link,
+							.nav-link:hover,
+							.nav-link:focus {
+								border-right-color: @color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Tab Navigation 
+.tab-navigation {
+	nav {
+		// Tabs
+		> ul {
+			> li {
+				&:hover:not(.nav-expanded) {
+					> a {
+						background: @color-primary;
+					}
+				}
+
+				// Dropdowns
+				> ul {
+					> li {
+						&.nav-active {
+							> a {
+								color: @color-primary !important;
+							}
+						}
+						.dropdown-menu {
+							li {
+								&.nav-active {
+									> a {
+										color: @color-primary !important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+
+// Tab Navigation - Button Toggle Menu 
+html.has-tab-navigation {
+	.toggle-menu {
+		background: @color-primary;
+	}
+}
+
+// Search Results 
+.search-content {
+	.search-toolbar {
+		.nav-pills {
+			li.active {
+				a {
+					color: @color-primary;
+					border-bottom-color: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+.search-results-list {
+	.result-thumb {
+		.fa, .fab, .fal, .far, .fas {
+			background: @color-primary;
+		}
+	}
+}
+
+// Scrollable 
+.scrollable.colored-slider {
+	.scrollable-slider {
+		background: @color-primary;
+	}
+}
+
+html.dark {
+	.search-content {
+		.search-toolbar {
+			.nav-pills {
+				li.active {
+					a {
+						&,
+						&:hover,
+						&:focus {
+							color: @color-primary;
+							border-bottom-color: @color-primary;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Time Picker 
+.bootstrap-timepicker-widget table td a:hover {
+	background-color: @color-primary;
+}
+
+// Loading Progress 
+#nprogress {
+	.bar {
+		background: @color-primary;
+	}
+	.peg {
+		box-shadow: 0 0 10px 1px @color-primary, 0 0 5px @color-primary;
+	}
+}
+
+// Zoom 
+.img-thumbnail {
+	.zoom {
+		background: @color-primary;
+	}
+}
+
+// Owl Carousel 
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+	background-color: darken(@color-primary, 6%);
+}
+
+.owl-theme .owl-nav [class*="owl-"] {
+	background: @color-primary;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:focus,
+.owl-theme .owl-nav [class*="owl-"]:hover {
+	background-color: lighten(@color-primary, 6%);
+}
+
+// Chartist 
+.ct-chart .tooltip {
+	background: @color-primary;
+
+	&:after {
+		border-top-color: @color-primary;
+	}
+}
+
+.ct-chart .ct-series.ct-series-a .ct-bar,
+.ct-chart .ct-series.ct-series-a .ct-line,
+.ct-chart .ct-series.ct-series-a .ct-point,
+.ct-chart .ct-series.ct-series-a .ct-slice.ct-donut {
+	stroke: @color-primary;
+}
+
+.ct-chart .ct-series.ct-series-a .ct-area,
+.ct-chart .ct-series.ct-series-a .ct-slice:not(.ct-donut) {
+	fill: @color-primary;
+}
+
+.ct-chart .ct-series.ct-series-b .ct-bar,
+.ct-chart .ct-series.ct-series-b .ct-line,
+.ct-chart .ct-series.ct-series-b .ct-point,
+.ct-chart .ct-series.ct-series-b .ct-slice.ct-donut {
+	stroke: darken(@color-primary, 15%);
+}
+
+.ct-chart .ct-series.ct-series-b .ct-area,
+.ct-chart .ct-series.ct-series-b .ct-slice:not(.ct-donut) {
+	fill: darken(@color-primary, 15%);
+}
+
+.ct-chart .ct-series.ct-series-i .ct-bar,
+.ct-chart .ct-series.ct-series-i .ct-line,
+.ct-chart .ct-series.ct-series-i .ct-point,
+.ct-chart .ct-series.ct-series-i .ct-slice.ct-donut {
+	stroke: darken(@color-primary, 15%);
+}
+
+.ct-chart .ct-series.ct-series-i .ct-area,
+.ct-chart .ct-series.ct-series-i .ct-slice:not(.ct-donut) {
+	fill: darken(@color-primary, 15%);
+}
+
+.ct-chart .ct-series.ct-series-j .ct-bar,
+.ct-chart .ct-series.ct-series-j .ct-line,
+.ct-chart .ct-series.ct-series-j .ct-point,
+.ct-chart .ct-series.ct-series-j .ct-slice.ct-donut {
+	stroke: lighten(@color-primary, 15%);
+}
+
+.ct-chart .ct-series.ct-series-j .ct-area,
+.ct-chart .ct-series.ct-series-j .ct-slice:not(.ct-donut) {
+	fill: lighten(@color-primary, 15%);
+}
+
+.ct-chart .ct-series.ct-series-n .ct-bar,
+.ct-chart .ct-series.ct-series-n .ct-line,
+.ct-chart .ct-series.ct-series-n .ct-point,
+.ct-chart .ct-series.ct-series-n .ct-slice.ct-donut {
+	stroke: darken(@color-primary, 35%);
+}
+
+.ct-chart .ct-series.ct-series-n .ct-area,
+.ct-chart .ct-series.ct-series-n .ct-slice:not(.ct-donut) {
+	fill: darken(@color-primary, 35%);
+}
+
+.ct-chart .ct-series.ct-series-o .ct-bar,
+.ct-chart .ct-series.ct-series-o .ct-line,
+.ct-chart .ct-series.ct-series-o .ct-point,
+.ct-chart .ct-series.ct-series-o .ct-slice.ct-donut {
+	stroke: lighten(@color-primary, 35%);
+}
+
+.ct-chart .ct-series.ct-series-o .ct-area,
+.ct-chart .ct-series.ct-series-o .ct-slice:not(.ct-donut) {
+	fill: lighten(@color-primary, 35%);
+}
+
+// Call to Action 
+.call-to-action {
+	&.call-to-action-primary {
+		background-color: @color-primary;
+	}
+}
+
+// Simple List 
+ul.simple-bullet-list {
+	li {
+		&:before {
+			border-color: @color-primary;
+		}
+	}
+}
+
+// Simple Card List 
+.simple-card-list {
+	li.primary {
+		background: @color-primary;
+	}
+}
+
+// Widget - Simple Todo List 
+.simple-todo-list {
+
+	li {
+		&.completed {
+			&:before {
+				color: @color-primary;
+			}
+		}
+	}
+
+}
+
+// Tagsinput
+.bootstrap-tagsinput .badge {
+	background: @color-primary;
+}

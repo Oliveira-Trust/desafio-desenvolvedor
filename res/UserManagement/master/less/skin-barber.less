@@ -1,0 +1,38 @@
+@import "variables";
+
+@border-radius: 0;
+
+@color-primary: #C29E75;
+
+@color-secondary: #B38F66;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+// SVG Color
+.svg-primary {
+	circle {
+		stroke: @color-primary;
+		fill: @color-primary;
+	}
+}
+
+// Custom Side Dots Color
+.custom-side-dots {
+	&:before, &:after {
+	    background-color: @color-primary;
+	}
+}
+
+// Custom Working Hours
+.custom-working-hours {
+	.custom-working-hours-item {
+	    &:hover,
+	    &.active {
+	    	background-color: @color-primary;
+	    }
+	}
+}

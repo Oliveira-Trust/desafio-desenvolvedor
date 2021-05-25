@@ -1,0 +1,597 @@
+/* Animations */
+.appear-animation {
+	opacity: 0;
+}
+
+.appear-animation-visible {
+	opacity: 1;
+}
+
+/* Transitions */
+.transition-2ms {
+	transition: all 0.2s ease-in-out;
+}
+
+/* Side Header Arrow Animations */
+@keyframes sideMenuArrow {
+	0% {
+		left: 5px;
+	}
+	50%{
+		left: 10px;
+	}
+	100% {
+		left: 5px;
+	}
+}
+
+@keyframes sideMenuArrowBack {
+	0% {
+		right: 5px;
+	}
+	50%{
+		right: 10px;
+	}
+	100% {
+		right: 5px;
+	}
+}
+
+/* Mask Up */
+@keyframes maskUp {
+	from {
+	    transform: translate(0, 100%);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+/* Mask Right */
+@keyframes maskRight {
+	from {
+	    transform: translate(-100%, 0);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+/* Mask Down */
+@keyframes maskDown {
+	from {
+	    transform: translate(0, -100%);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+/* Mask Left */
+@keyframes maskLeft {
+	from {
+	    transform: translate(100%, 0);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+.maskUp {
+	animation-name: maskUp;
+}
+
+.maskRight {
+	animation-name: maskRight;
+}
+
+.maskDown {
+	animation-name: maskDown;
+}
+
+.maskLeft {
+	animation-name: maskLeft;
+}
+
+// Header Effect - Reveal
+@keyframes headerReveal {
+	from {
+		top: -150px;
+	}	
+	to {
+		top: 0;
+	}
+}
+
+/* Fade In Up Shorter */
+@keyframes fadeInUpShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(0, 50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.fadeInUpShorter {
+	animation-name: fadeInUpShorter;
+}
+
+/* Fade In Up Shorter Plus */
+@keyframes fadeInUpShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(0, 15px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.fadeInUpShorterPlus {
+	animation-name: fadeInUpShorterPlus;
+}
+
+/* Fade In Left Shorter */
+@keyframes fadeInLeftShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(50px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftShorter {
+	animation-name: fadeInLeftShorter;
+}
+
+/* Fade In Left Shorter Plus */
+@keyframes fadeInLeftShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(15px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftShorterPlus {
+	animation-name: fadeInLeftShorterPlus;
+}
+
+/* Fade In Right Shorter */
+@keyframes fadeInRightShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightShorter {
+	animation-name: fadeInRightShorter;
+}
+
+/* Fade In Right Shorter Plus */
+@keyframes fadeInRightShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(-15px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightShorterPlus {
+	animation-name: fadeInRightShorterPlus;
+}
+
+/* Fade In Right Shorter With Opacity */
+@keyframes fadeInRightShorterOpacity {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, 0);
+	}
+
+	to {
+	    opacity: 0.7;
+	    transform: none;
+	}
+}
+
+.fadeInRightShorterOpacity {
+	animation-name: fadeInRightShorterOpacity;
+}
+
+/* Fade In Down Shorter */
+@keyframes fadeInDownShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(0, -50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInDownShorter {
+	animation-name: fadeInDownShorter;
+}
+
+/* Fade In Down Shorter Plus */
+@keyframes fadeInDownShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(0, -15px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInDownShorterPlus {
+	animation-name: fadeInDownShorterPlus;
+}
+
+/* Fade In Right and Down Shorter */
+@keyframes fadeInRightDownShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, -50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightDownShorter {
+	animation-name: fadeInRightDownShorter;
+}
+
+/* Fade In Right and Up Shorter */
+@keyframes fadeInRightUpShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, 50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightUpShorter {
+	animation-name: fadeInRightUpShorter;
+}
+
+/* Fade In Left and Down Shorter */
+@keyframes fadeInLeftDownShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(50px, -50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftDownShorter {
+	animation-name: fadeInLeftDownShorter;
+}
+
+/* Fade In Left and Up Shorter */
+@keyframes fadeInLeftUpShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(50px, 50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftUpShorter {
+	animation-name: fadeInLeftUpShorter;
+}
+
+/* Expand In */
+@keyframes expandIn {
+	from {
+	    opacity: 0;
+	    transform: scale(0.8);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: scale(1);
+	}
+}
+
+.expandIn {
+	animation-name: expandIn;
+}
+
+
+/* Gradient Transition */
+@keyframes gradientTransition {
+	0% {
+		background-position:0% 50%
+	}
+    50% {
+    	background-position:100% 50%
+    }
+    100% {
+    	background-position:0% 50%
+    }
+}
+
+/* Slider Scroll Button Animation */
+@keyframes sliderScrollButton {
+	0% {
+		opacity: 1;
+		transform: translate3d(-50%, 0, 0);
+	}
+
+	70% {
+		opacity: 1;
+		transform: translate3d(-50%, 10px, 0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate3d(-50%, 10px, 0);
+	}
+}
+
+/* Arrow Left Right */
+@keyframes arrowLeftRight {
+	0% {
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	50% {
+		transform: translate3d(1px, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(-1px, 0, 0);
+	}
+}
+
+/* Nav Item Arrow */
+@keyframes navItemArrow {
+	0% {
+		position: relative;
+		#{$left}: -1px;
+	}
+	50% {
+		position: relative;
+		#{$left}: 3px;
+	}
+	100% {
+		position: relative;
+		#{$left}: -1px;
+	}
+}
+
+/* Hover 3d Effect */
+.hover-in {
+	transition: .1s ease-out !important;
+}
+
+.hover-out {
+	transition: .1s ease-in !important;
+}
+
+.hover-3d {
+	transition: none;
+}
+
+/* Hotspot */
+@keyframes hotspot-pulsate {
+	0% {
+		transform: scale(1);
+		opacity:0.8;
+	}
+	45% {
+		transform: scale(1.75);
+		opacity:0;
+	}
+}
+@keyframes stop-hotspot-pulsate {
+	from {
+		opacity:0.4;
+	}
+	to {
+		transform: scale(2);
+		opacity:0;
+	}
+}
+
+/* Dot Pulse */
+@keyframes dotPulse {
+	from {
+		opacity: 1;
+		transform: scale(0.2);
+	}
+	to {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+.dotPulse {
+	animation-name: dotPulse;
+	animation-iteration-count: infinite;
+	animation-duration: 4s;
+}
+
+/* Blur In */
+@keyframes blurIn {
+	from {
+		opacity: 0;
+		filter: blur(20px);
+		transform: scale(1.3);
+	}
+	to {
+		opacity: 1;
+		filter: blur(0);
+		transform: none;
+	}
+}
+
+.blurIn {
+	animation-name: blurIn;
+}
+
+/* Ken Burns To Right */
+@keyframes kenBurnsToRight {
+	from {
+		transform: scale(1.2);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.kenBurnsToRight {
+	animation-name: kenBurnsToRight;
+	animation-timing-function: linear;
+	transform-origin: right;
+}
+
+/* Ken Burns To Left */
+@keyframes kenBurnsToLeft {
+	from {
+		transform: scale(1.2);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.kenBurnsToLeft {
+	animation-name: kenBurnsToLeft;
+	animation-timing-function: linear;
+	transform-origin: left;
+}
+
+/* Ken Burns To Left and Top */
+.kenBurnsToLeftTop {
+	animation-name: kenBurnsToLeft;
+	animation-timing-function: linear;
+	transform-origin: left top;
+}
+
+/* Moving From Top to Bottom */
+@keyframes bgPositionBottomToTop {
+	from {
+		background-position: bottom;
+	}
+	to {
+		background-position: top;
+	}
+}
+
+.bgPositionBottomToTop {
+	animation-name: bgPositionBottomToTop;
+	animation-timing-function: linear;
+	transform-origin: right;
+}
+
+/* Pulse */
+@keyframes pulseAnim {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+	to {
+		transform: scale(1.4);
+		opacity: 0;
+	}
+}
+
+.pulseAnim {
+	&:not(:hover) {
+		&:after {
+			animation-name: pulseAnim;
+		}
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: inherit;
+		border-radius: inherit;
+		z-index: -1;
+	}
+
+	&.pulseAnimAnimated {
+		&:after {
+			animation-duration: 1.5s;
+			animation-iteration-count: infinite;
+			animation-delay: 1s; 
+		}
+	}
+
+	&:not(i) {
+		&:after {
+			z-index: 0;
+		}
+		* {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}
+
+/* Basic Rotation */
+@keyframes basicRotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.basicRotation {
+	animation-name: basicRotation;
+}

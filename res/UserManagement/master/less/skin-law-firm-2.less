@@ -1,0 +1,98 @@
+@import "variables";
+
+@color-primary: #ad9263;
+@color-primary-inverse: #FFF;
+
+@color-secondary: #e36159;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+/*
+* Accordion
+*/
+.custom-accordion-style-1 {
+	> .card {
+		.card-header {
+			a {
+				&:not(.collapsed) {
+					color: @color-primary !important;
+					&:after {
+						color: @color-primary;
+					}
+				}
+			}
+		}
+
+		&:hover {
+			.card-header {
+				a {
+					color: @color-primary !important;
+					&:after {
+						color: @color-primary;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
+* Background
+*/
+.bg-primary-darken {
+	background-color: darken(@color-primary, 30%) !important;
+}
+
+/*
+* Buttons
+*/
+.custom-btn-primary-darken {
+	color: @color-primary-inverse;
+	background-color: darken(@color-primary, 30%);
+	&.active,
+	&:focus,
+	&:hover {
+		color: @color-primary-inverse;
+		background-color: darken(@color-primary, 20%);
+	}
+}
+
+/*
+* Cards
+*/
+.custom-card-style-1 {
+	&:hover {
+		.card-title {
+			color: @color-primary !important;
+		}
+	}
+}
+
+/*
+* Social Icons
+*/
+.social-icons {
+	&.custom-social-icons-style-1 {
+		li {
+			a {
+				color: @color-primary !important;
+			}
+		}
+	}
+}
+
+/*
+* Custom See More Overlay
+*/
+.custom-seemore-overlay {
+	.custom-seemore-overlay-button {
+	    &:before {
+			background: @color-primary;
+			background: linear-gradient(180deg, rgba(2,0,36,0) 0%, @color-primary 100%);
+		}
+	}
+}

@@ -1,0 +1,143 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?>
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close d-md-none">
+							Collapse <i class="fas fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark"></div>
+			
+								<ul>
+									<li>
+										<time datetime="2017-04-19T00:00+00:00">04/19/2017</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="/res/UserManagement/img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="/res/UserManagement/img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="/res/UserManagement/img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="/res/UserManagement/img/!sample-user.jpg" alt="Joseph Doe" class="rounded-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+
+		</section>
+
+		<!-- Vendor --> 
+
+		<script src="/res/UserManagement/vendor/jquery/jquery.js"></script>
+		<script src="/res/UserManagement/vendor/input-mask/dist/jquery.inputmask.min.js"></script>
+		<script src="/res/UserManagement/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="/res/UserManagement/vendor/jquery-cookie/jquery.cookie.js"></script>
+		<script src="/res/UserManagement/vendor/popper/umd/popper.min.js"></script>
+		<script src="/res/UserManagement/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="/res/UserManagement/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="/res/UserManagement/vendor/common/common.js"></script>
+		<script src="/res/UserManagement/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="/res/UserManagement/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+		<script src="/res/UserManagement/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script src="/res/UserManagement/vendor/raphael/raphael.js"></script>
+		<script src="/res/UserManagement/vendor/morris/morris.js"></script>
+		<script src="/res/UserManagement/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+		<script src="/res/UserManagement/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+		<script src="/res/UserManagement/vendor/jquery-validation/jquery.validate.js"></script>
+		<script src="/res/UserManagement/vendor/select2/js/select2.js"></script>
+		<script src="/res/UserManagement/vendor/dropzone/dropzone.js"></script>
+		<script src="/res/UserManagement/vendor/pnotify/pnotify.custom.js"></script>
+
+				<!-- Specific Page Vendor -->
+				<script src="/res/UserManagement/vendor/jquery-ui/jquery-ui.js"></script>
+				<script src="/res/UserManagement/vendor/jqueryui-touch-punch/jquery.ui.touch-punch.js"></script>
+			
+				<script src="/res/UserManagement/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+				<script src="/res/UserManagement/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
+				<script src="/res/UserManagement/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+				<script src="/res/UserManagement/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+				<script src="/res/UserManagement/vendor/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+				<script src="/res/UserManagement/vendor/fuelux/js/spinner.js"></script>			
+				<script src="/res/UserManagement/vendor/bootstrap-markdown/js/markdown.js"></script>
+				<script src="/res/UserManagement/vendor/bootstrap-markdown/js/to-markdown.js"></script>
+				<script src="/res/UserManagement/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+				<script src="/res/UserManagement/vendor/codemirror/lib/codemirror.js"></script>
+				<script src="/res/UserManagement/vendor/codemirror/addon/selection/active-line.js"></script>
+				<script src="/res/UserManagement/vendor/codemirror/addon/edit/matchbrackets.js"></script>
+				<script src="/res/UserManagement/vendor/codemirror/mode/javascript/javascript.js"></script>
+				<script src="/res/UserManagement/vendor/codemirror/mode/xml/xml.js"></script>
+				<script src="/res/UserManagement/vendor/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+				<script src="/res/UserManagement/vendor/codemirror/mode/css/css.js"></script>
+				<script src="/res/UserManagement/vendor/summernote/summernote-bs4.js"></script>
+				<script src="/res/UserManagement/vendor/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+				<script src="/res/UserManagement/vendor/ios7-switch/ios7-switch.js"></script>
+	
+			<!-- Specific Page Vendor -->
+			<script src="/res/UserManagement/vendor/owl.carousel/owl.carousel.js"></script>
+		<!-- Theme Base, Components and Settings -->
+		<script src="/res/UserManagement/js/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="/res/UserManagement/js/custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="/res/UserManagement/js/theme.init.js"></script>
+		<!-- Analytics to Track Preview Website -->
+
+		<!-- Examples -->
+		<script src="/res/UserManagement/js/examples/examples.header.menu.js"></script>
+		<script src="/res/UserManagement/js/examples/examples.ecommerce.dashboard.js"></script>
+		<script src="/res/UserManagement/js/examples/examples.ecommerce.datatables.list.js"></script>
+		<script src="/res/UserManagement/js/examples/examples.ecommerce.form.js"></script>
+			<!-- Examples -->
+			<script src="/res/UserManagement/js/examples/examples.modals.js"></script>
+			<script src="/res/UserManagement/js/examples/examples.advanced.form.js"></script>
+			
+		<script src="/res/UserManagement/js/examples/examples.ecommerce.orders.detail.js"></script>
+	</body>
+</html>

@@ -1,0 +1,248 @@
+/* Arrows */
+button.mfp-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 0;
+    border-radius: 4px;
+    background: $color-dark;
+    width: 35px;
+    height: 100px;
+    color: #FFF;
+    margin: 0 !important;
+    transform: translate3d(0, -50%, 0);
+	&:before {
+		content: none;
+	}
+	&:after {
+    	content: "\f053";
+		font-family: 'Font Awesome 5 Free';
+	    font-weight: 900;
+	    border: none !important;
+	}
+
+	&.mfp-arrow-left {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		&:after {
+		    margin-left: 0;
+		    margin-top: 0;
+		    position: relative;
+		    top: auto;
+		    left: -2px;
+		    width: auto;
+		    height: auto;
+		}
+	}
+
+	&.mfp-arrow-right {
+		left: auto;
+		right: 0;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	    &:after {
+	    	content: "\f054";
+		    margin-left: 0;
+		    margin-top: 0;
+		    position: relative;
+		    top: auto;
+		    left: auto;
+		    right: -2px;
+		    width: auto;
+		    height: auto;
+	    }
+	}
+}
+
+/* Close */
+.mfp-close,
+.mfp-close-btn-in .mfp-close {
+	font-family: $font-primary;
+	font-weight: $font-weight-semi-bold;
+	font-size: 22px;
+	color: #838383;
+	@include if-rtl() {
+		left: 0;
+		right: auto;
+	}
+}
+
+/* No Margins */
+.mfp-no-margins {
+	img.mfp-img {
+		padding: 0;
+	}
+	.mfp-figure:after {
+		top: 0;
+		bottom: 0;
+	}
+	.mfp-container {
+		padding: 0;
+	}
+}
+
+/* Zoom */
+.mfp-with-zoom {
+	.mfp-container, &.mfp-bg {
+		opacity: 0.001;
+		transition: all 0.3s ease-out;
+	}
+	&.mfp-ready {
+		.mfp-container {
+			opacity: 1;
+		}
+		&.mfp-bg {
+			opacity: 0.8;
+		}
+	}
+	&.mfp-removing {
+		.mfp-container, &.mfp-bg {
+			opacity: 0;
+		}
+	}
+}
+
+/* Animnate */
+.my-mfp-zoom-in {
+	.zoom-anim-dialog {
+		opacity: 0;
+		transition: all 0.2s ease-in-out;
+		transform: scale(0.8);
+	}
+	&.mfp-ready .zoom-anim-dialog {
+		opacity: 1;
+		transform: scale(1);
+	}
+	&.mfp-removing .zoom-anim-dialog {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+	&.mfp-bg {
+		opacity: 0.001;
+		transition: opacity 0.3s ease-out;
+	}
+	&.mfp-ready.mfp-bg {
+		opacity: 0.8;
+	}
+	&.mfp-removing.mfp-bg {
+		opacity: 0;
+	}
+}
+
+.my-mfp-slide-bottom {
+	.zoom-anim-dialog {
+		opacity: 0;
+		transition: all 0.2s ease-out;
+		transform: translateY(-20px) perspective(600px) rotateX(10deg);
+	}
+	&.mfp-ready .zoom-anim-dialog {
+		opacity: 1;
+		transform: translateY(0) perspective(600px) rotateX(0);
+	}
+	&.mfp-removing .zoom-anim-dialog {
+		opacity: 0;
+		transform: translateY(-10px) perspective(600px) rotateX(10deg);
+	}
+	&.mfp-bg {
+		opacity: 0.01;
+		transition: opacity 0.3s ease-out;
+	}
+	&.mfp-ready.mfp-bg {
+		opacity: 0.8;
+	}
+	&.mfp-removing.mfp-bg {
+		opacity: 0;
+	}
+}
+
+/* Fade */
+.mfp-fade {
+	&.mfp-bg {
+		opacity: 0;
+		transition: all 0.15s ease-out;
+		&.mfp-ready {
+			opacity: 0.8;
+		}
+		&.mfp-removing {
+			opacity: 0;
+		}
+	}
+	&.mfp-wrap {
+		.mfp-content {
+			opacity: 0;
+			transition: all 0.15s ease-out;
+		}
+		&.mfp-ready .mfp-content {
+			opacity: 1;
+		}
+		&.mfp-removing .mfp-content {
+			opacity: 0;
+		}
+	}
+}
+
+/* Dialog */
+.dialog {
+	background: white;
+	padding: 20px 30px;
+	text-align: $left;
+	margin: 40px auto;
+	position: relative;
+	max-width: 600px;
+	&.dialog-xs {
+		max-width: 200px;
+	}
+	&.dialog-sm {
+		max-width: 400px;
+	}
+	&.dialog-md {
+		max-width: 600px;
+	}
+	&.dialog-lg {
+		max-width: 900px;
+	}
+
+	// Close Button Out of Dialog
+	&.mfp-close-out {
+		.mfp-close {
+			top: -50px;
+			#{$right}: -15px;
+			color: #FFF;
+		}
+	}
+}
+
+/* White Popup Block */
+.white-popup-block {
+	background: #FFF;
+	padding: 20px 30px;
+	text-align: $left;
+	max-width: 600px;
+	margin: 40px auto;
+	position: relative;
+	&.white-popup-block-xs {
+		max-width: 200px;
+	}
+	&.white-popup-block-sm {
+		max-width: 400px;
+	}
+	&.white-popup-block-md {
+		max-width: 600px;
+	}
+	&.white-popup-block-lg {
+		max-width: 900px;
+	}
+}
+
+/* Lightbox Opened */
+html.lightbox-opened {
+	&.sticky-header-active #header .header-body {
+		padding-#{$right}: 17px;
+	}
+}
+
+/* Modal Opened */
+.modal-open {
+	padding-#{$right}: 0 !important;
+}

@@ -1,0 +1,41 @@
+.Form-Color{
+    background-color: rgb(240, 240, 240); border-color: rgb(247, 247, 247);
+}
+
+
+.img-product-alta{										
+    width: 600px !important;
+    height: 300px !important; 
+    object-fit: cover;
+    /* object-fit: contain; */
+} 
+
+.img-product-novidade{										
+    width: 600px !important;
+    height: 210px !important; 
+    object-fit: cover;
+    /* object-fit: contain; */
+} 
+
+
+.img-product-modal{										
+    
+    height: 390px !important; 
+    object-fit: cover;
+    /* object-fit: contain; */
+} 
+
+.img-product-pagina{										
+  
+    height: 480px !important; 
+    object-fit: cover;
+    /* object-fit: contain; */
+} 
+
+
+.img-product-pagina-icon{										
+  
+    height: 100% !important; 
+    object-fit: cover;
+    /* object-fit: contain; */
+} 

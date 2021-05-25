@@ -1,0 +1,13 @@
+/* Add here all your CSS customizations */
+
+
+.Form-Color{
+    background-color: rgb(240, 240, 240); border-color: rgb(247, 247, 247);
+}
+
+.img-product-edit{										
+
+    height: 200px !important; 
+    object-fit:contain;
+    /* object-fit: contain; */
+} 

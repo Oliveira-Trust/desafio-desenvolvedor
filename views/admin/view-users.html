@@ -1,0 +1,277 @@
+
+
+
+{include="dashboardMenu"}
+<div class="container-fluid">
+  <div class="row">
+   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard - {$user.desperson}</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+        
+              <form action="/admin/usuarios" >
+              
+                <div class="input-group">
+
+                  <input type="text" class="form-control pull-right" id="search" name="buscar" placeholder="buscar"> 
+
+                  <button type="submit" class="btn btn-search"><span data-feather="search"></span></button>
+
+                </div>
+              
+              </form>
+
+          </div>
+     
+        </div>
+      </div>
+
+
+
+
+      
+
+     <a href="/admin/usuarios" class="title1 color1">Usuários</a>
+
+      {if="$error"}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       {$error}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {/if}
+
+      {if="$sucess"}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+       {$sucess}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {/if}
+
+
+    {if="$nrtotal > 0"}
+ 
+ 
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+      
+        
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Usuário</th>
+            <th>Email</th>         
+            <th>Comprador</th>
+            <th>Vendedor</th>
+            <th>Status</th>
+            <th>Auto-Status</th>
+            <th>Data Registro</th>
+            <th colspan="3"></th>
+
+          </tr>
+        </thead>
+       
+
+        <tbody>
+
+              {loop="$results"}
+              <tr>
+                <td>{$value.iduser}</td>       
+                <td>{$value.desperson}</td>       
+                <td>{$value.deslogin}</td>  
+                <td>{if="$value.inbuyer == 1"}Sim{else}Não{/if}</td>               
+                <td>{if="$value.inseller == 1"}Sim{else}Não{/if}</td>                           
+                <td>{if="$value.instatus == 1"}Ativo{else}Inativo{/if}</td>      
+                <td>{if="$value.inautostatus == 1"}Ativo{else}Inativo{/if}</td>
+                <td>{function="FormatDate($value.dtregister)"}</td>               
+                <td><a href='/admin/usuarios/editar/{function="setHash($value.iduser)"} '><button class="btn btn-primary">Editar</button></a></td>     
+                  <td><button class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#modal{$counter}">Visualizar </button></td> 
+                <td><a href='/admin/usuarios/mudar-senha/{function="setHash($value.iduser)"} '><button class="btn btn-danger">Alterar Senha</button></a> </td>                                  
+               </td>                
+              </tr>
+
+
+
+              <!-- Modal -->
+              <div class="modal fade" id="modal{$counter}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Informações do Usuário de ID : {$value.iduser}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                  
+                      <h5>Nome : <span class="lighter-1">{$value.desperson}</span> </h5>
+                      <h5>Apelido : <span class="lighter-1">{$value.desnick}</span> </h5>
+                      <h5>Login : <span class="lighter-1">{$value.deslogin}</span> </h5>                   
+                      <h5>Admin : <span class="lighter-1">{if="$value.inadmin == 1"}Sim{else}Não{/if}</span> </h5>
+                      <h5>Vendedor : <span class="lighter-1">{if="$value.inseller == 1"}Sim{else}Não{/if}</span> </h5>
+                      <h5>Comprador : <span class="lighter-1">{if="$value.inbuyer == 1"}Sim{else}Não{/if}</span> </h5>
+                      <h5>Passou pelo Cadastrar? : <span class="lighter-1">{if="$value.inregister == 1"}Sim{else}Não{/if}</span> </h5>
+                      <h5>Status : <span class="lighter-1">{if="$value.instatus == 1"}Ativo{else}Inativo{/if}</span> </h5>
+                      <h5>Auto-Status : <span class="lighter-1">{if="$value.inautostatus == 1"}Ativo{else}Inativo{/if}</span></h5>
+                      <h5>Aceitou os termos : <span class="lighter-1">{if="$value.inautostatus == 1"}Sim{else}Não{/if}</span></h5>
+                      <h5>IP Registrado : <span class="lighter-1">{$value.desipterms}</span></h5>
+                      <h5>Data dos Termos : <span class="lighter-1">{function="formatDate($value.dtterms)"}</span></h5>
+
+
+
+
+
+
+                      <h5>Email : <span class="lighter-1">{$value.desemail}</span> </h5>
+                    
+
+
+
+                      <h5>
+                        Telefone : 
+                          <span class="lighter-1">
+
+                          {if="$value.nrphone != '' "}
+                          ({$value.nrddd}) {$value.nrphone}
+                            {else}                 
+                                  Não Informado.
+                          {/if}                   
+                        </span> 
+                    </h5>
+
+
+                    
+                    <h5>
+                      {if="$value.intypedoc == 0"}CPF{else}CNPJ{/if}                
+                      <span class="lighter-1"> 
+
+                            {if="$value.desdocument != '' "}
+                              {$value.desdocument}   
+
+                            {else}                 
+                                Não Informado.
+                      {/if}                   
+                      </span> 
+                  </h5>
+
+                  
+
+
+                  <h5>
+                    Data Nascimento :
+                    <span class="lighter-1">
+
+                          {if="$value.dtbirth != '' "}
+                          {function="formatDate($value.dtbirth)"}  
+
+                          {else}                 
+                              Não Informada.
+                    {/if}                   
+                    </span> 
+                </h5>
+
+                 
+
+
+
+                    
+                <h5>
+                  Cep :
+                  <span class="lighter-1">
+
+                        {if="$value.dtbirth != '' "}
+                        {$value.deszipcode}
+
+                        {else}                 
+                            Não Informado.
+                  {/if}                   
+                  </span> 
+              </h5>
+
+              <h5>
+                Endereço : 
+                <span class="lighter-1">  
+
+                      {if="$value.desaddress != '' "}
+                      {$value.desaddress}, {$value.desnumber} - {$value.descomplement}
+                      - {$value.desdistrict} - {$value.descity} - {$value.desstatecode}
+
+                      {else}                 
+                          Não Informado.
+                {/if}                   
+                </span> 
+            </h5>
+                  
+
+
+                      <h5>Data de Cadastro : <span class="lighter-1">{function="formatDate($value.dtregister)"}</span> </h5>
+
+                    </div>
+                    <div class="modal-footer">
+              
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/loop}
+
+
+
+        </tbody>
+    
+      </table>
+             
+      
+
+    </div>
+    {else}
+
+
+      {if="$search != '' "}
+
+        <div class="row">
+
+          <div class="col-12">
+
+              <div class="alert alert-info">
+
+                  <h5>Nenhum (a) usuário (a) foi encontrado (a)! </h1>
+
+              </div>
+
+          </div>
+
+        </div>
+
+      {else}
+
+      <div class="row">
+
+        <div class="col-12">
+
+            <div class="alert alert-info">
+
+                <h5>Não há nenhum usuário cadastrado! </h1>
+
+            </div>
+
+        </div>
+
+      </div>
+
+
+      {/if}
+
+    {/if}
+
+      <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+      {loop="$pages"}
+          <li class="page-item"><a class="page-link" href="{$value.href}">{$value.page_number}</a></li>
+      {/loop}
+        </ul>
+      </nav>
+
+    </main>
+  </div>
+</div>

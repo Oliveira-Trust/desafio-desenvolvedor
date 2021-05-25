@@ -1,0 +1,73 @@
+html.gap-outside {
+	.body {
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+
+	.main,
+	#footer {
+		margin-right: 25px;
+		margin-left: 25px;
+	}
+
+	// Rev Slider
+	.slider-container {
+		width: 100% !important;
+		left: auto !important;
+	}
+
+	// Header
+	#header:not(.side-header) {
+		margin-top: -25px;
+		.header-body {
+			left: 0;
+			padding-right: 25px;
+			padding-left: 25px;
+		}
+
+		// Container
+		.header-container {
+			&:after {
+				content: none;
+			}
+		}
+	}
+
+	@media (max-width: 991px) {
+		#header:not(.side-header) {
+			.header-nav-main {
+				&:before {
+					width: calc(100vw - 50px);
+				}
+			}
+		}
+	}
+
+	// Sticky Wrapper
+	.sticky-wrapper {
+		left: 25px !important;
+	    width: calc(100vw - 67px) !important;
+	}
+	.pin-wrapper {
+		.sticky-wrapper {
+			left: 25px !important;
+			width: calc(100vw - 67px) !important;
+			.sticky-body {
+				width: calc(100vw - 67px) !important;
+			}
+		}
+
+		.sticky-wrapper.sticky-effect-active {
+			top: -25px !important;
+			left: 0 !important;
+			width: 100% !important;
+			.sticky-body {
+				width: 100% !important;
+				.container-fluid {
+					padding-left: 25px;
+					padding-right: 25px;
+				}
+			}
+		}
+	}
+}

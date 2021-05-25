@@ -1,0 +1,58 @@
+@import "variables";
+
+@border-radius: 0;
+
+@color-primary: #f04c23;
+
+@color-secondary: #e36159;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+/*
+* Text Highlight
+*/
+.custom-highlight-text-1 {
+	&:before {
+	    border-bottom-color: @color-primary;
+	}
+}
+
+/*
+* Header
+*/
+.custom-header-top-nav-background {
+	position: relative;
+	&:before {
+		background: @color-primary;
+	}
+	&:after {
+		background: lighten(@color-primary, 20%);
+	}
+}
+
+/*
+* Accordion
+*/
+.custom-accordion-style-1 {
+	> .card {
+		.card-header {
+			a {
+				&:not(.collapsed) {
+					background-color: @color-primary;
+					color: @color-primary-inverse !important;
+				}
+			}
+		}
+		&:hover {
+			.card-header {
+				a.collapsed {
+					color: @color-primary !important;
+				}
+			}
+		}
+	}
+}

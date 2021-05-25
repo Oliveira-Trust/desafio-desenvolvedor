@@ -1,0 +1,30 @@
+/* Page 404 */
+.http-error {
+	padding: 50px 0;
+	h2 {
+		font-size: 140px;
+		font-weight: 700;
+		line-height: 140px;
+	}
+	h4 {
+		color: $color-font-default;
+	}
+	p {
+		font-size: 1.4em;
+		line-height: 36px;
+	}
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+
+	.http-error {
+		padding: 0;
+		h2 {
+			font-size: 100px;
+			letter-spacing: 0;
+			line-height: 100px;
+		}
+	}
+
+}

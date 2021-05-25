@@ -1,0 +1,48 @@
+@import "variables";
+
+@color-primary: #0088cc;
+@color-primary-inverse: #FFF;
+
+@color-secondary: #171717;
+
+@color-tertiary: #403f3d;
+
+@color-quaternary: #1f1e1c;
+
+@color-dark: #1e1e1e;
+
+@color-light: #FFF;
+
+@import "skin";
+
+/*
+* Text Color
+*/
+.custom-text-color-3 {
+	color: lighten(@color-primary, 49%) !important;
+}
+
+@import "skin-resume-common";
+
+html.dark {
+	section.custom-timeline {
+	    .timeline-box {
+	    	&.right {
+	    		&:before {
+				    box-shadow: 0 0 0 3px @color-secondary, 0 0 0 6px @color-light !important;
+	    		}
+	    	}
+	    }
+	}
+
+	/*
+	* Thumb Info
+	*/
+	.thumb-info {
+		.thumb-info-wrapper {
+			&:after {
+				background-color: @color-primary;
+			}
+		}
+	}
+}

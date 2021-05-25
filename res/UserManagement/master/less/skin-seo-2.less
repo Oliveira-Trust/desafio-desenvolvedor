@@ -1,0 +1,148 @@
+@import "variables";
+
+@color-primary: #e23c8e;
+
+@color-secondary: #a33188;
+
+@color-tertiary: #4046b3;
+
+@color-quaternary: #171940;
+
+@import "skin";
+
+/* Custom Colors For SVG's */
+.custom-fill-color-primary,
+.custom-fill-color-primary > svg path {
+	fill: @color-primary !important;	
+}
+.custom-fill-color-secondary,
+.custom-fill-color-secondary > svg path {
+	fill: @color-secondary !important;	
+}
+.custom-fill-color-tertiary,
+.custom-fill-color-tertiary > svg path {
+	fill: @color-tertiary !important;	
+}
+.custom-fill-color-quaternary,
+.custom-fill-color-quaternary > svg path {
+	fill: @color-quaternary !important;	
+}
+
+/* Header */
+#header {
+	.header-btn-collapse-nav {
+		background: @color-tertiary;		
+	}
+}
+
+@media (min-width: 992px) {
+	#header {
+		.header-nav {
+			&.header-nav-links {
+				nav {
+					> ul {
+						&:not(:hover) {
+							> li {
+								> a.active {
+								    color: @color-tertiary;
+								}
+							}
+						}
+						li {
+							&:hover {
+								> a {
+									color: @color-tertiary;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.header-nav-main {
+			nav {
+				> ul {
+					> li.dropdown {
+						.dropdown-menu {
+						    border-top-color: @color-tertiary;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	#header {
+		.header-nav-main {
+			&:not(.header-nav-main-mobile-dark) {
+				nav {
+					> ul {
+						> li {
+							> a {
+								&.active {
+									color: @color-tertiary !important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Testimonial blockquote */
+.testimonial {
+	&.testimonial-style-3 {
+		&.custom-testimonial-style-1 {
+			blockquote {
+				&:before {
+					color: @color-secondary;
+				}
+			}
+		}
+	}
+}
+
+/* Pricing Table */
+.pricing-table {
+	&.custom-pricing-table-style-1 {
+		.plan {
+			&.plan-featured {
+				.plan-popular-tag {
+					background: @color-secondary;
+				}
+			}
+		}
+	}
+}
+
+/* Carousel */
+.custom-carousel-dots-style-1 {
+	.owl-dots {
+	    .owl-dot {
+	    	box-shadow: 0px 0px 0px 2px @color-quaternary;
+		    &.active {
+				background: @color-quaternary;
+		    }
+	    }
+	}
+}
+
+/*
+* Pagination
+*/
+.custom-pagination-style-1 {
+	.page-item {
+		&.active,
+		&:hover {
+			.page-link {
+				border-color: @color-secondary;
+				background-color: @color-secondary !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,111 @@
+/* Cards */
+.card {
+	position: relative;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.card-footer {
+	border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.card-body {
+	padding: 2rem;
+}
+
+.card-text-color-hover-light:hover {
+	* {
+		color: #FFF !important;
+	}
+}
+
+.card-background-image-hover {
+	background-size: cover;
+	background-position: center;
+	.card-body {
+		background: rgba(255,255,255,0.9);
+		margin: 1rem;
+		padding: 1rem;
+	}
+}
+
+/* Flip Card */
+.flip-card {
+	position: relative;
+	border: none;
+	perspective: 1000px;
+
+	.flip-front,
+	.flip-back {
+		padding: 2rem;
+		backface-visibility: hidden;
+		background: #FFF;
+	    box-shadow: 0px 0px 44px -10px rgba(0, 0, 0, 0.15);
+		transform-style: preserve-3d;
+		transition: ease transform 500ms;
+
+		.flip-content {
+			transform: translate3d(0, 0, 1px);
+			backface-visibility: hidden;
+		}
+
+		&.overlay {
+			&:before {
+				transform: translate3d(0, 0, 0px);
+				backface-visibility: hidden;
+			}
+		}
+	}
+	.flip-front {
+		transform: translate3d(0, 0, 1px) rotateY(0deg);
+	}
+	.flip-back {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		transform: translate3d(0, 0, -1px) rotateY(180deg);
+	}
+
+	&:hover {
+		.flip-front {
+			transform: translate3d(0, 0, -1px) rotateY(-180deg);
+		}
+		.flip-back {
+			transform: translate3d(0, 0, 1px) rotateY(0deg);
+		}
+	}
+
+	// Flip Card Vertical
+	&.flip-card-vertical {
+		.flip-front {
+			transform: translate3d(0, 0, 1px) rotateX(0deg);
+		}
+		.flip-back {
+			transform: translate3d(0, 0, -1px) rotateX(180deg);
+		}
+
+		&:hover {
+			.flip-front {
+				transform: translate3d(0, 0, -1px) rotateX(-180deg);
+			}
+			.flip-back {
+				transform: translate3d(0, 0, 1px) rotateX(0deg);
+			}
+		}
+	}
+
+	// Flip Card 3D
+	&.flip-card-3d {
+		.flip-front, .flip-back {
+			.flip-content {
+				perspective: inherit;
+				transform: translate3d(0, 0, 60px);
+			}
+		}
+	}
+}

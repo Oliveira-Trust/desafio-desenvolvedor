@@ -1,0 +1,25 @@
+@import "variables";
+
+@border-radius: 4;
+
+@color-primary: #ef524e;
+
+@color-secondary: #e36159;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+/* Product Carousel Thumb Gallery */
+.thumb-gallery-wrapper {
+	.thumb-gallery-thumbs {
+		.owl-item {
+			&:hover, 
+			&.selected {
+				border-color: @color-primary;
+			}
+		}
+	}
+}

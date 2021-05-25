@@ -1,0 +1,104 @@
+/* Countdown */
+.countdown {
+	display: flex;
+	text-align: center;
+
+	> span {
+		flex-basis: 25%;
+	    max-width: 25%;
+	    width: 25%;
+	    font-size: 1rem;
+	    line-height: 1.5;
+	    color: #777;
+
+	    > span {
+	    	display: block;
+		    font-size: 3rem;
+		    line-height: 1;
+		    color: $color-dark;
+	    }
+	}
+	
+	// Countdown Light
+	&.countdown-light {
+		> span {
+			color: rgba(255, 255, 255, 0.6);
+			> span {
+				color: #FFF;
+			}
+		}
+
+		&.countdown-borders {
+			> span {
+				border-color: #FFF;
+			}
+		}
+	}
+	
+	// Countdown Borders
+	&.countdown-borders {
+		margin-right: -15px;
+		margin-left: -15px;
+		> span {
+			border-width: 2px;
+			border-style: solid;
+			border-color: $color-dark;
+			margin-right: 15px;
+			margin-left: 15px;
+			padding: 1.5rem;
+		}
+	}
+}
+
+@media(max-width: 767px) {
+	.countdown {
+		flex-wrap: wrap;
+
+		> span {
+			flex-basis: calc(50% - 15px);
+		    max-width: calc(50% - 15px);
+		    width: calc(50% - 15px);
+		    margin-bottom: 30px;
+
+		    &:nth-child(3), &:nth-child(4) {
+		    	margin-bottom: 0;
+		    }
+		}
+
+		&.countdown-borders {
+			justify-content: space-between;
+			margin-right: 0;
+			margin-left: 0;
+
+			> span {
+				margin-right: 0;
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media(max-width: 576px) {
+	.countdown {
+		> span {
+			flex-basis: 100%;
+		    max-width: 100%;
+		    width: 100%;
+		    margin-bottom: 50px;
+
+		    &:nth-child(3) {
+		    	margin-bottom: 50px;
+		    }
+		}
+
+		&.countdown-borders {
+			> span {
+				margin-bottom: 30px;
+				
+				&:nth-child(3) {
+			    	margin-bottom: 30px;
+			    }
+			}
+		}
+	}
+}

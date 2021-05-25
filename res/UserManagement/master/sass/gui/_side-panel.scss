@@ -1,0 +1,87 @@
+/* Side Panel */
+html.side-panel {
+		
+	.body:before {
+		content: '';
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba($color-dark, 0.5);
+		opacity: 0;
+		visibility: hidden;
+		z-index: 9998;
+		transition: ease opacity 300ms;
+	}
+	
+	.side-panel-wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 300px;
+		height: 100vh;
+		background: #FFF;
+		padding: 2rem;
+		box-shadow: 0px 0px 30px -13px rgba(0,0,0,0.2);
+		overflow-y: auto;
+		transform: translate3d(-100%, 0, 0);
+		transition: ease transform 300ms;
+		z-index: 9999;
+
+		.side-panel-close {
+			position: absolute;
+		    top: 0;
+		    right: 0;
+		}
+	}
+
+	// Side Panel Push
+	&.side-panel-push {
+		.body {
+			transform: translate3d(0, 0, 0);
+			transition: ease transform 300ms;
+		}
+	}
+
+	// Side Panel Right
+	&.side-panel-right {
+		.side-panel-wrapper {
+			left: auto;
+			right: 0;
+			transform: translate3d(100%, 0, 0);
+		}
+	}
+
+	// Side Panel Without Overlay
+	&.side-panel-without-overlay {
+		.body:before {
+			content: none;
+		}
+	}
+
+	// Side Panel Open
+	&.side-panel-open {
+
+		.body:before {
+			opacity: 1;
+			visibility: visible;
+		}
+		.side-panel-wrapper {
+			transform: translate3d(0, 0, 0);
+		}
+
+		&.side-panel-push {
+			.body {
+				transform: translate3d(300px, 0, 0);
+			}
+
+			&.side-panel-right {
+				.body {
+					transform: translate3d(-300px, 0, 0);
+				}
+			}
+		}
+	}
+}

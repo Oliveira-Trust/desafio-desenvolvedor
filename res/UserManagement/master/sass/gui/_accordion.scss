@@ -1,0 +1,125 @@
+/* Accordion */
+.accordion {
+	.card {
+		margin-top: 5px;
+		&:first-child {
+			margin-top: 0;
+		}
+		&:first-of-type, 
+		&:not(:first-of-type):not(:last-of-type),
+		&:last-of-type {
+			border: 1px solid rgba(0,0,0,.125);
+			border-radius: .25rem;
+		}
+		&:not(:first-of-type) {
+			.card-header:first-child {
+				border-radius: .25rem;
+			}
+		}
+	}
+	.card-title {
+		font-size: 16px;
+	}
+	.card-header {
+		padding: 0;
+		border-radius: .25rem;
+		border-bottom: 0;
+		margin: -1px;
+		a {
+			cursor: pointer;
+			display: block;
+			padding: 10px 20px;
+			&:hover, &:focus {
+				text-decoration: none;
+			}
+			[class^="icon-"] {
+				margin-#{$right}: 4px;
+				position: relative;
+				top: 1px;
+			}
+			[class*="fa-"], .icons {
+				display: inline-block;
+				margin-#{$right}: 5px;
+				position: relative;
+				top: -1px;
+			}
+			.icons {
+				top: 1px;
+			}
+		}
+	}
+	&.accordion-sm {
+		.card-header {
+			a {
+				padding: 5px 15px;
+				font-size: 0.85em;
+			}
+		}
+		.card-body {
+			font-size: 0.9em;
+		}
+	}
+	&.accordion-lg {
+		.card-header {
+			a {
+				padding: 15px 15px;
+				font-size: 1em;
+				font-weight: 600;
+			}
+		}
+	}
+	&.without-bg {
+		.card-default {
+			background: transparent !important;
+			> .card-header {
+				background: transparent !important;
+			}
+		}
+		.card-body {
+			padding-top: 0;
+		}
+	}
+	&.without-borders {
+		.card {
+			border: 0 !important;
+			box-shadow: none;
+			border-radius: 0;
+		}
+		.card-header a {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.card-body {
+			padding: 0;
+		}
+	}
+
+	/* Modern */
+	&.accordion-modern {
+		.card {
+			&:first-of-type, 
+			&:not(:first-of-type):not(:last-of-type),
+			&:last-of-type {
+				border: 4px solid #F7F7F7;
+			}
+			.card-header {
+				background-color: #F7F7F7;
+				border-radius: 0;
+			}
+		}
+	}
+
+	// Grey Scale 1
+	&.accordion-modern-grey-scale-1 {
+		.card {
+			&:first-of-type, 
+			&:not(:first-of-type):not(:last-of-type),
+			&:last-of-type {
+				border-color: #EDEDED;
+			}
+			.card-header {
+				background-color: #EDEDED;
+			}
+		}
+	}
+}

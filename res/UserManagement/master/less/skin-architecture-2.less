@@ -1,0 +1,90 @@
+@import "variables";
+
+@color-primary: #2a2a2a;
+@color-primary-inverse: #FFF;
+
+@color-secondary: #e36159;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+// Buttons
+.custom-btn-style-1 {
+	&:before {
+		border-color: @color-primary !important;
+	}
+	&.btn-light {
+		&:before {
+			border-color: rgba(255, 255, 255, 0.5) !important;
+		}
+	}
+}
+
+// Text Effect
+.custom-stroke-text-effect-1 {
+	-webkit-text-stroke-color: @color-primary;
+}
+
+/*
+* Card
+*/
+.custom-card-style-1 {
+	&:hover {
+		background-color: @color-primary !important;
+		h2, p {
+			color: @color-primary-inverse !important;
+		}
+		.animated-icon {
+			svg {
+				path, rect {
+					fill: @color-primary-inverse !important;
+				}
+			}
+		}
+	}
+}
+
+/*
+* Owl Carousel
+*/
+.custom-dots-style-1 {
+	.owl-dots {
+		.owl-dot {
+		    span {
+			    border-color: @color-primary !important;
+		    }
+		    &:hover,
+		    &.active {
+		    	span {
+			    	background: @color-primary !important;
+		    	}
+		    }
+		}
+	}
+}
+
+/*
+* Sort Navigation
+*/
+.custom-nav-filter {
+	> li {
+		&.active {
+			> a {
+				color: @color-primary !important;
+				border-bottom-color: @color-primary !important;
+			}
+		}
+	}
+}
+
+/*
+* Link Effect
+*/
+.custom-link-effect-1 {
+	&:after {
+		border-bottom-color: @color-primary;
+	}
+}

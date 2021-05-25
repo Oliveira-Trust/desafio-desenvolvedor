@@ -1,49 +1,115 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# SISTEMA DE COMPRAS - OLIVEIRA TRUST
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Pequeno guia sobre o sistema de compras, contendo os diretórios importantes, manual de instalação e um pouco sobre o projeto,
+quaisquer dúvidas, basta entrar em contato comigo!
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+## ⌚ DESENVOLVIDO EM 12 HORAS e 35 MINUTOS (APROXIMADAMENTE)
+- Para medir, foi utilizado o cronômetro online do site -> [Relógio Online](https://relogioonline.com.br/cronometro)
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+## ☕ URL DO SISTEMA NO MEU SERVIDOR (PARA POUPAR TEMPO)
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+- CLIQUE PARA ACESSAR O -> [SISTEMA DE COMPRAS - OLIVEIRA TRUST](www.oliveiratrust.cp2studentsagency.com.br)
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+## ☕ Versão do PHP
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Bônus por meta e entrega de projetos;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+- PHP >= 7.3 OU 7.4.12
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+## 🔔 AVISO
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+```php
+ob_start()
+```
+- Adicione a linha "ob_start()" Ao colocar o site no CPANEL, SE FOR EM LOCALHOST NÃO PRECISA! [ARQUIVO DA LINHA](index.php) 
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+
+## ✅ CRIANDO O BANCO DE DADOS 
+
+
+- 1 ) Para encontrar o arquivo do banco de dados, vá até -> [ESTE DIRETÓRIO](/Banco_de_dados).
+
+- 2 ) Agora basta pegar o arquivo em .SQL e importar para o seu [BANCO DE DADOS](/vendor/oliveiraTrust/src/DB/Sql.php).
+
+
+## ✅ CONECTANDO O BANCO DE DADOS 
+
+- PARA DEFINIR O LOGIN DO BANCO DE DADOS, VÁ ATÉ -> [ESTE DIRETÓRIO](/vendor/oliveiraTrust/src/DB/Sql.php).
+
+
+## 🔔🔔 AVISO IMPORTANTÍSSIMO 
+
+Este arquivo .SQL contém 4 (QUATRO) STORAGE PROCEDURES, são elas :
+
+- [sp_addresses_update](vendor/oliveiraTrust/src/Model/Address.php)
+
+- [sp_products_update](/vendor/oliveiraTrust/src/Model/Products.php)
+
+- [sp_purchases_update](/vendor/oliveiraTrust/src/Model/Purchase.php)
+
+- [sp_users_update](/vendor/oliveiraTrust/src/Model/User.php)
+
+Se assegure de que as quatro Storage Procedures estão presentes no seu banco de dados!
+
+
+
+## 🛍️ Bibliotecas/Frameworks Utilizados
+
+Obs : para um sistema deste nível, optei por não utilizar Laravel, pelo motivo de "Utilizar uma serra elétrica pra cortar uma folha de papel", em outras palavras, 
+a biblioteca do Laravel é muito ampla, e este sistema é bem pequeno, com isso, escolhi utilizar frameworks mais simples para produção do mesmo.
+
+Frameworks escolhidos : 
+```php
+echo ("Slim Framework" . " & " . "Rain TPL");
+```
+Bibliotecas Utilizadas :
+```javascript
+alert (" Bootstrap ( CSS & JS ) " + " PORTO TMT " + " PLUGINS SECUNDÁRIOS EX : DATATABLES (TABELAS) ");
+```
+Banco de dados / Estruturas de dados :
+```php
+var_dump( array( 'MySql', 'JSON', 'AJAX' ) );
+```
+
+
+## 📌 Diretórios Importantes
+
+- [DIRETÓRIO DOS ARQUIVOS HTML](/views)
+- [DIRETÓRIO DOS ARQUIVOS JS/CSS/IMAGENS](/res)
+- [DIRETÓRIO DOS ARQUIVOS PHP](/Pages)
+- [DIRETÓRIO DAS CLASSES (PHP)](/vendor/oliveiraTrust/src/)
+- [DIRETÓRIO DO BANCO DE DADOS](/vendor/oliveiraTrust/src/DB/Sql.php)
+
+- [ARQUIVO PARA IMPORTAR O BANCO DE DADOS](/Banco_de_dados/db_oliveira.sql)
+
+
+## 🔏 Modificação no .HTACCES para forçar HTTPS 
+- RewriteCond %{HTTPS} off 
+- RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+## 🔐 CONTA DE ADMINISTRADOR PADRÃO
+- Login : vto.hugo67@gmail.com
+- Senha : 123321
+
+OBS : No servidor em que deixei o [LINK](www.oliveiratrust.cp2studentsagency.com.br), a senha pode ser outra, pois qualquer um que entrar e tiver este login e senha vai poder modificar, porém, por padrão ao importar o arquivo SQL para o banco de dados, essa é a conta padrão de ADM.
+
+## 🔐 CONTA DE USUÁRIO DE EXEMPLO
+- Login : glaucio@gmail.com
+- Senha : 123321
+
+OBS : Esta é apenas um conta de testes já pré-feita, é fortemente recomendado que você crie uma nova conta para fazer os devidos testes como Usuário (Comprador/Vendedor).
+
+
+
+
+## 🚪 Aviso Final
+
+QUALQUER DÚVIDA ENTRAR EM CONTATO!
+
+- VITOR HUGO BRANDÃO SANTANA
+- RIO DE JANEIRO - RJ
+- PROGRAMADOR FULL STACK - PLENO
+- COLÉGIO PEDRO II (FEDERAL)
+- vto.hugo67@gmail.com
+

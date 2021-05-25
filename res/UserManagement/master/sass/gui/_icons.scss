@@ -1,0 +1,276 @@
+/* Icons */
+.featured-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	background: #CCC;
+	border-radius: 100%;
+	color: #FFF;
+	height: 2.5em;
+	line-height: 2.5em;
+	margin-#{$right}: 10px;
+	position: relative;
+	text-align: center;
+	top: 5px;
+	width: 2.5em;
+	i {
+		color: #FFF;
+		font-size: 0.9em;
+	}
+
+	&.featured-icon-style-2 {
+		width: 5em;
+		height: 5em;
+		line-height: 5em;
+	}
+
+	&.featured-icon-hover-effect-1 {
+		transition: ease transform 300ms;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+}
+
+/* Font Awesome List */
+.sample-icon-list {
+	margin-top: 22px;
+	.sample-icon a {
+		display: block;
+		color: #222222;
+		line-height: 36px;
+		height: 36px;
+		padding-#{$left}: 10px;
+		border-radius: 4px;
+		font-size: 11px;
+		[class*="fa-"], .icons {
+			width: 32px;
+			font-size: 14px;
+			display: inline-block;
+			text-align: $right;
+			margin-#{$right}: 10px;
+		}
+		&:hover {
+			color: #ffffff;
+			text-decoration: none;
+			[class*="fa-"], .icons {
+				font-size: 28px;
+				vertical-align: -6px;
+			}
+		}
+	}
+}
+
+/* Simple Line Icons List */
+#lineIcons {
+	.sample-icon-list {
+		.sample-icon a {
+			line-height: 39px;
+		}
+	}
+}
+
+/* Porto Icons */
+i.pi {
+ 	position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	font-style: normal;
+    font-size: 14px;
+	&.pi-porto-brand {
+		&:before {
+			content: '\f111';
+			font-family: 'Font Awesome 5 Free';
+			font-weight: bold;
+			font-size: 0.51em;
+			color: #FFF;
+			padding: 1.2em;
+		}
+		&:after {
+		    content: '';
+		    width: 2em;
+		    height: 2em;
+		    border: 0.5em solid #FFF;
+		    border-radius: 100%;
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate3d(-50%, -50%, 0);
+		}
+	}
+
+	&.pi-close {
+		padding: 0.6em;
+		transform: rotate(45deg);
+		&:before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+			border-right: 1px solid #FFF;
+			height: 1em;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+			border-bottom: 1px solid #FFF;
+			width: 1em;
+		}
+	}
+}
+
+/* Area Expanded Change */
+.icon-aria-expanded-change[aria-expanded=true] .fa-chevron-down {
+   display: none;
+}
+
+.icon-aria-expanded-change[aria-expanded=false] .fa-chevron-up {
+   display: none;
+}
+
+/* Icon Animated */
+[data-icon] {
+	opacity: 0;
+}
+
+.icon-animated {
+	opacity: 0;
+}
+
+/* Elements Shadow Icon */
+.elements-list-shadow-icon {
+	font-size: 4rem;
+	position: absolute;
+	top: -18px;
+	opacity: 0.08;
+	right: -18px;
+}
+
+/* Custom Image Icons */
+.icon-bg {
+	display: inline-block;
+	background: url(../img/icons/icons.png) no-repeat;
+	width: 80px;
+	height: 80px;
+}
+
+.icon-1 {
+	background-position: -10px -10px;
+}
+
+.icon-2 {
+	background-position: -110px -10px;
+}
+
+.icon-3 {
+	background-position: -210px -10px;
+}
+
+.icon-plugin-1 {
+	background-position: 0 100%;
+	width: 115px;
+	height: 115px;
+}
+
+.icon-plugin-2 {
+	background-position: -115px 100%;
+	width: 115px;
+	height: 115px;
+}
+
+.icon-feature-1 {
+	background-position: -20px -110px;
+}
+
+.icon-feature-2 {
+	background-position: -120px -110px;
+}
+
+.icon-feature-3 {
+	background-position: -220px -110px;
+}
+
+.icon-feature-4 {
+	background-position: -320px -110px;
+}
+
+.icon-feature-5 {
+	background-position: -420px -110px;
+}
+
+.icon-feature-6 {
+	background-position: -520px -110px;
+}
+
+.icon-feature-7 {
+	background-position: -620px -110px;
+}
+
+.icon-feature-8 {
+	background-position: -720px -110px;
+}
+
+.icon-feature-9 {
+	background-position: -820px -110px;
+}
+
+.icon-feature-10 {
+	background-position: -920px -110px;
+}
+
+.icon-feature-11 {
+	background-position: -20px -210px;
+}
+
+.icon-feature-12 {
+	background-position: -120px -210px;
+}
+
+.icon-feature-13 {
+	background-position: -220px -210px;
+}
+
+.icon-feature-14 {
+	background-position: -320px -210px;
+}
+
+.icon-feature-15 {
+	background-position: -420px -210px;
+}
+
+.icon-feature-16 {
+	background-position: -520px -210px;
+}
+
+.icon-feature-17 {
+	background-position: -624px -210px;
+}
+
+.icon-feature-18 {
+    background-position: -720px -210px;
+}
+
+.icon-feature-19 {
+	background-position: -820px -210px;
+}
+
+.icon-menu-1 {
+	background-position: -310px -10px;
+}
+
+.icon-menu-2 {
+	background-position: -410px -10px;
+}
+
+.icon-menu-3 {
+	background-position: -510px -10px;
+}
+
+.icon-menu-4 {
+	background-position: -610px -10px;
+}

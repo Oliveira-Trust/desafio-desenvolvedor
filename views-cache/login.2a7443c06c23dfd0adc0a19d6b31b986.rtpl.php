@@ -1,0 +1,106 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?>
+  <main class="main">
+			<nav aria-label="breadcrumb" class="breadcrumb-nav">
+				<div class="container">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/"><i class="icon-home"></i></a></li>
+						<li class="breadcrumb-item active" aria-current="page">Logar</li>
+					</ol>
+				</div><!-- End .container -->
+			</nav>
+
+			<div class="container">
+				
+
+				
+		
+			   
+			
+		   
+				<?php if( $error ){ ?>
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">					
+					<?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>	
+				</div>
+				<?php } ?>
+
+        <div class="row">
+				
+		
+			
+			
+          <div class="col-md-6">
+
+	
+	
+						<div class="heading">
+							<h2 class="title">Logar </h2>
+							<p>Já possui uma conta? Conectar-se aqui!</p>
+						</div><!-- End .heading -->
+
+
+
+
+						<form action="/logar" method="post" novalidate>
+
+						
+							<input type="email" name="deslogin" class="form-control" placeholder="Seu Email" required>
+							<input type="password" name="despassword" class="form-control" placeholder="Sua Senha" required>
+
+							<div class="form-footer">
+								<button type="submit" class="btn btn-primary">Conectar-se</button>
+							
+							</div><!-- End .form-footer -->
+
+
+						</form>
+
+
+
+					</div><!-- End .col-md-6 -->
+ 
+          <div class="col-md-6">
+						<div class="heading">
+							<h2 class="title">Registrar Conta</h2>
+							<p>Se você não tiver uma conta, se registre em nosso site!</p>
+						</div><!-- End .heading -->
+
+					
+					
+						<form action="/cadastrar" method="post" novalidate>
+							
+						
+
+							<input type="text" class="form-control" name="desperson" placeholder="Insira o seu nome completo" required>
+							<input type="email" class="form-control" name="deslogin" placeholder="Insira o seu email" required>
+							<input type="email" class="form-control" name="deslogin_confirm" placeholder="Repita o seu email" required>
+							<input type="password" class="form-control"  name="despassword" placeholder="Insira sua senha" required>
+						
+						
+							<div class="checkbox mb-3">
+								<label>
+								  <input type="checkbox" id="interms" name="interms" value="1" target="_blank"> Li e Aceito os termos de uso
+								</label>
+							  </div>
+
+							  
+					
+							<div class="form-footer">
+								<button type="submit" class="btn btn-primary">CADASTRAR-SE</button>
+							
+							</div><!-- End .form-footer -->
+						</form>
+
+
+						
+
+					</div><!-- End .col-md-6 -->
+
+
+
+				</div><!-- End .row -->
+			</div><!-- End .container -->
+
+			<div class="mb-5"></div><!-- margin -->
+		</main><!-- End .main -->
+
+	

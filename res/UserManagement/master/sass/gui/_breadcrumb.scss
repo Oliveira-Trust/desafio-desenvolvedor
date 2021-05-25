@@ -1,0 +1,63 @@
+/* Breadcrumb */
+.breadcrumb {
+	background: none;
+	margin: 0;
+    padding: 0;
+	position: relative;
+	z-index: 1;
+	> li {
+		display: inline-block;
+		font-size: 0.8em;
+		text-transform: uppercase;
+		text-shadow: none;
+		& + li:before {
+			color: inherit;
+			opacity: 0.5;
+			font-family: 'Font Awesome 5 Free';
+			font-weight: 900;
+			content: "\f105";
+			padding: side-values(0 7px 0 5px);
+			@include if-rtl {
+				content: "\f104";
+				float: right;
+			}
+		}
+	}
+
+	&.breadcrumb-dividers-no-opacity {
+		> li {
+			& + li:before {
+				opacity: 1;
+			}
+		}
+	}
+
+	&.breadcrumb-style-2 {
+		> li {
+			& + li:before {
+				content: "/";
+				@include if-rtl {
+					content: "/";
+				}
+			}
+		}
+	}
+
+	&.breadcrumb-block {
+		background: $color-dark;
+		display: inline-block !important;
+		padding: .45rem 1.2rem;
+		border-radius: 4px;
+		box-shadow: 0 3px 10px rgba(0,0,0,.15);
+	}
+
+	&.breadcrumb-light {
+		color: #FFF;
+		a {
+			color: #FFF;
+		}
+		.active {
+			opacity: 0.7;
+		}
+	}
+}

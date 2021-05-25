@@ -1,0 +1,545 @@
+
+<!-- start: page -->
+
+       
+
+
+{if="$sucess"}
+
+<div class="alert alert-success  mb-1 mt-1 text-center"  >
+
+<strong class="text-dark">{$sucess}</strong>
+</div>
+
+{/if}
+
+
+
+
+{if="$error"}
+
+<div class="alert alert-danger  mb-1 mt-1 text-center" >
+
+<strong class="text-dark">Ocorreu um erro inesperado! </strong> <strong>{$error}</strong>
+</div>
+
+{/if}
+
+
+
+
+
+<form action="/dashboard/Atualizar-Senha" method="post" novalidate>  
+<div class="row">
+    <div class="col">
+        <section class="card card-modern card-big-info">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-2-5 col-xl-1-5">
+                        <i class="card-big-info-icon bx bx-user-circle text-primary"></i>
+                        <h2 class="card-big-info-title">Informações de Login</h2>
+                        <p class="card-big-info-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    
+                                  
+
+                    <div class="col-lg-3-5 col-xl-4-5">
+                    
+                    
+                        <div class="form-group row align-items-center">
+                            <label for="current_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Sua senha antiga</label>
+                            <div class="col-lg-7 col-xl-6">
+                                <input type="password" class="form-control form-control-modern" name="current_pass"  value="" required style="background-color: rgb(240, 240, 240);" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row align-items-center">
+                            <label for="new_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Sua nova senha</label>
+                            <div class="col-lg-7 col-xl-6">
+                                <input type="password" class="form-control form-control-modern" name="new_pass" value="" required style="background-color: rgb(240, 240, 240);" />
+                            </div>                                
+                        </div>
+
+                        <div class="form-group row align-items-center">
+                            <label for="new_pass_confirm" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Repita a senha</label>
+                            <div class="col-lg-7 col-xl-6">
+                                <input type="password" class="form-control form-control-modern" name="new_pass_confirm" value="" required style="background-color: rgb(240, 240, 240);" />
+                            </div>
+                        </div>
+
+                    
+                        <div class="form-group row align-items-center justify-content-center">
+                            <button type="submit" class="submit-button bg-primary btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1 mb-4 mb-md-0" data-loading-text="Carregando...">
+                                <i class="bx bx-save text-4 mr-2"></i> Salvar Informações
+                            </button>
+                            <button type="reset" class="submit-button bg-danger btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Carregando...">
+                                <i class="bx bx-save text-4 mr-2"></i> Resetar Campos
+                            </button>
+                        </div>
+                    
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>  
+</form>
+
+
+
+
+<hr class="opacity-3">
+
+
+
+<form action="/dashboard/alterar-dados" method="post" novalidate>
+    <div class="row">
+        <div class="col">
+            <section class="card card-modern card-big-info">
+                <div class="card-body">
+                    <div class="row">
+                     
+                        <div class="col-lg-2-5 col-xl-1-5">
+                            <i class="card-big-info-icon bx bxs-user-circle text-primary"></i>
+                            <h2 class="card-big-info-title">Informações da conta</h2>
+                            <p class="card-big-info-desc">Adicione aqui as suas informações de cobrança para automatizar este processo.</p>
+                        </div>
+
+
+
+
+                       <div class="col-lg-3-5 col-xl-4-5">
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Seu <strong>Nome Completo</strong>  </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <input type="text" class="form-control form-control-modern" name="desperson" style="background-color: rgb(240, 240, 240);"  value="{$user.desperson}" required />
+                                </div>
+                            </div> 
+                            
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Seu <strong>CPF</strong> </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <input id="fc_inputmask_1" data-plugin-masked-input data-input-mask="999.999.999-99" name="desdocument" placeholder="___.___.___-__" class="form-control form-control-modern" value="{$user.desdocument}" style="background-color: rgb(240, 240, 240);" required >
+                            
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Seu <strong>Aniversário</strong> </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <input id="date" data-plugin-masked-input data-input-mask="99/99/9999" name="desdtbirth" placeholder="__/__/____" class="form-control form-control-modern" style="background-color: rgb(240, 240, 240);"  value="{$FormatedDate}" required>
+                                   
+                                </div>
+                            </div>
+
+
+
+
+                          
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold"> Seu <strong>Telefone</strong> </label>
+                                <div class="col-lg-7 col-xl-6">                                                                    
+                                    <input id="phone" data-plugin-masked-input data-input-mask="(99) 999999999" placeholder="(00) 123456789" name="desphonenumber"  class="form-control form-control-modern" value="({$user.nrddd}){$user.nrphone}" required style="background-color: rgb(240, 240, 240);">
+                      
+                                </div>
+                            </div>
+
+
+                                                             
+
+                            <div class="form-group row align-items-center justify-content-center">
+                                <button type="submit" class="submit-button bg-primary btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1 mb-4 mb-md-0" data-loading-text="Carregando...">
+                                    <i class="bx bx-save text-4 mr-2"></i> Salvar Informações
+                                </button>
+                                <button type="reset" class="submit-button bg-danger btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Carregando...">
+                                    <i class="bx bx-save text-4 mr-2"></i> Resetar Campos
+                                </button>
+                            </div> 
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+<hr class="opacity-7">
+
+
+
+
+
+
+
+
+
+
+
+<form action="/dashboard/alterar-endereco" method="post"  novalidate id="AddressForm" >  
+<div class="row">
+    <div class="col">
+        <section class="card card-modern card-big-info ">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-2-5 col-xl-1-5 ">
+                        <i class="card-big-info-icon bx bxs-badge-dollar text-primary"></i>
+                        <h2 class="card-big-info-title text-5 ">Informações de Cobrança</h2>
+                        <p class="card-big-info-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                      
+
+                    <div class="col-lg-3-5 col-xl-4-5">
+                    
+
+
+                        <!-- style="background-color: rgb(240, 240, 240);"  -->
+
+
+                        <div class="form-group row  align-items-center">
+                            <label for="new_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Insira seu Cep</label>
+                            <div class="col-lg-7 col-xl-6">
+
+                                <div class="input-group">                               
+                                    <span class="input-group-prepend " >
+                                        <span class="input-group-text">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                     </span>
+                                 <input id="cep" data-plugin-masked-input data-input-mask="99999-999" name="descepaddress" onfocus="CheckHaveError()" placeholder="_____-___" class="form-control form-control-modern"   style="background-color: rgb(240, 240, 240);"  required >
+                                </div> 
+                            </div>                                
+                        </div>
+
+
+
+                        <!-- fa-unlock -->
+
+
+
+
+                    
+                        <div class="form-group row align-items-center">
+                            <label for="current_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Seu Endereço</label>
+                            <div class="col-lg-7 col-xl-6">
+                              
+                              
+                              
+                                <div class="input-group">
+                                  
+                                    <span class="input-group-prepend ">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-unlock"  id="LockAddress"> </i>
+                                        </span>
+                                    </span>
+
+
+                                    
+
+                                    <input type="text" class="form-control form-control-modern" name="desaddress"  id="endereco" value="{$UserAddress.desaddress}" required style="background-color: rgb(240, 240, 240);" />
+                                
+                                </div>
+                              
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group row align-items-center">
+                            <label for="current_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Sua Cidade</label>
+                            <div class="col-lg-7 col-xl-6">
+                              
+                              
+                              
+                                <div class="input-group">
+                                 
+                                    <span class="input-group-prepend " >
+                                        <span class="input-group-text">
+                                            <i class="fa fa-unlock" id="LockCity"></i>
+                                        </span>
+                                    </span>
+
+                                  <input type="text" class="form-control form-control-modern" name="descity"  value="{$UserAddress.descity}" id="cidade"  required style="background-color: rgb(240, 240, 240);" />
+                            
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group row align-items-center">
+                            <label for="current_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Seu Bairro</label>
+                            <div class="col-lg-7 col-xl-6">
+
+                                
+                                <div class="input-group">
+                                    
+                                    <span class="input-group-prepend " >
+                                        <span class="input-group-text">
+                                            <i class="fa fa-unlock" id="LockStreet"></i>
+                                        </span>
+                                    </span>
+
+                                   <input type="text" class="form-control form-control-modern" name="desstreet"  value="{$UserAddress.desdistrict}" id="bairro" required style="background-color: rgb(240, 240, 240);" />
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                   
+
+
+
+
+
+
+
+
+                        <div class="form-group row align-items-center">
+                            <label for="new_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Número da Casa/Apt</label>
+                            <div class="col-lg-7 col-xl-6">
+                                    
+                                <div class="input-group">
+                                  
+                                    <span class="input-group-prepend " >
+                                        <span class="input-group-text">
+                                            <i class="fa fa-home" ></i>
+                                        </span>
+                                    </span>
+
+                                <input type="text" class="form-control form-control-modern" name="deshousenumber" value="{$UserAddress.desnumber}"  required style="background-color: rgb(240, 240, 240);" />
+                            </div>  
+                         </div>                                
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group row align-items-center">
+                            <label for="new_pass" class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Complemento do Endereço</label>
+                            <div class="col-lg-7 col-xl-6">
+                                <div class="input-group">
+                                  
+                                    <span class="input-group-prepend " >
+                                        <span class="input-group-text">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                    </span>
+                                <input type="text" class="form-control form-control-modern" name="desaddresextra" value="{$UserAddress.descomplement}"   required style="background-color: rgb(240, 240, 240);" />
+                            </div>       
+                         </div>                                
+                        </div>
+
+
+
+
+
+                    
+                        <div class="form-group row align-items-center justify-content-center">
+                            <button type="submit" class="submit-button bg-primary btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1 mb-4 mb-md-0" data-loading-text="Carregando...">
+                                <i class="bx bx-save text-4 mr-2 "></i> Atualizar Informações
+                            </button>
+                      
+                        </div>
+                    
+
+
+                    </div>
+
+              
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>  
+</form>
+
+
+
+
+
+<hr class="opacity-3">
+
+
+
+
+
+
+
+<script>
+        'use strict';
+
+
+      
+
+
+
+        var cepConst = document.getElementById('cep');
+      
+
+        const CheckHaveError = () =>{     
+                         
+          if(cepConst.value == 'CEP não encontrado!'){document.getElementById('cep').value = '';}                                                                               
+          else if(cepConst.value == 'CEP incorreto!'){cepConst.value = '';}       
+                 
+        }
+
+
+
+
+        const limparFormulario = (endereco) =>{
+            document.getElementById('endereco').value = '';
+            document.getElementById('bairro').value = '';
+            document.getElementById('cidade').value = '';
+
+        }
+
+
+        const preencherFormulario = (endereco) =>{
+
+            document.getElementById('endereco').value = endereco.logradouro;
+            document.getElementById('endereco').readOnly = true;
+            document.getElementById('endereco').style.backgroundColor = "rgb(234, 255, 228)";  
+            document.getElementById('LockAddress').classList.remove("fa-unlock");
+            document.getElementById('LockAddress').classList.add("fa-lock");
+         
+
+            document.getElementById('bairro').value = endereco.bairro;
+            document.getElementById('bairro').readOnly = true;
+            document.getElementById('bairro').style.backgroundColor = "rgb(234, 255, 228)";  
+            document.getElementById('LockStreet').classList.remove("fa-unlock");
+            document.getElementById('LockStreet').classList.add("fa-lock");
+            
+
+            document.getElementById('cidade').value = endereco.localidade;
+            document.getElementById('cidade').readOnly = true;
+            document.getElementById('cidade').style.backgroundColor = "rgb(234, 255, 228)";   
+            document.getElementById('LockCity').classList.remove("fa-unlock");
+            document.getElementById('LockCity').classList.add("fa-lock");
+    
+
+
+
+       
+          
+
+        }
+
+        const habilitarFormulario = (endereco) =>{
+
+
+        document.getElementById('endereco').style.backgroundColor = "rgb(240, 240, 240)";         
+        document.getElementById('endereco').readOnly = false;
+        document.getElementById('LockAddress').classList.remove("fa-lock");
+        document.getElementById('LockAddress').classList.add("fa-unlock");
+        
+        document.getElementById('bairro').style.backgroundColor = "rgb(240, 240, 240)";         
+        document.getElementById('bairro').readOnly = false;
+        document.getElementById('LockStreet').classList.remove("fa-lock");
+        document.getElementById('LockStreet').classList.add("fa-unlock");
+       
+        document.getElementById('cidade').style.backgroundColor = "rgb(240, 240, 240)";         
+        document.getElementById('cidade').readOnly = false;
+        document.getElementById('LockCity').classList.remove("fa-lock");
+        document.getElementById('LockCity').classList.add("fa-unlock");
+
+
+    
+     
+        }
+
+
+        const eNumero = (numero) => /^[0-9]+$/.test(numero);
+
+        const cepValido = (cep) => cep.length == 8 && eNumero(cep); 
+
+
+
+
+
+        const pesquisarCep = async() => {
+
+            limparFormulario();
+            var SanitazedcepConst = cepConst.value.replace('-', '');
+            const cep =  SanitazedcepConst;
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+          
+            if (cepValido(cep)){
+                const dados = await fetch(url);
+                const endereco = await dados.json();
+            
+                if (endereco.hasOwnProperty('erro')){
+                    
+                    habilitarFormulario();
+                    cepConst.value = 'CEP não encontrado!';                         
+                    cepConst.style.backgroundColor = "rgb(255, 219, 219)";                  
+                    
+                }else {
+                    preencherFormulario(endereco);
+                    cepConst.style.backgroundColor = "rgb(240, 240, 240)";
+                }
+            }else{
+               
+                habilitarFormulario();
+                cepConst.value = 'CEP incorreto!';
+                cepConst.style.backgroundColor = "rgb(255, 219, 219)";               
+            }
+            
+        }
+
+        cepConst.addEventListener('focusout',pesquisarCep);
+
+       
+
+          
+                 
+            
+            
+
+                        
+    
+    
+       
+      
+</script>

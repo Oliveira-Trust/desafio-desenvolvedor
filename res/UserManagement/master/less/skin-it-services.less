@@ -1,0 +1,60 @@
+@import "variables";
+
+@border-radius: 0;
+
+@color-primary: #0053ce;
+
+@color-secondary: #fbe91b;
+@color-secondary-inverse: contrast(@color-secondary, #000, #FFF);
+
+@color-tertiary: #777;
+
+@color-quaternary: #333;
+
+@import "skin";
+
+/* Buttons (force text color) */
+.btn-secondary {
+	&:hover {
+		color: @color-secondary-inverse !important;
+	}
+}
+
+/*
+* Custom Heading Bar
+*/
+.custom-heading-bar {
+	&:before {
+		border-color: @color-secondary;
+	}	
+}
+
+/*
+* Testimonial
+*/
+.testimonial {
+	&.custom-testimonial-style-1 {
+		&.testimonial-style-4 {
+			blockquote {
+				&:before {
+					color: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+/*
+* Pagination
+*/
+.custom-pagination-style-1 {
+	.page-item {
+		&.active,
+		&:hover {
+			.page-link {
+				border-color: @color-primary;
+				background-color: @color-primary !important;
+			}
+		}
+	}
+}

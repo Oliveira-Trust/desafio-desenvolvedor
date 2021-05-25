@@ -1,0 +1,137 @@
+@import "variables";
+
+@color-primary: #00a1cd;
+@color-primary-inverse: contrast(@color-primary, #777, #FFF);
+
+@color-secondary: #183f72;
+@color-secondary-inverse: contrast(@color-secondary, #777, #FFF);
+
+@color-tertiary: #0281d7;
+
+@color-quaternary: #383f48;
+
+@border-radius: 4;
+
+@import "skin";
+
+// Custom SVG Fill Color
+.custom-svg-fill-color-tertiary {
+	fill: @color-tertiary;
+}
+
+.custom-svg-fill-color-tertiary-darken {
+	fill: darken(@color-tertiary, 5%);
+}
+
+// Custom Highlight
+.custom-highlight-1 {
+	&.custom-highlight-1-primary {
+		&:after {
+			background-color: @color-primary;
+		}
+	}
+}
+
+// Custom Line
+.custom-line {
+	border-bottom-color: @color-primary;
+}
+
+// Owl Carousel
+.owl-carousel {
+	&.nav-arrows-1 {
+		.owl-nav {
+			.owl-prev, .owl-next {
+				color: @color-secondary;
+			}
+		}
+	}
+}
+
+// Custom Card Style
+.custom-card-style-1 {
+	&:hover {
+		border-color: @color-primary;
+		.custom-card-style-1-title {
+			color: @color-primary !important;
+		}
+		.custom-card-style-1-link {
+			color: @color-secondary !important;
+		}
+	}
+}
+
+// Custom Accordion Style
+.custom-accordion-style-1 {
+	> .card {
+		.card-header {
+			a {
+				background-color: @color-primary;
+				&:not(.collapsed) {
+					color: @color-primary-inverse !important;
+				}
+				&.collapsed {
+					background-color: @color-primary-inverse;
+				}
+			}
+		}
+		&:hover {
+			border-color: @color-primary !important;
+			.card-header {
+				a.collapsed {
+					color: @color-primary !important;
+				}
+			}
+		}
+	}
+}
+
+// Custom Social Icons
+.custom-social-icons {
+	li {
+		a {
+			background: @color-secondary;
+			i {
+				color: @color-secondary-inverse;
+			}
+		}
+	}
+}
+
+// Custom Testimonial
+.testimonial.testimonial-style-3 {
+	&.custom-testimonial-style-1 {
+		blockquote {
+			&:before {
+				color: @color-tertiary;
+			}
+		}
+	}
+}
+
+// Services Detail
+.custom-nav-list-effect-1 {
+	> li {
+		> a {
+			&:before {
+				border-left-color: @color-primary;
+				border-right-color: @color-primary;
+			}
+		}
+		&.active,
+		&.open,
+		&:hover {
+			> a {
+				color: @color-primary !important;
+			}
+		}
+	}
+}
+
+// Blog
+.blog-sidebar {
+	button.bg-color-grey {
+		background-color: @color-primary !important;
+		color: @color-primary-inverse !important;		
+	}
+}

@@ -1,0 +1,183 @@
+<!-- start: page -->
+
+<div class="row" >
+  <div class="col-lg-4 col-xl-3  mb-xl-0 " >
+
+    <section class="card" >
+      <div class="card-body" >
+        <div class="thumb-info" >
+          <img src="/res/UserDashboard/assets/images/clients/client2.png"   style="background-color: rgb(235, 235, 235); width: 500px;" class="rounded img-fluid  " alt="John Doe" >
+          <div class="thumb-info-title" >
+            <span class="thumb-info-inner">{$user.desperson}</span>       
+            
+          </div>
+       
+        </div>
+
+        <h1 class="font-weight-bold " >{$user.desnick}</h1>
+
+        <hr class="dotted short">
+      
+        <h5 class="mb-2 mt-3 font-weight-semibold">Sobre mim</h5>
+        <p class="text-3 font-weight-bold">
+          {if="$user.desdescription == NULL"}
+            Não encontramos nada! Nos fale um pouco mais sobre você..
+          {else}
+            {$user.desdescription}
+          {/if}
+         </p>
+        <p class="text-3 font-weight-bold">{$YearsOld} Anos, Estado do {$address.desstate}.</p>
+
+        <hr class="dotted short">
+
+   
+      </div>
+    </section>
+
+  
+  
+
+   
+  </div>
+
+  
+  <div class="col-lg-9" >
+
+    <div class="tabs">
+ 
+      <div class="tab-content">
+        <div id="overview" class="tab-pane active">
+
+      
+
+          {if="$sucess"}
+
+          <div class="alert alert-success  mb-1 mt-1 text-center"  >
+          
+          <strong class="text-dark">{$sucess}</strong>
+          </div>
+          
+          {/if}
+          
+          
+          
+          
+          {if="$error"}
+          
+          <div class="alert alert-danger  mb-1 mt-1 text-center" >
+          
+            
+          <strong class="text-dark">Ocorreu um erro inesperado! </strong> <strong>{$error}</strong>
+
+          </div>
+          
+          {/if}
+         
+
+
+
+        <div id="edit" class="tab-pane" >
+
+
+          <form class="p-3" action="/dashboard/minha-conta" method="POST">
+
+
+                <h4 class="mb-3">Informações do usuário </h4>
+              
+
+
+
+
+                <div class="form-row mb-4">
+                  <div class="form-group col">
+                    <label for="inputAddress">Seu Apelido</label>
+
+                    <div class="form-group row align-items-center">          
+                      <div class="col-lg-12 col-xl-12">
+                          <input type="text" class="form-control form-control-modern Form-Color" name="desnickname" maxlength="15"  value="{$user.desnick}"  required />
+                      </div>   
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="new_pass_confirm" class="form-label">Seu estado</label>
+
+                    <select class="form-control form-control-modern text-5 h-auto  Form-Color" name="desstate"  required style="background-color: rgb(240, 240, 240);">
+                                  
+                      {loop="$states"}
+                      <option value="{$value['idstate']}" {if="$address.idstate  == $value['idstate']"}selected{/if}  >{$value['desstate']}</option>       
+                      
+                      
+                      {/loop}
+                      
+                  </select>
+
+
+                </div> 
+          
+
+
+
+                  <div class="col-md-6 mb-3">
+                    <label for="new_pass_confirm" class="form-label">Seu Aniversário</label>
+                      <input type="date" class="form-control form-control-modern text-5 Form-Color" name="desdtbirth" value="{$user.dtbirth}"  required />
+                  </div>
+
+                
+
+              
+                
+
+            </div>
+
+
+
+                <div class="form-row mb-4">
+                  <div class="form-group col">
+                    <label for="inputAddress2">Fale um pouco sobre você</label>
+                        
+                    <div class="form-group row align-items-center">          
+                      <div class="col-lg-12 col-xl-12">
+                          <textarea type="text" class="form-control form-control-modern  Form-Color" name="desaboutme" maxlength="256" rows="5" cols="33"  required style=" resize: none;">{$user.desdescription}</textarea>
+                      </div>   
+                    </div>
+
+                  </div>
+                </div>
+
+        
+                <div class="form-row">
+                  <div class="col-md-12 text-right mt-2">
+                    <button class="btn btn-success text-5" >Salvar informações</button>
+                  </div>
+                </div>
+                
+
+                </div>
+          
+
+
+
+
+            
+
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- end: page -->
+</section>
+</div>

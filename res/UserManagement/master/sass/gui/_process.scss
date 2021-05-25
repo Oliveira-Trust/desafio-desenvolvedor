@@ -1,0 +1,292 @@
+/* Process */
+.process {
+	text-align: center;
+	.process-step {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+	.process-step-circle {
+		display: flex;
+		justify-content: center;
+		height: 90px;
+		text-align: center;
+		width: 90px;
+		border: 2px solid #CCC;
+		border-radius: 50%;
+		align-items: center;
+		position: relative;
+		background-color: transparent;
+		transition: all 0.2s ease-in-out;
+	}
+	.process-step-content {
+		padding-top: 20px;
+	}
+	.process-step-circle-content {
+		font-weight: bold;
+		color: $color-dark;
+		font-size: 1.6em;
+		letter-spacing: -1px;
+		transition: all 0.2s ease-in-out;
+	}
+	.process-step {
+		&:hover {
+			.process-step-circle {
+				background-color: #CCC;
+				.process-step-circle-content {
+					color: #FFF;
+					.icons {
+						color: #FFF !important;
+					}
+				}
+			}
+		}
+	}
+
+	// Process Shapes
+	&.process-shapes {
+		.process-step-circle {
+			position: relative;
+			width: auto;
+			height: auto;
+			border: 0;
+			margin-bottom: 1.2rem;
+			.process-step-circle-content {
+				position: relative;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+				width: 45px;
+				height: 45px;
+				background-color: #CCC;
+				border-radius: 100%;
+				color: #FFF;
+				z-index: 3;
+			}
+
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100%;
+				height: 100%;
+				background-color: #777;
+				border-radius: 100%;
+				opacity: 0.6;
+				transform: translate3d(-50%, -50%, 0) scale(1.5);
+				transition: ease transform 1s, ;
+				z-index: 2;
+			}
+
+			&:after {
+				background-color: #999;
+				opacity: 0.3;
+				transform: translate3d(-50%, -50%, 0) scale(2);
+				z-index: 1;
+			}
+		}
+
+		// Process Shapes Hover Animate
+		&.process-shapes-hover-animate {
+			.process-step {
+				&:hover {
+					.process-step-circle {
+						&:before {
+							animation-name: processShapesScaleOne;	
+							animation-delay: 300ms;
+						}
+						&:after {
+							animation-name: processShapesScaleTwo;
+							
+						}
+						&:before, &:after {
+							animation-fill-mode: forwards;
+						    animation-iteration-count: infinite;
+						    animation-duration: 3s;
+						    animation-timing-function: linear;
+						}
+					}
+				}
+			}
+		}
+
+		// Process Shapes Hover Animate
+		&.process-shapes-always-animate {
+			.process-step {
+				.process-step-circle {
+					&:before {
+						animation-name: processShapesScaleOne;	
+						animation-delay: 300ms;
+					}
+					&:after {
+						animation-name: processShapesScaleTwo;
+						
+					}
+					&:before, &:after {
+						animation-fill-mode: forwards;
+					    animation-iteration-count: infinite;
+					    animation-duration: 3s;
+					    animation-timing-function: linear;
+					}
+					&.process-shapes-always-animate-delay {
+						&:before {
+							animation-name: processShapesScaleOne;	
+							animation-delay: 1000ms;
+						}
+						&:after {
+							animation-name: processShapesScaleTwo;
+							animation-delay: 700ms;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes processShapesScaleOne {
+	0% {
+		opacity: 0.6;
+		transform: translate3d(-50%, -50%, 0) scale(1.5);
+	}
+	25% {
+		opacity: 0;
+		transform: translate3d(-50%, -50%, 0) scale(1.8);
+	}
+	50% {
+		opacity: 0;
+		transform: translate3d(-50%, -50%, 0) scale(1);
+	}
+	100% {
+		opacity: 0.6;
+		transform: translate3d(-50%, -50%, 0) scale(1.5);
+	}
+}
+
+@keyframes processShapesScaleTwo {
+	0% {
+		opacity: 0.3;
+		transform: translate3d(-50%, -50%, 0) scale(2);
+	}
+	25% {
+		opacity: 0;
+		transform: translate3d(-50%, -50%, 0) scale(2.3);
+	}
+	50% {
+		opacity: 0;
+		transform: translate3d(-50%, -50%, 0) scale(1);
+	}
+	100% {
+		opacity: 0.3;
+		transform: translate3d(-50%, -50%, 0) scale(2);
+	}
+}
+
+@media (min-width: 992px) {
+	.process {
+		.process-step {
+			&:before {
+				height: 2px;
+				display: block;
+				background-color: #EDEDED;
+				position: absolute;
+				content: '';
+				width: 50%;
+				top: 45px;
+				left: 75%;
+			}
+			&:last-child {
+				&:before {
+					display: none;
+				}
+			}
+		}
+
+		// Process Shapes
+		&.process-shapes {
+			.process-step {
+				&:before {
+					top: 23px;
+				}
+			}
+		}
+	}
+}
+
+// Process Vertical
+.process-vertical {
+	text-align: $left;
+	.process-step {
+		width: 100%;
+		flex-direction: row;
+		justify-content: start;
+		align-items: start;
+		position: relative;
+		padding-bottom: 60px;
+		&:before {
+			display: none;
+		}
+		&:after {
+			width: 2px;
+			display: block;
+			background-color: #EDEDED;
+			position: absolute;
+			content: '';
+			height: calc(100% - 80px);
+			top: 70px;
+			#{$left}: 30px;
+		}
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+	}
+	.process-step-circle {
+		height: 60px;
+		width: 60px;
+		@include if-ltr() {
+			margin: 0 15px 0 0;
+		}
+		@include if-rtl() {
+			margin: 0 0 0 15px;
+		}
+		min-height: 60px;
+		min-width: 60px;
+	}
+	.process-step-content {
+		padding-top: 0;
+	}
+}
+
+// Process Connecting Line
+.process-connecting-line {
+	position: relative;
+	text-align: $left;
+	.connecting-line {
+		content: '';
+		position: absolute;
+		top: 25px;
+		left: 15px;
+		right: 15px;
+		height: 3px;
+		background: #CCC;
+	}
+	.process-step {
+		align-items: flex-start;
+		padding-right: 3rem;
+		padding-left: 3rem;
+		&:before {
+			content: none;
+		}
+	}
+	.process-step-circle {
+		background: #FFF;
+		width: 50px;
+		height: 50px;
+		border: 3px solid #CCC;
+	}
+}

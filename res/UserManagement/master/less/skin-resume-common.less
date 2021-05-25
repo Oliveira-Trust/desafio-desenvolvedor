@@ -1,0 +1,135 @@
+/*
+* Buttons
+*/
+.custom-btn-style-2:not(.btn-dark):not(.btn-quaternary) {
+	&.active, 
+	&:hover,
+	&:active,
+	&:focus {
+		color: @color-primary-inverse !important;
+		border-color: @color-primary !important;
+	}
+}
+
+/*
+* Menu
+*/
+#header {
+	&.header-floating-icons {
+		.header-nav-main {
+			nav {
+				> ul {
+					> li {
+						> a {
+							&:after {
+							    background: @color-primary;
+							}
+							&:not(.active) {
+								color: @color-primary-inverse !important;
+							}
+						}
+						&.open,
+						&.active,
+						&:hover,
+						&:active,
+						&:focus {
+							> a:not(.active) {
+								&:after {
+									background: @color-primary;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
+* Owl Carousel
+*/
+.owl-carousel {
+	&.custom-dots-style-1 {
+		.owl-dots {
+			button.owl-dot {
+				&.active, &:hover {
+					span {
+						border-color: @color-primary;
+
+						&:before {
+						    color: @color-primary;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
+* Timeline
+*/
+section.custom-timeline {
+    .timeline-box {
+    	&.right {
+    		&:before {
+			    box-shadow: 0 0 0 3px @color-secondary, 0 0 0 6px @color-dark !important;
+    		}
+
+    		&:after {
+    			background: @color-primary;
+    		}
+    	}
+    }
+}
+
+/*
+* Portfolio
+*/
+.custom-nav-sort {
+	&.nav {
+		> li {
+			&.active, &:hover {
+				> a {
+					background: @color-primary;
+					border-color: @color-primary;
+					color: @color-primary-inverse;
+
+					&:hover, &:focus {
+						color: @color-primary-inverse;  	
+					}
+				}
+			}
+		}
+	}
+}
+
+.custom-thumb-info-1 {
+	.thumb-info-wrapper {
+		&:after {
+		    background: @color-primary;
+		}
+
+		.thumb-info-plus {
+			&:before, &:after {
+				border-top-color: @color-primary-inverse;
+			}
+		}
+	}
+}
+
+/*
+* Say Hello
+*/
+.custom-feature-box {
+	&:hover {
+		.custom-feature-box-icon {
+			background: @color-primary;
+
+			i {
+				color: @color-primary-inverse !important;
+			}
+		}
+	}
+}

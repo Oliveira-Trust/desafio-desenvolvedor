@@ -1,0 +1,102 @@
+<div class="product-single-container product-single-default product-quick-view">
+	<div class="row row-sparse">
+		<div class="col-lg-6 product-single-gallery">
+		
+          	
+            <style type="text/css">
+
+
+            </style>
+
+            <div class="product-slider-container">
+				<div class="product-single-carousel owl-carousel owl-theme">
+                   
+                    <div class="product-item">
+						<img class="product-single-image img-product-modal" src="{$img_link_1}" data-zoom-image="{$img_link_1}"/>
+					</div>	
+
+                    <div class="product-item">
+						<img class="product-single-image img-product-modal" src="{$img_link_2}" data-zoom-image="{$img_link_2}"/>
+					</div>		
+
+                    <div class="product-item">
+						<img class="product-single-image img-product-modal" src="{$img_link_3}" data-zoom-image="{$img_link_3}"/>
+					</div>	
+                    
+                    <div class="product-item">
+						<img class="product-single-image img-product-modal" src="{$img_link_4}" data-zoom-image="{$img_link_4}"/>
+					</div>	
+
+				</div>		
+			</div>
+
+
+			<div class="prod-thumbnail owl-dots" id='carousel-custom-dots'>
+				
+          
+                <div class="owl-dot">
+					<img src="{$img_link_1}"  class="img-product-pagina-icon"/>
+				</div>	
+                	
+                <div class="owl-dot">
+					<img src="{$img_link_2}"   class="img-product-pagina-icon"/>
+				</div>	
+
+                <div class="owl-dot">
+					<img src="{$img_link_3}"   class="img-product-pagina-icon"/>
+				</div>	
+
+                <div class="owl-dot">
+					<img src="{$img_link_4}"  class="img-product-pagina-icon"/>
+				</div>	
+                    
+			</div>
+
+
+
+
+
+            
+
+
+
+
+          
+
+		</div><!-- End .product-single-gallery -->
+
+		<div class="col-lg-6 product-single-details">
+		
+			<h1 class="product-title" id="product-name">{$produto.desproduct}</h1>
+
+	<br>
+
+			<div class="price-box">
+				<!-- <span class="old-price">$81.00</span> -->
+				<span class="product-price">R${$produto.vlprice}</span>
+			</div><!-- End .price-box -->
+
+			<div class="product-desc">
+				<p>{$produto.desresume}</p>
+			</div><!-- End .product-desc -->
+
+	
+			<hr class="divider">
+
+			<div class="product-action">
+				
+
+				<a href='/comprar-produto/{function="setHash($produto.idproduct)"}/Aprovado' class="btn btn-success add-cart mb-2" >Simular compra concluída</a>
+			
+				<a href='/comprar-produto/{function="setHash($produto.idproduct)"}/Pendente' class="btn btn-primary add-cart mb-2"  >Simular compra em espera</a>
+
+				<a href='/comprar-produto/{function="setHash($produto.idproduct)"}/Cancelado' class="btn btn-danger add-cart" >Simular compra cancelada</a>
+
+			</div><!-- End .product-action -->
+
+			<hr class="divider">
+
+		
+		</div><!-- End .product-single-details -->
+	</div><!-- End .row -->
+</div><!-- End .product-single-container -->

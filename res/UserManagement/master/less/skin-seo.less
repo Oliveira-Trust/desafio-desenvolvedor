@@ -1,0 +1,24 @@
+@import "variables";
+
+@color-primary: #0088cc;
+
+@color-secondary: #e5f6fb;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+/* Carousel */
+.custom-carousel-nav-style-1 {
+	.owl-nav {
+		button[class*="owl-"] {
+			border-color: @color-primary;
+			color: @color-primary;
+			&:hover {
+				background: @color-primary !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+@import "variables";
+
+@color-primary: #e8465f;
+
+@color-secondary: #183f72;
+
+@color-tertiary: #222529;
+
+@color-quaternary: #eef0f4;
+
+@color-lighter-grey: #fafafc;
+
+@color-light-grey: #dde2ea;
+
+// BG
+.bg-color-primary-darken-1 {
+	background-color: darken(@color-primary, 5%) !important;
+}
+
+// Header
+@media (min-width: 992px) {
+	#header .header-nav {
+		&.header-nav-links:not(.header-nav-light-text) nav > ul > li > a,
+		&.header-nav-line:not(.header-nav-light-text) nav > ul > li > a {
+			color: @color-secondary;
+		}
+	}
+}
+
+@import "skin";

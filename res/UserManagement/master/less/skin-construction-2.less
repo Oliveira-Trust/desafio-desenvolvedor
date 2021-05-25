@@ -1,0 +1,134 @@
+@import "variables";
+
+@border-radius: 0;
+
+@color-primary: #ff3f00;
+
+@color-secondary: #220c3c;
+
+@color-tertiary: #f4f4f4;
+
+@color-quaternary: #e7e7e7;
+
+@import "skin";
+
+a {
+    &.text-primary {
+        &:hover {
+            color: @color-primary !important;
+        }
+    }
+
+    &.text-secondary {
+        &:hover {
+            color: @color-secondary !important;
+        }
+    }
+
+  &.text-tertiary {
+        &:hover {
+            color: @color-tertiary !important;
+        }
+    }
+}
+
+.custom-btn {
+    &:hover {
+        border-color: @color-primary;
+    }
+}
+
+.custom-button-white {
+    &:hover {
+        color: @color-primary !important;
+    }
+}
+
+.custom-portfolio {
+    .nav-link {
+        color: @color-secondary;
+    }
+
+    .nav-item {
+        &:hover {
+        background-color: @color-primary;
+        }
+    }
+}
+
+[data-carousel-navigate] {
+    &:hover,
+    &.active {
+        h4 {
+            color: @color-primary !important;
+        }
+        &:before {
+            background-color: @color-primary;
+        }
+    }
+}
+
+/*
+* Cards
+*/
+.custom-card {
+    &:hover {
+        &:before {
+            background-color: @color-primary;
+        }
+    }
+}
+
+.custom-card-style-2 {
+    &:before {
+        background-color: @color-primary;
+    }
+}
+
+/*
+* Testimonial
+*/
+.custom-testimonial {
+    blockquote {
+        &:before {
+            color: @color-primary !important;
+        }
+    }
+}
+
+/*
+* Tabs
+*/
+.custom-tabs {
+    .nav-item {
+        &.active,
+        &:hover {
+            background-color: @color-primary;
+        }
+
+        .nav-link {
+            color: @color-secondary !important;
+        }
+    }
+}
+
+// Owl Carousel - Custom Dots
+.owl-carousel {
+    &.custom-dots {
+        button.owl-dot {
+            span {
+                border-color: @color-quaternary;
+            }
+            &.active,
+            &:hover {
+                span {
+                    border-color: @color-secondary;
+
+                &:before {
+                    background: @color-secondary;
+                }
+                }
+            }
+        }
+    }
+}

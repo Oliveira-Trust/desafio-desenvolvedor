@@ -1,0 +1,82 @@
+@import "variables";
+
+@border-radius: 0;
+
+@color-primary: #FEA45A;
+
+@color-secondary: #e36159;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #4D5154;
+
+@import "skin";
+
+// Custom Square Style
+.custom-square-1 {
+	rect {
+		stroke: @color-primary;
+		fill: @color-primary;
+	}
+}
+
+// Custom Featured Boxes Style
+.custom-featured-boxes-style-1 {
+	.featured-box {
+		&:hover {
+			.box-content {
+				border: 7px solid @color-primary;
+				svg {
+					fill: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+// Custom Thumb Info Style
+.custom-thumb-info-style-1 {
+	.thumb-info-wrapper:after {
+		background: @color-primary;
+	}
+}
+
+// Testimonial Colored Quote
+.custom-testimonial-colored-quotes {
+	&.testimonial-with-quotes {
+		blockquote {
+			&:before, &:after {
+				color: @color-primary !important;
+			}
+		}
+	}
+}
+
+// Animations
+@keyframes customTextColored {
+	from {
+	    color: #FFF;
+	}
+
+	to {
+	    color: @color-primary;
+	}
+}
+
+.customTextColored {
+	animation-name: customTextColored;
+}
+
+@keyframes customBorderColored {
+	from {
+	    border-color: #43474A;
+	}
+
+	to {
+	    border-color: @color-primary;
+	}
+}
+
+.customBorderColored {
+	animation-name: customBorderColored;
+}

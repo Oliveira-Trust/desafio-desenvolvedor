@@ -1,0 +1,491 @@
+/* Loading Overlay */
+.loading-overlay-showing {
+	overflow: hidden;
+
+	& > .loading-overlay {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.loading-overlay {
+	transition: visibility 0s ease-in-out 0.5s, opacity 0.5s ease-in-out;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	opacity: 0;
+	right: 0;
+	top: 0;
+	visibility: hidden;
+	background: #FFF !important;
+}
+
+body > .loading-overlay {
+	position: fixed;
+	z-index: 999999;
+}
+
+/* Bounce Loading */
+.bounce-loader {
+	transition: all 0.2s;
+	margin: -9px 0 0 -35px;
+	text-align: center;
+	width: 70px;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	z-index: 10000;
+
+	.bounce1,
+	.bounce2,
+	.bounce3 {
+	    animation: 1.4s ease-in-out 0s normal both infinite bouncedelay;
+	    background-color: #CCC;
+	    border-radius: 100%;
+	    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+	    display: inline-block;
+	    height: 18px;
+	    width: 18px;
+	}
+
+	.bounce1 {
+		animation-delay: -0.32s;
+	}
+
+	.bounce2 {
+		animation-delay: -0.16s;
+	}
+}
+
+@keyframes bouncedelay {
+	0%, 80%, 100% {transform: scale(0.0);} 
+	40% {transform: scale(1.0);}
+}
+
+// Mobile Safari Animation Fix
+html {
+	&.safari.iphone {
+		.bounce-loader {
+			.bounce1,
+			.bounce2,
+			.bounce3 {
+				animation: 1.4s ease-in-out infinite bouncedelay;
+			}
+		}
+	}
+}
+
+/* Loading Overlay Percentage */
+.loading-overlay {
+	&.loading-overlay-percentage {
+		display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    .page-loader-progress-wrapper {
+	    	display: flex;
+	    	font-size: 4.1rem;
+	    	font-weight: bold;
+	    	letter-spacing: -1.5px;
+	    	color: #212121;
+	    }
+
+	    // Effect 2 (Background Layer Progress)
+	    &.loading-overlay-percentage-effect-2 {
+	    	.loading-overlay-background-layer {
+    		    position: absolute;
+			    top: 0;
+			    left: 0;
+			    bottom: 0;
+			    right: 0;
+			    width: 0px;
+			    background: #f4f4f4;
+			    z-index: 0;
+			    transition: ease width 300ms;
+	    	}
+	    	.page-loader-progress-wrapper {
+	    		position: relative;
+	    		z-index: 1;
+	    	}
+	    }
+
+	}
+}
+
+/* Cubes Effect */
+.cssload-thecube {
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: -20px;
+	position: relative;
+	transform: rotateZ(45deg);
+	.cssload-cube {
+		position: relative;
+		float: left;
+		width: 50%;
+		height: 50%;
+		transform: rotateZ(45deg);
+		transform: scale(1.1);
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #CCC;
+			animation: cssload-fold-thecube 1.68s infinite linear both;
+			transform-origin: 100% 100%;
+		}
+	}
+	.cssload-c2 {
+		transform: scale(1.1) rotateZ(90deg);
+		&:before {
+			animation-delay: 0.205s;
+		}
+	}
+	.cssload-c3 {
+		transform: scale(1.1) rotateZ(180deg);
+		&:before {
+			animation-delay: 0.42s;
+		}
+	}
+	.cssload-c4 {
+		transform: scale(1.1) rotateZ(270deg);
+		&:before {
+			animation-delay: 0.625s;
+		}
+	}
+}
+
+@keyframes cssload-fold-thecube {
+	0%, 10% {
+		transform: perspective(129px) rotateX(-180deg);
+		opacity: 0;
+	}
+	25%,
+	75% {
+		transform: perspective(129px) rotateX(0deg);
+		opacity: 1;
+	}
+	90%,
+	100% {
+		transform: perspective(129px) rotateY(180deg);
+		opacity: 0;
+	}
+}
+
+/* Cube Progress Effect */
+.cssload-cube-progress {
+	display: block;
+	margin:0 auto;
+	width: 29px;
+	height: 29px;
+	position: relative;
+	border: 4px solid #CCC;
+	animation: cssload-cube-progress 2.3s infinite ease;
+}
+
+.cssload-cube-progress-inner {
+	vertical-align: top;
+	display: inline-block;
+	width: 100%;
+	background-color: #CCC;
+	animation: cssload-cube-progress-inner 2.3s infinite ease-in;
+}
+
+@keyframes cssload-cube-progress {
+	0% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(180deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	75% {
+		transform: rotate(360deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes cssload-cube-progress-inner {
+	0% {
+		height: 0%;
+	}
+	25% {
+		height: 0%;
+	}
+	50% {
+		height: 100%;
+	}
+	75% {
+		height: 100%;
+	}
+	100% {
+		height: 0%;
+	}
+}
+
+/* Float Rings Effect */
+.cssload-float-rings-loader {
+	position: relative;
+	left: calc(50% - 15px);
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	perspective: 380px;
+}
+
+.cssload-float-rings-inner {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 50%;
+	&.cssload-one {
+		left: 0%;
+		top: 0%;
+		animation: cssload-rotate-one 1.15s linear infinite;
+		border-bottom: 1px solid #CCC;
+	}
+	&.cssload-two {
+		right: 0%;
+		top: 0%;
+		animation: cssload-rotate-two 1.15s linear infinite;
+		border-right: 1px solid #CCC;
+	}
+	&.cssload-three {
+		right: 0%;
+		bottom: 0%;
+		animation: cssload-rotate-three 1.15s linear infinite;
+		border-top: 1px solid #CCC;
+	}
+}
+
+@keyframes cssload-rotate-one {
+	0% {
+		transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+	}
+}
+
+@keyframes cssload-rotate-two {
+	0% {
+		transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+	}
+}
+
+@keyframes cssload-rotate-three {
+	0% {
+		transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+	}
+}
+
+/* Float Bars Effect */
+.cssload-float-bars-container {
+	margin: -70px auto 0 auto;
+	max-width: 545px;
+    transform: rotate(90deg);
+	* {
+		box-sizing: border-box;
+	}
+	ul li{
+		list-style: none;
+	}
+}
+.cssload-float-bars-flex-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	li {
+		padding: 10px;
+		height: 97px;
+		width: 97px;
+		margin: 29px 19px;
+		position: relative;
+		text-align: center;
+	}
+}
+.cssload-float-bars-loading, 
+.cssload-float-bars-loading:after, 
+.cssload-float-bars-loading:before {
+	display: inline-block;
+	position: relative;
+	width: 5px;
+	height: 49px;
+	background: #CCC;
+	margin-top: 5px;
+	border-radius: 975px;
+	animation: cssload-upDown2 1.15s ease infinite;
+	animation-direction: alternate;
+	animation-delay: 0.29s;
+}
+.cssload-float-bars-loading:after, 
+.cssload-float-bars-loading:before {
+	position: absolute;
+	content: '';
+	animation: cssload-upDown 1.15s ease infinite;
+	animation-direction: alternate;
+}
+.cssload-float-bars-loading:before {
+	left: -10px;
+}
+.cssload-float-bars-loading:after {
+	left: 10px;
+	animation-delay: 0.58s;
+}
+
+@keyframes cssload-upDown {
+	from {
+		transform: translateY(19px);
+	}
+	to {
+		transform: translateY(-19px);
+	}
+}
+
+@keyframes cssload-upDown2 {
+	from {
+		transform: translateY(29px);
+	}
+	to {
+		transform: translateY(-19px);
+	}
+}
+
+/* Speeding Wheel */
+.cssload-speeding-wheel-container {
+	width: 100%;
+	height: 49px;
+	text-align: center;
+}
+.cssload-speeding-wheel {
+	width: 49px;
+	height: 49px;
+	margin: 0 auto;
+	border: 3px solid #CCC;
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	animation: cssload-spin 575ms infinite linear;
+}
+
+@keyframes cssload-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+/* Zenith Effect */
+.cssload-zenith-container {
+	width: 100%;
+	height: 49px;
+	text-align: center;
+}
+.cssload-zenith {
+	width: 49px;
+	height: 49px;
+	margin: 0 auto;
+	border-radius: 50%;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	box-shadow: 3px 3px 1px #CCC;
+	animation: cssload-spin 690ms infinite linear;
+}
+
+@keyframes cssload-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+/* Spinning Square Effect */
+.cssload-spinning-square-loading {
+	position: relative;
+	width: 30px;
+	height: 30px;
+	background: #CCC;
+	display:block;
+	margin: auto;
+	animation: 1.15s cssload-spin infinite;
+	&:before, &:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		animation: 0.58s infinite alternate linear
+	}
+	&:before {
+		background: #999;
+		animation-name: cssload-blur1;
+	}
+	&:after {
+		background: rgb(255,255,255);
+		animation-name: cssload-blur2;
+	}
+}
+
+@keyframes cssload-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes cssload-blur1 {
+	to {
+		transform: rotate(-30deg);
+	}
+}
+
+@keyframes cssload-blur2 {
+	to {
+		transform: rotate(-15deg);
+	}
+}
+
+/* Pulse */
+.wrapper-pulse {
+	margin-top: -60px;
+}
+.cssload-pulse-loader {
+	width: 49px;
+	height: 49px;
+	border-radius: 50%;
+	margin: 3em;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	background:rgb(0,0,0);
+}
+.cssload-pulse-loader,
+.cssload-pulse-loader:before,
+.cssload-pulse-loader:after {
+	animation: 1.15s infinite ease-in-out;
+}
+.cssload-pulse-loader:before,
+.cssload-pulse-loader:after {
+	width: 100%; 
+	height: 100%;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.cssload-pulse-loader { animation-name: cssload-pulse-loader; }
+
+@keyframes cssload-pulse-loader {
+	from { transform: scale(0); opacity: 1; }
+	to	 { transform: scale(1); opacity: 0; }
+}

@@ -1,0 +1,726 @@
+// COMMON IMPORTS
+@import "../config/imports";
+
+// Colors
+$color-dark: #222529;
+$color-grey: #e7e7e7;
+$color-light-grey: #F4F4F4;
+
+// Fonts
+$font-secondary: "Poppins", sans-serif;
+
+body {
+	font-family: $font-secondary;
+}
+
+/*
+* Container
+*/
+@media (min-width: 1240px) {
+	.container {
+		max-width: 1240px !important
+	}
+}
+
+/*
+* Border
+*/
+.border-color-grey {
+	border-color: $color-grey !important;
+}
+
+/*
+* Header
+*/
+.header-top {
+	border-bottom: 1px solid $color-grey !important;
+
+	.header-top-phone {
+		font-size: 16px !important;
+		padding: side-values(6px 40px 6px 0) !important;
+
+		img {
+			margin-#{$right}: 7px;
+		}
+	}
+
+	.header-top-email,
+	.header-top-opening-hours {
+		font-size: 12px !important;
+		letter-spacing: -0.3px;
+
+		i {
+			margin-#{$right}: 6px !important
+		}
+	}
+
+	.header-top-email {
+		margin-#{$right}: 15px;
+	}
+
+	.nav-item-header-top-socials {
+		@media (max-width: 1199px) {
+			width: 100%;
+		}
+
+		.header-top-socials {
+			ul {
+				li {
+					margin-#{$right}: 30px;
+	
+					i {
+						font-size: 15px !important
+					}
+				}
+			}
+		}
+	}
+
+	.header-top-button-make-as-appoitment {
+		width: 195px;
+		a {
+			font-size: 12px;
+		}
+	}
+}
+
+/*
+* Header Container
+*/
+.header-container {
+	.header-nav {
+		.nav {
+			li {
+				> a {
+					text-transform: none !important;
+					font-size: 14px !important;
+				}
+
+				.dropdown-menu {
+					a {
+						font-size: 0.8em !important;                        
+					}
+				}
+
+				&:hover {
+					> a {
+						background: #fff !important;
+
+						&:before {
+							border-bottom: 0 !important
+						}
+
+						& + ul {
+							&.dropdown-menu {
+								border-top: 0 !important;
+								margin-top: -5px !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
+* Header Search
+*/
+.header-column-search {
+	flex-grow: 0.14 !important;
+
+	@media (max-width: 1199px) {
+		flex-grow: 0.3 !important;
+	}
+
+	@media (max-width: 991px) {
+		order: 2;
+		flex-grow: 0.1 !important;
+		width: 100%;
+		padding-#{$right}: 15px;
+	}
+}
+
+.header-column-logo {
+	@media (max-width: 991px) {
+		order: 1
+	}
+}
+
+.header-column-nav-menu {
+	@media (max-width: 991px) {
+		order: 3;
+		flex-grow: 0.1 !important;
+	}
+}
+
+.header-nav-features {
+	padding: 0 !important;
+	margin: 0 !important;
+
+	&:not(.header-nav-features-no-border) {
+		&:before {
+			display: none !important
+		}
+	}
+}
+
+/*
+* Carousel Slider
+*/
+.custom-dots-style-1 {
+	.owl-dots {
+		.owl-dot {
+			background: transparent;
+		    border-radius: 100%;
+		    width: 20px;
+		    height: 20px;
+		    display: inline-flex;
+		    align-items: center;
+		    justify-content: center;
+		    border: 2px solid #212121;
+		    > span {
+		    	background: transparent !important;
+		    }
+
+		    &.active {
+		    	> span {
+			    	background: #212121 !important;
+			    }
+		    }
+
+		    & + .owl-dot {
+		    	margin-left: 6px !important;
+		    }
+		}
+	}
+}
+
+/*
+* Cards
+*/
+.custom-cards {
+	position: relative;
+	min-height: 300px;
+
+	@media (max-width: 1199px) {
+		height: auto;
+	}
+
+	.cards-container {
+		position: absolute;
+		top: -70%;
+		left: 0;
+
+		@media (max-width: 1199px) {
+			position: static;
+		}
+
+		.card {
+			min-height: 420px;
+
+			.card-body {
+				padding: 50px;
+
+				img {
+					padding-bottom: 20px;
+				}
+
+				.card-title {
+					font-size: 24px;
+				}
+
+				.card-text,
+				.card-title {
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+
+/*
+* Custom List Icons
+*/
+.custom-list-icons {
+	li {
+		line-height: 35px !important;
+		padding-#{$left}: 52px !important;
+
+		i {
+			border-color: $color-grey !important;
+			width: 40px !important;
+			height: 40px !important;
+			line-height: 33px !important;
+			top: 0 !important;
+		}
+	}
+
+	&:first-child {
+		li {
+			padding-#{$right}: 60px !important;
+		}
+	}
+}
+
+/*
+* Custom Carousel
+*/
+.custom-owl-carousel {
+
+	.owl-next {
+		&:before {
+			@include if-ltr() {
+				content: "\f061" !important;
+			}
+			@include if-rtl() {
+				content: "\f060" !important;
+			}
+			color: #212529 !important;
+			font-size: 20px !important;
+		}
+	}
+
+	.owl-prev {
+		&:before {
+			@include if-ltr() {
+				content: "\f060" !important;
+			}
+			@include if-rtl() {
+				content: "\f061" !important;
+			}
+			color: #212529 !important;
+			font-size: 20px !important;
+		}
+	}
+
+	.owl-carousel .owl-nav {
+		top: 40%;
+	}
+
+}
+
+/*
+* About Me
+*/
+.more-about {
+	background-color: #FFF;
+	background-position-y: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 70px;
+	@include if-rtl() {
+		background-position: right;
+	}
+
+	@media (max-width: 991px) {
+		padding-top: 70%;
+		position: static;
+		background-size: 100%;
+		background-position: 0 0;
+		background-color: #FFF;
+		margin-bottom: 0;
+		overflow: auto;
+	}
+
+	@media (min-width: 992px) {
+
+		.col-cuttin-more-about:before {
+			content: '';
+			position: absolute;
+			top: -35%;
+			#{$right}: -90%;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			z-index: 0;
+			@include if-ltr() {
+				transform: rotate(75deg);
+			}
+			@include if-rtl() {
+				transform: rotate(-75deg);
+			}
+		}
+		
+		.col-cuttin-more-about:after {
+			content: '';
+			position: absolute;
+			top: 35%;
+			#{$right}: -90%;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			z-index: 0;
+			@include if-ltr() {
+				transform: rotate(-75deg);
+			}
+			@include if-rtl() {
+				transform: rotate(75deg);	
+			}
+		}
+
+	}
+
+	@media (min-width: 992px) and (max-width: 1200px) {
+
+		background-size: 130%;
+
+		.col-cuttin-more-about:before {
+			right: -127%;
+			top: -38%;
+		}
+		
+		.col-cuttin-more-about:after {
+			right: -127%;
+			top: 38%;
+		}
+
+	}
+
+}
+
+/*
+* Patient Reviews
+*/
+.patient-reviews {
+	background-position: right;
+	background-repeat: no-repeat;
+	background-color: #fff;
+	background-size: contain;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	@include if-rtl() {
+		background-position: left;
+	}
+
+	@media (max-width: 1199px) {
+		padding-top: 51%;
+		position: static;
+		background-size: 100%;
+		background-position: 0 0;
+		background-color: #FFF;
+		margin-bottom: 0;
+		overflow: auto;
+	}
+
+	@media (min-width: 1200px) {
+
+		.col-cutting-patient-reviews:before {
+			content: '';
+			position: absolute;
+			top: -50%;
+			#{$left}: -68%;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			z-index: 0;
+			@include if-ltr() {
+				transform: rotate(-70deg);
+			}
+			@include if-rtl() {
+				transform: rotate(70deg);	
+			}
+		}
+		
+		.col-cutting-patient-reviews:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			#{$left}: -68%;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			z-index: 0;
+			@include if-ltr() {
+				transform: rotate(70deg);
+			}
+			@include if-rtl() {
+				transform: rotate(-70deg);	
+			}
+		}
+
+	}
+
+	@media (max-width: 991px) {
+		padding-top: 54%;
+	}
+
+	section.section {
+		padding: 90px 0 !important;
+
+		@media (max-width: 1199px) {
+			padding: side-values(30px 0 70px) !important;
+		}
+
+		.owl-carousel .owl-nav {
+			top: 19%;
+		}
+
+		p.lead {
+			font-size: 14px;
+		}
+
+		h4.review-signature {
+			font-size: 18px;
+		}
+	}
+
+	.owl-stage-outer {
+		.owl-item {
+			padding: 0 60px;
+		}
+	}
+
+	.owl-next {
+		transform: none !important;
+
+		&:before {
+			@include if-ltr() {
+				content: "\f061" !important;
+			}
+			@include if-rtl() {
+				content: "\f060" !important;
+			}
+			color: #212529 !important;
+			font-family: 'Font Awesome 5 Free' !important;
+			font-weight: 900 !important;
+			font-size: 20px !important;
+			left: 1px !important;
+			top: -1px !important;
+			border: none !important;
+			position: static !important;
+			transform: none !important;
+		}
+
+		&:after {
+			display: none !important;
+		}
+	}
+
+	.owl-prev {
+		transform: none !important;
+
+		&:before {
+			@include if-ltr() {
+				content: "\f060" !important;
+			}
+			@include if-rtl() {
+				content: "\f061" !important;
+			}
+			color: #212529 !important;
+			font-family: 'Font Awesome 5 Free' !important;
+			font-weight: 900 !important;
+			font-size: 20px !important;
+			left: 1px !important;
+			top: -1px !important;
+			border: none !important;
+			position: static !important;
+			transform: none !important;
+		}
+
+		&:after {
+			display: none !important;
+		}
+	}
+
+	.review-quotes {
+		#{$left}: 0;
+		width: 10%;
+
+		@include if-rtl() {
+			> i {
+				&:before {
+					content: "\f10e";
+				}
+			}
+		}
+
+		& + .lead {
+			width: 90%;
+		}
+	}
+}
+
+/*
+* Medical Services
+*/
+.medical-services {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+
+	.cards-medical-services {
+		margin-bottom: 32px;
+
+		.card {
+			margin-bottom: 30px;
+		}
+	}
+
+	.section-funnel-layer-bottom {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 6rem 0;
+		transform: translate3d(0, 99%, 0);
+		z-index: 20;
+
+		@media (max-width: 1199px) {
+			display: none
+		}
+
+		.section-funnel-layer:nth-child(1) {
+			transform: skewY(-4.7deg);
+			position: absolute;
+			top: 0;
+			left: -50%;
+			width: 100%;
+			height: 100%;
+			z-index: 6;
+		}
+		
+		.section-funnel-layer:nth-child(2) {
+			transform: skewY(-175.3deg);
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 100%;
+			height: 100%;
+			z-index: 6;
+		}
+	}
+}
+
+/*
+* Google Maps
+*/
+#googlemaps {
+	min-height: 480px;
+}
+
+/*
+* Contact Form
+*/
+.custom-form-style-1 {
+	.form-control {
+		border: 0;
+		padding: 1.2rem;
+		box-shadow: none !important;
+		height: auto;
+		background: $color-light-grey !important;
+	}
+}
+
+/*
+* Footer Top Info
+*/
+.footer-top-info {
+	margin-bottom: -1px;
+
+	.footer-top-info-detail {
+		position: relative;
+		width: 100%;
+		padding-#{$right}: 190px;
+
+		@media (max-width: 991px) {
+			margin: 15px;
+		}
+
+		@media (max-width: 575px) {
+			margin: 0;
+			margin-#{$left}: -10px;
+		}
+	}
+
+	.footer-top-info-desc {
+		white-space: nowrap; 
+		width: 100%; 
+		overflow: hidden;
+		text-overflow: ellipsis; 
+	}
+
+	.btn-footer-top-info {
+		width: 180px;
+		height: 55px;
+		line-height: 51px;
+		position: absolute;
+		#{$right}: 20px;
+		&:hover {
+			border-color: #FFF !important;
+		}
+
+		@media (max-width: 991px) {
+			margin-#{$right}: 15px;
+		}
+
+		@media (max-width: 575px) {
+			margin-#{$right}: -5px;
+		}
+	}
+}
+
+/*
+* Footer
+*/
+#footer {
+	.custom-info {
+		.custom-info-block {
+			span {
+				display: block;
+				font-size: 14px;
+
+				&.title-custom-info-block {
+					letter-spacing: -0.35px;
+				}
+
+				&.text-custom-info-block {
+					letter-spacing: -0.35px;
+				}
+			}
+		}
+	}
+
+	.nav-footer {
+		> ul {
+			padding: 0;
+
+			li {
+				list-style: none
+			}
+		}
+	}
+
+	.social-icons {
+		li {
+			margin: side-values(-1px 13px 0 0);
+
+			a {
+				width: 38px;
+				height: 38px;
+				line-height: 41px;
+			}
+
+			&:hover {
+				a {
+					color: #333 !important;
+				}
+			}
+		} 
+	} 
+
+	.footer-copyright {
+		border-top: 1px solid rgba(225,225,225,.1);
+	}
+
+	.footer-column-opening-hours {
+		.custom-info {
+			padding: 15px 0;
+			border-bottom: 1px solid rgba(225,225,225,0.1);
+		}
+	}
+}

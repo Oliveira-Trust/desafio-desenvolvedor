@@ -1,0 +1,127 @@
+@import "variables";
+
+@color-primary: #d80d07;
+
+@color-secondary: #e36159;
+
+@color-tertiary: #2baab1;
+
+@color-quaternary: #383f48;
+
+@border-radius: 0;
+
+@import "skin";
+
+// Featured Icon
+.featured-icon.rounded-circle {
+	border-radius: 100% !important;
+}
+
+// Buttons
+.custom-btn-style-1 {
+	&:after {
+		border-left-color: @color-primary;
+	}
+
+	&:hover,
+	&.hover {
+		&:after {
+			border-left-color: lighten(@color-primary, 7.5%);
+		}
+	}
+
+	&:focus,
+	&.focus {
+		&:after {
+			border-left-color: darken(@color-primary, 7.5%);
+		}
+	}
+
+	&.disabled,
+	&:disabled {
+		&:after {
+			border-left-color: @color-primary;
+		}
+	}
+
+	&:active,
+	&.active {
+		&:after {
+			border-left-color: darken(@color-primary, 7.5%) !important;
+		}
+	}
+}
+
+.custom-svg-btn-style-1:not(.custom-svg-btn-style-1-light) {
+	&:hover {
+		.custom-svg-btn-background {
+			polygon {
+				stroke: @color-primary;
+			}
+		}
+	}
+
+	&.custom-svg-btn-style-1-solid {
+		.custom-svg-btn-background {
+			polygon {
+				fill: @color-primary;
+				stroke: @color-primary;
+			}
+		}
+
+		&:hover,
+		&:focus {
+			.custom-svg-btn-background {
+				polygon {
+					fill: lighten(@color-primary, 7.5%);
+					stroke: lighten(@color-primary, 7.5%);
+				}
+			}
+		}
+	}
+}
+
+.btn-link {
+	> svg {
+		polygon {
+			stroke: @color-primary;
+			fill: @color-primary;
+		}
+	}
+}
+
+/*
+* Home Section - Hero
+*/
+.custom-hero-sub-images-style-1 {
+    &:before, &:after {
+    	background: darken(@color-primary, 3%);
+    }
+    .custom-hero-sub-images-shadow {
+	    box-shadow: 0px 0px 80px 68px darken(@color-primary, 3%);
+    }
+}
+
+/*
+* Home Section - What We Do
+*/
+.custom-thumb-info-style-1 {
+	&:hover {
+		.custom-thumb-info-icon {
+			background: @color-primary !important;
+		}
+	}
+}
+
+/*
+* Home Section - Testimonials
+*/
+.custom-testimonial-style-1 {
+	&.testimonial.testimonial-style-3 {
+		blockquote {
+			&:before {
+				color: @color-primary;
+			}
+		}
+	}
+}

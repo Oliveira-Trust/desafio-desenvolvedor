@@ -1,0 +1,154 @@
+@import "demo-digital-agency-2";
+
+$darken-bg: #252525;
+$text-color: #999;
+$text-color-light: #FFF;
+
+/*
+* Text Color
+*/
+body {
+	color: $text-color;
+}
+
+p {
+	color: $text-color;	
+}
+
+/*
+* BG Dark
+*/
+html,
+html.dark body,
+html.dark .body {
+	background-color: $darken-bg;
+}
+
+html.dark {
+	.bg-color-darken {
+		background-color: $darken-bg;
+	}
+}
+
+/*
+* Header
+*/
+@media (min-width: 992px) {
+	html.dark #header {
+		.header-nav.header-nav-dropdowns-dark nav > ul > li {
+			> a, &:hover > a {
+				color: $text-color-light;
+			}
+		}
+
+		.header-nav-main:not(.header-nav-main-light) nav > ul > li.dropdown:not(.dropdown-full-color) .dropdown-menu {
+			background: $darken-bg;
+
+			li {
+				&:hover > a, &:focus > a, &.active > a, &:active > a {
+					background: lighten($darken-bg, 5%);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	html.dark #header.header-transparent .header-body.bg-dark .header-nav-main:before,
+	html #header.header-transparent .header-body.bg-color-dark .header-nav-main:before {
+		background-color: $darken-bg;
+	}
+}
+
+/*
+* Slider
+*/
+html.dark {
+	.slider-container:after {
+		background-color: $darken-bg;
+	}
+}
+
+/*
+* Page Header
+*/
+.page-header.page-header-modern.page-header-background {
+
+	&:after {
+		background-color: $darken-bg;
+	}
+}
+
+/*
+* Sort Source
+*/
+html.dark {
+	.side-menu-our-work {
+		.sort-source.sort-source-light {
+			li.active {
+				a {
+					color: #FFF !important;
+				}
+			}
+			li:hover {
+				a {
+					&, &:hover {
+						color: #FFF !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
+* Project Details
+*/
+html.dark {
+	.project-details {
+		border-color: lighten($darken-bg, 5%);
+	}
+}
+
+/*
+* Blog
+*/
+html.dark {
+	ul.comments {
+		.comment-block {
+			background: lighten($darken-bg, 5%);
+			.comment-arrow {
+				border-right-color: lighten($darken-bg, 5%);
+			}
+		}
+	}
+}
+
+/*
+* Accordion
+*/
+html.dark {
+		.accordion {
+		.card-default {
+			border-color: lighten($darken-bg, 5%) !important;
+		}
+		.card,
+		.card-header {
+			background-color: lighten($darken-bg, 5%) !important;
+		}
+		.custom-card-body-collapse {
+			border-bottom-color: lighten($darken-bg, 5%) !important;
+		}
+		.card-body {
+			background-color: lighten($darken-bg, 2%) !important;
+		}
+	}
+}
+
+html.dark {
+	.pagination > li > a,
+	.pagination > li > span {
+		background-color: lighten($darken-bg, 3%);
+		border-color: lighten($darken-bg, 5%);
+	}
+}

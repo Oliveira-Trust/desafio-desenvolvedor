@@ -1,0 +1,180 @@
+{include="dashboardMenu"}
+
+
+
+
+<!-- start: page -->
+<section class="action-buttons-fixed" >
+       
+
+    {if="$error"}
+    <div class="alert alert-danger fade show" role="alert">
+     {$error}
+  
+    </div>
+    {/if}
+
+    {if="$sucess"}
+    <div class="alert alert-success  fade show" role="alert">
+     {$sucess}
+     
+    </div>
+    {/if}
+
+  
+  
+  
+    <div class="row">
+        <div class="col">
+           
+           
+        <form action='/admin/compras/editar/{function="setHash($results.idrecibo)"} ' method="POST">
+            <section class="card card-modern card-big-info">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2-5 col-xl-1-5">
+                            <i class="card-big-info-icon bx bxs-notepad text-primary"></i>
+                            <h2 class="card-big-info-title">Alterar Informações</h2>
+                            <p class="card-big-info-desc">Essa página foi criada com o intuíto de alterar as informações dos usuários.</p>
+                        </div>
+
+                        
+                
+                        <div class="col-lg-3-5 col-xl-4-5">
+
+
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">ID do<strong> Comprador</strong> </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <input type="text" class="form-control form-control-modern" value="{$results.iduser}" required style="background-color: rgb(230, 230, 230);" disabled/>
+                                </div>                                
+                            </div>
+
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">ID do<strong> Recibo</strong> </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <input type="text" class="form-control form-control-modern" value="{$results.idrecibo}" required style="background-color: rgb(230, 230, 230);" disabled/>
+                                </div>                                
+                            </div>
+
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">ID do<strong> Produto</strong> </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <input type="text" class="form-control form-control-modern" value="{$results.idproduct}" required style="background-color: rgb(230, 230, 230);" disabled/>
+                                </div>                                
+                            </div>
+
+                    <hr>
+
+
+
+
+
+       
+              
+
+
+                             <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Status da <strong>Compra</strong> </label>
+                                 <div class="col-lg-7 col-xl-6">
+                                                            
+                                    <select class="form-control form-control-modern" id="inautostatus" name="desbuystate" required style="background-color: rgb(240, 240, 240);">
+                             
+                                        <option value="Aprovado" {if="$results.desbuystate == 'Aprovado'"}selected{/if} >Aprovado</option>
+                                        <option value="Pendente" {if="$results.desbuystate == 'Pendente'"}selected{/if} >Pendente</option>
+                                        <option value="Cancelado" {if="$results.desbuystate == 'Cancelado'"}selected{/if} >Cancelado</option>
+    
+                                    </select>
+
+                                </div>                                
+                            </div>
+
+
+
+                                   
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Método de <strong>Pagamento</strong> </label>
+                                 <div class="col-lg-7 col-xl-6">
+                                                            
+                                    <select class="form-control form-control-modern" id="instatus" name="desmethod" required style="background-color: rgb(240, 240, 240);">
+                             
+                                        
+                                    <option value="Cartão de Crédito" {if="$results.desmethod == 'Cartão de Crédito'"}selected{/if} >Cartão de Crédito</option>
+                                    <option value="Boleto/TED/DOC/Pix" {if="$results.desmethod == 'Boleto/TED/DOC/Pix'"}selected{/if} >Boleto/TED/DOC/Pix</option>
+                            
+                                      
+    
+                                    </select>
+
+                                </div>                                
+                            </div>
+
+
+                            
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0 font-weight-semibold">Parcelamento da <strong>Compra</strong> </label>
+                                 <div class="col-lg-7 col-xl-6">
+                                                            
+                                    <select class="form-control form-control-modern" id="inbuyer" name="despayament" required style="background-color: rgb(240, 240, 240);">
+                             
+                                        <option value="1X Sem Juros" {if="$results.despayament == '1X Sem Juros'"}selected{/if} >1X Sem Juros</option>
+                                        <option value="2X Sem Juros" {if="$results.despayament == '2X Sem Juros'"}selected{/if} >2X Sem Juros</option>
+                                        <option value="3X Sem Juros" {if="$results.despayament == '3X Sem Juros'"}selected{/if} >3X Sem Juros</option>
+                                        <option value="4X Sem Juros" {if="$results.despayament == '4X Sem Juros'"}selected{/if} >4X Sem Juros</option>
+                                        <option value="5X Sem Juros" {if="$results.despayament == '5X Sem Juros'"}selected{/if} >5X Sem Juros</option>
+                                        <option value="6X Sem Juros" {if="$results.despayament == '6X Sem Juros'"}selected{/if} >6X Sem Juros</option>
+                                       
+                                      
+    
+                                    </select>
+
+                                </div>                                
+                            </div>
+
+                
+            
+
+
+
+
+
+
+                      
+
+
+                        
+                        
+                            <div class="form-group row align-items-center justify-content-center">
+                                <button type="submit" class="submit-button bg-primary btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Carregando...">
+                                    <i class="bx bx-save text-4 mr-2"></i> Salvar Informações
+                                </button>
+                                <a  href="/admin/" class="submit-button bg-danger btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Carregando...">
+                                    <i class="bx bx-save text-4 mr-2"></i> Voltar ao Menu
+                                </a>
+                            </div>
+                        
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+           </section>
+        </form>
+
+    </div>
+</div>  
+
+
+
+
+
+
+</section>
+<!-- end: page -->
+
+
+
+

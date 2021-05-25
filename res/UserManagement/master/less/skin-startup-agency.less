@@ -1,0 +1,45 @@
+@import "variables";
+
+@color-primary: #0088cc;
+
+@color-secondary: #504bfd;
+
+@color-tertiary: #eff1f3;
+
+@color-quaternary: #383f48;
+
+@import "skin";
+
+// Carousel
+.custom-carousel-backward-shape {
+	.owl-stage-outer {
+		&:before {
+			background-color: lighten(@color-primary, 30%);
+		}
+	}
+}
+
+// SVG
+.custom-svg-linear-gradient {
+	stop {
+		&:nth-child(1) {
+			stop-color: @color-secondary !important;
+		}
+		&:nth-child(2) {
+			stop-color: @color-primary !important;
+		}
+	}
+}
+
+// SVG Path Fill Color
+html {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+
+		path.custom-svg-fill-color-@{name},
+		circle.custom-svg-fill-color-@{name} {
+			fill: @color !important;
+		}
+	}
+}

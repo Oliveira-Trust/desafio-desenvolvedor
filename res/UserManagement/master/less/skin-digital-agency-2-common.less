@@ -1,0 +1,88 @@
+// Overlay
+.overlay {
+	&:before {
+		background-color: @color-secondary !important;
+	}
+}
+
+// Btn Colors
+html {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+
+		.custom-btn-with-arrow-@{name} {
+			&:after {
+				color: @color !important;
+			}
+		}
+	}
+}
+
+// Title Colors
+html {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+
+		.custom-title-with-icon-@{name} {
+			&:before {
+				color: @color !important;
+			}
+		}
+	}
+}
+
+// Header
+@media (max-width: 991px) {
+	#header .header-nav-main.header-nav-main-mobile-dark:before {
+		background-color: @color-secondary;
+	}
+}
+
+@media (min-width: 992px) {
+	#header .header-nav.header-nav-links nav > ul li:hover > a {
+		color: @color-primary !important;
+	}
+}
+
+// Our Services
+.our-services {
+	.service-card {
+		&:before {
+			background-color: @color-secondary;
+		}
+	}
+
+	.col-our-services-bottom {
+		.col-our-services-bottom-img {
+			.square-3 {
+				border-color: @color-secondary;
+			}
+		}
+	}
+}
+
+// Custom List
+.custom-list {
+	li {
+		&:before {
+			background-color: @color-primary;
+		}
+	}
+}
+
+// Accordion
+.custom-accordion {
+	.custom-card-body-collapse {
+		border-bottom-color: @color-tertiary;
+	}
+}
+
+// Footer
+#footer {
+	background-color: @color-secondary !important;
+	.custom-newsletter {
+		border-bottom: 1px solid @color-quaternary;
+	}
+}
