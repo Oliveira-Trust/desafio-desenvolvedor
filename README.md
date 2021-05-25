@@ -9,7 +9,7 @@ quaisquer dúvidas, basta entrar em contato comigo!
 
 ## ☕ URL DO SISTEMA NO MEU SERVIDOR (PARA POUPAR TEMPO)
 
-- CLIQUE PARA ACESSAR O -> [SISTEMA DE COMPRAS - OLIVEIRA TRUST](www.oliveiratrust.cp2studentsagency.com.br)
+- CLIQUE PARA ACESSAR O -> [SISTEMA DE COMPRAS - OLIVEIRA TRUST](https://www.oliveiratrust.cp2studentsagency.com.br)
 
 ## ☕ Versão do PHP
 
@@ -92,7 +92,7 @@ var_dump( array( 'MySql', 'JSON', 'AJAX' ) );
 - Login : vto.hugo67@gmail.com
 - Senha : 123321
 
-OBS : No servidor em que deixei o [LINK](www.oliveiratrust.cp2studentsagency.com.br), a senha pode ser outra, pois qualquer um que entrar e tiver este login e senha vai poder modificar, porém, por padrão ao importar o arquivo SQL para o banco de dados, essa é a conta padrão de ADM.
+OBS : No servidor em que deixei o [LINK](https://www.oliveiratrust.cp2studentsagency.com.br), a senha pode ser outra, pois qualquer um que entrar e tiver este login e senha vai poder modificar, porém, por padrão ao importar o arquivo SQL para o banco de dados, essa é a conta padrão de ADM.
 
 ## 🔐 CONTA DE USUÁRIO DE EXEMPLO
 - Login : glaucio@gmail.com
