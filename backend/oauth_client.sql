@@ -1,0 +1,1 @@
+INSERT INTO `oauth_clients` (`client_id`, `client_secret`, `redirect_uri`, `grant_types`, `scope`, `user_id`) VALUES ('CLIENT_ID', 'CLIENT_SECRET', NULL, 'password', 'app', NULL);

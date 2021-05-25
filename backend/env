@@ -1,0 +1,8 @@
+CI_ENVIRONMENT = "development"
+
+database.default.hostname = ""
+database.default.database = ""
+database.default.username = ""
+database.default.password = ""
+database.default.DBDriver = "MySQLi"
+database.default.DSN = "mysql:dbname=;host="

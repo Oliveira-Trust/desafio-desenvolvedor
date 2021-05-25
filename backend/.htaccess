@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^ot.lucasfernandes.com.br$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.ot.lucasfernandes.com.br$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]

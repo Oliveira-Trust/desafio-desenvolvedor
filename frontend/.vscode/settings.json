@@ -1,0 +1,12 @@
+{
+  "liveSassCompile.settings.formats": [
+
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/static/css"
+    }
+  ],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true
+}

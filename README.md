@@ -1,49 +1,46 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+<h2 align="center"><a href="https://ot.lucasfernandes.com.br/">👉 Disponível aqui 👈</a></h2>
+<p align="center">Desenvolvido por <a href="https://github.com/PxLucasF">Lucas Fernandes</a> com <b>CodeIgniter 4</b> e <b>Svelte</b>.</a>
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+## Requisitos ✅
+- [x] CRUD de clientes
+- [x] CRUD de produtos
+- [x] CRUD de pedidos
+- [x] Cada CRUD:
+  - [x] É filtrável e ordenável por qualquer campo;
+  - [x] Possui formulários para criação e atualização de seus itens;
+  - [x] Permitie a deleção de qualquer item de sua lista;
+  - [x] Possui barra de navegação entre eles;
+  - [x] Links para os outros CRUDs nas listagens.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## Bônus 🎁
+- [x] Implementar autenticação de usuário na aplicação
+- [ ] Permitir deleção em massa de itens nos CRUDs
+- [x] Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva
+- [x] API Rest JSON para todos os CRUDS listados acima
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+## Tecnologias utilizadas 🧰
+Back-end:
+- [CodeIgniter 4](http://codeigniter.com/)
+- [OAuth2 Server PHP](https://github.com/bshaffer/oauth2-server-php-docs)
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+Front-end:
+- [Svelte](https://svelte.dev)
+- [SvelteKit](https://kit.svelte.dev)
+- [Bootstrap 5](https://github.com/bestguy/sveltestrap)
+- [Sass](https://sass-lang.com/)
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+## Deploy 🚀
+Esse projeto está disponível para demonstração [nesse link](http://lucasfernandes.com.br/projects/desafio-desenvolvedor). Caso você queira dar deploy na sua própria hospedagem, siga o passo-a-passo à seguir (considerando que você já tem o [Composer](https://getcomposer.org) e [NPM](https://nodejs.org/en) instalados):
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+Back-end:
+1. Instale as dependências com `composer.phar install`
+2. Renomeie o arquivo **"env"** para **".env"** e informe os dados do seu banco de dados
+3. Execute [esse comando SQL](./backend/schema.sql) para configurar o schema do seu banco de dados
+4. Execute [esse outro comando SQL](./backend/oauth_client.sql) para criar um cliente do OAuth
+5. Sirva a pasta **"public"**
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Bônus por meta e entrega de projetos;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
-
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
-
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
-
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
-
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+Front-end
+1. Instale as dependências com `npm install`
+2. Configure a URL (sem "/" no final) e credenciais do OAuth em **"src/utils.js"**
+3. Execute `npm run build` para gerar a build
+4. Sirva a pasta **"build"**
