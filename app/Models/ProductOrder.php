@@ -2,10 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class ProductOrder extends Model
+class ProductOrder extends BaseModel
 {
-    use HasFactory;
 }
