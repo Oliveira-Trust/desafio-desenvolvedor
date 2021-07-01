@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Product extends BaseModel
+class ProductOrder extends BaseModel
 {
     /**
      * The attributes that are mass assignable.
@@ -10,10 +10,9 @@ class Product extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name',
-        'label',
+        'order_id',
+        'product_id',
         'value',
-        'description',
-        'enabled',
+        'quantity',
     ];
 }

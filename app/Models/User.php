@@ -16,6 +16,7 @@ class User extends Authenticatable implements BaseModel
      * @var array
      */
     protected $fillable = [
+        'admin',
         'name',
         'email',
         'password',
