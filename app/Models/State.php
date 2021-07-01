@@ -15,4 +15,15 @@ class State extends BaseModel
         'abbr',
     ];
 
+
+
+
+    
+	/**
+     * relationships
+     *
+     * @return void
+     */
+    public function city() { return $this->hasMany(City::class, 'state_id', 'id'); }
+
 }

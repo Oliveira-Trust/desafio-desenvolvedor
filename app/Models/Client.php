@@ -21,4 +21,14 @@ class Client extends BaseModel
         'address_neighborhood',
         'city_id',
     ];
+
+
+
+	/**
+     * relationships
+     *
+     * @return void
+     */
+	public function user() { return $this->belongsTo(User::class, 'user_id', 'id'); }
+	public function city() { return $this->hasOne(City::class, 'id', 'city_id'); }
 }

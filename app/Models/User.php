@@ -42,4 +42,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    
+	/**
+     * relationships
+     *
+     * @return void
+     */
+	public function client() { return $this->hasOne(Client::class, 'id', 'user_id'); }
 }

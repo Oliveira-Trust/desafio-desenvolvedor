@@ -16,4 +16,14 @@ class Order extends BaseModel
         'paid_at',
     ];
 
+
+
+    
+	/**
+     * relationships
+     *
+     * @return void
+     */
+	public function client() { return $this->belongsTo(Client::class, 'client_id', 'id'); }
+    
 }

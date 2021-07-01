@@ -15,4 +15,13 @@ class ProductOrder extends BaseModel
         'value',
         'quantity',
     ];
+
+
+
+    
+	/**
+     * relationships
+     *
+     * @return void
+     */
 }

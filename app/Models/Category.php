@@ -15,4 +15,13 @@ class Category extends BaseModel
         'slug',
     ];
 
+
+
+    
+	/**
+     * relationships
+     *
+     * @return void
+     */
+    public function product() { return $this->hasMany(Product::class, 'category_id', 'id'); }
 }
