@@ -1,5 +1,7 @@
 window._ = require('lodash');
 
+//window.Vue = require('vue');
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -22,6 +24,25 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ * 
+ * 
+ * referência: https://laracasts.com/discuss/channels/general-discussion/how-can-add-csrf-token-in-axios-post?reply=492673
+ */
+
+ let token = document.head.querySelector('meta[name="csrf-token"]');
+
+ if (token) {
+     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+ } else {
+     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+ }
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
