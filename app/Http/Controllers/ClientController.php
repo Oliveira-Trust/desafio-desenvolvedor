@@ -96,7 +96,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $cliente)
     {
-        $cliente->delete();
+        $cliente->user->delete();
         return response()->json([ 'status' => true, 'message' => 'Registro deletado com sucesso!'], 200);
     }
 }
