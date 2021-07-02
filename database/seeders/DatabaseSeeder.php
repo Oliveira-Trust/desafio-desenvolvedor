@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use App\Models\{User, Client};
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,11 +17,24 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         
-        $this->call(StateSeeder::class);
-        $this->call(CitySeeder::class);
-        $this->call(UserSeeder::class);
+        // Seeders obrigatórios
+        /* $this->call(StateSeeder::class);
+        $this->call(CitySeeder::class); */
+
+        // Seeders opcionais (se não usar esses, usar as factories abaixo)
+       /*  $this->call(UserSeeder::class);
         $this->call(ClientSeeder::class);
         $this->call(CategorySeeder::class);
-        $this->call(ProductSeeder::class);
+        $this->call(ProductSeeder::class); */
+
+        for ($i=0; $i < 300; $i++) { 
+            $user = User::factory()->create();
+
+            $client = Client::factory()
+                ->for($user)
+                ->create();
+        }
+
+
     }
 }

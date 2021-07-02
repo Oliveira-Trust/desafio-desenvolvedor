@@ -56,7 +56,8 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
+            //'strict' => true, // error when execute 'php artisan db:seed' with factory # https://laracasts.com/discuss/channels/laravel/general-error-1364-field-name-doesnt-have-a-default-value-2?reply=686226
+            'strict' => false,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
