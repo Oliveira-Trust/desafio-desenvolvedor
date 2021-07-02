@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->boolean('enabled')->default(false);
             $table->timestamps();
-            $table->softDeletes();
 
             $table->foreign('category_id')->references('id')->on('categories');
         });

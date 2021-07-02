@@ -20,7 +20,6 @@ class CreateOrderProductsTable extends Migration
             $table->decimal('value', 8, 2)->default('0.00');
             $table->tinyInteger('quantity')->default(1);
             $table->timestamps();
-            $table->softDeletes();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });

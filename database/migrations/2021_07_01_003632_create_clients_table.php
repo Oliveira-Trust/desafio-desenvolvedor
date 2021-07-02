@@ -30,7 +30,6 @@ class CreateClientsTable extends Migration
             $table->unsignedBigInteger('city_id');
             
             $table->timestamps();
-            $table->softDeletes();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities');

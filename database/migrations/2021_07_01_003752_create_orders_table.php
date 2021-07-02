@@ -20,7 +20,6 @@ class CreateOrdersTable extends Migration
             $table->enum('status', ['EM_ABERTO', 'PAGO', 'CANCELADO']);
 			$table->date('paid_at')->default(null);
             $table->timestamps();
-            $table->softDeletes();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }

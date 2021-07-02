@@ -19,7 +19,6 @@ class CreateStatesTable extends Migration
             $table->string('slug');
             $table->string('abbr');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
