@@ -99,4 +99,47 @@ class ClientController extends Controller
         $cliente->user->delete();
         return response()->json([ 'status' => true, 'message' => 'Registro deletado com sucesso!'], 200);
     }
+
+
+    
+
+    /**
+     * Pesquisa e pagina os registros de clientes.
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function search(Request $request){
+
+        if($request->term == '' || $request->field == ''){
+            return Client::with('user', 'city')->paginate(10);
+        }
+        
+
+        if($request->field == "document" || $request->field == "phone_number" || $request->field == "phone_number2" || $request->field == "birth" || $request->field == ""){
+            $client = Client::where($request->field, 'LIKE', "%" . $request->term . "%")->paginate(10);
+        } else if($request->field == "city_id") {
+           
+            $client = Client::whereHas('city', function($query) use ($request){
+                $query->where('name', 'LIKE', "%" . $request->term . "%");
+            })->paginate(10);
+
+        } else {
+
+            $client = Client::whereHas('user', function($query) use ($request){
+                if($request->field == 'enable'){
+                    $term = $request->term == 'Sim' ? 1 : 0;
+                } else {
+                    $term = $request->term;
+                }
+
+                $query->where($request->field, 'LIKE', "%" . $term . "%");
+            })->paginate(10);
+        }
+
+
+        return $client->load('city', 'user');
+
+        //return Client::orderBy('id')->paginate(10);
+    }
 }

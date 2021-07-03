@@ -24,6 +24,8 @@ Vue.use(Vuelidate)
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 
 // components
 Vue.component('clientes-index', require('./components/admin/clientes/ClientesIndex.vue').default);

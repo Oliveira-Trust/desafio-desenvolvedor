@@ -29,6 +29,7 @@
         "vue-sweetalert2": "^5.0.2",
         "vue-the-mask": "^0.11.1",
         "vuelidate": "^0.7.6",
-        "dayjs": "^1.10.5"
+        "dayjs": "^1.10.5",
+        "laravel-vue-pagination": "^2.3.1"
     }
 }
