@@ -25,7 +25,7 @@ class ClientFactory extends Factory
             'document'                  =>  $this->faker->numerify('###.###.###-##'),
             'phone_number'              =>  $this->faker->numerify('(##) ####-####'),
             'phone_number2'             =>  $this->faker->numerify('(##) #####-####'),
-            'birth'                     =>  $this->faker->dateTimeBetween('-30 years', '-20 years')->format('Y-m-d'),
+            'birth'                     =>  $this->faker->dateTimeBetween('-30 years', '-20 years')->format('d/m/Y'),
             'address_zipcode'           =>  $this->faker->numerify('##.###-###'),
             'address_street'            =>  $this->faker->streetName(),
             'address_number'            =>  $this->faker->randomNumber(5, false),

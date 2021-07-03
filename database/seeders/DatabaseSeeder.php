@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class); */
 
-        for ($i=0; $i < 300; $i++) { 
+        for ($i=0; $i < 100; $i++) { 
             $user = User::factory()->create();
 
             $client = Client::factory()

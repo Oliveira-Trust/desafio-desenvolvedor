@@ -42,9 +42,9 @@ class Client extends BaseModel
         $state = State::where('abbr', request()->state_id)->first();
         $city = City::where([ ['state_id', '=', $state->id], ['name', '=', request()->city_id] ])->first();
         $this->attributes['city_id'] = $city->id;
-    }
+    }*/
 
     public function setBirthAttribute($value){
         $this->attributes['birth'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
-    } */
+    } 
 }
