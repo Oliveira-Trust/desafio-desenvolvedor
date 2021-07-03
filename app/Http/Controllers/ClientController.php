@@ -142,4 +142,15 @@ class ClientController extends Controller
 
         //return Client::orderBy('id')->paginate(10);
     }
+
+
+
+    public function deleteInMass(Request $request){
+        try {
+            Client::whereIn('id', $request->items)->delete();
+            return response()->json([ 'status' => true, 'message' => $request->items->count() > 1 ? 'Registros deletados com sucesso!' : 'Registro deletado com sucesso!'], 200);
+        } catch (\Throwable $th) {
+            return response()->json([ 'status' => false, 'message' => 'Erro ao deletar os registros.', 'th' =>  $th], 400);
+        }
+    }
 }

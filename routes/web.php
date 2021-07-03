@@ -29,5 +29,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::resource('clientes' ,  App\Http\Controllers\ClientController::class)->except('show');
 
     Route::get('/clientes/buscar', [App\Http\Controllers\ClientController::class, 'search'])->name('search');
+    Route::post('/clientes/delete-in-mass', [App\Http\Controllers\ClientController::class, 'deleteInMass'])->name('deleteInMass');
     
 });
