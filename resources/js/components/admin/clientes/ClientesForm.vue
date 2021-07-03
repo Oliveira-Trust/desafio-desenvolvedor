@@ -3,7 +3,7 @@
     <div class="row bg-white">
 
         <div class="col-12">
-            <b-form :action="getAction" method="post" class="form-horizontal" @submit.prevent="onSubmit">
+            <form :action="getAction" method="post" class="form-horizontal" @submit.prevent="onSubmit">
                 <input type="hidden" name="_token" :value="csrfToken" id="_token"/>
                 <input v-if="inEdit" type="hidden" name="_method" value="PUT" />
 
@@ -11,7 +11,7 @@
                     <div class="col-lx-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         
                         <h4 class="mt-3 mb-3 font-weight-bold" v-if="!inEdit">Adicionar Cliente</h4>
-                        <h4 class="mt-3 mb-3 font-weight-bold" v-if="inEdit">Editar Cliente</h4>
+                        <h4 class="mt-3 mb-3 font-weight-bold" v-else>Editar Cliente</h4>
                         <hr>
                         <h4 class="mt-1 mb-3"><strong>Usuário</strong></h4>
                     </div>
@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label for="email" class="label-validation">E-mail <span class="req"></span></label>
                             <div class="input-validation">
-                                <b-form-input type="email" name="email" id="email" v-model.trim="$v.email.$model"  class="form-control" placeholder="Digite o e-mail do cliente" maxlenght="255"></b-form-input>
+                                <input type="email" name="email" id="email" v-model.trim="$v.email.$model"  class="form-control" placeholder="Digite o e-mail do cliente" maxlenght="255" />
                                 <div class="alert alert-danger" v-if="!$v.email.required && $v.email.$dirty">O campo <strong>E-mail</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.email.minLength">O campo <strong>E-mail</strong> precisa ter pelo menos <strong>{{$v.email.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.email.maxLength">O campo <strong>E-mail</strong> precisa ter até <strong>{{$v.email.$params.maxLength.max}}</strong> caracteres.</div>
@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label for="password" class="label-validation">Senha <span class="req"></span></label>
                             <div class="input-validation">
-                                <b-form-input type="password" name="password" id="password" v-model.trim="$v.password.$model" class="form-control" placeholder="Digite a senha do cliente" maxlenght="255"></b-form-input>
+                                <input type="password" name="password" id="password" v-model.trim="$v.password.$model" class="form-control" placeholder="Digite a senha do cliente" maxlenght="255" />
                                 <div class="alert alert-danger" v-if="!$v.password.required && $v.password.$dirty">O campo <strong>Senha</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.password.minLength">O campo <strong>Senha</strong> precisa ter pelo menos <strong>{{$v.password.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.password.maxLength">O campo <strong>Senha</strong> precisa ter até <strong>{{$v.password.$params.maxLength.max}}</strong> caracteres.</div>
@@ -50,7 +50,12 @@
                         <div class="form-group">
                             <label for="enable" class="label-validation">Ativar usuário? <span class="req"></span></label>
                             <div class="input-validation">
-                                <b-form-select v-model="enable" :options="[{ value : 0, text : 'Não ativar', class : 'danger' }, { value: 1, text : 'Sim, ativar' }]"></b-form-select>
+                                <select v-model="enable" class="form-control">
+                                    <option value="">Selecione uma opção...</option>
+                                    <option :value="opcao.value" v-for="(opcao, i) in [{ value : 0, text : 'Não ativar', class : 'danger' }, { value: 1, text : 'Sim, ativar' }]" :key="i">
+                                        {{ opcao.text }}
+                                    </option>
+                                </select>
                             </div>
 
                             <p v-if="errors.enable" class="alert alert-danger">{{ getError(errors.enable) }}</p>
@@ -69,7 +74,7 @@
                         <div class="form-group">
                             <label for="name" class="label-validation">Nome <span class="req"></span></label>
                             <div class="input-validation">
-                                <b-form-input type="text" name="name" id="name" v-model.trim="$v.name.$model"  class="form-control" placeholder="Digite o nome do cliente" maxlenght="255"></b-form-input>
+                                <input type="text" name="name" id="name" v-model.trim="$v.name.$model"  class="form-control" placeholder="Digite o nome do cliente" maxlenght="255" />
                                 <div class="alert alert-danger" v-if="!$v.name.required && $v.name.$dirty">O campo <strong>Nome</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.name.minLength">O campo <strong>Nome</strong> precisa ter pelo menos <strong>{{$v.name.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.name.maxLength">O campo <strong>Nome</strong> precisa ter até <strong>{{$v.name.$params.maxLength.max}}</strong> caracteres.</div>
@@ -82,7 +87,7 @@
                         <div class="form-group">
                             <label for="phone_number" class="label-validation">Telefone <span class="req"></span></label>
                             <div class="input-validation">
-                                <b-form-input v-mask="['(##) ####-####', '(##) #####-####']" type="text" name="phone_number" id="phone_number" v-model.trim="$v.phone_number.$model"  class="form-control" placeholder="Digite o Telefone do cliente" maxlenght="15"></b-form-input>
+                                <input v-mask="['(##) ####-####', '(##) #####-####']" type="text" name="phone_number" id="phone_number" v-model.trim="$v.phone_number.$model"  class="form-control" placeholder="Digite o Telefone do cliente" maxlenght="15" />
                                 <div class="alert alert-danger" v-if="!$v.phone_number.required && $v.phone_number.$dirty">O campo <strong>Telefone</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.phone_number.minLength">O campo <strong>Telefone</strong> precisa ter pelo menos <strong>{{$v.phone_number.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.phone_number.maxLength">O campo <strong>Telefone</strong> precisa ter até <strong>{{$v.phone_number.$params.maxLength.max}}</strong> caracteres.</div>
@@ -96,9 +101,7 @@
                         <div class="form-group">
                             <label for="phone_number2" class="label-validation">Telefone 2 </label>
                             <div class="input-validation">
-                                <b-form-input v-mask="['(##) ####-####', '(##) #####-####']" type="text" name="phone_number2" id="phone_number2" v-model.trim="$v.phone_number2.$model"  class="form-control" placeholder="Digite o Telefone do cliente" maxlenght="15"></b-form-input>
-                                <!-- <div class="alert alert-danger" v-if="!$v.phone_number2.required && $v.phone_number2.$dirty">O campo <strong>Telefone</strong> é obrigatório.</div> -->
-                                <div class="alert alert-danger" v-if="!$v.phone_number2.minLength">O campo <strong>Telefone</strong> precisa ter pelo menos <strong>{{$v.phone_number2.$params.minLength.min}}</strong> caracteres.</div>
+                                <input v-mask="['(##) ####-####', '(##) #####-####']" type="text" name="phone_number2" id="phone_number2" v-model.trim="$v.phone_number2.$model"  class="form-control" placeholder="Digite o Telefone do cliente" maxlenght="15" />
                                 <div class="alert alert-danger" v-if="!$v.phone_number2.maxLength">O campo <strong>Telefone</strong> precisa ter até <strong>{{$v.phone_number2.$params.maxLength.max}}</strong> caracteres.</div>
                             </div>
 
@@ -109,7 +112,7 @@
                         <div class="form-group">
                             <label for="birth" class="label-validation">Data de nascimento <span class="req"></span></label>
                             <div class="input-validation">
-                                <b-form-input v-mask="['##/##/####']" type="text" name="birth" id="birth" v-model.trim="$v.birth.$model"  class="form-control" placeholder="Digite a Data de Nascimento do cliente" maxlenght="10"></b-form-input>
+                                <input v-mask="['##/##/####']" type="text" name="birth" id="birth" v-model.trim="$v.birth.$model"  class="form-control" placeholder="Digite a Data de Nascimento do cliente" maxlenght="10" />
                                 <div class="alert alert-danger" v-if="!$v.birth.required && $v.birth.$dirty">O campo <strong>Data de Nascimento</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.birth.minLength">O campo <strong>Data de Nascimento</strong> precisa ter pelo menos <strong>{{$v.birth.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.birth.maxLength">O campo <strong>Data de Nascimento</strong> precisa ter até <strong>{{$v.birth.$params.maxLength.max}}</strong> caracteres.</div>
@@ -123,7 +126,7 @@
                         <div class="form-group">
                             <label for="document" class="label-validation">CPF <span class="req"></span> </label>
                             <div class="input-validation">
-                                <b-form-input v-mask="['###.###.###-##']" type="text" name="document" id="document" v-model.trim="$v.document.$model"  class="form-control" placeholder="Digite o CPF do cliente" maxlenght="15"></b-form-input>
+                                <input v-mask="['###.###.###-##']" type="text" name="document" id="document" v-model.trim="$v.document.$model"  class="form-control" placeholder="Digite o CPF do cliente" maxlenght="15"/>
                                 <div class="alert alert-danger" v-if="!$v.document.required && $v.document.$dirty">O campo <strong>CPF</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.document.minLength">O campo <strong>CPF</strong> precisa ter pelo menos <strong>{{$v.document.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.document.maxLength">O campo <strong>CPF</strong> precisa ter até <strong>{{$v.document.$params.maxLength.max}}</strong> caracteres.</div>
@@ -144,7 +147,7 @@
                         <div class="form-group">
                             <label for="address_zipcode" class="label-validation">CEP <span class="req"></span></label>
                             <div class="input-validation">
-                                <b-form-input v-mask="['##.###-###']"  type="text" name="address_zipcode" id="address_zipcode" v-on:change.native="getAddress"  v-model.trim="$v.address_zipcode.$model"  class="form-control" placeholder="Digite o CEP para buscar o endereço do cliente" maxlenght="10"></b-form-input>
+                                <input v-mask="['##.###-###']" type="text" name="address_zipcode" id="address_zipcode" @change="getAddress"  v-model.trim="$v.address_zipcode.$model"  class="form-control" placeholder="Digite o CEP para buscar o endereço do cliente" maxlenght="10" />
                                 <div class="alert alert-danger" v-if="!$v.address_zipcode.required && $v.address_zipcode.$dirty">O campo  <strong>CEP do endereço do cliente</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.address_zipcode.minLength">O campo <strong>CEP do endereço do cliente</strong> precisa ter pelo menos <strong>{{$v.address_zipcode.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.address_zipcode.maxLength">O campo <strong>CEP do endereço do cliente</strong> precisa ter até <strong>{{$v.address_zipcode.$params.maxLength.max}}</strong> caracteres.</div>
@@ -237,7 +240,7 @@
                     </div>
                 </div>
 
-            </b-form>
+            </form>
         </div>
     </div>
 </div>
