@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             
             $table->string('document', 25)->unique();
             $table->string('phone_number', 25);
-            $table->string('phone_number2', 25);
+            $table->string('phone_number2', 25)->nullable();
             $table->date('birth');
 
             $table->string('address_zipcode');
