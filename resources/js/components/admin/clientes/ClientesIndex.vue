@@ -3,20 +3,21 @@
 	<div class="row">
 		<div class="col-xl-10 col-sm-12 py-4">
 			<div class="row">
-				<div class="col-xl-8 col-sm-12">
+				<div class="col-xl-5 col-sm-12">
 					<div class="row">
 						<div class="col col-12">
 							<h4>Filtro</h4>
 						</div>
 						<div class="form-group col col-12">
 							<label for="term" class="form-label">Termo</label>
-							<input type="text" v-model="filters.filteredTermClient" name="client-term-filter" id="term" placeholder="Buscar" class="form-control  form-control-sm">
+							<input type="date" v-if="filterInputType" v-model="filters.filteredTermClient" name="client-term-filter" id="term" placeholder="Buscar" class="form-control  form-control-sm">
+							<input type="text" v-else v-model="filters.filteredTermClient" name="client-term-filter" id="term" placeholder="Buscar" class="form-control  form-control-sm">
 						</div>
 						<div class="form-group col col-12">
-							<label for="term" class="form-label">Campo</label>
+							<label for="field" class="form-label">Campo</label>
 							<select class="form-control  form-control-sm" v-model="filters.filteredFieldClient" name="client-field-filter" id="field">
 								<option value="">Selecione o campo</option>
-								<option :value="field.key" v-for="(field, i) in fields.reduce((d, i, idx, l) => idx < l.length - 1 ? [...d, i] : d, [])" :key="i">
+								<option :value="field.key" v-for="(field, i) in fields" :key="i">
 									{{ field.label }}
 								</option>
 							</select>
@@ -26,72 +27,109 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-4 col-sm-12">
+				<div class="col-xl-7 col-sm-12">
 					<div class="row">
 						<div class="col col-12">
-							<h4>Deletar itens em massa</h4>
-							<small>Clique nas linhas da tabela para selecionar itens, e assim, poder deleta-los.</small>
+							<div class="row">
+								<div class="col col-12">
+									<h4>Deletar itens em massa</h4>
+									<small>Selecione itens na caixa de seleção para assim, deleta-los.</small>
+								</div>
+								<div class="col col-12">
+									<button @click="deleteItems" :class="`btn btn-sm ${checkedDelete.length == 0 ? 'btn-secondary' : 'btn-danger'}`" title="Deletar itens selecionados" :disabled="checkedDelete.length == 0">Deletar itens selecionados ({{checkedDelete.length}}) <i class="fas fa-trash pl-2"></i></button>
+								</div>
+							</div>
 						</div>
 						<div class="col col-12">
-							<button @click="deleteItems" :class="`btn btn-sm ${selected.length == 0 ? 'btn-secondary' : 'btn-danger'}`" title="Deletar itens selecionados" :disabled="selected.length == 0">Deletar itens selecionados ({{selected.length}}) <i class="fas fa-trash pl-2"></i></button>
+							<div class="row">
+								<div class="col-12">
+									<h4 class="pt-3">Ordem da listagem dos clientes</h4>
+								</div>
+								<div class="col-xl-5 col-sm-12">
+									<div class="form-group">
+										<label for="sort-field" class="form-label">Campo</label>
+										<select class="form-control form-control-sm" v-model="sortBy" name="client-sort-field" id="sort-field">
+											<option value="">Selecione o campo</option>
+											<option :value="field.key" v-for="(field, i) in fields" :key="i">
+												{{ field.label }}
+											</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-xl-4 col-sm-12">
+									<div class="form-group">
+										<label for="sort-order" class="form-label">Ordem</label>
+										<select class="form-control form-control-sm" v-model="sortDirection" name="client-sort-order" id="sort-order">
+											<option :value="field.key" v-for="(field, i) in [ { key: '', label: 'Selecione'}, { key: 'ASC', label: 'Crescente'}, {key: 'DESC', label: 'Decrescente'} ]" :key="i">
+												{{ field.label }}
+											</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-xl-3 col-sm-12 pt-4">
+									<button @click="getResults" class="btn btn-sm btn-info mt-2" title="Ordenar"> Ordenar <i class="fas fa-sort pl-2"></i></button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-xl-2 col-sm-12 py-4">
-			<a href="/admin/clientes/create" class="btn btn-outline-success btn-sm float-right"><i class="fas fa-plus-circle"></i> Adicionar</a>
+			<a href="/admin/clientes/create" class="btn btn-success btn-sm float-right"><i class="fas fa-plus"></i> Adicionar</a>
 		</div>
 
-    	<div class="col-12">			
-            <b-table striped hover responsive="sm" :items="items" :fields="fields" :show-empty="true" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :select-mode="selectMode" ref="selectableTable" selectable @row-selected="onRowSelected">
-				<template #cell(selected)="{ rowSelected }">
-					<template v-if="rowSelected">
-						<span aria-hidden="true">&check;</span>
-						<span class="sr-only">Selecionado</span>
-					</template>
-					<template v-else>
-						<span aria-hidden="true">&nbsp;</span>
-						<span class="sr-only">Não selecionado</span>
-					</template>
-				</template>
-
-                <template  v-slot:cell(name)="data">
-                  	<div>{{ data.item.user.name }}</div>
-                </template>
-				
-                <template  v-slot:cell(city_id)="data">
-                  	<div>{{ data.item.city.name }}</div>
-                </template>
-
-                <template  v-slot:cell(birth)="data">
-                  	<div v-format-date="'DD/MM/YYYY'">{{ data.item.birth }}</div>
-                </template>
-
-                <template  v-slot:cell(created_at)="data">
-                  	<div v-format-date="'DD/MM/YYYY [às] HH:mm'">{{ data.item.user.created_at }}</div>
-                </template>
-
-                <template  v-slot:cell(updated_at)="data">
-                  	<div v-format-date="'DD/MM/YYYY [às] HH:mm'">{{ data.item.updated_at }}</div>
-                </template>
-
-                <template  v-slot:cell(enable)="data">
-                  	<div>{{ data.item.user.enable == true ? 'Sim' : 'Não' }}</div>
-                </template>
-
-
-                <template  v-slot:cell(actions)="data">
-					<a :href="`/admin/clientes/${data.item.id}/edit`" class="btn btn-warning btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
-					<button @click="remove(data.item)" class="btn btn-danger btn-sm" title="Remover"><i class="fas fa-trash"></i> </button>
-                </template> 
-
-                <template slot="empty">
-                  <p class="alert alert-info text-center">Ainda não há registros.</p>
-                </template>
-            </b-table>
-
-			<pagination :limit="2" :show-disabled="true" :data="paginationData" @pagination-change-page="changePage"></pagination>
+    	<div class="col-12">
+			<div class="table-responsive-md table-responsive-sm">
+				<table class="table table-striped table-bordered table-hover table-sm">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">ID</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Telefone</th>
+							<th scope="col">Telefone 2</th>
+							<th scope="col">Nascimento</th>
+							<th scope="col">Cidade</th>
+							<th scope="col">Ativado?</th>
+							<th scope="col">Criado em</th>
+							<th scope="col">Atualizado em</th>
+							<th scope="col">Ações</th>
+						</tr>
+					</thead>
+					<tbody v-if="items.length > 0">
+						<tr v-for="(item, i) in items" :key="i" :class="setClass(item.cid) == true ? '': 'table-warning'">
+							<td class="align-middle">
+								<div class="form-group form-check">
+									<input type="checkbox" name="select-delete[]" class="form-check-input" :id="`select-delete-${item.cid}`" :value="item.cid"  v-model="checkedDelete">
+								</div>
+							</td>
+							<th scope="row" class="align-middle">{{item.cid}}</th>
+							<td class="align-middle">{{item.uname}}</td>
+							<td class="align-middle">{{item.phone_number}}</td>
+							<td class="align-middle">{{item.phone_number2}}</td>
+							<td class="align-middle">{{formatDate(item.birth, 'DD/MM/YYYY')}}</td>
+							<td class="align-middle">{{item.ciname}}</td>
+							<td class="align-middle">{{item.enable == true ? 'Sim' : 'Não' }}</td>
+							<td class="align-middle">{{formatDate(item.ucreated, 'DD/MM/YYYY [às] HH:mm')}}</td>
+							<td class="align-middle">{{formatDate(item.uupdated, 'DD/MM/YYYY [às] HH:mm')}}</td>
+							<td class="align-middle">
+								<a :href="`/admin/clientes/${item.cid}/edit`" class="btn btn-warning btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
+								<button @click="remove(item)" class="btn btn-danger btn-sm" title="Remover"><i class="fas fa-trash"></i> </button>
+							</td>
+						</tr>					
+					</tbody>
+					<tbody v-else>
+						<tr>
+							<td colspan="11">
+								<div class="alert alert-info text-center">Não há items para exibir</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+            
+			<pagination :limit="10" :show-disabled="true" :data="paginationData" @pagination-change-page="changePage"></pagination>
 			
         </div>
 	</div>
@@ -102,9 +140,10 @@
 <script>
 
 import pagination from 'laravel-vue-pagination'
+import dayjs from 'dayjs'
+
 export default {
-	props: ['clientes'],
-    components: { pagination },
+    components: { pagination, dayjs },
 
 	data() {
 
@@ -112,26 +151,24 @@ export default {
             paginationData	:	{},
 			items			:	[],
 			page			:	1,
+			sortBy			: 	'id',
+			sortDirection	: 	'ASC',
 			filters: {
                 filteredTermClient: '',
                 filteredFieldClient: ''
             },
-			sortBy			:	'id',
-			sortDesc		:	false,
 			fields: [
-				{ key: 'id', sortable: true, label: 'ID' },
-				{ key: 'name', sortable: true, label: 'Nome' },
-				{ key: 'phone_number', sortable: true, label: 'Telefone' },
-				{ key: 'phone_number2', sortable: true, label: 'Telefone 2' },
-				{ key: 'birth', sortable: true, label: 'Nascimento' },
-				{ key: 'city_id', sortable: true, label: 'Cidade' },
-				{ key: 'enable', sortable: true, label: 'Ativado?' },
-				{ key: 'created_at', sortable: true, label: 'Criado em' },
-				{ key: 'updated_at', sortable: true, label: 'Atualizado em' },
-				{ key: 'actions' }
+				{ key: 'id', label: 'ID' },
+				{ key: 'name', label: 'Nome' },
+				{ key: 'phone_number', label: 'Telefone' },
+				{ key: 'phone_number2', label: 'Telefone 2' },
+				{ key: 'birth', label: 'Nascimento' },
+				{ key: 'city_id', label: 'Cidade' },
+				{ key: 'enable', label: 'Ativado?' },
+				{ key: 'created_at', label: 'Criado em' },
+				{ key: 'updated_at', label: 'Atualizado em' },
 			],
-			selectMode: 'multi',
-        	selected: []
+			checkedDelete: []
 		}
 	},
 	
@@ -153,22 +190,14 @@ export default {
 		this.getResults();
 	},
 	methods: {
-		onRowSelected(items) {
-			this.selected = items
+		formatDate(date, format){
+			return dayjs(date).format(format)
 		},
-		selectAllRows() {
-			this.$refs.selectableTable.selectAllRows()
+		setClass(id){
+			return !this.checkedDelete.find(x => x == id)
 		},
-		clearSelected() {
-			this.$refs.selectableTable.clearSelected()
-		},
-		selectThirdRow() {
-			// Rows are indexed from 0, so the third row is index 2
-			this.$refs.selectableTable.selectRow(2)
-		},
-		unselectThirdRow() {
-			// Rows are indexed from 0, so the third row is index 2
-			this.$refs.selectableTable.unselectRow(2)
+		setColumnClass(){
+			
 		},
 
 		// Our method to GET results from a Laravel endpoint
@@ -176,10 +205,12 @@ export default {
 			const term = this.filters.filteredTermClient;
 			const field = this.filters.filteredFieldClient;
 			const page = this.page;
+			const sortBy = this.sortBy;
+			const sortDirection = this.sortDirection;
 
-			const response = await axios.get('/admin/clientes/buscar', {params: {page, term, field}});
-			//this.items = response.data.data;
-			this.items = term == '' && field == '' ?  response.data.data : response.data;
+			const response = await axios.get('/admin/clientes/buscar', {params: {page, term, field, sortBy, sortDirection}});
+			this.items = typeof response.data.data != 'undefined' ?  response.data.data : response.data;
+			//this.items = term == '' && field == '' ?  response.data.data : response.data;
 			this.paginationData = response.data;
 		},
 		
@@ -196,7 +227,7 @@ export default {
     	remove(item) {
 			this.$swal.fire({
 				title: 'Atenção!',
-				text: `Deseja realmente remover o cliente: ${item.user.name}?`,
+				text: `Deseja realmente remover o cliente: ${item.uname}?`,
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#dc3545',
@@ -204,9 +235,9 @@ export default {
 				cancelButtonText: 'Cancelar'
 			}).then((result) => {
 				if(result.value) {
-					axios.delete(`/admin/clientes/${item.id}`).then((response) => {
+					axios.delete(`/admin/clientes/${item.cid}`).then((response) => {
 						this.$swal.fire('', response.data.message, 'success')
-						this.items = this.items.filter((it) => it.id !== item.id);
+						this.items = this.items.filter((it) => it.cid !== item.cid);
 						this.getResults();
 					}).catch((e) => {
 						let error = _.get(e, 'response.data.message', 'Erro ao realizar a operação')
@@ -218,8 +249,8 @@ export default {
 		},
 		// delete selected items
 		deleteItems(){
-			let warnMessage = this.selected.length > 1 ? 'Deseja realmente remover os clientes selecionados?' : 'Deseja realmente remover o cliente selecionado?'
-			let selectedIdItems = _.mapValues(this.selected, (selected) => selected.id);
+			let that = this
+			let warnMessage = this.checkedDelete.length > 1 ? 'Deseja realmente remover os clientes selecionados?' : 'Deseja realmente remover o cliente selecionado?'
 			this.$swal.fire({
 				title: 'Atenção!',
 				text: warnMessage,
@@ -231,10 +262,11 @@ export default {
 			}).then((result) => {
 				if(result.value) {
 					axios.post(`/admin/clientes/delete-in-mass`, {
-						items: selectedIdItems
+						items: that.checkedDelete
 					}).then((response) => {
 						this.$swal.fire('', response.data.message, 'success')
-						_.mapValues(selectedIdItems, (selected) => this.items = this.items.filter((it) => it.id !== selected));
+						_.mapValues(that.checkedDelete, (selected) => this.items = this.items.filter((it) => it.cid !== selected));
+						this.checkedDelete = []
 						this.getResults();
 					}).catch((e) => {
 						let error = _.get(e, 'response.data.message', 'Erro ao realizar a operação')
@@ -249,7 +281,11 @@ export default {
     computed: {
         hasFilter () {
             return _.some(this.filters, (p) => Boolean(p));
-        }
+        },
+		
+		filterInputType(){
+			return this.filters.filteredFieldClient == 'birth'
+		},
     }
 }
 </script>

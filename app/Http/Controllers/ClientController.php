@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ClientRequest;
 use App\Models\City;
-use App\Models\Client;
 use App\Models\User;
+use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
 {
@@ -17,8 +18,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clientes = Client::get()->load('user', 'city');
-        return view('admin.clientes.index', compact('clientes'));
+        return view('admin.clientes.index');
     }
 
     /**
@@ -115,37 +115,75 @@ class ClientController extends Controller
      * @return void
      */
     public function search(Request $request){
+     
+        $query = Client::query();
 
-        if($request->term == '' || $request->field == ''){
-            return Client::with('user', 'city')->paginate(10);
-        }
-        
-
-        if($request->field == "document" || $request->field == "phone_number" || $request->field == "phone_number2" || $request->field == "birth" || $request->field == ""){
-            $client = Client::where($request->field, 'LIKE', "%" . $request->term . "%")->paginate(10);
-        } else if($request->field == "city_id") {
-           
-            $client = Client::whereHas('city', function($query) use ($request){
-                $query->where('name', 'LIKE', "%" . $request->term . "%");
-            })->paginate(10);
-
-        } else {
-
-            $client = Client::whereHas('user', function($query) use ($request){
-                if($request->field == 'enable'){
-                    $term = $request->term == 'Sim' ? 1 : 0;
-                } else {
-                    $term = $request->term;
-                }
-
-                $query->where($request->field, 'LIKE', "%" . $term . "%");
-            })->paginate(10);
+        // Ordendando por campo do registro
+        switch ($request->sortBy) {
+            case 'id':
+            case 'phone_number':
+            case 'phone_number2':
+            case 'birth':
+                $query->orderBy('clients.' . $request->sortBy, $request->sortDirection);
+                break;
+            case 'city_id':
+                $query->orderBy('cities.name', $request->sortDirection);
+                break;
+            case 'name':
+            case 'enable':
+            case 'created_at':
+            case 'updated_at':
+                $query->orderBy('users.' . $request->sortBy, $request->sortDirection);
+                break;
+            default:
+                # code...
+                break;
         }
 
+        $query->join('users', 'clients.user_id', '=', 'users.id')
+        ->join('cities', 'clients.city_id', '=', 'cities.id');
 
-        return $client->load('city', 'user');
+        // Pesquisando o campo dos registros
+        if (!empty($request->term) && !empty($request->field)) {
+            switch ($request->field) {
+                case 'id':
+                case 'phone_number':
+                case 'phone_number2':
+                case 'birth':
+                    $query->where('clients.' . $request->field , 'LIKE', '%' . $request->term . '%');
+                    break;
+                case 'city_id':
+                    $query->where('cities.name', 'LIKE', '%' . $request->term . '%');
+                    break;
+                case 'name':
+                case 'enable':
+                case 'created_at':
+                case 'updated_at':
+                    $query->where('users.' . $request->field , 'LIKE', '%' . $request->term . '%');
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+        }
 
-        //return Client::orderBy('id')->paginate(10);
+        return $query->paginate(10, [
+                        'clients.id as cid',
+                        'users.id as uid',
+                        'users.name as uname',
+                        'users.created_at as ucreated', 
+                        'users.updated_at as uupdated',
+                        'cities.id as ciid', 
+                        'cities.name as ciname', 
+                        'cities.created_at as ccreated', 
+                        'cities.updated_at as cupdated',
+                        'birth', 
+                        'phone_number', 
+                        'phone_number2', 
+                        'enable', 
+                    ]);
+
+
     }
 
 
@@ -153,7 +191,7 @@ class ClientController extends Controller
     public function deleteInMass(Request $request){
         try {
             Client::whereIn('id', $request->items)->delete();
-            return response()->json([ 'status' => true, 'message' => $request->items->count() > 1 ? 'Registros deletados com sucesso!' : 'Registro deletado com sucesso!'], 200);
+            return response()->json([ 'status' => true, 'message' => count($request->items) > 1 ? 'Registros deletados com sucesso!' : 'Registro deletado com sucesso!'], 200);
         } catch (\Throwable $th) {
             return response()->json([ 'status' => false, 'message' => 'Erro ao deletar os registros.', 'th' =>  $th], 400);
         }
