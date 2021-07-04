@@ -13,7 +13,6 @@
         "@fortawesome/fontawesome-free": "^5.15.3",
         "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
-        "bootstrap-vue": "^2.21.2",
         "dayjs": "^1.10.5",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.6",
