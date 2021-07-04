@@ -112,7 +112,7 @@
                         <div class="form-group">
                             <label for="birth" class="label-validation">Data de nascimento <span class="req"></span></label>
                             <div class="input-validation">
-                                <input v-mask="['##/##/####']" type="number" name="birth" id="birth" v-model.trim="$v.birth.$model"  class="form-control" placeholder="Digite a Data de Nascimento do cliente" maxlenght="10" />
+                                <input v-mask="['##/##/####']" type="text" name="birth" id="birth" v-model.trim="$v.birth.$model"  class="form-control" placeholder="Digite a Data de Nascimento do cliente" maxlenght="10" />
                                 <div class="alert alert-danger" v-if="!$v.birth.required && $v.birth.$dirty">O campo <strong>Data de Nascimento</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.birth.minLength">O campo <strong>Data de Nascimento</strong> precisa ter pelo menos <strong>{{$v.birth.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.birth.maxLength">O campo <strong>Data de Nascimento</strong> precisa ter até <strong>{{$v.birth.$params.maxLength.max}}</strong> caracteres.</div>
@@ -126,7 +126,7 @@
                         <div class="form-group">
                             <label for="document" class="label-validation">CPF <span class="req"></span> </label>
                             <div class="input-validation">
-                                <input v-mask="['###.###.###-##']" type="number" name="document" id="document" v-model.trim="$v.document.$model"  class="form-control" placeholder="Digite o CPF do cliente" maxlenght="15"/>
+                                <input v-mask="['###.###.###-##']" type="text" name="document" id="document" v-model.trim="$v.document.$model"  class="form-control" placeholder="Digite o CPF do cliente" maxlenght="15"/>
                                 <div class="alert alert-danger" v-if="!$v.document.required && $v.document.$dirty">O campo <strong>CPF</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.document.minLength">O campo <strong>CPF</strong> precisa ter pelo menos <strong>{{$v.document.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.document.maxLength">O campo <strong>CPF</strong> precisa ter até <strong>{{$v.document.$params.maxLength.max}}</strong> caracteres.</div>
@@ -147,7 +147,7 @@
                         <div class="form-group">
                             <label for="address_zipcode" class="label-validation">CEP <span class="req"></span></label>
                             <div class="input-validation">
-                                <input v-mask="['##.###-###']" type="number" name="address_zipcode" id="address_zipcode" @change="getAddress"  v-model.trim="$v.address_zipcode.$model"  class="form-control" placeholder="Digite o CEP para buscar o endereço do cliente" maxlenght="10" />
+                                <input v-mask="['##.###-###']" type="text" name="address_zipcode" id="address_zipcode" @change="getAddress"  v-model.trim="$v.address_zipcode.$model"  class="form-control" placeholder="Digite o CEP para buscar o endereço do cliente" maxlenght="10" />
                                 <div class="alert alert-danger" v-if="!$v.address_zipcode.required && $v.address_zipcode.$dirty">O campo  <strong>CEP do endereço do cliente</strong> é obrigatório.</div>
                                 <div class="alert alert-danger" v-if="!$v.address_zipcode.minLength">O campo <strong>CEP do endereço do cliente</strong> precisa ter pelo menos <strong>{{$v.address_zipcode.$params.minLength.min}}</strong> caracteres.</div>
                                 <div class="alert alert-danger" v-if="!$v.address_zipcode.maxLength">O campo <strong>CEP do endereço do cliente</strong> precisa ter até <strong>{{$v.address_zipcode.$params.maxLength.max}}</strong> caracteres.</div>
