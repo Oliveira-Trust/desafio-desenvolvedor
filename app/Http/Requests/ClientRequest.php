@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Client;
 use App\Rules\CpfValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,25 +24,57 @@ class ClientRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        return [
-            'name'                  =>      [ 'required', 'min:3', 'max:255'],
-            'email'                 =>      [ 'required', 'min:5', 'max:255', 'email', 'unique:users,email'],
-            'password'              =>      [ 'required', 'min:8', 'max:255'],
-            'enable'                =>      [ 'required', 'boolean'],
+    {	
+		switch (request()->method()) {
+			case 'POST':
+				return [
+					'name'                  =>      [ 'required', 'min:3', 'max:255'],
+					'email'                 =>      [ 'required', 'min:5', 'max:255', 'email', 'unique:users,email'],
+					'password'              =>      [ 'required', 'min:8', 'max:255'],
+					'enable'                =>      [ 'required', 'boolean'],
+		
+					'address_zipcode'       =>      [ 'required', 'min:8', 'max:10'],
+					'address_street'        =>      [ 'required', 'min:1', 'max:255'],
+					'address_number'        =>      [ 'required', 'integer'],
+					'address_complement'    =>      [ 'nullable', 'max:255'],
+					'address_neighborhood'  =>      [ 'required', 'min:1', 'max:255'],
+					'city_id'               =>      [ 'required', 'integer'],
+					
+					'phone_number'          =>      [ 'required', 'min:12', 'max:15'],
+					'phone_number2'         =>      [ 'nullable', 'max:15'],
+					'document'              =>      [ 'required', 'min:12', 'max:15', 'unique:clients,document' , new CpfValidation],
+					'birth'                 =>      [ 'required', 'min:10', 'max:10', 'date_format:d/m/Y'],
+				];
+				break;
 
-            'address_zipcode'       =>      [ 'required', 'min:8', 'max:10'],
-            'address_street'        =>      [ 'required', 'min:1', 'max:255'],
-            'address_number'        =>      [ 'required', 'integer'],
-            'address_complement'    =>      [ 'nullable', 'max:255'],
-            'address_neighborhood'  =>      [ 'required', 'min:1', 'max:255'],
-            'city_id'               =>      [ 'required', 'integer'],
-            
-            'phone_number'          =>      [ 'required', 'min:12', 'max:15'],
-            'phone_number2'         =>      [ 'nullable', 'max:15'],
-            'document'              =>      [ 'required', 'min:12', 'max:15', 'unique:clients,document' , new CpfValidation],
-            'birth'                 =>      [ 'required', 'min:10', 'max:10', 'date_format:d/m/Y'],
-        ];
+			case 'PUT':
+			case 'PATCH':
+				return [
+					'name'                  =>      [ 'required', 'min:3', 'max:255'],
+					'email'                 =>      [ 'required', 'min:5', 'max:255', 'email', 'unique:users,email,'.$this->cliente->user->id],
+					'password'              =>      [ 'required', 'min:8', 'max:255'],
+					'enable'                =>      [ 'required', 'boolean'],
+		
+					'address_zipcode'       =>      [ 'required', 'min:8', 'max:10'],
+					'address_street'        =>      [ 'required', 'min:1', 'max:255'],
+					'address_number'        =>      [ 'required', 'integer'],
+					'address_complement'    =>      [ 'nullable', 'max:255'],
+					'address_neighborhood'  =>      [ 'required', 'min:1', 'max:255'],
+					'city_id'               =>      [ 'required', 'integer'],
+					
+					'phone_number'          =>      [ 'required', 'min:12', 'max:15'],
+					'phone_number2'         =>      [ 'nullable', 'max:15'],
+					'document'              =>      [ 'required', 'min:12', 'max:15', 'unique:clients,document,'.$this->cliente->id , new CpfValidation],
+					'birth'                 =>      [ 'required', 'min:10', 'max:10', 'date_format:d/m/Y'],
+				];
+				break;
+
+			default:
+				return false;
+				break;
+		}
+
+       
     }
 
 
