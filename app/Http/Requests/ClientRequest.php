@@ -52,7 +52,7 @@ class ClientRequest extends FormRequest
 				return [
 					'name'                  =>      [ 'required', 'min:3', 'max:255'],
 					'email'                 =>      [ 'required', 'min:5', 'max:255', 'email', 'unique:users,email,'.$this->cliente->user->id],
-					'password'              =>      [ 'required', 'min:8', 'max:255'],
+					'password'              =>      [ 'nullable', 'min:8', 'max:255'],
 					'enable'                =>      [ 'required', 'boolean'],
 		
 					'address_zipcode'       =>      [ 'required', 'min:8', 'max:10'],

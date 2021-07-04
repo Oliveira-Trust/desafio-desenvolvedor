@@ -65,8 +65,8 @@ class User extends Authenticatable
     public function setPasswordAttribute($value){
         if(!empty($value) && request()->method() == 'POST'){
             $this->attributes['password'] = bcrypt($value);
-        } else if(!empty($value) && (request()->method() == 'PATCH' || request()->method() == 'PUT')) {
-            $this->attributes['password'] = $value;
+        } else if(!empty($value) && !is_null($value) && (request()->method() == 'PATCH' || request()->method() == 'PUT')) {
+            $this->attributes['password'] = bcrypt($value);
         } else if(empty($value) || is_null($value)) {
             
         }

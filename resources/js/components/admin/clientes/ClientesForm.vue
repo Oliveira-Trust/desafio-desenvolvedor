@@ -214,17 +214,11 @@
                         <div class="form-group">
                             <label for="city_id" class="label-validation">Cidade <span class="req"></span></label>
                             <div class="input-validation">
-                                <v-select :options="citiesOptions" v-model="city_id">
+                                <v-select :options="citiesOptions" name="city_id" v-model="city_id" :reduce="city => city.code" label="label">
                                     <template #search="{attributes, events}">
-                                        <input
-                                        class="vs__search"
-                                        :required="!city_id"
-                                        v-bind="attributes"
-                                        v-on="events"
-                                        />
+                                        <input class="vs__search" :required="!city_id" v-bind="attributes" v-on="events" />
                                     </template>
                                 </v-select>
-                                <!-- <input type="text" name="city_id"  readonly="readonly" id="city_id" v-model="$v.city_id.$model" class="form-control" placeholder="Digite o CEP para preencher este campo" maxlenght="255"> -->
                                 <div class="alert alert-danger" v-if="!$v.city_id.required && $v.city_id.$dirty">O campo <strong>Cidade</strong> é obrigatório.</div>
                             </div>
                             <p v-if="errors.city_id" class="alert alert-danger">{{ getError(errors.city_id) }}</p>
@@ -275,7 +269,6 @@
         created() {
             if (this.inEdit) {
                 var dayjs = require('dayjs')
-
                 this.name						=	this.clientData.user.name
                 this.email						=	this.clientData.user.email
                 this.enable						=	this.clientData.user.enable
@@ -285,7 +278,7 @@
                 this.address_complement			=	this.clientData.address_complement
                 this.address_reference_address	=	this.clientData.address_reference_address
                 this.address_neighborhood		=	this.clientData.address_neighborhood
-                this.city_id		        	=	this.clientData.city.name
+                this.city_id		        	=	this.clientData.city.id
                 
                 this.phone_number			    =	this.clientData.phone_number
                 this.phone_number2			    =	this.clientData.phone_number2
@@ -338,7 +331,6 @@
                     // show errors
                     this.checkErros()
                 } else {
-                    
                     axios({ 
 						method		:	!this.inEdit  ? 'post'	: 'patch',
 						url			:	this.getAction, 
@@ -361,7 +353,7 @@
                             address_complement			:	this.address_complement,
                             address_reference_address	:	this.address_reference_address,
                             address_neighborhood		:	this.address_neighborhood,
-                            city_id						:	this.city_id.code,
+                            city_id						:	typeof this.city_id.code == 'undefined' ? this.city_id : this.city_id.code,
                         }
 
                     }).then((response) => { 
@@ -372,9 +364,9 @@
                                 title		:	'Sucesso!',
                                 html		:	response.data.message
                             })
-                            /* setTimeout(() => {
+                            setTimeout(() => {
                                 window.location = '/admin/clientes'
-                            }, 2500); */
+                            }, 2500);
                         }
                         return false;
                     }) .catch((e) => { 
@@ -401,7 +393,6 @@
                     }); 
                 }
             },
-
             getError(errors) {
                 return _.first(errors)
             }
@@ -486,8 +477,6 @@
                 },
                 city_id: {
                     required		,
-                    minLength		: 	minLength(2),
-                    maxLength		: 	maxLength(255)
                 },
                 
                 phone_number: {
