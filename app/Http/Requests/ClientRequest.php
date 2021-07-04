@@ -35,8 +35,7 @@ class ClientRequest extends FormRequest
             'address_number'        =>      [ 'required', 'integer'],
             'address_complement'    =>      [ 'nullable', 'max:255'],
             'address_neighborhood'  =>      [ 'required', 'min:1', 'max:255'],
-            'state_id'              =>      [ 'required', 'min:1', 'max:2'],
-            'city_id'               =>      [ 'required', 'min:8', 'max:255'],
+            'city_id'               =>      [ 'required', 'integer'],
             
             'phone_number'          =>      [ 'required', 'min:12', 'max:15'],
             'phone_number2'         =>      [ 'nullable', 'max:15'],
@@ -89,11 +88,7 @@ class ClientRequest extends FormRequest
 			'address_neighborhood.required' 	=> 'O campo :attribute é obrigatório.',
 			'address_neighborhood.min'			=> 'O campo :attribute precisa ter no mínimo :min caracteres.',
 			'address_neighborhood.max'			=> 'O campo :attribute precisa ter no máximo :max caracteres.',
-            
-			'state_id.required'		           	=> 'O campo :attribute é obrigatório.',
-			'state_id.min'			           	=> 'O campo :attribute precisa ter no mínimo :min caracteres.',
-			'state_id.max'			           	=> 'O campo :attribute precisa ter no máximo :max caracteres.',
-            
+                        
 			'city_id.required'		        	=> 'O campo :attribute é obrigatório.',
 			'city_id.min'			        	=> 'O campo :attribute precisa ter no mínimo :min caracteres.',
 			'city_id.max'			        	=> 'O campo :attribute precisa ter no máximo :max caracteres.',

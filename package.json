@@ -13,8 +13,11 @@
         "@fortawesome/fontawesome-free": "^5.15.3",
         "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
+        "bootstrap-vue": "^2.21.2",
+        "dayjs": "^1.10.5",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.6",
+        "laravel-vue-pagination": "^2.3.1",
         "lodash": "^4.17.19",
         "popper.js": "^1.16.1",
         "postcss": "^8.1.14",
@@ -23,13 +26,11 @@
         "sass-loader": "^11.0.1",
         "vue": "^2.6.14",
         "vue-loader": "^15.9.7",
-        "vue-template-compiler": "^2.6.14",
-        "bootstrap-vue": "^2.21.2",
         "vue-numeric": "^2.4.3",
+        "vue-select": "^3.11.2",
         "vue-sweetalert2": "^5.0.2",
+        "vue-template-compiler": "^2.6.14",
         "vue-the-mask": "^0.11.1",
-        "vuelidate": "^0.7.6",
-        "dayjs": "^1.10.5",
-        "laravel-vue-pagination": "^2.3.1"
+        "vuelidate": "^0.7.6"
     }
 }

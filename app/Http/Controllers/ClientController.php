@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
+use App\Models\City;
 use App\Models\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('admin.clientes.create');
+        $cities = City::all();
+        return view('admin.clientes.create', compact('cities'));
     }
 
     /**
@@ -38,6 +40,8 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
+
+        //dd($request->all());
         // adiciona o usuário e pega ele para usar o id abaixo
         $user       =   User::create($request->only('name', 'email', 'password', 'enable'));
         
@@ -69,8 +73,9 @@ class ClientController extends Controller
      */
     public function edit(Client $cliente)
     {
+        $cities = City::all();
         $cliente = $cliente->load('user', 'city', 'city.state');
-        return view('admin.clientes.edit', compact('cliente'));
+        return view('admin.clientes.edit', compact('cliente', 'cities'));
     }
 
     /**

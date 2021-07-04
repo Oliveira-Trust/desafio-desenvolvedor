@@ -198,7 +198,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-xl-6 col-sm-12">
                         <div class="form-group">
                             <label for="address_neighborhood" class="label-validation">Bairro <span class="req"></span> </label>
                             <div class="input-validation">
@@ -210,24 +210,24 @@
                             <p v-if="errors.address_neighborhood" class="alert alert-danger">{{ getError(errors.address_neighborhood) }}</p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-xl-6 col-sm-12">
                         <div class="form-group">
                             <label for="city_id" class="label-validation">Cidade <span class="req"></span></label>
                             <div class="input-validation">
-                                <input type="text" name="city_id"  readonly="readonly" id="city_id" v-model="$v.city_id.$model" class="form-control" placeholder="Digite o CEP para preencher este campo" maxlenght="255">
+                                <v-select :options="citiesOptions" v-model="city_id">
+                                    <template #search="{attributes, events}">
+                                        <input
+                                        class="vs__search"
+                                        :required="!city_id"
+                                        v-bind="attributes"
+                                        v-on="events"
+                                        />
+                                    </template>
+                                </v-select>
+                                <!-- <input type="text" name="city_id"  readonly="readonly" id="city_id" v-model="$v.city_id.$model" class="form-control" placeholder="Digite o CEP para preencher este campo" maxlenght="255"> -->
                                 <div class="alert alert-danger" v-if="!$v.city_id.required && $v.city_id.$dirty">O campo <strong>Cidade</strong> é obrigatório.</div>
                             </div>
                             <p v-if="errors.city_id" class="alert alert-danger">{{ getError(errors.city_id) }}</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="state_id" class="label-validation">Estado <span class="req"></span></label>
-                            <div class="input-validation">
-                                <input type="text" name="state_id"  readonly="readonly" id="state_id" v-model.trim="$v.state_id.$model" class="form-control" placeholder="Digite o CEP para preencher este campo" maxlenght="255">
-                                <div class="alert alert-danger" v-if="!$v.state_id.required && $v.state_id.$dirty">O campo <strong>Estado</strong> é obrigatório.</div>
-                            </div>
-                            <p v-if="errors.state_id" class="alert alert-danger">{{ getError(errors.state_id) }}</p>
                         </div>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
 <script>
     import { required, requiredIf, email, between, minLength, maxLength, integer } from 'vuelidate/lib/validators'
     export default {
-        props: ['clientData', 'errors', 'inEdit'],
+        props: ['clientData', 'errors', 'inEdit', 'cities'],
 
         data() {
             return {
@@ -266,7 +266,6 @@
                 address_reference_address	:	'',
                 address_neighborhood		:	'',
                 city_id 					:	'',
-                state_id 					:	'',
                 phone_number				:	'',
                 phone_number2				:	'',
                 birth	        			:	'',
@@ -287,7 +286,6 @@
                 this.address_reference_address	=	this.clientData.address_reference_address
                 this.address_neighborhood		=	this.clientData.address_neighborhood
                 this.city_id		        	=	this.clientData.city.name
-                this.state_id			        =	this.clientData.city.state.abbr
                 
                 this.phone_number			    =	this.clientData.phone_number
                 this.phone_number2			    =	this.clientData.phone_number2
@@ -304,8 +302,6 @@
                         if(typeof result.error != undefined && result.logradouro != ""){
                             that.address_street 		= result.logradouro;
                             that.address_neighborhood 	= result.bairro;
-                            that.city_id 		= result.localidade;
-                            that.state_id 		= result.uf;
                         }
                     })
                 }
@@ -365,8 +361,7 @@
                             address_complement			:	this.address_complement,
                             address_reference_address	:	this.address_reference_address,
                             address_neighborhood		:	this.address_neighborhood,
-                            state_id					:	this.state_id,
-                            city_id						:	this.city_id,
+                            city_id						:	this.city_id.code,
                         }
 
                     }).then((response) => { 
@@ -377,9 +372,9 @@
                                 title		:	'Sucesso!',
                                 html		:	response.data.message
                             })
-                            setTimeout(() => {
+                            /* setTimeout(() => {
                                 window.location = '/admin/clientes'
-                            }, 2500);
+                            }, 2500); */
                         }
                         return false;
                     }) .catch((e) => { 
@@ -413,6 +408,14 @@
         },
         
         computed: {
+            citiesOptions(){
+                return _.map(this.cities , (city) =>{
+                    return {
+                        code : city.id,
+                        label : city.name 
+                    }
+                })
+            },
             csrfToken() {
                 return window.axios.defaults.headers.common['X-CSRF-TOKEN']
             },
@@ -480,11 +483,6 @@
                     required		,
                     minLength		: minLength(1),
                     maxLength		: maxLength(255)
-                },
-                state_id: {
-                    required		,
-                    minLength		: 	minLength(2),
-                    maxLength		: 	maxLength(255)
                 },
                 city_id: {
                     required		,

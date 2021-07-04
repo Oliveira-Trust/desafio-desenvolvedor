@@ -38,12 +38,6 @@ class Client extends BaseModel
 
 
     /* Mutators */
-    /* public function setCityIdAttribute($value){
-        $state = State::where('abbr', request()->state_id)->first();
-        $city = City::where([ ['state_id', '=', $state->id], ['name', '=', request()->city_id] ])->first();
-        $this->attributes['city_id'] = $city->id;
-    }*/
-
     public function setBirthAttribute($value){
         $this->attributes['birth'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
     } 

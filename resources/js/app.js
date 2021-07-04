@@ -2,9 +2,6 @@ require('./bootstrap');
 
 import Vue from 'vue'
 
-// https://day.js.org/docs/en/installation/node-js
-var dayjs = require('dayjs')
-
 
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);
@@ -25,6 +22,15 @@ import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
+
+
+
+import vSelect from "vue-select";
+Vue.component("v-select", vSelect);
+
+
+// https://day.js.org/docs/en/installation/node-js
+var dayjs = require('dayjs')
 
 
 // components
