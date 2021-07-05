@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CategoryResource;
 use App\Models\Category;
-
 use Illuminate\Http\Request;
-use App\Repositories\CategoryRepository;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -21,24 +19,25 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Exibe a página de criação de categorias.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.categorias.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     *  Cadastra uma nova categoria.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->only('name', 'label'));
+        return response()->json([ 'status' => true, 'message' => 'Registro adicionado com sucesso!'], 200);
     }
 
     /**
