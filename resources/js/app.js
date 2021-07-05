@@ -36,6 +36,8 @@ Vue.component('clientes-index', require('./components/admin/clientes/ClientesInd
 Vue.component('clientes-form', require('./components/admin/clientes/ClientesForm.vue').default);
 Vue.component('categorias-index', require('./components/admin/categorias/CategoriasIndex.vue').default);
 Vue.component('categorias-form', require('./components/admin/categorias/CategoriasForm.vue').default);
+Vue.component('produtos-index', require('./components/admin/produtos/ProdutosIndex.vue').default);
+Vue.component('produtos-form', require('./components/admin/produtos/ProdutosForm.vue').default);
 
 
 

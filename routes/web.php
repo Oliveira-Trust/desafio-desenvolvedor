@@ -30,13 +30,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         
     Route::resource('clientes' ,  App\Http\Controllers\ClientController::class)->except('show');
     Route::resource('categorias' ,  App\Http\Controllers\CategoryController::class)->except('show');
-    /* Route::get('/categorias', function() {
-        return CategoryResource::collection(Category::all());
-    }); */
+    Route::resource('produtos' ,  App\Http\Controllers\ProductController::class)->except('show');
     
     Route::group(['prefix' => 'clientes', 'as' => 'clientes.'], function() {
         Route::get('/buscar', [App\Http\Controllers\ClientController::class, 'search'])->name('search');
         Route::post('/delete-in-mass', [App\Http\Controllers\ClientController::class, 'deleteInMass'])->name('deleteInMass');
     });
     Route::get('/categorias/buscar', [App\Http\Controllers\CategoryController::class, 'search'])->name('search');
+    Route::group(['prefix' => 'produtos', 'as' => 'produtos.'], function() {
+        Route::get('/buscar', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
+        Route::post('/delete-in-mass', [App\Http\Controllers\ProductController::class, 'deleteInMass'])->name('deleteInMass');
+    });
 });
