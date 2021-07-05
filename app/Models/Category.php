@@ -23,5 +23,20 @@ class Category extends BaseModel
      *
      * @return void
      */
-    public function product() { return $this->hasMany(Product::class, 'category_id', 'id'); }
+    public function product() { return $this->hasMany(Product::class); }
+
+
+
+
+    
+    /**
+     * Verificar se a categoria pode ser removida
+     *
+     * @return boolean
+     */
+    public function canDelete()
+    {
+        return !$this->product->count();
+    }
+
 }

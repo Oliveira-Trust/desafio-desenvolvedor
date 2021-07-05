@@ -72,7 +72,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $categoria)
     {
-        //
+        if($categoria->canDelete()){
+            $categoria->delete();
+            return response()->json([ 'status' => true, 'message' => 'Registro deletado com sucesso!'], 200);
+        } else {
+            return response()->json([ 'status' => false, 'message' => 'A categoria não pode ser deletada. Ainda há produtos relacionados a ela.'], 400);
+        }
     }
 
 
@@ -81,10 +86,9 @@ class CategoryController extends Controller
     /**
      * Pesquisa e pagina os registros de categorias.
      *
-     * @param Request $request
      * @return void
      */
-    public function search(Request $request){
+    public function search(){
         return Category::with('product')->paginate(10);
     }
 }
