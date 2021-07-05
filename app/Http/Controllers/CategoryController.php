@@ -41,26 +41,27 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Exibe a página para editar a categoria.
      *
-     * @param  int  $id
+     * @param  Category  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $categoria)
     {
-        //
+        return view('admin.categorias.edit', compact( 'categoria'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualiza uma categoria.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  CategoryRequest  $request
+     * @param  Category  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, Category $categoria)
     {
-        //
+        $categoria->update($request->only('name', 'label'));
+        return response()->json([ 'status' => true, 'message' => 'Registro atualizado com sucesso!'], 200);
     }
 
     /**
@@ -69,7 +70,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $categoria)
     {
         //
     }

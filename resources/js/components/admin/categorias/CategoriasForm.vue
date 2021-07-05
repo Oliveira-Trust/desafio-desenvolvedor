@@ -201,7 +201,7 @@
             },
             
             getAction() {
-                return this.inEdit ? `/admin/categorias/${this.categorytData.id}` : '/admin/categorias'
+                return this.inEdit ? `/admin/categorias/${this.categoryData.id}` : '/admin/categorias'
             }
         },
 

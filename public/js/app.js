@@ -2474,7 +2474,7 @@ __webpack_require__.r(__webpack_exports__);
       return window.axios.defaults.headers.common['X-CSRF-TOKEN'];
     },
     getAction: function getAction() {
-      return this.inEdit ? "/admin/categorias/".concat(this.categorytData.id) : '/admin/categorias';
+      return this.inEdit ? "/admin/categorias/".concat(this.categoryData.id) : '/admin/categorias';
     }
   },
   validations: function validations() {

@@ -31,8 +31,8 @@ class CategoryRequest extends FormRequest
             ];
         } else if(request()->method() == 'PUT' || request()->method() == 'PATCH'){
             return [
-                'name'                  =>      [ 'required', 'min:3', 'max:255', 'unique:categories,name,'.$this->category->id],
-                'label'                 =>      [ 'required', 'min:3', 'max:255', 'unique:categories,label,'.$this->category->id, new LabelVerification],
+                'name'                  =>      [ 'required', 'min:3', 'max:255', 'unique:categories,name,'.$this->categoria->id],
+                'label'                 =>      [ 'required', 'min:3', 'max:255', 'unique:categories,label,'.$this->categoria->id, new LabelVerification],
             ];
         }
     }
