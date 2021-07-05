@@ -40,28 +40,8 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-
-        //dd($request->all());
-        // adiciona o usuário e pega ele para usar o id abaixo
         $user       =   User::create($request->only('name', 'email', 'password', 'enable'));
-        
-        $add = [
-            'user_id'               =>  $user->id, // usa o Id do usuário criado para atrelar a um novo cliente.
-            'document'              =>  $request->document, 
-            'phone_number'          =>  $request->phone_number, 
-            'phone_number2'         =>  $request->phone_number2, 
-            'birth'                 =>  $request->birth, 
-            'address_zipcode'       =>  $request->address_zipcode, 
-            'address_street'        =>  $request->address_street, 
-            'address_number'        =>  $request->address_number, 
-            'address_complement'    =>  $request->address_complement, 
-            'address_neighborhood'  =>  $request->address_neighborhood, 
-            'city_id'               =>  $request->city_id,
-        ];
-
-        // registra o novo cliente
-        Client::create($add);
-
+        $user->client()->create($request->only('document', 'phone_number', 'phone_number2', 'birth', 'address_zipcode', 'address_street', 'address_number', 'address_complement', 'address_neighborhood', 'city_id'));
         return response()->json([ 'status' => true, 'message' => 'Registro adicionado com sucesso!'], 200);
     }
 

@@ -50,7 +50,7 @@ class User extends Authenticatable
      *
      * @return void
      */
-	public function client() { return $this->hasOne(Client::class, 'id', 'user_id'); }
+	public function client() { return $this->hasOne(Client::class); }
 
 
     
