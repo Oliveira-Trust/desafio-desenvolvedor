@@ -57,7 +57,25 @@ class ClientRepository {
                 case 'enable':
                 case 'created_at':
                 case 'updated_at':
-                    $query->where('users.' . $request['field'] , 'LIKE', '%' . $request['term'] . '%');
+					$term = $request['term'];
+					if($request['field'] == 'enable'){
+						switch ($request['term']) {
+							case 'Sim':
+							case 'sim':
+								$term = 1;
+								break;
+							case 'Não':
+							case 'Nao':
+							case 'não':
+							case 'nao':
+								$term = 0;
+								break;
+							default:
+								$term = 'ERROR';
+								break;
+						}
+					}
+                    $query->where('users.' . $request['field'] , 'LIKE', '%' . $term . '%');
                     break;
                 default:
                     # code...
