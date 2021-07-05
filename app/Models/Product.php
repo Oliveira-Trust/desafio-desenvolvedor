@@ -25,6 +25,6 @@ class Product extends BaseModel
      *
      * @return void
      */
-	public function category() { return $this->belongsTo(Product::class); }
+	public function category() { return $this->belongsTo(Category::class); }
 	public function order() { return $this->belongsToMany(Product::class, 'order_products', 'product_id', 'order_id'); } //?
 }
