@@ -7,17 +7,13 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Bootstrap Vue
-@import '~bootstrap-vue/dist/bootstrap-vue.css';
-
 // Sweet Alert 2
 @import '~sweetalert2/dist/sweetalert2.min.css';
 
-
-
+// Font Awesome
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
-
+// Vue Select (Cities)
 @import "~vue-select/dist/vue-select.css";

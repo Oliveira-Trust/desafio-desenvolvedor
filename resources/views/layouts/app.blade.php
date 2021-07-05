@@ -33,6 +33,7 @@
                         @auth
                             <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{route('admin.clientes.index')}}">Clientes</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('admin.categorias.index')}}">Categorias</a></li>
                         @endauth
                     </ul>
 

@@ -12,7 +12,7 @@ class Category extends BaseModel
      */
     protected $fillable = [
         'name',
-        'slug',
+        'label',
     ];
 
 

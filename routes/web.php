@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Resources\CategoryResource;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,8 +29,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         
     Route::resource('clientes' ,  App\Http\Controllers\ClientController::class)->except('show');
-
-    Route::get('/clientes/buscar', [App\Http\Controllers\ClientController::class, 'search'])->name('search');
-    Route::post('/clientes/delete-in-mass', [App\Http\Controllers\ClientController::class, 'deleteInMass'])->name('deleteInMass');
+    Route::resource('categorias' ,  App\Http\Controllers\CategoryController::class)->except('show');
+    /* Route::get('/categorias', function() {
+        return CategoryResource::collection(Category::all());
+    }); */
     
+    Route::group(['prefix' => 'clientes', 'as' => 'clientes.'], function() {
+        Route::get('/buscar', [App\Http\Controllers\ClientController::class, 'search'])->name('search');
+        Route::post('/delete-in-mass', [App\Http\Controllers\ClientController::class, 'deleteInMass'])->name('deleteInMass');
+    });
+    Route::get('/categorias/buscar', [App\Http\Controllers\CategoryController::class, 'search'])->name('search');
 });

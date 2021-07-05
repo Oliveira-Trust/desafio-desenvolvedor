@@ -3,9 +3,6 @@ require('./bootstrap');
 import Vue from 'vue'
 
 
-import BootstrapVue from 'bootstrap-vue'
-Vue.use(BootstrapVue);
-
 // to use mask in fields
 import mask from 'vue-the-mask'
 Vue.use(mask)
@@ -37,6 +34,8 @@ Vue.component('dayjs', require('dayjs'));
 // components
 Vue.component('clientes-index', require('./components/admin/clientes/ClientesIndex.vue').default);
 Vue.component('clientes-form', require('./components/admin/clientes/ClientesForm.vue').default);
+Vue.component('categorias-index', require('./components/admin/categorias/CategoriasIndex.vue').default);
+Vue.component('categorias-form', require('./components/admin/categorias/CategoriasForm.vue').default);
 
 
 
