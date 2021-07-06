@@ -5,7 +5,8 @@
 		</div>
 		<div class="form-group col col-12">
 			<label for="term" class="form-label">Termo</label>
-			<input type="text" v-model="filters.filteredTerm" name="term-filter" id="term" placeholder="Buscar" class="form-control form-control-sm">
+			<input type="date" v-if="filterInputTypeDate" v-model="filters.filteredTerm" name="term-filter" id="term" placeholder="Buscar" class="form-control form-control-sm">
+			<input type="text" v-else v-model="filters.filteredTerm" name="term-filter" id="term" placeholder="Buscar" class="form-control form-control-sm">
 		</div>
 		<div class="form-group col col-12">
 			<label for="field" class="form-label">Campo</label>
@@ -37,26 +38,24 @@
 		methods: {
 			clearFilters () {
 				this.filters = _.mapValues(this.filters, () => '');
-				//this.getResults();
 				this.$emit('emitFilter', {filters: this.filters})
 				
 			},
 		},
 		watch: {
 			'filters.filteredTerm' (val) {
-				//this.page = 1;
 				this.$emit('emitFilter', {filters: this.filters})
-				//this.getResults();
 			},
 			'filters.filteredField' (val) {
-				//this.page = 1;
 				this.$emit('emitFilter', {filters: this.filters})
-				//this.getResults();
 			}
 		},
 		computed: {
 			hasFilter () {
 				return _.some(this.filters, (p) => Boolean(p));
+			},
+			filterInputTypeDate(){
+				return this.filters.filteredField == 'birth' || this.filters.filteredField == 'paid_at'
 			},
 		}
 	}

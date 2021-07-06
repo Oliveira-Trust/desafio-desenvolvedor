@@ -38,6 +38,8 @@ Vue.component('categorias-index', require('./components/admin/categorias/Categor
 Vue.component('categorias-form', require('./components/admin/categorias/CategoriasForm.vue').default);
 Vue.component('produtos-index', require('./components/admin/produtos/ProdutosIndex.vue').default);
 Vue.component('produtos-form', require('./components/admin/produtos/ProdutosForm.vue').default);
+Vue.component('pedidos-index', require('./components/admin/pedidos/PedidosIndex.vue').default);
+Vue.component('pedidos-form', require('./components/admin/pedidos/PedidosForm.vue').default);
 
 // micro components
 Vue.component('delete-in-mass', require('./components/parts/DeleteInMass.vue').default);
