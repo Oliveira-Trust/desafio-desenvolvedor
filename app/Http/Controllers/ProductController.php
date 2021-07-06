@@ -39,7 +39,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        Product::create($request->only('name', 'email', 'password', 'enable')); // TODO: alterar esses campos para os do product
+        Product::create($request->only('name', 'label', 'category_id', 'value', 'description', 'enabled'));
         return response()->json([ 'status' => true, 'message' => 'Registro adicionado com sucesso!'], 200);
     }
 

@@ -13,6 +13,7 @@ class Product extends BaseModel
         'name',
         'label',
         'value',
+        'category_id',
         'description',
         'enabled',
     ];
