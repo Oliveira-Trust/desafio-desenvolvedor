@@ -98,7 +98,7 @@ class ProductController extends Controller
 
     public function deleteInMass(Request $request){
         try {
-            Product::whereIn('id', $request->items)->delete();
+//            Product::whereIn('id', $request->items)->delete();
             return response()->json([ 'status' => true, 'message' => count($request->items) > 1 ? 'Registros deletados com sucesso!' : 'Registro deletado com sucesso!'], 200);
         } catch (\Throwable $th) {
             return response()->json([ 'status' => false, 'message' => 'Erro ao deletar os registros.', 'th' =>  $th], 400);

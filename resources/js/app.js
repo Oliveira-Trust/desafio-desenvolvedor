@@ -39,6 +39,11 @@ Vue.component('categorias-form', require('./components/admin/categorias/Categori
 Vue.component('produtos-index', require('./components/admin/produtos/ProdutosIndex.vue').default);
 Vue.component('produtos-form', require('./components/admin/produtos/ProdutosForm.vue').default);
 
+// micro components
+Vue.component('delete-in-mass', require('./components/parts/DeleteInMass.vue').default);
+Vue.component('sort-items', require('./components/parts/SortItems.vue').default);
+Vue.component('admin-filter', require('./components/parts/AdminFilter.vue').default);
+
 
 
 
