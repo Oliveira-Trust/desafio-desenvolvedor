@@ -41,7 +41,6 @@ class OrderRepository {
         if (!empty($request['term']) && !empty($request['field'])) {
             switch ($request['field']) {
                 case 'id':
-                case 'total':
                 case 'paid_at':
                 case 'status':
                 case 'created_at':
@@ -68,6 +67,10 @@ class OrderRepository {
 								break;
 						}
 					}
+                    $query->where('orders.' . $request['field'] , 'LIKE', '%' . $term . '%');
+                    break;
+                case 'total':
+                    $term = str_replace(',', '.', str_replace('.', '', $request['term'])); // formata o texto digitado como moeda R$ para float(10,2)
                     $query->where('orders.' . $request['field'] , 'LIKE', '%' . $term . '%');
                     break;
                 case 'name':
