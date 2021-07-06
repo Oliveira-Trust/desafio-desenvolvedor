@@ -64,7 +64,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $produto)
     {
-        $produto->update($request->only('name', 'label', 'category_id', 'value', 'description', 'enabled'));  // TODO: alterar esses campos para os do product
+        $produto->update($request->only('name', 'label', 'category_id', 'value', 'description', 'enabled'));  
         return response()->json([ 'status' => true, 'message' => 'Registro atualizado com sucesso!'], 200);
     }
 
