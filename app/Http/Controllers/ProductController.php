@@ -52,8 +52,7 @@ class ProductController extends Controller
     public function edit(Product $produto)
     {
         $categories = Category::all();
-        $produto = $produto->load('category');
-        return view('admin.produtos.edit', compact('produto', 'cities'));
+        return view('admin.produtos.edit', compact('produto', 'categories'));
     }
 
     /**
@@ -65,7 +64,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $produto)
     {
-        $produto->update($request->only('document', 'phone_number', 'phone_number2', 'birth', 'address_zipcode', 'address_street', 'address_number', 'address_complement', 'address_neighborhood', 'city_id'));  // TODO: alterar esses campos para os do product
+        $produto->update($request->only('name', 'label', 'category_id', 'value', 'description', 'enabled'));  // TODO: alterar esses campos para os do product
         return response()->json([ 'status' => true, 'message' => 'Registro atualizado com sucesso!'], 200);
     }
 

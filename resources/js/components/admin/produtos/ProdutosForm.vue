@@ -142,12 +142,19 @@
                 this.name						=	this.productData.name
                 this.label						=	this.productData.label
                 this.description				=	this.productData.description
-                this.value						=	this.productData.value
                 this.category_id				=	this.productData.category_id
                 this.enabled					=	this.productData.enabled
+
+				setTimeout(() => {
+					this.value = (this.productData.value != "0.00") ? this.formatPrice(this.productData.value) : "R$ 0,001"
+				}, 200);
             }
         },
         methods: {
+			formatPrice(value){
+				let val = (value/1).toFixed(2).replace('.', ',')		
+        		return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+			},
 			// faz parte de uma URL de acordo com o que é digitado no campo "Nome"
 			makeSlug(text){
 				this.label = this.getSlug(text)

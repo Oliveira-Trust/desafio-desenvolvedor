@@ -3756,16 +3756,24 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
+    var _this = this;
+
     if (this.inEdit) {
       this.name = this.productData.name;
       this.label = this.productData.label;
       this.description = this.productData.description;
-      this.value = this.productData.value;
       this.category_id = this.productData.category_id;
       this.enabled = this.productData.enabled;
+      setTimeout(function () {
+        _this.value = _this.productData.value != "0.00" ? _this.formatPrice(_this.productData.value) : "R$ 0,001";
+      }, 200);
     }
   },
   methods: {
+    formatPrice: function formatPrice(value) {
+      var val = (value / 1).toFixed(2).replace('.', ',');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
     // faz parte de uma URL de acordo com o que é digitado no campo "Nome"
     makeSlug: function makeSlug(text) {
       this.label = this.getSlug(text);
@@ -3801,7 +3809,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     onSubmit: function onSubmit() {
-      var _this = this;
+      var _this2 = this;
 
       this.submitStatus = 'PENDING';
       this.$v.$touch();
@@ -3825,9 +3833,9 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (response) {
           if (response.status === 200 || response.status === 201) {
-            _this.submitStatus = 'OK';
+            _this2.submitStatus = 'OK';
 
-            _this.$swal.fire({
+            _this2.$swal.fire({
               icon: 'success',
               title: 'Sucesso!',
               html: response.data.message
@@ -3840,7 +3848,7 @@ __webpack_require__.r(__webpack_exports__);
 
           return false;
         })["catch"](function (e) {
-          _this.submitStatus = 'ERROR';
+          _this2.submitStatus = 'ERROR';
           var arr = Object.values(e.response.data.errors);
           var txt2 = '<p class="text-left"><strong>Ainda há campos que precisam de sua atenção!</strong><br><br>';
 
@@ -3854,7 +3862,7 @@ __webpack_require__.r(__webpack_exports__);
 
           txt2 += '</p>';
 
-          _this.$swal.fire({
+          _this2.$swal.fire({
             icon: 'error',
             title: 'Oops...',
             html: txt2
