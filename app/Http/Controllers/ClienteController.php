@@ -7,6 +7,14 @@ use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
+    //Lista com os clientes
+    public function index()
+    {
+        $clientes = Cliente::latest()->paginate(10);
+
+        return view('clientes.index', compact('clientes'));
+    }
+
     //Tela para criação de cliente
     public function create()
     {
@@ -17,5 +25,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         Cliente::create($request->except('_token'));
+        return redirect()->route('cliente_index')
+            ->with('success', 'Cliente salvo com sucesso');
     }
 }

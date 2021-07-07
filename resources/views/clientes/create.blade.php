@@ -1,10 +1,17 @@
-<html>
+@extends('layouts.app')
 
-<form method="POST" action="{{route('salvar_cliente')}}">
-  @csrf  
-Nome: <input type="text" name="nome"><br>
-<button>Salvar</button>
+@section('title')
+Cliente - Inserir     
+@endsection
 
+@section('content')
+<form class="row g-3" method="POST" action="{{route('salvar_cliente')}}">
+    @csrf  
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
-
-</html>
+@endsection

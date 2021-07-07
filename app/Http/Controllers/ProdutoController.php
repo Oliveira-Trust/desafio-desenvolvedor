@@ -25,7 +25,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         Produto::create($request->except('_token'));
-        return redirect()->route('produtos.index')
+        return redirect()->route('produto_index')
             ->with('success', 'Produto salvo com sucesso');
     }
 }
