@@ -144,7 +144,7 @@
 				return dayjs(date).format(format)
 			},
 			formatPrice(price){
-				return "R$ " + (price/1).toFixed(2).replace('.', ',')
+				return parseFloat(price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 			},
 			getStatus(status){
 				if(status == 'EM_ABERTO'){

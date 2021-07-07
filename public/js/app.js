@@ -4300,7 +4300,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return dayjs__WEBPACK_IMPORTED_MODULE_2___default()(date).format(format);
     },
     formatPrice: function formatPrice(price) {
-      return "R$ " + (price / 1).toFixed(2).replace('.', ',');
+      return parseFloat(price).toLocaleString('pt-br', {
+        style: 'currency',
+        currency: 'BRL'
+      });
     },
     getStatus: function getStatus(status) {
       if (status == 'EM_ABERTO') {
@@ -4916,7 +4919,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return dayjs__WEBPACK_IMPORTED_MODULE_2___default()(date).format(format);
     },
     formatPrice: function formatPrice(price) {
-      return "R$ " + (price / 1).toFixed(2).replace('.', ',');
+      return parseFloat(price).toLocaleString('pt-br', {
+        style: 'currency',
+        currency: 'BRL'
+      });
     },
     setClass: function setClass(id) {
       return !this.checkedDelete.find(function (x) {
