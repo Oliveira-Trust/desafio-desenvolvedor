@@ -10,11 +10,10 @@ class ProdutoController extends Controller
     //Lista com os produtos
     public function index()
     {
-        $produtos = Produto::latest()->paginate(5);
+        $produtos = Produto::latest()->paginate(10);
 
         return view('produtos.index', compact('produtos'));
     }
-
 
     //Tela para criação de produto
     public function create()
@@ -26,5 +25,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         Produto::create($request->except('_token'));
+        return redirect()->route('produtos.index')
+            ->with('success', 'Produto salvo com sucesso');
     }
 }

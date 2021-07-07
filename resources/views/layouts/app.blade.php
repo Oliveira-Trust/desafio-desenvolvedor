@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>App Name - @yield('title')</title>
+    <title>Lojinha - @yield('title')</title>
 
     <!-- Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
