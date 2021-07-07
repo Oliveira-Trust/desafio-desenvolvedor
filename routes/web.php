@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/produtos', ProdutoController::class);
 Route::get('/produtos/criar', [ProdutoController::class, 'create']);
 Route::post('/produtos/criar', [ProdutoController::class, 'store'])->name('salvar_produto');
 

@@ -7,6 +7,15 @@ use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
+    //Lista com os produtos
+    public function index()
+    {
+        $produtos = Produto::latest()->paginate(5);
+
+        return view('produtos.index', compact('produtos'));
+    }
+
+
     //Tela para criação de produto
     public function create()
     {
