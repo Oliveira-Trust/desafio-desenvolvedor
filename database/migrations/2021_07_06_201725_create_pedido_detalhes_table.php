@@ -15,7 +15,10 @@ class CreatePedidoDetalhesTable extends Migration
     {
         Schema::create('pedido_detalhes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->decimal('valor');
+            $table->foreignId('produtos_id')->constrained();
+            $table->foreignId('pedidos_id')->constrained();
+            $table->timestamp('criado_em')->useCurrent();
         });
     }
 

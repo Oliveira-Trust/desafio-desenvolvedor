@@ -15,7 +15,8 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nome');
+            $table->timestamp('criado_em')->useCurrent();
         });
     }
 
