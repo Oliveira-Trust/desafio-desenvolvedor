@@ -28,3 +28,5 @@ Route::post('/clientes/criar', [ClienteController::class, 'store'])->name('salva
 Route::get('/clientes/editar/{id}',[ClienteController::class, 'edit'])->name('editar_cliente');
 Route::put('/clientes/editar/{id}',[ClienteController::class, 'update'])->name('atualizar_cliente');
 
+Route::get('/clientes/{id}',[ClienteController::class, 'destroy'])->name('excluir_cliente');
+

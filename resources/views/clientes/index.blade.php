@@ -17,7 +17,7 @@ Cliente
       <tr>
         <th scope="row">{{$cliente->id}}</th>
         <td><a href="{{route('editar_cliente',['id' => $cliente->id])}}">{{$cliente->nome}}</a></td>
-        <td></td>
+        <td><button type="button" class="btn btn-danger" onclick="window.location='{{route('excluir_cliente',['id' => $cliente->id])}}'">Excluir</button></td>
       </tr>
       @endforeach
     </tbody>

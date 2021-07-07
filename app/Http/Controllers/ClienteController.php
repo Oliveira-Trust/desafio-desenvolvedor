@@ -49,4 +49,12 @@ class ClienteController extends Controller
         return redirect()->route('cliente_index')
             ->with('success', 'Cliente salvo com sucesso');
     }
+
+    public function destroy(int $id, Cliente $cliente)
+    {
+        $cliente->find($id)->delete();
+
+        return redirect()->route('cliente_index')
+            ->with('success', 'Cliente salvo com sucesso');
+    }
 }
