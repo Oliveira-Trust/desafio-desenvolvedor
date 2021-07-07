@@ -23,4 +23,6 @@ Cliente
     </tbody>
   </table>
 
+  {{ $clientes->links() }}
+
 @endsection

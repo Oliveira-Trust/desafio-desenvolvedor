@@ -1,7 +1,11 @@
 @extends('layouts.app')
+
+<!--Título da página -->
 @section('title')
 Produto     
 @endsection
+
+
 @section('content')
 <button type="button" class="btn btn-primary" onclick="window.location='{{route('novo_produto')}}'">Inserir novo produto</button>
 <table class="table">
@@ -26,5 +30,9 @@ Produto
       @endforeach
     </tbody>
   </table>
+  <div class="pagination justify-content-center" style="margin-top: 12px;">
+    <!--paginacao-->
+    {{ $produtos->links() }}
+</div>
 
 @endsection

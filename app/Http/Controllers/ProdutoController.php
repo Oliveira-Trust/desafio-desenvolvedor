@@ -10,7 +10,7 @@ class ProdutoController extends Controller
     //Lista com os produtos
     public function index()
     {
-        $produtos = Produto::latest()->paginate(10);
+        $produtos = Produto::simplePaginate(5);
 
         return view('produtos.index', compact('produtos'));
     }
