@@ -17,6 +17,7 @@ class CreateClientesTable extends Migration
             $table->id();
             $table->string('nome');
             $table->timestamp('criado_em')->useCurrent();
+            $table->timestamp('alterado_em')->useCurrentOnUpdate();
         });
     }
 

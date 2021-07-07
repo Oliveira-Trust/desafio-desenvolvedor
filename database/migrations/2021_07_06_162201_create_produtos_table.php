@@ -19,6 +19,7 @@ class CreateProdutosTable extends Migration
             $table->integer('quantidade');
             $table->decimal('valor');
             $table->timestamp('criado_em')->useCurrent();
+            $table->timestamp('alterado_em')->useCurrentOnUpdate();
         });
     }
 
