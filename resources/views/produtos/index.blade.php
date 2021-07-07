@@ -25,7 +25,7 @@ Produto
         <td><a href="{{route('editar_produto',['id' => $produto->id])}}">{{$produto->descricao}}</a></td>
         <td>{{$produto->valor}}</td>
         <td>{{$produto->quantidade}}</td>
-        <td></td>
+        <td><button type="button" class="btn btn-danger" onclick="window.location='{{route('excluir_produto',['id' => $produto->id])}}'">Excluir</button></td>
       </tr>
       @endforeach
     </tbody>
