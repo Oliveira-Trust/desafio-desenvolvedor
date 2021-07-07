@@ -18,6 +18,4 @@ class ClienteController extends Controller
     {
         Cliente::create($request->except('_token'));
     }
-
-
 }
