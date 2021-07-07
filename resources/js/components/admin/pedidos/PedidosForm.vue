@@ -201,13 +201,12 @@
         data() {
             return {
                 submitStatus                :   null,
-				step						:	2, // 1
-				quantity					: 	1,
-                cart						:	[],	// needs: product name, category name, value x quantity
+				step						:	1,
+                cart						:	[],	
 				total						: 	'0.00',
 
-				client_id					: 	79,  // ''
-				clientSetted				:	1, // 0
+				client_id					: 	'', 
+				clientSetted				:	0,
 				paid_at						: 	'',
 				status						: 	'',
 
@@ -236,9 +235,6 @@
 				this.getResults()
 			},
 		},
-       /*  created() {
-			this.getResults(); //TODO: REMOVER ESSA LINHA
-        }, */
         methods: {
 			nextStep(){
 				if(this.step == 1){

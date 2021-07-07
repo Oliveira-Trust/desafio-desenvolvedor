@@ -3826,16 +3826,11 @@ import { labelCheck } from '../../../../../resources/js/customvalidations.js' //
   data: function data() {
     return {
       submitStatus: null,
-      step: 2,
-      // 1
-      quantity: 1,
+      step: 1,
       cart: [],
-      // needs: product name, category name, value x quantity
       total: '0.00',
-      client_id: 79,
-      // ''
-      clientSetted: 1,
-      // 0
+      client_id: '',
+      clientSetted: 0,
       paid_at: '',
       status: '',
       paginationData: {},
@@ -3873,10 +3868,6 @@ import { labelCheck } from '../../../../../resources/js/customvalidations.js' //
       this.getResults();
     }
   },
-
-  /*  created() {
-  this.getResults(); //TODO: REMOVER ESSA LINHA
-   }, */
   methods: {
     nextStep: function nextStep() {
       if (this.step == 1) {
