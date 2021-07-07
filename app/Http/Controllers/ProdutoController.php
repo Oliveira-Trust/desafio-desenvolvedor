@@ -11,4 +11,9 @@ class ProdutoController extends Controller
     {
         return view('produtos.create');
     }
+
+    public function store(Request $request)
+    {
+        dd($request);
+    }
 }

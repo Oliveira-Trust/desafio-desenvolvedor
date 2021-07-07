@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/produtos/criar', [ProdutoController::class, 'create']);
+Route::post('/produtos/criar', [ProdutoController::class, 'store'])->name('salvar_produto');
