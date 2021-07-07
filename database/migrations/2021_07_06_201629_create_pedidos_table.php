@@ -16,8 +16,9 @@ class CreatePedidosTable extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('clientes_id')->constrained();
-            $table->timestamp('finalizado_em')->nullable();
-            $table->timestamp('criado_em')->useCurrent();
+            $table->enum('status',['Aberto','Pago','Cancelado']);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

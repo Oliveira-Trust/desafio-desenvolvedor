@@ -18,8 +18,8 @@ class CreatePedidoDetalhesTable extends Migration
             $table->decimal('valor');
             $table->foreignId('produtos_id')->constrained();
             $table->foreignId('pedidos_id')->constrained();
-            $table->timestamp('criado_em')->useCurrent();
-            $table->timestamp('alterado_em')->useCurrentOnUpdate();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

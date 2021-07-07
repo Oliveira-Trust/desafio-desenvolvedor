@@ -15,7 +15,7 @@ class ProdutoController extends Controller
     }
 
     
-    //Salvar o registro de produto
+    //Salva o registro de produto
     public function store(Request $request)
     {
         Produto::create($request->except('_token'));

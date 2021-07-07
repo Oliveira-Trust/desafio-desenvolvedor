@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController; 
-
+use App\Http\Controllers\ClienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('/produtos/criar', [ProdutoController::class, 'create']);
 Route::post('/produtos/criar', [ProdutoController::class, 'store'])->name('salvar_produto');
+
+Route::get('/clientes/criar',[ClienteController::class, 'create']);
+Route::post('/clientes/criar', [ClienteController::class, 'store'])->name('salvar_cliente');
