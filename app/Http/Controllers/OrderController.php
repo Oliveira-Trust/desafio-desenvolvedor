@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Client;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
+use App\Repositories\OrderProductRepository;
 use App\Repositories\OrderRepository;
+use App\Repositories\ProductRepository;
 
 class OrderController extends Controller
 {
@@ -27,8 +31,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $products = Product::with('category')->all();
-        return view('admin.pedidos.create', compact('products'));
+        $categories = Category::all();
+        $clients = Client::all()->load('user');
+        return view('admin.pedidos.create', compact('categories', 'clients'));
     }
 
     /**
@@ -37,10 +42,29 @@ class OrderController extends Controller
      * @param  OrderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OrderRequest $request)
+    public function store(OrderRequest $request, ProductRepository $model, OrderRepository $orderRepository, OrderProductRepository $orderProductRepository)
     {
-        Order::create($request->only('name', 'label', 'category_id', 'value', 'description', 'enabled')); // FIXME: AJUSTAR CAMPOS
-        return response()->json([ 'status' => true, 'message' => 'Registro adicionado com sucesso!'], 200);
+        //  pega o valor de cada produto e multiplica pela sua quantidade solicitada e retorna o valor total que será o pedido
+        try {
+            $total = $model->calculateTotal($request->all());
+             // Com esse total, cria o pedido
+            try {
+                $order = $orderRepository->createFromData($request->all(), $total);
+        
+                // Adiciona os produtos nesse novo pedido
+                try {
+                    $orderProductRepository->createFromData($request->all(), $order->id);
+                } catch (\Throwable $th) {
+                    $order->delete(); // em caso de erro, deleta o pedido e informa
+                    return response()->json([ 'status' => false, 'message' => 'Falha ao finalizar o pedido. Revise os dados e tente novamente.', 'th' => $th, 'code' => 'step 3'], 400);
+                }
+                return response()->json([ 'status' => true, 'message' => 'Registro adicionado com sucesso!'], 200);
+            } catch (\Throwable $th) {
+                return response()->json([ 'status' => false, 'message' => 'Falha ao finalizar o pedido. Revise os dados e tente novamente.', 'th' => $th, 'code' => 'step 2'], 400);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([ 'status' => false, 'message' => 'Falha ao finalizar o pedido. Revise os dados e tente novamente.', 'th' => $th, 'code' => 'step 1'], 400);
+        }
     }
 
     /**
@@ -69,7 +93,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Remove um produto.
+     * Remove um pedido.
      *
      * @param Order $pedido
      * @return \Illuminate\Http\Response
@@ -84,7 +108,7 @@ class OrderController extends Controller
     
 
     /**
-     * Pesquisa e pagina os registros de produtos.
+     * Pesquisa e pagina os registros de pedidos.
      *
      * @param Request $request
      * @return void

@@ -100,5 +100,23 @@ class OrderRepository {
 		return $model->query();
 	}
 
+	public function create($data){
+		$model = app(Order::class);
+		return $model->create($data);
+	}
+
+
+
+    public function createFromData($request, $total){
+		$model = app(Order::class);
+
+        $data = [
+            'client_id'       =>    $request['client_id'],
+            'total'           =>    $total,
+            'status'          =>    $request['status'],
+            'paid_at'         =>    $request['paid_at'],
+        ];
+        return $model->create($data);
+    }
 
 }

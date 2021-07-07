@@ -5,7 +5,7 @@
 			<small>Selecione itens na caixa de seleção para assim, deleta-los.</small>
 		</div>
 		<div class="col col-12">
-			<button @click="deleteItems" :class="`btn btn-sm ${checkedDeleteItems.length == 0 ? 'btn-secondary' : 'btn-danger'}`" title="Deletar itens selecionados" :disabled="checkedDeleteItems.length == 0">Deletar itens selecionados ({{checkedDeleteItems.length}}) <i class="fas fa-trash pl-2"></i></button>
+			<button @click="deleteItems" type="button" :class="`btn btn-sm ${checkedDeleteItems.length == 0 ? 'btn-secondary' : 'btn-danger'}`" title="Deletar itens selecionados" :disabled="checkedDeleteItems.length == 0">Deletar itens selecionados ({{checkedDeleteItems.length}}) <i class="fas fa-trash pl-2"></i></button>
 		</div>
 	</div>
 </template>

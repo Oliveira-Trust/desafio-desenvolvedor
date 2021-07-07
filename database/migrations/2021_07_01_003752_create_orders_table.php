@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('client_id');
             $table->decimal('total', 8, 2)->default('0.00');
             $table->enum('status', ['EM_ABERTO', 'PAGO', 'CANCELADO']);
-			$table->date('paid_at')->default(null);
+			$table->date('paid_at')->nullable()->default(null);
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });

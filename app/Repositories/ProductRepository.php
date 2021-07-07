@@ -36,6 +36,10 @@ class ProductRepository {
 
         $query->join('categories', 'products.category_id', '=', 'categories.id');
 
+        if(isset($request['CreateOrderPage'])){
+            $query->where('enabled', 1);
+        }
+
         // Pesquisando o campo dos registros
         if (!empty($request['term']) && !empty($request['field'])) {
             switch ($request['field']) {
@@ -90,6 +94,34 @@ class ProductRepository {
 		$model = app(Product::class);
 		return $model->query();
 	}
+
+	public function find($id){
+		$model = app(Product::class);
+		return $model->find($id);
+	}
+
+
+
+    /**
+     * calcula o valor total do pedido de acordo com os produtos e quantidade selecionadas
+     *
+     * @param array $request
+     * @return float
+     */
+    public function calculateTotal($request){
+        return array_reduce($request['cart'], function ($carry, $item){
+            $model = app(Product::class);
+            try {
+                $product = $model->find($item['productId']);
+            } catch (\Throwable $th) {
+                return false;
+            }
+            $carry += $product->value * $item['productQuantity'];
+            return $carry;
+        });
+    }
+
+
 
 
 }

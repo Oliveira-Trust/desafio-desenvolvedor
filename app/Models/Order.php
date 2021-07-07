@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+
 class Order extends BaseModel
 {
     /**
@@ -16,7 +18,7 @@ class Order extends BaseModel
         'paid_at',
     ];
 
-
+    protected $dates = ['paid_at'];
 
     
 	/**
@@ -26,4 +28,13 @@ class Order extends BaseModel
      */
 	public function client() { return $this->belongsTo(Client::class, 'client_id', 'id'); }
     
+
+
+    
+    /* Mutators */
+    public function setPaidAtAttribute($value){
+        $this->attributes['paid_at'] = empty($value) ? '1900-01-01' : $value;
+    } 
+
+
 }

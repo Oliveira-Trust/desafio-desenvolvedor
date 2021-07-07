@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="col-xl-3 col-sm-12 pt-4">
-			<button @click="getResults" class="btn btn-sm btn-info mt-2" title="Ordenar"> Ordenar <i class="fas fa-sort pl-2"></i></button>
+			<button @click="emitGetResults" type="button" class="btn btn-sm btn-info mt-2" title="Ordenar"> Ordenar <i class="fas fa-sort pl-2"></i></button>
 		</div>
 	</div>
 </template>
@@ -41,7 +41,7 @@
 			}
 		},
 		methods: {
-			getResults(){
+			emitGetResults(){
 				this.$emit('emitSubmitSort', {sortBy: this.sortBy, sortDirection: this.sortDirection })
 			}
 		}

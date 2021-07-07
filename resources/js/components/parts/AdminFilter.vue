@@ -18,7 +18,7 @@
 			</select>
 		</div>
 		<div class="form-group col col-12" v-if="hasFilter">
-			<button @click="clearFilters" class="btn btn-secondary btn-sm" title="Limpar filtros"><i class="fas fa-times pr-2"></i> Limpar filtros</button>
+			<button @click="clearFilters" type="button" class="btn btn-secondary btn-sm" title="Limpar filtros"><i class="fas fa-times pr-2"></i> Limpar filtros</button>
 		</div>
 	</div>
 </template>
