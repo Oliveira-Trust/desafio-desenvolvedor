@@ -22,7 +22,7 @@ Produto
         @foreach ($produtos as $produto)
       <tr>
         <th scope="row">{{$produto->id}}</th>
-        <td>{{$produto->descricao}}</td>
+        <td><a href="{{route('editar_produto',['id' => $produto->id])}}">{{$produto->descricao}}</a></td>
         <td>{{$produto->valor}}</td>
         <td>{{$produto->quantidade}}</td>
         <td></td>

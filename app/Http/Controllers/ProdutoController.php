@@ -28,4 +28,34 @@ class ProdutoController extends Controller
         return redirect()->route('produto_index')
             ->with('success', 'Produto salvo com sucesso');
     }
+
+    //
+    public function edit(int $id)
+    {
+        $produto = Produto::find($id);
+        
+        return view('produtos.edit',compact('produto'));
+    }
+
+    public function update(int $id, Request $request, Produto $produto)
+    {
+        $request->validate([
+            'descricao' => 'required',
+            'valor' => 'required',
+            'quantidade' => 'required'
+        ]);
+
+        $produto->find($id)->update($request->all());
+
+        return redirect()->route('produto_index')
+            ->with('success', 'Produto salvo com sucesso');
+    }
+
+    public function destroy(int $id, Produto $produto)
+    {
+        $produto->find($id)->delete();
+
+        return redirect()->route('produto_index')
+            ->with('success', 'Produto salvo com sucesso');
+    }
 }
