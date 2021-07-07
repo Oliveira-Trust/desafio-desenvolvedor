@@ -25,3 +25,6 @@ Route::post('/produtos/criar', [ProdutoController::class, 'store'])->name('salva
 Route::get('/clientes',[ClienteController::class, 'index'])->name('cliente_index');
 Route::get('/clientes/criar',[ClienteController::class, 'create'])->name('novo_cliente');
 Route::post('/clientes/criar', [ClienteController::class, 'store'])->name('salvar_cliente');
+Route::get('/clientes/editar/{id}',[ClienteController::class, 'edit'])->name('editar_cliente');
+Route::post('/clientes/editar/{id}',[ClienteController::class, 'update'])->name('atualizar_cliente');
+

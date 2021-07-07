@@ -28,4 +28,17 @@ class ClienteController extends Controller
         return redirect()->route('cliente_index')
             ->with('success', 'Cliente salvo com sucesso');
     }
+
+    //
+    public function edit(int $id)
+    {
+        $cliente = Cliente::find($id);
+        
+        return view('clientes.edit',compact('cliente'));
+    }
+
+    public function update()
+    {
+
+    }
 }

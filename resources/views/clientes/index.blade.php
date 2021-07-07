@@ -16,7 +16,7 @@ Cliente
         @foreach ($clientes as $cliente)
       <tr>
         <th scope="row">{{$cliente->id}}</th>
-        <td>{{$cliente->nome}}</td>
+        <td><a href="{{route('editar_cliente',['id' => $cliente->id])}}">{{$cliente->nome}}</a></td>
         <td></td>
       </tr>
       @endforeach
