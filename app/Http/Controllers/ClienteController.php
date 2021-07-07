@@ -25,6 +25,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         Cliente::create($request->except('_token'));
+
         return redirect()->route('cliente_index')
             ->with('success', 'Cliente salvo com sucesso');
     }
@@ -37,8 +38,15 @@ class ClienteController extends Controller
         return view('clientes.edit',compact('cliente'));
     }
 
-    public function update()
+    public function update(int $id, Request $request, Cliente $cliente)
     {
+        $request->validate([
+            'nome' => 'required'
+        ]);
 
+        $cliente->find($id)->update($request->all());
+
+        return redirect()->route('cliente_index')
+            ->with('success', 'Cliente salvo com sucesso');
     }
 }

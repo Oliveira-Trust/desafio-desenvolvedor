@@ -5,7 +5,7 @@ Cliente - Inserir
 @endsection
 
 @section('content')
-<form class="row g-3" method="POST" action="{{route('salvar_cliente')}}">
+<form class="row g-3" method="POST" action="{{route('atualizar_cliente',['id' => $cliente->id])}}">
     @csrf
     @method('PUT')
     <div class="mb-3">
