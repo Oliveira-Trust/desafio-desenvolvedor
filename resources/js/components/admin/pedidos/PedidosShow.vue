@@ -47,9 +47,7 @@
 							<td class="align-middle">{{item.or_prod_quantity }}</td>
 							<td class="align-middle">{{formatPrice(item.or_prod_value)}}</td>
 							<td class="align-middle">{{formatPrice(item.or_prod_value * item.or_prod_quantity)}}</td>
-							<!-- <td class="align-middle">{{formatDate(item.oupdated, 'DD/MM/YYYY [às] HH:mm')}}</td> -->
 							<td class="align-middle">
-								<!-- <a :href="`/admin/produtos/${item.pid}/edit`" class="btn btn-warning btn-sm" title="Detalhes do Produto"><i class="fas fa-search"></i> Detalhes</a> -->
 								<button @click="productDetails(item)" type="button" class="btn btn-info text-white btn-sm" title="Detalhes"  data-toggle="modal" data-target="#productDetails"><i class="fas fa-search"></i> </button>
 							</td>
 						</tr>					

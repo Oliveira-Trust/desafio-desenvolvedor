@@ -22,6 +22,7 @@ class OrderProductController extends Controller
 
 
     public function deleteInMass(Request $request){
+        dd($request->all());
         try {
             OrderProduct::whereIn('id', $request->items)->delete();
             return response()->json([ 'status' => true, 'message' => count($request->items) > 1 ? 'Registros deletados com sucesso!' : 'Registro deletado com sucesso!'], 200);
