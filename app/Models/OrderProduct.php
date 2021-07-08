@@ -24,4 +24,9 @@ class OrderProduct extends BaseModel
      *
      * @return void
      */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    } 
+    
 }

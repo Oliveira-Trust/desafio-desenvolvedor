@@ -27,7 +27,8 @@ class Order extends BaseModel
      * @return void
      */
 	public function client() { return $this->belongsTo(Client::class, 'client_id', 'id'); }
-    
+    public function orderproduct() { return $this->hasMany(OrderProduct::class , 'order_id', 'id'); }
+    //public function product() { return $this->belongsToMany(Product::class, 'order_products', 'order_id', 'product_id');  }
 
 
     

@@ -67,6 +67,24 @@ class OrderController extends Controller
         }
     }
 
+    
+    /**
+     * Exibe a página para visualizar o pedido.
+     *
+     * @param  Order  $pedido
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Order $pedido){
+        /* $pedido = $pedido->load(
+                                'orderproduct', 
+                                'orderproduct.product', 
+                                'orderproduct.product.category', 
+                                'client', 
+                                'client.user'); */
+        return view('admin.pedidos.show', compact('pedido'));
+    }
+
+
     /**
      * Exibe a página para editar o pedido.
      *

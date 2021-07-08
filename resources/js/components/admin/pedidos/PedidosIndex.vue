@@ -35,10 +35,10 @@
 						</tr>
 					</thead>
 					<tbody v-if="items.length > 0">
-						<tr v-for="(item, i) in items" :key="i" :class="setClass(item.pid) == true ? '': 'table-warning'">
+						<tr v-for="(item, i) in items" :key="i" :class="setClass(item.oid) == true ? '': 'table-warning'">
 							<td class="align-middle">
 								<div class="form-group form-check">
-									<input type="checkbox" name="select-delete[]" class="form-check-input" :id="`select-delete-${item.pid}`" :value="item.pid"  v-model="checkedDelete">
+									<input type="checkbox" name="select-delete[]" class="form-check-input" :id="`select-delete-${item.oid}`" :value="item.oid"  v-model="checkedDelete">
 								</div>
 							</td>
 							<th scope="row" class="align-middle">{{item.oid}}</th>
@@ -49,7 +49,8 @@
 							<td class="align-middle">{{formatDate(item.ocreated, 'DD/MM/YYYY [às] HH:mm')}}</td>
 							<td class="align-middle">{{formatDate(item.oupdated, 'DD/MM/YYYY [às] HH:mm')}}</td>
 							<td class="align-middle">
-								<a :href="`/admin/produtos/${item.pid}/edit`" class="btn btn-warning btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
+								<a :href="`/admin/pedidos/${item.oid}`" class="btn btn-info btn-sm" title="Visualizar"><i class="fas fa-eye"></i></a>
+								<a :href="`/admin/pedidos/${item.oid}/edit`" class="btn btn-warning btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
 								<button @click="remove(item)" class="btn btn-danger btn-sm" title="Remover"><i class="fas fa-trash"></i> </button>
 							</td>
 						</tr>					
@@ -122,7 +123,7 @@
 				this.getResults();
 			},
 			filterLineInMass(data){
-				_.mapValues(data.deleteItems, (selected) => this.items = this.items.filter((it) => it.pid !== selected)); 
+				_.mapValues(data.deleteItems, (selected) => this.items = this.items.filter((it) => it.oid !== selected)); 
 			},
 			emitFilter(data){
 				this.page 			=	1
@@ -168,7 +169,7 @@
 				const sortBy = this.sortBy;
 				const sortDirection = this.sortDirection;
 
-				const response = await axios.get('/admin/pedidos/buscar', {params: {page, term, field, sortBy, sortDirection}});
+				const response = await axios.get('/admin/buscar-pedidos', {params: {page, term, field, sortBy, sortDirection}});
 				this.items = typeof response.data.data != 'undefined' ?  response.data.data : response.data;
 				this.paginationData = response.data;
 			},
