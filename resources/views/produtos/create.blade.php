@@ -1,10 +1,4 @@
-@extends('layouts.app')
-
-@section('title')
-Produto     
-@endsection
-
-@section('content')
+<x-app-layout>
 <form class="row g-3" method="POST" action="{{route('salvar_produto')}}">
     @csrf  
     <div class="mb-3">
@@ -22,4 +16,4 @@ Produto
     <br>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
-@endsection
+</x-app-layout>
