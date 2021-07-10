@@ -29,7 +29,7 @@ class ProdutoController extends Controller
             ->with('success', 'Produto salvo com sucesso');
     }
 
-    //
+    //Tela para edição de produto
     public function edit(int $id)
     {
         $produto = Produto::find($id);

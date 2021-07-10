@@ -9,5 +9,7 @@ class Produto extends Model
 {
     use HasFactory;
 
+    public $sortable = ['id', 'descricao','valor', 'quantidade'];
+
     protected $fillable = ['descricao', 'valor', 'quantidade'];
 }

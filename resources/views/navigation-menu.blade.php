@@ -13,13 +13,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Página inicial') }}
+                        {{ __('Página Inicial') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
-                        {{ __('Produtos') }}
+                        {{ __('Cadastro de Produtos') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
-                        {{ __('Pedidos') }}
+                        {{ __('Loja') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
+                        {{ __('Meus Pedidos') }}
                     </x-jet-nav-link>
                 </div>
             </div>
