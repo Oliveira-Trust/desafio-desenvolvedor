@@ -27,7 +27,7 @@
                 <td>{{$produto->quantidade}}</td>
                 <td>
                     <button type="button" class="btn btn-danger" onclick="inserirProdutoCarrinho({{$produto->id}})">Inserir</button>
-                    <button type="button" class="btn btn-danger" onclick="cancelarPedido({{$produto->id}})">Cancelar</button>
+                    
                 </td>
               </tr>
               @endforeach
@@ -41,6 +41,7 @@
           <br>
 
           <button type="button" class="btn btn-danger" onclick="checkoutPedido()">Checkout</button>
+          <button type="button" class="btn btn-danger" onclick="cancelarPedido()">Cancelar</button>
     </div>
     
     <script>
@@ -80,7 +81,7 @@
             });
         }
 
-        function cancelarPedido(id)
+        function cancelarPedido()
         {
             let _url = "{{route('cancelar_pedido')}}";
 
@@ -88,8 +89,7 @@
                 url: _url,
                 type: "DELETE",
                 data: {
-                    _token: _token,
-                    id: id
+                    _token: _token
                 }
             });
         }

@@ -65,7 +65,7 @@ class PedidoController extends Controller
         }
     }
 
-    public function cancelarPedido(Request $request, Pedido $pedido)
+    public function cancelarPedido()
     {
         
         $carrinho = Carrinho::with('produto')
