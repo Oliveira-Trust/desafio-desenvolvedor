@@ -25,7 +25,10 @@
                 <td><a href="{{route('editar_produto',['id' => $produto->id])}}">{{$produto->descricao}}</a></td>
                 <td>{{$produto->valor}}</td>
                 <td>{{$produto->quantidade}}</td>
-                <td><button type="button" class="btn btn-danger" onclick="inserirProdutoCarrinho({{$produto->id}})">Inserir</button></td>
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="inserirProdutoCarrinho({{$produto->id}})">Inserir</button>
+                    <button type="button" class="btn btn-danger" onclick="cancelarPedido({{$produto->id}})">Cancelar</button>
+                </td>
               </tr>
               @endforeach
             </tbody>
@@ -42,10 +45,11 @@
     
     <script>
 
+        let _token = $('meta[name="csrf-token"]').attr('content');
+
         function checkoutPedido()
         {
             let _url = "{{route('checkout_pedido')}}";
-            let _token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: _url,
@@ -61,9 +65,7 @@
 
         function inserirProdutoCarrinho(id)
         {
-
             let _url = "{{route('inserir_produto_carrinho')}}";
-            let _token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: _url,
@@ -74,6 +76,20 @@
                 },
                 success: function(data) {
                     console.log(data);
+                }
+            });
+        }
+
+        function cancelarPedido(id)
+        {
+            let _url = "{{route('cancelar_pedido')}}";
+
+            $.ajax({
+                url: _url,
+                type: "DELETE",
+                data: {
+                    _token: _token,
+                    id: id
                 }
             });
         }

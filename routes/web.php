@@ -31,6 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/produtos/{id}',[ProdutoCo
 Route::middleware(['auth:sanctum', 'verified'])->post('/produtos/inserir-produto-carrinho', [PedidoController::class, 'inserirProdutoCarrinho'])->name('inserir_produto_carrinho');
 Route::middleware(['auth:sanctum', 'verified'])->post('/produtos/checkout-pedido', [PedidoController::class, 'checkoutPedido'])->name('checkout_pedido');
 
+Route::middleware(['auth:sanctum', 'verified'])->delete('/produtos/cancelar-pedido', [PedidoController::class, 'cancelarPedido'])->name('cancelar_pedido');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

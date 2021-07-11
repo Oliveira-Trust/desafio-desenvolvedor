@@ -37,26 +37,64 @@ class PedidoController extends Controller
             }  
         }
 
-        DB::transaction(function () use ($carrinho) {
+        try{
+            DB::transaction(function () use ($carrinho) {
 
-            $pedido = Pedido::create(['user_id' => auth()->id()]);
+                $pedido = Pedido::create(['user_id' => auth()->id()]);
+            
+                foreach ($carrinho as $carrinhoProduto)
+                {
+                
+                    $pedido->produtos()->attach($carrinhoProduto->produto_id, ['quantidade' => $carrinhoProduto->quantidade,
+                        'valor' => $carrinhoProduto->produto->valor]);
+    
+                    Produto::find($carrinhoProduto->produto_id)->decrement('quantidade',$carrinhoProduto->quantidade);
+                }
+    
+                $pedido->status = 'Pago';
+                $pedido->save();
+    
+                Carrinho::where('user_id', auth()->id())->delete();
+    
+            });
+    
+            return 'Compra finalizada com sucesso';
+
+        } catch(\Exception $exception) {
+            return 'Falha ao finalizar a compra';
+        }
+    }
+
+    public function cancelarPedido(Request $request, Pedido $pedido)
+    {
         
-            foreach ($carrinho as $carrinhoProduto)
-            {
+        $carrinho = Carrinho::with('produto')
+                    ->where('user_id', auth()->id())
+                    ->get();
+
+        try{
+            DB::transaction(function () use ($carrinho) {
+
+                $pedido = Pedido::create(['user_id' => auth()->id()]);
             
-                $pedido->produtos()->attach($carrinhoProduto->produto_id, ['quantidade' => $carrinhoProduto->quantidade,
-                    'valor' => $carrinhoProduto->produto->valor]);
+                foreach ($carrinho as $carrinhoProduto)
+                {
+                
+                    $pedido->produtos()->attach($carrinhoProduto->produto_id, ['quantidade' => $carrinhoProduto->quantidade,
+                        'valor' => $carrinhoProduto->produto->valor]);
+                }
+    
+                $pedido->status = 'Cancelado';
+                $pedido->save();
+    
+                Carrinho::where('user_id', auth()->id())->delete();
+    
+            });
+    
+            return 'Pedido cancelado';
 
-                Produto::find($carrinhoProduto->produto_id)->decrement('quantidade',$carrinhoProduto->quantidade);
-            }
-
-            $pedido->status = 'Pago';
-            $pedido->save();
-            
-            Carrinho::where('user_id', auth()->id())->delete();
-
-        });
-
-        return 'ok';
+        } catch(\Exception $exception) {
+            return 'Falha ao finalizar a compra';
+        }
     }
 }
