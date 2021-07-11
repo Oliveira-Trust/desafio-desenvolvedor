@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pedido;
-use App\Models\PedidoDetalhe;
 use App\Models\Carrinho;
 use App\Models\Produto;
-
+use Illuminate\Support\Facades\DB;
 class PedidoController extends Controller
 {
 
@@ -38,7 +37,26 @@ class PedidoController extends Controller
             }  
         }
 
-        $pedido = Pedido::create(['user_id' => auth()->id()]);
+        DB::transaction(function () use ($carrinho) {
+
+            $pedido = Pedido::create(['user_id' => auth()->id()]);
+        
+            foreach ($carrinho as $carrinhoProduto)
+            {
+            
+                $pedido->produtos()->attach($carrinhoProduto->produto_id, ['quantidade' => $carrinhoProduto->quantidade,
+                    'valor' => $carrinhoProduto->produto->valor]);
+
+                Produto::find($carrinhoProduto->produto_id)->decrement('quantidade',$carrinhoProduto->quantidade);
+            }
+
+            $pedido->status = 'Pago';
+            $pedido->save();
+            
+            Carrinho::where('user_id', auth()->id())->delete();
+
+        });
+
         return 'ok';
     }
 }
