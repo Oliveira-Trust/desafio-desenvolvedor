@@ -7,10 +7,28 @@ use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
-    //Lista com os produtos
-    public function index()
+
+    public function loja()
     {
         $produtos = Produto::simplePaginate(5);
+        return view('loja.index', compact('produtos'));
+    }
+
+    public function inserirPedidoDetalhe()
+    {
+        return 'ok';
+    }
+
+    //Lista com os produtos
+    public function index(Request $request)
+    {
+
+        $produtos = Produto::simplePaginate(5);
+
+        if(isset($request)) 
+        {
+            //$produtos = Produto::orderBy($request->sort,$request->direction)->simplePaginate(5);
+        }
 
         return view('produtos.index', compact('produtos'));
     }

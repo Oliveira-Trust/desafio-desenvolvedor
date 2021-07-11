@@ -1,3 +1,4 @@
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,15 +16,17 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Página Inicial') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
-                        {{ __('Cadastro de Produtos') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
+                    @auth
+                    <x-jet-nav-link href="{{ route('produto_loja') }}" :active="request()->routeIs('produto_index')">
                         {{ __('Loja') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
                         {{ __('Meus Pedidos') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
+                        {{ __('Cadastro de Produtos') }}
+                    </x-jet-nav-link>
+                    @endauth
                 </div>
             </div>
 

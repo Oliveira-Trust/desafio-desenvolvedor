@@ -13,7 +13,7 @@ class PedidoDetalhe extends Model
 
     public function pedido()
     {
-        return $this->belongsTo('App\Pedido');
+        return $this->belongsTo(Pedido::class);
     } 
 
 

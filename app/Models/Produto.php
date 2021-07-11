@@ -12,4 +12,9 @@ class Produto extends Model
     public $sortable = ['id', 'descricao','valor', 'quantidade'];
 
     protected $fillable = ['descricao', 'valor', 'quantidade'];
+
+    public function pedidoDetalhe()
+    {
+        return $this->hasMany(PedidoDetalhe::class);
+    }
 }

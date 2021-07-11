@@ -16,4 +16,9 @@ class Pedido extends Model
         return $this->hasMany('App\PedidoDetalhe');
     } 
 
+    public function carrinho()
+    {
+        return $this->belongsTo(Carrinho::class);
+    }
+
 }
