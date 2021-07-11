@@ -135,6 +135,7 @@ class OrderProductRepository {
 						'products.value as prod_value', 
 						'products.enabled as prod_enabled', 
 
+						'orders.id as oid', 
 						'orders.created_at as pcreated', 
                         'orders.updated_at as pupdated',
                         'orders.total as total',

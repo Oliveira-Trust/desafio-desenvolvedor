@@ -4716,7 +4716,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     orderDetails: function orderDetails(items) {
       this.modalDetailsTitle = 'Detalhes do Pedido';
-      this.modalEditButton = "/admin/pedidos/".concat(items[0].prod_id, "/edit");
+      this.modalEditButton = "/admin/pedidos/".concat(items[0].oid, "/edit");
       this.modalData = [{
         text: 'DETALHES DO PEDIDO',
         value: '',

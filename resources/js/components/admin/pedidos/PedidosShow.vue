@@ -259,10 +259,10 @@
 			},
 			orderDetails(items){
 				this.modalDetailsTitle 		= 'Detalhes do Pedido';
-				this.modalEditButton	=	`/admin/pedidos/${items[0].prod_id}/edit`
+				this.modalEditButton	=	`/admin/pedidos/${items[0].oid}/edit`
 
 				this.modalData = [
-					{ text		: 	'DETALHES DO PEDIDO',  		value		: 	'', 													type 		: 	'header' },
+					{ text		: 	'DETALHES DO PEDIDO',  		value		: 	'', 												type 		: 	'header' },
 					{ text		: 	'Total',  					value		: 	this.formatPrice(items[0].total), 					type 		: 	'text' },
 					{ text		: 	'Status',  					value		: 	items[0].status == 'EM_ABERTO' ? 'Em Aberto' : _.upperFirst(items[0].status), 					type 		: 	'text' },
 					{ text		: 	'Pago em',  				value		: 	items[0].paid_at != '1900-01-01' ? 	this.formatDate(items[0].paid_at, 'DD/MM/YYYY') : '-', 		type 		: 	'text' },
