@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderProduct;
 
@@ -144,6 +145,93 @@ class OrderProductRepository {
                         'order_products.value as or_prod_value', 
                         'order_products.quantity as or_prod_quantity',
                     ]);
+	}
+
+
+
+
+
+	/**
+	 * deleta item em massa /admin/pedidos/{pedido}
+	 *
+	 * @param array $request
+	 * @param string $url
+	 * @return void
+	 */
+	public function deleteInMass($request, $url){
+		$model = app(OrderProduct::class);
+		
+		// product's order
+		$order = self::getOrderFromUrl($url)->toArray();
+
+		// get new total
+		$newTotalValue = self::calculateNewTotal($order, $request);
+		
+		$orderModel =  app(Order::class);
+		
+		// get order to update total value
+		$theOrder = $orderModel->find($order[0]['order_id']);
+
+		// get old total value to backup 
+		$oldTotal = $theOrder->total;
+
+		$theOrder->total = $newTotalValue;
+		try {
+			// update order with new value
+			$theOrder->update();
+			try {
+				// delete requested item(s) 
+				$model->whereIn('id',  $request['items'])->delete();
+			} catch (\Throwable $th) {
+				// if has error, back to old value
+				$theOrder->total = $oldTotal;
+				$theOrder->update();
+				return response()->json([ 'status' => false, 'message' => 'Falha ao deletar os itens do pedido pedido. 1'], 400);
+			}
+		} catch (\Throwable $th) {
+			return response()->json([ 'status' => false, 'message' => 'Falha ao atualizar o novo valor do pedido.'], 400);
+		}
+	}
+
+	/**
+	 * get url with order id and explode to get specific part
+	 *
+	 * @param string $url
+	 * @return mixin
+	 */
+	public static function getOrderFromUrl(string $url){
+		$model = app(OrderProduct::class);
+
+		$url = explode('/', $url); 
+		$order_id = $url[count($url) - 2];
+		
+		return $model->where('order_id', $order_id)->get();
+	}
+
+	/**
+	 * calculate new total of order, based on old items minus deleted item
+	 *
+	 * @param array $order
+	 * @param array $request
+	 * @return double
+	 */
+	public static function calculateNewTotal($order, $request){
+		
+		// id of order_products 
+		$orderProducts =  array_reduce($order, function ($carry, $item){
+			//$carry['ids'][$item['id']]		=	$item['id'];
+			$carry['values'][$item['id']] = (float) $item['value'] * $item['quantity'];
+			return $carry; 
+		});
+		
+		// value of items based on new list
+		$arrayDiff_VALUES = array_diff_key($orderProducts['values'], array_flip($request['items']));
+		
+		// sum all new values
+		return array_reduce($arrayDiff_VALUES, function ($carry, $item){
+			$carry += $item;
+			return $carry; 
+		});
 	}
 
 

@@ -17,7 +17,7 @@
 				<div class="col-xl-7 col-sm-12">
 					<div class="row">
 						<div class="col col-12">
-							<delete-in-mass :checkedDeleteItems="checkedDelete" route="pedidos" v-on:filterLineInMass="filterLineInMass" v-on:emitGetResults="emitGetResults"></delete-in-mass>
+							<delete-in-mass :checkedDeleteItems="checkedDelete" :route="pedido.id" v-on:filterLineInMass="filterLineInMass" v-on:emitGetResults="emitGetResults"></delete-in-mass>
 						</div>
 						<div class="col col-12">
 							<sort-items :fields="fields" v-on:emitSubmitSort="emitSubmitSort"></sort-items>

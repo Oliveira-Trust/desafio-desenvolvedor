@@ -48222,7 +48222,7 @@ var render = function() {
                   _c("delete-in-mass", {
                     attrs: {
                       checkedDeleteItems: _vm.checkedDelete,
-                      route: "pedidos"
+                      route: _vm.pedido.id
                     },
                     on: {
                       filterLineInMass: _vm.filterLineInMass,
