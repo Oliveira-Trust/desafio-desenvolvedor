@@ -17,10 +17,10 @@
                         {{ __('Página Inicial') }}
                     </x-jet-nav-link>
                     @auth
-                    <x-jet-nav-link href="{{ route('produto_loja') }}" :active="request()->routeIs('produto_index')">
+                    <x-jet-nav-link href="{{ route('loja_index') }}" :active="request()->routeIs('loja_index')">
                         {{ __('Loja') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">
+                    <x-jet-nav-link href="{{ route('meus_pedidos') }}" :active="request()->routeIs('meus_pedidos')">
                         {{ __('Meus Pedidos') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('produto_index') }}" :active="request()->routeIs('produto_index')">

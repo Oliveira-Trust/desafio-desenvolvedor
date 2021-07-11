@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col">
                     <label for="valor" class="form-label">Valor</label>
-                    <input type="text" class="form-control" id="valor" name="valor">
+                    <input type="text" class="form-control ls-mask-money" id="valor" name="valor">
                 </div>
             </div>
             <div class="row">
@@ -36,6 +36,11 @@
     </div>
 
     <script>
+
+        $(document).ready(function(){
+        $('.ls-mask-money').mask('000.000.000.000.000,00', {reverse: true});
+        });
+
         document.getElementById("btnVoltar").addEventListener("click", function(event){
             event.preventDefault()
         });

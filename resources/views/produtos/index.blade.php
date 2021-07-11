@@ -1,15 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produtos') }}
+            {{ __('Cadastro de Produtos') }}
         </h2>
     </x-slot>
     <div class="py-12">
         <button type="button" class="btn btn-primary" onclick="window.location='{{route('novo_produto')}}'">Inserir novo produto</button>
         <br>
-
-        @sortablelink('descricao')
-
         <table class="table table-striped">
             <thead>
               <tr>
@@ -25,7 +22,7 @@
               <tr>
                 <th scope="row">{{$produto->id}}</th>
                 <td><a href="{{route('editar_produto',['id' => $produto->id])}}">{{$produto->descricao}}</a></td>
-                <td>{{$produto->valor}}</td>
+                <td>R$ {{number_format($produto->valor,2,',','.')}}</td>
                 <td>{{$produto->quantidade}}</td>
                 <td><button type="button" class="btn btn-danger" onclick="window.location='{{route('excluir_produto',['id' => $produto->id])}}'">Excluir</button></td>
               </tr>

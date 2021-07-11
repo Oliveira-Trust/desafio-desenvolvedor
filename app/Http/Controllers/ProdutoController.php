@@ -8,17 +8,6 @@ use App\Models\Produto;
 class ProdutoController extends Controller
 {
 
-    public function loja()
-    {
-        $produtos = Produto::simplePaginate(5);
-        return view('loja.index', compact('produtos'));
-    }
-
-    public function inserirPedidoDetalhe()
-    {
-        return 'ok';
-    }
-
     //Lista com os produtos
     public function index(Request $request)
     {
@@ -42,7 +31,16 @@ class ProdutoController extends Controller
     //Salva o registro de produto
     public function store(Request $request)
     {
-        Produto::create($request->except('_token'));
+        $request->validate([
+            'descricao' => 'required',
+            'valor' => 'required',
+            'quantidade' => 'required'
+        ]);
+
+        Produto::create(['descricao' => $request->descricao,
+                        'valor' => str_replace(',','.',str_replace('.','',$request->valor)),
+                        'quantidade' => $request->quantidade]);
+
         return redirect()->route('produto_index')
             ->with('success', 'Produto salvo com sucesso');
     }
@@ -63,7 +61,9 @@ class ProdutoController extends Controller
             'quantidade' => 'required'
         ]);
 
-        $produto->find($id)->update($request->all());
+        $produto->find($id)->update(['descricao' => $request->descricao,
+                                    'valor' => str_replace(',','.',str_replace('.','',$request->valor)),
+                                    'quantidade' => $request->quantidade]);
 
         return redirect()->route('produto_index')
             ->with('success', 'Produto salvo com sucesso');

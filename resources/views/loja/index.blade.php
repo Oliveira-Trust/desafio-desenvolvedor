@@ -5,16 +5,12 @@
         </h2>
     </x-slot>
     <div class="py-12">
-        <button type="button" class="btn btn-primary" onclick="window.location='{{route('novo_produto')}}'">Inserir novo produto</button>
-        <br>
-
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Valor</th>
-                <th scope="col">Quantidade</th>
                 <th scope="col">Ação</th>
               </tr>
             </thead>
@@ -24,7 +20,6 @@
                 <th scope="row">{{$produto->id}}</th>
                 <td><a href="{{route('editar_produto',['id' => $produto->id])}}">{{$produto->descricao}}</a></td>
                 <td>{{$produto->valor}}</td>
-                <td>{{$produto->quantidade}}</td>
                 <td>
                     <button type="button" class="btn btn-danger" onclick="inserirProdutoCarrinho({{$produto->id}})">Inserir</button>
                     

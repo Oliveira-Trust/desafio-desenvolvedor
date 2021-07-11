@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\DB;
 class PedidoController extends Controller
 {
 
+    public function index()
+    {
+        $produtos = Produto::simplePaginate(5);
+        return view('loja.index', compact('produtos'));
+    }
+
+    public function MeusPedidos()
+    {
+        $pedidos = Pedido::where('user_id', auth()->id())->simplePaginate(5);
+
+        return view('loja.meus-pedidos', compact('pedidos'));
+    }
+
     public function inserirProdutoCarrinho(Request $request)
     {
         Carrinho::create(['user_id' => auth()->id(),
@@ -17,6 +30,18 @@ class PedidoController extends Controller
                           'quantidade' => 1]);
 
         return ('Item adicionado ao carrinho');
+    }
+
+    public function adicionarQuantidadeProduto(Request $request)
+    {
+        $carrinho = Carrinho::where('produto_id', $request->produto_id);
+        $carrinho->increment('quantidade',1);
+    }
+
+    public function subtrairQuantidadeProduto(Request $request)
+    {
+        $carrinho = Carrinho::where('produto_id', $request->produto_id);
+        $carrinho->decrement('quantidade',1);
     }
 
     public function checkoutPedido()
