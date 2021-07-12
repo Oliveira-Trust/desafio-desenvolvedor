@@ -6,10 +6,6 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                lala
-            </div>
-        </div>
+        Seja bem vindo à Lojinha! Boas compras.
     </div>
 </x-app-layout>

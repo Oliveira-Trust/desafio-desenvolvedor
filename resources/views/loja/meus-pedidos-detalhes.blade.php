@@ -15,6 +15,9 @@
               </tr>
             </thead>
             <tbody>
+                @php
+                    $totalPago = 0;
+                @endphp 
                 @foreach ($pedidos->produtos()->get() as $pedidosProdutos)
                 <tr>
                     <td>
@@ -30,7 +33,18 @@
                         R$ {{number_format(($pedidosProdutos->valor * $pedidosProdutos->quantidade),2,',','.')}}
                     </td>
                 </tr>
+                    @php
+                        $totalPago += $pedidosProdutos->valor * $pedidosProdutos->quantidade;
+                    @endphp 
                 @endforeach
+                <tr>
+                    <td colspan="3" style='text-align:right'>
+                        <b>Total pago</b>
+                    </td>
+                    <td>
+                        R$ R$ {{number_format($totalPago,2,',','.')}}
+                    </td>
+                </tr>
             </tbody>
         </table>
         <br>
