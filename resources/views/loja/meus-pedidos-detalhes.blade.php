@@ -37,6 +37,7 @@
                         $totalPago += $pedidosProdutos->valor * $pedidosProdutos->quantidade;
                     @endphp 
                 @endforeach
+                @if ($pedidos->status == 'Pago')
                 <tr>
                     <td colspan="3" style='text-align:right'>
                         <b>Total pago</b>
@@ -45,6 +46,7 @@
                         R$ R$ {{number_format($totalPago,2,',','.')}}
                     </td>
                 </tr>
+                @endif
             </tbody>
         </table>
         <br>

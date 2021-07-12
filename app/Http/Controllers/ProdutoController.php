@@ -67,13 +67,12 @@ class ProdutoController extends Controller
     {
         if (PedidoProduto::where(['produto_id' => $id])->exists()) 
         {
-            return redirect()->route('produto_index');
+            return redirect()->route('produto_index')->with('error', 'Não é possível excluir un produto associado a um pedido');
         }
 
         $produto->find($id)->delete();
 
         return redirect()->route('produto_index')
-            ->with('success', 'Produto excluído
-            ');
+            ->with('success', 'Produto excluído');
     }
 }

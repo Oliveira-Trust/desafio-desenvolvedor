@@ -36,7 +36,7 @@
           </table>
           <div class="pagination justify-content-center" style="margin-top: 12px;">
             <!--paginacao-->
-           
+            {{ $pedidos->links() }}
           </div>
     </div>
     

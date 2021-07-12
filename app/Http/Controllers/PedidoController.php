@@ -7,12 +7,14 @@ use App\Models\Pedido;
 use App\Models\Carrinho;
 use App\Models\Produto;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 class PedidoController extends Controller
 {
 
     public function index()
     {
-        $produtos = Produto::simplePaginate(5);
+        $produtos = Produto::where('quantidade', '>', 0)->simplePaginate(5);
         $carrinho = Carrinho::where('user_id', auth()->id())->get();
         return view('loja.index', compact('produtos','carrinho'));
     }
@@ -40,15 +42,14 @@ class PedidoController extends Controller
         
         if (Carrinho::where(['produto_id' => $request->produto_id, 'user_id' => auth()->id()])->exists()) 
         {
-            return ('Item já existe no carrinho');
+            Session::flash('error','Produto já existe no carrinho');
+            return;
         }
 
         Carrinho::create(['user_id' => auth()->id(),
         'produto_id' => $request->produto_id,
         'quantidade' => 1]);
-
-        return ('Item adicionado ao carrinho');
-        
+     
     }
 
     public function alterarQuantidadeProdutoCarrinho(Request $request)
@@ -71,27 +72,32 @@ class PedidoController extends Controller
 
         $carrinho = Carrinho::find($request->id);
         $carrinho->delete();
+
+        Session::flash('success','Produto excluído');
+
     }
 
     public function checkoutPedido()
     {
-        try{
 
-            $carrinho = Carrinho::with('produto')
-                    ->where('user_id', auth()->id())
-                    ->get();
+        $carrinho = Carrinho::with('produto')
+        ->where('user_id', auth()->id())
+        ->get();
 
-            $produtos = Produto::select('id','quantidade')
-                        ->whereIn('id',$carrinho->pluck('produto_id'))
-                        ->pluck('quantidade', 'id');
-            
-            foreach ($carrinho as $carrinhoProduto)
+        $produtos = Produto::select('id','quantidade')
+                    ->whereIn('id',$carrinho->pluck('produto_id'))
+                    ->pluck('quantidade', 'id');
+
+        foreach ($carrinho as $carrinhoProduto)
+        {
+            if (!isset($produtos[$carrinhoProduto->produto_id]) || $produtos[$carrinhoProduto->produto_id] < $carrinhoProduto->quantidade)
             {
-                if (!isset($produtos[$carrinhoProduto->produto_id]) || $produtos[$carrinhoProduto->produto_id] < $carrinhoProduto->quantidade)
-                {
-                    return $carrinhoProduto->produto->descricao.' sem estoque';
-                }  
-            }
+                Session::flash('error','O produto '.$carrinhoProduto->produto->descricao.' não está mais disponível em estoque na quantidade solicitada.');
+                return $carrinhoProduto->produto->descricao.' sem estoque';
+            }  
+        }
+
+        try{
 
             DB::transaction(function () use ($carrinho) {
 
@@ -113,10 +119,10 @@ class PedidoController extends Controller
     
             });
     
-            return 'Compra finalizada com sucesso';
+            Session::flash('success','Compra finalizada com sucesso');
 
         } catch(\Exception $exception) {
-            return 'Falha ao finalizar a compra';
+            Session::flash('error','Falha ao finalizar a compra');
         }
     }
 
@@ -146,10 +152,10 @@ class PedidoController extends Controller
     
             });
     
-            return 'Pedido cancelado';
+            Session::flash('success','Pedido cancelado');
 
         } catch(\Exception $exception) {
-            return 'Falha ao finalizar a compra';
+            Session::flash('error','Falha ao cancelar a compra');
         }
     }
 }
