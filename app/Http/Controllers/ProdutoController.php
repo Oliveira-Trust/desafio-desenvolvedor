@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
-
+use App\Models\Carrinho;
 class ProdutoController extends Controller
 {
 
@@ -65,6 +65,11 @@ class ProdutoController extends Controller
 
     public function destroy(int $id, Produto $produto)
     {
+        if (Carrinho::where(['produto_id' => $id])->exists()) 
+        {
+            return redirect()->route('produto_index');
+        }
+
         $produto->find($id)->delete();
 
         return redirect()->route('produto_index')
