@@ -18,10 +18,14 @@
                 @php
                     $totalPago = 0;
                 @endphp 
-                @foreach ($pedidos->produtos()->get() as $pedidosProdutos)
+                @foreach ($pedidos->pedidoProdutos()->get() as $pedidosProdutos)
                 <tr>
                     <td>
-                        {{$pedidosProdutos->descricao}}
+                        
+                        @php
+                            $descricaoProduto = $pedidosProdutos->produtos()->get('descricao')->toArray();
+                        @endphp
+                        {{$descricaoProduto[0]['descricao']}}
                     </td>
                     <td>
                         {{$pedidosProdutos->quantidade}}
