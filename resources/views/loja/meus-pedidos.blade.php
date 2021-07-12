@@ -26,8 +26,16 @@
                 <tr>
                   <th scope="row">{{$pedido->id}}</th>
                   <td>{{$pedido->created_at->format('d/m/Y H:i')}}</td>
-                  <td>{{$pedido->produtos()->count()}}</td>
-                  <td>R$ {{number_format($pedido->produtos()->sum('pedido_produto.valor'),2,',','.')}}</td>
+                  <td>{{$pedido->pedidoProdutos()->sum('pedido_produto.quantidade')}}</td>
+                  @php
+                    $totalPago = 0;
+                  @endphp 
+                  @foreach ($pedido->pedidoProdutos()->get() as $pedidosProdutos)
+                    @php
+                      $totalPago += $pedidosProdutos->valor * $pedidosProdutos->quantidade;
+                    @endphp 
+                  @endforeach
+                  <td>R$ {{number_format($totalPago,2,',','.')}}</td>
                   <td>{{$pedido->status}}</td>
                   <td><button type="button" class="btn btn-primary" onclick="window.location='{{route('meus_pedidos_detalhes',$pedido->id)}}'">Detalhes</button></td>
                 </tr>
