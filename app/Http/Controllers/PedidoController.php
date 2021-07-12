@@ -28,17 +28,24 @@ class PedidoController extends Controller
     public function meusPedidosDetalhes(Request $request)
     {
         $pedidos = Pedido::find($request->id);
-        
+
         return view('loja.meus-pedidos-detalhes',compact('pedidos'));
     }
 
     public function inserirProdutoCarrinho(Request $request)
     {
+        
+        if (Carrinho::where(['produto_id' => $request->produto_id, 'user_id' => auth()->id()])->exists()) 
+        {
+            return ('Item já existe no carrinho');
+        }
+        
         Carrinho::create(['user_id' => auth()->id(),
-                          'produto_id' => $request->produto_id,
-                          'quantidade' => 1]);
+        'produto_id' => $request->produto_id,
+        'quantidade' => 1]);
 
         return ('Item adicionado ao carrinho');
+        
     }
 
     public function alterarQuantidadeProdutoCarrinho(Request $request)
