@@ -17,12 +17,19 @@ class PedidoController extends Controller
         return view('loja.index', compact('produtos','carrinho'));
     }
 
-    public function MeusPedidos()
+    public function meusPedidos()
     {
         $pedidos = Pedido::where('user_id', auth()->id())->simplePaginate(5);
         $carrinho = Carrinho::where('user_id', auth()->id())->get();
 
         return view('loja.meus-pedidos', compact(['pedidos','carrinho']));
+    }
+
+    public function meusPedidosDetalhes(Request $request)
+    {
+        $pedidos = Pedido::find($request->id);
+        
+        return view('loja.meus-pedidos-detalhes',compact('pedidos'));
     }
 
     public function inserirProdutoCarrinho(Request $request)

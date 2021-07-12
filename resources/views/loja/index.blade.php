@@ -90,8 +90,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary" onclick="checkoutPedido()">Checkout</button>
-                    <button type="button" class="btn btn-danger" onclick="cancelarPedido()">Cancelar compra</button>
+                    <button type="button" class="btn btn-light" onclick="cancelarPedido()">Cancelar</button><button type="button" class="btn btn-primary" onclick="checkoutPedido()">Checkout</button>
                 @else
                     não há itens    
                 @endif
@@ -116,7 +115,7 @@
                     quantidade: quantidade
                 },
                 success: function(data) {
-                    console.log(data)
+                    document.location.reload(true);
                 }
             });
         }
@@ -135,6 +134,9 @@
                     data: {
                         id: id,
                         _token: _token
+                    },
+                    success: function(data) {
+                        document.location.reload(true);
                     }
                 });
             }
@@ -152,7 +154,7 @@
                     _token: _token
                 },
                 success: function(data) {
-                    console.log(data)
+                    document.location.reload(true);
                 }
             });
         }
@@ -169,7 +171,7 @@
                     produto_id: id
                 },
                 success: function(data) {
-                    console.log(data);
+                    document.location.reload(true);
                 }
             });
         }
@@ -187,6 +189,9 @@
                     type: "DELETE",
                     data: {
                         _token: _token
+                    },
+                    success: function(data) {
+                        document.location.reload(true);
                     }
                 });
             }

@@ -11,13 +11,7 @@ class ProdutoController extends Controller
     //Lista com os produtos
     public function index(Request $request)
     {
-
         $produtos = Produto::simplePaginate(5);
-
-        if(isset($request)) 
-        {
-            //$produtos = Produto::orderBy($request->sort,$request->direction)->simplePaginate(5);
-        }
 
         return view('produtos.index', compact('produtos'));
     }

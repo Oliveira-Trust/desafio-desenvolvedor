@@ -15,4 +15,5 @@ class Pedido extends Model
     {
         return $this->belongsToMany(Produto::class)->withPivot(['quantidade', 'valor']);
     }
+
 }

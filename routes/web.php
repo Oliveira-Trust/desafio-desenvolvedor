@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/loja/inserir-produto-car
 Route::middleware(['auth:sanctum', 'verified'])->post('/loja/alterar-quantidade-produto-carrinho', [PedidoController::class, 'alterarQuantidadeProdutoCarrinho'])->name('alterar_quantidade_produto_carrinho');
 Route::middleware(['auth:sanctum', 'verified'])->delete('/loja/excluir-produto-carrinho', [PedidoController::class, 'excluirProdutoCarrinho'])->name('excluir_produto_carrinho');
 Route::middleware(['auth:sanctum', 'verified'])->get('/loja/meus-pedidos', [PedidoController::class, 'meusPedidos'])->name('meus_pedidos');
+Route::middleware(['auth:sanctum', 'verified'])->get('/loja/meus-pedidos-detalhes/{id}', [PedidoController::class, 'meusPedidosDetalhes'])->name('meus_pedidos_detalhes');
 Route::middleware(['auth:sanctum', 'verified'])->post('/loja/checkout-pedido', [PedidoController::class, 'checkoutPedido'])->name('checkout_pedido');
 Route::middleware(['auth:sanctum', 'verified'])->delete('/loja/cancelar-pedido', [PedidoController::class, 'cancelarPedido'])->name('cancelar_pedido');
 

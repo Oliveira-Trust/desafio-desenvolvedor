@@ -13,6 +13,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Página Inicial') }}
+                    </x-jet-nav-link>
                     @auth
                     <x-jet-nav-link href="{{ route('loja_index') }}" :active="request()->routeIs('loja_index')">
                         {{ __('Loja') }}
