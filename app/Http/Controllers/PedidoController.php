@@ -34,12 +34,15 @@ class PedidoController extends Controller
 
     public function inserirProdutoCarrinho(Request $request)
     {
+        $request->validate([
+            'produto_id' => 'required'
+        ]);
         
         if (Carrinho::where(['produto_id' => $request->produto_id, 'user_id' => auth()->id()])->exists()) 
         {
             return ('Item já existe no carrinho');
         }
-        
+
         Carrinho::create(['user_id' => auth()->id(),
         'produto_id' => $request->produto_id,
         'quantidade' => 1]);
@@ -50,6 +53,11 @@ class PedidoController extends Controller
 
     public function alterarQuantidadeProdutoCarrinho(Request $request)
     {
+        $request->validate([
+            'id' => 'required',
+            'quantidade' => 'required'
+        ]);
+
         $carrinho = Carrinho::find($request->id);
         $carrinho->quantidade = $request->quantidade;
         $carrinho->save();
@@ -57,29 +65,34 @@ class PedidoController extends Controller
 
     public function excluirProdutoCarrinho(Request $request)
     {
+        $request->validate([
+            'id' => 'required'
+        ]);
+
         $carrinho = Carrinho::find($request->id);
         $carrinho->delete();
     }
 
     public function checkoutPedido()
     {
-        $carrinho = Carrinho::with('produto')
+        try{
+
+            $carrinho = Carrinho::with('produto')
                     ->where('user_id', auth()->id())
                     ->get();
 
-        $produtos = Produto::select('id','quantidade')
-                    ->whereIn('id',$carrinho->pluck('produto_id'))
-                    ->pluck('quantidade', 'id');
-        
-        foreach ($carrinho as $carrinhoProduto)
-        {
-            if (!isset($produtos[$carrinhoProduto->produto_id]) || $produtos[$carrinhoProduto->produto_id] < $carrinhoProduto->quantidade)
+            $produtos = Produto::select('id','quantidade')
+                        ->whereIn('id',$carrinho->pluck('produto_id'))
+                        ->pluck('quantidade', 'id');
+            
+            foreach ($carrinho as $carrinhoProduto)
             {
-                return $carrinhoProduto->produto->descricao.' sem estoque';
-            }  
-        }
+                if (!isset($produtos[$carrinhoProduto->produto_id]) || $produtos[$carrinhoProduto->produto_id] < $carrinhoProduto->quantidade)
+                {
+                    return $carrinhoProduto->produto->descricao.' sem estoque';
+                }  
+            }
 
-        try{
             DB::transaction(function () use ($carrinho) {
 
                 $pedido = Pedido::create(['user_id' => auth()->id()]);

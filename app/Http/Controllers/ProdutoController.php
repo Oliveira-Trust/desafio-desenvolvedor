@@ -9,7 +9,7 @@ class ProdutoController extends Controller
 {
 
     //Lista com os produtos
-    public function index(Request $request)
+    public function index()
     {
         $produtos = Produto::simplePaginate(5);
 
@@ -26,7 +26,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descricao' => 'required',
+            'descricao' => 'required|max:255',
             'valor' => 'required',
             'quantidade' => 'required'
         ]);
