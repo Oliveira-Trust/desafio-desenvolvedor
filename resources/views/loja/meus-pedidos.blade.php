@@ -13,9 +13,15 @@
                 <th scope="col">Total de itens</th>
                 <th scope="col">Valor Total</th>
                 <th scope="col">Status</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
+                @if ($carrinho->sum('quantidade') > 0)
+                  <tr>
+                    <td colspan="100%">Há itens no seu carrinho em aberto</td>
+                  </tr>
+                @endif
                 @foreach ($pedidos as $pedido)
                 <tr>
                   <th scope="row">{{$pedido->id}}</th>
@@ -23,6 +29,7 @@
                   <td>{{$pedido->produtos()->count()}}</td>
                   <td>R$ {{number_format($pedido->produtos()->sum('pedido_produto.valor'),2,',','.')}}</td>
                   <td>{{$pedido->status}}</td>
+                  <td></td>
                 </tr>
                 @endforeach
             </tbody>

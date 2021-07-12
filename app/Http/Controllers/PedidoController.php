@@ -13,14 +13,16 @@ class PedidoController extends Controller
     public function index()
     {
         $produtos = Produto::simplePaginate(5);
-        return view('loja.index', compact('produtos'));
+        $carrinho = Carrinho::where('user_id', auth()->id())->get();
+        return view('loja.index', compact('produtos','carrinho'));
     }
 
     public function MeusPedidos()
     {
         $pedidos = Pedido::where('user_id', auth()->id())->simplePaginate(5);
+        $carrinho = Carrinho::where('user_id', auth()->id())->get();
 
-        return view('loja.meus-pedidos', compact('pedidos'));
+        return view('loja.meus-pedidos', compact(['pedidos','carrinho']));
     }
 
     public function inserirProdutoCarrinho(Request $request)
@@ -32,16 +34,17 @@ class PedidoController extends Controller
         return ('Item adicionado ao carrinho');
     }
 
-    public function adicionarQuantidadeProduto(Request $request)
+    public function alterarQuantidadeProdutoCarrinho(Request $request)
     {
-        $carrinho = Carrinho::where('produto_id', $request->produto_id);
-        $carrinho->increment('quantidade',1);
+        $carrinho = Carrinho::find($request->id);
+        $carrinho->quantidade = $request->quantidade;
+        $carrinho->save();
     }
 
-    public function subtrairQuantidadeProduto(Request $request)
+    public function excluirProdutoCarrinho(Request $request)
     {
-        $carrinho = Carrinho::where('produto_id', $request->produto_id);
-        $carrinho->decrement('quantidade',1);
+        $carrinho = Carrinho::find($request->id);
+        $carrinho->delete();
     }
 
     public function checkoutPedido()

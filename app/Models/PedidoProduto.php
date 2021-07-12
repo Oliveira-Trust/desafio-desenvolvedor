@@ -11,8 +11,4 @@ class PedidoProduto extends Model
 
     protected $fillable = ['valor', 'produto_id', 'pedido_id', 'quantidade'];
 
-    public function pedido()
-    {
-        return $this->belongsTo(Pedido::class);
-    } 
 }

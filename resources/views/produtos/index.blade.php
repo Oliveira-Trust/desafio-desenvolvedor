@@ -24,7 +24,7 @@
                 <td><a href="{{route('editar_produto',['id' => $produto->id])}}">{{$produto->descricao}}</a></td>
                 <td>R$ {{number_format($produto->valor,2,',','.')}}</td>
                 <td>{{$produto->quantidade}}</td>
-                <td><button type="button" class="btn btn-danger" onclick="window.location='{{route('excluir_produto',['id' => $produto->id])}}'">Excluir</button></td>
+                <td><button type="button" class="btn btn-danger" onclick="if (confirm('Confirma a exclusão do produto {{$produto->descricao}}?')) window.location='{{route('excluir_produto',['id' => $produto->id])}}';">Excluir</button></td>
               </tr>
               @endforeach
             </tbody>

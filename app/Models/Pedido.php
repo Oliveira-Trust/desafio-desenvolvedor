@@ -11,19 +11,8 @@ class Pedido extends Model
 
     protected $fillable = ['user_id', 'status'];
 
-    public function pedidoProduto()
-    {
-        return $this->hasMany(PedidoProduto::class);
-    } 
-
     public function produtos()
     {
         return $this->belongsToMany(Produto::class)->withPivot(['quantidade', 'valor']);
     }
-
-    public function carrinho()
-    {
-        return $this->belongsTo(Carrinho::class);
-    }
-
 }

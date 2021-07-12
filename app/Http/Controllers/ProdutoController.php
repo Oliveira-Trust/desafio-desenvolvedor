@@ -74,6 +74,7 @@ class ProdutoController extends Controller
         $produto->find($id)->delete();
 
         return redirect()->route('produto_index')
-            ->with('success', 'Produto salvo com sucesso');
+            ->with('success', 'Produto excluído
+            ');
     }
 }
