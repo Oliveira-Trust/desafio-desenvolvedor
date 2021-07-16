@@ -27,4 +27,16 @@ $router->group(['prefix' => 'api'] , function () use ($router) {
         });
     });
 
+    $router->group([
+        'prefix' => 'customer',
+        'namespace' => 'Customer',
+        'middleware' => 'auth'
+    ], function () use ($router) {
+        $router->get('/', 'CustomerController@index');
+        $router->post('/', 'CustomerController@store');
+        $router->get('/{id}', 'CustomerController@show');
+        $router->put('/{id}', 'CustomerController@update');
+        $router->delete('/{id}', 'CustomerController@delete');
+    });
+
 });
