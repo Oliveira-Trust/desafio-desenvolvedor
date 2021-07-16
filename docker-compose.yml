@@ -1,0 +1,50 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:9.4
+    container_name: oliveiratrust-db
+    ports:
+      - "8002:5432"
+    restart: unless-stopped
+    volumes:
+      - oliveiratrust-db:/var/lib/postgresql/data
+      - /tmp:/tmp
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=oliveiratrust
+    networks:
+      - oliveiratrust
+
+  api:
+    container_name: oliveiratrust-api
+    build:
+      args:
+          user: ${USER}
+          uid: 1001
+      context: ./
+      dockerfile: Dockerfile-api
+    working_dir: /var/www/html
+    ports:
+      - "8001:80"
+    volumes:
+      - ./api:/var/www/html
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_KEY=SomeRandomString
+      - APP_TIMEZONE=UTC
+      - DB_CONNECTION=pgsql
+      - DB_PORT=5432
+      - DB_HOST=oliveiratrust-db
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_DATABASE=oliveiratrust
+      - CACHE_DRIVER=array
+    networks:
+      - oliveiratrust
+volumes:
+  oliveiratrust-db:
+networks:
+  oliveiratrust:
+    driver: bridge

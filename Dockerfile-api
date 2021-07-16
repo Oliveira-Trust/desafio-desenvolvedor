@@ -1,0 +1,20 @@
+FROM php:7.4-apache
+
+COPY ./vhosts.conf  /etc/apache2/sites-enabled/vhosts.conf
+
+RUN  apt-get -y update \
+&& apt-get install -y curl git zip libpq-dev \
+&& docker-php-ext-configure pgsql -with-pgsql=/usr/include/postgresql/ \
+&& docker-php-ext-install pgsql pdo_pgsql
+
+RUN a2enmod rewrite
+RUN a2enmod headers
+
+RUN a2dissite 000-default
+
+WORKDIR /var/www/html
+
+RUN mkdir -p /var/www/html/storage/ \
+ && mkdir -p /var/www/html/bootstrap/cache/ \
+ && chmod 777 -R /var/www/html/storage/ \
+ && chmod 777 -R /var/www/html/bootstrap/cache/
