@@ -39,4 +39,16 @@ $router->group(['prefix' => 'api'] , function () use ($router) {
         $router->delete('/{id}', 'CustomerController@delete');
     });
 
+    $router->group([
+        'prefix' => 'product',
+        'namespace' => 'Product',
+        'middleware' => 'auth'
+    ], function () use ($router) {
+        $router->get('/', 'ProductController@index');
+        $router->post('/', 'ProductController@store');
+        $router->get('/{id}', 'ProductController@show');
+        $router->put('/{id}', 'ProductController@update');
+        $router->delete('/{id}', 'ProductController@delete');
+    });
+
 });

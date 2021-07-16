@@ -8,6 +8,9 @@ use App\Repository\User\implementations\UserRepository;
 use App\Repository\Customer\CustomerIRepository;
 use App\Repository\Customer\implementations\CustomerRepository;
 
+use App\Repository\Product\ProductIRepository;
+use App\Repository\Product\implementations\ProductRepository;
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -23,5 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(UserIRepository::class, UserRepository::class);
 
         $this->app->bind(CustomerIRepository::class, CustomerRepository::class);
+
+        $this->app->bind(ProductIRepository::class, ProductRepository::class);
     }
 }
