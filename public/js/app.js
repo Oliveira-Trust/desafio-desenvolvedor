@@ -4042,10 +4042,10 @@ import { labelCheck } from '../../../../../resources/js/customvalidations.js' //
               title: 'Sucesso!',
               html: response.data.message
             });
-            /* setTimeout(() => {
-                window.location = '/admin/pedidos'
-            }, 2500); */
 
+            setTimeout(function () {
+              window.location = '/admin/pedidos';
+            }, 2500);
           }
 
           return false;

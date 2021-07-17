@@ -3,5 +3,5 @@
 @section('title') Adicionar Pedido @endsection
 
 @section('content')
-	<pedidos-form :errors="{{ json_encode($errors->getMessages()) }}" :categories="{{ $categories }}" :clients="{{ $clients }}"></pedidos-form>
+	<pedidos-form :errors="{{ json_encode($errors->getMessages()) }}" :clients="{{ $clients }}"></pedidos-form>
 @endsection

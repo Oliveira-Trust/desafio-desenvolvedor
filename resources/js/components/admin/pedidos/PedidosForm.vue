@@ -378,9 +378,9 @@
                                 title		:	'Sucesso!',
                                 html		:	response.data.message
                             })
-                            /* setTimeout(() => {
+                            setTimeout(() => {
                                 window.location = '/admin/pedidos'
-                            }, 2500); */
+                            }, 2500);
                         }
                         return false;
                     }) .catch((e) => { 

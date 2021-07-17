@@ -32,9 +32,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
         $clients = Client::all()->load('user');
-        return view('admin.pedidos.create', compact('categories', 'clients'));
+        return view('admin.pedidos.create', compact('clients'));
     }
 
     /**
