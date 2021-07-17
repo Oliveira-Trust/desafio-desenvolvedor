@@ -4078,9 +4078,9 @@ import { labelCheck } from '../../../../../resources/js/customvalidations.js' //
     // used when edit order
     reloadCart: function reloadCart() {
       var items = this.orderData.orderproduct;
-      this.cart = items.map(function (item) {
+      this.cart = items.map(function (item, key) {
         return {
-          key: items.length,
+          key: key,
           productId: item.product_id,
           productName: item.product.name,
           categoryName: item.product.category.name,

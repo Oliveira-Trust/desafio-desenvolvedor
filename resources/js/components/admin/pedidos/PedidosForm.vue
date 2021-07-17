@@ -414,9 +414,9 @@
 			// used when edit order
 			reloadCart(){
 				let items = this.orderData.orderproduct;
-				this.cart = items.map((item) => {
+				this.cart = items.map((item, key) => {
 					return { 
-							key				:	items.length, 
+							key				:	key, 
 							productId		:	item.product_id,
 							productName		:	item.product.name, 
 							categoryName	:	item.product.category.name, 
