@@ -189,10 +189,6 @@
 <script>
 	import pagination from 'laravel-vue-pagination'
    	import { required, requiredIf, minLength, maxLength } from 'vuelidate/lib/validators'
-   /*  
-	import { labelCheck } from '../../../../../resources/js/customvalidations.js' // my validations */
-
-
     export default {
         props: ['orderData', 'errors', 'inEdit', 'clients'],
 		components: { 

@@ -3815,9 +3815,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
-/*  
-import { labelCheck } from '../../../../../resources/js/customvalidations.js' // my validations */
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['orderData', 'errors', 'inEdit', 'clients'],
   components: {
