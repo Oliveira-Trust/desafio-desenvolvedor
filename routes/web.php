@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
         
     Route::resource('clientes' ,  App\Http\Controllers\ClientController::class)->except('show');
     Route::resource('categorias' ,  App\Http\Controllers\CategoryController::class)->except('show');
