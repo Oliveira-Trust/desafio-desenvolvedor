@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => "Desafio Oliveira Trust",
+    //'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
