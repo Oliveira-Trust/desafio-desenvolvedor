@@ -4,12 +4,11 @@
         <div class="col-12">
             <form method="post" class="form-horizontal" @submit.prevent="onSubmit">
                 <input type="hidden" name="_token" :value="csrfToken" id="_token"/>
-                <input v-if="inEdit" type="hidden" name="_method" value="PUT" />
+                <input type="hidden" name="_method" value="PUT" />
 
                 <div class="row">
                     <div class="col-xl-8 col-sm-12 bg-white order-xl-first order-sm-last">
-                        <h4 class="mt-3 mb-3 font-weight-bold" v-if="!inEdit">Criar Pedido</h4>
-                        <h4 class="mt-3 mb-3 font-weight-bold" v-else>Editar Pedido #{{orderData.id}}</h4>
+                        <h4 class="mt-3 mb-3 font-weight-bold">Editar Pedido #{{orderData.id}}</h4>
 						
 						<div class="row" v-if="clientSetted == 0 && step == 1">
 							<div class="col-12">
@@ -235,10 +234,9 @@
 			if(this.inEdit){
 				this.client_id 			=	this.orderData.client_id
 				this.status 			=	this.orderData.status
-				this.paid_at 			=	this.orderData.paid_at != '1900-01-01' && this.orderData.paid_at != '1900-01-01T00:00:00.000000Z' ? this.orderData.paid_at : ''
+				this.paid_at 			=	this.orderData.paid_at
 
 				this.reloadCart()
-				this.sumTotal()
 			}
 		},
 		watch: {
@@ -274,6 +272,22 @@
 			emitClearFilter(data){
 				this.filters = data.filters
 				this.getResults();
+			},
+
+			reloadCart(){
+				let items = this.orderData.orderproduct;
+				this.cart = items.map((item) => {
+					return { 
+							key: items.length, 
+							productId : item.product_id,  // ok
+							productName : item.product.name, 
+							categoryName : item.product.category.name, 
+							productQuantity : Number(item.quantity), 		// ok
+							productValue : item.value, 
+							subTotalValue :  item.value * Number(item.quantity), 
+						}
+				})
+
 			},
 
 			// Our method to GET results from a Laravel endpoint
@@ -378,9 +392,9 @@
                                 title		:	'Sucesso!',
                                 html		:	response.data.message
                             })
-                            /* setTimeout(() => {
+                            setTimeout(() => {
                                 window.location = '/admin/pedidos'
-                            }, 2500); */
+                            }, 2500);
                         }
                         return false;
                     }) .catch((e) => { 
@@ -409,24 +423,7 @@
             },
             getError(errors) {
                 return _.first(errors)
-            },
-			
-			// used when edit order
-			reloadCart(){
-				let items = this.orderData.orderproduct;
-				this.cart = items.map((item) => {
-					return { 
-							key				:	items.length, 
-							productId		:	item.product_id,
-							productName		:	item.product.name, 
-							categoryName	:	item.product.category.name, 
-							productQuantity	:	Number(item.quantity),
-							productValue	:	item.product.value, 
-							subTotalValue	:	item.product.value * Number(item.quantity), 
-						}
-				})
-				this.sumTotal()
-			},
+            }
         },
         computed: {
             csrfToken() {

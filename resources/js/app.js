@@ -41,6 +41,7 @@ Vue.component('produtos-form', require('./components/admin/produtos/ProdutosForm
 Vue.component('pedidos-index', require('./components/admin/pedidos/PedidosIndex.vue').default);
 Vue.component('pedidos-form', require('./components/admin/pedidos/PedidosForm.vue').default);
 Vue.component('pedidos-show', require('./components/admin/pedidos/PedidosShow.vue').default);
+Vue.component('pedidos-edit', require('./components/admin/pedidos/PedidosEdit.vue').default);
 
 // micro components
 Vue.component('delete-in-mass', require('./components/parts/DeleteInMass.vue').default);
