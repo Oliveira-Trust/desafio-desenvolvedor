@@ -43,6 +43,18 @@ services:
       - CACHE_DRIVER=array
     networks:
       - oliveiratrust
+  react:
+    container_name: oliveiratrust-react
+    image: node:12
+    ports:
+        - '8000:3000'
+    restart: always
+    volumes:
+        - ./react/:/srv/react-docker
+    working_dir: /srv/react-docker
+    command: 'npm start'
+    networks:
+      - oliveiratrust
 volumes:
   oliveiratrust-db:
 networks:
