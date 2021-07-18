@@ -22,6 +22,16 @@ class CategoryRepository implements CategoryIRepository {
         }
     }
 
+    public function readArray(array $ids): array {
+        try {
+            return Category::whereIn('id', $ids)
+                ->get()
+                ->toArray();
+        } catch (\Throwable $th) {
+            return [];
+        }
+    }
+
     public function readAll(): array {
         return Category::all()->toArray();
     }

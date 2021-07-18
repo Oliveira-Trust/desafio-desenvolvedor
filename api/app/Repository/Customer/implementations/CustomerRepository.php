@@ -22,6 +22,16 @@ class CustomerRepository implements CustomerIRepository {
         }
     }
 
+    public function readArray(array $ids): array {
+        try {
+            return Customer::whereIn('id', $ids)
+                ->get()
+                ->toArray();
+        } catch (\Throwable $th) {
+            return [];
+        }
+    }
+
     public function readAll(): array {
         return Customer::all()->toArray();
     }

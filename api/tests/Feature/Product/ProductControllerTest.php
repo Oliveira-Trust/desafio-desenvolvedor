@@ -3,7 +3,7 @@
 namespace Tests\Feature\Product;
 
 use Faker\Generator as Faker;
-
+use DB;
 use App\Models\User;
 use App\Models\Product\Category;
 use App\Models\Product\Product;
@@ -40,6 +40,9 @@ class ProductControllerTest extends \TestCase
         $this->seeJsonStructure([
             '*' => [
                 'id', 'name', 'category_id', 'description', 'color', 'size', 'price', 'created_at', 'updated_at'
+                ,'category' => [
+                    'id', 'name'
+                ]
             ]
         ]);
 
@@ -182,8 +185,11 @@ class ProductControllerTest extends \TestCase
         $this->seeStatusCode(200);
         $this->seeJsonStructure([
             'id', 'name', 'category_id', 'description', 'color', 'size', 'price'
+            ,'category' => [
+                'id', 'name'
+            ]
         ]);
-
+// dd($this->response->getContent());
         $this->seeJson($product->toArray());
     }
 
@@ -200,26 +206,25 @@ class ProductControllerTest extends \TestCase
     public function update_success_product_with_all_valid_fields() {
 
         $product = factory(Product::class)->create();
+        $category = factory(Category::class)->create();
 
         $faker = new Faker();
         $faker->addProvider(new \Faker\Provider\pt_BR\Person ($faker));
         $faker->addProvider(new \Faker\Provider\Lorem ($faker));
         $faker->addProvider(new \Faker\Provider\Color ($faker));
 
-        $caregory = factory(Category::class)->create();
-
         $productEdited = [
             'name'          => $faker->name,
-            'category_id'   => $caregory->id,
+            'category_id'   => $category->id,
             'description'   => $faker->text,
             'size'          => $faker->randomFloat(2, 1, 1000),
             'color'         => $faker->hexcolor,
             'price'         => $faker->randomFloat(2, 1, 1000)
         ];
-
         $this->actingAs(self::$user);
         $this->json('PUT', '/api/product/'.$product->id, $productEdited);
 
+        $this->seeStatusCode(200);
         $this->seeJson($productEdited);
 
     }
@@ -238,8 +243,29 @@ class ProductControllerTest extends \TestCase
 
         $this->actingAs(self::$user);
         $this->json('PUT', '/api/product/'.$product->id, $productEdited);
-
+        $this->seeStatusCode(200);
         $this->seeJson($productEdited);
+    }
+
+    /** @test */
+    public function update_failed_product_with_invalid_category_id_field() {
+
+        $product = factory(Product::class)->create();
+
+        $faker = new Faker();
+        $faker->addProvider(new \Faker\Provider\Base ($faker));
+
+        $productEdited = [
+            'category_id' => $faker->randomFloat(2, 100, 120)
+        ];
+
+        $this->actingAs(self::$user);
+        $this->json('PUT', '/api/product/'.$product->id, $productEdited);
+
+        $this->seeStatusCode(422);
+        $this->seeJson([
+            "category_id" => ["The selected category id is invalid."]
+        ]);
     }
 
     /** @test */
@@ -336,5 +362,71 @@ class ProductControllerTest extends \TestCase
         ]);
 
         $this->seeInDatabase('products', ['id' => $product->id]);
+    }
+
+    /** @test */
+    public function deletearray_failed_product_with_empty_ids() {
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/product', []);
+
+        $this->seeStatusCode(422);
+        $this->seeJson([
+            "message" => "Empty ids."
+        ]);
+    }
+
+    /** @test */
+    public function deletearray_failed_product_with_invalid_id() {
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/product', ["ids" => [rand(1,100)]]);
+
+        $this->seeStatusCode(404);
+        $this->seeJson([
+            "message" => "Not found."
+        ]);
+    }
+
+    /** @test */
+    public function deletearray_success_product_with_valids_ids() {
+
+        $product = factory(Product::class, 10)->create();
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/product', ["ids" => [$product[3]->id, $product[6]->id, $product[9]->id]]);
+
+        $this->seeStatusCode(200);
+
+        $this->seeJson([
+            "message" => "success"
+        ]);
+
+        $productsDestroied = DB::table('products')
+        ->whereNotNull('deleted_at')
+        ->count();
+
+        $this->assertEquals(3, $productsDestroied);
+    }
+
+    /** @test */
+    public function deletearray_success_product_with_valid_and_invalid_ids() {
+
+        $product = factory(Product::class, 10)->create();
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/product', ["ids" => [$product[3]->id, rand(100, 110), rand(110, 120)]]);
+
+        $this->seeStatusCode(200);
+
+        $this->seeJson([
+            "message" => "success"
+        ]);
+
+        $productsDestroied = DB::table('products')
+        ->whereNotNull('deleted_at')
+        ->count();
+
+        $this->assertEquals(1, $productsDestroied);
     }
 }

@@ -3,7 +3,7 @@
 namespace Tests\Feature\Customer;
 
 use Faker\Generator as Faker;
-
+use DB;
 use App\Models\User;
 use App\Models\Customer;
 
@@ -314,6 +314,73 @@ class CustomerControllerTest extends \TestCase
         ]);
 
         $this->seeInDatabase('customers', ['id' => $customer->id]);
+    }
+
+
+    /** @test */
+    public function deletearray_failed_customer_with_empty_ids() {
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/customer', []);
+
+        $this->seeStatusCode(422);
+        $this->seeJson([
+            "message" => "Empty ids."
+        ]);
+    }
+
+    /** @test */
+    public function deletearray_failed_customer_with_invalid_id() {
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/customer', ["ids" => [rand(1,100)]]);
+
+        $this->seeStatusCode(404);
+        $this->seeJson([
+            "message" => "Not found."
+        ]);
+    }
+
+    /** @test */
+    public function deletearray_success_customer_with_valids_ids() {
+
+        $customer = factory(Customer::class, 10)->create();
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/customer', ["ids" => [$customer[3]->id, $customer[6]->id, $customer[9]->id]]);
+
+        $this->seeStatusCode(200);
+
+        $this->seeJson([
+            "message" => "success"
+        ]);
+
+        $customersDestroied = DB::table('customers')
+        ->whereNotNull('deleted_at')
+        ->count();
+
+        $this->assertEquals(3, $customersDestroied);
+    }
+
+    /** @test */
+    public function deletearray_success_customer_with_valid_and_invalid_ids() {
+
+        $customer = factory(Customer::class, 10)->create();
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/customer', ["ids" => [$customer[3]->id, rand(100, 110), rand(110, 120)]]);
+
+        $this->seeStatusCode(200);
+
+        $this->seeJson([
+            "message" => "success"
+        ]);
+
+        $customersDestroied = DB::table('customers')
+        ->whereNotNull('deleted_at')
+        ->count();
+
+        $this->assertEquals(1, $customersDestroied);
     }
 
 }

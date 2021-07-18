@@ -36,6 +36,7 @@ $router->group(['prefix' => 'api'] , function () use ($router) {
         $router->post('/', 'CustomerController@store');
         $router->get('/{id}', 'CustomerController@show');
         $router->put('/{id}', 'CustomerController@update');
+        $router->delete('/', 'CustomerController@deleteArray');
         $router->delete('/{id}', 'CustomerController@delete');
     });
 
@@ -48,6 +49,7 @@ $router->group(['prefix' => 'api'] , function () use ($router) {
         $router->post('/', 'ProductController@store');
         $router->get('/{id}', 'ProductController@show');
         $router->put('/{id}', 'ProductController@update');
+        $router->delete('/', 'ProductController@deleteArray');
         $router->delete('/{id}', 'ProductController@delete');
     });
 
@@ -60,6 +62,7 @@ $router->group(['prefix' => 'api'] , function () use ($router) {
         $router->post('/', 'CategoryController@store');
         $router->get('/{id}', 'CategoryController@show');
         $router->put('/{id}', 'CategoryController@update');
+        $router->delete('/', 'CategoryController@deleteArray');
         $router->delete('/{id}', 'CategoryController@delete');
     });
 

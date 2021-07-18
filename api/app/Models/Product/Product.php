@@ -31,6 +31,6 @@ class Product extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App\Models\Product\Product');
+        return $this->hasOne('App\Models\Product\Category', 'id', 'category_id');
     }
 }

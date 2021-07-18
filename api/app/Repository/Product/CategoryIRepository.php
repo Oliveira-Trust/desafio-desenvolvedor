@@ -20,6 +20,14 @@ interface CategoryIRepository {
     public function read(int $id) : array;
 
     /**
+     * this function is for read one category list
+     *
+     * @param integer $id
+     * @return array
+     */
+    public function readArray(array $ids) : array;
+
+    /**
      * this function is for read all category list data
      *
      * @return array

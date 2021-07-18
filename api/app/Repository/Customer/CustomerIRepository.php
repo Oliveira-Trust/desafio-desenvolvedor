@@ -20,6 +20,14 @@ interface CustomerIRepository {
     public function read(int $id) : array;
 
     /**
+     * this function is for read one customer list
+     *
+     * @param integer $id
+     * @return array
+     */
+    public function readArray(array $ids) : array;
+
+    /**
      * this function is for read all customer list data
      *
      * @return array

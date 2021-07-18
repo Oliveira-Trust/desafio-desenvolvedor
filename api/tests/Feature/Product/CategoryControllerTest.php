@@ -3,7 +3,7 @@
 namespace Tests\Feature\Product;
 
 use Faker\Generator as Faker;
-
+use DB;
 use App\Models\User;
 use App\Models\Product\Category;
 
@@ -292,5 +292,71 @@ class CategoryControllerTest extends \TestCase
         ]);
 
         $this->seeInDatabase('categories', ['id' => $category->id]);
+    }
+
+    /** @test */
+    public function deletearray_failed_category_with_empty_ids() {
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/category', []);
+
+        $this->seeStatusCode(422);
+        $this->seeJson([
+            "message" => "Empty ids."
+        ]);
+    }
+
+    /** @test */
+    public function deletearray_failed_category_with_invalid_id() {
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/category', ["ids" => [rand(1,100)]]);
+
+        $this->seeStatusCode(404);
+        $this->seeJson([
+            "message" => "Not found."
+        ]);
+    }
+
+    /** @test */
+    public function deletearray_success_category_with_valids_ids() {
+
+        $category = factory(Category::class, 10)->create();
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/category', ["ids" => [$category[3]->id, $category[6]->id, $category[9]->id]]);
+
+        $this->seeStatusCode(200);
+
+        $this->seeJson([
+            "message" => "success"
+        ]);
+
+        $categoriesDestroied = DB::table('categories')
+        ->whereNotNull('deleted_at')
+        ->count();
+
+        $this->assertEquals(3, $categoriesDestroied);
+    }
+
+    /** @test */
+    public function deletearray_success_category_with_valid_and_invalid_ids() {
+
+        $category = factory(Category::class, 10)->create();
+
+        $this->actingAs(self::$user);
+        $this->json('DELETE', '/api/category', ["ids" => [$category[3]->id, rand(100, 110), rand(110, 120)]]);
+
+        $this->seeStatusCode(200);
+
+        $this->seeJson([
+            "message" => "success"
+        ]);
+
+        $categoriesDestroied = DB::table('categories')
+        ->whereNotNull('deleted_at')
+        ->count();
+
+        $this->assertEquals(1, $categoriesDestroied);
     }
 }

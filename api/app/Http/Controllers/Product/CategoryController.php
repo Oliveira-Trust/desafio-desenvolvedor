@@ -108,4 +108,27 @@ class CategoryController extends Controller
         }
         return response()->json( ["message" => "Error"], 400);
     }
+
+    public function deleteArray(Request $request) {
+
+        if (!isset($request->ids) || count($request->ids) == 0) {
+            return response()->json( ["message" => "Empty ids."], 422);
+        }
+
+        $categories = $this->categoryIRepository->readArray($request->ids);
+
+        if ($categories === []) {
+            return response()->json( ["message" => "Not found."], 404);
+        }
+        $errorDelete = false;
+        foreach ($categories as $category) {
+            if (!$this->categoryIRepository->delete($category['id'])) {
+                $errorDelete = true;
+            }
+        }
+
+        if ($errorDelete) return response()->json( ["message" => "Error"], 400);
+
+        return response()->json( ["message" => "success"], 200);
+    }
 }

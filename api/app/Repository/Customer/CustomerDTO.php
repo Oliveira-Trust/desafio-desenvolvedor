@@ -26,11 +26,11 @@ class CustomerDTO extends AbstractDataTransferObject {
             'address' => 'string'
         ];
     }
-    public static function rulesUpdate() {
+    public static function rulesUpdate($id) {
         return [
             'name' => 'string',
             'email' => 'string',
-            'cpf' => 'string|unique:customers',
+            'cpf' => 'string|unique:customers, "cpf", '.$id,
             'phone' => 'string',
             'address' => 'string'
         ];

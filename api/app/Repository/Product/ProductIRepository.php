@@ -24,6 +24,13 @@ interface ProductIRepository {
      *
      * @return array
      */
+    public function readArray(array $ids): array;
+
+    /**
+     * this function is for read all product list data
+     *
+     * @return array
+     */
     public function readAll(): array;
 
     /**

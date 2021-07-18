@@ -16,14 +16,25 @@ class ProductRepository implements ProductIRepository {
 
     public function read(int $id): array {
         try {
-            return Product::findOrFail($id)->toArray();
+            return Product::with('category')->findOrFail($id)->toArray();
+        } catch (\Throwable $th) {
+            return [];
+        }
+    }
+
+    public function readArray(array $ids): array {
+        try {
+            return Product::with('category')
+                ->whereIn('id', $ids)
+                ->get()
+                ->toArray();
         } catch (\Throwable $th) {
             return [];
         }
     }
 
     public function readAll(): array {
-        return Product::all()->toArray();
+        return Product::with('category')->get()->toArray();
     }
 
     public function update(int $id, ProductDTO $productDTO) : array {
