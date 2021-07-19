@@ -6,7 +6,6 @@ use App\Models\City;
 use App\Models\User;
 use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ClientRequest;
 use App\Repositories\ClientRepository;
 
@@ -41,6 +40,7 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
+        $request['password'] = bcrypt($request->password);
         $user       =   User::create($request->only('name', 'email', 'password', 'enable'));
         $user->client()->create($request->only('document', 'phone_number', 'phone_number2', 'birth', 'address_zipcode', 'address_street', 'address_number', 'address_complement', 'address_neighborhood', 'city_id'));
         return response()->json([ 'status' => true, 'message' => 'Registro adicionado com sucesso!'], 200);
@@ -70,6 +70,7 @@ class ClientController extends Controller
     {
         $cliente->update($request->only('document', 'phone_number', 'phone_number2', 'birth', 'address_zipcode', 'address_street', 'address_number', 'address_complement', 'address_neighborhood', 'city_id'));
         $user = User::find($cliente->user_id);
+        $request['password'] = $request->password != '' && $request->password != NULL ? bcrypt($request->password) : $user->password;
         $user->update($request->only('name', 'email', 'password', 'enable'));
         return response()->json([ 'status' => true, 'message' => 'Registro atualizado com sucesso!'], 200);
     }

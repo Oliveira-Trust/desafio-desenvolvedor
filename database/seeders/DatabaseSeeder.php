@@ -15,17 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        
         // Seeders obrigatórios
-        /* $this->call(StateSeeder::class);
-        $this->call(CitySeeder::class); */
+        $this->call([
+            AdminSeeder::class,
+            StateSeeder::class,
+            CitySeeder::class
+        ]);
 
-        // Seeders opcionais (se não usar esses, usar as factories abaixo)
-       /*  $this->call(UserSeeder::class);
-        $this->call(ClientSeeder::class);
-        $this->call(CategorySeeder::class);
-        $this->call(ProductSeeder::class); */
+
+        // Seeders opcionais
+        $this->call([
+            CategorySeeder::class,
+            ProductSeeder::class
+        ]);
 
         for ($i=0; $i < 100; $i++) { 
             $user = User::factory()->create();
@@ -34,7 +36,6 @@ class DatabaseSeeder extends Seeder
                 ->for($user)
                 ->create();
         }
-
 
     }
 }

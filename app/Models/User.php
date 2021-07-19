@@ -61,15 +61,13 @@ class User extends Authenticatable
     public function setNameAttribute($value){
         $this->attributes['name'] = ucfirst($value);
     }
-
+   /*  //dd(request()->method(), $value);
     public function setPasswordAttribute($value){
-        if(!empty($value) && request()->method() == 'POST'){
-            $this->attributes['password'] = bcrypt($value);
-        } else if(!empty($value) && !is_null($value) && (request()->method() == 'PATCH' || request()->method() == 'PUT')) {
+        if((!empty($value) && request()->method() == 'POST') || !empty($value) && !is_null($value) || (request()->method() == 'PATCH' || request()->method() == 'PUT') ){
             $this->attributes['password'] = bcrypt($value);
         } else if(empty($value) || is_null($value)) {
             
         }
-    }
+    } */
 
 }
