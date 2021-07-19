@@ -36,11 +36,16 @@ Instale as dependências:
 composer install
 ```
 
-Configure o arquivo .env: *
+Configure o arquivo ``.env``: *
 ```sh
 nano .env
 ```
 <sub>*Se o arquivo não for criado automaticamente depois do composer install, faça uma cópia do .env.example.</sub>
+
+Gere uma nova chave para o arquivo ``.env``
+```sh
+php artisan key:generate
+```
 
 Rode as migrations:
 ```sh
@@ -48,7 +53,7 @@ php artisan migrate
 ```
 
 Rode as seeders:
-<sub>* Ao rodar as seeders como estão, irão gerar produtos, categorias e 100 clientes. Caso não queira, basta comentar das linhas ``27 a 38`` do arquivo ``DatabaseSeeder.php`` em ``database/seeders/``. </sub>
+<sub>*Ao rodar as seeders como estão, irão gerar produtos, categorias e 100 clientes. Caso não queira, basta comentar das linhas ``27 a 38`` do arquivo ``DatabaseSeeder.php`` em ``database/seeders/``. </sub>
 ```sh
 php artisan db:seed
 ```
