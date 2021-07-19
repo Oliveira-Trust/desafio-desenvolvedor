@@ -46223,6 +46223,69 @@ var render = function() {
               _c("div", { staticClass: "form-group col col-12" }, [
                 _c(
                   "label",
+                  { staticClass: "form-label", attrs: { for: "field" } },
+                  [_vm._v("Campo")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.filters.filteredFieldClient,
+                        expression: "filters.filteredFieldClient"
+                      }
+                    ],
+                    staticClass: "form-control  form-control-sm",
+                    attrs: { name: "client-field-filter", id: "field" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.filters,
+                          "filteredFieldClient",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Selecione o campo")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.fields, function(field, i) {
+                      return _c(
+                        "option",
+                        { key: i, domProps: { value: field.key } },
+                        [
+                          _vm._v(
+                            "\r\n\t\t\t\t\t\t\t\t\t" +
+                              _vm._s(field.label) +
+                              "\r\n\t\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col col-12" }, [
+                _c(
+                  "label",
                   { staticClass: "form-label", attrs: { for: "term" } },
                   [_vm._v("Termo")]
                 ),
@@ -46288,69 +46351,6 @@ var render = function() {
                         }
                       }
                     })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group col col-12" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "field" } },
-                  [_vm._v("Campo")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.filters.filteredFieldClient,
-                        expression: "filters.filteredFieldClient"
-                      }
-                    ],
-                    staticClass: "form-control  form-control-sm",
-                    attrs: { name: "client-field-filter", id: "field" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.filters,
-                          "filteredFieldClient",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Selecione o campo")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.fields, function(field, i) {
-                      return _c(
-                        "option",
-                        { key: i, domProps: { value: field.key } },
-                        [
-                          _vm._v(
-                            "\r\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(field.label) +
-                              "\r\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                )
               ]),
               _vm._v(" "),
               _vm.hasFilter
@@ -49596,6 +49596,64 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "form-group col col-12" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "field" } }, [
+        _vm._v("Campo")
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.filters.filteredField,
+              expression: "filters.filteredField"
+            }
+          ],
+          staticClass: "form-control  form-control-sm",
+          attrs: { name: "field-filter", id: "field" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.$set(
+                _vm.filters,
+                "filteredField",
+                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+              )
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("Selecione o campo")]),
+          _vm._v(" "),
+          _vm._l(
+            _vm.fields
+              .filter(function(element, index) {
+                return index < _vm.fields.length - 1
+              })
+              .filter(function(_, i) {
+                return i > 0
+              }),
+            function(field, i) {
+              return _c("option", { key: i, domProps: { value: field.key } }, [
+                _vm._v("\n\t\t\t\t" + _vm._s(field.label) + "\n\t\t\t")
+              ])
+            }
+          )
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group col col-12" }, [
       _c("label", { staticClass: "form-label", attrs: { for: "term" } }, [
         _vm._v("Termo")
       ]),
@@ -49653,64 +49711,6 @@ var render = function() {
               }
             }
           })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group col col-12" }, [
-      _c("label", { staticClass: "form-label", attrs: { for: "field" } }, [
-        _vm._v("Campo")
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.filters.filteredField,
-              expression: "filters.filteredField"
-            }
-          ],
-          staticClass: "form-control  form-control-sm",
-          attrs: { name: "field-filter", id: "field" },
-          on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.$set(
-                _vm.filters,
-                "filteredField",
-                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-              )
-            }
-          }
-        },
-        [
-          _c("option", { attrs: { value: "" } }, [_vm._v("Selecione o campo")]),
-          _vm._v(" "),
-          _vm._l(
-            _vm.fields
-              .filter(function(element, index) {
-                return index < _vm.fields.length - 1
-              })
-              .filter(function(_, i) {
-                return i > 0
-              }),
-            function(field, i) {
-              return _c("option", { key: i, domProps: { value: field.key } }, [
-                _vm._v("\n\t\t\t\t" + _vm._s(field.label) + "\n\t\t\t")
-              ])
-            }
-          )
-        ],
-        2
-      )
     ]),
     _vm._v(" "),
     _vm.hasFilter

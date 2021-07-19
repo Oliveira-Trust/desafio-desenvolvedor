@@ -4,11 +4,6 @@
 			<h4>Filtro</h4>
 		</div>
 		<div class="form-group col col-12">
-			<label for="term" class="form-label">Termo</label>
-			<input type="date" v-if="filterInputTypeDate" v-model="filters.filteredTerm" name="term-filter" id="term" placeholder="Buscar" class="form-control form-control-sm">
-			<input type="text" v-else v-model="filters.filteredTerm" name="term-filter" id="term" placeholder="Buscar" class="form-control form-control-sm">
-		</div>
-		<div class="form-group col col-12">
 			<label for="field" class="form-label">Campo</label>
 			<select class="form-control  form-control-sm" v-model="filters.filteredField" name="field-filter" id="field">
 				<option value="">Selecione o campo</option>
@@ -16,6 +11,11 @@
 					{{ field.label }}
 				</option>
 			</select>
+		</div>
+		<div class="form-group col col-12">
+			<label for="term" class="form-label">Termo</label>
+			<input type="date" v-if="filterInputTypeDate" v-model="filters.filteredTerm" name="term-filter" id="term" placeholder="Buscar" class="form-control form-control-sm">
+			<input type="text" v-else v-model="filters.filteredTerm" name="term-filter" id="term" placeholder="Buscar" class="form-control form-control-sm">
 		</div>
 		<div class="form-group col col-12" v-if="hasFilter">
 			<button @click="clearFilters" type="button" class="btn btn-secondary btn-sm" title="Limpar filtros"><i class="fas fa-times pr-2"></i> Limpar filtros</button>
