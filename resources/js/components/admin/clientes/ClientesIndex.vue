@@ -1,7 +1,32 @@
 <template>
 <div>
 	<div class="row">
-		<div class="col-xl-10 col-sm-12 py-4">
+		<div class="col-xl-10 col-sm-6 py-4">
+			<h3>Clientes</h3>
+		</div>
+		<div class="col-xl-2 col-sm-6 py-4">
+			<a href="/admin/clientes/create" class="btn btn-success btn-sm float-right"><i class="fas fa-plus"></i> Adicionar</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 py-4">
+			<div class="row">
+				<div class="col-xl-5 col-sm-12">
+					<admin-filter :fields="fields" v-on:emitFilter="emitFilter" v-on:emitClearFilter="emitClearFilter"></admin-filter>
+				</div>
+				<div class="col-xl-7 col-sm-12">
+					<div class="row">
+						<div class="col col-12">
+							<delete-in-mass :checkedDeleteItems="checkedDelete" route="clientes" v-on:filterLineInMass="filterLineInMass" v-on:emitGetResults="emitGetResults"></delete-in-mass>
+						</div>
+						<div class="col col-12">
+							<sort-items :fields="fields" v-on:emitSubmitSort="emitSubmitSort"></sort-items>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="col-xl-10 col-sm-12 py-4">
 			<div class="row">
 				<div class="col-xl-5 col-sm-12">
 					<div class="row">
@@ -77,24 +102,14 @@
 		</div>
 		<div class="col-xl-2 col-sm-12 py-4">
 			<a href="/admin/clientes/create" class="btn btn-success btn-sm float-right"><i class="fas fa-plus"></i> Adicionar</a>
-		</div>
+		</div> -->
 
     	<div class="col-12">
 			<div class="table-responsive-md table-responsive-sm">
 				<table class="table table-striped table-bordered table-hover table-sm">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">ID</th>
-							<th scope="col">Nome</th>
-							<th scope="col">Telefone</th>
-							<th scope="col">Telefone 2</th>
-							<th scope="col">Nascimento</th>
-							<th scope="col">Cidade</th>
-							<th scope="col">Ativado?</th>
-							<th scope="col">Criado em</th>
-							<th scope="col">Atualizado em</th>
-							<th scope="col">Ações</th>
+							<th scope="col" v-for="(field, i) in fields" :key="i">{{field.label}}</th>
 						</tr>
 					</thead>
 					<tbody v-if="items.length > 0">
@@ -154,10 +169,11 @@ export default {
 			sortBy			: 	'id',
 			sortDirection	: 	'ASC',
 			filters: {
-                filteredTermClient: '',
-                filteredFieldClient: ''
+                filteredTerm: '',
+                filteredField: ''
             },
 			fields: [
+				{ key: '#', label: '#' },
 				{ key: 'id', label: 'ID' },
 				{ key: 'name', label: 'Nome' },
 				{ key: 'phone_number', label: 'Telefone' },
@@ -167,6 +183,7 @@ export default {
 				{ key: 'enable', label: 'Ativado?' },
 				{ key: 'created_at', label: 'Criado em' },
 				{ key: 'updated_at', label: 'Atualizado em' },
+				{ key: 'actions', label: 'Ações' },
 			],
 			checkedDelete: []
 		}
@@ -176,34 +193,50 @@ export default {
         page () {
             this.getResults()
         },
-		'filters.filteredTermClient' (val) {
+		/* 'filters.filteredTermClient' (val) {
             this.page = 1;
             this.getResults();
         },
 		'filters.filteredFieldClient' (val) {
             this.page = 1;
             this.getResults();
-        }
+        } */
 	},
 	created() {
 		// Fetch initial results
 		this.getResults();
 	},
 	methods: {
+		emitSubmitSort(data){
+			this.sortBy 		= data.sortBy
+			this.sortDirection 	= data.sortDirection
+			this.getResults();
+		},
+		filterLineInMass(data){
+			_.mapValues(data.deleteItems, (selected) => this.items = this.items.filter((it) => it.oid !== selected)); 
+		},
+		emitFilter(data){
+			this.page 			=	1
+			this.filters		=	data.filters
+			this.getResults();
+		},
+		emitGetResults(data){
+			this.getResults();
+		},
+		emitClearFilter(data){
+			this.filters = data.filters
+			this.getResults();
+		},
 		formatDate(date, format){
 			return dayjs(date).format(format)
 		},
 		setClass(id){
 			return !this.checkedDelete.find(x => x == id)
 		},
-		setColumnClass(){
-			
-		},
-
 		// Our method to GET results from a Laravel endpoint
 		async getResults() {
-			const term = this.filters.filteredTermClient;
-			const field = this.filters.filteredFieldClient;
+			const term = this.filters.filteredTerm;
+			const field = this.filters.filteredField;
 			const page = this.page;
 			const sortBy = this.sortBy;
 			const sortDirection = this.sortDirection;
@@ -214,15 +247,9 @@ export default {
 			this.paginationData = response.data;
 		},
 		
-        clearFilters () {
-            this.filters = _.mapValues(this.filters, () => '');
-            this.getResults();
-        },
-		
-        changePage (page) {
+        changePage(page) {
             this.page = page;
         },
-		
 
     	remove(item) {
 			this.$swal.fire({
@@ -247,46 +274,7 @@ export default {
 				}
 			})
 		},
-		// delete selected items
-		deleteItems(){
-			let that = this
-			let warnMessage = this.checkedDelete.length > 1 ? 'Deseja realmente remover os clientes selecionados?' : 'Deseja realmente remover o cliente selecionado?'
-			this.$swal.fire({
-				title: 'Atenção!',
-				text: warnMessage,
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#dc3545',
-				confirmButtonText: 'Remover',
-				cancelButtonText: 'Cancelar'
-			}).then((result) => {
-				if(result.value) {
-					axios.post(`/admin/clientes/delete-in-mass`, {
-						items: that.checkedDelete
-					}).then((response) => {
-						this.$swal.fire('', response.data.message, 'success')
-						_.mapValues(that.checkedDelete, (selected) => this.items = this.items.filter((it) => it.cid !== selected));
-						this.checkedDelete = []
-						this.getResults();
-					}).catch((e) => {
-						let error = _.get(e, 'response.data.message', 'Erro ao realizar a operação')
-						console.log(error)
-						this.$swal.fire('', error, 'error')
-					})
-				}
-			})
-		}
 	},
-	
-    computed: {
-        hasFilter () {
-            return _.some(this.filters, (p) => Boolean(p));
-        },
-		
-		filterInputType(){
-			return this.filters.filteredFieldClient == 'birth'
-		},
-    }
 }
 </script>
 

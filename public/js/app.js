@@ -3392,6 +3392,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3407,10 +3422,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       sortBy: 'id',
       sortDirection: 'ASC',
       filters: {
-        filteredTermClient: '',
-        filteredFieldClient: ''
+        filteredTerm: '',
+        filteredField: ''
       },
       fields: [{
+        key: '#',
+        label: '#'
+      }, {
         key: 'id',
         label: 'ID'
       }, {
@@ -3437,6 +3455,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, {
         key: 'updated_at',
         label: 'Atualizado em'
+      }, {
+        key: 'actions',
+        label: 'Ações'
       }],
       checkedDelete: []
     };
@@ -3444,21 +3465,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   watch: {
     page: function page() {
       this.getResults();
-    },
-    'filters.filteredTermClient': function filtersFilteredTermClient(val) {
-      this.page = 1;
-      this.getResults();
-    },
-    'filters.filteredFieldClient': function filtersFilteredFieldClient(val) {
-      this.page = 1;
-      this.getResults();
     }
+    /* 'filters.filteredTermClient' (val) {
+              this.page = 1;
+              this.getResults();
+          },
+    'filters.filteredFieldClient' (val) {
+              this.page = 1;
+              this.getResults();
+          } */
+
   },
   created: function created() {
     // Fetch initial results
     this.getResults();
   },
   methods: {
+    emitSubmitSort: function emitSubmitSort(data) {
+      this.sortBy = data.sortBy;
+      this.sortDirection = data.sortDirection;
+      this.getResults();
+    },
+    filterLineInMass: function filterLineInMass(data) {
+      var _this = this;
+
+      _.mapValues(data.deleteItems, function (selected) {
+        return _this.items = _this.items.filter(function (it) {
+          return it.oid !== selected;
+        });
+      });
+    },
+    emitFilter: function emitFilter(data) {
+      this.page = 1;
+      this.filters = data.filters;
+      this.getResults();
+    },
+    emitGetResults: function emitGetResults(data) {
+      this.getResults();
+    },
+    emitClearFilter: function emitClearFilter(data) {
+      this.filters = data.filters;
+      this.getResults();
+    },
     formatDate: function formatDate(date, format) {
       return dayjs__WEBPACK_IMPORTED_MODULE_2___default()(date).format(format);
     },
@@ -3467,10 +3515,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return x == id;
       });
     },
-    setColumnClass: function setColumnClass() {},
     // Our method to GET results from a Laravel endpoint
     getResults: function getResults() {
-      var _this = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var term, field, page, sortBy, sortDirection, response;
@@ -3478,11 +3525,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                term = _this.filters.filteredTermClient;
-                field = _this.filters.filteredFieldClient;
-                page = _this.page;
-                sortBy = _this.sortBy;
-                sortDirection = _this.sortDirection;
+                term = _this2.filters.filteredTerm;
+                field = _this2.filters.filteredField;
+                page = _this2.page;
+                sortBy = _this2.sortBy;
+                sortDirection = _this2.sortDirection;
                 _context.next = 7;
                 return axios.get('/admin/clientes/buscar', {
                   params: {
@@ -3496,9 +3543,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 7:
                 response = _context.sent;
-                _this.items = typeof response.data.data != 'undefined' ? response.data.data : response.data; //this.items = term == '' && field == '' ?  response.data.data : response.data;
+                _this2.items = typeof response.data.data != 'undefined' ? response.data.data : response.data; //this.items = term == '' && field == '' ?  response.data.data : response.data;
 
-                _this.paginationData = response.data;
+                _this2.paginationData = response.data;
 
               case 10:
               case "end":
@@ -3508,17 +3555,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    clearFilters: function clearFilters() {
-      this.filters = _.mapValues(this.filters, function () {
-        return '';
-      });
-      this.getResults();
-    },
     changePage: function changePage(page) {
       this.page = page;
     },
     remove: function remove(item) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$swal.fire({
         title: 'Atenção!',
@@ -3531,51 +3572,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (result) {
         if (result.value) {
           axios["delete"]("/admin/clientes/".concat(item.cid)).then(function (response) {
-            _this2.$swal.fire('', response.data.message, 'success');
-
-            _this2.items = _this2.items.filter(function (it) {
-              return it.cid !== item.cid;
-            });
-
-            _this2.getResults();
-          })["catch"](function (e) {
-            var error = _.get(e, 'response.data.message', 'Erro ao realizar a operação');
-
-            console.log(error);
-
-            _this2.$swal.fire('', error, 'error');
-          });
-        }
-      });
-    },
-    // delete selected items
-    deleteItems: function deleteItems() {
-      var _this3 = this;
-
-      var that = this;
-      var warnMessage = this.checkedDelete.length > 1 ? 'Deseja realmente remover os clientes selecionados?' : 'Deseja realmente remover o cliente selecionado?';
-      this.$swal.fire({
-        title: 'Atenção!',
-        text: warnMessage,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'Remover',
-        cancelButtonText: 'Cancelar'
-      }).then(function (result) {
-        if (result.value) {
-          axios.post("/admin/clientes/delete-in-mass", {
-            items: that.checkedDelete
-          }).then(function (response) {
             _this3.$swal.fire('', response.data.message, 'success');
 
-            _.mapValues(that.checkedDelete, function (selected) {
-              return _this3.items = _this3.items.filter(function (it) {
-                return it.cid !== selected;
-              });
+            _this3.items = _this3.items.filter(function (it) {
+              return it.cid !== item.cid;
             });
-
-            _this3.checkedDelete = [];
 
             _this3.getResults();
           })["catch"](function (e) {
@@ -3587,16 +3588,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           });
         }
       });
-    }
-  },
-  computed: {
-    hasFilter: function hasFilter() {
-      return _.some(this.filters, function (p) {
-        return Boolean(p);
-      });
-    },
-    filterInputType: function filterInputType() {
-      return this.filters.filteredFieldClient == 'birth';
     }
   }
 });
@@ -46213,360 +46204,61 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xl-10 col-sm-12 py-4" }, [
+      _c("div", { staticClass: "col-12 py-4" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xl-5 col-sm-12" }, [
-            _c("div", { staticClass: "row" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group col col-12" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "field" } },
-                  [_vm._v("Campo")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.filters.filteredFieldClient,
-                        expression: "filters.filteredFieldClient"
-                      }
-                    ],
-                    staticClass: "form-control  form-control-sm",
-                    attrs: { name: "client-field-filter", id: "field" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.filters,
-                          "filteredFieldClient",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Selecione o campo")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.fields, function(field, i) {
-                      return _c(
-                        "option",
-                        { key: i, domProps: { value: field.key } },
-                        [
-                          _vm._v(
-                            "\r\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(field.label) +
-                              "\r\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group col col-12" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "term" } },
-                  [_vm._v("Termo")]
-                ),
-                _vm._v(" "),
-                _vm.filterInputType
-                  ? _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.filters.filteredTermClient,
-                          expression: "filters.filteredTermClient"
-                        }
-                      ],
-                      staticClass: "form-control  form-control-sm",
-                      attrs: {
-                        type: "date",
-                        name: "client-term-filter",
-                        id: "term",
-                        placeholder: "Buscar"
-                      },
-                      domProps: { value: _vm.filters.filteredTermClient },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.filters,
-                            "filteredTermClient",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  : _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.filters.filteredTermClient,
-                          expression: "filters.filteredTermClient"
-                        }
-                      ],
-                      staticClass: "form-control  form-control-sm",
-                      attrs: {
-                        type: "text",
-                        name: "client-term-filter",
-                        id: "term",
-                        placeholder: "Buscar"
-                      },
-                      domProps: { value: _vm.filters.filteredTermClient },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.filters,
-                            "filteredTermClient",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-              ]),
-              _vm._v(" "),
-              _vm.hasFilter
-                ? _c("div", { staticClass: "form-group col col-12" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-secondary btn-sm",
-                        attrs: { title: "Limpar filtros" },
-                        on: { click: _vm.clearFilters }
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-times pr-2" }),
-                        _vm._v(" Limpar filtros")
-                      ]
-                    )
-                  ])
-                : _vm._e()
-            ])
-          ]),
+          _c(
+            "div",
+            { staticClass: "col-xl-5 col-sm-12" },
+            [
+              _c("admin-filter", {
+                attrs: { fields: _vm.fields },
+                on: {
+                  emitFilter: _vm.emitFilter,
+                  emitClearFilter: _vm.emitClearFilter
+                }
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "col-xl-7 col-sm-12" }, [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col col-12" }, [
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col col-12" }, [
-                    _c(
-                      "button",
-                      {
-                        class:
-                          "btn btn-sm " +
-                          (_vm.checkedDelete.length == 0
-                            ? "btn-secondary"
-                            : "btn-danger"),
-                        attrs: {
-                          title: "Deletar itens selecionados",
-                          disabled: _vm.checkedDelete.length == 0
-                        },
-                        on: { click: _vm.deleteItems }
-                      },
-                      [
-                        _vm._v(
-                          "Deletar itens selecionados (" +
-                            _vm._s(_vm.checkedDelete.length) +
-                            ") "
-                        ),
-                        _c("i", { staticClass: "fas fa-trash pl-2" })
-                      ]
-                    )
-                  ])
-                ])
-              ]),
+              _c(
+                "div",
+                { staticClass: "col col-12" },
+                [
+                  _c("delete-in-mass", {
+                    attrs: {
+                      checkedDeleteItems: _vm.checkedDelete,
+                      route: "clientes"
+                    },
+                    on: {
+                      filterLineInMass: _vm.filterLineInMass,
+                      emitGetResults: _vm.emitGetResults
+                    }
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col col-12" }, [
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-xl-5 col-sm-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-label",
-                          attrs: { for: "sort-field" }
-                        },
-                        [_vm._v("Campo")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.sortBy,
-                              expression: "sortBy"
-                            }
-                          ],
-                          staticClass: "form-control form-control-sm",
-                          attrs: {
-                            name: "client-sort-field",
-                            id: "sort-field"
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.sortBy = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Selecione o campo")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.fields, function(field, i) {
-                            return _c(
-                              "option",
-                              { key: i, domProps: { value: field.key } },
-                              [
-                                _vm._v(
-                                  "\r\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                    _vm._s(field.label) +
-                                    "\r\n\t\t\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-xl-4 col-sm-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-label",
-                          attrs: { for: "sort-order" }
-                        },
-                        [_vm._v("Ordem")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.sortDirection,
-                              expression: "sortDirection"
-                            }
-                          ],
-                          staticClass: "form-control form-control-sm",
-                          attrs: {
-                            name: "client-sort-order",
-                            id: "sort-order"
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.sortDirection = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        _vm._l(
-                          [
-                            { key: "", label: "Selecione" },
-                            { key: "ASC", label: "Crescente" },
-                            { key: "DESC", label: "Decrescente" }
-                          ],
-                          function(field, i) {
-                            return _c(
-                              "option",
-                              { key: i, domProps: { value: field.key } },
-                              [
-                                _vm._v(
-                                  "\r\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                    _vm._s(field.label) +
-                                    "\r\n\t\t\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          }
-                        ),
-                        0
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-xl-3 col-sm-12 pt-4" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-sm btn-info mt-2",
-                        attrs: { title: "Ordenar" },
-                        on: { click: _vm.getResults }
-                      },
-                      [
-                        _vm._v(" Ordenar "),
-                        _c("i", { staticClass: "fas fa-sort pl-2" })
-                      ]
-                    )
-                  ])
-                ])
-              ])
+              _c(
+                "div",
+                { staticClass: "col col-12" },
+                [
+                  _c("sort-items", {
+                    attrs: { fields: _vm.fields },
+                    on: { emitSubmitSort: _vm.emitSubmitSort }
+                  })
+                ],
+                1
+              )
             ])
           ])
         ])
       ]),
-      _vm._v(" "),
-      _vm._m(3),
       _vm._v(" "),
       _c(
         "div",
@@ -46583,7 +46275,17 @@ var render = function() {
                     "table table-striped table-bordered table-hover table-sm"
                 },
                 [
-                  _vm._m(4),
+                  _c("thead", { staticClass: "thead-dark" }, [
+                    _c(
+                      "tr",
+                      _vm._l(_vm.fields, function(field, i) {
+                        return _c("th", { key: i, attrs: { scope: "col" } }, [
+                          _vm._v(_vm._s(field.label))
+                        ])
+                      }),
+                      0
+                    )
+                  ]),
                   _vm._v(" "),
                   _vm.items.length > 0
                     ? _c(
@@ -46753,7 +46455,7 @@ var render = function() {
                         }),
                         0
                       )
-                    : _c("tbody", [_vm._m(5)])
+                    : _c("tbody", [_vm._m(1)])
                 ]
               )
             ]
@@ -46778,74 +46480,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-12" }, [
-      _c("h4", [_vm._v("Filtro")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-12" }, [
-      _c("h4", [_vm._v("Deletar itens em massa")]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-10 col-sm-6 py-4" }, [
+        _c("h3", [_vm._v("Clientes")])
+      ]),
       _vm._v(" "),
-      _c("small", [
-        _vm._v("Selecione itens na caixa de seleção para assim, deleta-los.")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("h4", { staticClass: "pt-3" }, [
-        _vm._v("Ordem da listagem dos clientes")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-2 col-sm-12 py-4" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-success btn-sm float-right",
-          attrs: { href: "/admin/clientes/create" }
-        },
-        [_c("i", { staticClass: "fas fa-plus" }), _vm._v(" Adicionar")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-dark" }, [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telefone")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telefone 2")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nascimento")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cidade")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Ativado?")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Criado em")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Atualizado em")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Ações")])
+      _c("div", { staticClass: "col-xl-2 col-sm-6 py-4" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-success btn-sm float-right",
+            attrs: { href: "/admin/clientes/create" }
+          },
+          [_c("i", { staticClass: "fas fa-plus" }), _vm._v(" Adicionar")]
+        )
       ])
     ])
   },
