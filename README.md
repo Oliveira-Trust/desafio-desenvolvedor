@@ -58,4 +58,12 @@ Rode as seeders:
 php artisan db:seed
 ```
 
-Um usuário será criado. Para utiliza-lo, basta acessar ``/login`` com o acesso: ``admin@admin.com`` e a senha ``password``.
+Um usuário será criado. 
+
+Rode o servidor:
+```sh
+php artisan serve
+```
+
+Para utiliza-lo, basta acessar ``http://localhost:8000/login`` com o acesso: ``admin@admin.com`` e a senha ``password``.
+
