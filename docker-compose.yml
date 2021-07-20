@@ -1,0 +1,65 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:9.4
+    container_name: oliveiratrust-db
+    ports:
+      - "8002:5432"
+    restart: unless-stopped
+    volumes:
+      - oliveiratrust-db:/var/lib/postgresql/data
+      - /tmp:/tmp
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=oliveiratrust
+    networks:
+      - oliveiratrust
+
+  api:
+    container_name: oliveiratrust-api
+    build:
+      args:
+          user: ${USER}
+          uid: 1001
+      context: ./
+      dockerfile: Dockerfile-api
+    working_dir: /var/www/html
+    ports:
+      - "8001:80"
+    volumes:
+      - ./api:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_KEY=WqUUHsdnCldCdvNu0VUSwW5NB0VYdhH2lqWHikYOXz5HZjTKMvahJM2PYX6wxrCS
+      - JWT_SECRET=WqUUHsdnCldCdvNu0VUSwW5NB0VYdhH2lqWHikYOXz5HZjTKMvahJM2PYX6wxrCS
+      - APP_TIMEZONE=UTC
+      - DB_CONNECTION=pgsql
+      - DB_PORT=5432
+      - DB_HOST=oliveiratrust-db
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_DATABASE=oliveiratrust
+      - CACHE_DRIVER=array
+    networks:
+      - oliveiratrust
+  react:
+    container_name: oliveiratrust-react
+    image: node:12
+    ports:
+        - '8003:3000'
+    restart: always
+    volumes:
+        - ./react/:/srv/react-docker
+    working_dir: /srv/react-docker
+    command: 'npm start'
+    networks:
+      - oliveiratrust
+volumes:
+  oliveiratrust-db:
+networks:
+  oliveiratrust:
+    driver: bridge
