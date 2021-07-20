@@ -37,6 +37,10 @@ class OrderRepository {
         $query->join('clients', 'orders.client_id', '=', 'clients.id')
         ->join('users', 'clients.user_id', '=', 'users.id');
 
+        if(isset($request['info'])){
+            $query->where('client_id', $request['info']);
+        }
+
         // Pesquisando o campo dos registros
         if (!empty($request['term']) && !empty($request['field'])) {
             switch ($request['field']) {

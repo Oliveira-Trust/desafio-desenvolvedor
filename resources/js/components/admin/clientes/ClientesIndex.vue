@@ -129,6 +129,7 @@
 							<td class="align-middle">{{formatDate(item.ucreated, 'DD/MM/YYYY [às] HH:mm')}}</td>
 							<td class="align-middle">{{formatDate(item.uupdated, 'DD/MM/YYYY [às] HH:mm')}}</td>
 							<td class="align-middle">
+								<a :href="`/admin/pedidos/?info=${item.cid}`" class="btn btn-info btn-sm" title="Pedidos deste Cliente"><i class="fas fa-shopping-cart"></i></a>
 								<a :href="`/admin/clientes/${item.cid}/edit`" class="btn btn-warning btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
 								<button @click="remove(item)" class="btn btn-danger btn-sm" title="Remover"><i class="fas fa-trash"></i> </button>
 							</td>

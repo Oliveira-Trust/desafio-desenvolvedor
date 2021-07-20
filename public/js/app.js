@@ -3407,6 +3407,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4334,7 +4335,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var term, field, page, sortBy, sortDirection, response;
+        var term, field, page, sortBy, sortDirection, info, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -4344,29 +4345,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 page = _this2.page;
                 sortBy = _this2.sortBy;
                 sortDirection = _this2.sortDirection;
-                _context.next = 7;
+                info = _this2.getParam();
+                _context.next = 8;
                 return axios.get('/admin/buscar-pedidos', {
                   params: {
                     page: page,
                     term: term,
                     field: field,
                     sortBy: sortBy,
-                    sortDirection: sortDirection
+                    sortDirection: sortDirection,
+                    info: info
                   }
                 });
 
-              case 7:
+              case 8:
                 response = _context.sent;
                 _this2.items = typeof response.data.data != 'undefined' ? response.data.data : response.data;
                 _this2.paginationData = response.data;
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
       }))();
+    },
+    getParam: function getParam() {
+      return location.search.split('info=')[1];
     },
     changePage: function changePage(page) {
       this.page = page;
@@ -46423,6 +46429,22 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("td", { staticClass: "align-middle" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-info btn-sm",
+                                    attrs: {
+                                      href: "/admin/pedidos/?info=" + item.cid,
+                                      title: "Pedidos deste Cliente"
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-shopping-cart"
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
                                 _c(
                                   "a",
                                   {
