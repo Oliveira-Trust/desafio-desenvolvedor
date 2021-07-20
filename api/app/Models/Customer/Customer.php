@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Customer;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,4 +19,12 @@ class Customer extends Model
     protected $fillable = [
         'name', 'email', 'phone', 'cpf', 'address'
     ];
+
+    /**
+     * Get the orders for the customer.
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order\Order');
+    }
 }

@@ -12,7 +12,6 @@ class ProductDTO extends AbstractDataTransferObject {
     public ?string $color = null;
     public ?float $size = null;
     public ?float $price = null;
-    // public ?CategoryDTO $category = null;
 
     /**
      * Get the validation rules that apply to the request.

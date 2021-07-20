@@ -4,7 +4,7 @@ namespace App\Repository\Customer\implementations;
 
 use App\Repository\Customer\CustomerIRepository;
 use App\Repository\Customer\CustomerDTO;
-use App\Models\Customer;
+use App\Models\Customer\Customer;
 
 class CustomerRepository implements CustomerIRepository {
 

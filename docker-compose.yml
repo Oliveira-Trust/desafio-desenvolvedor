@@ -47,7 +47,7 @@ services:
     container_name: oliveiratrust-react
     image: node:12
     ports:
-        - '8000:3000'
+        - '8003:3000'
     restart: always
     volumes:
         - ./react/:/srv/react-docker

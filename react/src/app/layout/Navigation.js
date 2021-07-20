@@ -17,6 +17,10 @@ function Navigation({ removeToken }) {
 
           <Nav className="me-auto">
 
+            <LinkContainer to="/order">
+              <Nav.Link>Pedidos de Compra</Nav.Link>
+            </LinkContainer>
+
             <LinkContainer to="/customer">
               <Nav.Link>Clientes</Nav.Link>
             </LinkContainer>

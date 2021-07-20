@@ -22,6 +22,14 @@ class ProductRepository implements ProductIRepository {
         }
     }
 
+    public function readClean(int $id): array {
+        try {
+            return Product::findOrFail($id)->toArray();
+        } catch (\Throwable $th) {
+            return [];
+        }
+    }
+
     public function readArray(array $ids): array {
         try {
             return Product::with('category')

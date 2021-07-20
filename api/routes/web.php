@@ -66,4 +66,17 @@ $router->group(['prefix' => 'api'] , function () use ($router) {
         $router->delete('/{id}', 'CategoryController@delete');
     });
 
+    $router->group([
+        'prefix' => 'order',
+        'namespace' => 'Order',
+        'middleware' => 'auth'
+    ], function () use ($router) {
+        $router->get('/', 'OrderController@index');
+        $router->post('/', 'OrderController@store');
+        $router->get('/{id}', 'OrderController@show');
+        $router->put('/{id}', 'OrderController@update');
+        $router->delete('/', 'OrderController@deleteArray');
+        $router->delete('/{id}', 'OrderController@delete');
+    });
+
 });

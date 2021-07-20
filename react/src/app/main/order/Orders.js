@@ -1,19 +1,20 @@
 import React from "react";
 import { Button, Col, Container, Dropdown, DropdownButton, Form, Row, Spinner } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
-import { destroyAll, readAll } from "./Product.service";
-import ProductModalForm from "./ProductModalForm";
-import ProductModalShow from "./ProductModalShow";
+import { destroyAll, readAll } from "./Order.service";
+import OrderModalForm from "./OrderModalForm";
+import OrderModalShow from "./OrderModalShow";
 
-class Products extends React.Component {
+class Orders extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: null,
             dataFull: null,
+            data: null,
             showFormModal: false,
             updateId: null,
-            filter: null
+            disabledBulkOperations: true,
+            filter: ""
         };
 
         this.getReadAll = this.getReadAll.bind(this);
@@ -21,6 +22,8 @@ class Products extends React.Component {
         this.handleCloseFormModal = this.handleCloseFormModal.bind(this);
         this.clickShowFormModal = this.clickShowFormModal.bind(this);
         this.handleCloseFormModal = this.handleCloseFormModal.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
+        this.clickBulkOperationsDelete = this.clickBulkOperationsDelete.bind(this);
     }
 
     getReadAll() {
@@ -65,6 +68,7 @@ class Products extends React.Component {
             disabledBulkOperations: true
         })
     }
+
     handleChangeFilter = (e) => {
         this.setState({ filter: e.target.value });
 
@@ -72,7 +76,7 @@ class Products extends React.Component {
             this.setState({ data: this.state.dataFull })
         }
 
-        var dataFiltered = [].concat(this.state.dataFull)
+        var dataFiltered = this.state.dataFull
             .filter(d => { return d.name.toLowerCase().includes(e.target.value.toLowerCase()) });
 
         this.setState({ data: dataFiltered })
@@ -106,24 +110,22 @@ class Products extends React.Component {
         this.setState({ 'updateId': null });
         this.getReadAll()
     }
-
     render() {
         return (
             <>
-                <ProductModalForm
+                <OrderModalForm
                     show={this.state.showFormModal}
                     handleClose={this.handleCloseFormModal}
                     updateId={this.state.updateId}
                 />
-                <ProductModalShow
+                <OrderModalShow
                     show={this.state.showModalShow}
                     handleClose={this.handleCloseShowModal}
                     id={this.state.updateId}
                 />
                 <Container fluid>
                     <Row>
-                        <Col><h3>Lista de Produtos</h3></Col>
-                        <Col></Col>
+                        <Col><h3>Lista de Pedidos</h3></Col>
                         <Col md="auto">
                             <Button variant="primary" onClick={() => this.clickShowFormModal()}>Novo</Button>
                         </Col>
@@ -160,55 +162,59 @@ class Products extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <div style={{overflow: 'auto'}}>
-                    <Table striped bordered hover>
+                <div style={{overflowY: 'visible'}}>
+                    <Table striped bordered hover responsive="sm">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th onClick={() => this.handleClickOrder('name')}>Nome</th>
-                                <th>Categoria</th>
-                                <th onClick={() => this.handleClickOrder('size')}>Tamanho</th>
-                                <th onClick={() => this.handleClickOrder('price')}>Preço</th>
+                                <th style={{ width: '20px' }}>
+                                    #
+                                </th>
+                                <th>Usuário</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th>Status</th>
                                 <th style={{ width: '50px' }}>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             {!this.state.data && (
                                 <tr>
-                                    <td colSpan="6" style={{ textAlign: "center" }}>
+                                    <td colSpan="3" style={{ textAlign: "center" }}>
                                         <Spinner animation="border" />
                                     </td>
                                 </tr>
                             )}
-                            {this.state.data && this.state.data.map((product, i) => (
+                            {this.state.data && this.state.data.map((order, i) => (
                                 <tr key={i}>
                                     <td>
                                         <Form.Check.Input
                                             type="checkbox"
-                                            name={product.id}
-                                            value={product.isChecked}
+                                            name={order.id}
+                                            value={order.isChecked}
                                             onChange={() => this.handleCheck(i)}
                                         />
+                                        {order.id.toLocaleString('pt-BR', {minimumIntegerDigits: 3})}
                                     </td>
-                                    <td>{product.name}</td>
-                                    <td>{product.category?.name}</td>
-                                    <td>{product.size?.toLocaleString('pt-BR', { minimumFractionDigits: 3 })}</td>
-                                    <td>R$ {product.price?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-                                    <td>
+                                    <td style={{verticalAlign: 'middle'}}>{order.user?.name}</td>
+                                    <td style={{verticalAlign: 'middle'}}>{order.customer?.name}</td>
+                                    <td style={{verticalAlign: 'middle'}}>R$ {order.products.reduce((a, b) => {
+                                        return a + parseFloat(b['pivot']['price'] * b['pivot']['quantity']);
+                                    }, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                                    <td style={{verticalAlign: 'middle'}}>{{"paid":"Pago", "opened": "Em Aberto", "canceled": "Cancelado"}[order.status]}</td>
+                                    <td style={{verticalAlign: 'middle'}}>
                                         <DropdownButton id="dropdown-basic-button" title="Ações" size="sm">
                                             <Dropdown.Item
                                                 href="#/action-1"
-                                                onClick={() => this.clickShowModalShow(product.id)}
+                                                onClick={() => this.clickShowModalShow(order.id)}
                                             >Detalhes</Dropdown.Item>
                                             <Dropdown.Item
                                                 href="#/action-2"
-                                                onClick={() => this.clickShowFormModal(product.id)}
+                                                onClick={() => this.clickShowFormModal(order.id)}
                                             >Editar</Dropdown.Item>
                                             <Dropdown.Item
                                                 href="#/action-1"
-                                                onClick={() => this.clickShowModalShow(product.id)}
+                                                onClick={() => this.clickShowModalShow(order.id)}
                                             >Excuir</Dropdown.Item>
-
                                         </DropdownButton>
                                     </td>
                                 </tr>
@@ -221,4 +227,4 @@ class Products extends React.Component {
     }
 }
 
-export default Products;
+export default Orders;

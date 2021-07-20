@@ -14,6 +14,9 @@ use App\Repository\Product\implementations\ProductRepository;
 use App\Repository\Product\CategoryIRepository;
 use App\Repository\Product\implementations\CategoryRepository;
 
+use App\Repository\Order\OrderIRepository;
+use App\Repository\Order\implementations\OrderRepository;
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -33,5 +36,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductIRepository::class, ProductRepository::class);
 
         $this->app->bind(CategoryIRepository::class, CategoryRepository::class);
+
+        $this->app->bind(OrderIRepository::class, OrderRepository::class);
     }
 }

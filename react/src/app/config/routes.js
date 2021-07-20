@@ -5,6 +5,7 @@ import {
 import Categories from "../main/category/Categories";
 import Products from "../main/product/Products";
 import Customers from "../main/customer/Customers";
+import Orders from "../main/order/Orders";
 
 export const routes = [
   {
@@ -26,6 +27,11 @@ export const routes = [
     path: "/category",
     exact: true,
     component: Categories
+  },
+  {
+    path: "/order",
+    exact: true,
+    component: Orders
   }
 
 ];

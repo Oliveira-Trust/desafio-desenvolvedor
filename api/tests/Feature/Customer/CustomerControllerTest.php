@@ -5,7 +5,7 @@ namespace Tests\Feature\Customer;
 use Faker\Generator as Faker;
 use DB;
 use App\Models\User;
-use App\Models\Customer;
+use App\Models\Customer\Customer;
 
 class CustomerControllerTest extends \TestCase
 {

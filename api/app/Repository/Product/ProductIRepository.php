@@ -27,6 +27,13 @@ interface ProductIRepository {
     public function readArray(array $ids): array;
 
     /**
+     * this function is for read on product list data without relationships
+     *
+     * @return array
+     */
+    public function readClean(int $id): array;
+
+    /**
      * this function is for read all product list data
      *
      * @return array

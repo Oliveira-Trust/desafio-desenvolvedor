@@ -1,53 +1,53 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Repository\Product\ProductDTO;
-use App\Repository\Product\ProductIRepository;
+use App\Repository\Order\OrderDTO;
+use App\Repository\Order\OrderIRepository;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
-    private $productIRepository;
+    private $orderIRepository;
 
     public function __construct(
-        ProductIRepository $productIRepository
+        OrderIRepository $orderIRepository
     )
     {
-        $this->productIRepository = $productIRepository;
+        $this->orderIRepository = $orderIRepository;
         $this->middleware('auth:api');
     }
 
     public function index(Request $request) {
-        return $this->productIRepository->readAll();
+        return $this->orderIRepository->readAll();
     }
 
     public function show(Request $request, $id) {
-        $product = $this->productIRepository->read($id);
+        $order = $this->orderIRepository->read($id);
 
-        if ($product === []) {
+        if ($order === []) {
             return response()->json( [
                 "message" => "Not found."
             ], 404);
         }
 
-        return $product;
+        return $order;
     }
 
     public function store(Request $request) {
 
         //validate incoming request
-        $this->validate($request, ProductDTO::rules());
+        $this->validate($request, OrderDTO::rules());
 
         try
         {
-            $product = new ProductDTO($request->all());
-            $this->productIRepository->create($product);
+            $order = new OrderDTO($request->all());
+            $this->orderIRepository->create($order);
 
             return response()->json( [
-                'entity' => 'product',
+                'entity' => 'order',
                 'action' => 'store',
                 'result' => 'success'
             ], 201);
@@ -56,7 +56,7 @@ class ProductController extends Controller
         catch (\Exception $e)
         {
             return response()->json( [
-                'entity' => 'product',
+                'entity' => 'order',
                 'action' => 'store',
                 'result' => 'failed'
                 ,'error' => $e->getMessage()
@@ -65,29 +65,23 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id) {
-        $product = $this->productIRepository->readClean($id);
+        $order = $this->orderIRepository->readClean($id);
 
-        if ($product === []) {
+        if ($order === []) {
             return response()->json( ["message" => "Not found."], 404);
         }
 
-        $this->validate($request, ProductDTO::rulesUpdate($id));
+        $this->validate($request, OrderDTO::rulesUpdate($id));
 
         try {
-            $productDTO = new ProductDTO($request->all());
-            $productUpdated = $this->productIRepository->update($id, $productDTO);
+            $orderDTO = new OrderDTO($request->all());
+            $orderUpdated = $this->orderIRepository->update($id, $orderDTO);
 
-            if ($productUpdated == $product) {
-                return response()->json( [
-                    "message" => "Nothing to change."
-                ], 400);
-            }
-
-            return response()->json( $productUpdated, 200);
+            return response()->json( $orderUpdated, 200);
 
         } catch (\Exception $e) {
             return response()->json( [
-                'entity' => 'product',
+                'entity' => 'order',
                 'action' => 'update',
                 'result' => 'failed'
                 ,'error' => $e->getMessage()
@@ -97,13 +91,13 @@ class ProductController extends Controller
 
 
     public function delete(Request $request, $id) {
-        $product = $this->productIRepository->read($id);
+        $order = $this->orderIRepository->read($id);
 
-        if ($product === []) {
+        if ($order === []) {
             return response()->json( ["message" => "Not found."], 404);
         }
 
-        if ($this->productIRepository->delete($id)) {
+        if ($this->orderIRepository->delete($id)) {
             return response()->json( ["message" => "success"], 200);
         }
         return response()->json( ["message" => "Error"], 400);
@@ -115,14 +109,14 @@ class ProductController extends Controller
             return response()->json( ["message" => "Empty ids."], 422);
         }
 
-        $products = $this->productIRepository->readArray($request->ids);
+        $categories = $this->orderIRepository->readArray($request->ids);
 
-        if ($products === []) {
+        if ($categories === []) {
             return response()->json( ["message" => "Not found."], 404);
         }
         $errorDelete = false;
-        foreach ($products as $product) {
-            if (!$this->productIRepository->delete($product['id'])) {
+        foreach ($categories as $order) {
+            if (!$this->orderIRepository->delete($order['id'])) {
                 $errorDelete = true;
             }
         }
