@@ -29,10 +29,13 @@ services:
       - "8001:80"
     volumes:
       - ./api:/var/www/html
+    depends_on:
+      - db
     environment:
       - APP_ENV=local
       - APP_DEBUG=true
-      - APP_KEY=SomeRandomString
+      - APP_KEY=WqUUHsdnCldCdvNu0VUSwW5NB0VYdhH2lqWHikYOXz5HZjTKMvahJM2PYX6wxrCS
+      - JWT_SECRET=WqUUHsdnCldCdvNu0VUSwW5NB0VYdhH2lqWHikYOXz5HZjTKMvahJM2PYX6wxrCS
       - APP_TIMEZONE=UTC
       - DB_CONNECTION=pgsql
       - DB_PORT=5432

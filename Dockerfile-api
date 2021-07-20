@@ -1,3 +1,8 @@
+FROM composer:1.4 as builder
+WORKDIR /var/www/html
+COPY ./api/composer.* ./
+RUN composer install --no-scripts --no-autoloader --ignore-platform-reqs
+
 FROM php:7.4-apache
 
 COPY ./vhosts.conf  /etc/apache2/sites-enabled/vhosts.conf
@@ -18,3 +23,12 @@ RUN mkdir -p /var/www/html/storage/ \
  && mkdir -p /var/www/html/bootstrap/cache/ \
  && chmod 777 -R /var/www/html/storage/ \
  && chmod 777 -R /var/www/html/bootstrap/cache/
+
+COPY --from=builder /var/www/html /var/www/vendor
+
+CMD php artisan key:generate \
+ && php artisan jwt:secret \
+ && php artisan cache:clear \
+ && php artisan config:clear
+
+CMD php -S 0.0.0.0:80 -t public/
