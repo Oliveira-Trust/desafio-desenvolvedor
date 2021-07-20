@@ -1,49 +1,69 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# <img src="https://avatars.githubusercontent.com/u/58981329?s=200&v=4.jpg" alt="Logo Oliveira Trust" width="24"> Desafio Oliveira Trust 
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+## Indíce
+* [Sobre](#about)
+* [Requisitos](#requirements)
+* [Setup](#setup)
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+<a name="about"></a>
+## Sobre
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+Este projeto foi criado através do Desafio Oliveira Trust, e tem como objetivo fazer crud de Clientes, Produtos e Pedido de Compra.
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Bônus por meta e entrega de projetos;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+<a name="requirements"></a>
+## Requisitos
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+- PHP 7.4.14 ou mais recente
+- Ctype PHP Extension
+- Fileinfo PHP Extension
+- JSON PHP Extension
+- Mbstring PHP Extension
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
+- [composer](https://getcomposer.org/doc/00-intro.md)
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+<a name="setup"></a>
+## Setup
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+Instale as dependências:
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+```sh 
+composer install
+```
+
+Configure o arquivo ``.env``: *
+```sh
+nano .env
+```
+<sub>*Se o arquivo não for criado automaticamente depois do composer install, faça uma cópia do .env.example.</sub>
+
+Gere uma nova chave para o arquivo ``.env``
+```sh
+php artisan key:generate
+```
+
+Rode as migrations:
+```sh
+php artisan migrate
+```
+
+Rode as seeders:
+<sub>*Ao rodar as seeders como estão, irão gerar produtos, categorias e 100 clientes. Caso não queira, basta comentar das linhas ``27 a 38`` do arquivo ``DatabaseSeeder.php`` em ``database/seeders/``. </sub>
+```sh
+php artisan db:seed
+```
+
+Um usuário será criado. 
+
+Rode o servidor:
+```sh
+php artisan serve
+```
+
+Para utiliza-lo, basta acessar ``http://localhost:8000/login`` com o acesso: ``admin@admin.com`` e a senha ``password``.
+
