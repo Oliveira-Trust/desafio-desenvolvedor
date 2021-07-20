@@ -40,6 +40,10 @@ class ProductRepository {
             $query->where('enabled', 1);
         }
 
+        if(isset($request['info'])){
+            $query->where('category_id', $request['info']);
+        }
+
         // Pesquisando o campo dos registros
         if (!empty($request['term']) && !empty($request['field'])) {
             switch ($request['field']) {

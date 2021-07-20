@@ -153,10 +153,14 @@
 				const page = this.page;
 				const sortBy = this.sortBy;
 				const sortDirection = this.sortDirection;
+				const info = this.getParam()
 
-				const response = await axios.get('/admin/produtos/buscar', {params: {page, term, field, sortBy, sortDirection}});
+				const response = await axios.get('/admin/produtos/buscar', {params: {page, term, field, sortBy, sortDirection, info}});
 				this.items = typeof response.data.data != 'undefined' ?  response.data.data : response.data;
 				this.paginationData = response.data;
+			},
+			getParam(){
+				return location.search.split('info=')[1]
 			},
 			
 			changePage (page) {

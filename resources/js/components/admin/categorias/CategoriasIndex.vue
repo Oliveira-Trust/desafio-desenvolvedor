@@ -30,6 +30,7 @@
 							<td class="align-middle">{{formatDate(item.created_at, 'DD/MM/YYYY [às] HH:mm')}}</td>
 							<td class="align-middle">{{formatDate(item.updated_at, 'DD/MM/YYYY [às] HH:mm')}}</td>
 							<td class="align-middle">
+								<a :href="`/admin/produtos/?info=${item.id}`" class="btn btn-info btn-sm" title="Produtos desta categoria"><i class="fas fa-info"></i></a>
 								<a :href="`/admin/categorias/${item.id}/edit`" class="btn btn-warning btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
 								<button @click="remove(item)" class="btn btn-danger btn-sm" title="Remover"><i class="fas fa-trash"></i> </button>
 							</td>
