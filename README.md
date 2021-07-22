@@ -26,7 +26,6 @@ Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa,
 
 #### Benefícios 🚀
 - Salário compatível com o mercado;
-- Bônus por meta e entrega de projetos;
 - Vale Refeição;
 - Vale Alimentação;
 - Vale Transporte ou Vale Combustível;
