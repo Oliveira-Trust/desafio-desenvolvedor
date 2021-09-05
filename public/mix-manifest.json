@@ -1,0 +1,13 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/deleteJs.js": "/js/deleteJs.js",
+    "/js/table-user.js": "/js/table-user.js",
+    "/js/table-product.js": "/js/table-product.js",
+    "/js/table-purchase.js": "/js/table-purchase.js",
+    "/js/purchase-create.js": "/js/purchase-create.js",
+    "/js/purchase-edit.js": "/js/purchase-edit.js",
+    "/js/purchase-show.js": "/js/purchase-show.js",
+    "/js/user-show.js": "/js/user-show.js",
+    "/js/inputMask.js": "/js/inputMask.js",
+    "/css/app.css": "/css/app.css"
+}
