@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Novo pedido de Compra')
+@section('title', 'Atualizar pedido de Compra')
 
 @section('content')
     <div class="row mt-1">
@@ -8,13 +8,13 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="{{ route('pedidos.index') }}">Pedidos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Novo Pedido de Compra</li>
+                <li class="breadcrumb-item active" aria-current="page">Atualizar Pedido</li>
             </ol>
         </nav>
     </div>
     <div class="row mt-4">
         <div class="col-md-8 mb-1">
-            <h4>Registrar Pedido de Compra</h4>
+            <h4>Pedido de Compra</h4>
             <hr>
 
             <div id="liveAlertPlaceholder">
@@ -29,16 +29,16 @@
                         <div class="row p-3">
                             <div class="col-md-6 mb-2">
                                 <label for="userName" class="form-label">Usuário</label>
-                                <input type="text" class="form-control" id="userName" value="{{ $user->name }}"
+                                <input type="text" class="form-control" id="userName" value="{{ $pedido->user->name }}"
                                     disabled>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="selectStatus" class="form-label">Status*</label>
                                 <select class="form-select" id="selectStatus">
-                                    <option value="" selected>selecione um status</option>
-                                    <option value="Em aberto">Em aberto</option>
-                                    <option value="Pago">Pago</option>
-                                    <option value="Cancelado">Cancelado</option>
+                                    <option value="">selecione um status</option>
+                                    <option value="Em aberto" @if ($pedido->status === 'Em aberto') selected @endif>Em aberto</option>
+                                    <option value="Pago" @if ($pedido->status === 'Pago') selected @endif>Pago</option>
+                                    <option value="Cancelado" @if ($pedido->status === 'Cancelado') selected @endif>Cancelado</option>
                                 </select>
                             </div>
 
@@ -47,13 +47,13 @@
                                 <select class="form-select" id="selectCliente">
                                     <option value="" selected>selecione um cliente</option>
                                     @foreach ($clientes as $cliente)
-                                        <option value="{{ $cliente->id }}">
-                                            {{ $cliente->nome }}
+                                        <option value="{{ $cliente->id }}" @if ($pedido->cliente_id == $cliente->id) selected @endif>{{ $cliente->nome }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+
 
                         <div class="p-3" style="background-color: #e9ecef;">
                             <div class="row">
@@ -93,6 +93,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end">
@@ -101,9 +102,9 @@
                         </div>
 
                         <div class="col-12 p-3">
-                            <button type="button" onclick="savePedido()" class="btn btn-success mt-2">Registrar
+                            <button type="button" onclick="updatePedido()" class="btn btn-warning mt-2">Atualizar
                                 Pedido</button>
-                            <a href="{{ route('pedidos.index') }}" class="btn btn-danger mt-2">Cancelar</a>
+                            <a href="javascript:history.back()" class="btn btn-danger mt-2">Cancelar</a>
                         </div>
 
                     </form>
@@ -113,7 +114,6 @@
     </div>
 
 @endsection
-
 @section('script')
     <script>
         let total = 0;
@@ -136,7 +136,7 @@
         function alertMessage(message, type) {
             let alertPlaceholder = document.getElementById('liveAlertPlaceholder')
             alertPlaceholder.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message +
-                '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+                '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
         }
 
@@ -169,8 +169,10 @@
                 `;
             });
             tbody.innerHTML = rowTable;
+
             // Verificar se total foi preechido para incluir na div
-            parseFloat(total.toFixed(2)) > 0 ? totalGeralDiv.innerHTML = "Total: " + formatMoeda(total) : totalGeralDiv.innerHTML = "";
+            parseFloat(total.toFixed(2)) > 0 ? totalGeralDiv.innerHTML = "Total: " + formatMoeda(total) : totalGeralDiv
+                .innerHTML = "";
         }
 
         // Adiciona um item ao pedido
@@ -198,11 +200,10 @@
                 // Imprime os items do pedido
                 printPedido(pedido);
             } else {
-                alertMessage('Selecione um produto e quantidade', 'danger')
+                alertMessage('Selecione um produto e quantidade', 'danger');
             }
         }
 
-        // Adiciona o item do pedido
         function deleteProdutoPedido(indice) {
             // acha o objeto e armazena na variável
             let itemPedido = pedido.find(function(valor, chave) {
@@ -211,53 +212,77 @@
 
             // Atualiza o total
             total -= itemPedido.preco * itemPedido.quantidade;
+
             // Remove o item do pedido pela chave
             pedido.splice(indice, 1);
             // print o pedido
             printPedido(pedido);
         }
 
-        // Salva o Pedido
-        function savePedido() {
+
+        function updatePedido() {
             let statusPedido = document.getElementById('selectStatus').value;
             let clienteId = document.getElementById('selectCliente').value;
 
-            if(clienteId && statusPedido && pedido.length) {
-                fetch("{{ route('pedidos.store') }}", {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        clienteId: clienteId,
-                        status: statusPedido,
-                        itensPedido: pedido,
-                        valorTotal: total
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        "X-CSRF-Token": document.querySelector('input[name=_token]').value
-                    }
+            if (clienteId && statusPedido && pedido.length) {
+                fetch("{{ route('pedidos.update', $pedido->id) }}", {
+                        method: 'PUT',
+                        body: JSON.stringify({
+                            clienteId: clienteId,
+                            status: statusPedido,
+                            itensPedido: pedido,
+                            valorTotal: parseFloat(total.toFixed(2))
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            "X-CSRF-Token": document.querySelector('input[name=_token]').value
+                        }
+                    })
+                    .then((result) => result.json())
+                    .then(function(response) {
+                        if (response.sucesso) {
+                            alert(response.sucesso)
+                        }
+                        if (response.error) {
+                            alertMessage(response.error, 'danger');
+                        }
+                        if (response.redirect) {
+                            window.location.href = response.redirect;
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            } else {
+                alertMessage('Preencha todos os campos!!!', 'danger');
+            }
+        }
+
+
+        function getItensPedido() {
+            fetch("{{ route('pedidos.show', $pedido->id) }}", {
+                    method: 'GET'
                 })
                 .then((result) => result.json())
                 .then(function(response) {
-                    if (response.sucesso) {
-                        alert(response.sucesso)
-                    }
-                    if (response.error) {
-                        alertMessage(response.error, 'danger')
-                    }
-                    if (response.redirect) {
-                        window.location.href = response.redirect;
-                    }
+                    response.map(function(data) {
+                        // Preenche os itens no pedido
+                        pedido.push({
+                            'id': data.produto_id,
+                            'produto': data.produto.descricao,
+                            'quantidade': data.quantidade,
+                            'preco': parseFloat(data.preco)
+                        });
+                        total += parseFloat(data.preco) * data.quantidade;
+                    })
+                    // Imprime os items do pedido
+                    printPedido(pedido);
                 })
                 .catch((error) => {
                     console.log(error);
                 })
-            } else {
-                alertMessage('Preencha todos os campos!!!', 'danger')
-            }
-
-            
         }
-
+        getItensPedido();
     </script>
 @endsection
