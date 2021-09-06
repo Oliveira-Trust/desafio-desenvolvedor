@@ -9,10 +9,10 @@ use App\Models\PedidosCompra;
 use Illuminate\Database\Seeder;
 use App\Models\ItensPedidosCompra;
 
-class DatabaseSeeder extends Seeder
+class PedidosCompraSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -24,20 +24,22 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user->id
         ]);
     
-        $pedidoCompra = PedidosCompra::factory()->create([
+        $pedidoCompras = PedidosCompra::factory(10)->create([
             'user_id' => $user->id,
             'cliente_id' => $cliente->id
         ]);
-    
-        $produtos = Produto::factory(5)->create();
 
-        // Registra 5 produto no pedido de compra.
-        foreach($produtos as $produto) {
+        $produto = Produto::factory()->create();
+
+        // Registra 10 pedido de compra com um produto.
+        foreach($pedidoCompras as $pedidoCompra) {
+
             ItensPedidosCompra::factory()->create([
                 'pedido_compra_id' => $pedidoCompra->id,
                 'produto_id' => $produto->id
             ]);
+            
         }
-        
+
     }
 }
