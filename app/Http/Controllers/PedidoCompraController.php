@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
+use App\Models\Produto;
 use Illuminate\Http\Request;
+use App\Models\PedidosCompra;
+use Illuminate\Support\Facades\Auth;
 
 class PedidoCompraController extends Controller
 {
@@ -13,7 +17,11 @@ class PedidoCompraController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = PedidosCompra::with(['user', 'cliente'])->get();
+
+        return view('pedido_compra.home', [
+            'pedidos' => $pedidos
+        ]);
     }
 
     /**
@@ -23,7 +31,15 @@ class PedidoCompraController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Cliente::get();
+        $produtos = Produto::get();
+        $user = Auth::user();
+
+        return view('pedido_compra.create', [
+            'clientes' => $clientes,
+            'produtos' => $produtos,
+            'user' => $user
+        ]);
     }
 
     /**
