@@ -87,7 +87,7 @@ class PedidoCompraController extends Controller
                 $response['sucesso'] = "Pedidos cadastrado com sucesso";
                 $response['redirect'] = route('pedidos.index');
             } catch (Exception $error) {
-                $response['error'] = "Erro: " . $error;
+                $response['error'] = "Erro: " . $error->getMessage();
             }
         } else {
             $response['error'] = "Preencha todos os campos.";
