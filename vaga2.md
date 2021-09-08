@@ -18,6 +18,12 @@ Para iniciar o teste, faça um fork deste repositório, crie uma branch com o se
 
 Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
 
+## O que vamos avaliar:
+- Legibilidade do código
+- Modularização
+- Lógica para aplicar a regra de négocio
+- Utilização da API
+
 ## Instruções para o desafio:
 Você vai implementar uma aplicação que faça a conversão da nossa moeda nacional para uma moeda estrangeira, aplicando algumas taxas e regras, no final da conversão o resultado deverá ficar em tela de forma detalhada.
 
