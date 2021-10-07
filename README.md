@@ -46,3 +46,6 @@ A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas a
 
 ## Pronto para o desafio? 🚀🚀🚀🚀
 https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+
+## Luiz Fernando de Souza
+ Informações nos README da api e do Frontend
