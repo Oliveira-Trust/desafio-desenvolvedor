@@ -1,0 +1,81 @@
+version: '3'
+
+services:
+
+  app-email:
+    build:
+      context: .
+      args:
+        user: user
+        uid: 1000
+    container_name: app-email
+    restart: unless-stopped
+    entrypoint: dockerize -template ./.docker/app/.env:.env ./.docker/entrypoint.sh
+    environment:
+      - _REDIS_HOST=redis-email
+      - _RABBITMQ_HOST=email_rabbitmq
+      - _RABBITMQ_PORT=5672
+      - _RABBITMQ_USER='guest'
+      - _RABBITMQ_PASSWORD='guest'
+      - _RABBITMQ_VHOST='/'
+      - _RABBITMQ_QUEUE=queue_email
+      - _MAIL_DRIVER=smtp
+      - _MAIL_HOST=smtp.gmail.com
+      - _MAIL_PORT=587
+      - _MAIL_USERNAME=
+      - _MAIL_PASSWORD=
+      - _MAIL_ENCRYPTION=tls
+    volumes:
+      - .:/var/www
+    depends_on:
+      - redis-email
+
+  nginx-email:
+    build: .docker/nginx
+    container_name: nginx-email
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8001:80"
+    volumes:
+      - .:/var/www
+    depends_on:
+      - app-email
+
+  redis-email:
+    image: redis:latest
+    container_name: redis-email
+
+  worker-email:
+    build:
+      context: .
+      args:
+        user: user
+        uid: 1000
+    container_name: worker-email
+    restart: unless-stopped
+    entrypoint: dockerize -template ./.docker/app/.env:.env ./.docker/entrypoint.worker.sh
+    environment:
+      - _REDIS_HOST=redis-email
+      - _RABBITMQ_HOST=email_rabbitmq
+      - _RABBITMQ_PORT=5672
+      - _RABBITMQ_USER='guest'
+      - _RABBITMQ_PASSWORD='guest'
+      - _RABBITMQ_VHOST='/'
+      - _RABBITMQ_QUEUE=queue_email
+      - _MAIL_DRIVER=smtp
+      - _MAIL_HOST=smtp.gmail.com
+      - _MAIL_PORT=587
+      - _MAIL_USERNAME=
+      - _MAIL_PASSWORD=
+      - _MAIL_ENCRYPTION=tls
+    volumes:
+      - .:/var/www
+    depends_on:
+      - redis-email
+      - app-email
+
+networks:
+  default:
+    external:
+      name: oliveira-trust
