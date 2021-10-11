@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.8-rc-management-alpine
+    container_name: email_rabbitmq
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+networks:
+  default:
+    external:
+      name: oliveira-trust
+
+volumes:
+  rabbitmq:
