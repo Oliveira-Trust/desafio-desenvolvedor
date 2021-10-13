@@ -38,7 +38,7 @@ Para que este serviço possa enviar emails será necessário configurar uma cont
 Os testes locais foram feitos utilizando o servidor de email do Gmail.  
 
 Altere o arquivo `docker-compose.yaml` na raiz do projeto com os parâmetros corretos.  
-Essas configurações devem ser feitas nas linhas **22 a 27** e nas linhas **66 a 71**
+Essas configurações devem ser feitas nas linhas **22 a 27** e nas linhas **66 a 71**  
 ```sh
 _MAIL_DRIVER=
 _MAIL_HOST=
