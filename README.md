@@ -79,7 +79,7 @@ Após ter feito as configurações do servidor de email e ter executado os passo
 digitar o comando abaixo.  
 Todas as dependências serão instaladas automaticamente durante a criação dos containers.
 ```sh
-docker-compose up -d
+docker-compose up
 ```
 **OBS.:** Os microserviços são independentes. Caso o microserviço de envio de email não esteja configurado com um 
 servidor de email, mesmo assim o microserviço principal funcionará normalmente, permitindo o usuário se logar e fazer 
@@ -97,6 +97,13 @@ Abrir algum browser e acessar a url `http://localhost:8000`.
 
 **OBS.:** para que o email seja enviado, será necessário cadastrar um novo usuário com um email válido e
 ter configurado o microserviço de envio de email corretamente.  
+
+Caso, mesmo tendo feito todas as configurações acima, o sistema não estiver enviando os emails, rodar nas 3 pastas dos microserviços
+os comandos abaixo:
+```sh
+docker-compose down  
+docker-compose up
+```  
 
 ## 🚀 Funcionalidades do Laravel usadas nesta aplicação
 - Migrations, Factories, Seeders, Mutators, Cache, Jobs, Mails, Helpers.
