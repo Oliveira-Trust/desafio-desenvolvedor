@@ -4,7 +4,7 @@
 
 ## 🚀 Tecnologias
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+Esse projeto foi desenvolvido com as seguintes tecnologias:  
 
 - [PHP 7.4](https://php.net)
 - [Laravel 8](https://laravel.com)
