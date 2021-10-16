@@ -31,4 +31,11 @@ class AwesomeApi
 
         return $newAvaliables;
     }
+
+    public function converter($combination)
+    {
+        $response = Http::get($this->mountUrl('/last/'.$combination));
+
+        return $response->json();
+    }
 }

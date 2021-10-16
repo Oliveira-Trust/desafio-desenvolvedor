@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" id="app">
     <div class="row mt-5">
-        <div class="col-7">
+        <div class="col-12">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -24,18 +24,16 @@
                     <div class="form-group col-6">
                         <label for="originCoin">Moeda de origem:</label>
                         <select class="form-select" name="origemMoeda">
-                            @forelse ($avaliables as $avaliable)
-                                <option value="{{ $avaliable['code'] }}" {{ $avaliable['code'] === 'BRL' ? 'selected' : '' }}>{{ $avaliable['name'] }}</option>
-                            @empty
-                                <option>Nenhuma opção</option>
-                            @endforelse
+                            <option value="BRL">Real Brasileiro</option>
                         </select>
                     </div>
                     <div class="form-group col-6">
                         <label for="originCoin">Moeda de destino:</label>
                         <select class="form-select" name="destinoMoeda">
                             @forelse ($avaliables as $avaliable)
-                                <option value="{{ $avaliable['code'] }}">{{ $avaliable['name'] }}</option>
+                                @if($avaliable['code'] !== 'BRL' )
+                                    <option value="{{ $avaliable['code'] }}">{{ $avaliable['name'] }}</option>
+                                @endif
                             @empty
                                 <option>Nenhuma opção</option>
                             @endforelse
@@ -65,7 +63,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-lg mx-auto">Converter</button>
+                        <button type="submit" class="btn btn-primary  mx-auto">Converter</button>
                     </div>
                 </div>
             </form>
