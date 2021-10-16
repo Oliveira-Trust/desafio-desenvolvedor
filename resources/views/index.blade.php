@@ -3,6 +3,20 @@
 @section('content')
 <div class="container" id="app">
     <div class="row mt-5">
+        <div class="col-7">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+        </div>
+    </div>
+    <div class="row mt-5">
         <div class="col-12">
             <form action="{{ route('buy') }}" method="POST">
                 @csrf
@@ -29,6 +43,10 @@
                     </div>
                 </div>
                 <div class="row mt-3">
+                    <div class="col-6">
+                        <label for="valor">Valor para conversão:</label>
+                        <input type="text" class="form-control" name="valor" id="valor">
+                    </div>
                     <div class="col-6">
                         <label>Tipo de pagamento:</label>
                         <div class="form-check">
