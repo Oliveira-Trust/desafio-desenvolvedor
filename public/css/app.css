@@ -1102,9 +1102,6 @@ select {
 .prose > :last-child {
 	margin-bottom: 0;
 }
-.pointer-events-none {
-	pointer-events: none;
-}
 .fixed {
 	position: fixed;
 }
@@ -1119,10 +1116,6 @@ select {
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
-}
-.inset-y-0 {
-	top: 0px;
-	bottom: 0px;
 }
 .left-0 {
 	left: 0px;
@@ -1221,6 +1214,9 @@ select {
 }
 .-mt-px {
 	margin-top: -1px;
+}
+.mb-12 {
+	margin-bottom: 3rem;
 }
 .mb-2 {
 	margin-bottom: 0.5rem;
@@ -1572,6 +1568,10 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
+.bg-blue-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -1583,9 +1583,6 @@ select {
 }
 .bg-no-repeat {
 	background-repeat: no-repeat;
-}
-.fill-current {
-	fill: currentColor;
 }
 .object-cover {
 	-o-object-fit: cover;
@@ -1599,6 +1596,9 @@ select {
 }
 .p-5 {
 	padding: 1.25rem;
+}
+.p-4 {
+	padding: 1rem;
 }
 .px-4 {
 	padding-left: 1rem;
@@ -1689,9 +1689,6 @@ select {
 .pt-8 {
 	padding-top: 2rem;
 }
-.pr-8 {
-	padding-right: 2rem;
-}
 .text-left {
 	text-align: left;
 }
@@ -1742,9 +1739,6 @@ select {
 }
 .uppercase {
 	text-transform: uppercase;
-}
-.italic {
-	font-style: italic;
 }
 .leading-5 {
 	line-height: 1.25rem;
@@ -1953,6 +1947,10 @@ select {
 .hover\:bg-gray-50:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+}
+.hover\:bg-blue-700:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
 }
 .hover\:text-gray-500:hover {
 	--tw-text-opacity: 1;
@@ -2315,20 +2313,12 @@ select {
 		margin-top: 0px;
 	}
 
-	.md\:mb-0 {
-		margin-bottom: 0px;
-	}
-
 	.md\:grid {
 		display: grid;
 	}
 
 	.md\:w-1\/2 {
 		width: 50%;
-	}
-
-	.md\:w-1\/3 {
-		width: 33.333333%;
 	}
 
 	.md\:grid-cols-3 {
