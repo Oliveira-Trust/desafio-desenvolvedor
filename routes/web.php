@@ -15,4 +15,5 @@ Route::middleware(['auth:sanctum', 'verified', 'verified.admin'])->prefix('dashb
 Route::middleware(['auth:sanctum', 'verified',])->group(function () {
     Route::get('/', [AvaliableController::class, 'index'])->name('index');
     Route::post('/buy', [BuyController::class, 'buy'])->name('buy');
+    Route::get('/historic', [BuyController::class, 'historic'])->name('historic');
 });

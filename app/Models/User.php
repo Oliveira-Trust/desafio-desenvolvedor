@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function historics()
+    {
+        return $this->hasMany(Historic::class, 'user_id');
+    }
 }

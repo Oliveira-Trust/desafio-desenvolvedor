@@ -52,6 +52,6 @@ class BuyService
             'value_buy' => $totalConverted,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('historic');
     }
 }

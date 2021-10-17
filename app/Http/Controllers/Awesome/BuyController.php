@@ -28,4 +28,12 @@ class BuyController extends Controller
 
         return $this->buyService->createNew($request->all());
     }
+
+    public function historic()
+    {
+
+        $historics = auth()->user()->historics;
+
+        return view('historic', compact('historics'));
+    }
 }
