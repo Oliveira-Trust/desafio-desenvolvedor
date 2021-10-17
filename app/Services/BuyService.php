@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Libs\AwesomeApi;
+use App\Models\Historic;
+use App\Models\Taxe;
 
 class BuyService
 {
@@ -17,12 +19,8 @@ class BuyService
 
     public function createNew($data)
     {
-        $mapTaxes = [
-            'boleto' => 1.45,
-            'cartao' => 7.63,
-        ];
 
-        $paymentTaxe = $mapTaxes[$data['pagamento']];
+        $paymentTaxe = Taxe::where('name', $data['pagamento'])->first();
 
         $combination =  $data['origemMoeda'].'-'.$data['destinoMoeda'];
         $conversionKey = $data['origemMoeda'].$data['destinoMoeda'];
@@ -36,7 +34,7 @@ class BuyService
         $originValue = floatval($data['valor']);
         $convertionTaxe = $originValue < 3000 ? 0.02 : 0.01;
         $calcConvertionTaxe = $originValue * $convertionTaxe;
-        $calcPaymentTaxe =  ($paymentTaxe * $originValue) / 100;
+        $calcPaymentTaxe =  (floatval($paymentTaxe->percentage) * $originValue) / 100;
         $newValue = $originValue - ($calcConvertionTaxe + $calcPaymentTaxe);
 
 
@@ -44,9 +42,16 @@ class BuyService
 
         $totalConverted = floatval($conversionData['bid']) * $newValue;
 
+        $createdHistoric = Historic::create([
+            'user_id' => auth()->user()->id,
+            'value' => $data['valor'],
+            'origin_coin' => $data['origemMoeda'],
+            'destination_coin' => $data['destinoMoeda'],
+            'value_with_discount' => $newValue,
+            'payment_method' => $data['pagamento'],
+            'value_buy' => $totalConverted,
+        ]);
 
-        dd($totalConverted, $newValue, $conversionData);
-
-
+        return redirect()->back();
     }
 }
