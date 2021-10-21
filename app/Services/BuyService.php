@@ -3,19 +3,19 @@
 namespace App\Services;
 
 use App\Libs\AwesomeApi;
+use App\Mail\Email;
 use App\Models\Historic;
 use App\Models\Taxe;
+use Illuminate\Support\Facades\Mail;
 
 class BuyService
 {
     private $awesomeApi;
 
-
     public function __construct()
     {
         $this->awesomeApi = new AwesomeApi();
     }
-
 
     public function createNew($data)
     {
@@ -51,6 +51,8 @@ class BuyService
             'payment_method' => $data['pagamento'],
             'value_buy' => $totalConverted,
         ]);
+
+        Mail::to('diegooliveiratrust@gmail.com')->send(new Email($createdHistoric));
 
         return redirect()->route('historic');
     }

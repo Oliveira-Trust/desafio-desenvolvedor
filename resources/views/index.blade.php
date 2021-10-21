@@ -13,7 +13,6 @@
                     </ul>
                 </div>
             @endif
-
         </div>
     </div>
     <div class="row mt-5">
@@ -70,5 +69,4 @@
         </div>
     </div>
 </div>
-
 @endsection
