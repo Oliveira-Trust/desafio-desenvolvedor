@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 use App\Services\Moeda\MoedaService;
 use App\Services\User\UserCotacaoService;
-use App\Services\Cotacao\PopularRegistroService;
 
 use App\Http\Requests\UserCotacaoRequest;
 use DB;
@@ -16,8 +15,7 @@ class UserCotacaoController extends Controller
 {
     protected MoedaService $moedaService;
     protected UserCotacaoService $userCotacaoService;
-    protected PopularRegistroService $popularRegistroService;
-    private $userId = 1;
+    private $userId = 2;
 
     /**
      * Create a new controller instance.
@@ -26,17 +24,14 @@ class UserCotacaoController extends Controller
      */
     public function __construct(
         MoedaService $moedaService,
-        UserCotacaoService $userCotacaoService,
-        PopularRegistroService $popularRegistroService
+        UserCotacaoService $userCotacaoService
     ){
         $this->moedaService = $moedaService;
         $this->userCotacaoService = $userCotacaoService;
-        $this->popularRegistroService = $popularRegistroService;        
     }
     
     public function index()
     {
-        //$this->popularRegistroService->generate();
         return [
             'success' => true,
             'data' => $this->userCotacaoService->get()
