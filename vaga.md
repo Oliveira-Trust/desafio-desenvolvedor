@@ -2,6 +2,58 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
  </p>
  
+## .env
+**Criar um banco de dados com o nome de laravel**
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+**Configurar Mail Trap**
+https://www.itsolutionstuff.com/post/how-to-send-mail-in-laravel-8-using-mailtrapexample.html
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=user_name_mailtrap
+MAIL_PASSWORD=password_mailtrap
+MAIL_ENCRYPTION=tls
+
+## Instalação
+
+- composer install
+- composer update
+- npm install
+
+## Como Rodar
+
+- php artisan migrate
+- php artisan db:seed
+- php artisan serve
+- npm run dev (Compilar os arquivos do Vue)
+
+## Tecnologias Utilizadas
+
+- Vue vue@2.6.14
+- Laravel Framework 8.67.0
+- PHP 8.0.12
+
+## Importante
+
+Primeiramente criar uma taxa.
+É possível vincular ou não um range de valores para a taxa (Ex. Taxa de 2% pela conversão para valores abaixo de R$ 3.000,00).
+
+- Se cotacoes_taxas_ranges.val_minimo == null && cotacoes_taxas_ranges.val_maximo != null
+		val_quantia >= cotacoes_taxas_ranges.val_maximo
+- Se cotacoes_taxas_ranges.val_maximo == null && cotacoes_taxas_ranges.val_minimo != null
+		val_quantia <= cotacoes_taxas_ranges.val_minimo
+- Se cotacoes_taxas_ranges.val_minimo != null && cotacoes_taxas_ranges.val_maximo != null
+		val_quantia between cotacoes_taxas_ranges.val_minimo e cotacoes_taxas_ranges.val_maximo
+
+
 ## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
 Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀 
 
@@ -93,3 +145,6 @@ e sua forma de pagamento em boleto ou cartão de crédito tendo como resultado o
     - https://docs.awesomeapi.com.br/api-de-moedas#legendas
 
 ### Boa sorte! 🚀
+
+
+
