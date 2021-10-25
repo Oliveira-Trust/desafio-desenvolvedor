@@ -2,58 +2,61 @@
     <div>
         <div class="card">
             <div class="card-header">
-                Calcular
+                Calcular.
             </div>
             <div class="card-body">
-                <form @submit.prevent="onSubmit">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="val_quantia">Valor</label>
-                                <input type="text" v-model="form.val_quantia" id="val_quantia" class="form-control" value="5000">
+                <h2 v-if="loading">Carregando...</h2>
+                <fieldset :disabled="loading" :style="{ opacity: loading ? '0.8': 1 }">
+                    <form @submit.prevent="onSubmit">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="val_quantia">Valor</label>
+                                    <input type="text" v-model="form.val_quantia" id="val_quantia" class="form-control" value="5000">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="moeda_origem_id">Moeda Origem</label>
-                                <select v-model="form.moeda_origem_id" id="moeda_origem_id" class="form-control ignoreSelect2">
-                                    <option 
-                                        v-for="(moeda, key) in moedas"
-                                        :key="key"
-                                        :value="key"
-                                    >{{ moeda }}</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="moeda_origem_id">Moeda Origem</label>
+                                    <select v-model="form.moeda_origem_id" id="moeda_origem_id" class="form-control ignoreSelect2">
+                                        <option 
+                                            v-for="(moeda, key) in moedas"
+                                            :key="key"
+                                            :value="key"
+                                        >{{ moeda }}</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="moeda_destino_id">Moeda Destino</label>
+                                    <select v-model="form.moeda_destino_id" id="moeda_destino_id" class="form-control ignoreSelect2">
+                                        <option 
+                                            v-for="(moeda, key) in moedas"
+                                            :key="key"
+                                            :value="key"
+                                        >{{ moeda }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tipo_cobranca_id">Forma de pagamento</label>
+                                    <select v-model="form.tipo_cobranca_id" id="tipo_cobranca_id" class="form-control ignoreSelect2">
+                                        <option 
+                                            v-for="(tipoCobranca, key) in tiposCobrancas"
+                                            :key="key"
+                                            :value="tipoCobranca.id"
+                                        >{{ tipoCobranca.nom_tipo_cobranca }}</option>
+                                    </select>
+                                </div>
+                            </div>            
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="moeda_destino_id">Moeda Destino</label>
-                                <select v-model="form.moeda_destino_id" id="moeda_destino_id" class="form-control ignoreSelect2">
-                                    <option 
-                                        v-for="(moeda, key) in moedas"
-                                        :key="key"
-                                        :value="key"
-                                    >{{ moeda }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="tipo_cobranca_id">Forma de pagamento</label>
-                                <select v-model="form.tipo_cobranca_id" id="tipo_cobranca_id" class="form-control ignoreSelect2">
-                                    <option 
-                                        v-for="(tipoCobranca, key) in tiposCobrancas"
-                                        :key="key"
-                                        :value="tipoCobranca.id"
-                                    >{{ tipoCobranca.nom_tipo_cobranca }}</option>
-                                </select>
-                            </div>
-                        </div>            
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                </form>
+                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    </form>
+                </fieldset>
             </div>
         </div>
         <section class="mt-3">
@@ -68,6 +71,7 @@
         name: 'cotacao-cotacao-form',
         data() {
             return {
+                loading: false,
                 form: {
                     val_quantia: 5000,
                     tipo_cobranca_id: 1,
@@ -88,6 +92,7 @@
             onSubmit(){
                 this.onSuccess = {};
                 this.onError = {};
+                this.loading = true;
                 axios.post('api/v1/user-cotacoes/calcular', 
                     this.form
                 )
@@ -105,7 +110,7 @@
                         this.onError = error.response.data;
                     })
                     .finally(() => {
-
+                        this.loading = false;
                     });
             },
             getMoedas(){

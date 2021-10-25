@@ -10,6 +10,7 @@ use App\Services\User\UserCotacaoService;
 
 use App\Http\Requests\UserCotacaoRequest;
 use DB;
+use Mail;
 
 class UserCotacaoController extends Controller
 {
@@ -43,7 +44,7 @@ class UserCotacaoController extends Controller
         $userCotacao = $this->userCotacaoService->show($id);
         $valorTaxado = $this->userCotacaoService->calculaCotacaoTaxas($userCotacao->id);
         $moedas = $this->moedaService->getMoedas();            
-
+        
         return [
             'success' => true,
             'message' => 'Sucesso',
@@ -81,10 +82,7 @@ class UserCotacaoController extends Controller
             $this->userCotacaoService->storeUserCotacoesTaxas($userCotacaoStore->id, $request->tipo_cobranca_id);
 
             $valorTaxado = $this->userCotacaoService->calculaCotacaoTaxas($userCotacaoStore->id);
-
-            DB::commit();
-
-            return [
+            $data = [
                 'success' => true,
                 'message' => 'Sucesso',
                 'data' => [
@@ -102,6 +100,13 @@ class UserCotacaoController extends Controller
                     ]
                 ]
             ];
+
+            $user = DB::table('users')->first();
+            Mail::to($user->email)
+                ->send(new \App\Mail\UserCotacaoNotification($data));
+
+            DB::commit();
+            return $data;
         } catch(\Exception $e){
             DB::rollback();
             return [

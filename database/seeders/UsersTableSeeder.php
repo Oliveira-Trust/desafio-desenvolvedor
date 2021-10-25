@@ -22,10 +22,11 @@ class UsersTableSeeder extends Seeder
     public function createUsers(){
         DB::table('users')
             ->insert([
-                'name' => 'Admin',
-                'email' => 'linkhashasdimoto@hotmail.com',
+                'name' => 'Daniel Hashimoto',
+                'email' => 'linkhashimoto@hotmail.com',
                 'email_verified_at' => null,
                 'password' => Hash::make(1234),
             ]);
+
     }
 }

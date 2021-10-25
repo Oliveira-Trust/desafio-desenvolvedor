@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Cotacao\CotacaoTaxa;
 use App\Models\Cotacao\CotacaoTaxaRange;
 use App\Models\UserCotacao;
-use App\Models\UserCotacaoTaxa;
 use App\Services\User\UserCotacaoTaxaService;
 
 class UserCotacaoService
