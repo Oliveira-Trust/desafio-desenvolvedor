@@ -14,7 +14,19 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-**Configurar Mail Trap**
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=d901641f9e0b5b
+MAIL_PASSWORD=5960764e02a280
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=seu_email@hotmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+
+**Ou você pode configurar o seu próprio Mail Trap**
 https://www.itsolutionstuff.com/post/how-to-send-mail-in-laravel-8-using-mailtrapexample.html
 
 ```
@@ -24,15 +36,18 @@ MAIL_PORT=2525
 MAIL_USERNAME=user_name_mailtrap
 MAIL_PASSWORD=password_mailtrap
 MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=seu_email@hotmail.com
+MAIL_FROM_NAME="${APP_NAME}"
 ```
+
 ## Instalação
 
 - composer install
-- composer update
 - npm install
 
 ## Como Rodar
 
+- php artisan key:generate
 - php artisan migrate
 - php artisan db:seed
 - php artisan serve
@@ -43,7 +58,7 @@ MAIL_ENCRYPTION=tls
 - Vue vue@2.6.14
 - Laravel Framework 8.67.0
 - PHP 8.0.12
-- MySql
+- MySQL
 
 ## Importante
 
@@ -54,7 +69,7 @@ php artisan tinker
 ```
 
 ```
-$user = new App\User();
+$user = new App\Models\User();
 $user->password = Hash::make('seu-password-aqui');
 $user->email = 'seu-email@example.com';
 $user->name = 'Seu Nome';

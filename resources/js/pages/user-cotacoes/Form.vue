@@ -104,7 +104,7 @@
                             return;
                         }
 
-                        this.onError = JSON.stringify(data.data, undefined, 2);
+                        this.onError = data.message;
                     })
                     .catch(errors => {
                         this.onError = errors.response.data;
