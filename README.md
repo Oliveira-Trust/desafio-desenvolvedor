@@ -5,23 +5,26 @@
 ## .env
 **Criar um banco de dados com o nome de laravel**
 
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
+```
 
 **Configurar Mail Trap**
 https://www.itsolutionstuff.com/post/how-to-send-mail-in-laravel-8-using-mailtrapexample.html
 
+```
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.mailtrap.io
 MAIL_PORT=2525
 MAIL_USERNAME=user_name_mailtrap
 MAIL_PASSWORD=password_mailtrap
 MAIL_ENCRYPTION=tls
-
+```
 ## Instalação
 
 - composer install
@@ -46,13 +49,17 @@ MAIL_ENCRYPTION=tls
 
 #### Para criar um usuário:
 
+```
 php artisan tinker
+```
 
+```
 $user = new App\User();
 $user->password = Hash::make('seu-password-aqui');
 $user->email = 'seu-email@example.com';
 $user->name = 'Seu Nome';
 $user->save();
+```
 
 ### Acesso
 
