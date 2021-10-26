@@ -32,6 +32,8 @@
                         {{ id == null ? 'Criar' : 'Salvar' }}
                     </button>
                 </form>
+
+                <pre class="alert alert-danger mt-2" v-if="Object.keys(errors).length > 0">{{ errors }}</pre>             
             </div>
         </div>
     </div>
@@ -46,7 +48,8 @@
                 form: {
                     nom_tipo_cobranca: '',
                     ind_status: 1
-                }
+                },
+                errors: {}
             }
         },
         created() {
@@ -72,7 +75,7 @@
                         if(data.success){
                             this.form.nom_tipo_cobranca = data.data.nom_tipo_cobranca;
                         }
-                    })
+                    });
             },
             getDominioItens(dominioId){
                 axios.get(`api/v1/dominios-itens/${dominioId}`)
@@ -88,6 +91,7 @@
                     });
             },
             store(){
+                this.errors = {};
                 axios.post(
                     "api/v1/tipos-cobrancas", 
                     this.form
@@ -97,9 +101,14 @@
                         if(data.success){
                             this.$router.push('/tipos-cobrancas')
                         }
+                    })
+                    .catch(errors => {
+                        console.log(errors);
+                        this.errors = errors.response.data;
                     });
             },
             update(id){
+                this.errors = {};
                 axios.put(
                     `api/v1/tipos-cobrancas/${id}`, 
                     this.form
@@ -108,8 +117,12 @@
                         console.log('response', response);
                         const data = response.data;
                         if(data.success){
-                            this.$router.push('/tipos-cobrancas')   
+                            this.$router.push('/tipos-cobrancas');   
                         }
+                    })
+                    .catch(errors => {
+                        console.log(errors);
+                        this.errors = errors.response.data;
                     });
             } 
         }

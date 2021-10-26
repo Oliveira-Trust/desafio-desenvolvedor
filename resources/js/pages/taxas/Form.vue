@@ -51,6 +51,8 @@
                     {{ id == null ? 'Criar' : 'Salvar' }}
                 </button>
             </form>
+
+            <pre class="alert alert-danger mt-2" v-if="Object.keys(errors).length > 0">{{ errors }}</pre>
         </div>
     </div>
 </template>
@@ -69,7 +71,8 @@
                     tipo_cobranca_id: '',
                     per_cotacao_taxa: '',
                     ind_status: 1
-                }
+                },
+                errors: {}
             }
         },
         created() {
@@ -94,13 +97,10 @@
                         this.form.per_cotacao_taxa = formData.per_cotacao_taxa;
                         this.form.ind_status = formData.ind_status;
                     }
-                    
-                })
-                
+                });
             } catch(e) {
                 console.error(e);
             }
-            
         },
         methods: {
             onSubmit(){
@@ -109,6 +109,7 @@
                     : this.update(this.id);
             },            
             store(){
+                this.errors = {};
                 axios.post(
                     "api/v1/cotacoes-taxas", 
                     this.form
@@ -118,9 +119,14 @@
                         if(data.success){
                             this.$router.push('/cotacoes-taxas')
                         }
-                    });
+                    })
+                    .catch(errors => {
+                        console.log(errors);
+                        this.errors = errors.response.data;
+                    })
             },
             update(id){
+                this.errors = {};
                 axios.put(
                     `api/v1/cotacoes-taxas/${id}`, 
                     this.form
@@ -130,7 +136,11 @@
                         if(data.success){
                             this.$router.push('/cotacoes-taxas')
                         }
-                    });
+                    })
+                    .catch(errors => {
+                        console.log(errors);
+                        this.errors = errors.response.data;
+                    })
             },
             async getTiposCobrancas(){
                 return await axios.get(

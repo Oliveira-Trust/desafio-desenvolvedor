@@ -11,12 +11,13 @@ use App\Services\User\UserCotacaoService;
 use App\Http\Requests\UserCotacaoRequest;
 use DB;
 use Mail;
+use App\Mail\UserCotacaoNotification;
 
 class UserCotacaoController extends Controller
 {
     protected MoedaService $moedaService;
     protected UserCotacaoService $userCotacaoService;
-    private $userId = 2;
+    private $userId;
 
     /**
      * Create a new controller instance.
@@ -70,9 +71,10 @@ class UserCotacaoController extends Controller
         try {
             $cotacaoMoeda = $this->moedaService->getMoeda($request->moeda_origem_id, $request->moeda_destino_id);
             $moedas = $this->moedaService->getMoedas();            
+            $user = auth()->user();
 
             $request->merge([
-                'user_id' => $this->userId,
+                'user_id' => $user->id,
                 'val_bid' => $cotacaoMoeda['bid']
             ]);
 
@@ -101,11 +103,11 @@ class UserCotacaoController extends Controller
                 ]
             ];
 
-            $user = DB::table('users')->first();
             Mail::to($user->email)
-                ->send(new \App\Mail\UserCotacaoNotification($data));
+                ->send(new UserCotacaoNotification($data));
 
             DB::commit();
+
             return $data;
         } catch(\Exception $e){
             DB::rollback();

@@ -32,7 +32,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                    
+                        <button class="btn btn-danger" @click="logout">
+                            Logout
+                        </button>
                     </ul>
                 </div>
             </div>
@@ -49,7 +51,34 @@
 
 <script>
     export default {
-        name: 'app'
+        name: 'app',
+        data() {
+            return {
+                loading: false,
+                form: {
+                    email: '',
+                    password: '',
+                    device_name: 'browser',
+                },
+                errors: {}
+            }
+        },
+        created() {
+        },
+        methods: {
+            logout(){
+                axios.post('api/v1/sanctum/logout')
+                    .then(response => {
+                        console.log('response', response);
+                        const data = response.data;
+
+                        if(data.success){
+                            localStorage.removeItem('token');
+                            this.$router.push('/login');
+                        }
+                    })
+            }
+        }
     }
 </script>
 

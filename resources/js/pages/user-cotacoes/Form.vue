@@ -106,8 +106,8 @@
 
                         this.onError = JSON.stringify(data.data, undefined, 2);
                     })
-                    .catch(error => {
-                        this.onError = error.response.data;
+                    .catch(errors => {
+                        this.onError = errors.response.data;
                     })
                     .finally(() => {
                         this.loading = false;

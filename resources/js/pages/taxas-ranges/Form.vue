@@ -38,6 +38,8 @@
                         {{ id == null ? 'Criar' : 'Salvar' }}
                     </button>
                 </form>
+
+                <pre class="alert alert-danger mt-2" v-if="Object.keys(errors).length > 0">{{ errors }}</pre>
             </div>
         </div>
     </div>
@@ -56,7 +58,8 @@
                     val_minimo: '',
                     val_maximo: '',
                     ind_status: 1
-                }
+                },
+                errors: {}
             }
         },
         created() {
@@ -84,7 +87,7 @@
                             this.form.val_maximo = data.data.val_maximo;
                             this.form.ind_status = data.data.ind_status;
                         }
-                    })
+                    });
             },
             getDominioItens(dominioId){
                 axios.get(`api/v1/dominios-itens/${dominioId}`)
@@ -100,6 +103,7 @@
                     });
             },              
             store(){
+                this.errors = {};
                 axios.post(
                     "api/v1/cotacoes-taxas-ranges", 
                     this.form
@@ -107,10 +111,15 @@
                     .then((response) => {
                         const data = response.data;
                         if(data.success){
+                            this.$router.push('/cotacoes-taxas');
                         }
+                    })
+                    .catch(errors => {
+                        this.errors = errors.response.data;
                     });
             },
             update(id){
+                this.errors = {};
                 axios.put(
                     `api/v1/cotacoes-taxas-ranges/${id}`, 
                     this.form
@@ -119,7 +128,11 @@
                         console.log('response', response);
                         const data = response.data;
                         if(data.success){
+                            this.$router.push('/cotacoes-taxas');
                         }
+                    })
+                    .catch(errors => {
+                        this.errors = errors.response.data;
                     });
             } 
         }

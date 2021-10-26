@@ -21,11 +21,15 @@ class UserCotacaoService
     }
 
     public function get(){
-        return UserCotacao::with('tipoCobranca')->get();
+        return UserCotacao::with('tipoCobranca')
+            ->where('user_id', auth()->user()->id)
+            ->get();
     }
 
     public function show(int $id){
-        return UserCotacao::find($id);
+        return UserCotacao::query()
+            ->where('user_id', auth()->user()->id)
+            ->find($id);
     }
 
     public function storeUserCotacao(array $inputs){
@@ -33,7 +37,9 @@ class UserCotacaoService
     }
 
     public function updateById(array $inputs, int $id){
-        return UserCotacao::find($id)->update($inputs);
+        return UserCotacao::query()
+            ->find($id)
+            ->update($inputs);
     }
 
     public function destroyById(int $id){

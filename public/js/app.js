@@ -2114,8 +2114,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'app'
+  name: 'app',
+  data: function data() {
+    return {
+      loading: false,
+      form: {
+        email: '',
+        password: '',
+        device_name: 'browser'
+      },
+      errors: {}
+    };
+  },
+  created: function created() {},
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      axios.post('api/v1/sanctum/logout').then(function (response) {
+        console.log('response', response);
+        var data = response.data;
+
+        if (data.success) {
+          localStorage.removeItem('token');
+
+          _this.$router.push('/login');
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2160,81 +2190,148 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
  */
 
 var routes = [{
+  path: '/login',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_auth_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/auth/Login.vue */ "./resources/js/pages/auth/Login.vue"));
+  },
+  name: 'login'
+}, {
   path: '/cotacoes-taxas/create',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_taxas_Form_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/taxas/Form.vue */ "./resources/js/pages/taxas/Form.vue"));
   },
-  name: 'cotacoes-taxas-create'
+  name: 'cotacoes-taxas-create',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cotacoes-taxas',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_taxas_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/taxas/Index.vue */ "./resources/js/pages/taxas/Index.vue"));
   },
-  name: 'cotacoes-taxas'
+  name: 'cotacoes-taxas',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cotacoes-taxas/:id/edit',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_taxas_Form_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/taxas/Form.vue */ "./resources/js/pages/taxas/Form.vue"));
   },
-  name: 'cotacoes-taxas-edit'
+  name: 'cotacoes-taxas-edit',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cotacoes-taxas-ranges/create',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_taxas-ranges_Form_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/taxas-ranges/Form.vue */ "./resources/js/pages/taxas-ranges/Form.vue"));
   },
-  name: 'cotacoes-taxas-ranges-create'
+  name: 'cotacoes-taxas-ranges-create',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cotacoes-taxas-ranges',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_taxas-ranges_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/taxas-ranges/Index.vue */ "./resources/js/pages/taxas-ranges/Index.vue"));
   },
-  name: 'cotacoes-taxas-ranges'
+  name: 'cotacoes-taxas-ranges',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cotacoes-taxas-ranges/:id/edit',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_taxas-ranges_Form_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/taxas-ranges/Form.vue */ "./resources/js/pages/taxas-ranges/Form.vue"));
   },
-  name: 'cotacoes-taxas-ranges-edit'
+  name: 'cotacoes-taxas-ranges-edit',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/tipos-cobrancas/create',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_tipos-cobrancas_Form_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/tipos-cobrancas/Form.vue */ "./resources/js/pages/tipos-cobrancas/Form.vue"));
   },
-  name: 'tipos-cobrancas-create'
+  name: 'tipos-cobrancas-create',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/tipos-cobrancas',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_tipos-cobrancas_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/tipos-cobrancas/Index.vue */ "./resources/js/pages/tipos-cobrancas/Index.vue"));
   },
-  name: 'tipos-cobrancas'
+  name: 'tipos-cobrancas',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/tipos-cobrancas/:id/edit',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_tipos-cobrancas_Form_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/tipos-cobrancas/Form.vue */ "./resources/js/pages/tipos-cobrancas/Form.vue"));
   },
-  name: 'tipos-cobrancas-edit'
+  name: 'tipos-cobrancas-edit',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/user-cotacoes-calcular',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_user-cotacoes_Form_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/user-cotacoes/Form.vue */ "./resources/js/pages/user-cotacoes/Form.vue"));
   },
-  name: 'user-cotacoes-calcular'
+  name: 'user-cotacoes-calcular',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/user-cotacoes',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_user-cotacoes_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/user-cotacoes/Index.vue */ "./resources/js/pages/user-cotacoes/Index.vue"));
   },
-  name: 'user-cotacoes'
+  name: 'user-cotacoes',
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/user-cotacoes/:id',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_user-cotacoes_Show_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/user-cotacoes/Show.vue */ "./resources/js/pages/user-cotacoes/Show.vue"));
   },
-  name: 'user-cotacoes-show'
+  name: 'user-cotacoes-show',
+  meta: {
+    requiresAuth: true
+  }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   mode: 'history',
   routes: routes
+});
+
+function loggedIn() {
+  return localStorage.getItem('token');
+}
+
+router.beforeEach(function (to, from, next) {
+  if (to.matched.some(function (record) {
+    return record.meta.requiresAuth;
+  })) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!loggedIn()) {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    } else {
+      next();
+    }
+  } else {
+    next(); // make sure to always call next()!
+  }
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
@@ -2270,15 +2367,28 @@ try {
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
+//const token = localStorage.getItem("token");
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.baseURL = routerBaseURL; //window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+window.axios.defaults.baseURL = routerBaseURL;
 window.axios.defaults.headers.common = {
   'X-Requested-With': 'XMLHttpRequest',
   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 };
+window.axios.interceptors.request.use(function (config) {
+  console.log('config', config);
+  var token = localStorage.getItem("token");
+  config.headers["Authorization"] = "Bearer ".concat(token);
+  return config;
+}, function (error) {
+  if (error.response.status === 401) {
+    console.log('token expired', error.response);
+    /* THIS WORKS BUT BREAKS THE LOGIN ERROR HANDLING */
+  }
+
+  return Promise.reject(error);
+});
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -37849,7 +37959,17 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("ul", { staticClass: "navbar-nav ml-auto" })
+              _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-danger", on: { click: _vm.logout } },
+                  [
+                    _vm._v(
+                      "\n                        Logout\n                    "
+                    )
+                  ]
+                )
+              ])
             ]
           )
         ])
@@ -53324,7 +53444,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\dev\\\\desafio-des
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_taxas_Form_vue":1,"resources_js_pages_taxas_Index_vue":1,"resources_js_pages_taxas-ranges_Form_vue":1,"resources_js_pages_taxas-ranges_Index_vue":1,"resources_js_pages_tipos-cobrancas_Form_vue":1,"resources_js_pages_tipos-cobrancas_Index_vue":1,"resources_js_pages_user-cotacoes_Form_vue":1,"resources_js_pages_user-cotacoes_Index_vue":1,"resources_js_pages_user-cotacoes_Show_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_auth_Login_vue":1,"resources_js_pages_taxas_Form_vue":1,"resources_js_pages_taxas_Index_vue":1,"resources_js_pages_taxas-ranges_Form_vue":1,"resources_js_pages_taxas-ranges_Index_vue":1,"resources_js_pages_tipos-cobrancas_Form_vue":1,"resources_js_pages_tipos-cobrancas_Index_vue":1,"resources_js_pages_user-cotacoes_Form_vue":1,"resources_js_pages_user-cotacoes_Index_vue":1,"resources_js_pages_user-cotacoes_Show_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
