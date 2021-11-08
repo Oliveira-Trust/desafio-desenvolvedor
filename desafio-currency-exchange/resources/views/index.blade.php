@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="defautCurrency">Tipo Conversao: </label>
                     <select class="form-control modal-select" id="current_purchased"
-                            name="current_purchased">
+                            name="current_purchased" required>
                         <option class="select2-selection__placeholder" value="" selected>Selecione a moeda de de
                             conversao
                         </option>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label for="defautCurrency">Tipo Conversao: </label>
                     <select class="form-control modal-select" id="type_payment"
-                            name="type_payment">
+                            name="type_payment" required>
                         <option class="select2-selection__placeholder" value="" selected>Selecione a forma de pagamento
                         </option>
                         <option value="CREDIT_CARD">Cartao de credito</option>
