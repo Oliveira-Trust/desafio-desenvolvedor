@@ -14,7 +14,7 @@ class PayloadHelper
      * @param mixed[] $payload
      * @return mixed[]
      */
-    public static function consolidatePayload(array $response, array $payload)
+    public static function consolidatePayload(array $response, array $payload): array
     {
         $newResponse = [];
         foreach ($response as $position) {
@@ -47,7 +47,7 @@ class PayloadHelper
      * @return string
      * @throws \App\Exceptions\Config\BuildExceptions
      */
-    public static function typePaymentValue(string $type)
+    public static function typePaymentValue(string $type): string
     {
         if (array_key_exists($type, Exchange::BILLING_TYPE)) {
             return Exchange::BILLING_TYPE[$type];

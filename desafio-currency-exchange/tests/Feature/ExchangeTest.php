@@ -6,8 +6,6 @@ namespace Tests\Feature;
 
 use App\Domain\Services\ExchangeService;
 use App\Domain\Services\PurchaseFeesService;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Integration\CurrencyQuotes\src\Helpers\PayloadHelper;
 use Integration\currencyQuotes\src\Rest;
 use Tests\TestCase;
@@ -41,7 +39,7 @@ class ExchangeTest extends TestCase
         $this->assertEquals(404, $code);
     }
 
-    public function test_success_value_payment_greater_than_min()
+    public function test_success_value_payment_greater_than_min(): void
     {
         $exchange = new ExchangeService(new PurchaseFeesService());
         $valueExchange = 5000.0;
@@ -49,7 +47,7 @@ class ExchangeTest extends TestCase
         $this->assertTrue($exchange->validateValueExchange($valueExchange));
     }
 
-    public function test_success_value_payment_greater_than_max()
+    public function test_success_value_payment_greater_than_max(): void
     {
         $exchange = new ExchangeService(new PurchaseFeesService());
         $valueExchange = 99000.0;
@@ -57,7 +55,7 @@ class ExchangeTest extends TestCase
         $this->assertTrue($exchange->validateValueExchange($valueExchange));
     }
 
-    public function test_apply_rate_for_value_greater_than_3000_and_type_payment_boleto_exchange()
+    public function test_apply_rate_for_value_greater_than_3000_and_type_payment_boleto_exchange(): void
     {
         $exchange = new ExchangeService(new PurchaseFeesService());
         $payload = [
@@ -76,7 +74,7 @@ class ExchangeTest extends TestCase
         $this->assertEquals(4877.5, $newResponse['final_value']);
     }
 
-    public function test_apply_rate_for_value_greater_less_3000_and_type_payment_boleto_exchange()
+    public function test_apply_rate_for_value_greater_less_3000_and_type_payment_boleto_exchange(): void
     {
         $exchange = new ExchangeService(new PurchaseFeesService());
         $payload = [
@@ -95,7 +93,7 @@ class ExchangeTest extends TestCase
         $this->assertEquals(1448.25, $newResponse['final_value']);
     }
 
-    public function test_apply_rate_for_value_greater_less_3000_and_type_payment_credit_card_exchange()
+    public function test_apply_rate_for_value_greater_less_3000_and_type_payment_credit_card_exchange(): void
     {
         $exchange = new ExchangeService(new PurchaseFeesService());
         $payload = [
@@ -114,7 +112,7 @@ class ExchangeTest extends TestCase
         $this->assertEquals(2799.95, $newResponse['final_value']);
     }
 
-    public function test_apply_rate_for_value_greater_greater_3000_and_type_payment_credit_card_exchange()
+    public function test_apply_rate_for_value_greater_greater_3000_and_type_payment_credit_card_exchange(): void
     {
         $exchange = new ExchangeService(new PurchaseFeesService());
         $payload = [

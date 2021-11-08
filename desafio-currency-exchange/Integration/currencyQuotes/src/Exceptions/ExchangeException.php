@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Integration\currencyQuotes\src\Exceptions;
-
 
 use App\Exceptions\Config\BaseException;
 use App\Exceptions\Config\BuildExceptions;

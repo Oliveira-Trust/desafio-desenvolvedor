@@ -48,6 +48,9 @@ class Request implements RequestInterface
         return $this->url;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getData(): array
     {
         return $this->data;
