@@ -15,13 +15,14 @@ class Cotacao extends Migration
     {
         Schema::create('cotacao', function (Blueprint $table) {
             $table->id();
-            $table->double('moeda_origem')->index();
-            $table->double('moeda_destino');
+            $table->string('moeda_origem')->index();
+            $table->string('moeda_destino');
             $table->double('taxa_conversao');
             $table->double('taxa_forma_pagamento');
             $table->double('valor_liquido');
             $table->double('valor_bruto');
-            $table->double('forma_pagamento');
+            $table->double('valor_moeda_destino');
+            $table->string('forma_pagamento');
             $table->unsignedBigInteger('id_user')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();

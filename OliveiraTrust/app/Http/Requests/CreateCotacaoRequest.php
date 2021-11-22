@@ -24,12 +24,9 @@ class CreateCotacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            'moeda_origem'          => 'required',
-            'moeda_destino'         => 'required',
-            'taxa_conversao'        => 'required',
-            'taxa_forma_pagamento'  => 'required',
-            'valor_liquido '        => 'required',
-            'valor_bruto '          => 'required',
+            'moeda_destino'   => 'required',
+            'forma_pagamento' => 'required',
+            'valor_liquido'  => 'required',
         ];
     }
 

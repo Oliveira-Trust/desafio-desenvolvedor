@@ -19,7 +19,7 @@ class LoginController extends Controller
     {
         if (Auth::attempt(["email" => $request->email, "password" => $request->password])) {
 
-            return redirect()->route('index.cotacao');
+            return redirect()->route('index.cotacao')->with('cotacoes', CotacaoModel::where(['id_user' => Auth::user()->id]));
         }
 
         return redirect()->route('login');

@@ -10,13 +10,9 @@ class FormaPagamentoFactory {
 
     public function formaPagamento($interface){
 
-        if($interface == "Cartao") {
+        if($interface == "cartao") {
             return new Cartao;
         }
-        if($interface == "Boleto") {
-            return new Boleto;
-        }
-
-        return false;
+        return new Boleto;
     }
 }

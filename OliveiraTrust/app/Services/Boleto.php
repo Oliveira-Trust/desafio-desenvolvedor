@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Interfaces\FormaPagamentoInterface;
-use App\Models\CotacaoModel;
 
 class Boleto implements FormaPagamentoInterface{
 
@@ -13,8 +12,8 @@ class Boleto implements FormaPagamentoInterface{
 	 *
 	 * @return mixed
 	 */
-	function implementaRegras(CotacaoModel $cotacao) {
+	public function implementaRegras($cotacao) {
 
-        return $cotacao->valor_liquido * 1.75;
+        return $cotacao/100 * 1.75;
 	}
 }

@@ -13,5 +13,5 @@ class CotacaoModel extends Model
 
     protected $table = 'cotacao';
     protected $fillable = ['id', 'moeda_origem', 'moeda_destino', 'taxa_conversao', 'taxa_forma_pagamento',
-    'valor_liquido', 'valor_bruto', 'id_user', 'created_at', 'updated_at', 'deleted_at'];
+    'valor_liquido', 'valor_bruto', 'id_user', 'created_at', 'updated_at', 'deleted_at', 'valor_moeda_destino'];
 }

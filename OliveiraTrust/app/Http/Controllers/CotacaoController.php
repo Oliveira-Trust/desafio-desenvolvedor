@@ -24,23 +24,21 @@ class CotacaoController extends Controller
 
     public function show()
     {
-        $moedas = Http::get('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
-        return view('cotacao/create')
-        ->with('moeads', json_decode($moedas))
-        ->with('formas_pagamento', FormaPagamentoModel::where(['id_user' => Auth::user()->id])->get());
+        return view('cotacao/create');
     }
 
     public function create(CreateCotacaoRequest $request)
     {
+        $moedas = Http::get("https://economia.awesomeapi.com.br/last/$request->moeda_destino");
         $formaPagamentoFactory              = new FormaPagamentoFactory();
         $this->model->moeda_destino         = $request->moeda_destino;
-        $this->model->moeda_origem          = $request->BRL;
-        $this->model->taxa_conversao        = $request->taxa_conversao <= 3000 ?
-        $request->taxa_conversao +=$request->taxa_conversao*0.02: $request->taxa_conversao +=$request->taxa_conversao*0.01;
+        $this->model->moeda_origem          = "BRL";
+        $request->valor_liquido <= 3000 ?  $this->model->taxa_conversao +=$request->valor_liquido*0.02: $this->model->taxa_conversao +=$request->valor_liquido*0.01;
         $this->model->forma_pagamento       = $request->forma_pagamento;
-        $this->model->taxa_forma_pagamento  = $formaPagamentoFactory->formaPagamento($request->forma_pagamento)->implementaRegras($request->valor_liquido);
-        $this->model->valor_liquido         = $request->valor_liquido;
-        $this->model->valor_bruto           = $request->valor_bruto;
+        $this->model->taxa_forma_pagamento  = $formaPagamentoFactory->formaPagamento($request->forma_pagamento)->implementaRegras(doubleval($request->valor_liquido));
+        $this->model->valor_liquido         = doubleval($request->valor_liquido);
+        $this->model->valor_bruto           = $this->model->taxa_conversao + $this->model->valor_liquido + $this->model->taxa_forma_pagamento;
+        $this->model->valor_moeda_destino = $moedas[str_replace('-', '', $request->moeda_destino)]['bid'];
         $this->model->id_user = Auth::user()->id;
         $this->model->save();
 

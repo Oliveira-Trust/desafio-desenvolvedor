@@ -35,6 +35,9 @@
                             Forma de pagamento
                         </th>
                         <th style="width: 20%; text-align: center;">
+                            Valor da moeda cotada
+                        </th>
+                        <th style="width: 20%; text-align: center;">
                             Taxa de forma de pagamento
                         </th>
                         <th style="width: 20%; text-align: center;">
@@ -46,7 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($cotacaos as $cotacao)
+                    @foreach($cotacoes as $cotacao)
                         <tr>
                             <td style = "width: 10%;">
                                 <a>
@@ -55,17 +58,27 @@
                             </td>
                             <td style = "width: 10%;">
                                 <a>
-                                    {{ $cotacao->taxa_conversao }}
+                                    {{ $cotacao->moeda_destino }}
                                 </a>
                             </td>
                             <td style = "width: 10%;">
                                 <a>
-                                    {{ $cotacao->forma_pagamento }}
+                                    {{ $cotacao->taxa_conversao }} Reais
                                 </a>
                             </td>
                             <td style = "width: 10%;">
                                 <a>
-                                    {{ $cotacao->taxa_forma_pagamento }}
+                                    {{ $cotacao->forma_pagamento  }}
+                                </a>
+                            </td>
+                            <td style = "width: 10%;">
+                                <a>
+                                    {{ $cotacao->valor_moeda_destino  }}
+                                </a>
+                            </td>
+                            <td style = "width: 10%;">
+                                <a>
+                                    {{ $cotacao->taxa_forma_pagamento }} Reais
                                 </a>
                             </td>
                             <td style = "width: 10%;">

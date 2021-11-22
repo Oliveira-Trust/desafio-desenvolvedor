@@ -28,20 +28,20 @@
         @csrf
         <div class="form-group">
             <label for="name">Valor</label>
-            <input type="numeric" class="form-control" id="valor_liquido" name = "valor_liquido" placeholder="Valor">
+            <input type="type=number step=any" class="form-control" id="valor_liquido" name = "valor_liquido" placeholder="Valor">
         </div>
         <div class="form-group">
             <select name = "moeda_origem"  class = "form-control">
-                <option value = "BRL" selected>
+                <option blocked value = "BRL" selected>
                     Real
                 </option>
             </select>
         </div>
         <div class="form-group">
             <select name = "moeda_destino"  class = "form-control">
-                @foreach($moedas as $moeda)
-                    <option value = "{{ $moeda->name }}">{{ $moeda->name }}</option>
-                @endforeach
+                    <option value = "USD-BRL">Dolar</option>
+                    <option value = "BTC-BRL">Bitcoin</option>
+                    <option value = "EUR-BRL">Euro</option>
             </select>
         </div>
         <div class="form-group">

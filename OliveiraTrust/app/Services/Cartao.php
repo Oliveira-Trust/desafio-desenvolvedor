@@ -13,8 +13,8 @@ class Cartao implements FormaPagamentoInterface{
 	 *
 	 * @return mixed
 	 */
-	function implementaRegras(CotacaoModel $cotacao) {
+	public function implementaRegras($cotacao) {
 
-        return $cotacao->valor_liquido * 7.63;
+        return $cotacao/100 * 7.63;
 	}
 }

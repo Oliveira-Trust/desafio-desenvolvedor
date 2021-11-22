@@ -34,7 +34,6 @@ Route::prefix('user/')->middleware('auth')->group(function() {
         Route::get('index', [CotacaoController::class, 'index'])->name('index.cotacao');
         Route::get('show', [CotacaoController::class, 'show'])->name('show.cotacao');
         Route::post('create', [CotacaoController::class, 'create'])->name('create.cotacao');
-        Route::post('delete', [CotacaoController::class, 'delete'])->name('delete.cotacao');
 
     });
 
