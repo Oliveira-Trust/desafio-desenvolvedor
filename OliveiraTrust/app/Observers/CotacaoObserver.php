@@ -10,7 +10,12 @@ class CotacaoObserver
 {
     public function created(CotacaoModel $cotacao)
     {
-        echo "envia email";
+        Mail::send('email.cotacao', ['dados' => $cotacao], function($message)
+        {
+            $message->from('leandro.p.alexandre@gmail.com', 'Sistema de cotações');
+            $message->to(Auth::user()->email);
+            $message->subject('Cotação cadastrada');
+        });
         return true;
     }
 }
