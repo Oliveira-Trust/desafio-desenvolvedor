@@ -1,3 +1,17 @@
+Para realizar a instalação do projeto basta o instalar e configurar conforme um projeto padrão do laravel(Servidor, Banco de dados e PHP 8).
+Comandos:
+npm install;
+npm run build;
+npm run dev;
+composer install;
+php artisan key:generate
+
+Configurar o banco de dados no arquivo criando um arquivo .env caso ele não exista.
+php artisan migrate;
+php artisan serve.
+Depois diss, o projeto deverá funcionar.
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
