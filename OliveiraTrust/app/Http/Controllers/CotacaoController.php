@@ -19,7 +19,7 @@ class CotacaoController extends Controller
 
     public function index()
     {
-        return view('cotacao/index')->with('cotacoes', $this->model->where(["id_user" => Auth::user()->id])->get());
+        return view('cotacao/index')->with('cotacoes', $this->model->where(["id_user" => Auth::user()->id])->orderBy('id', 'DESC')->get());
     }
 
     public function show()

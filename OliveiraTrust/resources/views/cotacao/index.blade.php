@@ -46,6 +46,9 @@
                         <th>
                             Valor total(Reais)
                         </th>
+                        <th>
+                            Data
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,6 +92,11 @@
                             <td style = "width: 10%;">
                                 <a>
                                     {{ $cotacao->valor_bruto }}
+                                </a>
+                            </td>
+                            <td style = "width: 10%;">
+                                <a>
+                                    {{ $cotacao->created_at->format("yy-M-d H:i:s") }}
                                 </a>
                             </td>
                         </tr>
