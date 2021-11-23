@@ -12,9 +12,9 @@ class CotacaoObserver
     {
         Mail::send('email.cotacao', ['cotacao' => $cotacao], function($message)
         {
-            $message->from('leandro.p.alexandre@gmail.com', 'Sistema de cotações');
+            $message->from('leandro.p.alexandre@gmail.com', 'Sistema de cotaÃ§Ãµes');
             $message->to(Auth::user()->email);
-            $message->subject('Cotação cadastrada');
+            $message->subject('CotaÃ§Ã£o cadastrada');
         });
         return true;
     }
