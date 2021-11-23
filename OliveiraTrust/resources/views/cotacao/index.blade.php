@@ -52,8 +52,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                    $count = 0;
+                    @endphp
                     @foreach($cotacoes as $cotacao)
-                        <tr>
+
+                        <tr @if($count == 0) style = "background: black; color:white;"@endif>
                             <td style = "width: 10%;">
                                 <a>
                                     {{ $cotacao->moeda_origem }}
@@ -100,6 +104,9 @@
                                 </a>
                             </td>
                         </tr>
+                        @php
+                        $count += 1;
+                        @endphp
                     @endforeach
                 </tbody>
             </table>
