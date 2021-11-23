@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registro de cotações</title>
+  <title>Registro de cotaÃ§Ãµes</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -27,7 +27,7 @@
             <li class="nav-item">
                 <a class="nav-link">
                     <i class="fas fa-plus-square"></i>
-                    <p>Registro de cotações</p>
+                    <p>Registro de cotaÃ§Ãµes</p>
                 </a>
             </li>
             <li class="nav-item has-treeview">
@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a href="{{ route('index.cotacao') }}" class="nav-link">
                             <i class="fas fa-tasks"></i>
-                            <p>Url</p>
+                            <p>CotaÃ§Ã£o</p>
                         </a>
                     </li>
                 </ul>

@@ -9,7 +9,7 @@
                         {!! Session::get("msg") !!}
                     </div>
                 @endif
-                <a href = "{{ route('show.cotacao') }}" class = "btn btn-success">Consultar cotaÁ„o</a>
+                <a href = "{{ route('show.cotacao') }}" class = "btn btn-success">Consultar cota√ß√£o</a>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -19,7 +19,7 @@
             </div>
             </div>
             <div class="card-body p-0">
-            <table class="table table-striped projects">
+            <table align="center" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;" class="table table-striped projects">
                 <thead>
                     <tr>
                         <th>
@@ -28,23 +28,23 @@
                         <th>
                             Moeda de Destino
                         </th>
-                        <th style="width: 8%" class="text-center">
-                        Taxa de convers„o
+                        <th >
+                        Taxa de convers√£o(Reais)
                         </th>
-                        <th style="width: 20%; text-align: center;">
+                        <th>
                             Forma de pagamento
                         </th>
-                        <th style="width: 20%; text-align: center;">
+                        <th>
                             Valor da moeda cotada
                         </th>
-                        <th style="width: 20%; text-align: center;">
-                            Taxa de forma de pagamento
+                        <th>
+                            Taxa de forma de pagamento(Reais)
                         </th>
-                        <th style="width: 20%; text-align: center;">
+                        <th>
                             Valor cotado
                         </th>
-                        <th style="width: 20%; text-align: center;">
-                            Valor total
+                        <th>
+                            Valor total(Reais)
                         </th>
                     </tr>
                 </thead>
@@ -63,7 +63,7 @@
                             </td>
                             <td style = "width: 10%;">
                                 <a>
-                                    {{ $cotacao->taxa_conversao }} Reais
+                                    {{ $cotacao->taxa_conversao }}
                                 </a>
                             </td>
                             <td style = "width: 10%;">
@@ -78,7 +78,7 @@
                             </td>
                             <td style = "width: 10%;">
                                 <a>
-                                    {{ $cotacao->taxa_forma_pagamento }} Reais
+                                    {{ $cotacao->taxa_forma_pagamento }}
                                 </a>
                             </td>
                             <td style = "width: 10%;">

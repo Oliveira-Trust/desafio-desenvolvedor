@@ -10,7 +10,7 @@ class CotacaoObserver
 {
     public function created(CotacaoModel $cotacao)
     {
-        Mail::send('email.cotacao', ['dados' => $cotacao], function($message)
+        Mail::send('email.cotacao', ['cotacao' => $cotacao], function($message)
         {
             $message->from('leandro.p.alexandre@gmail.com', 'Sistema de cotações');
             $message->to(Auth::user()->email);

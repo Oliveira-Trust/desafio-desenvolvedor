@@ -50,13 +50,13 @@
                     Boleto
                 </option>
                 <option value = "cartao_credito" selected>
-                    Cart„o de crÈdito
+                    Cart√£o de cr√©dito
                 </option>
             </select>
         </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Consultar cotaÁ„o</button>
+        <button type="submit" class="btn btn-primary">Consultar cota√ß√£o</button>
       </div>
     </form>
   </div>
