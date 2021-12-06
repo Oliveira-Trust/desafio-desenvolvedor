@@ -6,8 +6,18 @@ use App\Models\Moedas;
 use App\Http\Requests\StoreMoedasRequest;
 use App\Http\Requests\UpdateMoedasRequest;
 
+
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\HistoricoCotacao as Historico;
+
 class MoedasController extends Controller
 {
+    public function __construct() 
+    {
+        $this->taxa = new Taxas;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +26,7 @@ class MoedasController extends Controller
     public function index()
     {
 
-        $moedas = file_get_contents("https://economia.awesomeapi.com.br/json/last/USD-BRL");
-        
-        return $moedas;
+     
 
     }
 
@@ -40,7 +48,8 @@ class MoedasController extends Controller
      */
     public function store(StoreMoedasRequest $request)
     {
-        //
+        
+
     }
 
     /**

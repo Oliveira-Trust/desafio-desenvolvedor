@@ -21,6 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function() {
 
+    Route::apiResource('cotacao', 'App\Http\Controllers\MoedasController');
+
+
     Route::apiResource('moeda', 'App\Http\Controllers\MoedasController');
     Route::apiResource('user', 'App\Http\Controllers\UsuarioController');
 

@@ -2,94 +2,77 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\HistoricoCotacao as Historico;
+
+use App\Mail\EnviaEmail;
 
 class CotacaoController extends Controller
 {
 
     protected $taxa;
 
-    public const USD = 'USD';
-    
-    public const BRL = 'BRL';
-
+    protected $conversao;
 
     public function __construct() 
     {
         $this->taxa = new Taxas;
     }
 
-  
-    public function get(ApiController $cotacao) 
+    public function index() 
     {
-        $cotacao = $cotacao->getQuotesCoins(self::USD, self::BRL);
-        $cotacao = $cotacao['USDBRL'] ?? [];
+        $name = session()->get('name');
 
-        return view('app.admin', ['cotacao' => $cotacao ]);
+        if (!isset($name)) {
+            return redirect()->route('app.login', ['error' => 1 ]);
+        }
+        return view('app.admin');
     }
 
-    public function toConvert(Request $request) 
+    public function store(ApiController $cotacao, Request $request) 
     {
 
-       $moeda= str_replace(",", ".", $request->moeda_origem);
-      
-       $moeda_origem  = str_replace(",", ".", $request->moeda_origem);
-    
-       $moeda_destino = $request->moeda_destino;
-       $total_conversao = (float) $request->valor_conversao;
-       
-       $tipo_pagamento = $request->formato_pagamento;
-       
-       // aborta a execução caso o saldo  seja menor que 1000,00 ou maior 100.000,00
-       $this->taxa->stopRunning($total_conversao);
-       
-       $moeda_origem = (float) $moeda_origem;
+        $this->conversao = $this->taxa->toConvertBRL($cotacao, $request);
 
-       $valor_compra = ($total_conversao / $moeda_origem);
+        if ($request->valor_conversao > $this->taxa::VALOR_MIN_COMPRA && $request->valor_conversao < $this->taxa::VALOR_MAX_COMPRA) {
 
-       $pagamento = $this->taxa->payment($tipo_pagamento);
-       $percetual_compra = $this->taxa->percentageFeeWithOneOrTwo($total_conversao);
-       
-       // taxa de pagamento
-       $taxa_pagamento = ($total_conversao * $pagamento) / 100;
-       
-       // taxa de conversão
-       $taxa_conversao = ($total_conversao * $percetual_compra) / 100;
+            $this->execute($this->conversao);
+        }    
 
-       $saldo_com_descontos_taxas = $total_conversao - $taxa_conversao - $taxa_pagamento;
-
-       $dataset = [
-          'taxa_conversao' => $taxa_conversao,
-          'taxa_pagamento' => $taxa_pagamento,
-          'moeda_destino' => $moeda_origem,
-          'moedas_comprada' => $valor_compra,
-          'total_conversao' =>  $saldo_com_descontos_taxas
-       ];
-
-       foreach ($dataset as $key => $value ) {
-           $dataset[$key] = number_format($value, 2, ',', '.'); 
-       }
-
-
-    //    echo '<pre>';
-    //    var_dump($dataset);
-
-    //    die;
-    //    print 'Taxa Conversão: ' . number_format($taxa_conversao, 2, ',', '.')  . '<br>';
-    //    print 'Taxa Pagamento: ' . number_format($taxa_pagamento, 2, ',', '.') . '<br>';
-
-    //    print 'Valor da moeda de destino: ' . number_format($moeda, 2, ',', '.')  . '<br>';
-    //    print 'Valor comprado: ' .  number_format($valor_compra, 2, ',', '.')   . '<br>';
-    //    print 'Taxa da conversão descontado: ' . number_format($saldo_com_descontos_taxas , 2, ',', '.')   . '<br>';
-    //    die;
-
-
-       
-       // print $saldo_dollar;
-
-       return view('app.admin', $dataset);
-       
-       
+        return redirect()->route('app.historico.cotacoes');
     }
+
+    protected function execute($conversao) 
+    {
+        $historico = new Historico;
+
+        $historico->create([ 
+            'user_id' => $conversao['user_id'],
+            'taxa_conversao' => $conversao['taxa_conversao'],
+            'taxa_pagamento' => $conversao['taxa_pagamento'],
+            'moeda_destino' => $conversao['moeda_destino'],
+            'moedas_comprada' => $conversao['moedas_comprada'],
+            'total_conversao' => $conversao['total_conversao'],
+            'moeda' => $conversao['moeda']
+        ])->save();
+
+       // Pega o e-mail do usuário logado
+       $destinatario = session()->get('email');
+
+       Mail::to($destinatario)->send( new EnviaEmail([ 
+            'user_id' => $conversao['user_id'],
+            'taxa_conversao' => $conversao['taxa_conversao'],
+            'taxa_pagamento' => $conversao['taxa_pagamento'],
+            'moeda_destino' => $conversao['moeda_destino'],
+            'moedas_comprada' => $conversao['moedas_comprada'],
+            'total_conversao' => $conversao['total_conversao'],
+            'moeda' => $conversao['moeda']
+        ] ));           
+    }
+
 }

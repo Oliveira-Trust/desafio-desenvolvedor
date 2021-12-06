@@ -8,7 +8,9 @@ use App\Models\Usuario;
 
 use Illuminate\Http\Request;
 
-// use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class UsuarioController extends Controller
 {
@@ -30,6 +32,11 @@ class UsuarioController extends Controller
         $users =  $this->user->all();
 
         return response()->json($users, 200);
+    }
+
+    public function form() 
+    {
+        return view('app.cadastro');
     }
 
     /**
@@ -56,8 +63,8 @@ class UsuarioController extends Controller
         $user = $this->user->create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
-            // 'password' => Crypt::encryptString($request->password)
+            // 'password' => $request->password
+            'password' => Hash::make($request->password)
         ]);
 
         $user->save();

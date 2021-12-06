@@ -63,5 +63,10 @@ class User extends Authenticatable
            
         ];
    }
+
+   public function historico() 
+   {
+      return $this->belongsToMany('App\Models\HistoricoCotacao', 'historico', 'user_id', 'id')->withPivot('id','created_at');
+   }
  
 }

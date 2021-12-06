@@ -28,19 +28,11 @@ class CreateHistoricoTable extends Migration
         });
     }
 
-    
-    // $dataset = [
-    //     'taxa_conversao' => $taxa_conversao,
-    //     'taxa_pagamento' => $taxa_pagamento,
-    //     'moeda_destino' => $moeda_origem,
-    //     'moedas_comprada' => $valor_compra,
-    //     'total_conversao' =>  $saldo_com_descontos_taxas
-    //  ];
 
     /**
      * Reverse the migrations.
      *
-     * @return void
+     * @return void 
      */
     public function down()
     {

@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Conversor de Moedas</title>
+@extends('app.layout.base')
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
-
-
-    <link rel="stylesheet" href="{{ asset('css/main.css?122') }}">
-</head>
-<body>
-    
- <div class="container">
-   <header>
-      <div id="logo">
-         <img src="{{ asset('image/logotipo_padrao_grey.svg') }}" alt="">
-      </div>
-      <ul>
-         <li> <a href="">Home</a> </li>
-         <li> <a href="">Minhas Cotações</a> </li>
-         <li> <a href="">Taxas</a> </li>
-      </ul>
-      <div class="flex-user">
-         <span class="fa fa-user"></span> Olá, {{ $name ?? '' }} 
-      </div>
-   </header>
- </div>
+@section('conteudo')
 
  <section>
  	<div class="form-item">
@@ -37,10 +9,10 @@
  		<form class="" method="POST" action="{{ route('app.converte') }}" >
 		   @csrf
 
-
  			<div class="input-group">
 	 			<label>Moeda de origem BRL</label>
-	 			<input type="text" name="moeda_origem" value="{{ number_format($cotacao['ask'], 2, ',', '.') }}" placeholder="Moeda de Origem">
+	 			<input type="text" name="moeda_origem" value="BRL" placeholder="Moeda de Origem">
+				 {{-- <input type="text" name="moeda_origem" value="{{ number_format($cotacao['ask'], 2, ',', '.') }}" placeholder="Moeda de Origem"> --}}
  			</div>
 
  			<div class="input-group">
@@ -49,7 +21,7 @@
 				 <select name="moeda_destino">
  			   	    <option>* Selecione a moeda de destino </option>
  			   	    <option value="USD">USD</option>
- 			   	    <option value="BTC">BTC</option>
+ 			   	    <option value="EUR">EUR</option>
  			   </select>
  			</div>
 
@@ -70,8 +42,20 @@
  			<div class="input-group">
  				<label></label>
  			    <input type="submit" name="converter" class="connvert-button" value="Converter">
+				
  			</div>
  		</form>
+
  	</div>
+
+	 
+ <div class="text-context">
+   @foreach($errors->all() as $error)
+        <span>{{$error}}</span>
+   @endforeach
+
+ </div>
+
  </section>
 
+@endsection
