@@ -15,11 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('currency-conversion')" :active="request()->routeIs('currency-conversion')">
-                        {{ __('Conversão de Moeda') }}
+                    <x-nav-link :href="route('currency.conversion')" :active="request()->routeIs('currency.conversion')">
+                        {{ __('Currency Conversion') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('config-tax')" :active="request()->routeIs('config-tax')">
-                        {{ __('Configuração de Taxa') }}
+                    <x-nav-link :href="route('tax')" :active="request()->routeIs('tax')">
+                        {{ __('Tax') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -75,14 +75,14 @@
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('currency-conversion')" :active="request()->routeIs('currency-conversion')">
-                {{ __('Conversão de Moeda') }}
+            <x-responsive-nav-link :href="route('currency.conversion')" :active="request()->routeIs('currency.conversion')">
+                {{ __('Currency Conversion') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('config-tax')" :active="request()->routeIs('config-tax')">
-                {{ __('Configuração de Taxa') }}
+            <x-responsive-nav-link :href="route('tax')" :active="request()->routeIs('tax')">
+                {{ __('Tax') }}
             </x-responsive-nav-link>
         </div>
 

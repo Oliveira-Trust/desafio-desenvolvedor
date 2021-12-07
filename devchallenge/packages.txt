@@ -1,0 +1,18 @@
+ii  libapache2-mod-php7.4          7.4.3-4ubuntu2.7                   amd64        server-side, HTML-embedded scripting language (Apache 2 module)
+ii  php                            2:7.4+75                           all          server-side, HTML-embedded scripting language (default)
+ii  php-common                     2:75                               all          Common files for PHP packages
+ii  php-mysql                      2:7.4+75                           all          MySQL module for PHP [default]
+ii  php-sqlite3                    2:7.4+75                           all          SQLite3 module for PHP [default]
+ii  php-xml                        2:7.4+75                           all          DOM, SimpleXML, WDDX, XML, and XSL module for PHP [default]
+ii  php-zip                        2:7.4+75                           all          Zip module for PHP [default]
+ii  php7.4                         7.4.3-4ubuntu2.7                   all          server-side, HTML-embedded scripting language (metapackage)
+ii  php7.4-cli                     7.4.3-4ubuntu2.7                   amd64        command-line interpreter for the PHP scripting language
+ii  php7.4-common                  7.4.3-4ubuntu2.7                   amd64        documentation, examples and common module for PHP
+ii  php7.4-json                    7.4.3-4ubuntu2.7                   amd64        JSON module for PHP
+ii  php7.4-mbstring                7.4.3-4ubuntu2.7                   amd64        MBSTRING module for PHP
+ii  php7.4-mysql                   7.4.3-4ubuntu2.7                   amd64        MySQL module for PHP
+ii  php7.4-opcache                 7.4.3-4ubuntu2.7                   amd64        Zend OpCache module for PHP
+ii  php7.4-readline                7.4.3-4ubuntu2.7                   amd64        readline module for PHP
+ii  php7.4-sqlite3                 7.4.3-4ubuntu2.7                   amd64        SQLite3 module for PHP
+ii  php7.4-xml                     7.4.3-4ubuntu2.7                   amd64        DOM, SimpleXML, XML, and XSL module for PHP
+ii  php7.4-zip                     7.4.3-4ubuntu2.7                   amd64        Zip module for PHP
