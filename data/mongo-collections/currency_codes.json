@@ -1,0 +1,787 @@
+[
+    {
+        "_id" : "61ab870435f42a5cf6ee716f",
+        "type" : "AFN",
+        "label" : "Afghani do Afeganistão"
+    },
+    {
+        "_id" : "61ab870435f42a5cf6ee7172",
+        "type" : "MGA",
+        "label" : "Ariary Madagascarense"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7177",
+        "type" : "AFN",
+        "label" : "Afghani do Afeganistão"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee717a",
+        "type" : "MGA",
+        "label" : "Ariary Madagascarense"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee717d",
+        "type" : "THB",
+        "label" : "Baht Tailandês"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7180",
+        "type" : "PAB",
+        "label" : "Balboa Panamenho"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7183",
+        "type" : "ETB",
+        "label" : "Birr Etíope"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7186",
+        "type" : "BTC",
+        "label" : "Bitcoin"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7189",
+        "type" : "BOB",
+        "label" : "Boliviano"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee718c",
+        "type" : "VEF",
+        "label" : "Bolívar Venezuelano"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee718f",
+        "type" : "XBR",
+        "label" : "Brent Spot"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7192",
+        "type" : "GHS",
+        "label" : "Cedi Ganês"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7195",
+        "type" : "SVC",
+        "label" : "Colon de El Salvador"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee7198",
+        "type" : "CRC",
+        "label" : "Colón Costarriquenho"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee719b",
+        "type" : "CZK",
+        "label" : "Coroa Checa"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee719e",
+        "type" : "DKK",
+        "label" : "Coroa Dinamarquesa"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71a1",
+        "type" : "ISK",
+        "label" : "Coroa Islandesa"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71a4",
+        "type" : "NOK",
+        "label" : "Coroa Norueguesa"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71a7",
+        "type" : "SEK",
+        "label" : "Coroa Sueca"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71aa",
+        "type" : "NIO",
+        "label" : "Córdoba Nicaraguense"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71ad",
+        "type" : "SDR",
+        "label" : "DSE"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71b0",
+        "type" : "GMD",
+        "label" : "Dalasi da Gâmbia"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71b3",
+        "type" : "MKD",
+        "label" : "Denar Macedônio"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71b6",
+        "type" : "DZD",
+        "label" : "Dinar Argelino"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71b9",
+        "type" : "IQD",
+        "label" : "Dinar Iraquiano"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71bc",
+        "type" : "JOD",
+        "label" : "Dinar Jordaniano"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71bf",
+        "type" : "KWD",
+        "label" : "Dinar Kuwaitiano"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71c2",
+        "type" : "LYD",
+        "label" : "Dinar Líbio"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71c5",
+        "type" : "RSD",
+        "label" : "Dinar Sérvio"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71c8",
+        "type" : "TND",
+        "label" : "Dinar Tunisiano"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71cb",
+        "type" : "BHD",
+        "label" : "Dinar do Bahrein"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71ce",
+        "type" : "MAD",
+        "label" : "Dirham Marroquino"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71d1",
+        "type" : "AED",
+        "label" : "Dirham dos Emirados"
+    },
+    {
+        "_id" : "61ab871135f42a5cf6ee71d4",
+        "type" : "STD",
+        "label" : "Dobra São Tomé/Príncipe"
+    },
+    {
+        "_id" : "61ab87ad35f42a5cf6ee71e6",
+        "type" : "DOGE",
+        "label" : "Dogecoin"
+    },
+    {
+        "_id" : "61ab87ad35f42a5cf6ee71e9",
+        "type" : "VND",
+        "label" : "Dong Vietnamita"
+    },
+    {
+        "_id" : "61ab87ad35f42a5cf6ee71ec",
+        "type" : "AMD",
+        "label" : "Dram Armênio"
+    },
+    {
+        "_id" : "61ab87ad35f42a5cf6ee71ef",
+        "type" : "USD",
+        "label" : "Dólar Americano"
+    },
+    {
+        "_id" : "61ab87ad35f42a5cf6ee71f2",
+        "type" : "AUD",
+        "label" : "Dólar Australiano"
+    },
+    {
+        "_id" : "61ab87ad35f42a5cf6ee71f5",
+        "type" : "CAD",
+        "label" : "Dólar Canadense"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee71f8",
+        "type" : "JMD",
+        "label" : "Dólar Jamaicano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee71fb",
+        "type" : "NAD",
+        "label" : "Dólar Namíbio"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee71fe",
+        "type" : "NZD",
+        "label" : "Dólar Neozelandês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7201",
+        "type" : "TWD",
+        "label" : "Dólar Taiuanês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7204",
+        "type" : "ZWL",
+        "label" : "Dólar Zimbabuense"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7207",
+        "type" : "BSD",
+        "label" : "Dólar das Bahamas"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee720a",
+        "type" : "KYD",
+        "label" : "Dólar das Ilhas Cayman"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee720d",
+        "type" : "BBD",
+        "label" : "Dólar de Barbados"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7210",
+        "type" : "BZD",
+        "label" : "Dólar de Belize"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7213",
+        "type" : "BND",
+        "label" : "Dólar de Brunei"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7216",
+        "type" : "SGD",
+        "label" : "Dólar de Cingapura"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7219",
+        "type" : "FJD",
+        "label" : "Dólar de Fiji"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee721c",
+        "type" : "HKD",
+        "label" : "Dólar de Hong Kong"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee721f",
+        "type" : "TTD",
+        "label" : "Dólar de Trinidad"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7222",
+        "type" : "XCD",
+        "label" : "Dólar do Caribe Oriental"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7225",
+        "type" : "CVE",
+        "label" : "Escudo cabo-verdiano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7228",
+        "type" : "ETH",
+        "label" : "Ethereum"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee722b",
+        "type" : "EUR",
+        "label" : "Euro"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee722e",
+        "type" : "HUF",
+        "label" : "Florim Húngaro"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7231",
+        "type" : "BIF",
+        "label" : "Franco Burundinense"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7234",
+        "type" : "XAF",
+        "label" : "Franco CFA Central"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7237",
+        "type" : "XOF",
+        "label" : "Franco CFA Ocidental"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee723a",
+        "type" : "XPF",
+        "label" : "Franco CFP"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee723d",
+        "type" : "KMF",
+        "label" : "Franco Comorense"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7240",
+        "type" : "RWF",
+        "label" : "Franco Ruandês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7243",
+        "type" : "CHF",
+        "label" : "Franco Suíço"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7246",
+        "type" : "CHFRTS",
+        "label" : "Franco Suíço"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7249",
+        "type" : "GNF",
+        "label" : "Franco de Guiné"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee724c",
+        "type" : "DJF",
+        "label" : "Franco do Djubouti"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee724f",
+        "type" : "HTG",
+        "label" : "Gourde Haitiano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7252",
+        "type" : "PYG",
+        "label" : "Guarani Paraguaio"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7255",
+        "type" : "ANG",
+        "label" : "Guilder das Antilhas"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7258",
+        "type" : "UAH",
+        "label" : "Hryvinia Ucraniana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee725b",
+        "type" : "JPY",
+        "label" : "Iene Japonês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee725e",
+        "type" : "JPYRTS",
+        "label" : "Iene Japonês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7261",
+        "type" : "PGK",
+        "label" : "Kina Papua-Nova Guiné"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7264",
+        "type" : "LAK",
+        "label" : "Kip Laosiano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7267",
+        "type" : "HRK",
+        "label" : "Kuna Croata"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee726a",
+        "type" : "MWK",
+        "label" : "Kwacha Malauiana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee726d",
+        "type" : "ZMK",
+        "label" : "Kwacha Zambiana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7270",
+        "type" : "AOA",
+        "label" : "Kwanza Angolano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7273",
+        "type" : "MMK",
+        "label" : "Kyat de Mianmar"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7276",
+        "type" : "GEL",
+        "label" : "Lari Georgiano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7279",
+        "type" : "ALL",
+        "label" : "Lek Albanês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee727c",
+        "type" : "HNL",
+        "label" : "Lempira Hondurenha"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee727f",
+        "type" : "MDL",
+        "label" : "Leu Moldavo"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7282",
+        "type" : "RON",
+        "label" : "Leu Romeno"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7285",
+        "type" : "BGN",
+        "label" : "Lev Búlgaro"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7288",
+        "type" : "EGP",
+        "label" : "Libra Egípcia"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee728b",
+        "type" : "GBP",
+        "label" : "Libra Esterlina"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee728e",
+        "type" : "LBP",
+        "label" : "Libra Libanesa"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7291",
+        "type" : "SDG",
+        "label" : "Libra Sudanesa"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7294",
+        "type" : "SYP",
+        "label" : "Libra Síria"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7297",
+        "type" : "SZL",
+        "label" : "Lilangeni Suazilandês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee729a",
+        "type" : "LTC",
+        "label" : "Litecoin"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee729d",
+        "type" : "LSL",
+        "label" : "Loti do Lesoto"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72a0",
+        "type" : "AZN",
+        "label" : "Manat Azeri"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72a3",
+        "type" : "BAM",
+        "label" : "Marco Conversível"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72a6",
+        "type" : "MZN",
+        "label" : "Metical de Moçambique"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72a9",
+        "type" : "MNT",
+        "label" : "Mongolian Tugrik"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72ac",
+        "type" : "NGNPARALLEL",
+        "label" : "Naira Nigeriana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72af",
+        "type" : "NGN",
+        "label" : "Naira Nigeriana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72b2",
+        "type" : "NGNI",
+        "label" : "Naira Nigeriana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72b5",
+        "type" : "TRY",
+        "label" : "Nova Lira Turca"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72b8",
+        "type" : "ILS",
+        "label" : "Novo Shekel Israelense"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72bb",
+        "type" : "MRO",
+        "label" : "Ouguiya Mauritana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72be",
+        "type" : "MOP",
+        "label" : "Pataca de Macau"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72c1",
+        "type" : "ARS",
+        "label" : "Peso Argentino"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72c4",
+        "type" : "CLP",
+        "label" : "Peso Chileno"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72c7",
+        "type" : "COP",
+        "label" : "Peso Colombiano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72ca",
+        "type" : "CUP",
+        "label" : "Peso Cubano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72cd",
+        "type" : "DOP",
+        "label" : "Peso Dominicano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72d0",
+        "type" : "PHP",
+        "label" : "Peso Filipino"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72d3",
+        "type" : "MXN",
+        "label" : "Peso Mexicano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72d6",
+        "type" : "UYU",
+        "label" : "Peso Uruguaio"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72d9",
+        "type" : "BWP",
+        "label" : "Pula de Botswana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72dc",
+        "type" : "GTQ",
+        "label" : "Quetzal Guatemalteco"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72df",
+        "type" : "ZAR",
+        "label" : "Rand Sul-Africano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72e2",
+        "type" : "BRL",
+        "label" : "Real Brasileiro"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72e5",
+        "type" : "BRLT",
+        "label" : "Real Brasileiro Turismo"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72e8",
+        "type" : "QAR",
+        "label" : "Rial Catarense"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72eb",
+        "type" : "IRR",
+        "label" : "Rial Iraniano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72ee",
+        "type" : "OMR",
+        "label" : "Rial Omanense"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72f1",
+        "type" : "KHR",
+        "label" : "Riel Cambojano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72f4",
+        "type" : "MYR",
+        "label" : "Ringgit Malaio"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72f7",
+        "type" : "YER",
+        "label" : "Riyal Iemenita"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72fa",
+        "type" : "SAR",
+        "label" : "Riyal Saudita"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee72fd",
+        "type" : "BYN",
+        "label" : "Rublo Bielorrusso"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7300",
+        "type" : "RUBTOM",
+        "label" : "Rublo Russo"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7303",
+        "type" : "RUBTOD",
+        "label" : "Rublo Russo"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7306",
+        "type" : "RUB",
+        "label" : "Rublo Russo"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7309",
+        "type" : "MVR",
+        "label" : "Rufiyaa Maldiva"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee730c",
+        "type" : "IDR",
+        "label" : "Rupia Indonésia"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee730f",
+        "type" : "INR",
+        "label" : "Rúpia Indiana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7312",
+        "type" : "MUR",
+        "label" : "Rúpia Mauriciana"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7315",
+        "type" : "NPR",
+        "label" : "Rúpia Nepalesa"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7318",
+        "type" : "PKR",
+        "label" : "Rúpia Paquistanesa"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee731b",
+        "type" : "LKR",
+        "label" : "Rúpia de Sri Lanka"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee731e",
+        "type" : "SCR",
+        "label" : "Rúpias de Seicheles"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7321",
+        "type" : "KES",
+        "label" : "Shilling Queniano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7324",
+        "type" : "SOS",
+        "label" : "Shilling Somaliano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7327",
+        "type" : "TZS",
+        "label" : "Shilling Tanzaniano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee732a",
+        "type" : "UGX",
+        "label" : "Shilling Ugandês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee732d",
+        "type" : "PEN",
+        "label" : "Sol do Peru"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7330",
+        "type" : "KGS",
+        "label" : "Som Quirguistanês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7333",
+        "type" : "UZS",
+        "label" : "Som Uzbequistanês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7336",
+        "type" : "TJS",
+        "label" : "Somoni do Tajiquistão"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7339",
+        "type" : "TMT",
+        "label" : "TMT"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee733c",
+        "type" : "BDT",
+        "label" : "Taka de Bangladesh"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee733f",
+        "type" : "KZT",
+        "label" : "Tengue Cazaquistanês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7342",
+        "type" : "VUV",
+        "label" : "Vatu de Vanuatu"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7345",
+        "type" : "KRW",
+        "label" : "Won Sul-Coreano"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7348",
+        "type" : "XAGG",
+        "label" : "XPrata"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee734b",
+        "type" : "XRP",
+        "label" : "XRP"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee734e",
+        "type" : "CNY",
+        "label" : "Yuan Chinês"
+    },
+    {
+        "_id" : "61ab87ba35f42a5cf6ee7351",
+        "type" : "CNH",
+        "label" : "Yuan chinês offshore"
+    },
+    {
+        "_id" : "61ab87c935f42a5cf6ee7357",
+        "type" : "PLN",
+        "label" : "Zlóti Polonês"
+    }
+]

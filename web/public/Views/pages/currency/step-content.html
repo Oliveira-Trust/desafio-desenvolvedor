@@ -1,0 +1,39 @@
+<div class="bs-stepper-content">
+
+    <!-- Moedas para conversão -->
+    <div id="currency-part" class="content" role="tabpanel" aria-labelledby="currency-part-trigger">
+        <div class="form-group">
+            <label for="codein">De: Real Brasileiro</label>
+            <input type="text" disabled="disabled" value="BRL" class="form-control" id="codein"
+                placeholder="Real Brasileiro">
+        </div>
+
+        <div class="form-group">
+            <label for="codeout">Para: Moeda de Conversão</label>
+            <select id="codeout-select" class="form-control select2bs4" style="width: 100%;"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="codeout">Valor para Conversão</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">R$</span>
+                </div>
+                <input id="codein-value" required placeholder="5.000,00" type="text" class="form-control">
+            </div>
+        </div>
+
+
+        <button id="next" class="btn btn-primary">Próximo</button>
+    </div>
+
+    <!-- Formas de Pagamento -->
+    <div id="payment-part" class="content" role="tabpanel" aria-labelledby="payment-part-trigger">
+
+        <div class="form-group">
+            {% include /pages/currency/payment-method.html %}
+        </div>
+
+        <button class="btn btn-primary" onclick="stepper.previous()">Voltar</button>
+    </div>
+</div>

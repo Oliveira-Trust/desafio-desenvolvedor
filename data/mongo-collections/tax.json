@@ -1,0 +1,16 @@
+[
+    {
+        "_id" : "61ab895e35f42a5cf6ee73a9",
+        "label" : "Aplicar taxa de 2% pela conversão para valores abaixo de R$ 3.000,00",
+        "tax_percent" : 2,
+        "min" : "1000",
+        "max" : "3000"
+    },
+    {
+        "_id" : "61ab897a35f42a5cf6ee73b0",
+        "label" : "Aplicar taxa de 1% para valores maiores que R$ 3.000,00",
+        "tax_percent" : 1,
+        "min" : "3000",
+        "max" : "100000"
+    }
+]

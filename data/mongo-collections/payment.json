@@ -1,0 +1,14 @@
+[
+    {
+        "_id" : "61aae51ae0171022ed9b1f7c",
+        "type" : 1,
+        "label" : "Boleto",
+        "tax" : "2.3"
+    },
+    {
+        "_id" : "61aae545e0171022ed9b1fa8",
+        "type" : 2,
+        "label" : "Cartão de Crédito",
+        "tax" : "1.3"
+    }
+]

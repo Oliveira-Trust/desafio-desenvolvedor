@@ -1,0 +1,16 @@
+{
+    "_id" : "61ac48f33c422d4ca56aafc2",
+    "codein" : "BRL",
+    "code" : "USD",
+    "bid" : "5.6532",
+    "description" : "Dólar Americano/Real Brasileiro",
+    "value" : 5000.0,
+    "tax" : {
+        "convert" : 50.0,
+        "payment" : 72.5
+    },
+    "value_with_tax" : 4877.5,
+    "total_tax" : 122.5,
+    "value_converted" : 862.785678907521,
+    "payment" : "Boleto"
+}

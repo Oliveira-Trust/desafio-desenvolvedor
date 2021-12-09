@@ -1,0 +1,63 @@
+<div class="col-md-6">
+    <h5>Resumo do Pedido</h5>
+
+    <div class="card p-4">
+
+        <p class="lead">{{ date("F j, Y, g:i a") }}</p>
+
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>Forma de pagamento:</th>
+                    <td>
+                        <span id="payment-type"> -- </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Taxa da forma de pagamento:</th>
+                    <td>
+                        <span id="payment-tax"> -- </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Taxa de Conversão:</th>
+                    <td>
+                        <span id="convert-tax"> -- </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Convertendo de:</th>
+                    <td>
+                        <span id="codein-codeout"> -- </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Valor para conversão:</th>
+                    <td>
+                        <span id="convert-value"> -- </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Valor para conversão <em>(taxas descontadas)</em>:</th>
+                    <td>
+                        <span id="convert-total"> -- </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Valor Convertido:</th>
+                    <td>
+                        <span id="codein-codeout-value"> -- </span> - <span id="codeout"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row no-print">
+            <div class="col-12">
+                <button id="calculate" type="button" class="btn btn-success float-right">
+                    <i class="far fa-credit-card"></i> Realizar Cotação
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

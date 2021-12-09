@@ -1,0 +1,30 @@
+{% include /partials/header.html %}
+
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        {% include /components/preloader.html %}
+
+        <!-- Navbar -->
+        {% include /components/navbar.html %}
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        {% include /components/main_sidebar.html %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            {% include /components/content_header.html %}
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    {% yield content %}
+                </div><!-- /.container-fluid -->
+            </section>
+        <!-- /.content -->
+    </div>
+
+{% include /partials/footer.html %}

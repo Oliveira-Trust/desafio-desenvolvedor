@@ -1,0 +1,26 @@
+# Global
+.*.swp
+.DS_Store
+
+# Application
+web/app/composer.lock
+web/app/.phpunit.result.cache
+web/app/vendor/
+web/app/doc/
+web/app/report/
+web/app/.env
+web/public/Views/Cache/*
+data/db/mysql
+data/db/mongodb
+.env
+
+# PHPStorm
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
+# VSCode
+.vscode/
+
+# SSL Certs
+etc/ssl/

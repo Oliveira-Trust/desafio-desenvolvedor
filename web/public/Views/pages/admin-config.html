@@ -1,0 +1,51 @@
+{% extends /layouts/template.html %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">Atualizar Taxas</h3>
+            </div>
+            <div class="card-body">
+
+                <!-- Taxa 1 -->
+                <div class="form-group">
+                    <label id="tax-1-label"></label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-percent"></i></span>
+                        </div>
+                        <input id="tax-1-value" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <!-- Taxa 2 -->
+                <div class="form-group">
+                    <label id="tax-2-label"></label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-percent"></i></span>
+                        </div>
+                        <input id="tax-2-value" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button id="updateTax" type="button" class="btn btn-success float-right">
+                            <i class="far fa-save"></i> Atualizar taxas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

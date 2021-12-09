@@ -1,0 +1,37 @@
+<footer class="main-footer">
+    <strong>Copyright &copy; 2021.</strong>
+</footer>
+
+<aside class="control-sidebar control-sidebar-dark"></aside>
+</div>
+<script src="/assets/plugins/jquery/jquery.min.js"></script>
+<script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/dist/js/adminlte.min.js"></script>
+<script src="/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<script src="/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
+<script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="/assets/plugins/toastr/toastr.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+    });
+
+    const API_URL = "{{ env('APP_URL') }}";
+    const USER_ID = "{{ app()->session()->getUserData('user_id') }}";
+
+</script>
+
+<script src="/assets/js/currency.js"></script>
+<script src="/assets/js/history.js"></script>
+</body>
+
+</html>

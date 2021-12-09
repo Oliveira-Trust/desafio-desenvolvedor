@@ -1,0 +1,111 @@
+<div class="col-md-6">
+    <h5>Métodos de Pagamento</h5>
+    <div class="accordion" id="accordionPayment">
+        <!-- Pagamento Boleto -->
+        <div class="card">
+            <div class="card-header p-0" id="headingTwo">
+                <h2 class="mb-0">
+                    <button
+                        id="boleto-button"
+                        class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapseTwo"
+                        data-value="1"
+                        data-label="Boleto"
+                        aria-expanded="false"
+                        aria-controls="collapseTwo">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span>Boleto</span>
+                            <img src="/assets/dist/img/payment/boleto.png">
+                        </div>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPayment">
+                <div class="card-footer">
+                    Taxa para pagamento com boleto: <span class="payment-percent-tax"></span> %
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagamento Cartão de Crédito -->
+        <div class="card">
+            <div class="card-header p-0">
+                <h2 class="mb-0">
+                    <button
+                        id="credit-card-button"
+                        class="btn btn-light btn-block text-left p-3 rounded-0"
+                        data-toggle="collapse"
+                        data-target="#collapseOne"
+                        data-value="2"
+                        data-label="Cartão de crédito"
+                        aria-expanded="true"
+                        aria-controls="collapseOne">
+
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span>Cartão de crédito</span>
+                            <div class="icons">
+                                <img src="/assets/dist/img/credit/american-express.png" width="35">
+                                <img src="/assets/dist/img/credit/cirrus.png" width="35">
+                                <img src="/assets/dist/img/credit/mastercard.png" width="35">
+                                <img src="/assets/dist/img/credit/paypal2.png" width="35">
+                                <img src="/assets/dist/img/credit/visa.png" width="35">
+                            </div>
+                        </div>
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionPayment">
+                <div class="card-body payment-card-body">
+                    <div class="form-group">
+                        <label>Número do cartão:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
+                            </div>
+                            <input type="text" class="form-control" data-inputmask='"mask": "9999 9999 9999 9999"' data-mask>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Data de Expiração:</label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="mm/yy" data-mask>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>CVV:</label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" data-inputmask='"mask": "999"' data-mask>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <span class="text-muted certificate-text">
+                        <i class="fas fa-lock"></i>
+                        Você está em um ambiente seguro.
+                    </span>
+                </div>
+                <div class="card-footer">
+                    Taxa para pagamento com Cartão de crédito: <span class="payment-percent-tax"></span> %
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

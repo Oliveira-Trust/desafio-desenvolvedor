@@ -1,0 +1,45 @@
+{% extends /layouts/template.html %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Histórico de pedido de conversão de moedas</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="historyTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>De</th>
+                            <th>Para</th>
+                            <th>Cotação</th>
+                            <th>Descrição</th>
+                            <th>Valor para conversão</th>
+                            <th>Valor Convertido</th>
+                            <th>Taxas</th>
+                            <th>Forma de Pagamento</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>De</th>
+                            <th>Para</th>
+                            <th>Cotação</th>
+                            <th>Descrição</th>
+                            <th>Valor para conversão</th>
+                            <th>Valor Convertido</th>
+                            <th>Taxas</th>
+                            <th>Forma de Pagamento</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+{% endblock %}
