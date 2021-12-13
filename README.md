@@ -16,6 +16,8 @@ docker-compose exec app php artisan user:seed \
   --name="Oliveira Trust"\
   --email="email@oliveiratrust.com"\
   --password="1234"
+docker-compose exec app php artisan view:cache
+docker-compose exec app php artisan route:cache
 docker-compose exec app composer horizon
 ```
 * **Caso esteja no Linux, é necessário rodar o comando com privilégios de administrador** \
