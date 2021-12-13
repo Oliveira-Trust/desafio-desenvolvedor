@@ -28,4 +28,4 @@ Route::middleware('auth:web')->group(function () {
 
 
 Route::get('home', 'Web\HomeController@index')->name('home');
-Route::get('/', fn () => Redirect::to('home'));
+Route::get('/', 'Web\HomeController@index');
