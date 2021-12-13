@@ -1,0 +1,4 @@
+/mongo/data
+/redis/data
+
+!.gitkeep

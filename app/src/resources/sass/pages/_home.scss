@@ -1,0 +1,67 @@
+@import '../abstracts/variables';
+
+.currency-converter {
+    padding: 20px;
+    grid-area: main;
+
+    &-title {
+        margin-bottom: 40px;
+    }
+
+    &-form {
+        select[class$="currency"] {
+            display: block;
+            width: 50%;
+        }
+
+        > div {
+            display: flex;
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                flex-basis: 400px;
+            }
+        }
+
+        &-origin, &-destination {
+            &-label {
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+
+            &-input {
+                height: 40px;
+                margin-top: 10px;
+                width: 100%;
+                padding-left: 10px;
+            }
+        }
+
+        &-destination, &-payment-method-box, &-submit {
+            margin-left: 50px;
+        }
+
+        &-payment-method-box {
+            justify-content: space-between;
+
+            label {
+                margin-top: 10px;
+                font-weight: bold;
+            }
+        }
+
+        &-submit {
+            align-self: flex-end;
+        }
+    }
+
+    &-result {
+        margin-top: 60px;
+
+        &-list {
+            margin-left: 40px;
+            color: $black;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.page-header {
+    padding: 10px 20px;
+    border-bottom: 1px solid $gray;
+    grid-area: header;
+
+    &-title {
+        display: inline-block;
+    }
+
+    &-logout {
+        float: right;
+
+        button {
+            width: 90px;
+            height: 40px;
+        }
+    }
+}

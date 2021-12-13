@@ -1,0 +1,34 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Icons
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Datatables
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+
+// Select2
+@import '~select2/dist/css/select2.min.css';
+
+// Vendor
+@import 'vendor/select2';
+
+// Abstracts
+@import 'abstracts/variables';
+
+// Base
+@import 'base/base';
+@import 'base/typography';
+
+// Components
+@import 'components/button';
+
+// Layout
+@import 'layout/header';
+@import 'layout/sidebar';

@@ -1,0 +1,65 @@
+.page-sidebar {
+    height: 100vh;
+    border-right: 1px solid $gray;
+    display: flex;
+    flex-direction: column;
+    grid-area: sidebar;
+
+    &-logo {
+        height: 100px;
+        background-color: red;
+    }
+
+    &-menu {
+        height: 100%;
+        padding: 20px 0;
+
+        &-list {
+            list-style: none;
+        }
+
+        &-list-item {
+            margin-bottom: 20px;
+
+            &-link {
+                display: inline-block;
+                height: 100%;
+                width: 100%;
+                padding: 10px 20px;
+                color: $black;
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                &-icon {
+                    font-size: 25px;
+                }
+
+                &-label {
+                    margin-left: 10px;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: $black;
+
+                a {
+                    color: $white;
+                }
+            }
+
+            &:nth-child(1) span {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    &-chat {
+        height: 100px;
+        background-color: blue;
+    }
+}

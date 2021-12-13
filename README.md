@@ -1,48 +1,55 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Pré-requisitos #
+* [Docker](https://docs.docker.com/get-docker/ "Docker")
+* [Docker Compose](https://docs.docker.com/compose/install/ "Docker Compose")
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+# Iniciar aplicação #
+Basta acessar **localhost** após rodar os comandos de setup da aplicação abaixo:
+```shell
+docker-compose down
+docker-compose up -d --build
+docker-compose exec app npm install
+docker-compose exec app npm run prod
+docker-compose exec app composer install
+docker-compose exec app php artisan migrate:fresh --force
+docker-compose exec app php artisan user:seed \
+  --amount=1 \
+  --name="Oliveira Trust"\
+  --email="email@oliveiratrust.com"\
+  --password="1234"
+docker-compose exec app composer horizon
+```
+* **Caso esteja no Linux, é necessário rodar o comando com privilégios de administrador** \
+* **O dotenv já está populado com algumas variáveis de ambiente core para setup facilitado**
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+# Credenciais de acesso #
+### Aplicação ###
+E-mail: email@oliveiratrust.com \
+Senha: 1234
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+### Redis GUI ###
+Usuário: root \
+Senha: 1234
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+# Notificação por e-mail #
+Para receber notificação por e-mail, basta cadastrar o SMTP desejado no dotenv da aplicação localizado em /app/src/.env
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+# Comandos Personalizados #
+Foi criado um comando personalizado para criação de usuário via seed, porém com os dados informados ao invés de aleatórios. \
+Para criar um usuário pasta rodar o comando abaixo, trocando os valores para os desejados:
+```shell
+docker-compose exec app php artisan user:seed \
+    --amount=1 \
+    --name="Oliveira Trust"\
+    --email="email@oliveiratrust.com"\
+    --password="1234"
+```
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+# Serviços #
+### Horizon ###
+O serviço de monitoramento de jobs do Laravel pode ser acessado através do endpoint **/horizon** após o usuário já estar autenticado na aplicação
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+### Mongo Express ###
+A GUI do MongoDB pode estar sendo acessada em **http://localhost:8081**
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
-
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
-
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
-
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+### Redis Commander ###
+A GUI do Redis pode estar sendo acessada em **http://localhost:8090**
