@@ -5,8 +5,10 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "8.0",
-        "laravel/lumen-framework": "^8.3.1"
+        "php": "^7.3|^8.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "laravel/lumen-framework": "^8.3.1",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -15,7 +17,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Converter\\": "app/",
+            "App\\": "app/",
+            "Converter\\": "app/Modules/Converter",
+            "AwesomeApi\\": "app/Modules/AwesomeApi",
+            "Auth\\": "app/Modules/Auth",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

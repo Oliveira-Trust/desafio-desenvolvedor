@@ -10,27 +10,21 @@ services:
     volumes:
       - .data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=teste
     networks:
       - converter-network
   php:
     build: .
+    container_name: desafio_trust
     volumes:
       - ./:/var/www/html
     ports: 
       - 8080:80
     networks:
       - converter-network
-  redis:
-    image: redis:alpine
-    restart: always
-    volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
-      - .redis:/data
-    ports:
-      - 6379:6379
-    networks:
-      - converter-network
+    depends_on:
+      - mysql
 networks:
   converter-network:
     driver: bridge

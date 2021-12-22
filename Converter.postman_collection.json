@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "c374875c-1ebb-4d9d-9c94-efbb6017b217",
+		"name": "Converter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getCurrencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currency\": \"USD\",\n    \"value\": 1000,\n    \"type\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/converter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"converter"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
