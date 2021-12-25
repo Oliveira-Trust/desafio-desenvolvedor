@@ -20,19 +20,59 @@ class Transaction
     private $id;
     /**
      * @ORM\ManyToOne(targetEntity="Currency")
-     * @ORM\JoinColumn(name="origin_currency_id", referencedColumnName="id")
      */
     private $originCurrency;
     /**
      * @ORM\ManyToOne(targetEntity="Currency")
-     * @ORM\JoinColumn(name="destination_currency_id", referencedColumnName="id")
      */
     private $destinationCurrency;
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Payment")
+     */
     private $paymentType;
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="transations")
      */
     private $user;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getOriginCurrency()
+    {
+        return $this->originCurrency;
+    }
+    public function getDestinationCurrency()
+    {
+        return $this->destinationCurrency;
+    }
+    public function getPaymentType()
+    {
+        return $this->paymentType;
+    }
+    public function getUser()
+    {
+        return $this->user;
+    }
+    public function setOriginCurrency(Currency $originCurrency)
+    {
+        $this->originCurrency = $originCurrency;
+        return $this;
+    }
+    public function setDestinationCurrency(Currency $destinationCurrency)
+    {
+        $this->destinationCurrency = $destinationCurrency;
+        return $this;
+    }
+    public function setPayment(Payment $payment)
+    {
+        $this->payment = $payment;
+        return $this;
+    }
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+        return $this;
+    }
 }
