@@ -4,28 +4,39 @@ declare(strict_types=1);
 
 namespace App\Domain\UseCases;
 
+use App\Domain\Contracts\UserRepositoryInterface;
 use App\Domain\Entities\User;
-use App\Helpers\EntityManagerFactory;
 use Exception;
 
 class CreateUser
 {
-    private array $dataUser;
+    private $dataUser;
+    private $repository;
 
-    public function __construct(array $data, EntityManagerFactory $entityFactor)
+    public function __construct(array $data, UserRepositoryInterface $repository)
     {
         $this->dataUser = $data;
-        $this->entityManager = $entityFactor->getEntityManager();
+        $this->repository = $repository;
     }
-    public function execute(): ?User
+    public function execute()
     {
-        $user = new User;
+        $data = $this->dataUser;
+        if(empty($data)){
+            throw new Exception('It is not possible to create a user without data');
+        }
+        $user = new User();
         foreach($this->dataUser as $key => $value) {
             if(!$value) {
                 throw new Exception("Field {$key} is Empty.");
             }
             $user->{'set'.ucfirst($key)}($value);
         }
+        $userExists = $this->repository->getByUsername($user->getUsername());
+        if($userExists){
+            throw new Exception('Usuario já Cadastrado.');
+        }
+        $user = $this->repository->save($user);
+        
         return $user;
     }
 }
