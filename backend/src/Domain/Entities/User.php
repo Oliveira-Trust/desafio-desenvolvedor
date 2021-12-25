@@ -34,8 +34,7 @@ class User
      */
     protected $password;
      /**
-     * @ORM\ManyToOne(targetEntity="Transaction")
-     * @ORM\JoinColumn(name="transaction_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="user")
      */
     protected $transactions;
       /**

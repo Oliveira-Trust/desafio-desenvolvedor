@@ -30,5 +30,9 @@ class Transaction
     private $destinationCurrency;
 
     private $paymentType;
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="transations")
+     */
+    private $user;
 
 }
