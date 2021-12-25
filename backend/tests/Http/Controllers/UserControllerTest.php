@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace App\Test\Http\Controllers;
 
-use App\Entities\User;
+use App\Domain\Entities\User;
 use App\Http\Controllers\UserController;
 use App\Repositories\UserRepository;
 use App\Service\Jwt\Jwt;

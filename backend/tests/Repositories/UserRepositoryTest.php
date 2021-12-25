@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Test\Repositories;
 
-use App\Entities\User;
+use App\Domain\Entities\User;
 use App\Helpers\EntityManagerFactory;
 use App\Repositories\UserRepository;
 use Doctrine\ORM\AbstractQuery;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Entities\User;
+use App\Domain\Entities\User;
 use App\Helpers\Validate;
 use App\Http\Controller;
 use Slim\Http\Request;

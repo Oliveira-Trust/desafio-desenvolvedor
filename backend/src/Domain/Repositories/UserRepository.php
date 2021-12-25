@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Repositories;
 
-use App\Entities\User;
+use App\Domain\Entities\User;
 use App\Helpers\EntityManagerFactory;
 
 class UserRepository extends \Doctrine\ORM\EntityRepository
@@ -16,7 +16,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     }
     public function getById(int $id)
     {
-        $query = $this->entityManager->createQuery('SELECT u FROM App\Entities\User u WHERE u.id = :paramid');
+        $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\User u WHERE u.id = :paramid');
         $query->setParameter('paramid', $id);
         return $query->getResult()[0] ?? false;
     }
@@ -27,7 +27,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     }
     public function getAll(): array
     {
-        $query = $this->entityManager->createQuery('SELECT u FROM App\Entities\User u');
+        $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\User u');
         $results = $query->getResult();
         $response = [];
         foreach ($results as $user) {
@@ -37,7 +37,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     }
     public function getByUsername(string $username)
     {
-        $query = $this->entityManager->createQuery('SELECT u FROM App\Entities\User u WHERE u.username = :username');
+        $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\User u WHERE u.username = :username');
         $query->setParameter('username', $username);
         return $query->getResult()[0] ?? false;
     }
