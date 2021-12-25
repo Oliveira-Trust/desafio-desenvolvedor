@@ -33,7 +33,7 @@ class CreateUser
         }
         $userExists = $this->repository->getByUsername($user->getUsername());
         if($userExists){
-            throw new Exception('Usuario já Cadastrado.');
+            throw new Exception('User already registered.');
         }
         $user = $this->repository->save($user);
         
