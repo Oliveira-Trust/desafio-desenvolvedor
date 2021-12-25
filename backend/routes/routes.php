@@ -7,8 +7,9 @@ require_once __DIR__ . '/configRoutes.php';
 $app->get('/', HomeController::class . ':index');
 
 $app->get('/users', UserController::class . ':index');
-$app->post('/users', UserController::class . ':store');
-$app->delete('/users', UserController::class . ':destroy');
-$app->put('/users', UserController::class . ':update');
 
-$app->post('/users', UserController::class . ':login');
+$app->delete('/users/{id}', UserController::class . ':destroy');
+$app->put('/users/{id}', UserController::class . ':update');
+
+$app->post('/singup', UserController::class . ':store');
+$app->post('/singin', UserController::class . ':login');
