@@ -6,7 +6,7 @@ namespace App\Domain\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repositories\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Domain\Repositories\UserRepository")
  * @ORM\Table(name="users")
  */
 class User
@@ -28,7 +28,16 @@ class User
     /**
      * @ORM\Column(type="string")
      */
+    protected $email;
+    /**
+     * @ORM\Column(type="string")
+     */
     protected $password;
+     /**
+     * @ORM\ManyToOne(targetEntity="Transaction")
+     * @ORM\JoinColumn(name="transaction_id", referencedColumnName="id")
+     */
+    protected $transactions;
       /**
      * Get id.
      *
@@ -52,7 +61,27 @@ class User
 
         return $this;
     }
-
+    /**
+     * Get email.
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    /**
+     * Set email.
+     *
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
     /**
      * Get name.
      *

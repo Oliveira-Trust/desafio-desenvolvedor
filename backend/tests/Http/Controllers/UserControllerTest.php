@@ -7,7 +7,7 @@ namespace App\Test\Http\Controllers;
 
 use App\Domain\Entities\User;
 use App\Http\Controllers\UserController;
-use App\Repositories\UserRepository;
+use App\Domain\Repositories\UserRepository;
 use App\Service\Jwt\Jwt;
 use PHPUnit\Framework\TestCase;
 use Slim\Http\Request;
