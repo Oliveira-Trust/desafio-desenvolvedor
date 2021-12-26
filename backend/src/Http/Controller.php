@@ -20,10 +20,10 @@ abstract class Controller
     {
         $token = $request->getHeader('Authorization') ? $request->getHeader('Authorization')[0] : null;
         if( empty($token) ){
-            return $response->withJson(["code"=>"erro", "message"=>"Acesso Negado"]);
+            throw new \Exception("Acesso Negado");
         }
         if(!$auth->validate($token) ){
-            return $response->withJson(["code"=>"erro", "message"=>"Acesso Negado"]);
+            throw new \Exception("Dados de acesso inválidos.");
         }
     }
     public function getContainer($containerName)

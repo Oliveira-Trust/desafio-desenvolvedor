@@ -40,7 +40,7 @@ class UserRepositoryDatabase extends \Doctrine\ORM\EntityRepository implements R
     {
         $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\User u WHERE u.username = :username');
         $query->setParameter('username', $username);
-        return $query->getResult()[0] ?? null;
+        return $query->getOneOrNullResult();
     }
     public function save(User $user): User
     {

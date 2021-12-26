@@ -11,8 +11,10 @@ $app->post('/exchange/{userid}', HomeController::class . ':exchenge');
 
 $app->get('/users', UserController::class . ':index');
 
-$app->delete('/users/{id}', UserController::class . ':destroy');
-$app->put('/users/{id}', UserController::class . ':update');
+$app->post('/users/delete/{id}', UserController::class . ':destroy');
+
+$app->post('/users/update/{id}', UserController::class . ':update');
 
 $app->post('/singup', UserController::class . ':store');
+
 $app->post('/singin', UserController::class . ':login');

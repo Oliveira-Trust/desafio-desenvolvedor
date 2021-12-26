@@ -35,8 +35,7 @@ class CreateUser
         if($userExists){
             throw new Exception('User already registered.');
         }
-        $user = $this->repository->save($user);
         
-        return $user;
+        return $this->repository->save($user);
     }
 }

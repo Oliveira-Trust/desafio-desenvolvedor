@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace App\Helpers;
 
-class Validate
+use App\Domain\Contracts\Helpers\ValidateInterface;
+
+class Validate implements ValidateInterface
 {
-    public function isEmptyArray(Array $array)
+    public function isEmptyArray(Array $array): bool
     {
-        $isEmpty = false;
-        foreach($array as $value){
-            if($value === ''){
-                $isEmpty = true;
-            }
+        if(count($array) == 0) {
+            return true;
         }
-        return $isEmpty;
+        return false;
     }
-    public function unsetEmptyData(Array $array)
+    public function unsetEmptyData(array $array): array
     {
         foreach($array as $key => $value){
             if($value === ''){

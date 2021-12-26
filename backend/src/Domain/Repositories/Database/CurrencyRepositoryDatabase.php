@@ -20,11 +20,6 @@ class CurrencyRepositoryDatabase extends \Doctrine\ORM\EntityRepository implemen
         $query->setParameter('paramid', $id);
         return $query->getOneOrNullResult();
     }
-    public function delete(Currency $Currency):void
-    {
-        $this->entityManager->remove($Currency);
-        $this->entityManager->flush();
-    }
     public function getAll(): array
     {
         $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\Currency u');
