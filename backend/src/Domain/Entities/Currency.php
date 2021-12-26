@@ -7,7 +7,7 @@ namespace App\Domain\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Domain\Repositories\CurrencyRepository")
+ * @ORM\Entity(repositoryClass="App\Domain\Contracts\Repository\CurrencyRepositoryInterface")
  * @ORM\Table(name="currency")
  */
 class Currency
@@ -78,11 +78,25 @@ class Currency
         $this->name = $name;
         return $this;
     }
-    
+    public function setSalePrice(float $salePrice)
+    {
+        $this->salePrice = $salePrice;
+        return $this;
+    }
     public function setPurchasePrice(float $purchasePrice): Currency
     {
         $this->purchasePrice = $purchasePrice;
         return $this;
+    }
+    public function toArray()
+    {
+        $array = [];
+        $keys = array_keys(get_class_vars(get_class($this)));
+        foreach($keys as $key ){ 
+            $method = 'get'.str_replace(" ", '', ucwords(str_replace('_', ' ', $key))) ;
+            $array[$key] = $this->$method();
+        }
+        return $array;
     }
     public function __toString()
     {

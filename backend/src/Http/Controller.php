@@ -15,7 +15,6 @@ abstract class Controller
     public function __construct(\Slim\Container $c)
     {
         $this->container = $c;
-        $this->http = $c->get('http');
     }
     public function isLogged(Request $request, Response $response, Jwt $auth )
     {

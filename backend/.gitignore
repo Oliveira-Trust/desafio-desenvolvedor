@@ -16,8 +16,6 @@ db/proxies
 .vscode
 docker-compose.yml
 
-Database/
-
 files-cache/*
 .phpunit.result.cache
 # Config/config.php

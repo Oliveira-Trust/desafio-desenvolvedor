@@ -3,17 +3,19 @@ declare(strict_types=1);
 
 namespace App\Helpers;
 
-class HttpRequest 
+use App\Domain\Contracts\Http\HttpRequestInterface;
+
+class HttpRequest implements HttpRequestInterface
 {
-    private $url;
+    protected $url;
     public function __construct(array $arr)
     {
         $this->url = $arr['url'];
     }
-    public function search($params = 'all', $method = 'GET')
+    public function request($params = '', $method = 'GET')
     {
         $curl = curl_init();
-        curl_setopt_array($curl, [
+        $options = [
             CURLOPT_URL => $this->url.$params,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
@@ -21,9 +23,14 @@ class HttpRequest
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => $method,
-            ]);
-            $response = curl_exec($curl);
-            curl_close($curl);            
-            return json_decode($response);
+        ];
+        curl_setopt_array($curl, $options);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        return json_decode($response);
+    }
+    public function setUrlRequest(string $url)
+    {
+        $this->url = $url;
     }
 }
