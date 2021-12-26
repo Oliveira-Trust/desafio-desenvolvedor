@@ -2,6 +2,7 @@
 
 namespace CurrencyConverter\Application\Http\Controllers;
 
+use CurrencyConverter\Domain\Currency\Services\CurrencyService;
 use Illuminate\Contracts\Support\Renderable;
 
 /**
@@ -11,14 +12,16 @@ use Illuminate\Contracts\Support\Renderable;
  */
 class Home extends Controller
 {
+    private CurrencyService $service;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CurrencyService $service)
     {
-
+        $this->service = $service;
     }
 
     /**
@@ -28,6 +31,8 @@ class Home extends Controller
      */
     public function index()
     {
-        return view('home');
+        $availablesCombinations = $this->service->listAvailablesCombinations();
+
+        return view('home', compact('availablesCombinations'));
     }
 }

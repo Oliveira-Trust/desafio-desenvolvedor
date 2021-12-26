@@ -20,6 +20,9 @@
                                     <label for="destiny_currency">Moeda de destino:</label>
                                     <select id="destiny_currency" class="form-select" style="width: 100%">
                                         <option value="">Selecione</option>
+                                        @foreach($availablesCombinations as $key => $value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
