@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f26626e5-2c8d-45ed-b591-e2af6d47f034" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/currency-converter/app/Providers/FortifyServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/currency-converter/app/Providers/FortifyServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/currency-converter/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/currency-converter/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/currency-converter/config/fortify.php" beforeDir="false" afterPath="$PROJECT_DIR$/currency-converter/config/fortify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/currency-converter/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/currency-converter/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/currency-converter/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/currency-converter/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/currency-converter/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/currency-converter/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640531772352</updated>
-      <workItem from="1640531773423" duration="5749000" />
+      <workItem from="1640531773423" duration="6171000" />
     </task>
     <task id="LOCAL-00001" summary="add - namespace">
       <created>1640534489809</created>
@@ -87,7 +84,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640536893670</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix - auth config">
+      <created>1640538091915</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640538091915</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add - livewire/livewire">
+      <created>1640538189365</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1640538189365</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,18 +119,21 @@
     <MESSAGE value="add - namespace" />
     <MESSAGE value="add - laravel/ui bootstrap auth" />
     <MESSAGE value="add - laravel/fortify" />
-    <option name="LAST_COMMIT_MESSAGE" value="add - laravel/fortify" />
+    <MESSAGE value="fix - auth config" />
+    <MESSAGE value="add - livewire/livewire" />
+    <MESSAGE value="add - nunomaduro/phpinsights" />
+    <option name="LAST_COMMIT_MESSAGE" value="add - nunomaduro/phpinsights" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2198" y="183" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1640536700352">
       <screen x="1920" y="146" width="1366" height="768" />
     </state>
     <state x="2198" y="183" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.146.1366.768/0.173.1920.697@1920.146.1366.768" timestamp="1640536700352" />
-    <state x="2315" y="243" width="605" height="622" key="Vcs.Push.Dialog.v2" timestamp="1640536895801">
+    <state x="2315" y="241" width="605" height="629" key="Vcs.Push.Dialog.v2" timestamp="1640538190736">
       <screen x="1920" y="146" width="1366" height="768" />
     </state>
     <state x="555" y="261" width="800" height="564" key="Vcs.Push.Dialog.v2/1920.146.1366.768/0.173.1920.697@0.173.1920.697" timestamp="1640534496571" />
-    <state x="2315" y="243" width="605" height="622" key="Vcs.Push.Dialog.v2/1920.146.1366.768/0.173.1920.697@1920.146.1366.768" timestamp="1640536895801" />
+    <state x="2315" y="241" width="605" height="629" key="Vcs.Push.Dialog.v2/1920.146.1366.768/0.173.1920.697@1920.146.1366.768" timestamp="1640538190736" />
     <state x="2266" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1640537462343">
       <screen x="1920" y="146" width="1366" height="768" />
     </state>
