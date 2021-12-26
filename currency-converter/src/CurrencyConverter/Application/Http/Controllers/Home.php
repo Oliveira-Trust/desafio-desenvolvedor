@@ -2,6 +2,8 @@
 
 namespace CurrencyConverter\Application\Http\Controllers;
 
+use Illuminate\Contracts\Support\Renderable;
+
 /**
  * Class Home
  * @package CurrencyConverter\Application\Http\Controllers
@@ -22,7 +24,7 @@ class Home extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {

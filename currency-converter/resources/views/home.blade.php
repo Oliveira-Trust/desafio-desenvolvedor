@@ -12,7 +12,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="origin_currency">Moeda de origem:</label>
-                                    <input style="cursor:not-allowed" type="text" readonly="readonly" class="form-control" id="origin_currency" value="BRL"title="Real Brasileiro" placeholder="">
+                                    <input style="cursor:not-allowed" type="text" readonly="readonly" class="form-control" id="origin_currency" value="BRL - Real Brasileiro"title="Real Brasileiro" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-3">
