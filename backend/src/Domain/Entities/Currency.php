@@ -25,6 +25,10 @@ class Currency
     /**
      * @ORM\Column(type="string")
      */
+    private $codein;
+    /**
+     * @ORM\Column(type="string")
+     */
     private $name;
     /**
      * @ORM\Column(type="float")
@@ -43,6 +47,10 @@ class Currency
     {
         return $this->code;
     }
+    public function getCodein(): string
+    {
+        return $this->codein;
+    }
     public function getName(): string
     {
         return $this->name;
@@ -58,6 +66,11 @@ class Currency
     public function setCode(string $code): Currency
     {
         $this->code = $code;
+        return $this;
+    }
+    public function setCodein(string $codein): Currency
+    {
+        $this->codein = $codein;
         return $this;
     }
     public function setName(string $name): Currency

@@ -26,4 +26,27 @@ class Payment
      * @ORM\Column(type="float")
      */
     private $conversionRate;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getConversionRate()
+    {
+        return $this->conversionRate;
+    }
+    public function setName(string $name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+    public function setConversionRate(float $rate)
+    {
+        $this->conversionRate = $rate;
+        return $this;
+    }
 }

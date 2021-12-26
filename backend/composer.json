@@ -21,6 +21,7 @@
         "serve": "php -S localhost:900 -t ./public",
         "test": "vendor/bin/phpunit",
         "create-tables": "vendor/bin/doctrine orm:schema-tool:create",
+        "migrations-execute": "vendor/bin/doctrine-migrations migrations:migrate",
         "drop-tables": "vendor/bin/doctrine orm:schema-tool:drop --force"
       },
     "config": {

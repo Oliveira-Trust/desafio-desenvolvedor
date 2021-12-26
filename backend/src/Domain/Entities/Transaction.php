@@ -31,9 +31,17 @@ class Transaction
      */
     private $paymentType;
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="transations")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="transactions")
      */
     private $user;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $status;
+    /**
+     * @ORM\Column(name="createdat", type="datetimetz", nullable=false, options={"default":"CURRENT_TIMESTAMP"})
+     */
+    private $date;
 
     public function getId()
     {
@@ -55,6 +63,14 @@ class Transaction
     {
         return $this->user;
     }
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function getDate()
+    {
+        return $this->date;
+    }
     public function setOriginCurrency(Currency $originCurrency)
     {
         $this->originCurrency = $originCurrency;
@@ -73,6 +89,17 @@ class Transaction
     public function setUser(User $user)
     {
         $this->user = $user;
+        return $this;
+    }
+    
+    public function setStatus(string $status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+    public function setDate($date)
+    {
+        $this->date = $date;
         return $this;
     }
     public function __toString()
