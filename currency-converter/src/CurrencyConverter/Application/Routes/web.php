@@ -9,14 +9,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::view('home','home')->middleware('auth');
-
 Route::group([
     'middleware' => ['auth'],
     'prefix' => 'home'
 ], function ($route) {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::post('convert', [HomeController::class, 'convert'])->name('convert');
 });
