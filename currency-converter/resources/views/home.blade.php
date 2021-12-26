@@ -19,7 +19,7 @@
                                 <div class="form-group">
                                     <label for="destiny_currency">Moeda de destino:</label>
                                     <select id="destiny_currency" class="form-select" style="width: 100%">
-                                        <option></option>
+                                        <option value="">Selecione</option>
                                     </select>
                                 </div>
                             </div>
@@ -33,8 +33,9 @@
                                 <div class="form-group">
                                     <label for="payment method">Forma de pagamento:</label>
                                     <select class="form-select" id="payment method" style="width: 100%">
-                                        <option value="1">Boleto</option>
-                                        <option value="2">Cartão de Crédito</option>
+                                        <option value="">Selecione</option>
+                                        <option value="1">1. Boleto</option>
+                                        <option value="2">2. Cartão de Crédito</option>
                                     </select>
                                 </div>
                             </div>
