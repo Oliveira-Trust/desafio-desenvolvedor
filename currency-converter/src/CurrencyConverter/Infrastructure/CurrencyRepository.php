@@ -18,13 +18,9 @@ class CurrencyRepository implements CurrencyInterface
         $collection = new Collection();
 
         try {
-            $response = Http::accept('application/xml')->get('https://economia.awesomeapi.com.br/xml/available')
+            $data = Http::accept('application/json')->get('https://economia.awesomeapi.com.br/json/available')
                                                                   ->throw()
-                                                                  ->body();
-
-            $xmlData = simplexml_load_string($response);
-            $jsonData = json_encode($xmlData );
-            $data = json_decode($jsonData,TRUE);
+                                                                  ->json();
 
             $filteredData = array_filter(
                 $data,
