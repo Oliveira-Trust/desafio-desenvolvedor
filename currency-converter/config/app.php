@@ -175,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \App\Providers\FortifyServiceProvider::class,
-        CurrencyConverter\Domain\Currency\Services\RepositoryServiceProvider::class
+        \CurrencyConverter\Application\Providers\RepositoryServiceProvider::class
     ],
 
     /*
