@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Domain\Entities\User;
+use App\Domain\UseCases\CreateUser;
 use App\Helpers\Validate;
 use App\Http\Controller;
 use Slim\Http\Request;
@@ -36,29 +37,23 @@ final class UserController extends Controller
     public function store(Request $request, Response $response )
     {
         $data = $request->getParams();
-        $arrayResponse = ["code"=>"erro", "message"=>"Não foi possivel salvar o usuario."];
-        if(empty($data)){
+        $createUser = new CreateUser($data, $this->repository);
+        try{
+            $user = $createUser->execute();
+            $token = $this->auth->create([
+                "id"=>$user->getId(),
+                "name"=>$user->getName(),
+                "username"=>$user->getUsername()
+            ]);
+            $arrayResponse['code'] = 'sucesso';
+            $arrayResponse['message'] = 'Usuario salvo com sucesso.';
+            $arrayResponse['token'] = $token;
+            return $response->withJson($arrayResponse);
+        } catch(\Exception $e){
+            $arrayResponse['code'] = 'error';
+            $arrayResponse['message'] = $e->getMessage();
             return $response->withJson($arrayResponse);
         }
-        $user = new User();
-        $user->setname($data['name']);
-        $user->setusername($data['username']);
-        $user->setpassword($data['password']);
-        $userExists = $this->repository->getByUsername($user->getUsername());
-        if($userExists){
-            $arrayResponse['message'] = 'Usuario já Cadastrado.';
-            return $response->withJson($arrayResponse); 
-        }
-        $user = $this->repository->save($user);
-        $token = $this->auth->create([
-            "id"=>$user->getId(),
-            "name"=>$user->getName(),
-            "username"=>$user->getUsername()
-        ]);
-        $arrayResponse['code'] = 'sucesso';
-        $arrayResponse['message'] = 'Usuario salvo com sucesso.';
-        $arrayResponse['token'] = $token;
-        return $response->withJson($arrayResponse);
     }
     public function destroy(Request $request, Response $response, $parameters )
     {

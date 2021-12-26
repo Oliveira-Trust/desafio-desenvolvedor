@@ -150,12 +150,16 @@ class User
         $array = [];
         $keys = array_keys(get_class_vars(get_class($this)));
         foreach($keys as $key ){
-            if($key == 'password') {
+            if($key == 'password' || $key == 'transactions') {
                 continue;
             } 
             $method = 'get'.str_replace(" ", '', ucwords(str_replace('_', ' ', $key))) ;
             $array[$key] = $this->$method();
         }
         return $array;
-    }    
+    }
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

@@ -1,3 +1,4 @@
 .vscode
+dump.sql
 dbdata
 docker-mysql/

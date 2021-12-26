@@ -6,7 +6,7 @@
 # Ignorar as configurações do projeto e as bibliotecas.
 vendor/
 composer.phar
-html-report-coverage/
+html-coverage/
 report-coverage/
 test-reports/
 test-results/

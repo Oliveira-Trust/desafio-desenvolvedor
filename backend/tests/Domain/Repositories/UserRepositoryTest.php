@@ -6,7 +6,7 @@ namespace App\Test\Repositories;
 
 use App\Domain\Entities\User;
 use App\Helpers\EntityManagerFactory;
-use App\Domain\Repositories\UserRepositoryMemory;
+use App\Domain\Repositories\Memory\UserRepositoryMemory;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;

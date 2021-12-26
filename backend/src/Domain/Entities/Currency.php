@@ -29,7 +29,11 @@ class Currency
     /**
      * @ORM\Column(type="float")
      */
-    private $value;
+    private $salePrice;
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $purchasePrice;
 
     public function getId(): int
     {
@@ -43,11 +47,14 @@ class Currency
     {
         return $this->name;
     }
-    public function getValue(): float
+    public function getSalePrice(): float
     {
-        return $this->value;
+        return $this->salePrice;
     }
-
+    public function getPurchasePrice()
+    {
+        return $this->purchasePrice;
+    }
     public function setCode(string $code): Currency
     {
         $this->code = $code;
@@ -58,9 +65,14 @@ class Currency
         $this->name = $name;
         return $this;
     }
-    public function setValue(float $value): Currency
+    
+    public function setPurchasePrice(float $purchasePrice): Currency
     {
-        $this->value = $value;
+        $this->purchasePrice = $purchasePrice;
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->getName() . '(' .$this->getId() . ')';
     }
 }

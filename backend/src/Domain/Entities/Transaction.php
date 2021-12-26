@@ -75,4 +75,8 @@ class Transaction
         $this->user = $user;
         return $this;
     }
+    public function __toString()
+    {
+        return $this->getPaymentType() . '('.$this->getId().')';
+    }
 }

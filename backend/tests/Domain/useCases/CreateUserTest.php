@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Test\Entities;
 
 use App\Domain\Entities\User;
-use App\Domain\Repositories\UserRepositoryDatabase;
-use App\Domain\Repositories\UserRepositoryMemory;
+use App\Domain\Repositories\Memory\UserRepositoryMemory;
 use App\Domain\UseCases\CreateUser;
 use App\Helpers\EntityManagerFactory;
 use PHPUnit\Framework\TestCase;

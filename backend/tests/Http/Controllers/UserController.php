@@ -7,7 +7,7 @@ namespace App\Test\Http\Controllers;
 
 use App\Domain\Entities\User;
 use App\Http\Controllers\UserController;
-use App\Domain\Repositories\UserRepository;
+use App\Domain\Repositories\Memory\UserRepositoryMemory;
 use App\Service\Jwt\Jwt;
 use PHPUnit\Framework\TestCase;
 use Slim\Http\Request;
@@ -24,7 +24,7 @@ class UserControllerTest extends TestCase
 
     public function setUp(): void
     {
-        $this->UserRepositoryMock = $this->createMock(UserRepository::class);
+        $this->UserRepositoryMock = $this->createMock(UserRepositoryMemory::class);
         $this->authMock = $this->createMock(Jwt::class);
         $this->ContainerMock = $this->createMock(\Slim\Container::class);
         $this->requestMock = $this->createMock(Request::class);

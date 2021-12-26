@@ -4,7 +4,10 @@ use App\Http\Controllers\UserController;
 
 require_once __DIR__ . '/configRoutes.php';
 
-$app->get('/', HomeController::class . ':index');
+$app->get('/moedas', HomeController::class . ':index');
+$app->get('/moeda/{code}', HomeController::class . ':getCurrency');
+
+$app->post('/exchange/{userid}', HomeController::class . ':exchenge');
 
 $app->get('/users', UserController::class . ':index');
 

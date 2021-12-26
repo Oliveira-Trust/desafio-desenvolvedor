@@ -14,7 +14,8 @@
         "doctrine/migrations": "^3.1",
         "slim/slim":"3.*",
         "slim/psr7": "^1.4",
-        "doctrine/cache": "^1.11"
+        "doctrine/cache": "^1.11",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "scripts": {
         "serve": "php -S localhost:900 -t ./public",
