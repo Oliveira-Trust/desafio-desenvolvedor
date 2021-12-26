@@ -20,17 +20,18 @@ class CurrencyService
     }
 
     /**
-     * @return Collection
+     * @return Array
      */
     public function listAvailablesCombinations() : Array
     {
         $data = $this->currencyRepository->findAvailablesCombinations();
+        $prefix = 'BRL-';
 
         $items = [];
         foreach ( $data as $key => $value )
         {
-            $newKey = \Str::replace('BRL-','', $key);
-            $newValue = \Str::replace('BRL-','', $key).' - '.\Str::replace('Real Brasileiro/','', $value);
+            $newKey = \Str::replace($prefix,'', $key);
+            $newValue = \Str::replace($prefix,'', $key).' - '.\Str::replace('Real Brasileiro/','', $value);
 
             $items[$newKey] = $newValue;
         }
