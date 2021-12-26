@@ -37,7 +37,7 @@ class ValidateTest extends TestCase
     public function testValidateArray($data, $expected)
     {
         $validate = new Validate();
-        $isValid = $validate->isEmptyArray($data);
+        $isValid = $validate->hasEmptyValue($data);
         $this->assertEquals($expected, $isValid);
     }
     public function dataProviderArrayValidate()
