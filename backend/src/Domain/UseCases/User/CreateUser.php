@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\UseCases;
+namespace App\Domain\UseCases\User;
 
-use App\Domain\Contracts\UserRepositoryInterface;
+use App\Domain\Contracts\Repository\UserRepositoryInterface;
 use App\Domain\Entities\User;
 use Exception;
 

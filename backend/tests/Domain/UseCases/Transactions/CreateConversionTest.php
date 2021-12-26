@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Test\Entities;
+namespace App\Test\Domain\UseCases\Transactions;
 
 use App\Domain\Entities\User;
 use App\Domain\Repositories\Memory\UserRepositoryMemory;
-use App\Domain\UseCases\CreateUser;
+use App\Domain\UseCases\User\CreateUser;
 use App\Helpers\EntityManagerFactory;
 use PHPUnit\Framework\TestCase;
 
-class CreateUserTest extends TestCase
+class CreateConversionTest extends TestCase
 {
     protected $dataUser;
 

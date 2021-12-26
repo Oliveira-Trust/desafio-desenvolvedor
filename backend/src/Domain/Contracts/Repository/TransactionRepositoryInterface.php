@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Contracts;
+namespace App\Domain\Contracts\Repository;
 
 
 interface TransactionRepositoryInterface

@@ -9,12 +9,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 final class HomeController extends Controller
-{   
-    // public function __construct(\Slim\Container $c)
-    // {
-    //     $this->repository = $c->get('UserRepository');
-    //     parent::__construct($c);
-    // }
+{
     public function index(Request $request, Response $response)
     {
         $res = $this->http->search();
