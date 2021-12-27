@@ -39,8 +39,12 @@ class CurrencyService
         return \Arr::sort($items);
     }
 
+    /**
+     * @param FormDataDTO $dto
+     * @return array
+     */
     public function getQuotation(FormDataDTO $dto) : array
     {
-        return $this->currencyRepository->findQuotationFromBRLTo($dto::$destinyCurrency);
+        return current($this->currencyRepository->findQuotationFromBRLTo($dto::$destinyCurrency));
     }
 }
