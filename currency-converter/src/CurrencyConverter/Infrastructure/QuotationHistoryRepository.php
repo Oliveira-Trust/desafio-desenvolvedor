@@ -4,6 +4,8 @@ namespace CurrencyConverter\Infrastructure;
 
 use CurrencyConverter\Domain\Currency\Models\QuotationHistory;
 use CurrencyConverter\Domain\Currency\Repositories\QuotationHistoryInterface;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class QuotationHistoryRepository
@@ -21,5 +23,10 @@ class QuotationHistoryRepository implements QuotationHistoryInterface
 
         $qHistory->save();
         return $qHistory->fresh();
+    }
+
+    public function list() : Collection
+    {
+        return QuotationHistory::where('created_by', Auth::user()->id)->orderBy('created_at','desc')->get();
     }
 }

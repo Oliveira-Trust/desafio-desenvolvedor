@@ -21,6 +21,10 @@ class QuotationHistory extends Model
         'created_by'
     ];
 
+    public $date = [
+        'created_at'
+    ];
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);

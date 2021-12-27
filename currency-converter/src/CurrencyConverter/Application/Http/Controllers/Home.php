@@ -5,6 +5,7 @@ namespace CurrencyConverter\Application\Http\Controllers;
 use CurrencyConverter\Domain\Currency\Actions\Quotation;
 use CurrencyConverter\Domain\Currency\DTOs\FormData as FormDataDTO;
 use CurrencyConverter\Domain\Currency\Services\CurrencyService;
+use CurrencyConverter\Domain\Currency\Services\QuotationHistoryService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,15 +20,18 @@ use Illuminate\Support\Collection;
 class Home extends Controller
 {
     private CurrencyService $service;
+    private QuotationHistoryService $quotationHistoryService;
 
     /**
      * Create a new controller instance.
      *
      * @param CurrencyService $service
+     * @param QuotationHistoryService $quotationHistoryService
      */
-    public function __construct(CurrencyService $service)
+    public function __construct(CurrencyService $service, QuotationHistoryService $quotationHistoryService)
     {
         $this->service = $service;
+        $this->quotationHistoryService = $quotationHistoryService;
     }
 
     /**
@@ -57,9 +61,12 @@ class Home extends Controller
 
     /**
      * @param Request $request
+     * @return Application|Factory|View
      */
     public function history(Request $request)
     {
-        return view('includes.history');
+        $quotationData = $this->quotationHistoryService->list();
+
+        return view('includes.history', compact('quotationData'));
     }
 }
