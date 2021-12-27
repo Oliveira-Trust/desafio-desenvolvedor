@@ -19,3 +19,8 @@ $app->post('/users/delete/{id}', UserController::class . ':destroy');
 $app->post('/users/update/{id}', UserController::class . ':update');
 $app->post('/singup', UserController::class . ':store');
 $app->post('/singin', UserController::class . ':login');
+
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
+    $handler = $this->notFoundHandler; // handle using the default Slim page not found handler
+    return $handler($req, $res);
+});

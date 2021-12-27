@@ -107,17 +107,6 @@ class Transaction
         $this->date = $date;
         return $this;
     }
-    // $expectedValues = [
-    //     "moeda_origem" => 'BRL',
-    //     "moeda_destino"=> 'USD',
-    //     "valor_para_conversao" => 5000,
-    //     "forma_pagamento" => 'Boleto',
-    //     "valor_moeda_destino" => 5.30,
-    //     "valor_comprado" => 920.18,
-    //     "taxa_pagamento" => 72.50,
-    //     "taxa_conversao" => 50.00,
-    //     "valor_convertido" => 4877.50
-    // ];
     public function convertValue()
     {
         $valueCoinDestino = (1 / $this->dataToConvert->getSalePrice());
