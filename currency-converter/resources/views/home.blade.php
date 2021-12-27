@@ -7,14 +7,14 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                    <a class="nav-link {{\Request::route()->getName() == 'home' ? 'active' : ''}}" id="home-tab" href="{{route('home')}}" role="tab" aria-controls="home" aria-selected="true">Home</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="historic-tab" data-bs-toggle="tab" href="#historic" role="tab" aria-controls="historic" aria-selected="true">Histórico</a>
+                    <a class="nav-link {{\Request::route()->getName() == 'history' ? 'active' : ''}}" id="history-tab" href="{{route('history')}}" role="tab" aria-controls="history" aria-selected="true">Histórico</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade {{\Request::route()->getName() == 'home' ? 'show active' : ''}}" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="card mt-1">
                         <div class="card-header"><h3 class="card-title"></h3></div>
                         <div class="card-body">
@@ -72,64 +72,64 @@
                                     </div>
                                 @endif
                             </form>
+                            @if( count($quotationData) )
+                                <div class="col-md-12">
+                                    <div class="card mt-1">
+                                        <div class="card-body">
+
+                                            <table class="table table-striped table-hover table-sm align-middle">
+                                                <tbody>
+                                                <tr>
+                                                    <td>Moeda de origem</td>
+                                                    <td><span>{{$quotationData['origin_currency']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Moeda de destino</td>
+                                                    <td><span>{{$quotationData['destiny_currency']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Valor para conversão</td>
+                                                    <td><span>R$ {{$quotationData['value_conversion']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Forma de pagamento</td>
+                                                    <td><span>{{$quotationData['payment_method']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Valor da "Moeda de destino" usado para conversão</td>
+                                                    <td><span>R$ {{$quotationData['destination_currency_value_for_conversion']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Valor comprado em "Moeda de destino"</td>
+                                                    <td><span>R$ {{$quotationData['destination_currency_value_for_conversion']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Taxa de pagamento</td>
+                                                    <td><span>R$ {{$quotationData['payment_rate']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Taxa de conversão</td>
+                                                    <td><span>R$ {{$quotationData['conversion_rate']}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Valor utilizado para conversão descontando as taxas"</td>
+                                                    <td><span>R$ {{$quotationData['value_purchases_in_destination_currency']}}</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
-                    @if( count($quotationData) )
-                        <div class="col-md-12">
-                            <div class="card mt-1">
-                                <div class="card-body">
 
-                                    <table class="table table-striped table-hover table-sm align-middle">
-                                        <tbody>
-                                        <tr>
-                                            <td>Moeda de origem</td>
-                                            <td><span>{{$quotationData['origin_currency']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Moeda de destino</td>
-                                            <td><span>{{$quotationData['destiny_currency']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Valor para conversão</td>
-                                            <td><span>R$ {{$quotationData['value_conversion']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Forma de pagamento</td>
-                                            <td><span>{{$quotationData['payment_method']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Valor da "Moeda de destino" usado para conversão</td>
-                                            <td><span>R$ {{$quotationData['destination_currency_value_for_conversion']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Valor comprado em "Moeda de destino"</td>
-                                            <td><span>R$ {{$quotationData['destination_currency_value_for_conversion']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Taxa de pagamento</td>
-                                            <td><span>R$ {{$quotationData['payment_rate']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Taxa de conversão</td>
-                                            <td><span>R$ {{$quotationData['conversion_rate']}}</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Valor utilizado para conversão descontando as taxas"</td>
-                                            <td><span>R$ {{$quotationData['value_purchases_in_destination_currency']}}</span></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                 </div>
-                <div class="tab-pane fade" id="historic" role="tabpanel" aria-labelledby="historic-tab">
+                <div class="tab-pane fade {{\Request::route()->getName() == 'history' ? 'show active' : ''}}" id="history" role="tabpanel" aria-labelledby="history-tab">
                     HISTÓRICO
                 </div>
             </div>
-
         </div>
 
     </div>
