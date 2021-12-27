@@ -71,32 +71,43 @@
                     <div class="card-header"><h3 class="card-title"></h3></div>
                     <div class="card-body">
 
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                            </thead>
+                        <table class="table table-striped table-hover table-sm align-middle">
                             <tbody>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>Moeda de origem</td>
+                                <td><span>{{$quotationData['origin_currency']}}</span></td>
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>Moeda de destino</td>
+                                <td><span>{{$quotationData['destiny_currency']}}</span></td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
+                                <td>Valor para conversão</td>
+                                <td><span>R$ {{$quotationData['value_conversion']}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Forma de pagamento</td>
+                                <td><span>{{$quotationData['payment_method']}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Valor da "Moeda de destino" usado para conversão</td>
+                                <td><span>R$ {{$quotationData['destination_currency_value_for_conversion']}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Valor comprado em "Moeda de destino"</td>
+                                <td><span>R$ {{$quotationData['destination_currency_value_for_conversion']}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de pagamento</td>
+                                <td><span>R$ {{$quotationData['payment_rate']}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de conversão</td>
+                                <td><span>R$ {{$quotationData['conversion_rate']}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Valor utilizado para conversão descontando as taxas"</td>
+                                <td><span>R$ {{$quotationData['value_purchases_in_destination_currency']}}</span></td>
                             </tr>
                             </tbody>
                         </table>

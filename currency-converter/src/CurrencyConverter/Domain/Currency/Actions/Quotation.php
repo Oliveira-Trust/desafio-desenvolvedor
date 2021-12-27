@@ -13,9 +13,6 @@ use CurrencyConverter\Domain\Currency\Services\CurrencyService;
  */
 class Quotation
 {
-    const BOLETO_RATE = 0.0145;
-    const CREDIT_CARD_RATE = 0.0763;
-
     public function __invoke(FormDataDTO $dto)
     {
         $service = app(CurrencyService::class);
@@ -23,11 +20,14 @@ class Quotation
 
         ListData::$originCurrency = 'BRL';
         ListData::$destinyCurrency = $dto::$destinyCurrency;
-        ListData::$valueConversion = $dto::$valueConversion;
+        ListData::$valueConversion = number_format($dto::$valueConversion,2,',','.');
         ListData::$paymentMethod = $dto::$paymentMethod == 1 ? 'Boleto' : 'Cartão de Crédito';
-        ListData::$destinationCurrencyValueForConversion = $quotationData['bid'];
-        ListData::$valuePurchasesInDestinationCurrency = $this->calculateValuePurchasesInDestinationCurrency($dto::$paymentMethod, $dto::$valueConversion);
-        ListData::$paymentRate = $this->getPaymentRate($dto::$paymentMethod, $dto::$valueConversion);
+        ListData::$destinationCurrencyValueForConversion = number_format($quotationData['bid'],2,',','.');
+        ListData::$valuePurchasesInDestinationCurrency = number_format($this->calculateValuePurchasesInDestinationCurrency($dto::$paymentMethod, $dto::$valueConversion),2,',','.');
+        ListData::$paymentRate = number_format($this->getPaymentRate($dto::$paymentMethod, $dto::$valueConversion),2,',','.');
+        ListData::$conversionRate = number_format($this->getConversionRate($dto::$valueConversion),2,',','.');
+
+        return ListData::toArray();
     }
 
     /**
@@ -49,11 +49,10 @@ class Quotation
     }
 
     /**
-     * @param int $paymentMethod
      * @param string $valueConversion
      * @return float|int
      */
-    private function getConversionRate(int $paymentMethod ,string $valueConversion) : float
+    private function getConversionRate(string $valueConversion) : float
     {
         if( $valueConversion < 3000 )
         {
@@ -64,6 +63,6 @@ class Quotation
 
     private function calculateValuePurchasesInDestinationCurrency(int $paymentMethod ,string $valueConversion) : float
     {
-        return $valueConversion - ($this->getPaymentRate($paymentMethod, $valueConversion) + $this->getConversionRate($paymentMethod, $valueConversion));
+        return $valueConversion - ($this->getPaymentRate($paymentMethod, $valueConversion) + $this->getConversionRate($valueConversion));
     }
 }
