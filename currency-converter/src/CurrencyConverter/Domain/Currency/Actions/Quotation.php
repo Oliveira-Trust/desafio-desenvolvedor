@@ -2,9 +2,11 @@
 
 namespace CurrencyConverter\Domain\Currency\Actions;
 
+use App\Models\QuotationHistory;
 use CurrencyConverter\Domain\Currency\DTOs\FormData as FormDataDTO;
 use CurrencyConverter\Domain\Currency\DTOs\ListData;
 use CurrencyConverter\Domain\Currency\Services\CurrencyService;
+use CurrencyConverter\Domain\Currency\Services\QuotationHistoryService;
 
 /**
  * Class Convert
@@ -17,6 +19,9 @@ class Quotation
     {
         $service = app(CurrencyService::class);
         $quotationData = $service->getQuotation($dto);
+
+        $qService = app(QuotationHistoryService::class);
+        $qService->save( $dto::toArray() );
 
         ListData::$originCurrency = 'BRL';
         ListData::$destinyCurrency = $dto::$destinyCurrency;
