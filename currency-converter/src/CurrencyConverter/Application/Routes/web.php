@@ -13,6 +13,5 @@ Route::group([
     'middleware' => ['auth'],
     'prefix' => 'home'
 ], function ($route) {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::post('convert', [HomeController::class, 'convert'])->name('convert');
+    Route::match(['get', 'post'],'/', [HomeController::class, 'index'])->name('home');
 });

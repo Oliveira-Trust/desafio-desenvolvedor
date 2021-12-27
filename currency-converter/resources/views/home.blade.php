@@ -7,13 +7,10 @@
             <div class="card">
                 <div class="card-header"><h3 class="card-title"></h3></div>
                 <div class="card-body">
-                    <form name="frm-convert" action="{{route('convert')}}" method="POST">
+                    <form name="frm-convert" action="{{route('home')}}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-3">
-                                @isset($nome)
-                                    {{dd('nome')}}
-                                @endisset
                                 <div class="form-group">
                                     <label for="origin_currency">Moeda de origem:</label>
                                     <input style="cursor:not-allowed" type="text" readonly="readonly" class="form-control" name="origin_currency" id="origin_currency" value="BRL - Real Brasileiro"title="Real Brasileiro" placeholder="">
