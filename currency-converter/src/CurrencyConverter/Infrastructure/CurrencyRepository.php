@@ -5,8 +5,8 @@ namespace CurrencyConverter\Infrastructure;
 
 use CurrencyConverter\Domain\Currency\Repositories\CurrencyInterface;
 use Illuminate\Http\Client\RequestException;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 
 /**
  * Class CurrencyRepository
@@ -18,10 +18,10 @@ class CurrencyRepository implements CurrencyInterface
 
     /**
      * @param string $resource
-     * @return Array
+     * @return array
      * @throws RequestException
      */
-    private function getResource(string $resource) : Array
+    private function getResource(string $resource) : array
     {
         return Http::accept('application/json')->get(self::BASE_URL.$resource)
             ->throw()
@@ -30,7 +30,11 @@ class CurrencyRepository implements CurrencyInterface
 
     public function findAvailablesCombinations(): Collection
     {
-        $data = $this->getResource('/available');
+        try {
+            $data = $this->getResource('/available');
+        }catch (HttpRequestException $e){
+            throw new $e;
+        }
 
         $filteredData = array_filter(
             $data,
@@ -43,6 +47,10 @@ class CurrencyRepository implements CurrencyInterface
 
     public function findQuotationFromBRLTo(string $currency) : array
     {
-        return $this->getResource("/last/BRL-{$currency}");
+        try {
+            return $this->getResource("/last/BRL-{$currency}");
+        }catch (HttpRequestException $e){
+            throw new $e;
+        }
     }
 }
