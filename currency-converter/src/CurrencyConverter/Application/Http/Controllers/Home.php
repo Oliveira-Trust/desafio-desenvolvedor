@@ -52,6 +52,14 @@ class Home extends Controller
             $quotationData = $action(FormDataDTO::fromArray($request->all()));
         }
 
-        return view('home', compact('availablesCombinations', 'quotationData'));
+        return view('includes.form-quotation', compact('availablesCombinations', 'quotationData'));
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function history(Request $request)
+    {
+        return view('includes.history');
     }
 }
