@@ -2,8 +2,8 @@
 
 namespace CurrencyConverter\Domain\Currency\Services;
 
+use CurrencyConverter\Domain\Currency\DTOs\FormData as FormDataDTO;
 use CurrencyConverter\Domain\Currency\Repositories\CurrencyInterface;
-use Illuminate\Support\Collection;
 
 /**
  * Class CurrencyService
@@ -37,5 +37,10 @@ class CurrencyService
         }
 
         return \Arr::sort($items);
+    }
+
+    public function getQuotation(FormDataDTO $dto) : Collection
+    {
+        return $this->currencyRepository->findQuotation($dto::$destinyCurrency);
     }
 }

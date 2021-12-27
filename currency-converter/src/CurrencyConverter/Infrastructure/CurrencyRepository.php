@@ -30,23 +30,19 @@ class CurrencyRepository implements CurrencyInterface
 
     public function findAvailablesCombinations(): Collection
     {
-        $collection = new Collection();
+        $data = $this->getResource('/available');
 
-        try {
-            $data = $this->getResource('/available');
+        $filteredData = array_filter(
+            $data,
+            fn ($key) => substr($key, 0, strlen('BRL-')) === 'BRL-',
+            ARRAY_FILTER_USE_KEY
+        );
 
-            $filteredData = array_filter(
-                $data,
-                fn ($key) => substr($key, 0, strlen('BRL-')) === 'BRL-',
-                ARRAY_FILTER_USE_KEY
-            );
+        return collect($filteredData);
+    }
 
-            $collection = collect($filteredData);
-        }catch(\Exception $e)
-        {
-            throw new $e;
-        }
-
-        return $collection;
+    public function findQuotationFromBRLTo(string $currency) : array
+    {
+        return $this->getResource("/last/BRL-{$currency}");
     }
 }

@@ -14,4 +14,10 @@ interface CurrencyInterface
      * @return Collection
      */
     public function findAvailablesCombinations() : Collection;
+
+    /**
+     * @param string $currency
+     * @return array
+     */
+    public function findQuotationFromBRLTo(string $currency) : array;
 }
