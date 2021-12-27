@@ -2,6 +2,10 @@
 
 namespace CurrencyConverter\Application\Providers;
 
+use CurrencyConverter\Domain\Currency\Repositories\CurrencyInterface;
+use CurrencyConverter\Domain\Currency\Repositories\QuotationHistoryInterface;
+use CurrencyConverter\Infrastructure\CurrencyRepository;
+use CurrencyConverter\Infrastructure\QuotationHistoryRepository;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -11,7 +15,8 @@ use Illuminate\Support\ServiceProvider;
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
-    public $bindings = [
-        \CurrencyConverter\Domain\Currency\Repositories\CurrencyInterface::class => \CurrencyConverter\Infrastructure\CurrencyRepository::class
+    public array $bindings = [
+        CurrencyInterface::class => CurrencyRepository::class,
+        QuotationHistoryInterface::class => QuotationHistoryRepository::class
     ];
 }
