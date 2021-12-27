@@ -1,6 +1,6 @@
 <?php
 
-namespace CurrencyConverter\Domain\Currency\Specifications;
+namespace CurrencyConverter\Domain\Currency\Specifications\Abstracts;
 
 use CurrencyConverter\Domain\Currency\DTOs\FormData as FormDataDTO;
 
