@@ -1,16 +1,20 @@
-import { useEffect } from 'react';
-import './App.css';
-import Header from './components/Header';
-import { getCurrencies } from './services/api';
 
-function App() {
-  getCurrencies().then((res)=>console.log(res))
-  
+import React from "react"
+import { AppTheme } from './contexts/themeContext'
+import { GlobalStyles } from './styles/GlobalStyles'
+import { DataProvider } from "./contexts/dataContext"
+import 'animate.css'
+import RoutesApp from './routes/routes';
+
+const App = () => {
   return (
-    <div className="App">
-      <Header/>
-    </div>
-  );
+    <AppTheme>
+      <GlobalStyles />
+      <DataProvider>
+        <RoutesApp />
+      </DataProvider>
+    </AppTheme>
+  )
 }
 
 export default App;
