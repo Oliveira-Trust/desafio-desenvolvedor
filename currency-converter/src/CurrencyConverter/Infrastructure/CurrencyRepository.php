@@ -4,6 +4,7 @@ namespace CurrencyConverter\Infrastructure;
 
 
 use CurrencyConverter\Domain\Currency\Repositories\CurrencyInterface;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 
@@ -13,14 +14,26 @@ use Illuminate\Support\Collection;
  */
 class CurrencyRepository implements CurrencyInterface
 {
+    private const BASE_URL = 'https://economia.awesomeapi.com.br/json';
+
+    /**
+     * @param string $resource
+     * @return Array
+     * @throws RequestException
+     */
+    private function getResource(string $resource) : Array
+    {
+        return Http::accept('application/json')->get(self::BASE_URL.$resource)
+            ->throw()
+            ->json();
+    }
+
     public function findAvailablesCombinations(): Collection
     {
         $collection = new Collection();
 
         try {
-            $data = Http::accept('application/json')->get('https://economia.awesomeapi.com.br/json/available')
-                                                                  ->throw()
-                                                                  ->json();
+            $data = $this->getResource('/available');
 
             $filteredData = array_filter(
                 $data,
