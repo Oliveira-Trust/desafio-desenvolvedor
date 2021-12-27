@@ -7,7 +7,7 @@ namespace App\Domain\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Domain\Repositories\PaymentRepository")
+ * @ORM\Entity(repositoryClass="App\Domain\Contracts\PaymentRepositoryInterface")
  * @ORM\Table(name="payment_type")
  */
 class Payment
@@ -43,6 +43,20 @@ class Payment
     {
         $this->name = $name;
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->getName();
+    }
+    public function toArray()
+    {
+        $array = [];
+        $keys = array_keys(get_class_vars(get_class($this)));
+        foreach($keys as $key ){
+            $method = 'get'.str_replace(" ", '', ucwords(str_replace('_', ' ', $key))) ;
+            $array[$key] = $this->$method();
+        }
+        return $array;
     }
     public function setConversionRate(float $rate)
     {

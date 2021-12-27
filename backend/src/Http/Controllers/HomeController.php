@@ -35,24 +35,4 @@ final class HomeController extends Controller
             return $response->withJson(["status" => "error", "message" => $e->getMessage()], 404);
         }
     }
-    public function exchenge(Request $request, Response $response, $param)
-    {
-        $userId = (int) $param['userid'];
-        $data = $request->getParams();
-        $userRepository = $this->container->get('UserRepository');
-        $currencyRepository = $this->container->get('CurrencyRepository');
-        $transactionRepository = $this->container->get('TransactionRepository');
-
-        $createConversion = new CreateConversion(
-            $data,
-            $userId,
-            $transactionRepository,
-            $currencyRepository,
-            $paymentRepository
-            $userRepository
-        );
-        $transaction = $createConversion->execute();
-
-        return $response->withJson(["status" => "sucesso", "data" => $data], 200);
-    }
 }

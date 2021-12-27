@@ -7,7 +7,7 @@ namespace App\Domain\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Domain\Repositories\TransactionRepository")
+ * @ORM\Entity(repositoryClass="App\Domain\Contracts\TransactionRepositoryInterface")
  * @ORM\Table(name="transactions")
  */
 class Transaction
@@ -39,6 +39,10 @@ class Transaction
      */
     private $status;
     /**
+     * @ORM\Column(type="float")
+     */
+    private $value;
+    /**
      * @ORM\Column(name="createdat", type="datetimetz", nullable=false, options={"default":"CURRENT_TIMESTAMP"})
      */
     private $date;
@@ -67,6 +71,15 @@ class Transaction
     {
         return $this->status;
     }
+    public function getValue()
+    {
+        return $this->value;
+    }
+    public function setValue(float $value)
+    {
+        $this->value = $value;
+        return $this;
+    }
     public function getDate()
     {
         return $this->date;
@@ -81,7 +94,7 @@ class Transaction
         $this->destinationCurrency = $destinationCurrency;
         return $this;
     }
-    public function setPayment(Payment $payment)
+    public function setPaymentType(Payment $payment)
     {
         $this->payment = $payment;
         return $this;
@@ -101,6 +114,36 @@ class Transaction
     {
         $this->date = $date;
         return $this;
+    }
+    public function convertValue()
+    {
+        $valueTransaction = $this->getValue();
+        // tirar do valor a taxa de tipo de pagamento
+        $type = $this->getPaymentType();
+        var_dump($type);
+        exit;
+        $paymentTax = $this->getPaymentType()->getConversionRate();
+        $valueWithoutPaymentTax = $valueTransaction - ($valueTransaction * $paymentTax);
+        echo $valueWithoutPaymentTax;
+        exit;
+        // tirar do valor restante a taxa de conversao 
+        // converter o valor restante;
+        $valorCompra = $this->getOriginCurrency()->getSalePrice();
+        return $valueTransaction * $valorCompra;
+    }
+    public function toArray()
+    {
+        $array = [];
+        $keys = array_keys(get_class_vars(get_class($this)));
+        foreach($keys as $key ){
+            if($key == 'user' || $key == 'originCurrency' || $key == 'destinationCurrency' || $key == 'paymentType') {
+                $array[$key] = $this->{$key};
+                continue;
+            } 
+            $method = 'get'.str_replace(" ", '', ucwords(str_replace('_', ' ', $key))) ;
+            $array[$key] = $this->$method();
+        }
+        return $array;
     }
     public function __toString()
     {

@@ -1,9 +1,10 @@
 <?php
 
 use App\Domain\Repositories\Database\CurrencyRepositoryDatabase;
-use App\Helpers\EntityManagerFactory;
+use App\Domain\Repositories\Database\PaymentRepositoryDatabase;
+use App\Domain\Repositories\Database\TransactionRepositoryDatabase;
 use App\Domain\Repositories\Database\UserRepositoryDatabase;
-use App\Domain\Repositories\Memory\PaymentRepositoryMemory;
+use App\Helpers\EntityManagerFactory;
 use App\Helpers\HttpRequest;
 use App\Service\Jwt\Jwt;
 
@@ -16,10 +17,10 @@ $container['CurrencyRepository'] = function () use ($entityManager){
      return new CurrencyRepositoryDatabase($entityManager);
 };
 $container['TransactionRepository'] = function () use ($entityManager){
-     return new TransactionRepositoryDataba($entityManager);
+     return new TransactionRepositoryDatabase($entityManager);
 };
 $container['PaymentRepository'] = function () use ($entityManager){
-     return new PaymentRepositoryMemory($entityManager);
+     return new PaymentRepositoryDatabase($entityManager);
 };
 $container['auth'] = function () use ($config) {
      return new Jwt(env('SECRET_KEY_TOKEN'));

@@ -16,13 +16,9 @@ class GetAllPaymentTypes
     public function execute(): array
     {
         $payments = $this->repository->getAll();
-        $response = [];
-        if(count($payments) > 0 ) {
-            foreach($payments as $payment){
-                $response[] = $payment->toArray();
-            }   
-            return $response;
+        if(empty($payments)){
+            throw new \Exception("No registered payments.");
         }
-        return $response;
+        return $payments;
     }
 }
