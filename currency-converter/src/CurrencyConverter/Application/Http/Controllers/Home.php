@@ -39,7 +39,7 @@ class Home extends Controller
     {
         $availablesCombinations = $this->service->listAvailablesCombinations();
 
-        $data = new Collection();
+        $quotationData = new Collection();
         if ($request->isMethod('post'))
         {
             $request->validate([
@@ -49,9 +49,9 @@ class Home extends Controller
             ]);
             $request->flash();
 
-            $data = $action(FormDataDTO::fromArray($request->all()));
+            $quotationData = $action(FormDataDTO::fromArray($request->all()));
         }
 
-        return view('home', compact('availablesCombinations', 'data'));
+        return view('home', compact('availablesCombinations', 'quotationData'));
     }
 }
