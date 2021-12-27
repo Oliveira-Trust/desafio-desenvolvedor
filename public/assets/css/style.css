@@ -1,0 +1,30 @@
+.cardConversor{
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 20px;
+}
+
+.colArrow{
+    font-size: 26px;
+    text-align: center;
+}
+
+.botaoCotar{
+    float: right;
+    cursor: pointer;
+}
+#padrao{
+    background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+    pointer-events: none;
+    touch-action: none;
+}
+
+.divresultado{
+    float: right;
+    margin-top: 2%;
+    font-size: 28px;
+    margin-bottom: 5%;
+}
+.table thead th {
+    font-size: 12px;
+}

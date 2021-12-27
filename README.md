@@ -1,48 +1,36 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+### PROJETO DE TESTE PARA COVERSÃO DE MOEDAS FEITO EM PHP/Laravel:
+Conversão da nossa moeda nacional para uma moeda estrangeira, aplicando algumas taxas e regras, no final da conversão o resultado deverá ficar em tela de forma detalhada.
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+### Regras:
+- Moeda de origem BRL;
+- Informar uma moeda de compra que não seja BRL (exibir no mínimo 2 opções);
+- Valor da Compra em BRL (deve ser maior que R$ 1.000,00 e menor que R$ 100.000,00);
+- Formas de pagamento (taxas aplicadas no valor da compra e aceitar apenas as opções abaixo):
+- - Para pagamentos em boleto, taxa de 1,45%
+- -  Para pagamentos em cartão de crédito, taxa de 7,63%
+- Aplicar taxa de 2% pela conversão para valores abaixo de R$ 3.000,00 e 1% para valores maiores que R$ 3.000,00, essa taxa deve ser aplicada apenas no valor da compra e não sobre o valor já com a taxa de forma de pagamento.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+#### PASSOS PARA CONFIGURAÇÃO: 🚀
+* Versão do php utilizada: 7.3
+* Necessário ter o node e o composer instalados
+- Rodar o comando: php artisan key:generate;
+- Rodar o npm install && npm run dev para rodar algumas dependencias de auteticação;
+- Rodar o composer update;
+- Criar um banco de dados vazio e inserir os dados de acesso no .env;
+- Rodas as migrations e seeds : php artisan migrate:fresh --seed (são importantes);
+- Incluir no .env a seguintes variáveis: (URL_API_SERVICE = "https://economia.awesomeapi.com.br")
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+#### MAIS INFORMAÇÕES: 🚀
+* Para acessar a área administrativa o login padrão é: admin@conversor.com e senha: admin123456
+* Os usuários podem fazer um cadastro normalmente e realizar o login
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+#### Principais implementações: 🚀
+- Cotação das moedas
+- Autenticação de usuários
+- Histórico de cotações feita pelo usuário
+- Painel administrativo para configuração de parâmetros;
+- Atualização em tempo real da cotação;
+- Controle ACL
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
-
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
-
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
-
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
-
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
-
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
-
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+## Meu Contato 🚀🚀🚀
+https://www.linkedin.com/in/adson-souza-21b1493a/
