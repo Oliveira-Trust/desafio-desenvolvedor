@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +39,16 @@ class Currency
      * @ORM\Column(type="float")
      */
     private $purchasePrice;
+    /**
+     * One Currency has many transaction. This is the inverse side.
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="dataToConvert")
+     */
+    private $transactions;
+
+    public function __construct()
+    {
+        $this->transactions = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -92,7 +103,10 @@ class Currency
     {
         $array = [];
         $keys = array_keys(get_class_vars(get_class($this)));
-        foreach($keys as $key ){ 
+        foreach($keys as $key ){
+            if($key == 'transactions') {
+                continue;
+            }
             $method = 'get'.str_replace(" ", '', ucwords(str_replace('_', ' ', $key))) ;
             $array[$key] = $this->$method();
         }

@@ -9,7 +9,6 @@ use App\Helpers\EntityManagerFactory;
 
 interface UserRepositoryInterface
 {
-    public function __construct(EntityManagerFactory $entityManagerFactory);
     public function getById(int $id):? User;
     public function delete(User $user):void;
     public function getAll(): array;

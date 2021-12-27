@@ -7,19 +7,21 @@ namespace App\Domain\Repositories\Database;
 use App\Domain\Contracts\Repository\PaymentRepositoryInterface;
 use App\Domain\Entities\Payment;
 use App\Helpers\EntityManagerFactory;
+use Doctrine\ORM\EntityManager;
 
 class PaymentRepositoryDatabase implements PaymentRepositoryInterface
 {
     protected $entityManager;
-    public function __construct(EntityManagerFactory $entityManagerFactory)
+    public function __construct(EntityManager $entityManager)
     {
-        $this->entityManager = $entityManagerFactory->getEntityManager();
+        $this->entityManager = $entityManager;
     }
     public function getById(int $id):? Payment
     {
         $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\Payment u WHERE u.id = :paramid');
         $query->setParameter('paramid', $id);
-        return $query->getOneOrNullResult();
+        $result = $query->getOneOrNullResult();
+        return $result;
     }
     public function delete(Payment $payment):void
     {
@@ -36,10 +38,10 @@ class PaymentRepositoryDatabase implements PaymentRepositoryInterface
         }
         return $response;
     }
-    public function getByName(string $name):? Payment
+    public function getByType(string $type):? Payment
     {
-        $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\Payment u WHERE u.name = :name');
-        $query->setParameter('name', $name);
+        $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\Payment u WHERE u.type = :type');
+        $query->setParameter('type', $type);
         return $query->getOneOrNullResult();
     }
     public function save(Payment $payment): Payment

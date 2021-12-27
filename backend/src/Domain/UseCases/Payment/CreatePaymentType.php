@@ -29,7 +29,7 @@ class CreatePaymentType
             }
             $payment->{'set'.ucfirst($key)}($value);
         }
-        $paymentExists = $this->repository->getByName($payment->getName());
+        $paymentExists = $this->repository->getByType($payment->getType());
         if($paymentExists){
             throw new \Exception('Payment already registered.');
         }

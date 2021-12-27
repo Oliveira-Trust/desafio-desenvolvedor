@@ -24,21 +24,17 @@ final class Version20211225171652 extends AbstractMigration
         status VARCHAR(255) NOT NULL,
         value DOUBLE PRECISION NOT NULL,
         createdat DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-        originCurrency_id INT DEFAULT NULL,
-        destinationCurrency_id INT DEFAULT NULL,
+        dataToConvert_id INT DEFAULT NULL,
         paymentType_id INT DEFAULT NULL,
-        INDEX IDX_EAA81A4C6428A494 (originCurrency_id),
-        INDEX IDX_EAA81A4C80CA656B (destinationCurrency_id),
+        INDEX IDX_EAA81A4C3C018BB7 (dataToConvert_id),
         INDEX IDX_EAA81A4CD6FAC91A (paymentType_id),
         INDEX IDX_EAA81A4CA76ED395 (user_id),
         PRIMARY KEY(id)) DEFAULT CHARACTER SET
         utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB;"
         );
-        $this->addSql("ALTER TABLE transactions ADD CONSTRAINT FK_EAA81A4C6428A494 FOREIGN KEY (originCurrency_id) REFERENCES currency (id);");
-        $this->addSql("ALTER TABLE transactions ADD CONSTRAINT FK_EAA81A4C80CA656B FOREIGN KEY (destinationCurrency_id) REFERENCES currency (id);");
+        $this->addSql("ALTER TABLE transactions ADD CONSTRAINT FK_EAA81A4C3C018BB7 FOREIGN KEY (dataToConvert_id) REFERENCES currency (id);");
         $this->addSql("ALTER TABLE transactions ADD CONSTRAINT FK_EAA81A4CD6FAC91A FOREIGN KEY (paymentType_id) REFERENCES payment_type (id);");
         $this->addSql("ALTER TABLE transactions ADD CONSTRAINT FK_EAA81A4CA76ED395 FOREIGN KEY (user_id) REFERENCES users (id);");
-        $this->addSql("ALTER TABLE transactions CHANGE createdat createdat DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL;");
     }
 
     public function down(Schema $schema): void

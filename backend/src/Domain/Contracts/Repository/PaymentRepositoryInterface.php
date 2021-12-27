@@ -9,7 +9,7 @@ use App\Domain\Entities\Payment;
 interface PaymentRepositoryInterface
 {
     public function getById(int $id):? Payment;
-    public function getByName(string $name):? Payment;
+    public function getByType(string $type):? Payment;
     public function getAll(): array;
     public function save(Payment $currency): Payment;
 }

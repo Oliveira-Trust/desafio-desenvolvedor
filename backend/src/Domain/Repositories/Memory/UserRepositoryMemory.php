@@ -12,7 +12,7 @@ class UserRepositoryMemory implements UserRepositoryInterface
 {
     private $users;
     
-    public function __construct(EntityManagerFactory $entityManagerFactory)
+    public function __construct()
     {
         $this->users = [];
     }

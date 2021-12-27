@@ -6,13 +6,14 @@ namespace App\Domain\Repositories\Database;
 use App\Domain\Contracts\Repository\CurrencyRepositoryInterface;
 use App\Domain\Entities\Currency;
 use App\Helpers\EntityManagerFactory;
+use Doctrine\ORM\EntityManager;
 
 class CurrencyRepositoryDatabase extends \Doctrine\ORM\EntityRepository implements CurrencyRepositoryInterface
 {
     protected $entityManager;
-    public function __construct(EntityManagerFactory $entityManagerFactory)
+    public function __construct(EntityManager $entityManager)
     {
-        $this->entityManager = $entityManagerFactory->getEntityManager();
+        $this->entityManager = $entityManager;
     }
     public function getById(int $id):? Currency
     {
@@ -30,7 +31,6 @@ class CurrencyRepositoryDatabase extends \Doctrine\ORM\EntityRepository implemen
         $arrCodes = explode('-', $code);
         $dql = "SELECT u FROM App\Domain\Entities\Currency u WHERE UPPER(u.code) = :code AND UPPER(u.codein) = :codein";
         $query = $this->entityManager->createQuery($dql);
-
         $query->setParameter('code',   $arrCodes[0] );
         $query->setParameter('codein', $arrCodes[1] );
         $currency = $query->getOneOrNullResult();

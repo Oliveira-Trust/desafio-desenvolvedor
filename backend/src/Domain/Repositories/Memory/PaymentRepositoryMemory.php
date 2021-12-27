@@ -23,10 +23,10 @@ class PaymentRepositoryMemory implements PaymentRepositoryInterface
         }
         return null;
     }
-    public function getByName(string $name):? Payment
+    public function getByType(string $type):? Payment
     {
         foreach($this->payments as $key => $payment) {
-            if($payment->getName() === $name) {
+            if($payment->getType() === $type) {
                 return $payment;
             }
         }

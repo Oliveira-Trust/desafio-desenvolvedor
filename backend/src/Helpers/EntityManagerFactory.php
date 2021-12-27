@@ -14,7 +14,7 @@ class EntityManagerFactory
      * @throws \Doctrine\ORM\ORMException
      */
 
-    public function getEntityManager(): EntityManagerInterface
+    public static function getEntityManager(): EntityManagerInterface
     {
         $path = __DIR__ . "/../../";
         if(!function_exists('env')){

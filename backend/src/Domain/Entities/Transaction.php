@@ -19,20 +19,22 @@ class Transaction
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="Currency")
-     */
-    private $originCurrency;
+    * Many transactions have one Currency. This is the owning side.
+    * @ORM\ManyToOne(targetEntity="Currency", inversedBy="transactions", cascade={"merge"} )
+    * @ORM\JoinColumn(name="dataToConvert_id", referencedColumnName="id")
+    */
+    private $dataToConvert;
     /**
-     * @ORM\ManyToOne(targetEntity="Currency")
-     */
-    private $destinationCurrency;
-    /**
-     * @ORM\ManyToOne(targetEntity="Payment")
-     */
+    * Many transactions have one paymment. This is the owning side.
+    * @ORM\ManyToOne(targetEntity="Payment", inversedBy="transactions", cascade={"merge"} )
+    * @ORM\JoinColumn(name="paymentType_id", referencedColumnName="id")
+    */
     private $paymentType;
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="transactions")
-     */
+    * Many transactions have one user. This is the owning side.
+    * @ORM\ManyToOne(targetEntity="User", inversedBy="transactions", cascade={"merge"} )
+    * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+    */
     private $user;
     /**
      * @ORM\Column(type="string")
@@ -51,18 +53,14 @@ class Transaction
     {
         return $this->id;
     }
-    public function getOriginCurrency()
+    public function getDataToConvert()
     {
-        return $this->originCurrency;
+        return $this->dataToConvert;
     }
-    public function getDestinationCurrency()
-    {
-        return $this->destinationCurrency;
-    }
-    public function getPaymentType()
+    public function getPayment()
     {
         return $this->paymentType;
-    }
+    }    
     public function getUser()
     {
         return $this->user;
@@ -84,19 +82,9 @@ class Transaction
     {
         return $this->date;
     }
-    public function setOriginCurrency(Currency $originCurrency)
+    public function setDataToConvert(Currency $dataToConvert)
     {
-        $this->originCurrency = $originCurrency;
-        return $this;
-    }
-    public function setDestinationCurrency(Currency $destinationCurrency)
-    {
-        $this->destinationCurrency = $destinationCurrency;
-        return $this;
-    }
-    public function setPaymentType(Payment $payment)
-    {
-        $this->payment = $payment;
+        $this->dataToConvert = $dataToConvert;
         return $this;
     }
     public function setUser(User $user)
@@ -104,7 +92,11 @@ class Transaction
         $this->user = $user;
         return $this;
     }
-    
+    public function setPayment(Payment $payment)
+    {
+        $this->paymentType = $payment;
+        return $this;
+    }
     public function setStatus(string $status)
     {
         $this->status = $status;
@@ -115,21 +107,43 @@ class Transaction
         $this->date = $date;
         return $this;
     }
+    // $expectedValues = [
+    //     "moeda_origem" => 'BRL',
+    //     "moeda_destino"=> 'USD',
+    //     "valor_para_conversao" => 5000,
+    //     "forma_pagamento" => 'Boleto',
+    //     "valor_moeda_destino" => 5.30,
+    //     "valor_comprado" => 920.18,
+    //     "taxa_pagamento" => 72.50,
+    //     "taxa_conversao" => 50.00,
+    //     "valor_convertido" => 4877.50
+    // ];
     public function convertValue()
     {
-        $valueTransaction = $this->getValue();
-        // tirar do valor a taxa de tipo de pagamento
-        $type = $this->getPaymentType();
-        var_dump($type);
-        exit;
-        $paymentTax = $this->getPaymentType()->getConversionRate();
-        $valueWithoutPaymentTax = $valueTransaction - ($valueTransaction * $paymentTax);
-        echo $valueWithoutPaymentTax;
-        exit;
-        // tirar do valor restante a taxa de conversao 
-        // converter o valor restante;
-        $valorCompra = $this->getOriginCurrency()->getSalePrice();
-        return $valueTransaction * $valorCompra;
+        $valueCoinDestino = (1 / $this->dataToConvert->getSalePrice());
+        $code = $this->dataToConvert->getCode();
+        $codein = $this->dataToConvert->getCodein();
+        $taxPayment = ($this->paymentType->getConversionTax() / 100);
+        $amountTaxPayment = ($this->value * $taxPayment);
+        $taxConvertion = ($this->value < 3) ? 0.02 : 0.01;
+        $amountTaxConvertion = ($taxConvertion * $this->value);
+        $convertedValue = ($this->value - $amountTaxConvertion - $amountTaxPayment);
+        return [
+            "moeda_origem" => $code,
+            "moeda_destino"=> $codein,
+            "valor_para_conversao" => money_format("%.2n",$this->value),
+            "forma_pagamento" => $this->paymentType->getType(),
+            "valor_moeda_destino" => $this->formatMoney($valueCoinDestino),
+            "valor_comprado" => $this->formatMoney($convertedValue / $valueCoinDestino),
+            "taxa_pagamento" => $this->formatMoney($amountTaxPayment),
+            "taxa_conversao" => $this->formatMoney($amountTaxConvertion),
+            "valor_convertido" => $this->formatMoney($convertedValue)
+        ];
+    }
+    private function formatMoney($amount)
+    {
+        setlocale(LC_MONETARY, 'pt_BR');
+        return money_format("%.2n",$amount);
     }
     public function toArray()
     {
@@ -147,6 +161,6 @@ class Transaction
     }
     public function __toString()
     {
-        return $this->getPaymentType() . '('.$this->getId().')';
+        return $this->getPayment() . '('.$this->getId().')';
     }
 }

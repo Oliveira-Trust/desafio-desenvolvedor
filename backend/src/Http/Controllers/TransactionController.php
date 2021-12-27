@@ -19,7 +19,6 @@ final class TransactionController extends Controller
         $paymentRepository = $this->container->get('PaymentRepository');
         $currencyRepository = $this->container->get('CurrencyRepository');
         $transactionRepository = $this->container->get('TransactionRepository');
-
         $createConversion = new CreateConversion(
             $data,
             $userId,

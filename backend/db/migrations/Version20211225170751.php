@@ -20,8 +20,8 @@ final class Version20211225170751 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql("CREATE TABLE payment_type (id INT AUTO_INCREMENT NOT NULL,
-        name VARCHAR(255) NOT NULL,
-        conversionRate DOUBLE PRECISION NOT NULL,
+        TYPE VARCHAR(255) NOT NULL,
+        conversionTax DOUBLE PRECISION NOT NULL,
         PRIMARY KEY(id)) DEFAULT CHARACTER SET
         utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB;");
 

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domain\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Domain\Contracts\PaymentRepositoryInterface")
+ * @ORM\Entity(repositoryClass="App\Domain\Contracts\Repository\PaymentRepositoryInterface")
  * @ORM\Table(name="payment_type")
  */
 class Payment
@@ -21,46 +22,58 @@ class Payment
     /**
      * @ORM\Column(type="string")
      */
-    private $name;
+    private $type;
     /**
      * @ORM\Column(type="float")
      */
-    private $conversionRate;
+    private $conversionTax;
+    /**
+     * One Payment has many transaction. This is the inverse side.
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="paymentType")
+     */
+    private $transactions;
 
+    public function __construct()
+    {
+        $this->transactions = new ArrayCollection();
+    }
     public function getId()
     {
         return $this->id;
     }
-    public function getName()
+    public function getType()
     {
-        return $this->name;
+        return $this->type;
     }
-    public function getConversionRate()
+    public function getConversionTax()
     {
-        return $this->conversionRate;
+        return $this->conversionTax;
     }
-    public function setName(string $name)
+    public function setType(string $type)
     {
-        $this->name = $name;
+        $this->type = $type;
         return $this;
     }
     public function __toString()
     {
-        return $this->getName();
+        return $this->getType();
     }
     public function toArray()
     {
         $array = [];
         $keys = array_keys(get_class_vars(get_class($this)));
         foreach($keys as $key ){
+            if($key == 'transactions') {
+                continue;
+            }
             $method = 'get'.str_replace(" ", '', ucwords(str_replace('_', ' ', $key))) ;
             $array[$key] = $this->$method();
         }
         return $array;
     }
-    public function setConversionRate(float $rate)
+    public function setConversionTax(float $tax)
     {
-        $this->conversionRate = $rate;
+        $this->conversionTax = $tax;
         return $this;
     }
 }

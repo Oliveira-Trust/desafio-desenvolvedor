@@ -7,13 +7,14 @@ namespace App\Domain\Repositories\Database;
 use App\Domain\Contracts\Repository\TransactionRepositoryInterface;
 use App\Domain\Entities\Transaction;
 use App\Helpers\EntityManagerFactory;
+use Doctrine\ORM\EntityManager;
 
 class TransactionRepositoryDatabase implements TransactionRepositoryInterface
 {
     protected $entityManager;
-    public function __construct(EntityManagerFactory $entityManagerFactory)
+    public function __construct(EntityManager $entityManager)
     {
-        $this->entityManager = $entityManagerFactory->getEntityManager();
+        $this->entityManager = $entityManager;
     }
     public function getById(int $id):? Transaction
     {

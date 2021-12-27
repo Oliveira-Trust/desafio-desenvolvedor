@@ -7,13 +7,14 @@ namespace App\Domain\Repositories\Database;
 use App\Domain\Contracts\Repository\UserRepositoryInterface as RepositoryUserRepositoryInterface;
 use App\Domain\Entities\User;
 use App\Helpers\EntityManagerFactory;
+use Doctrine\ORM\EntityManager;
 
 class UserRepositoryDatabase extends \Doctrine\ORM\EntityRepository implements RepositoryUserRepositoryInterface
 {
     protected $entityManager;
-    public function __construct(EntityManagerFactory $entityManagerFactory)
+    public function __construct(EntityManager $entityManager)
     {
-        $this->entityManager = $entityManagerFactory->getEntityManager();
+        $this->entityManager = $entityManager;
     }
     public function getById(int $id):? User
     {

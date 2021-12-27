@@ -19,24 +19,21 @@ class CreateConversion
     private $paymentRepository;
     private $userRepository;
 
-    public function __construct(
-        array $data,
-        int $userId = null,
-        TransactionRepositoryInterface $transactionRepository,
-        CurrencyRepositoryInterface $currencyRepository,
-        PaymentRepositoryInterface $paymentRepository,
-        UserRepositoryInterface $userRepository
-    ) {
+    public function __construct(array $data, int $userId = null, TransactionRepositoryInterface $transactionRepository, CurrencyRepositoryInterface $currencyRepository, PaymentRepositoryInterface $paymentRepository, UserRepositoryInterface $userRepository)
+    {
+        $this->paymentRepository = $paymentRepository;
         $this->data = $data;
         $this->userId = $userId;
         $this->transactionRepository = $transactionRepository;
         $this->currencyRepository = $currencyRepository;
-        $this->paymentRepository = $paymentRepository;
         $this->userRepository = $userRepository;
     }
-    public function execute(): array
+    public function execute()
     {
         $transaction = new Transaction();
+        $transaction->setStatus('CONVERSION');
+        $transaction->setDate(new \DateTime());
+
         if ($this->userId) {
             $user = $this->userRepository->getById($this->userId);
             if($user){
@@ -55,21 +52,20 @@ class CreateConversion
         $code = $this->data['moeda_origem'] . '-' . $this->data['moeda_destino'];
         $paymentId = $this->data['forma_pagamento'];
         $value = $this->data['valor'];
-        $curencyOrigin = $this->currencyRepository->getByCurrencyCode($code);
-        $transaction->setOriginCurrency($curencyOrigin);        
-        $paymentType = $this->paymentRepository->getById($paymentId);
-        $transaction->setPaymentType($paymentType);
-        var_dump($transaction->getPaymentType());
-        exit;
-
+        $currency = $this->currencyRepository->getByCurrencyCode($code);
+        if(!$currency) {
+            throw new \Exception("Moeda não disponivel para conversão.");
+        }
+        $transaction->setDataToConvert($currency);
+        $paymentType = $this->paymentRepository->getByType($paymentId);
+        if(!$paymentType) {
+            throw new \Exception("Tipo de pagamento Invalido.");
+        }
+        $transaction->setPayment($paymentType);
         $transaction->setValue((float)$value);
-        $valueTax = $transaction->convertValue();
-        $this->transactionRepository->save($transaction);
-        return [
-            'moeda_origem' => $this->data['moeda_origem'],
-            'moeda_destino' => $this->data['moeda_destino'],
-            'valor_conversao' => $this->data['valor'],
-            'forma_pagamento' => $paymentType,
-        ];
+        $transaction = $this->transactionRepository->save($transaction);
+        $resultData = $transaction->convertValue();
+        return $resultData;
     }
+  
 }

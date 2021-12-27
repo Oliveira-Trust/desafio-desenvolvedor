@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,10 +34,16 @@ class User
      * @ORM\Column(type="string")
      */
     protected $password;
-     /**
+    /**
+     * One user has many transaction. This is the inverse side.
      * @ORM\OneToMany(targetEntity="Transaction", mappedBy="user")
      */
     protected $transactions;
+
+    public function __construct()
+    {
+        $this->transactions = new ArrayCollection();
+    }
     
     public function getId()
     {

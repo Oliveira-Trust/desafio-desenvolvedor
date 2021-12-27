@@ -9,7 +9,7 @@ use App\Helpers\HttpRequest;
 use App\Service\Jwt\Jwt;
 
 $container  = $app->getContainer();
-$entityManager = new EntityManagerFactory();
+$entityManager = EntityManagerFactory::getEntityManager();
 $container['UserRepository'] = function () use ($entityManager){
      return new UserRepositoryDatabase($entityManager);
 };
