@@ -76,8 +76,7 @@
                     </div>
                     @if( count($quotationData) )
                         <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header"><h3 class="card-title"></h3></div>
+                            <div class="card mt-1">
                                 <div class="card-body">
 
                                     <table class="table table-striped table-hover table-sm align-middle">
@@ -126,7 +125,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="tab-pane fade show active" id="historic" role="tabpanel" aria-labelledby="historic-tab">
+                <div class="tab-pane fade" id="historic" role="tabpanel" aria-labelledby="historic-tab">
                     HISTÓRICO
                 </div>
             </div>
