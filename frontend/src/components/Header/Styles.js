@@ -16,7 +16,7 @@ export const Logo = styled.div`
     text-align: center;
     font-size: 2rem;
     & a {
-        color: white;
+        color: ${({theme}) => theme.colors.text.primary}; 
     }
 `
 export const Nav = styled.nav`
@@ -25,9 +25,9 @@ export const Nav = styled.nav`
 
     & a {
         margin: 10px;
-        color: white;
+        color: ${({theme}) => theme.colors.text.primary}; 
         &:hover {
-            color: black;
+            color: ${({theme}) => theme.colors.text.primary}; 
             text-shadow: 1px 1px white;
         }
     }

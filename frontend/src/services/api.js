@@ -1,20 +1,26 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: "http://localhost:8001/"
+    baseURL: "http://localhost:8080/"
 });
 
 export const getCurrencies = async () => {
-    return await api.get('moedas')    
+    const response = await api.get('moedas')
+    return response.data
 }
 export const getPaymentForms = async ()  => {
-    return await api.get('payments')
+    const response =  await api.get('payments')
+    return response.data
 }
-
 export const sendConversation = async (data, iduser = 1)  => {
-    return await api.post(`conversion/${iduser}`, data)
+    const response =  await api.post(`conversion/${iduser}`, data)
+    return response.data
 }
-
 export const sendLogin = async (data) => {
-    return await api.post(`singin`, data)
+    const response =  await api.post(`singin`, data)
+    return response.data
+}
+export const getTransactions = async (userid) => {
+    const response =  await api.get(`transactions/${userid}`)
+    return response.data.data.user.transactions
 }

@@ -13,11 +13,10 @@ export const ContainerForm = styled.div`
         margin: 5px;
         font-size: 1.5rem;
         border-radius: 3px;
-        background: #ccc;        
+        background: ${({theme}) => theme.colors.background.primary}; 
         & option {
-            color: black;
+            color: ${({theme}) => theme.colors.text.secondary}; 
             padding: 50px;
-            border-bottom: 5px solid white;
         }
     }
 

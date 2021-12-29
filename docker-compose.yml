@@ -1,44 +1,25 @@
 version: '3'
 
 services:
-    web:
-        image: nginx:1.21.1-alpine
-        container_name: nginx
-        volumes:
-            - ./backend:/usr/share/nginx
-            - ./docker-nginx:/etc/nginx/conf.d
-        ports:
-            - "8001:80"
-        depends_on:
-          - php
-        networks:
-          - nginx-network
-    php:
-        build: ./docker-php
-        container_name: backend
-        volumes:
-            - ./backend:/usr/share/nginx
-        depends_on:
-          - db
-        networks:
-          - php-network
-          - nginx-network
-    db:
-        image: mysql:5.7
-        container_name: db
-        volumes:
-            - ./docker-mysql:/var/lib/mysql
-        environment:
-            - MYSQL_DATABASE=oliveira_trust
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_USER=danielmn
-            - MYSQL_PASSWORD=123456
-        ports:
-          - 3306:3306
-        networks:
-          - php-network
-networks:
-    nginx-network:
-        driver: bridge
-    php-network:
-        driver: bridge
+  php:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.apache
+    container_name: php
+    volumes:
+      - ./api/backend:/var/www
+    ports:
+      - 8080:80
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    ports:
+      - 3306:3306
+    volumes: 
+      - ./docker-mysql:/var/lib/mysql
+    environment: 
+      - MYSQL_DATABASE=oliveira_trust
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=danielmn
+      - MYSQL_PASSWORD=123456

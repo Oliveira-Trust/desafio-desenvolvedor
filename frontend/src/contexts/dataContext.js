@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext, useCallback } from 'react'
-import { getCurrencies, getPaymentForms } from '../services/api'
+import { getCurrencies, getPaymentForms, getTransactions } from '../services/api'
 
 const DataContex = createContext()
 
@@ -7,16 +7,19 @@ const DataProvider = ({ children }) => {
     const [ currencyBRL, setCurrencyBRL ] = useState('')
     const [ currencies, setCurrencies ] = useState([])
     const [ paymentsForm, setPaymentsForm ] = useState([])
+    const [ transactions, setTransactions ] = useState([])
 
     const handleLoadData = useCallback(async () => {
         const currenciesRequest = getCurrencies()
         const paymentsRequest = getPaymentForms()
-        const [ currenciesResponse, paymentsResponse ] = await Promise.all([
+        const transactions = getTransactions(1)
+        const [ currenciesResponse, paymentsResponse, transactionsResponse ] = await Promise.all([
             currenciesRequest,
-            paymentsRequest
+            paymentsRequest,
+            transactions
           ])
-        const payments = paymentsResponse.data.data
-        const { data } = currenciesResponse.data
+        const payments = paymentsResponse.data
+        const { data } = currenciesResponse
         const brl = {
             code: data[0].code,
             name: data[0].name.split('/')[0]
@@ -30,17 +33,18 @@ const DataProvider = ({ children }) => {
         setPaymentsForm(c => payments)
         setCurrencies(currenciesData)
         setCurrencyBRL(c => brl);
+        setTransactions(c => transactionsResponse)
     }, [])
     
     useEffect(()=>{
         handleLoadData()
     }, [handleLoadData])
-
     return (
         <DataContex.Provider value={{
             currencies,
             currencyBRL,
-            payments: paymentsForm
+            payments: paymentsForm,
+            transactions
         }}>
             {children}
         </DataContex.Provider>

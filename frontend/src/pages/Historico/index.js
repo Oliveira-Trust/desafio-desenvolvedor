@@ -1,10 +1,11 @@
 import Layout from "../../template/Layout";
+import TableConversion from '../../components/TableConversion'
 
 const PagePainel = ()=>{
     return (
-        <Layout>
-          <div>Aqui vai o conteudo Historico</div>
-        </Layout>
+      <Layout>
+        <TableConversion />
+    </Layout>
       );
 } 
 export default PagePainel

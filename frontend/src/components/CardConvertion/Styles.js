@@ -6,21 +6,22 @@ export const ContainerForm = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-
     & select {
         width: 100%;
         height: 50px;
         margin: 5px;
         font-size: 1.5rem;
         border-radius: 3px;
-        background: #ccc;        
-        & option {
-            color: black;
+        background: ${({theme}) => theme.colors.background.white};        
+        & option:active {
             padding: 50px;
+            background: ${({theme}) => theme.colors.background.white};        
             border-bottom: 5px solid white;
         }
+        &:checked {
+            color: red;
+        }
     }
-
     @media (min-width: 624px ){
         justify-content: flex-start;
     }
