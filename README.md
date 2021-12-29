@@ -1,48 +1,90 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# PROJETO API BACKEND PHP FRONTEND REACTJSCONVERÇÃO DE MOEDAS#
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+---
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+Projeto desenvolvido com estrutura RESTFull Backend em PHP, Banco de dados MySQL, Frontend com ReactJS utilizando algumas biblioteas PHP/JavaSCript.
+Foi utilizado Docker e docker-compose para o desenvolvimento
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+<p align="center">	
+   <a href="https://www.linkedin.com/in/developer-danielmn/">
+      <img alt="Daniel Meireles" src="https://img.shields.io/badge/-Daniel Meireles-0080000?style=flat&logo=Linkedin&logoColor=white" />
+   </a>
+  <img alt="Repository size" src="https://img.shields.io/github/languages/code-size/meirelesdev/base-docker?color=0080000label=repo%20size">
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+  <a href="https://github.com/meirelesdev/base-docker/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/meirelesdev/base-docker?color=0080000">
+</p>
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+# :pushpin: Índice
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+- [Sobre](#sobre)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Como Usar](#como-usar)
+- [Como Contribuir](#como-contribuir)
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+<a id="sobre"></a>
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+## :bookmark: Sobre
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+O <strong>Projeto Converção de moedas</strong> é um projeto desenvolvido consumindo a api: [https://docs.awesomeapi.com.br/api-de-moedas](https://docs.awesomeapi.com.br/api-de-moedas).
+
+
+
+<a id="tecnologias-utilizadas"></a>
+
+## :rocket: Tecnologias Utilizadas
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- [Docker](https://docker.com)
+- [PHP](https://www.php.net/)
+- [MySQL](https://www.mysql.com/)
+- [ReactJS](https://pt-br.reactjs.org/)
+ 
+<a id="como-usar"></a>
+
+# :construction_worker: Como Usar
+
+### **Pré-requisitos**
+
+  - É **necessário** possuir o **[Docker](https://docker.com)** instalado na máquina.
+  - Também, é **essencial** ter o **[Docker Composer](https://docs.docker.com/compose/install/)** instalado de forma global na máquina.
+
+```bash
+# Clone o Repositório
+$ git clone URL_DO REPOSITÓRIO.
+```
+### :whale: Executando os containers
+
+```bash
+# Entre na pasta projeto
+$ cd NOME_DA_PASTA_DO_PROJETO
+
+# Levantando os Containers
+$ docker-compose up -d
+```
+```
+# Para configurar o backend é necessario installar as bibliotecas então entre na pasta ./api/backend.
+# e digite:
+$ composer update
+# Ou caso não tenho o PHP instalado localmente entrar no container php
+# Entre no container com o comando 
+$ docker exec -it php bash
+# Sair da pasta public com:
+$ cd ..
+# E installar as bibliotecas com o comando:
+$ composer update
+
+```
+```
+# Para configurar o frontend é necessario ter o NodeJS instalado, entrar na pasta ./frontend.
+# e digite:
+$ npm install
+```
+---
+
+<h4 align="center">
+    Feito com ❤️ by <a href="https://www.linkedin.com/in/developer-danielmn/" target="_blank">Daniel Meireles</a>
+</h4>
