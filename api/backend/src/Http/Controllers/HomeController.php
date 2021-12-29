@@ -26,7 +26,7 @@ class HomeController extends Controller
         }catch(\Exception $e){
             $data['status'] = 'error';
             $data['message'] = $e->getMessage();
-            return $this->response(["status" => "sucesso", "data" => $data]);
+            return $this->response($data);
         }
     }
     public function getCurrency($code, $codein)
@@ -36,9 +36,10 @@ class HomeController extends Controller
             $getCurrency = new GetCurrency($this->http, $this->currencyRepository);
             $data = $getCurrency->execute($codeCurrenci);
             $this->response(["status" => "sucesso", "data" => $data]);
-            return $this->response(["status" => "sucesso", "data" => $data]);
         } catch (\Exception $e) {
-            return $this->response(["status" => "sucesso", "data" => []]);
+            $data['status'] = 'error';
+            $data['message'] = $e->getMessage();
+            return $this->response($data);
         }
     }
 }

@@ -15,7 +15,6 @@
         "doctrine/cache": "^1.11"
     },
     "scripts": {
-        "serve": "php -S localhost:900 -t ./public",
         "test": "vendor/bin/phpunit",
         "create-tables": "vendor/bin/doctrine orm:schema-tool:create",
         "migrations-up": "vendor/bin/doctrine-migrations migrations:migrate",

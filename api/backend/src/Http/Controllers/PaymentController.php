@@ -23,9 +23,9 @@ class PaymentController extends Controller
             $payments = $createConversion->execute();
             $this->response(["status" => "sucesso", "data" => $payments], 200);
         }catch(\Exception $e){
-            $arrayResponse['code'] = 'error';
-            $arrayResponse['message'] = $e->getMessage();
-            $this->response($arrayResponse);
+            $data['status'] = 'error';
+            $data['message'] = $e->getMessage();
+            return $this->response($data);
         }
     }
     public function store()
@@ -34,14 +34,14 @@ class PaymentController extends Controller
             $data = $this->request->getBody();
             $createPayment = new CreatePaymentType($data, $this->paymentsRepository);
             $payment = $createPayment->execute();
-            $arrayResponse['code'] = 'sucesso';
+            $arrayResponse['status'] = 'sucesso';
             $arrayResponse['message'] = 'Pagamento salvo com sucesso.';
             $arrayResponse['data'] = $payment->toArray();
             $this->response($arrayResponse);
         } catch(\Exception $e){
-            $arrayResponse['code'] = 'error';
-            $arrayResponse['message'] = $e->getMessage();
-            $this->response($arrayResponse);
+            $data['status'] = 'error';
+            $data['message'] = $e->getMessage();
+            return $this->response($data);
         }
     }
 }

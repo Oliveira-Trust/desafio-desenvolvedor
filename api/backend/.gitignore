@@ -15,6 +15,7 @@ dump.sql
 db/proxies
 .vscode
 docker-compose.yml
+.composer/
 
 files-cache/*
 .phpunit.result.cache

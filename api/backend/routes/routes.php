@@ -8,7 +8,7 @@ Route::get('/payments', "PaymentController@index");
 Route::post('/payment/save', "PaymentController@store");
 
 Route::get('/transactions/{userid}', 'TransactionController@index');
-Route::post('/conversion/{userid}', 'TransactionController@conversion');
+Route::post('/conversion', 'TransactionController@conversion');
 
 Route::get('/users', "UserController@index");
 

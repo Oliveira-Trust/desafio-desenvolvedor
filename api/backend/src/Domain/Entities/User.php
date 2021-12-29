@@ -96,9 +96,9 @@ class User
     }
     public function getTransactions()
     {
-        $response = [
-            "user" => $this->toArray()
-        ];
+        $response = [ "user" => $this->toArray() ];
+        $response["user"]["transactions"] = [];
+
         foreach($this->transactions as $transaction) {
             $response["user"]["transactions"][] = $transaction->convertValue();
         }

@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext, useCallback } from 'react'
+import { createContext, useState, useEffect, useContext, useCallback, useReducer } from 'react'
 import { getCurrencies, getPaymentForms, getTransactions } from '../services/api'
 
 const DataContex = createContext()
@@ -10,14 +10,9 @@ const DataProvider = ({ children }) => {
     const [ transactions, setTransactions ] = useState([])
 
     const handleLoadData = useCallback(async () => {
-        const currenciesRequest = getCurrencies()
-        const paymentsRequest = getPaymentForms()
-        const transactions = getTransactions(1)
-        const [ currenciesResponse, paymentsResponse, transactionsResponse ] = await Promise.all([
-            currenciesRequest,
-            paymentsRequest,
-            transactions
-          ])
+        const currenciesResponse = await getCurrencies()
+        const paymentsResponse = await getPaymentForms()
+        const transactionsResponse = await getTransactions(1)
         const payments = paymentsResponse.data
         const { data } = currenciesResponse
         const brl = {
@@ -57,5 +52,4 @@ const useData = () => {
     }
     return context
 }
-
 export { DataProvider, useData }

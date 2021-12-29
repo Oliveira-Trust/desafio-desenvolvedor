@@ -23,25 +23,31 @@ class TransactionController extends Controller
     {
         try{
             $user = $this->userRepository->getById((int)$userid);
+            if(!$user){
+                throw new \Exception("No users found.");
+            }
             $transactions = $user->getTransactions();
             $this->response([ "data" => $transactions]);
         } catch(\Exception $e) {
-            $response['status'] = 'error';
-            $response['message'] = $e->getMessage();
-            $this->response($response);
+            $data['status'] = 'error';
+            $data['message'] = $e->getMessage();
+            return $this->response($data);
         }
     }
-    public function conversion($userid)
+    public function conversion()
     {
         try{
             $data = $this->request->getBody();
+            $headerRequest = $this->request->getHeaders();
+            $token = $headerRequest['Authorization'] ?? null;
+            $dataUser = $this->auth->validate($token);
             $userRepository = $this->userRepository;
             $currencyRepository = $this->currencyRepository;
             $transactionRepository = $this->transactionRepository;
             $paymentRepository = $this->paymentoRepository;
             $createConversion = new CreateConversion(
                 $data,
-                $userid,
+                $dataUser->id,
                 $transactionRepository,
                 $currencyRepository,
                 $paymentRepository,
@@ -50,9 +56,9 @@ class TransactionController extends Controller
             $transaction = $createConversion->execute();
             $this->response(["status" => "sucesso", "data" => $transaction]);
         } catch(\Exception $e) {
-            $response['status'] = 'error';
-            $response['message'] = $e->getMessage();
-            $this->response($response);
+            $data['status'] = 'error';
+            $data['message'] = $e->getMessage();
+            return $this->response($data);
         }
         
     }

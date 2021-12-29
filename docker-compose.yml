@@ -2,14 +2,16 @@ version: '3'
 
 services:
   php:
-    build:
-      context: ./api
-      dockerfile: Dockerfile.apache
+    build: ./api
     container_name: php
     volumes:
       - ./api/backend:/var/www
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 40s 
+    command: sh /entrypoint.sh
     ports:
       - 8080:80
+    depends_on:
+      - db
   db:
     image: mysql:5.7
     container_name: db

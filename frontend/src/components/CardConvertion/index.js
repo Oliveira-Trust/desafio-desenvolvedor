@@ -1,4 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useState } from 'react';
+import { useHistory } from 'react-router';
 
 import * as Yup from 'yup'
 import { useData } from '../../contexts/dataContext';
@@ -13,10 +15,16 @@ const initValues = {
 }
 const CardConvertion = () => {
     const { currencies, currencyBRL, payments } = useData();
-
+    const [ showMessage, setShowMessage ] = useState({show: false, message: ''})
+    const history = useHistory();
     const handleOnSubmit = (values, onSubmitProps) => {
         sendConversation(values).then((res)=>{
             console.log(res)
+            if(res.status === 'error'){
+                setShowMessage({show: true, message: res.message})
+            } else {
+                history.push('/conversoes')
+            }
         })
         onSubmitProps.resetForm()
     }
@@ -87,6 +95,9 @@ const CardConvertion = () => {
                                 <ErrorMessage name="valor" />
                             </C.Error>
                         </C.ContainerForm>
+                        {showMessage.show && (
+                            <C.Error>{showMessage.message}</C.Error>
+                        )}
                         <C.ContainerForm>
                             <C.Button type="submit">Converter</C.Button>
                         </C.ContainerForm>

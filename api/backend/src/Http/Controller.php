@@ -17,7 +17,7 @@ class Controller
     }
     public function response($array = [])
     {
-        header('HTTP/1.1 200');
+        // header('HTTP/1.1 200');
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
         header('Access-Control-Allow-Headers: *');

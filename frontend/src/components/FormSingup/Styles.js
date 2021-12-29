@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { InputArea } from '../FormSingup/Styles'
-
 import { Link } from 'react-router-dom'
 
 export const ContainerForm = styled.div`
@@ -44,8 +42,26 @@ export const TextInput = styled.input`
         padding: 15px;
     }
 `
-export const InputAreaLogin = styled(InputArea)`
+export const InputArea = styled.input`
+    margin: 3px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: ${({theme}) => theme.borders.radius};
     background-color: ${({theme}) => theme.colors.background.inputs};
+    width: 100%;
+    font-weight: bold;
+    transition: 0.9s ease-in-out;
+
+    &::placeholder {
+        color: ${({theme}) => theme.colors.text.placeholder}
+    }
+    &.error {
+        border: 1px solid red
+    }
+    &:focus {
+        padding: 15px;
+    }
 `
 export const Button = styled.button`
     padding: 10px;
@@ -80,5 +96,8 @@ export const LinkBotton = styled(Link)`
         background-color: rgba(61, 129, 22, 0.5);
         color: ${({theme})=> theme.colors.text.primary};
     }
+`
+export const FieldLabel = styled.label`
+    align-self: flex-start;
 
 `

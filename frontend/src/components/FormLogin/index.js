@@ -3,18 +3,35 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup'
 import { sendLogin } from '../../services/api';
 import * as C from './Styles'
+import { FieldLabel } from '../FormSingup/Styles'
+import { useEffect, useState } from 'react';
+import { isAuthenticated, singIn } from '../../auth/authReducer';
+import { useHistory } from 'react-router';
 
 const initValues = {
-    username: '',
-    password: '',
+    username: 'danielmn',
+    password: '123456',
 }
 const FormLogin = () => {
+    const [ showMessage, setShowMessage ] = useState({show: false, message: ''})
+    const history = useHistory();
     const handleOnSubmit = (values, onSubmitProps) => {
         sendLogin(values).then((res)=>{
-            console.log(res)
+            if(res.status === 'error'){
+                setShowMessage({show: true, message: res.message})
+            } else {
+                singIn(res.token)
+                history.push('/')
+            }
         })
         onSubmitProps.resetForm()
     }
+    useEffect(()=>{
+        if(isAuthenticated()){
+            history.push('/')
+        }
+    },[])
+
     return (
         <Formik
             validationSchema={Yup.object().shape({
@@ -31,9 +48,9 @@ const FormLogin = () => {
                 return (
                     <Form autoComplete="off">
                         <C.ContainerForm>
-                            <label>Usuário</label>
+                            <FieldLabel>Usuário</FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={C.InputAreaLogin}
                                 className={!!errors.username ? 'error' : ''}
                                 id="username"
                                 name="username"
@@ -48,9 +65,9 @@ const FormLogin = () => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <label>Senha</label>
+                            <FieldLabel>Senha</FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={C.InputAreaLogin}
                                 className={!!errors.password ? 'error' : ''}
                                 id="password"
                                 name="password"
@@ -64,9 +81,15 @@ const FormLogin = () => {
                                 <ErrorMessage name="password" />
                             </C.Error>
                         </C.ContainerForm>
-                        <C.ContainerForm>
+                        {showMessage.show && (
+                            <C.Error>
+                                <p>{showMessage.message}</p>
+                            </C.Error>
+                        )}
+                        <C.ContainerFormButtons>
                             <C.Button type="submit">Entrar</C.Button>
-                        </C.ContainerForm>
+                            <C.LinkBotton to="/singup">Cadastrar</C.LinkBotton>
+                        </C.ContainerFormButtons>
                     </Form>
                 )
             }
