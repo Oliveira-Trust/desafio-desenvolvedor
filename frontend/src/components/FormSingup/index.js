@@ -1,38 +1,20 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router';
-
 import * as Yup from 'yup'
-import { isAuthenticated, singIn } from '../../auth/authReducer';
-import { saveUser } from '../../services/api';
 import * as C from './Styles'
 
 const initValues = {
-	name :"Daniel Meireles",
-	username :"daniel",
-	email :"daniel@yaho.com",
-	password :"123456"
+	name :"",
+	username :"",
+	email :"",
+	password :""
 }
-const FormSingup = () => {
-    const [ showMessage, setShowMessage ] = useState({show: false, message: ''})
-    const history = useHistory();
-    const handleOnSubmit = (values, onSubmitProps) => {
-        saveUser(values).then((res)=>{
-            console.log(res)
-            if(res.status === 'error'){
-                setShowMessage({show: true, message: res.message})
-            } else {
-                singIn(res.token)
-                history.push('/')
-            }
-        })
-        onSubmitProps.resetForm()
+const FormSingup = ({ handleSingup }) => {
+    const singUp = (values, {resetForm}) => {
+        resetForm()
+        handleSingup(values)
     }
-    useEffect(()=>{
-        if(isAuthenticated()){
-            history.push('/')
-        }
-    },[])
     return (
         <Formik
             validationSchema={Yup.object().shape({
@@ -51,7 +33,7 @@ const FormSingup = () => {
                     .required("Digite sua senha.")
             })}
             initialValues={{ ...initValues }}
-            onSubmit={handleOnSubmit}>
+            onSubmit={singUp}>
             {({errors, values, handleChange, ...formProps}) => {
                 return (
                     <Form autoComplete="off">
@@ -123,9 +105,6 @@ const FormSingup = () => {
                                 <ErrorMessage name="password" />
                             </C.Error>
                         </C.ContainerForm>
-                        {showMessage.show && (
-                            <C.Error>{showMessage.message}</C.Error>
-                        )}
                         <C.ContainerFormButtons>
                             <C.Button type="submit">Salvar</C.Button>
                             <C.LinkBotton to="/login">Login</C.LinkBotton>

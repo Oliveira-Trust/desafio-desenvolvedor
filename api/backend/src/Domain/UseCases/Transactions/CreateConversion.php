@@ -52,6 +52,9 @@ class CreateConversion
         $code = $this->data['moeda_origem'] . '-' . $this->data['moeda_destino'];
         $paymentId = $this->data['forma_pagamento'];
         $value = $this->data['valor'];
+        if($value < 1000 || $value > 100000) {
+            throw new \Exception("Valor para conversão deve ser entre R$1.000,00 e R$100.000,00.");
+        }
         $currency = $this->currencyRepository->getByCurrencyCode($code);
         if(!$currency) {
             throw new \Exception("Moeda não disponivel para conversão.");

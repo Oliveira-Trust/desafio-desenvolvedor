@@ -128,7 +128,7 @@ class Transaction
             "taxa_pagamento" => $this->formatMoney($amountTaxPayment),
             "taxa_conversao" => $this->formatMoney($amountTaxConvertion),
             "valor_convertido" => $this->formatMoney($convertedValue),
-            "data_transaction" => $this->getDate('d/m/Y H:i:s')
+            "data_transaction" => $this->getDate('Y-m-d H:i:s')
         ];
     }
     private function formatMoney($amount)

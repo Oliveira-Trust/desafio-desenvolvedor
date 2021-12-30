@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "formik": "^2.2.9",
     "react": "^17.0.2",

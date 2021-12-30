@@ -4,6 +4,7 @@ export const Header = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: ${({theme})=> theme.colors.shadow.header.primary };
     
     @media (min-width: 525px) {
         flex-direction: row;
@@ -26,6 +27,7 @@ export const Nav = styled.nav`
     & a {
         margin: 10px;
         color: ${({theme}) => theme.colors.text.primary}; 
+        cursor: pointer;
         &:hover {
             color: ${({theme}) => theme.colors.text.primary}; 
             text-shadow: 1px 1px white;

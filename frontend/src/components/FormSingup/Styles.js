@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 export const ContainerForm = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
+    min-width: 300px;
 
     @media (min-width: 624px ){
         justify-content: flex-start;
@@ -82,9 +83,8 @@ export const Button = styled.button`
 `
 export const LinkBotton = styled(Link)`
     padding: 10px;
-    border: none;
     border-radius: 3px;
-    background-color: ${({theme}) => theme.colors.background.inputs};
+    background-color: blue;
     font-weight: 600;
     font-size: 15pt;;
     color: ${({theme})=> theme.colors.text.secondary};

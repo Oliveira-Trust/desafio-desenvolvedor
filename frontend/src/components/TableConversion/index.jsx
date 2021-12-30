@@ -1,15 +1,15 @@
-import { useData } from "../../contexts/dataContext";
 import * as C from './Styles'
-const TableConversion = props => {
-    const { transactions } = useData();
+
+const TableConversion = ({transactionsUser}) => {
+    const columns = transactionsUser.length > 0 ? Object.keys(transactionsUser[0]) : []
     return (
         <C.Container>
-            <h1>Historico de Converções</h1>
-            {transactions.length > 0 ? (
+            <C.TitleTable>Historico de Converções</C.TitleTable>
+            {transactionsUser.length > 0 ? (
                 <C.TableConversion>
                     <C.TableHead>
                         <tr>
-                            {Object.keys(transactions[0]).map((data, index) => {
+                            {(columns.length > 0) && columns.map((data, index) => {
                                         const dataArr = data.split('_')
                                         const title = dataArr.map(word => word.toUpperCase()).join(" ")
                                         return (
@@ -19,7 +19,7 @@ const TableConversion = props => {
                         </tr>
                     </C.TableHead>
                     <C.TableBody>
-                        {transactions.map((transaction, index) => {
+                        {transactionsUser.map((transaction, index) => {
                             return (
                                 <tr key={index}>
                                     <td>{transaction.moeda_origem}</td>
@@ -31,7 +31,7 @@ const TableConversion = props => {
                                     <td>{transaction.taxa_pagamento}</td>
                                     <td>{transaction.taxa_conversao}</td>
                                     <td>{transaction.valor_convertido}</td>
-                                    <td>{transaction.data_transaction}</td>
+                                    <td>{(new Date(transaction.data_transaction)).toLocaleDateString('pt-BR', {year:'2-digit', month: '2-digit', day:'2-digit', hour:'numeric', minute:'numeric'})}</td>
                                 </tr>
                             )
                         })}
@@ -41,5 +41,4 @@ const TableConversion = props => {
         </C.Container>
     )
 }
-
 export default TableConversion

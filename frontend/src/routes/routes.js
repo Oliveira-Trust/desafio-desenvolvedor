@@ -8,17 +8,9 @@ import PageHistorico from "../pages/Historico";
 import PageNotFound from "../pages/NotFound";
 import PrivateRoute from "./privateRoute";
 
-const routes = [
-  { path: '/', exact: true, Component: PageHome },
-  { path: '/login', exact: false, Component: PageLogin },
-  { path: '/singup', exact: true, Component: PageSingup },
-  { path: '/conversoes', exact: true, Component: PageHistorico },
-  { path: '*', exact: false, Component: PageNotFound }
-]
 const AppRoutes = () => {
-
   return (
-    <BrowserRouter>
+    <BrowserRouter > 
         <Switch>
           <Route path="/login" exact component={PageLogin} />
           <Route path="/singup" exact component={PageSingup} />
@@ -29,5 +21,4 @@ const AppRoutes = () => {
     </BrowserRouter>
   )
 }
-
 export default AppRoutes

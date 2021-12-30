@@ -1,11 +1,10 @@
+import React, { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useState } from 'react';
-import { useHistory } from 'react-router';
-
 import * as Yup from 'yup'
-import { useData } from '../../contexts/dataContext';
-import { sendConversation } from '../../services/api';
 import * as C from './Styles'
+import { FieldLabel } from '../FormSingup/Styles'
+import { sendConversion } from '../../services/api';
+import { useHistory } from 'react-router';
 
 const initValues = {
     moeda_origem: 'BRL',
@@ -13,20 +12,18 @@ const initValues = {
     valor: '',
     forma_pagamento: '1'
 }
-const CardConvertion = () => {
-    const { currencies, currencyBRL, payments } = useData();
-    const [ showMessage, setShowMessage ] = useState({show: false, message: ''})
-    const history = useHistory();
-    const handleOnSubmit = (values, onSubmitProps) => {
-        sendConversation(values).then((res)=>{
-            console.log(res)
-            if(res.status === 'error'){
-                setShowMessage({show: true, message: res.message})
-            } else {
-                history.push('/conversoes')
-            }
-        })
-        onSubmitProps.resetForm()
+
+const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
+    const [ error , setError ] = useState('')
+    const history = useHistory()
+    const handleOnSubmit = async(values, {resetForm}) => {
+        const tResponse = await sendConversion(values)
+        resetForm()
+        if(tResponse.status === 'sucesso'){
+            history.push('/conversoes')
+        } else {
+            setError(c => tResponse.message)
+        }
     }
     return (
         <Formik
@@ -47,19 +44,22 @@ const CardConvertion = () => {
             {({errors, values, handleChange, ...formProps}) => {
                 return (
                     <Form autoComplete="off">
+                         {error &&  <C.Error>{error}</C.Error>}
                         <C.ContainerForm>
-                            <label>Converter De:</label>
-                            <Field  defaultValue={currencyBRL.code} value={values.moeda_origem} name="moeda_origem" as="select" onChange={handleChange}>
-                                <option defaultValue value={currencyBRL.code}>{`[${currencyBRL.code}] ${currencyBRL.name}`}</option>
-                            </Field>
+                            <FieldLabel>Converter De:</FieldLabel>
+                            {currencyBRL && (
+                                <Field options={[currencyBRL]} value={values.moeda_origem} name="moeda_origem" as="select" onChange={handleChange}>
+                                    <option defaultValue value={currencyBRL.code}>{`[${currencyBRL.code}] ${currencyBRL.name}`}</option>
+                                </Field>
+                            )}
                             <C.Error>
                                 <ErrorMessage name="moeda_origem" />
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                        <label>Converter para:</label>
+                        <FieldLabel>Converter para:</FieldLabel>
                             <Field value={values.moeda_destino} name="moeda_destino" as="select" onChange={handleChange}>
-                                {currencies.length > 0 && (
+                                {(currencies.length > 0) && (
                                     currencies.map((item, i)=><option key={i} value={item.code}>{`[${item.code}] ${item.name}`}</option>)
                                 )}
                             </Field>
@@ -68,10 +68,10 @@ const CardConvertion = () => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <label>Forma de Pagamento:</label>
+                            <FieldLabel>Forma de Pagamento:</FieldLabel>
                             <Field value={values.forma_pagamento} name="forma_pagamento" as="select" onChange={handleChange}>
-                                {payments.length > 0 && (
-                                    payments.map((item)=><option key={item.id} value={item.id}>{`[${item.type}] Taxa de ${item.conversionTax}%`}</option>)
+                                {(paymentTypes.length > 0) && (
+                                    paymentTypes.map((item)=><option key={item.id} value={item.id}>{`[${item.type}] Taxa de ${item.conversionTax}%`}</option>)
                                 )}
                             </Field>
                             <C.Error>
@@ -79,7 +79,7 @@ const CardConvertion = () => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <label>Valor para conversão:</label>
+                            <FieldLabel>Valor para conversão:</FieldLabel>
                             <Field
                                 component={C.InputArea}
                                 className={!!errors.valor ? 'error' : ''}
@@ -95,9 +95,6 @@ const CardConvertion = () => {
                                 <ErrorMessage name="valor" />
                             </C.Error>
                         </C.ContainerForm>
-                        {showMessage.show && (
-                            <C.Error>{showMessage.message}</C.Error>
-                        )}
                         <C.ContainerForm>
                             <C.Button type="submit">Converter</C.Button>
                         </C.ContainerForm>

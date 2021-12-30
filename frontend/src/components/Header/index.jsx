@@ -1,16 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useHistory } from 'react-router';
-
-import { isAuthenticated, logout } from '../../auth/authReducer'
+import { getLocalStorage, removeLocalStorage } from '../../services/functions'
 import ToggleTheme from '../ToggleTheme'
 import * as C from './Styles'
 
 const Header = (props) => {
-    const history = useHistory()
-
     const handleLogout = ()=>{
-        logout()
-        history.push('/login')
+        removeLocalStorage()
     }
     return (
         <C.Header>
@@ -18,13 +13,12 @@ const Header = (props) => {
                 <Link to="/">{props.pageTitle}</Link>
             </C.Logo>
             <C.Nav>
-                {isAuthenticated() && (
+                {getLocalStorage() && (
                     <>
-                    <Link to="/conversoes">Historico</Link>
-                    <Link to="/" onClick={handleLogout}>Sair</Link>
+                    {props.historico ? <Link to="/">Converter</Link>: <Link to="/conversoes">Historico</Link>}
+                    <Link to="/login" onClick={handleLogout}>Sair</Link>
                     </>
                 )}
-                {!isAuthenticated() && <Link to="/login" onClick={handleLogout}>Login</Link>}
                 <ToggleTheme/>
             </C.Nav>
         </C.Header>

@@ -40,6 +40,7 @@ class TransactionController extends Controller
             $data = $this->request->getBody();
             $headerRequest = $this->request->getHeaders();
             $token = $headerRequest['Authorization'] ?? null;
+
             $dataUser = $this->auth->validate($token);
             $userRepository = $this->userRepository;
             $currencyRepository = $this->currencyRepository;

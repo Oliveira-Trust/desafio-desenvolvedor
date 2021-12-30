@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const Container = styled.div`
     max-width: 90%;
 `
-
 export const TableConversion = styled.table`
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+    box-shadow: ${({theme}) => theme.colors.shadow.primary};
 `
 export const TableHead = styled.thead`
-    border: ${({theme}) => theme.borders.default};
     margin-bottom: 3px;
     font-size: 1.2rem;
     width: 100%;
@@ -19,28 +19,33 @@ export const TableHead = styled.thead`
         width: 100%;
         transition: 0.1s all;
         &:hover {
+            cursor: pointer;
             background: ${({theme}) => theme.colors.background.card};
+            border-radius: ${({theme}) => theme.borders.radius};
         }
         & th {
+            border-right: ${({theme}) => theme.borders.default};
+            flex: 1;
+            font-size: 0.8rem;
             padding: 5px;
         }
     }
 `
-export const TableBody = styled.thead`
-    display: flex;
-    flex-direction: column;
-    border: ${({theme}) => theme.borders.default};
+export const TableBody = styled(TableHead)`
     & tr {
         display: flex;
         justify-content: space-between;
         width: 100%;
         transition: 0.1s all;
-        &:hover {
-            background: ${({theme}) => theme.colors.background.card};
-        }
+        border: ${({theme}) => theme.borders.default};
         & td {
-            font-size: 1.2rem;
+            border-right: ${({theme}) => theme.borders.default};
+            flex: 1;
+            font-size: 0.7rem;
             padding: 5px;
         }
     }
+`
+export const TitleTable = styled.h1`
+    text-shadow: ${({theme})=> theme.colors.shadow.text};
 `

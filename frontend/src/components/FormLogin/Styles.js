@@ -1,19 +1,7 @@
 import styled from "styled-components";
-import { InputArea } from '../FormSingup/Styles'
-
 import { Link } from 'react-router-dom'
+import { InputArea, ContainerForm } from '../FormSingup/Styles'
 
-export const ContainerForm = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    @media (min-width: 624px ){
-        justify-content: flex-start;
-    }
-`
 export const ContainerFormButtons = styled(ContainerForm)`
     flex-direction: row;
 `

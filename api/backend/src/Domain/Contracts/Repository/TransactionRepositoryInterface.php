@@ -12,5 +12,5 @@ interface TransactionRepositoryInterface
     public function getAll(): array;
     public function getByUser(int $id): array;
     public function getByStatus(string $status):? Transaction;
-    public function save(Transaction $payment): Transaction;
+    public function save(Transaction $transaction): Transaction;
 }

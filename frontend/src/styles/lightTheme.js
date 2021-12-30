@@ -3,13 +3,13 @@ export const lightTheme = {
         background: {
             primary: '#a8adab',
             loader: '#fff',
-            secondary: '#fff',
+            secondary: '#a8adab',
             header: '#a8adab',
             inputs: '#c7c3c3',
             card: "#FFF",
         },
         text: {
-            primary: '#5c5f63',
+            primary: '#000',
             secondary: '#a8adab',
             black: 'white;',
             white: 'black;',

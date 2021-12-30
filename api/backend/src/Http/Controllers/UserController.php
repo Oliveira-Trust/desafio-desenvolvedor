@@ -24,16 +24,16 @@ class UserController extends Controller
     }
     public function index()
     {
-        try{
+        try {
             $this->isLogged($this->auth);
-            $arrayResponse = ["code"=>"erro", "message"=>"Sem Usuarios Cadastrados"];
+            $arrayResponse = ["code" => "erro", "message" => "Sem Usuarios Cadastrados"];
             $getAllUsers = new GetAllUser($this->userRepository);
             $users = $getAllUsers->execute();
             $arrayResponse['status'] = 'sucesso';
             $arrayResponse['message'] = 'Usuarios encontrado';
             $arrayResponse['data'] = $users;
             $this->response($arrayResponse);
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             $data['status'] = 'error';
             $data['message'] = $e->getMessage();
             return $this->response($data);
@@ -41,20 +41,20 @@ class UserController extends Controller
     }
     public function store()
     {
-        $data = $this->request->getBody();
-        $createUser = new CreateUser($data, $this->userRepository);
-        try{
+        try {
+            $data = $this->request->getBody();
+            $createUser = new CreateUser($data, $this->userRepository);
             $user = $createUser->execute();
             $token = $this->auth->create([
-                "id"=>$user->getId(),
-                "name"=>$user->getName(),
-                "username"=>$user->getUsername()
+                "id" => $user->getId(),
+                "name" => $user->getName(),
+                "username" => $user->getUsername()
             ]);
             $arrayResponse['status'] = 'sucesso';
             $arrayResponse['message'] = 'Usuario salvo com sucesso.';
-            $arrayResponse['token'] = $token;
+            $arrayResponse['user'] = ["id" => $user->getId(), "token" => $token];
             $this->response($arrayResponse);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             $data['status'] = 'error';
             $data['message'] = $e->getMessage();
             return $this->response($data);
@@ -62,12 +62,21 @@ class UserController extends Controller
     }
     public function getOne($userid)
     {
-        $user = $this->userRepository->getById((int)$userid);
-        $this->response(["data"=>$user->toArray()]);
+        try {
+            $user = $this->userRepository->getById((int)$userid);
+            if(!$user){
+                throw new \Exception("No users found.");
+            }
+            $this->response(["data" => $user->toArray()]);
+        } catch (\Exception $e) {
+            $data['status'] = 'error';
+            $data['message'] = $e->getMessage();
+            return $this->response($data);
+        }
     }
     public function destroy($userid)
     {
-        try{
+        try {
             $this->isLogged();
             $id = (int) $userid;
             $removeUser = new RemoveUser($id, $this->userRepository);
@@ -75,7 +84,7 @@ class UserController extends Controller
             $arrayResponse['status'] = 'sucesso';
             $arrayResponse['message'] = 'Usuario deletado com sucesso.';
             $this->response($arrayResponse);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $data['status'] = 'error';
             $data['message'] = $e->getMessage();
             return $this->response($data);
@@ -83,20 +92,20 @@ class UserController extends Controller
     }
     public function update($userid)
     {
-        try{
+        try {
             $this->isLogged();
             $id = (int) $userid;
             $data = $this->request->getBody();
             $validate = new Validate();
             $updateUser = new UpdateUser($id, $data,  $validate, $this->userRepository);
-            
+
             $user = $updateUser->execute();
 
             $arrayResponse['status'] = 'sucesso';
             $arrayResponse['message'] = 'Usuario atualizado com sucesso.';
             $arrayResponse['data'] = $user->toArray();
             $this->response($arrayResponse);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $data['status'] = 'error';
             $data['message'] = $e->getMessage();
             return $this->response($data);
@@ -104,20 +113,20 @@ class UserController extends Controller
     }
     public function login()
     {
-        try{
+        try {
             $data = $this->request->getBody();
             $handleLogin = new HandleLogin($data, $this->userRepository);
             $user = $handleLogin->execute();
             $token = $this->auth->create([
-                "id"=>$user->getId(),
-                "name"=>$user->getName(),
-                "username"=>$user->getUsername()
+                "id" => $user->getId(),
+                "name" => $user->getName(),
+                "username" => $user->getUsername()
             ]);
             $arrayResponse['status'] = 'sucesso';
             $arrayResponse['message'] = 'Login efetuado com sucesso.';
-            $arrayResponse['token'] = $token;
+            $arrayResponse['user'] = ["id" => $user->getId(), "token" => $token];
             $this->response($arrayResponse);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             $data['status'] = 'error';
             $data['message'] = $e->getMessage();
             return $this->response($data);

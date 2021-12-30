@@ -11,16 +11,14 @@ export const useThemeToggler = () => {
     throw new Error("A troca de thema deve estar dentro do contexto.");
   }
   return context;
-};
+}
 
 export const AppTheme = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
 
   const getFromLocalStorage = () => {
-    const themeFromLS = localStorage.getItem("darkMode");
-    if (themeFromLS) {
-      setIsDark(themeFromLS === "true");
-    }
+    const themeFromLS = JSON.parse(localStorage.getItem("darkMode")) || false;
+    setIsDark(c => themeFromLS);
   }
   const setToLocalStorage = () => {
     return localStorage.setItem("darkMode", isDark);
