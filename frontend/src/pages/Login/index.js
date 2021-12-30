@@ -10,13 +10,17 @@ const PageLogin = () => {
   const [ error, setError ] = useState('')
   const history = useHistory()
   const handleLogin = async (values) => {
-    const response = await sendLogin(values)
-    if(response.status === 'sucesso') {
-      setLocalStorage(response.user)
-      setError('')
-      history.push('/');
-    } else {
-      setError(c => response.message)
+    try{
+      const response = await sendLogin(values)
+      if(response.status === 'sucesso') {
+        setLocalStorage(response.user)
+        setError(false)
+        history.push('/');
+      } else {
+        setError(c => response.message)
+      }
+    }catch(e){
+      setError(c => 'Desculpe! Estamos com problemas técnicos no momento.')
     }
   }
   useEffect(()=>{
@@ -24,7 +28,7 @@ const PageLogin = () => {
     if(user){
       history.push('/');
     }
-  },[])
+  },[history])
   return (
     <Layout>
       {error &&  <Error>{error}</Error>}

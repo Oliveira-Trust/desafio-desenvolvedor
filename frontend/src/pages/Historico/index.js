@@ -8,14 +8,15 @@ const PagePainel = ()=>{
   const [transactions, setTransactions] = useState([])
   useEffect(()=>{
     (async()=>{
-      const user = getLocalStorage()
-      const tResponse = await getTransactions(user.id)
-      setTransactions(c=>tResponse)
+        const user = getLocalStorage()
+        const tResponse = await getTransactions(user.id)
+        setTransactions(c=>tResponse)
     })()
   },[])
 
     return (
       <Layout historico={true}>
+        
         <TableConversion transactionsUser={transactions}/>
     </Layout>
       );

@@ -7,22 +7,26 @@ import Layout from "../../template/Layout";
 import FormSingup from "../../components/FormSingup";
 
 const PageLogin = () => {
-  const [ error, setError ] = useState(false)
+  const [error, setError] = useState(false)
   const history = useHistory()
   const singUp = async (values) => {
-    const response = await saveUser(values)
-    if(response.status === 'sucesso') {
-      setLocalStorage(response.user)
-      history.push('/');
-      setError(false)
-    } else {
-      setError(c=> response.message)
+    try {
+      const response = await saveUser(values)
+      if (response.status === 'sucesso') {
+        setLocalStorage(response.user)
+        history.push('/');
+        setError(false)
+      } else {
+        setError(c => response.message)
+      }
+    } catch (e) {
+      setError(c => 'Desculpe! Estamos com problemas técnicos no momento.')
     }
   }
   return (
     <Layout>
-      {error &&  <Error>{error}</Error>}
-      <FormSingup handleSingup={singUp}/>
+      {error && <Error>{error}</Error>}
+      <FormSingup handleSingup={singUp} />
     </Layout>
   );
 }

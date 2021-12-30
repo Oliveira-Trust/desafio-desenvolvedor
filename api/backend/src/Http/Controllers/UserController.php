@@ -124,7 +124,7 @@ class UserController extends Controller
             ]);
             $arrayResponse['status'] = 'sucesso';
             $arrayResponse['message'] = 'Login efetuado com sucesso.';
-            $arrayResponse['user'] = ["id" => $user->getId(), "token" => $token];
+            $arrayResponse['user'] = ["id" => $user->getId(), "name"=>$user->getName(),"token" => $token];
             $this->response($arrayResponse);
         } catch (\Exception $e) {
             $data['status'] = 'error';
