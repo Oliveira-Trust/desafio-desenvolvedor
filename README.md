@@ -1,10 +1,14 @@
-# PROJETO API BACKEND PHP FRONTEND REACTJSCONVERÇÃO DE MOEDAS#
-
+#API BACKEND PHP FRONTEND REACTJS "CONVERSÃO DE MOEDAS"
 
 ---
 
 Projeto desenvolvido com estrutura API REST no backend em PHP, Banco de dados MySQL, Frontend com ReactJS utilizando algumas bibliotecas PHP/JavaSCript.
+
 Foi utilizado Docker e docker-compose para o desenvolvimento, e alguns conceitos DDD e TDD na arquitetura do projeto.
+
+Optei por não utilizar nenhum framework para exercitar e melhorar meu entendimento sobre como eles funcionam.
+
+Para o controle da persistência de dados utilizei Doctrine, que acredito ser uma ferramenta muito eficiente neste trabalho.
 
 
 <p align="center">	
@@ -24,7 +28,15 @@ Foi utilizado Docker e docker-compose para o desenvolvimento, e alguns conceitos
 
 ## :bookmark: Sobre
 
-O <strong>Projeto Converção de moedas</strong> é um projeto desenvolvido consumindo a api: [https://docs.awesomeapi.com.br/api-de-moedas](https://docs.awesomeapi.com.br/api-de-moedas).Com backend em PHP frontend em ReactJS e usa o banco MySQL para armazenar os dados.
+O <strong>Projeto Conversão de moedas</strong> é um projeto desenvolvido consumindo a api [https://docs.awesomeapi.com.br/api-de-moedas](https://docs.awesomeapi.com.br/api-de-moedas).
+Backend em PHP frontend em ReactJS e usa o banco MySQL para armazenar os dados.
+
+A lógica de negócio está separada na pasta ‘domain’, sendo assim o projeto pode ser implementado independente de framework ou ferramenta de acesso.
+
+Optei por esta abordagem para praticar o conhecimento recém adquirido em TDD e DDD.
+Claro que é possível melhorar e muito a abordagem aqui utilizada, mas estou satisfeito com o resultado até o momento.
+
+
 
 <a id="tecnologias-utilizadas"></a>
 
@@ -48,7 +60,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ```bash
 # Clone o Repositório
-$ git clone URL_DO REPOSITÓRIO.
+$ git clone URL_DO_REPOSITÓRIO.
 ```
 ### :whale: Executando o Projeto
 
@@ -56,6 +68,9 @@ $ git clone URL_DO REPOSITÓRIO.
 ```bash
 # Entre na pasta projeto
 $ cd NOME_DA_PASTA_DO_PROJETO
+
+```
+```bash
 # Entrar na pasta do backend 'api/backend' e copiar o arquivo .env.exemple renomeando para .env
 # Ele ja possui as configuraçẽos necessarias para rodar o projeto, apois copiar voltar para a pasta raiz do projeto onde esta o arquivo docker-compose.yml.
 $ cd NOME_DA_PASTA_DO_PROJETO
