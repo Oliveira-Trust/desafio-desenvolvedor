@@ -5,6 +5,7 @@ import * as C from './Styles'
 import { FieldLabel } from '../FormSingup/Styles'
 import { sendConversion } from '../../services/api';
 import { useHistory } from 'react-router';
+import LastConversion from '../LastConversion';
 
 const initValues = {
     moeda_origem: 'BRL',
@@ -15,17 +16,20 @@ const initValues = {
 
 const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
     const [ error , setError ] = useState('')
+    const [ lastConversion, setLastConversion ] = useState([])
     const history = useHistory()
     const handleOnSubmit = async(values, {resetForm}) => {
         const tResponse = await sendConversion(values)
         resetForm()
         if(tResponse.status === 'sucesso'){
-            history.push('/conversoes')
+            // history.push('/conversoes')
+            setLastConversion([tResponse.data])
         } else {
             setError(c => tResponse.message)
         }
     }
     return (
+        <>
         <Formik
             validationSchema={Yup.object().shape({
                 moeda_origem: Yup
@@ -103,6 +107,8 @@ const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
             }
             }
         </Formik>
+        {lastConversion.length > 0 && <LastConversion title="Resultado da conversão" lastTransaction={[lastConversion[0]]}/>}
+        </>
     );
 };
 export default CardConvertion

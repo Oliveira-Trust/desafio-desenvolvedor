@@ -2,7 +2,7 @@ export const lightTheme = {
     colors: {
         background: {
             primary: '#a8adab',
-            loader: '#fff',
+            loader: '#f5f5f5',
             secondary: '#a8adab',
             header: '#a8adab',
             inputs: '#c7c3c3',
@@ -31,7 +31,7 @@ export const lightTheme = {
     borders: {
         default: '1px solid #000',
         plataform: '2px solid #014479',
-        radius: '5px;'
+        radius: '8px;'
     },
 
     zoom: {

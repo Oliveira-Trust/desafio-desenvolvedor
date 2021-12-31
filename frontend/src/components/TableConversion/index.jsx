@@ -1,10 +1,10 @@
 import * as C from './Styles'
 
-const TableConversion = ({transactionsUser}) => {
+const TableConversion = ({transactionsUser, title}) => {
     const columns = transactionsUser.length > 0 ? Object.keys(transactionsUser[0]) : []
     return (
         <C.Container>
-            <C.TitleTable>Historico de Converções</C.TitleTable>
+            <C.TitleTable>{title}</C.TitleTable>
             {transactionsUser.length > 0 ? (
                 <C.TableConversion>
                     <C.TableHead>

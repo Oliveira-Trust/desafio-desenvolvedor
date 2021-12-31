@@ -16,8 +16,7 @@ const PagePainel = ()=>{
 
     return (
       <Layout historico={true}>
-        
-        <TableConversion transactionsUser={transactions}/>
+        <TableConversion title="Histórico de conversões" transactionsUser={transactions}/>
     </Layout>
       );
 } 
