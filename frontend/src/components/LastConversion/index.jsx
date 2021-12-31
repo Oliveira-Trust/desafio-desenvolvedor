@@ -6,8 +6,7 @@ const LastConversion = (props) => {
     return (
         <C.Container>
             <C.TitleLastConversion>Resultado da conversão</C.TitleLastConversion>
-            <C.Item>
-                <C.ItemValue>Moeda de origem:</C.ItemValue>
+            <C.Item>Moeda de origem:
                 <C.ItemValue>{transaction.moeda_origem}</C.ItemValue>
             </C.Item>
             <C.Item>Moeda de destino:

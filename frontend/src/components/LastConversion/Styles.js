@@ -21,13 +21,14 @@ export const Item = styled.p`
     color: ${({theme}) => theme.colors.text.white};
     border: ${({theme}) => theme.borders.default};
     text-shadow: ${({theme}) => theme.colors.shadow.text};
-    font-size: 0.7em;
+    font-size: 1.3em;
     margin: 5px;
-    padding: 5px;
+    padding: 15px;
+    display: flex;
     justify-content: space-between;
 `
 export const ItemValue = styled.span`
     font-weight: border;
-    text-shadow: ${({theme}) => theme.colors.shadow.white};
+    text-shadow: ${({theme}) => theme.colors.shadow.value};
 
 `
