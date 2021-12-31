@@ -1,3 +1,4 @@
+import { formatDate, formatMoney } from '../../services/functions'
 import * as C from './Styles'
 
 const TableConversion = ({transactionsUser, title}) => {
@@ -24,14 +25,14 @@ const TableConversion = ({transactionsUser, title}) => {
                                 <tr key={index}>
                                     <td>{transaction.moeda_origem}</td>
                                     <td>{transaction.moeda_destino}</td>
-                                    <td>R{transaction.valor_para_conversao}</td>
+                                    <td>{formatMoney(transaction.valor_para_conversao)}</td>
                                     <td>{transaction.forma_pagamento}</td>
-                                    <td>{transaction.valor_moeda_destino}</td>
-                                    <td>{transaction.valor_comprado}</td>
-                                    <td>{transaction.taxa_pagamento}</td>
-                                    <td>{transaction.taxa_conversao}</td>
-                                    <td>{transaction.valor_convertido}</td>
-                                    <td>{(new Date(transaction.data_transaction)).toLocaleDateString('pt-BR', {year:'2-digit', month: '2-digit', day:'2-digit', hour:'numeric', minute:'numeric'})}</td>
+                                    <td>{formatMoney(transaction.valor_moeda_destino, transaction.moeda_destino)}</td>
+                                    <td>{formatMoney(transaction.valor_comprado)}</td>
+                                    <td>{formatMoney(transaction.taxa_pagamento)}</td>
+                                    <td>{formatMoney(transaction.taxa_conversao)}</td>
+                                    <td>{formatMoney(transaction.valor_convertido, transaction.moeda_destino)}</td>
+                                    <td>{formatDate(transaction.data_transaction)}</td>
                                 </tr>
                             )
                         })}

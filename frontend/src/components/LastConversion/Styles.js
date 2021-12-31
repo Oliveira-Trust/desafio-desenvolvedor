@@ -18,13 +18,15 @@ export const TitleLastConversion = styled.h3`
     margin: 5px;
 `
 export const Item = styled.p`
-    font-size: 0.7em;
     color: ${({theme}) => theme.colors.text.white};
+    border: ${({theme}) => theme.borders.default};
     text-shadow: ${({theme}) => theme.colors.shadow.text};
+    font-size: 0.7em;
     margin: 5px;
+    padding: 5px;
+    justify-content: space-between;
 `
 export const ItemValue = styled.span`
-    font-size: 0.7em;
     font-weight: border;
     text-shadow: ${({theme}) => theme.colors.shadow.white};
 

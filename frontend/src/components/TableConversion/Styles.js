@@ -7,6 +7,7 @@ export const TableConversion = styled.table`
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+    color: ${({theme}) => theme.colors.text.primary};
     box-shadow: ${({theme}) => theme.colors.shadow.primary};
 `
 export const TableHead = styled.thead`
@@ -22,6 +23,7 @@ export const TableHead = styled.thead`
             cursor: pointer;
             background: ${({theme}) => theme.colors.background.card};
             border-radius: ${({theme}) => theme.borders.radius};
+            transform: ${({theme})=> theme.zoom.card};
         }
         & th {
             border-right: ${({theme}) => theme.borders.default};
@@ -47,5 +49,6 @@ export const TableBody = styled(TableHead)`
     }
 `
 export const TitleTable = styled.h1`
+    color: ${({theme}) => theme.colors.text.primary};
     text-shadow: ${({theme})=> theme.colors.shadow.text};
 `

@@ -6,7 +6,7 @@ export const ContainerFormButtons = styled(ContainerForm)`
     flex-direction: row;
 `
 export const Error = styled.p`
-    color: red;
+    color: ${({theme}) => theme.colors.text.error};
 `
 export const TextInput = styled.input`
     padding: 10px;
@@ -50,6 +50,7 @@ export const Button = styled.button`
     &:hover {
         background-color: rgba(61, 129, 22, 0.5);
         color: ${({theme})=> theme.colors.text.primary};
+        transform: ${({theme})=> theme.zoom.card};
     }
 `
 export const LinkBotton = styled(Link)`
@@ -67,6 +68,7 @@ export const LinkBotton = styled(Link)`
     &:hover {
         background-color: rgba(61, 129, 22, 0.5);
         color: ${({theme})=> theme.colors.text.primary};
+        transform: ${({theme})=> theme.zoom.card};
     }
 
 `

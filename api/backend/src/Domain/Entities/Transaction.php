@@ -121,13 +121,13 @@ class Transaction
         return [
             "moeda_origem" => $code,
             "moeda_destino"=> $codein,
-            "valor_para_conversao" => $this->formatMoney($this->value),
+            "valor_para_conversao" => $this->value,
             "forma_pagamento" => $this->paymentType->getType(),
-            "valor_moeda_destino" => $this->formatMoney($valueCoinDestino),
-            "valor_comprado" => $this->formatMoney($convertedValue / $valueCoinDestino),
-            "taxa_pagamento" => $this->formatMoney($amountTaxPayment),
-            "taxa_conversao" => $this->formatMoney($amountTaxConvertion),
-            "valor_convertido" => $this->formatMoney($convertedValue),
+            "valor_moeda_destino" => $valueCoinDestino,
+            "valor_comprado" => ($convertedValue / $valueCoinDestino),
+            "taxa_pagamento" => $amountTaxPayment,
+            "taxa_conversao" => $amountTaxConvertion,
+            "valor_convertido" => $convertedValue,
             "data_transaction" => $this->getDate('Y-m-d H:i:s')
         ];
     }

@@ -18,16 +18,13 @@ export const ContainerForm = styled.div`
             background: ${({theme}) => theme.colors.background.white};        
             border-bottom: 5px solid white;
         }
-        &:checked {
-            color: red;
-        }
     }
     @media (min-width: 624px ){
         justify-content: flex-start;
     }
 `
 export const Error = styled.p`
-    color: red;
+    color: ${({theme}) => theme.colors.text.error};
 `
 export const TextInput = styled.input`
     padding: 10px;
@@ -89,6 +86,7 @@ export const Button = styled.button`
     &:hover {
         background-color: rgba(61, 129, 22, 0.5);
         color: ${({theme})=> theme.colors.text.primary};
+        transform: ${({theme})=> theme.zoom.card};
     }
 
 `

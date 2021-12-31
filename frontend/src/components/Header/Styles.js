@@ -31,6 +31,7 @@ export const Nav = styled.nav`
         &:hover {
             color: ${({theme}) => theme.colors.text.primary}; 
             text-shadow: 1px 1px white;
+            transform: ${({theme})=> theme.zoom.card};
         }
     }
 `
