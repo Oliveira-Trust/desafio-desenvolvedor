@@ -49,7 +49,6 @@ class GetCurrency
                 }
             }
         }
-        
         return $response;
     }
 }
