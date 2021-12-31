@@ -39,7 +39,8 @@ class UserRepositoryDatabase extends \Doctrine\ORM\EntityRepository implements R
     }
     public function getByUsername(string $username):? User
     {
-        $query = $this->entityManager->createQuery('SELECT u FROM App\Domain\Entities\User u WHERE u.username = :username');
+        $dql = 'SELECT u FROM App\Domain\Entities\User u WHERE u.username = :username OR u.email = :username';
+        $query = $this->entityManager->createQuery($dql);
         $query->setParameter('username', $username);
         return $query->getOneOrNullResult();
     }

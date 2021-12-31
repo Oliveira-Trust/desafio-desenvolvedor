@@ -17,7 +17,7 @@ const FormLogin = ({ handleLogin }) => {
             validationSchema={Yup.object().shape({
                 username: Yup
                     .string()
-                    .required("Digite seu usuario."),
+                    .required("Digite seu usuario ou e-mail."),
                 password: Yup
                     .string()
                     .required("Digite sua senha.")
@@ -28,14 +28,14 @@ const FormLogin = ({ handleLogin }) => {
                 return (
                     <Form autoComplete="off">
                         <ContainerForm>
-                            <FieldLabel>Usuário</FieldLabel>
+                            <FieldLabel>Usuário ou E-mail</FieldLabel>
                             <Field
                                 component={C.InputAreaLogin}
                                 className={!!errors.username ? 'error' : ''}
                                 id="username"
                                 name="username"
                                 onChange={handleChange}
-                                placeholder="Digite seu usuario"
+                                placeholder="Digite seu usuario ou e-mail"
                                 type="username"
                                 value={values.username}
                                 {...formProps.field}
