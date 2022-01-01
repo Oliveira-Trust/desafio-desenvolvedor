@@ -3,8 +3,8 @@ import * as C from './Styles'
 
 const LastConversion = (props) => {
     const transaction = props.lastTransaction[0]
-    const taxPag = (transaction.taxa_pagamento / 100 ) * transaction.valor_para_conversao
-    const taxConv = (transaction.taxa_conversao / 100 ) * transaction.valor_para_conversao
+    const taxPag = ((transaction.taxa_pagamento * 100 ) / transaction.valor_para_conversao).toFixed(2)
+    const taxConv = ((transaction.taxa_conversao * 100 ) / transaction.valor_para_conversao).toFixed(2)
     return (
         <C.Container>
             <C.TitleLastConversion>Resultado da conversão</C.TitleLastConversion>

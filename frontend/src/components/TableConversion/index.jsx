@@ -21,6 +21,8 @@ const TableConversion = ({transactionsUser, title}) => {
                     </C.TableHead>
                     <C.TableBody>
                         {transactionsUser.map((transaction, index) => {
+                            const taxPag = ((transaction.taxa_pagamento * 100 ) / transaction.valor_para_conversao).toFixed(2)
+                            const taxConv = ((transaction.taxa_conversao * 100 ) / transaction.valor_para_conversao).toFixed(2)
                             return (
                                 <C.TableRow key={index}>
                                     <C.TableTd>{transaction.moeda_origem}</C.TableTd>
@@ -29,8 +31,8 @@ const TableConversion = ({transactionsUser, title}) => {
                                     <C.TableTd>{transaction.forma_pagamento}</C.TableTd>
                                     <C.TableTd>{formatMoney(transaction.valor_moeda_destino, transaction.moeda_destino)}</C.TableTd>
                                     <C.TableTd>{formatMoney(transaction.valor_comprado)}</C.TableTd>
-                                    <C.TableTd>{formatMoney(transaction.taxa_pagamento)}</C.TableTd>
-                                    <C.TableTd>{formatMoney(transaction.taxa_conversao)}</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.taxa_pagamento)} ({taxPag}%)</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.taxa_conversao)} ({taxConv}%)</C.TableTd>
                                     <C.TableTd>{formatMoney(transaction.valor_convertido, transaction.moeda_destino)}</C.TableTd>
                                     <C.TableTd>{formatDate(transaction.data_transaction)}</C.TableTd>
                                 </C.TableRow>

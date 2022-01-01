@@ -10,20 +10,15 @@ export const TitleTable = styled.h1`
 export const TableConversion = styled.table`
     display: table;
     width: 100%;
-
     margin-top: 20px;
     font-size: 0.8rem ;
     color: ${({ theme }) => theme.colors.text.primary};
     box-shadow: ${({ theme }) => theme.colors.shadow.primary};
 `
 export const TableHead = styled.thead`
-    padding: 10px;
-    border: ${({ theme }) => theme.borders.default};
 `
 export const TableRow = styled.tr`
         transition: 0.1s all;
-        border: ${({ theme }) => theme.borders.default};
-
         &:hover {
             cursor: pointer;
             background: ${({ theme }) => theme.colors.background.card};
@@ -32,7 +27,7 @@ export const TableRow = styled.tr`
         }
 `
 export const TableTh = styled.th`
-    padding: 5px;
+    padding: 15px;
 `
 export const TableTd = styled.td`
     padding: 5px;

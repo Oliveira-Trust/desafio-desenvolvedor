@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from 'react'
+import { createContext, useState, useContext, useEffect, useCallback } from 'react'
 import api, { getTaxTransactions, saveTaxTransactions, sendLogin } from '../services/api'
 import { getLocalStorage, removeLocalStorage, setLocalStorage } from '../services/functions'
 
@@ -33,15 +33,14 @@ const AuthProvider = ({ children }) => {
         setData(false)
         removeLocalStorage()
     }
-    const loadTax = async()=>{
+    const loadTax = useCallback(async()=>{
         const response = await getTaxTransactions()
         if(response.status === 'sucesso') {
             setTax(response.data)
-            if(error.error) setError({ error: false, message: '' })
         } else {
             setError({ error: true, message: response.message })
         }
-    }
+    },[])
     const handleTax = async (values) => {
         const response = await saveTaxTransactions(values)
         if (response.status === 'sucesso') {
@@ -57,7 +56,7 @@ const AuthProvider = ({ children }) => {
                 loadTax()
             })()
         }
-    }, [data])
+    }, [data, loadTax])
     return (
         <AuthContex.Provider value={{ 
             user: data.user,
