@@ -7,6 +7,6 @@ use App\Domain\Entities\TaxTransaction;
 
 interface TaxTransactionRepositoryInterface
 {
-    public function getById(int $id):? TaxTransaction;
+    public function getTaxTransaction():TaxTransaction;
     public function save(TaxTransaction $taxTransaction): TaxTransaction;
 }

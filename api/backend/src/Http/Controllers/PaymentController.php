@@ -31,6 +31,7 @@ class PaymentController extends Controller
     public function store()
     {
         try{
+            $this->isLogged();
             $data = $this->request->getBody();
             $createPayment = new CreatePaymentType($data, $this->paymentsRepository);
             $payment = $createPayment->execute();

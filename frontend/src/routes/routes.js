@@ -7,6 +7,7 @@ import PageHome from '../pages/Home'
 import PageHistorico from "../pages/Historico";
 import PageNotFound from "../pages/NotFound";
 import PrivateRoute from "./privateRoute";
+import PagePainel from "../pages/Painel";
 
 const AppRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
           <Route path="/singup" exact component={PageSingup} />
           <PrivateRoute path="/" exact component={PageHome} />
           <PrivateRoute path="/conversoes" exact component={PageHistorico} />
+          <PrivateRoute path="/painel" exact component={PagePainel} />
           <Route path="*" component={PageNotFound} />
         </Switch>
     </BrowserRouter>

@@ -1,11 +1,14 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getLocalStorage, removeLocalStorage } from '../../services/functions'
+import { useAuth } from '../../contexts/authContext'
+import { getLocalStorage } from '../../services/functions'
 import ToggleTheme from '../ToggleTheme'
 import * as C from './Styles'
 
 const Header = (props) => {
+    const { singOut } = useAuth()
     const handleLogout = ()=>{
-        removeLocalStorage()
+        singOut()
     }
     return (
         <C.Header>
@@ -16,6 +19,7 @@ const Header = (props) => {
                 {getLocalStorage() && (
                     <>
                     {props.historico ? <Link to="/">Converter</Link>: <Link to="/conversoes">Historico</Link>}
+                    <Link to="/painel" >Painel</Link>
                     <Link to="/login" onClick={handleLogout}>Sair</Link>
                     </>
                 )}

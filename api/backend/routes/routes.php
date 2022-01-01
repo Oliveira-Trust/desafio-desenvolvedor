@@ -10,6 +10,10 @@ Route::post('/payment/save', "PaymentController@store");
 Route::get('/transactions/{userid}', 'TransactionController@index');
 Route::post('/conversion', 'TransactionController@conversion');
 
+Route::get('/taxtransaction', 'TaxTransactionController@index');
+Route::post('/taxtransaction', 'TaxTransactionController@update');
+
+
 Route::get('/users', "UserController@index");
 
 Route::get('/users/{userid}', "UserController@getOne");

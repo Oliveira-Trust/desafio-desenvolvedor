@@ -4,6 +4,7 @@ use App\Core\Route;
 use App\Core\Request;
 use App\Domain\Repositories\Database\CurrencyRepositoryDatabase;
 use App\Domain\Repositories\Database\PaymentRepositoryDatabase;
+use App\Domain\Repositories\Database\TaxTransactionRepositoryDatabase;
 use App\Domain\Repositories\Database\TransactionRepositoryDatabase;
 use App\Domain\Repositories\Database\UserRepositoryDatabase;
 use App\Helpers\EntityManagerFactory;
@@ -25,10 +26,6 @@ function route($name, $params = null)
 {
     return Route::translate($name, $params);
 }
-function redirect($pattern)
-{
-    return resolve($pattern);
-} 
 function back()
 {
     return header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -51,4 +48,7 @@ $container['GetTransactionRepository'] = function () use ($entityManager){
 };
 $container['GetPaymentRepository'] = function () use ($entityManager){
      return new PaymentRepositoryDatabase($entityManager);
+};
+$container['GetTaxTransactionRepository'] = function () use ($entityManager){
+    return new TaxTransactionRepositoryDatabase($entityManager);
 };

@@ -20,6 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         try{
+            $this->isLogged();
             $getAllCurrency = new GetAllCurrency($this->http, $this->currencyRepository);
             $data = $getAllCurrency->execute();
             $this->response(["status" => "sucesso", "data" => $data]);
@@ -32,6 +33,7 @@ class HomeController extends Controller
     public function getCurrency($code, $codein)
     {
         try {
+            $this->isLogged();
             $codeCurrenci = $code. '-'.$codein;
             $getCurrency = new GetCurrency($this->http, $this->currencyRepository);
             $data = $getCurrency->execute($codeCurrenci);

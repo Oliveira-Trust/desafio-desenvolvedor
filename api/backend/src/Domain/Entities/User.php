@@ -94,13 +94,13 @@ class User
         $this->transactions->add($transaction);
         return $this;
     }
-    public function getTransactions()
+    public function getTransactions(TaxTransaction $taxTransaction)
     {
         $response = [ "user" => $this->toArray() ];
         $response["user"]["transactions"] = [];
 
         foreach($this->transactions as $transaction) {
-            $response["user"]["transactions"][] = $transaction->convertValue();
+            $response["user"]["transactions"][] = $transaction->convertValue($taxTransaction);
         }
         return $response;
     }

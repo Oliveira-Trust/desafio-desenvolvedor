@@ -108,16 +108,23 @@ class Transaction
         $this->date = $date;
         return $this;
     }
-    public function convertValue()
+    public function convertValue(TaxTransaction $taxConvertion)
     {
         $valueCoinDestino = (1 / $this->dataToConvert->getSalePrice());
         $code = $this->dataToConvert->getCode();
         $codein = $this->dataToConvert->getCodein();
+
         $taxPayment = ($this->paymentType->getConversionTax() / 100);
+        $taxLowValue = ($taxConvertion->getRateForlowValue() / 100);
+        $taxHighValue =  ($taxConvertion->getRateForHighValue() / 100);
+        
         $amountTaxPayment = ($this->value * $taxPayment);
-        $taxConvertion = ($this->value < 3) ? 0.02 : 0.01;
+        $isLowOrHighValue = ($this->value < $taxConvertion->getLowValue());
+        $taxConvertion = $isLowOrHighValue ? $taxLowValue : $taxHighValue;
+
         $amountTaxConvertion = ($taxConvertion * $this->value);
         $convertedValue = ($this->value - $amountTaxConvertion - $amountTaxPayment);
+        
         return [
             "moeda_origem" => $code,
             "moeda_destino"=> $codein,

@@ -25,6 +25,7 @@ class UserController extends Controller
     public function index()
     {
         try {
+            $this->isLogged();
             $this->isLogged($this->auth);
             $arrayResponse = ["code" => "erro", "message" => "Sem Usuarios Cadastrados"];
             $getAllUsers = new GetAllUser($this->userRepository);
@@ -63,6 +64,7 @@ class UserController extends Controller
     public function getOne($userid)
     {
         try {
+            $this->isLogged();
             $user = $this->userRepository->getById((int)$userid);
             if(!$user){
                 throw new \Exception("No users found.");

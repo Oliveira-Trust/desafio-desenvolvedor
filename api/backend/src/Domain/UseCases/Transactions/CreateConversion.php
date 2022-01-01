@@ -8,6 +8,7 @@ use App\Domain\Entities\Transaction;
 use App\Domain\Contracts\Repository\UserRepositoryInterface;
 use App\Domain\Contracts\Repository\CurrencyRepositoryInterface;
 use App\Domain\Contracts\Repository\PaymentRepositoryInterface;
+use App\Domain\Contracts\Repository\TaxTransactionRepositoryInterface;
 use App\Domain\Contracts\Repository\TransactionRepositoryInterface;
 
 class CreateConversion
@@ -18,8 +19,17 @@ class CreateConversion
     private $currencyRepository;
     private $paymentRepository;
     private $userRepository;
+    private $taxTransactionRepository;
 
-    public function __construct(array $data, int $userId = null, TransactionRepositoryInterface $transactionRepository, CurrencyRepositoryInterface $currencyRepository, PaymentRepositoryInterface $paymentRepository, UserRepositoryInterface $userRepository)
+    public function __construct(
+        array $data,
+        int $userId = null,
+        TransactionRepositoryInterface $transactionRepository,
+        CurrencyRepositoryInterface $currencyRepository,
+        PaymentRepositoryInterface $paymentRepository,
+        UserRepositoryInterface $userRepository,
+        TaxTransactionRepositoryInterface $taxTransactionRepository
+        )
     {
         $this->paymentRepository = $paymentRepository;
         $this->data = $data;
@@ -27,6 +37,7 @@ class CreateConversion
         $this->transactionRepository = $transactionRepository;
         $this->currencyRepository = $currencyRepository;
         $this->userRepository = $userRepository;
+        $this->taxTransactionRepository = $taxTransactionRepository;
     }
     public function execute()
     {
@@ -52,8 +63,10 @@ class CreateConversion
         $code = $this->data['moeda_origem'] . '-' . $this->data['moeda_destino'];
         $paymentId = $this->data['forma_pagamento'];
         $value = $this->data['valor'];
-        if($value < 1000 || $value > 100000) {
-            throw new \Exception("Valor para conversão deve ser entre R$1.000,00 e R$100.000,00.");
+        $taxTransaction = $this->taxTransactionRepository->getTaxTransaction();
+        
+        if($value < $taxTransaction->getMinimumTransactionValue() || $value > $taxTransaction->getMaximumTransactionValue()) {
+            throw new \Exception("Valor para conversão deve ser entre R$ {$taxTransaction->getMinimumTransactionValue()} e R$ {$taxTransaction->getMaximumTransactionValue()}.");
         }
         $currency = $this->currencyRepository->getByCurrencyCode($code);
         if(!$currency) {
@@ -67,7 +80,7 @@ class CreateConversion
         $transaction->setPayment($paymentType);
         $transaction->setValue((float)$value);
         $transaction = $this->transactionRepository->save($transaction);
-        $resultData = $transaction->convertValue();
+        $resultData = $transaction->convertValue($taxTransaction);
         return $resultData;
     }
   

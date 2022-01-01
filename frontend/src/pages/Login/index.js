@@ -1,27 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router";
 import FormLogin from "../../components/FormLogin";
+
 import { Error } from "../../components/FormSingup/Styles";
-import { sendLogin } from "../../services/api";
-import { getLocalStorage, setLocalStorage } from "../../services/functions";
+import { useAuth } from "../../contexts/authContext";
+import { getLocalStorage } from "../../services/functions";
 import Layout from "../../template/Layout";
 
-const PageLogin = () => {
-  const [ error, setError ] = useState('')
+const PageLogin = () => {  
+  const { singIn, error } = useAuth()
   const history = useHistory()
   const handleLogin = async (values) => {
-    try{
-      const response = await sendLogin(values)
-      if(response.status === 'sucesso') {
-        setLocalStorage(response.user)
-        setError(false)
-        history.push('/');
-      } else {
-        setError(c => response.message)
-      }
-    }catch(e){
-      setError(c => 'Desculpe! Estamos com problemas técnicos no momento.')
-    }
+        await singIn(values)
+        history.push('/')
   }
   useEffect(()=>{
     const user = getLocalStorage()
@@ -31,7 +22,7 @@ const PageLogin = () => {
   },[history])
   return (
     <Layout>
-      {error &&  <Error>{error}</Error>}
+      {error.error &&  <Error>{error.message}</Error>}
       <FormLogin handleLogin={handleLogin}/>
     </Layout>
   );
