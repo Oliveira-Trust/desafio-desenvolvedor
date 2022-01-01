@@ -1,7 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { FieldLabel, ContainerForm, LinkBotton } from '../FormSingup/Styles'
+import { ContainerForm, LinkBotton } from '../FormSingup/Styles'
 import * as Yup from 'yup'
 import * as C from './Styles'
+import { TextInput } from '../InputField/inde';
 
 const initValues = {
     username: '',
@@ -28,15 +29,15 @@ const FormLogin = ({ handleLogin }) => {
                 return (
                     <Form autoComplete="off">
                         <ContainerForm>
-                            <FieldLabel>Usuário ou E-mail</FieldLabel>
                             <Field
-                                component={C.InputAreaLogin}
+                                component={TextInput}
+                                label="Usuário ou E-mail"
                                 className={!!errors.username ? 'error' : ''}
                                 id="username"
                                 name="username"
                                 onChange={handleChange}
-                                placeholder="Digite seu usuario ou e-mail"
-                                type="username"
+                                placeholder="Usuario ou e-mail"
+                                type="text"
                                 value={values.username}
                                 {...formProps.field}
                             />
@@ -45,9 +46,9 @@ const FormLogin = ({ handleLogin }) => {
                             </C.Error>
                         </ContainerForm>
                         <ContainerForm>
-                            <FieldLabel>Senha</FieldLabel>
                             <Field
-                                component={C.InputAreaLogin}
+                                component={TextInput}
+                                label="Senha:"
                                 className={!!errors.password ? 'error' : ''}
                                 id="password"
                                 name="password"
@@ -61,11 +62,6 @@ const FormLogin = ({ handleLogin }) => {
                                 <ErrorMessage name="password" />
                             </C.Error>
                         </ContainerForm>
-                        {/* {hasError && hasError.show && (
-                            <C.Error>
-                                <p>{hasError.message}</p>
-                            </C.Error>
-                        )} */}
                         <C.ContainerFormButtons>
                             <C.Button type="submit">Entrar</C.Button>
                             <LinkBotton to="/singup">Cadastrar</LinkBotton>

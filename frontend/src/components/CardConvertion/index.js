@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup'
 import * as C from './Styles'
-import { FieldLabel } from '../FormSingup/Styles'
 import { sendConversion } from '../../services/api';
-import { useHistory } from 'react-router';
 import LastConversion from '../LastConversion';
+import { TextInput } from '../InputField/inde';
 
 const initValues = {
     moeda_origem: 'BRL',
-    moeda_destino: 'USD',
+    moeda_destino: 'AUD',
     valor: '',
     forma_pagamento: '1'
 }
@@ -17,12 +16,10 @@ const initValues = {
 const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
     const [ error , setError ] = useState('')
     const [ lastConversion, setLastConversion ] = useState([])
-    const history = useHistory()
     const handleOnSubmit = async(values, {resetForm}) => {
         const tResponse = await sendConversion(values)
         resetForm()
         if(tResponse.status === 'sucesso'){
-            // history.push('/conversoes')
             setLastConversion([tResponse.data])
         } else {
             setError(c => tResponse.message)
@@ -50,7 +47,7 @@ const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
                     <Form autoComplete="off">
                          {error &&  <C.Error>{error}</C.Error>}
                         <C.ContainerForm>
-                            <FieldLabel>Converter De:</FieldLabel>
+                            <C.FieldLabel>De:</C.FieldLabel>
                             {currencyBRL && (
                                 <Field options={[currencyBRL]} value={values.moeda_origem} name="moeda_origem" as="select" onChange={handleChange}>
                                     <option defaultValue value={currencyBRL.code}>{`[${currencyBRL.code}] ${currencyBRL.name}`}</option>
@@ -61,7 +58,7 @@ const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                        <FieldLabel>Converter para:</FieldLabel>
+                        <C.FieldLabel>Para:</C.FieldLabel>
                             <Field value={values.moeda_destino} name="moeda_destino" as="select" onChange={handleChange}>
                                 {(currencies.length > 0) && (
                                     currencies.map((item, i)=><option key={i} value={item.code}>{`[${item.code}] ${item.name}`}</option>)
@@ -72,8 +69,12 @@ const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <FieldLabel>Forma de Pagamento:</FieldLabel>
-                            <Field value={values.forma_pagamento} name="forma_pagamento" as="select" onChange={handleChange}>
+                            <C.FieldLabel>Forma de pagamento:</C.FieldLabel>
+                            <Field 
+                                value={values.forma_pagamento} 
+                                name="forma_pagamento"
+                                as="select"
+                                onChange={handleChange}>
                                 {(paymentTypes.length > 0) && (
                                     paymentTypes.map((item)=><option key={item.id} value={item.id}>{`[${item.type}] Taxa de ${item.conversionTax}%`}</option>)
                                 )}
@@ -83,23 +84,17 @@ const CardConvertion = ({currencyBRL, currencies, paymentTypes }) => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <FieldLabel>Valor para conversão:</FieldLabel>
-                            <Field
-                                component={C.InputArea}
-                                className={!!errors.valor ? 'error' : ''}
-                                id="valor"
+                            <Field 
+                                component={TextInput}
+                                label="Valor"
                                 name="valor"
-                                onChange={handleChange}
-                                placeholder="R$ 0,00"
                                 type="number"
-                                value={values.valor}
-                                {...formProps.field}
-                            />
+                                placeholder="R$ 0,00"/>
                            <C.Error>
                                 <ErrorMessage name="valor" />
                             </C.Error>
                         </C.ContainerForm>
-                        <C.ContainerForm>
+                        <C.ContainerForm>                            
                             <C.Button type="submit">Converter</C.Button>
                         </C.ContainerForm>
                     </Form>

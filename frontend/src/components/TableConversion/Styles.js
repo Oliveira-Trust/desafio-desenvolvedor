@@ -3,52 +3,39 @@ import styled from 'styled-components'
 export const Container = styled.div`
     max-width: 90%;
 `
+export const TitleTable = styled.h1`
+    color: ${({ theme }) => theme.colors.text.primary};
+    text-shadow: ${({ theme }) => theme.colors.shadow.text};
+`
 export const TableConversion = styled.table`
-    display: flex;
-    flex-direction: column;
+    display: table;
+    width: 100%;
+
     margin-top: 20px;
-    color: ${({theme}) => theme.colors.text.primary};
-    box-shadow: ${({theme}) => theme.colors.shadow.primary};
+    font-size: 0.8rem ;
+    color: ${({ theme }) => theme.colors.text.primary};
+    box-shadow: ${({ theme }) => theme.colors.shadow.primary};
 `
 export const TableHead = styled.thead`
-    margin-bottom: 3px;
-    font-size: 1.2rem;
-    width: 100%;
-    & tr {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+    padding: 10px;
+    border: ${({ theme }) => theme.borders.default};
+`
+export const TableRow = styled.tr`
         transition: 0.1s all;
+        border: ${({ theme }) => theme.borders.default};
+
         &:hover {
             cursor: pointer;
-            background: ${({theme}) => theme.colors.background.card};
-            border-radius: ${({theme}) => theme.borders.radius};
-            transform: ${({theme})=> theme.zoom.card};
+            background: ${({ theme }) => theme.colors.background.card};
+            border-radius: ${({ theme }) => theme.borders.radius};
+            transform: ${({ theme }) => theme.zoom.card};
         }
-        & th {
-            border-right: ${({theme}) => theme.borders.default};
-            flex: 1;
-            font-size: 0.8rem;
-            padding: 5px;
-        }
-    }
 `
-export const TableBody = styled(TableHead)`
-    & tr {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        transition: 0.1s all;
-        border: ${({theme}) => theme.borders.default};
-        & td {
-            border-right: ${({theme}) => theme.borders.default};
-            flex: 1;
-            font-size: 0.7rem;
-            padding: 5px;
-        }
-    }
+export const TableTh = styled.th`
+    padding: 5px;
 `
-export const TitleTable = styled.h1`
-    color: ${({theme}) => theme.colors.text.primary};
-    text-shadow: ${({theme})=> theme.colors.shadow.text};
+export const TableTd = styled.td`
+    padding: 5px;
+`
+export const TableBody = styled.tbody`
 `

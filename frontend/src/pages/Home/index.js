@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getCurrencies, getPaymentForms } from "../../services/api";
 import Layout from "../../template/Layout";
 import CardConvertion from "../../components/CardConvertion";
-import TableConversion from "../../components/TableConversion";
 import { getLocalStorage } from "../../services/functions";
 import { Error } from "../../components/FormSingup/Styles";
 

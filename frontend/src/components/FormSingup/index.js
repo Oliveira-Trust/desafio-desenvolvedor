@@ -1,7 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useState } from 'react';
-import { useHistory } from 'react-router';
 import * as Yup from 'yup'
+import { TextInput } from '../InputField/inde';
 import * as C from './Styles'
 
 const initValues = {
@@ -38,9 +37,9 @@ const FormSingup = ({ handleSingup }) => {
                 return (
                     <Form autoComplete="off">
                         <C.ContainerForm>
-                            <C.FieldLabel>Nome</C.FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={TextInput}
+                                label="Nome:"
                                 className={!!errors.name ? 'error' : ''}
                                 id="name"
                                 name="name"
@@ -55,9 +54,9 @@ const FormSingup = ({ handleSingup }) => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <C.FieldLabel>Usuário</C.FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={TextInput}
+                                label="Usuário:"
                                 className={!!errors.username ? 'error' : ''}
                                 id="username"
                                 name="username"
@@ -72,9 +71,9 @@ const FormSingup = ({ handleSingup }) => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <C.FieldLabel>E-mail</C.FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={TextInput}
+                                label="E-mail:"
                                 className={!!errors.email ? 'error' : ''}
                                 id="email"
                                 name="email"
@@ -89,9 +88,9 @@ const FormSingup = ({ handleSingup }) => {
                             </C.Error>
                         </C.ContainerForm>
                         <C.ContainerForm>
-                            <C.FieldLabel>Senha</C.FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={TextInput}
+                                label="Senha:"
                                 className={!!errors.password ? 'error' : ''}
                                 id="password"
                                 name="password"

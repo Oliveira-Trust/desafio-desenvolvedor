@@ -10,6 +10,7 @@ export const lightTheme = {
             secondary: '#a8adab',
             white: 'black;',
             error: 'red',
+            sucess: 'green',
             placeholder: 'rgba(0,0,0,0.9);'
         },
         shadow: {

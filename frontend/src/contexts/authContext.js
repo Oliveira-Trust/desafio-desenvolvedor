@@ -5,6 +5,7 @@ import { getLocalStorage, removeLocalStorage, setLocalStorage } from '../service
 const AuthContex = createContext()
 const AuthProvider = ({ children }) => {
     const [error, setError] = useState({ error: false, message: '' })
+    const [sucess, setSucess] = useState({ show: false, message: '' })
     const [tax, setTax] = useState('')
     const [data, setData] = useState(() => {
         const user = getLocalStorage()
@@ -20,6 +21,7 @@ const AuthProvider = ({ children }) => {
             api.defaults.headers.Authorization = `${user.token}`
             setData({ ...user })
             setLocalStorage(user)
+            if(error.error) setError({ error: false, message: '' })
         } else {
             setError({ error: true, message: response.message })
         }
@@ -35,6 +37,7 @@ const AuthProvider = ({ children }) => {
         const response = await getTaxTransactions()
         if(response.status === 'sucesso') {
             setTax(response.data)
+            if(error.error) setError({ error: false, message: '' })
         } else {
             setError({ error: true, message: response.message })
         }
@@ -43,6 +46,7 @@ const AuthProvider = ({ children }) => {
         const response = await saveTaxTransactions(values)
         if (response.status === 'sucesso') {
             loadTax()
+            setSucess({show: true, message: response.message})
         } else {
             setError({ error: true, message: response.message })
         }
@@ -55,7 +59,16 @@ const AuthProvider = ({ children }) => {
         }
     }, [data])
     return (
-        <AuthContex.Provider value={{ user: data.user, singIn, singOut, error, handleError, tax, handleTax }}>
+        <AuthContex.Provider value={{ 
+            user: data.user,
+            singIn,
+            singOut,
+            error,
+            handleError,
+            tax,
+            handleTax,
+            sucess
+             }}>
             {children}
         </AuthContex.Provider>
     )

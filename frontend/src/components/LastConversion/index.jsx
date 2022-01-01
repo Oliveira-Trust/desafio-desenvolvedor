@@ -3,6 +3,8 @@ import * as C from './Styles'
 
 const LastConversion = (props) => {
     const transaction = props.lastTransaction[0]
+    const taxPag = (transaction.taxa_pagamento / 100 ) * transaction.valor_para_conversao
+    const taxConv = (transaction.taxa_conversao / 100 ) * transaction.valor_para_conversao
     return (
         <C.Container>
             <C.TitleLastConversion>Resultado da conversão</C.TitleLastConversion>
@@ -24,10 +26,10 @@ const LastConversion = (props) => {
             <C.Item>Valor comprado em "{transaction.moeda_destino}":
                 <C.ItemValue>{formatMoney(transaction.valor_comprado, transaction.moeda_destino)}</C.ItemValue>
             </C.Item>
-            <C.Item>Taxa de pagamento:
+            <C.Item>Taxa de pagamento ({taxPag}%):
                 <C.ItemValue>{formatMoney(transaction.taxa_pagamento)}</C.ItemValue>
             </C.Item>
-            <C.Item>Taxa de conversão:
+            <C.Item>Taxa de conversão ({taxConv}%):
                 <C.ItemValue>{formatMoney(transaction.taxa_conversao)}</C.ItemValue>
             </C.Item>
             <C.Item>Valor utilizado para conversão:

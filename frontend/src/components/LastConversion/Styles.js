@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const TitleLastConversion = styled.h3`
     text-align: center;
     text-decoration: underline;
+    color: ${({theme}) => theme.colors.text.white};
     text-shadow: ${({theme}) => theme.colors.shadow.text};
     margin: 5px;
 `

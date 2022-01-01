@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/authContext'
 import { getLocalStorage } from '../../services/functions'
@@ -18,7 +17,8 @@ const Header = (props) => {
             <C.Nav>
                 {getLocalStorage() && (
                     <>
-                    {props.historico ? <Link to="/">Converter</Link>: <Link to="/conversoes">Historico</Link>}
+                    <Link to="/">Converter</Link>
+                    <Link to="/conversoes">Historico</Link>
                     <Link to="/painel" >Painel</Link>
                     <Link to="/login" onClick={handleLogout}>Sair</Link>
                     </>

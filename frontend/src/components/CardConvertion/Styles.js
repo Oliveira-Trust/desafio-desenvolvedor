@@ -6,6 +6,8 @@ export const ContainerForm = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin: 10px;
+    
     & select {
         width: 100%;
         height: 50px;
@@ -89,4 +91,7 @@ export const Button = styled.button`
         transform: ${({theme})=> theme.zoom.card};
     }
 
+`
+export const FieldLabel = styled.label`
+    align-self: flex-start;
 `

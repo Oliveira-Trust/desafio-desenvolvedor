@@ -19,6 +19,9 @@ export const ContainerFormButtons = styled(ContainerForm)`
 export const Error = styled.p`
     color: ${({theme}) => theme.colors.text.error};
 `
+export const Sucess = styled.p`
+    color: ${({theme}) => theme.colors.text.sucess};
+`
 export const TextInput = styled.input`
     padding: 10px;
     outline: none;
@@ -56,9 +59,6 @@ export const InputArea = styled.input`
 
     &::placeholder {
         color: ${({theme}) => theme.colors.text.placeholder}
-    }
-    &.error {
-        border: 1px solid red
     }
     &:focus {
         padding: 15px;
@@ -98,8 +98,4 @@ export const LinkBotton = styled(Link)`
         color: ${({theme})=> theme.colors.text.primary};
         transform: ${({theme})=> theme.zoom.card};
     }
-`
-export const FieldLabel = styled.label`
-    align-self: flex-start;
-
 `

@@ -19,51 +19,18 @@ export const ContainerFormButtons = styled(ContainerForm)`
 export const Error = styled.p`
     color: ${({theme}) => theme.colors.text.error};
 `
-export const TextInput = styled.input`
-    padding: 10px;
-    outline: none;
-    border: none;
-    border-radius: ${({theme}) => theme.borders.radius};
-    background-color: ${({theme}) => theme.colors.background.inputs};
-    margin: 3px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    width: 100%;
-    flex: 1;
-    flex-wrap: wrap;
-    transition: 0.9s ease-in-out;
-
-    &::placeholder {
-        color: ${({theme}) => theme.colors.text.placeholder}
-    }
-    &.error {
-        border: 1px solid red
-    }
-    &:focus {
-        padding: 15px;
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        
+    @media (min-width: 624px ){
+        flex-direction: row;
+        justify-content: space-between;
     }
 `
-export const InputArea = styled.input`
-    margin: 3px;
-    padding: 10px;
-    outline: none;
-    border: none;
-    border-radius: ${({theme}) => theme.borders.radius};
-    background-color: ${({theme}) => theme.colors.background.inputs};
-    width: 100%;
-    font-weight: bold;
-    transition: 0.9s ease-in-out;
 
-    &::placeholder {
-        color: ${({theme}) => theme.colors.text.placeholder}
-    }
-    &.error {
-        border: 1px solid red
-    }
-    &:focus {
-        padding: 15px;
-    }
-`
 export const Button = styled.button`
     padding: 10px;
     border: none;
@@ -98,8 +65,4 @@ export const LinkBotton = styled(Link)`
         color: ${({theme})=> theme.colors.text.primary};
         transform: ${({theme})=> theme.zoom.card};
     }
-`
-export const FieldLabel = styled.label`
-    align-self: flex-start;
-
 `

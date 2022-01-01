@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useEffect, useState } from 'react';
 import * as Yup from 'yup'
+import { TextInput } from '../InputField/inde';
 import * as C from './Styles'
 
 const shape = Yup.object().shape({
@@ -29,47 +29,44 @@ const FormTaxTransactions = ({ handleSubmit, taxTransaction }) => {
             validationSchema={shape}
             initialValues={taxTransaction}
             onSubmit={singUp}>
-            {({errors, values, handleChange, ...formProps}) => {
+            {({ errors, values, handleChange, ...formProps }) => {
                 return (
                     <Form autoComplete="off">
-                        <C.ContainerForm>
-                            <C.FieldLabel>Valor maximo por transação</C.FieldLabel>
+                        <C.Container>
                             <Field
-                                component={C.InputArea}
-                                className={!!errors.maximumTransactionValue ? 'error' : ''}
-                                id="maximumTransactionValue"
-                                name="maximumTransactionValue"
-                                onChange={handleChange}
-                                placeholder="Digite o valor maximo aceito"
-                                type="number"
-                                value={values.maximumTransactionValue}
-                                {...formProps.field}
-                            />
-                           <C.Error>
-                                <ErrorMessage name="maximumTransactionValue" />
-                            </C.Error>
-                        </C.ContainerForm>
-                        <C.ContainerForm>
-                            <C.FieldLabel>Valor minimo por transação</C.FieldLabel>
-                            <Field
-                                component={C.InputArea}
+                                component={TextInput}
                                 className={!!errors.minimumTransactionValue ? 'error' : ''}
                                 id="minimumTransactionValue"
                                 name="minimumTransactionValue"
                                 onChange={handleChange}
                                 placeholder="Digite o valor maximo aceito"
                                 type="number"
+                                label="Valor Minimo de uma transação:"
                                 value={values.minimumTransactionValue}
                                 {...formProps.field}
                             />
-                           <C.Error>
+                            <C.Error>
                                 <ErrorMessage name="minimumTransactionValue" />
                             </C.Error>
-                        </C.ContainerForm>
-                        <C.ContainerForm>
-                            <C.FieldLabel>Taxa para valor abaixo do valor médio</C.FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={TextInput}
+                                label="Valor Maximo de uma transação:"
+                                className={!!errors.maximumTransactionValue ? 'error' : ''}
+                                id="maximumTransactionValue"
+                                name="maximumTransactionValue"
+                                onChange={handleChange}
+                                placeholder="Digite o valor maximo aceito"
+                                type="number"
+                                {...formProps.field}
+                            />
+                            <C.Error>
+                                <ErrorMessage name="maximumTransactionValue" />
+                            </C.Error>
+                        </C.Container>
+                        <C.Container>
+                            <Field
+                                component={TextInput}
+                                label={`Taxa para valor abaixo de ${values.lowValue}`}
                                 className={!!errors.rateForlowValue ? 'error' : ''}
                                 id="rateForlowValue"
                                 name="rateForlowValue"
@@ -79,14 +76,12 @@ const FormTaxTransactions = ({ handleSubmit, taxTransaction }) => {
                                 value={values.rateForlowValue}
                                 {...formProps.field}
                             />
-                           <C.Error>
+                            <C.Error>
                                 <ErrorMessage name="rateForlowValue" />
                             </C.Error>
-                        </C.ContainerForm>
-                        <C.ContainerForm>
-                            <C.FieldLabel>Valor médio</C.FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={TextInput}
+                                label="Valor médio:"
                                 className={!!errors.lowValue ? 'error' : ''}
                                 id="lowValue"
                                 name="lowValue"
@@ -96,14 +91,12 @@ const FormTaxTransactions = ({ handleSubmit, taxTransaction }) => {
                                 value={values.lowValue}
                                 {...formProps.field}
                             />
-                           <C.Error>
+                            <C.Error>
                                 <ErrorMessage name="lowValue" />
                             </C.Error>
-                        </C.ContainerForm>
-                        <C.ContainerForm>
-                            <C.FieldLabel>Valor maximo por transação</C.FieldLabel>
                             <Field
-                                component={C.InputArea}
+                                component={TextInput}
+                                label={`Taxa para valor acima de ${values.lowValue}`}
                                 className={!!errors.rateForHighValue ? 'error' : ''}
                                 id="rateForHighValue"
                                 name="rateForHighValue"
@@ -113,10 +106,10 @@ const FormTaxTransactions = ({ handleSubmit, taxTransaction }) => {
                                 value={values.rateForHighValue}
                                 {...formProps.field}
                             />
-                           <C.Error>
+                            <C.Error>
                                 <ErrorMessage name="rateForHighValue" />
                             </C.Error>
-                        </C.ContainerForm>
+                        </C.Container>
                         <C.ContainerFormButtons>
                             <C.Button type="submit">Salvar</C.Button>
                         </C.ContainerFormButtons>

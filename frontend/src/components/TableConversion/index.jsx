@@ -9,31 +9,31 @@ const TableConversion = ({transactionsUser, title}) => {
             {transactionsUser.length > 0 ? (
                 <C.TableConversion>
                     <C.TableHead>
-                        <tr>
+                        <C.TableRow>
                             {(columns.length > 0) && columns.map((data, index) => {
                                         const dataArr = data.split('_')
                                         const title = dataArr.map(word => word.toUpperCase()).join(" ")
                                         return (
-                                        <th key={index}>{title}</th>
+                                        <C.TableTh key={index}>{title}</C.TableTh>
                                         )
                                     })}
-                        </tr>
+                        </C.TableRow>
                     </C.TableHead>
                     <C.TableBody>
                         {transactionsUser.map((transaction, index) => {
                             return (
-                                <tr key={index}>
-                                    <td>{transaction.moeda_origem}</td>
-                                    <td>{transaction.moeda_destino}</td>
-                                    <td>{formatMoney(transaction.valor_para_conversao)}</td>
-                                    <td>{transaction.forma_pagamento}</td>
-                                    <td>{formatMoney(transaction.valor_moeda_destino, transaction.moeda_destino)}</td>
-                                    <td>{formatMoney(transaction.valor_comprado)}</td>
-                                    <td>{formatMoney(transaction.taxa_pagamento)}</td>
-                                    <td>{formatMoney(transaction.taxa_conversao)}</td>
-                                    <td>{formatMoney(transaction.valor_convertido, transaction.moeda_destino)}</td>
-                                    <td>{formatDate(transaction.data_transaction)}</td>
-                                </tr>
+                                <C.TableRow key={index}>
+                                    <C.TableTd>{transaction.moeda_origem}</C.TableTd>
+                                    <C.TableTd>{transaction.moeda_destino}</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.valor_para_conversao)}</C.TableTd>
+                                    <C.TableTd>{transaction.forma_pagamento}</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.valor_moeda_destino, transaction.moeda_destino)}</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.valor_comprado)}</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.taxa_pagamento)}</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.taxa_conversao)}</C.TableTd>
+                                    <C.TableTd>{formatMoney(transaction.valor_convertido, transaction.moeda_destino)}</C.TableTd>
+                                    <C.TableTd>{formatDate(transaction.data_transaction)}</C.TableTd>
+                                </C.TableRow>
                             )
                         })}
                     </C.TableBody>
