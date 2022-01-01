@@ -31,11 +31,16 @@ class CreateUser
             }
             $user->{'set'.ucfirst($key)}($value);
         }
-        $userExists = $this->repository->getByUsername($user->getUsername());
+        
+        $userExistsUsername = $this->repository->getByUsername($user->getUsername());
+
+        if($userExistsUsername){
+            throw new Exception('User already registered.');
+        }
+        $userExists = $this->repository->getByEmail($user->getEmail());
         if($userExists){
             throw new Exception('User already registered.');
         }
-        
         return $this->repository->save($user);
     }
 }

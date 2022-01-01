@@ -18,6 +18,9 @@ class HandleLogin
         $username = $this->dataLogin['username'];
         $user = $this->repository->getByUsername($username);
         if(!$user){
+            $user = $this->repository->getByEmail($username);
+        }
+        if(!$user){
             throw new \Exception("Usuario e/ou senha invalidos.");
         }
         $password = $this->dataLogin['password'];

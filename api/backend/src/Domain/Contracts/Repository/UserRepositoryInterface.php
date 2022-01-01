@@ -13,5 +13,6 @@ interface UserRepositoryInterface
     public function delete(User $user):void;
     public function getAll(): array;
     public function getByUsername(string $username):? User;
+    public function getByEmail(string $email):? User;
     public function save(User $user): User;
 }
