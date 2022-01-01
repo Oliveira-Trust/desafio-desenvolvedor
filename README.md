@@ -72,22 +72,22 @@ $ cd NOME_DA_PASTA_DO_PROJETO
 ```
 ```bash
 # Entrar na pasta do backend 'api/backend' e copiar o arquivo .env.exemple renomeando para .env
-# Ele ja possui as configuraçẽos necessarias para rodar o projeto, apois copiar voltar para a pasta raiz do projeto onde esta o arquivo docker-compose.yml.
+# Ele já possui as configuraçẽos necessárias para rodar o projeto, após copiar, voltar para a pasta raiz do projeto onde está o arquivo docker-compose.yml.
 $ cd NOME_DA_PASTA_DO_PROJETO
 ```
 ```bash
 # Levantando os Containers. 
-# A imagem php-apache construida para o projeto já esta pronta para rodar as migrations e manter o apache funcionando.
+# A imagem php-apache construída para o projeto, já está pronta para rodar as migrations e manter o apache funcionando.
 $ docker-compose up -d --build
 ```
 ### Frontend
 ```bash
-# Para configurar o frontend é necessario ter o NodeJS instalado, entrar na pasta ./frontend.
-# Instalar as biblitecas necessarias com o comando:
+# Para configurar o frontend é necessário ter o NodeJS instalado, entrar na pasta ./frontend.
+# Instalar as bibliotecas necessárias com o comando:
 $ npm install
 ```
 ```bash
-# Apos instalar as biblitecas digite o comando:
+# Após instalar as bibliotecas digite o comando:
 $ npm start
 ```
 ---

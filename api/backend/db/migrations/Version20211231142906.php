@@ -16,7 +16,6 @@ final class Version20211231142906 extends AbstractMigration
     {
         return 'Migrations to create and insert tax transactions.';
     }
-
     public function up(Schema $schema): void
     {
         $this->addSql("CREATE TABLE tax_transactions (id INT AUTO_INCREMENT NOT NULL,
