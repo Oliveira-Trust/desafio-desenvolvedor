@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="login.css">
+    <title>Home Converter</title>
+</head>
+
+<body>
+    <hr>
+    <div class="container">
+        <form id="form-payment">
+            <div class="form-group">
+                <label for="value">Value</label>
+                <input type="number" class="form-control" id="value" placeholder="value">
+            </div>
+            <div class="form-group">
+                <label for="currencies">Currency</label>
+                <select class="form-control" id="currencies">
+                    <option>Loading...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="payment-type">Payment type</label>
+                <select class="form-control" id="payment-type">
+                    <option value="1">Billet</option>
+                    <option value="2">Credit card</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+        <hr>
+        <h2>Payments</h2>
+        <table class="table" id="table-history">
+            <thead>
+                <tr>
+                    <th scope="col">Value</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Currency Value</th>
+                    <th scope="col">Payment Type</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <div id="modal1" style="display: none" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Payment info</h5>
+                    <button id="button-close-modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal-body" class="container" style="padding: 1.5rem">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const modal = document.getElementById('modal1');
+    document.getElementById('button-close-modal').addEventListener('click', event => {
+        modal.style = 'display: none';
+    })
+</script>
+
+
+<script>
+    // http://localhost:8080/converter/get-currencies
+    // http://localhost:8080/converter lista
+    // http://localhost:8080/converter pagamento POST
+    const url = `http://localhost:8080/api/converter`;
+
+    const accessToken = localStorage.getItem('access_token');
+
+    fetch(
+        url,
+        {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }
+    ).then(response => response.json()).then(response => {
+        var table = document.getElementById("table-history");
+
+        document.getElementById('table-body').innerHTML = response.data.map(entity => `
+          <tr>
+              <td>${entity.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+              <td>${entity.currency}</td>
+              <td>${entity.currency_value}</td>
+              <td>${entity.type == "1" ? "Billet" : "Credit Card"}</td>
+          </tr>
+        `).join('')
+
+    });
+
+    fetch(
+        `${url}/get-currencies`,
+        {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }
+    ).then(response => response.json()).then(response => {
+        document.getElementById('currencies').innerHTML = Object.keys(response).map(currency => `<option value="${currency}">${currency} - ${response[currency]}</option>`).join('');
+    });
+
+
+    document.getElementById('form-payment').addEventListener('submit', event => {
+        event.preventDefault();
+
+        fetch(
+            url,
+            {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    value: $("#value")[0].value,
+                    currency: $("#currencies").val(),
+                    type: $("#payment-type").val(),
+                })
+            }
+        ).then(response => response.json()).then(({ payment_tax, convertion_tax, currency, value, type, currency_value }) => {
+            
+            document.getElementById('modal1').style = 'display: block';
+
+            document.getElementById('modal-body').innerHTML = `
+                <p>Payment tax: ${payment_tax}</p>
+                <p>Convertion tax: ${convertion_tax}</p>
+                <p>Currency: ${currency}</p>
+                <p>Value: ${value}</p>
+                <p>Payment type: ${type == '1' ? 'Billet' : 'Credit Card'}</p>
+            `;
+
+
+            document.getElementById('table-body').innerHTML += `
+          <tr>
+              <td>${value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+              <td>${currency}</td>
+              <td>${currency_value}</td>
+              <td>${type == "1" ? "Billet" : "Credit Card"}</td>
+          </tr>
+        `;
+
+        });
+    });
+</script>

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Converter\Models\Payment;
+use Converter\Observers\PaymentObserver;
 use Laravel\Lumen\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -16,4 +18,8 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\ExampleListener::class,
         ],
     ];
+    public function boot()
+    {
+        Payment::observe(PaymentObserver::class);
+    }
 }

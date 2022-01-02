@@ -4,8 +4,10 @@ namespace Converter\Models;
 
 use Converter\Enums\PaymentTax;
 use Converter\Enums\PaymentType;
+use Converter\Scopes\UserPaymentsScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Payment extends Model
 {
@@ -25,12 +27,17 @@ class Payment extends Model
         'currency_value' => 'float'
     ];
 
-    public function getPaymentTaxValue() : float
+    protected static function booted()
+    {
+        static::addGlobalScope(App::make(UserPaymentsScope::class));
+    }
+
+    public function getPaymentTaxValue(): float
     {
         return $this->value * ($this->getPaymentTax() / 100);
     }
 
-    public function getPaymentTax() : float
+    public function getPaymentTax(): float
     {
         return [
             PaymentType::BILLET => PaymentTax::BILLET,
@@ -40,8 +47,7 @@ class Payment extends Model
 
     public function getConvertionTaxValue(): float
     {
-        return $this->value * (
-            $this->value < 3000 ? 
+        return $this->value * ($this->value < 3000 ?
             0.02 :
             0.01
         );

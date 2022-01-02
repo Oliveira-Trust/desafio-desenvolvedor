@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="login.css">
+  <title>Login Converter</title>
+</head>
+<body>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <form id="form1">
+        <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+        <input type="submit" class="fadeIn fourth" id="login-btn" value="Log In">
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  const url = `http://localhost:8080/api/auth/login`;
+
+  document.getElementById('form1').addEventListener('submit', event => {
+    event.preventDefault();
+
+    fetch(
+      url,
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: $("#email")[0].value,
+          password: $("#password")[0].value
+        })
+      }
+    ).then(response => response.json()).then(({access_token, token_type}) => {
+
+      localStorage.setItem('access_token', access_token);
+      localStorage.setItem('token_type', token_type);
+
+      window.location.href = "home.html"
+    });
+
+  }); 
+</script>

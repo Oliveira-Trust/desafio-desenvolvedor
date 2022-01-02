@@ -25,6 +25,18 @@ services:
       - converter-network
     depends_on:
       - mysql
+  frontend:
+    image: httpd
+    container_name: desafio_trust_front
+    volumes:
+      - ./frontend:/usr/local/apache2/htdocs
+    ports: 
+      - 8081:80
+    networks:
+      - converter-network
+    depends_on:
+      - php
+
 networks:
   converter-network:
     driver: bridge

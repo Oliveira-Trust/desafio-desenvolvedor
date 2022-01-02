@@ -1,11 +1,10 @@
 <?php
 
-use Converter\Enums\PaymentType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePayments extends Migration
+class CreateUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,10 @@ class CreatePayments extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->float('value');
-            $table->string('currency');
-            $table->float('currency_value');
-            $table->enum('type', PaymentType::all());
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreatePayments extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('users');
     }
 }

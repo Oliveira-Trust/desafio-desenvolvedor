@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Converter\Enums\PaymentType;
 use Converter\Rules\PaymentRangeRule;
 use Converter\Services\ConverterService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
@@ -19,7 +20,7 @@ class ConverterController extends Controller
     ) {
     }
 
-    public function getCurrencies()
+    public function getCurrencies() : JsonResponse
     {
         return response()->json(
             $this->converterService->getCurrencies(),
@@ -27,7 +28,7 @@ class ConverterController extends Controller
         );
     }
 
-    public function payment(Request $request)
+    public function payment(Request $request) : JsonResponse
     {
         $data = $request->only([
             'currency', 'value', 'type'
@@ -60,6 +61,14 @@ class ConverterController extends Controller
 
         return response()->json(
             $payment,
+            Response::HTTP_OK
+        );
+    }
+
+    public function index() : JsonResponse
+    {
+        return response()->json(
+            $this->converterService->getAll(),
             Response::HTTP_OK
         );
     }

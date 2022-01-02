@@ -33,6 +33,6 @@ COPY . .
 
 COPY .env.example .env
 
-RUN composer install
+RUN composer install --ignore-platform-reqs
 
 USER $user

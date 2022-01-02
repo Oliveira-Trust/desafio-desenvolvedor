@@ -64,4 +64,9 @@ class ConverterService
         $data['currency_value'] = $currency->ask;
         return $this->paymentRepository->create($data);
     }
+
+    public function getAll()
+    {
+        return $this->paymentRepository->paginate();
+    }
 }
