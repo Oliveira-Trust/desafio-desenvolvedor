@@ -1,0 +1,30 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@nuxtjs/vuetify": "^1.12.3",
+        "@vue/compiler-sfc": "^3.2.26",
+        "axios": "^0.21",
+        "deepmerge": "^4.2.2",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "sass": "^1.32.13",
+        "sass-loader": "^12.4.0",
+        "vue-loader": "^17.0.0"
+    },
+    "dependencies": {
+        "v-money3": "^3.20.1",
+        "vue": "^3.2.26",
+        "vue-router": "^4.0.12",
+        "vuetify": "^3.0.0-alpha.0"
+    }
+}
