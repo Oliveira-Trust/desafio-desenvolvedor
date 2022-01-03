@@ -12,7 +12,7 @@ const PagePainel = ()=>{
         const tResponse = await getTransactions(user.id)
         setTransactions(c=>tResponse)
     })()
-  },[])
+  },[transactions])
 
     return (
       <Layout historico={true}>
