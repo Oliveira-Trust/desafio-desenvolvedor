@@ -2,11 +2,12 @@ import { formatDate, formatMoney } from '../../services/functions'
 import * as C from './Styles'
 
 const TableConversion = ({transactionsUser, title}) => {
-    const columns = transactionsUser.length > 0 ? Object.keys(transactionsUser[0]) : []
+    console.log(transactionsUser)
+    const columns = (transactionsUser && transactionsUser.length > 0) ? Object.keys(transactionsUser[0]) : []
     return (
         <C.Container>
             <C.TitleTable>{title}</C.TitleTable>
-            {transactionsUser.length > 0 ? (
+            {(transactionsUser && transactionsUser.length > 0) ? (
                 <C.TableConversion>
                     <C.TableHead>
                         <C.TableRow>
