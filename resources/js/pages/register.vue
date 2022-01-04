@@ -3,9 +3,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <!--<div class="alert alert-danger" role="alert" v-if="message !== null">-->
-                    <!--{{ message }}-->
-                <!--</div>-->
+                <div class="alert alert-danger" role="alert" v-if="message_api !== null">
+                    {{ message_api }}
+                </div>
 
                 <div class="card card-default">
                     <div class="card-header">Registro</div>
@@ -70,6 +70,7 @@
                 name: "",
                 email: "",
                 password: "",
+                message_api: null,
                 message : {
                     name: null,
                     email: null,
@@ -147,11 +148,11 @@
                                 if (response.data.success) {
                                     window.location.href = "/login"
                                 } else {
-                                    this.message = response.data.message
+                                    this.message_api = response.data.message
                                 }
                             })
                             .catch(function (error) {
-                                console.error(error);
+                                console.log(error);
                             });
                     })
                 }
