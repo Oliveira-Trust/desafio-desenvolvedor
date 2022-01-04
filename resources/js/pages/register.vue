@@ -8,11 +8,11 @@
                 <!--</div>-->
 
                 <div class="card card-default">
-                    <div class="card-header">Register</div>
+                    <div class="card-header">Registro</div>
                     <div class="card-body">
                         <form>
                             <div class="form-group row">
-                                <label for="name" class="col-sm-4 col-form-label text-md-right" :class="{'error-label': errorInput.name}">Name</label>
+                                <label for="name" class="col-sm-4 col-form-label text-md-right" :class="{'error-label': errorInput.name}">Nome</label>
                                 <div class="col-md-6">
                                     <input id="name" type="email" class="form-control" v-model="name" required
                                            autofocus autocomplete="off" :class="{
@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-sm-4 col-form-label text-md-right" :class="{'error-label': errorInput.email}"> E-Mail Address</label>
+                                <label for="email" class="col-sm-4 col-form-label text-md-right" :class="{'error-label': errorInput.email}"> E-mail</label>
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" v-model="email" required
                                            autofocus autocomplete="off" :class="{'error-input': errorInput.email}">
@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right" :class="{'error-label': errorInput.password}"> Password</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right" :class="{'error-label': errorInput.password}"> Senha</label>
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" v-model="password"
                                            required autocomplete="off" :class="{'error-input': errorInput.password}">
@@ -51,7 +51,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary" @click="handleSubmit">
-                                        Register
+                                        Cadastrar
                                     </button>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
         methods: {
             validationEmail () {
                 if (this.email.indexOf('@') < 0 ) {
-                    this.message.email = "This e-mail is not valid!";
+                    this.message.email = "Esse e-mail não está valido!";
                     this.errorInput.email = true;
                     return true;
                 }
@@ -108,7 +108,7 @@
             },
             validationName () {
                 if (this.name.length < 6) {
-                    this.message.name = "The name will be more than 6 characters";
+                    this.message.name = "O nome deve conter pelo menos mais de 6 caracteres";
                     this.errorInput.name = true;
                     return true;
                 }
@@ -119,7 +119,7 @@
             },
             validationPassword () {
                 if (this.password.length < 6) {
-                    this.message.password = "The password will be more than 6 characters";
+                    this.message.password = "A senha deve ter conter pelo mneos mais de 6 caracteres";
                     this.errorInput.password = true;
                     return true;
                 }
@@ -167,6 +167,25 @@
 </script>
 
 <style scoped>
+
+    .btn-primary {
+        color: #fff;
+        background-color: #d40000;
+        border-color: #d40000;
+    }
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #d40000;
+        border-color: #d40000;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #d40000;
+        border-color: #d40000;
+    }
+
     .error-input {
         border: solid 1px red;
     }

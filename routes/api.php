@@ -25,6 +25,9 @@ Route::post('register', [UserController::class, 'register']);
 Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('getcoins', [CoinController::class, 'getCoins'])->middleware('auth:sanctum');
 Route::post('convert', [CoinController::class, 'convert'])->middleware('auth:sanctum');
+Route::get('convert', [UserController::class, 'convert'])->middleware('auth:sanctum');
+Route::post('sethistory', [UserController::class, 'setHistory'])->middleware('auth:sanctum');
+Route::get('gethistory', [UserController::class, 'getHistory'])->middleware('auth:sanctum');
 
 
 //Route::group(['prefix' => 'books', 'middleware' => 'auth:sanctum'], function () {
