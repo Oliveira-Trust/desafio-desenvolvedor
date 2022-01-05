@@ -27,6 +27,7 @@ class HistoryController extends Controller implements HistoryRepositoryInterface
                 'valor_conversao' => $request->value_conversion,
                 'valor_com_taxa' => $request->value_with_tax,
                 'valor_sem_taxa' => $request->value_without_tax,
+                'valor_convertido' => $request->value_bidden,
                 'user_id' => $user->id
             ]);
 

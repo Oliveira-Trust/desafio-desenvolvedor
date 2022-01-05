@@ -24,6 +24,7 @@ class HistoryCurrencyConversion extends Model
         'valor_conversao',
         'valor_com_taxa',
         'valor_sem_taxa',
+        'valor_convertido',
         'user_id'
     ];
 

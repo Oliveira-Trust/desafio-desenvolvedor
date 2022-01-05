@@ -19512,7 +19512,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         form_payment: null,
         value_curreny: null,
         currency_select_origin: null,
-        currency_select_destiny: null
+        currency_select_destiny: null,
+        value_with_tax: null
       },
       form_payment: 'boleto',
       value_curreny: 0.00,
@@ -19622,34 +19623,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           to: this.currency_select_destiny
         }).then(function (response) {
           if (response.data.success) {
-            _this3.result = response.data.message[_this3.currency_select_origin + _this3.currency_select_destiny];
-            _this3.data.bid = parseFloat(_this3.result.bid).toFixed(2);
-            _this3.data.tax_payment = _this3.getTaxPayment(_this3.form_payment, _this3.value_curreny.replaceAll(',', ''));
-            _this3.data.tax_currency = _this3.getTaxCurrency(_this3.value_curreny.replaceAll(',', ''));
-            _this3.data.total_tax = parseFloat(_this3.data.tax_payment) + parseFloat(_this3.data.tax_currency);
-            _this3.data.bidden = (parseFloat(_this3.result.bid) * _this3.value_curreny.replaceAll(',', '') + _this3.data.total_tax).toFixed(2);
-            _this3.data.currency_without_tax = (parseFloat(_this3.result.bid) * _this3.value_curreny.replaceAll(',', '')).toFixed(2);
-            _this3.data.form_payment = _this3.form_payment;
-            _this3.data.value_curreny = _this3.value_curreny.replaceAll(',', '');
-            _this3.data.currency_select_origin = _this3.currency_select_origin;
-            _this3.data.currency_select_destiny = _this3.currency_select_destiny;
+            _this3.calculateAll(response.data);
 
             _this3.setHistory();
-
-            _this3.sendEmail();
           } else {
             _this3.error = true;
             _this3.message = response.data.message;
           }
-        })["catch"](function (error) {
+        })["catch"](function (errors) {
+          this.message = errors;
           this.error = true;
-          this.message = error;
         });
       } else {
         this.result = null;
         this.error = true;
         this.message = "O valor de compra deve ser maior do que R$1.000 e menor do que R$ 100.000,00";
       }
+    },
+    calculateAll: function calculateAll(response) {
+      this.result = response.message[this.currency_select_origin + this.currency_select_destiny];
+      this.data.value_curreny = this.value_curreny.replaceAll(',', '');
+      this.data.tax_payment = this.getTaxPayment(this.form_payment, this.data.value_curreny);
+      this.data.tax_currency = this.getTaxCurrency(this.data.value_curreny);
+      this.data.total_tax = parseFloat(this.data.tax_payment) + parseFloat(this.data.tax_currency);
+      this.data.bidden = (parseFloat(this.result.bid) * this.data.value_curreny).toFixed(2);
+      this.data.form_payment = this.form_payment;
+      this.data.bid = parseFloat(this.data.value_curreny / this.data.bidden).toFixed(2);
+      this.data.currency_select_origin = this.currency_select_origin;
+      this.data.currency_select_destiny = this.currency_select_destiny;
+      this.data.value_with_tax = (parseFloat(this.data.value_curreny) + this.data.total_tax).toFixed(2);
+      this.data.currency_without_tax = (this.data.value_curreny - this.data.total_tax).toFixed(2);
     },
     setHistory: function setHistory() {
       var _this4 = this;
@@ -19661,10 +19664,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         tax_payment: this.data.tax_payment.toFixed(2),
         tax_conversion: this.data.tax_currency.toFixed(2),
         value_conversion: this.data.value_curreny,
-        value_with_tax: this.data.bidden,
-        value_without_tax: this.data.currency_without_tax
+        value_with_tax: this.data.value_with_tax,
+        value_without_tax: this.data.currency_without_tax,
+        value_bidden: this.data.bidden
       }).then(function (response) {
         if (response.data.success) {
+          _this4.sendEmail();
+
           _this4.getHistory();
         } else {
           _this4.error = true;
@@ -20770,13 +20776,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.currency_select_destiny), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.value_curreny), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" R$ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.value_curreny), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.form_payment.charAt(0).toUpperCase() + $data.data.form_payment.substr(1)), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.bid), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" R$ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.bid), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_37, [_hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.bidden) + " (taxas aplicadas no valor de compra diminuindo no valor total de conversão)", 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_37, [_hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.bidden), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_39, [_hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" R$ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.tax_payment.toFixed(2)), 1
   /* TEXT */
@@ -20819,11 +20825,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         header: "Moeda Destino"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
         field: "valor_conversao",
-        header: "Valor Conversão"
+        header: "Valor p/ Conversão"
       }, {
         body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref2) {
           var data = _ref2.data;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.valor_conversao)), 1
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" R$ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.valor_conversao)), 1
+          /* TEXT */
+          )];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+        field: "valor_convertido",
+        header: "Valor Convertido"
+      }, {
+        body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
+          var data = _ref3.data;
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.valor_convertido)), 1
           /* TEXT */
           )];
         }),
@@ -20834,22 +20853,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         field: "valor_com_taxa",
         header: "Valor com Taxa"
       }, {
-        body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
-          var data = _ref3.data;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.valor_sem_taxa)), 1
-          /* TEXT */
-          )];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
-        field: "valor_sem_taxa",
-        header: "Valor sem Taxa"
-      }, {
         body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
           var data = _ref4.data;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.valor_sem_taxa)), 1
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" R$ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.valor_com_taxa)), 1
           /* TEXT */
           )];
         }),
@@ -20863,7 +20869,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref5) {
           var data = _ref5.data;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.taxa_pagamento)), 1
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" R$ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.taxa_pagamento)), 1
           /* TEXT */
           )];
         }),
@@ -20876,7 +20882,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref6) {
           var data = _ref6.data;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.taxa_conversao)), 1
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" R$ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatPrice(data.taxa_conversao)), 1
           /* TEXT */
           )];
         }),

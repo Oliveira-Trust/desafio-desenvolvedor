@@ -61,10 +61,10 @@
                 <ul>
                     <li style="display:block"><b>Moeda de origem:</b> {{ data.currency_select_origin }} </li>
                     <li style="display:block"><b>Moeda de destino:</b> {{ data.currency_select_destiny }} </li>
-                    <li style="display:block"><b>Valor para conversão:</b> $ {{ data.value_curreny }} </li>
-                    <li style="display:block"><b>Forma de pagamento:</b>  {{data.form_payment.charAt(0).toUpperCase() + data.form_payment.substr(1)}} </li>
-                    <li style="display:block"><b>Valor da "Moeda de destino" usado para conversão:</b> $ {{ data.bid }}</li>
-                    <li style="display:block"><b>Valor comprado em "Moeda de destino":</b> $ {{ data.bidden }} (taxas aplicadas no valor de compra diminuindo no valor total de conversão)</li>
+                    <li style="display:block"><b>Valor para conversão:</b> R$ {{ data.value_curreny }} </li>
+                    <li style="display:block"><b>Forma de pagamento:</b>  {{ data.form_payment.charAt(0).toUpperCase() + data.form_payment.substr(1)}} </li>
+                    <li style="display:block"><b>Valor da "Moeda de destino" usado para conversão:</b> R$ {{ data.bid }}</li>
+                    <li style="display:block"><b>Valor comprado em "Moeda de destino":</b> $ {{ data.bidden }} </li>
                     <li style="display:block"><b>Taxa de pagamento:</b> R$ {{ data.tax_payment.toFixed(2) }}</li>
                     <li style="display:block"><b>Taxa de conversão:</b> R$ {{ data.tax_currency.toFixed(2) }}</li>
                     <li style="display:block"><b>Valor utilizado para conversão descontando as taxas:</b> R$ {{ data.currency_without_tax }}</li>
@@ -84,29 +84,29 @@
             </Column>
             <Column field="moeda_origin" header="Moeda Origem"></Column>
             <Column field="moeda_destino" header="Moeda Destino"></Column>
-            <Column field="valor_conversao" header="Valor Conversão">
+            <Column field="valor_conversao" header="Valor p/ Conversão">
                 <template #body="{data}">
-                    $ {{formatPrice(data.valor_conversao)}}
+                   R$ {{formatPrice(data.valor_conversao)}}
+                </template>
+            </Column>
+            <Column field="valor_convertido" header="Valor Convertido">
+                <template #body="{data}">
+                    $ {{formatPrice(data.valor_convertido)}}
                 </template>
             </Column>
             <Column field="valor_com_taxa" header="Valor com Taxa">
                 <template #body="{data}">
-                    $ {{formatPrice(data.valor_sem_taxa)}}
-                </template>
-            </Column>
-            <Column field="valor_sem_taxa" header="Valor sem Taxa">
-                <template #body="{data}">
-                    $ {{formatPrice(data.valor_sem_taxa)}}
+                  R$ {{formatPrice(data.valor_com_taxa)}}
                 </template>
             </Column>
             <Column field="taxa_pagamento" dataType="numeric" header="Taxa Pagamento">
                 <template #body="{data}">
-                    $ {{formatPrice(data.taxa_pagamento)}}
+                   R$ {{formatPrice(data.taxa_pagamento)}}
                 </template>
             </Column>
             <Column field="taxa_conversao" header="Taxa Conversão">
                 <template #body="{data}">
-                   $ {{formatPrice(data.taxa_conversao)}}
+                   R$ {{formatPrice(data.taxa_conversao)}}
                 </template>
             </Column>
         </DataTable>
@@ -205,7 +205,8 @@
                     form_payment: null,
                     value_curreny: null,
                     currency_select_origin: null,
-                    currency_select_destiny: null
+                    currency_select_destiny: null,
+                    value_with_tax: null
                 },
                 form_payment: 'boleto',
                 value_curreny: 0.00,
@@ -307,34 +308,35 @@
                         to: this.currency_select_destiny
                     }).then(response => {
                         if (response.data.success) {
-                            this.result = response.data.message[this.currency_select_origin + this.currency_select_destiny];
-                            this.data.bid = parseFloat(this.result.bid).toFixed(2);
-                            this.data.tax_payment = this.getTaxPayment(this.form_payment, this.value_curreny.replaceAll(',',''));
-                            this.data.tax_currency = this.getTaxCurrency(this.value_curreny.replaceAll(',',''));
-                            this.data.total_tax = (parseFloat(this.data.tax_payment) + parseFloat(this.data.tax_currency));
-                            this.data.bidden = (parseFloat(this.result.bid) * this.value_curreny.replaceAll(',','') + this.data.total_tax).toFixed(2);
-                            this.data.currency_without_tax = (parseFloat(this.result.bid) * this.value_curreny.replaceAll(',','')).toFixed(2);
-                            this.data.form_payment = this.form_payment;
-                            this.data.value_curreny = this.value_curreny.replaceAll(',','');
-                            this.data.currency_select_origin = this.currency_select_origin;
-                            this.data.currency_select_destiny = this.currency_select_destiny;
-
+                            this.calculateAll(response.data);
                             this.setHistory();
-                            this.sendEmail();
                         } else {
                             this.error = true;
                             this.message = response.data.message;
                         }
-
-                    }).catch( function (error) {
+                    }).catch( function (errors) {
+                        this.message = errors;
                         this.error = true;
-                        this.message = error;
                     });
                 } else {
                     this.result = null;
                     this.error = true;
                     this.message = "O valor de compra deve ser maior do que R$1.000 e menor do que R$ 100.000,00";
                 }
+            },
+            calculateAll (response) {
+                this.result = response.message[this.currency_select_origin + this.currency_select_destiny];
+                this.data.value_curreny = this.value_curreny.replaceAll(',','');
+                this.data.tax_payment = this.getTaxPayment(this.form_payment, this.data.value_curreny);
+                this.data.tax_currency = this.getTaxCurrency(this.data.value_curreny);
+                this.data.total_tax = (parseFloat(this.data.tax_payment) + parseFloat(this.data.tax_currency));
+                this.data.bidden = ((parseFloat(this.result.bid) * this.data.value_curreny)).toFixed(2);
+                this.data.form_payment = this.form_payment;
+                this.data.bid = parseFloat(this.data.value_curreny/this.data.bidden).toFixed(2);
+                this.data.currency_select_origin = this.currency_select_origin;
+                this.data.currency_select_destiny = this.currency_select_destiny;
+                this.data.value_with_tax = (parseFloat(this.data.value_curreny) + this.data.total_tax).toFixed(2);
+                this.data.currency_without_tax = (this.data.value_curreny - this.data.total_tax).toFixed(2);
             },
             setHistory () {
                 this.$axios.post('api/sethistory', {
@@ -344,10 +346,12 @@
                     tax_payment: this.data.tax_payment.toFixed(2) ,
                     tax_conversion: this.data.tax_currency.toFixed(2),
                     value_conversion: this.data.value_curreny,
-                    value_with_tax: this.data.bidden,
-                    value_without_tax: this.data.currency_without_tax
+                    value_with_tax: this.data.value_with_tax,
+                    value_without_tax: this.data.currency_without_tax,
+                    value_bidden: this.data.bidden
                 }).then(response => {
                     if (response.data.success) {
+                        this.sendEmail();
                         this.getHistory()
                     } else {
                         this.error = true;

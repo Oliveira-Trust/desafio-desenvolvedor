@@ -23,6 +23,7 @@ class CreateHistoryCurrencyConversionTable extends Migration
             $table->float('valor_conversao');
             $table->float('valor_com_taxa');
             $table->float('valor_sem_taxa');
+            $table->float('valor_convertido');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
