@@ -93,7 +93,7 @@ Caso queira trocar de porta:
 php artisan serve --port=3000
 ````
 
-###⌨ Comandos para desenvolvimento
+### ⌨ Comandos para desenvolvimento
 
 Alguns comandos são essenciais para o desenvolvimento:
 
@@ -107,7 +107,7 @@ Compilar corretamente todo CSS e JS **(Terminal 2)**:
 npm run dev && npm run watch-poll
 ```
 
-###⌨ Teste do Desenvolvimento
+### ⌨ Teste do Desenvolvimento
 
 Para rodar o teste, utilizar o comando: 
 ````sh
