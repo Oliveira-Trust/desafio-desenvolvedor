@@ -2,11 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
-                <div class="alert alert-danger" role="alert" v-if="error !== null">
-                    {{ error }}
-                </div>
-
+                <Message v-if="error !== null" severity="error" >{{ error }}</Message>
                 <div class="card card-default">
                     <div class="card-header">Login</div>
                     <div class="card-body">
@@ -115,18 +111,16 @@
                         this.$axios.post('api/login', {
                             email: this.email,
                             password: this.password
-                        })
-                            .then(response => {
-                                console.log(response.data);
-                                if (response.data.success) {
-                                    this.$router.go('/currency')
-                                } else {
-                                    this.error = response.data.message
-                                }
-                            })
-                            .catch(function (error) {
-                                console.error(error);
-                            });
+                        }).then(response => {
+                            console.log(response.data);
+                            if (response.data.success) {
+                                this.$router.go('/currency')
+                            } else {
+                                this.error = response.data.message
+                            }
+                        }).catch(function (error) {
+                            this.error = response.data.message
+                        });
                     })
                 }
             }

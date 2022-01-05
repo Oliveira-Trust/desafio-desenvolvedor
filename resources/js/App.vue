@@ -14,7 +14,6 @@
                 </div>
                 <!-- for non-logged user-->
                 <div class="navbar-nav" v-else>
-                    <!--<router-link to="/" class="nav-item nav-link">Home</router-link>-->
                     <router-link to="/login" class="nav-item nav-link">Login</router-link>
                     <router-link to="/register" class="nav-item nav-link">Registro
                     </router-link>
@@ -39,20 +38,22 @@
                 this.isLoggedIn = true
             }
         },
+        mounted () {
+            if (window.location.pathname == '/')
+                    window.location.href = "/login";
+        },
         methods: {
             logout(e) {
-                console.log('ss');
                 e.preventDefault();
                 this.$axios.get('/sanctum/csrf-cookie').then(response => {
                     this.$axios.post('/api/logout')
                         .then(response => {
                             if (response.data.success) {
-                                window.location.href = "/"
+                                window.location.href = "/login"
                             } else {
                                 console.log(response)
                             }
-                        })
-                        .catch(function (error) {
+                        }).catch(function (error) {
                             console.error(error);
                         });
                 })

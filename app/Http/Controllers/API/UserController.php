@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\HistoryCurrencyConversion;
+use App\Repository\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\User;
@@ -11,34 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-class UserController extends Controller
+class UserController extends Controller implements UserRepositoryInterface
 {
-    /**
-     * Register
-     */
-    public function register(Request $request)
-    {
-        try {
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->save();
-
-            $success = true;
-            $message = 'Usuário registrado com sucesso!';
-        } catch (\Illuminate\Database\QueryException $ex) {
-            $success = false;
-            $message = $ex->getMessage();
-        }
-
-        // response
-        $response = [
-            'success' => $success,
-            'message' => $message,
-        ];
-        return response()->json($response);
-    }
 
     /**
      * Login
@@ -58,7 +32,32 @@ class UserController extends Controller
             $message = 'E-mail/Senha não existe, por favor registrar';
         }
 
-        // response
+        $response = [
+            'success' => $success,
+            'message' => $message,
+        ];
+        return response()->json($response);
+    }
+
+    /**
+     * Register
+     */
+    public function register(Request $request)
+    {
+        try {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            $success = true;
+            $message = 'Usuário registrado com sucesso!';
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $success = false;
+            $message = $ex->getMessage();
+        }
+
         $response = [
             'success' => $success,
             'message' => $message,
@@ -80,7 +79,6 @@ class UserController extends Controller
             $message = $ex->getMessage();
         }
 
-        // response
         $response = [
             'success' => $success,
             'message' => $message,
@@ -88,60 +86,4 @@ class UserController extends Controller
         return response()->json($response);
     }
 
-    /**
-     * History
-     */
-    public function setHistory(Request $request)
-    {
-        try {
-
-            $user = Auth::user();
-
-            $success = HistoryCurrencyConversion::create([
-                'moeda_origin' => $request->moeda_origin,
-                'moeda_destino' => $request->moeda_destino,
-                'forma_pagamento' => $request->forma_pagamento,
-                'taxa_pagamento' => $request->taxa_pagamento,
-                'taxa_conversao' => $request->taxa_conversao,
-                'valor_conversao' => $request->valor_conversao,
-                'valor_sem_taxa' => $request->valor_sem_taxa,
-                'user_id' => $user->id
-            ]);
-
-            $message = 'Usuário registrado com sucesso!';
-        } catch (\Illuminate\Database\QueryException $ex) {
-            $success = false;
-            $message = $ex->getMessage();
-        }
-
-        // response
-        $response = [
-            'success' => $success,
-            'message' => $message,
-        ];
-        return response()->json($response);
-    }
-
-    /**
-     * GetHistory
-     */
-    public function getHistory()
-    {
-        try {
-            $user = Auth::user();
-
-            $message = HistoryCurrencyConversion::where('user_id',  $user->id)->orderBy('id','desc')->get();
-            $success = true;
-        } catch (\Illuminate\Database\QueryException $ex) {
-            $success = false;
-            $message = $ex->getMessage();
-        }
-
-        // response
-        $response = [
-            'success' => $success,
-            'message' => $message,
-        ];
-        return response()->json($response);
-    }
 }

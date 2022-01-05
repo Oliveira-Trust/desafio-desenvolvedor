@@ -2,11 +2,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
-                <div class="alert alert-danger" role="alert" v-if="message_api !== null">
-                    {{ message_api }}
-                </div>
-
+                <Message v-if="message_api !== null" severity="error" >{{ message_api }}</Message>
+                <Message v-if="success !== null" severity="success" >{{ message_sucess }}</Message>
                 <div class="card card-default">
                     <div class="card-header">Registro</div>
                     <div class="card-body">
@@ -71,6 +68,8 @@
                 email: "",
                 password: "",
                 message_api: null,
+                success: null,
+                message_sucess: null,
                 message : {
                     name: null,
                     email: null,
@@ -96,6 +95,12 @@
             }
         },
         methods: {
+            setVariableNull () {
+                this.error = false;
+                this.message_api = null;
+                this.success = null;
+                this.message_sucess = null;
+            },
             validationEmail () {
                 if (this.email.indexOf('@') < 0 ) {
                     this.message.email = "Esse e-mail não está valido!";
@@ -130,8 +135,9 @@
                 return false;
             },
             handleSubmit(e) {
-                e.preventDefault();
+                this.setVariableNull();
 
+                e.preventDefault();
                 let confirmation = {};
                 confirmation.email = this.validationEmail();
                 confirmation.name = this.validationName();
@@ -143,24 +149,30 @@
                             name: this.name,
                             email: this.email,
                             password: this.password
-                        })
-                            .then(response => {
+                        }).then(response => {
                                 if (response.data.success) {
-                                    window.location.href = "/login"
+                                    this.success = true;
+                                    this.message_sucess = response.data.message;
+
+                                    this.sleep(500).then(() => {
+                                        window.location.href = "/login"
+                                    });
                                 } else {
                                     this.message_api = response.data.message
                                 }
-                            })
-                            .catch(function (error) {
-                                console.log(error);
+                            }).catch(function (error) {
+                                this.message_api = error;
                             });
                     })
                 }
+            },
+            sleep (time) {
+                return new Promise((resolve) => setTimeout(resolve, time));
             }
         },
         beforeRouteEnter(to, from, next) {
             if (window.Laravel.isLoggedin) {
-                return next('dashboard');
+                return next('currency');
             }
             next();
         }
