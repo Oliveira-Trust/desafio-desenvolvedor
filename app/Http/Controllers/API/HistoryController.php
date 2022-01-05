@@ -53,7 +53,9 @@ class HistoryController extends Controller implements HistoryRepositoryInterface
     {
         try {
             $user = Auth::user();
-            $message = HistoryCurrencyConversion::where('user_id', $user->id)->orderBy('id', 'desc')->get();
+            $message = HistoryCurrencyConversion::where('user_id', $user->id)
+                ->orderBy('id', 'desc')
+                ->get();
             $success = true;
         } catch (\Illuminate\Database\QueryException $ex) {
             $success = false;

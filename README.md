@@ -1,66 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Desafio Desenvolvedor
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🚀 Começando
 
-## About Laravel
+Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
+Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Não deixe de enviar o seu teste mesmo que incompleto!
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 📋 Stack Utilizado
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+De que coisas você precisa para instalar o software e como instalá-lo?
 
-## Learning Laravel
+* [Laravel 8](https://laravel.com/docs/8.x)
+* [Vue 3](https://v3.vuejs.org/)
+* [PrimeVue 3](https://www.primefaces.org/primevue/showcase/#/setup)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Pré Requisitos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* [Composer](https://getcomposer.org/)
+* [NPM](https://www.npmjs.com/)
 
-## Laravel Sponsors
+### 🔧 Instalação
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Primeiro rodar o composer
 
-### Premium Partners
+Diga como essa etapa será:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+```
+composer install
+```
 
-## Contributing
+E logo em seguida, instalar o npm:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+npm install
+``````
 
-## Code of Conduct
+Depois que Laravel e o Vue estiver instalado, configurar o arquivo .env (.env.example):
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Para conexão do banco:
 
-## Security Vulnerabilities
+````
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+````
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Para envio de e-mail (SMPT): 
+````
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
+````
 
-## License
+Depois que conectar o banco, utilizar o comando para subir as entidades:
+````
+php artisan migrate
+````
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Agora chegou a hora de inicializar o sistema:
+
+Para subir o servidor do laravel, usar o comando (Terminal 1):
+```
+php artisan serve
+```
+Caso queira trocar de porta: 
+````
+php artisan serve --port=3000
+````
+
+####Comandos para desenvolvimento
+
+Alguns comandos são essenciais para o desenvolvimento:
+
+Para identar os controllers de uma forma correta:
+````$
+vendor/bin/phpcs --standard=PSR2 diretorio
+````
+
+Compilar corretamente todo CSS e JS (Terminal 2):
+```
+npm run dev && npm run watch-poll
+```
+
+## ✒ Autores
+
+**Desafio Desenvolvedor** - [Desafio Desenvolvedor](https://github.com/thainan76/desafio-desenvolvedor)
+
+
+---
+⌨️ com ❤️ por [Thainan Prado](https://github.com/thainan76) 😊

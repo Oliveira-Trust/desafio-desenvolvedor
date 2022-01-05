@@ -4,19 +4,15 @@
             <a href="#"><img width="290" src="https://www.oliveiratrust.com.br/wp-content/themes/OliveiraTrust_WP/assets/img/logotipo_padrao_grey.svg"></a><br>
             <span class="text-secondary"></span>
         </div>
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse">
-                <!-- for logged-in user-->
                 <div class="navbar-nav" v-if="isLoggedIn">
                     <router-link to="/currency" class="nav-item nav-link">Conversão de moeda</router-link>
                     <a class="nav-item nav-link" style="cursor: pointer;" @click="logout">Sair</a>
                 </div>
-                <!-- for non-logged user-->
                 <div class="navbar-nav" v-else>
                     <router-link to="/login" class="nav-item nav-link">Login</router-link>
-                    <router-link to="/register" class="nav-item nav-link">Registro
-                    </router-link>
+                    <router-link to="/register" class="nav-item nav-link">Registro</router-link>
                 </div>
             </div>
         </nav>
