@@ -7,7 +7,7 @@ Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica imp
 
 Não deixe de enviar o seu teste mesmo que incompleto!
 
-### 📋 Stack Utilizado
+## 📋 Stack Utilizado
 
 De que coisas você precisa para instalar o software e como instalá-lo?
 
@@ -20,7 +20,7 @@ De que coisas você precisa para instalar o software e como instalá-lo?
 * [Composer](https://getcomposer.org/)
 * [NPM](https://www.npmjs.com/)
 
-### 🔧 Instalação
+## 🔧 Instalação
 
 Primeiro rodar o composer
 
