@@ -22,21 +22,27 @@ De que coisas você precisa para instalar o software e como instalá-lo?
 
 ## 🔧 Instalação
 
+Após clonar o projeto do reposítorio, entre na pasta do seu projeto, copie o arquivo **.env-example** para **.env**
+
+```sh
+cp .env.example .env
+```
+
 Primeiro rodar o composer
 
 Diga como essa etapa será:
 
-```
+```sh
 composer install
 ```
 
 E logo em seguida, instalar o npm:
 
-```
+```sh
 npm install
-``````
+```
 
-Depois que Laravel e o Vue estiver instalado, configurar o arquivo .env (.env.example):
+Depois que Laravel e o Vue estiver instalado, configurar o arquivo **.env**:
 
 Para conexão do banco:
 
@@ -49,7 +55,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ````
 
-Para envio de e-mail (SMPT): 
+Para envio de e-mail **(SMPT)**: 
 ````
 MAIL_MAILER=smtp
 MAIL_HOST=mailhog
@@ -62,18 +68,28 @@ MAIL_FROM_NAME="${APP_NAME}"
 ````
 
 Depois que conectar o banco, utilizar o comando para subir as entidades:
-````
+````sh
 php artisan migrate
 ````
 
+Para gerar uma nova chave de aplicação: 
+````sh
+php artisan key:generate
+````
+
+Para limpar o cache depois de configurar o **.env**:
+```
+php artisan cache:clear
+```
+
 Agora chegou a hora de inicializar o sistema:
 
-Para subir o servidor do laravel, usar o comando (Terminal 1):
-```
+Para subir o servidor do laravel, usar o comando **(Terminal 1)**:
+```sh
 php artisan serve
 ```
 Caso queira trocar de porta: 
-````
+````sh
 php artisan serve --port=3000
 ````
 
@@ -82,11 +98,11 @@ php artisan serve --port=3000
 Alguns comandos são essenciais para o desenvolvimento:
 
 Para identar os controllers de uma forma correta:
-````$
+```ssh
 vendor/bin/phpcs --standard=PSR2 diretorio
-````
+```
 
-Compilar corretamente todo CSS e JS (Terminal 2):
+Compilar corretamente todo CSS e JS **(Terminal 2)**:
 ```
 npm run dev && npm run watch-poll
 ```
@@ -94,7 +110,6 @@ npm run dev && npm run watch-poll
 ## ✒ Autores
 
 **Desafio Desenvolvedor** - [Desafio Desenvolvedor](https://github.com/thainan76/desafio-desenvolvedor)
-
 
 ---
 ⌨️ com ❤️ por [Thainan Prado](https://github.com/thainan76) 😊
