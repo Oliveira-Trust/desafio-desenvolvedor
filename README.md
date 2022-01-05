@@ -15,7 +15,7 @@ De que coisas você precisa para instalar o software e como instalá-lo?
 * [Vue 3](https://v3.vuejs.org/)
 * [PrimeVue 3](https://www.primefaces.org/primevue/showcase/#/setup)
 
-## Pré Requisitos
+## 🔧 Pré Requisitos
 
 * [Composer](https://getcomposer.org/)
 * [NPM](https://www.npmjs.com/)
@@ -93,7 +93,7 @@ Caso queira trocar de porta:
 php artisan serve --port=3000
 ````
 
-### Comandos para desenvolvimento
+###⌨ Comandos para desenvolvimento
 
 Alguns comandos são essenciais para o desenvolvimento:
 
@@ -106,6 +106,13 @@ Compilar corretamente todo CSS e JS **(Terminal 2)**:
 ```
 npm run dev && npm run watch-poll
 ```
+
+###⌨ Teste do Desenvolvimento
+
+Para rodar o teste, utilizar o comando: 
+````sh
+php artisan test
+````
 
 ## ✒ Autores
 

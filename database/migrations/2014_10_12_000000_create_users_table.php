@@ -22,6 +22,14 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+                'name' => 'Thainan Prado',
+                'email' => 'thainan.cpv76@gmail.com',
+                'password' => '$2y$10$IEk05KtxpXV8zsmIzkr4NOK0fckZUdS0s71IkIemCMMvQy.adfo3q'
+            )
+        );
     }
 
     /**

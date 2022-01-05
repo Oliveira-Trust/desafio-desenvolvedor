@@ -112,7 +112,6 @@
                             email: this.email,
                             password: this.password
                         }).then(response => {
-                            console.log(response.data);
                             if (response.data.success) {
                                 this.$router.go('/currency')
                             } else {
