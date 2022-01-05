@@ -11,7 +11,8 @@ use App\Repository\HistoryRepositoryInterface;
 class HistoryController extends Controller implements HistoryRepositoryInterface
 {
     /**
-     * History
+     * @param Request $reques
+     * @return Response
      */
     public function setHistory(Request $request)
     {
@@ -45,17 +46,14 @@ class HistoryController extends Controller implements HistoryRepositoryInterface
     }
 
     /**
-     * GetHistory
+     * @param null
+     * @return Response
      */
     public function getHistory()
     {
         try {
             $user = Auth::user();
-
-            $message = HistoryCurrencyConversion::where('user_id',  $user->id)
-                ->orderBy('id','desc')
-                ->get();
-
+            $message = HistoryCurrencyConversion::where('user_id', $user->id)->orderBy('id', 'desc')->get();
             $success = true;
         } catch (\Illuminate\Database\QueryException $ex) {
             $success = false;
@@ -68,5 +66,4 @@ class HistoryController extends Controller implements HistoryRepositoryInterface
         ];
         return response()->json($response);
     }
-
 }

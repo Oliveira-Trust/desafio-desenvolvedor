@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
+
     /**
-     * Enviar
+     * @param Request $reques
+     * @return Response
      */
-    public function sendEmail(Request $request){
+    public function sendEmail(Request $request)
+    {
         try {
             $data = $request->all();
 
@@ -37,5 +40,4 @@ class EmailController extends Controller
 
         return response()->json($response);
     }
-
 }

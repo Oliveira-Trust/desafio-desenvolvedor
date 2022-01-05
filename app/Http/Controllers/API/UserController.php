@@ -10,12 +10,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-
 class UserController extends Controller implements UserRepositoryInterface
 {
 
     /**
-     * Login
+     * @param Request $request
+     * @return Response
      */
     public function login(Request $request)
     {
@@ -40,7 +40,8 @@ class UserController extends Controller implements UserRepositoryInterface
     }
 
     /**
-     * Register
+     * @param Request $request
+     * @return Response
      */
     public function register(Request $request)
     {
@@ -66,7 +67,8 @@ class UserController extends Controller implements UserRepositoryInterface
     }
 
     /**
-     * Logout
+     * @param null
+     * @return Response
      */
     public function logout()
     {
@@ -85,5 +87,4 @@ class UserController extends Controller implements UserRepositoryInterface
         ];
         return response()->json($response);
     }
-
 }
