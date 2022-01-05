@@ -77,7 +77,7 @@ Caso queira trocar de porta:
 php artisan serve --port=3000
 ````
 
-####Comandos para desenvolvimento
+### Comandos para desenvolvimento
 
 Alguns comandos são essenciais para o desenvolvimento:
 
