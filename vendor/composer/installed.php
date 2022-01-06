@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '2.0.44',
-        'version' => '2.0.44.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'd5dd83e6e2c3e184889b702f33ba53d3ef49091c',
         'name' => 'yiisoft/yii2-app-basic',
         'dev' => true,
     ),
@@ -371,7 +371,7 @@
             'install_path' => __DIR__ . '/../psr/container',
             'aliases' => array(),
             'reference' => 'c71ecc56dfe541dbd90c5360474fbc405f8d5963',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'psr/event-dispatcher' => array(
             'pretty_version' => '1.0.0',
@@ -380,10 +380,10 @@
             'install_path' => __DIR__ . '/../psr/event-dispatcher',
             'aliases' => array(),
             'reference' => 'dbefd12671e8a14ec7f180cab83036ed26714bb0',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'psr/event-dispatcher-implementation' => array(
-            'dev_requirement' => true,
+            'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
             ),
@@ -417,6 +417,15 @@
             'provided' => array(
                 0 => '1.0',
             ),
+        ),
+        'psr/log' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/log',
+            'aliases' => array(),
+            'reference' => 'ef29f6d262798707a9edd554e2b82517ef3a9376',
+            'dev_requirement' => false,
         ),
         'psr/log-implementation' => array(
             'dev_requirement' => true,
@@ -584,7 +593,7 @@
             'install_path' => __DIR__ . '/../symfony/deprecation-contracts',
             'aliases' => array(),
             'reference' => 'c726b64c1ccfe2896cb7df2e1331c357ad1c8ced',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/dom-crawler' => array(
             'pretty_version' => 'v4.4.36',
@@ -602,7 +611,7 @@
             'install_path' => __DIR__ . '/../symfony/event-dispatcher',
             'aliases' => array(),
             'reference' => '27d39ae126352b9fa3be5e196ccf4617897be3eb',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/event-dispatcher-contracts' => array(
             'pretty_version' => 'v3.0.0',
@@ -611,10 +620,10 @@
             'install_path' => __DIR__ . '/../symfony/event-dispatcher-contracts',
             'aliases' => array(),
             'reference' => 'aa5422287b75594b90ee9cd807caf8f0df491385',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/event-dispatcher-implementation' => array(
-            'dev_requirement' => true,
+            'dev_requirement' => false,
             'provided' => array(
                 0 => '2.0',
             ),
@@ -627,6 +636,24 @@
             'aliases' => array(),
             'reference' => 'e77046c252be48c48a40816187ed527703c8f76c',
             'dev_requirement' => true,
+        ),
+        'symfony/mailer' => array(
+            'pretty_version' => 'v6.0.2',
+            'version' => '6.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/mailer',
+            'aliases' => array(),
+            'reference' => '3e2ea3aa326977907fc435a2b6d406fc46e55005',
+            'dev_requirement' => false,
+        ),
+        'symfony/mime' => array(
+            'pretty_version' => 'v6.0.2',
+            'version' => '6.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/mime',
+            'aliases' => array(),
+            'reference' => '5586487ae45a89355d5515059de48869207112e1',
+            'dev_requirement' => false,
         ),
         'symfony/polyfill-ctype' => array(
             'pretty_version' => 'v1.24.0',
@@ -707,7 +734,7 @@
             'install_path' => __DIR__ . '/../symfony/polyfill-php80',
             'aliases' => array(),
             'reference' => '57b712b08eddb97c762a8caa32c84e037892d2e9',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/service-contracts' => array(
             'pretty_version' => 'v3.0.0',
@@ -716,7 +743,7 @@
             'install_path' => __DIR__ . '/../symfony/service-contracts',
             'aliases' => array(),
             'reference' => '36715ebf9fb9db73db0cb24263c79077c6fe8603',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/string' => array(
             'pretty_version' => 'v6.0.2',
@@ -764,12 +791,12 @@
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-app-basic' => array(
-            'pretty_version' => '2.0.44',
-            'version' => '2.0.44.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'd5dd83e6e2c3e184889b702f33ba53d3ef49091c',
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-bootstrap4' => array(
@@ -816,6 +843,15 @@
             'aliases' => array(),
             'reference' => '80893fc4c0df97f3638938948bf34ca43dd8bff6',
             'dev_requirement' => true,
+        ),
+        'yiisoft/yii2-httpclient' => array(
+            'pretty_version' => '2.0.14',
+            'version' => '2.0.14.0',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../yiisoft/yii2-httpclient',
+            'aliases' => array(),
+            'reference' => '50d670d2e1a30a354c27aeebf806a2db16954836',
+            'dev_requirement' => false,
         ),
         'yiisoft/yii2-swiftmailer' => array(
             'pretty_version' => '2.1.3',
