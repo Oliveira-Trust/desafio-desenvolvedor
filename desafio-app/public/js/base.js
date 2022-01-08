@@ -35,3 +35,10 @@ function moeda(a, e, r, t) {
     }
     return !1
 }
+
+// Configuração do CSRF-TOKEN para o ajax
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});

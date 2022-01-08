@@ -24,8 +24,33 @@
     function converter(moeda, valor, pagamento){
         $.ajax({
             url: `converter/${moeda}/${valor}/${pagamento}`,
+            beforeSend: function() {
+                $(".imagem").hide();
+                $(".result").hide();
+                $('#loading').show().html('<div class="lds-dual-ring"></div>');
+            },
             success: function (response) {
-                
+                $('#loading').hide().html('');
+                $(".result").show();
+                $(".email").show();              
+                var formaPg = response.formaPg;
+                var moedaDestino = response.moedaDestino;
+                var taxaConversao = response.taxaConversao.toFixed(2);
+                var taxaPg = response.taxaPg.toFixed(2);
+                var valorConvertido = response.valorConvertido.toFixed(2);
+                var valorComDesconto = response.valorComDesconto.toFixed(2);
+                var valorMoeda = response.valorMoeda.toFixed(2);
+                var valorParaConversao = response.valorParaConversao.toFixed(2);
+
+                $("#resultDestino").text(moedaDestino);
+                $("#resultValor").text(Number(valorParaConversao).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}));
+                $("#resultPg").text(formaPg);
+                $("#resultTaxaPg").text(Number(taxaPg).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}));
+                $("#resultTaxaCv").text(Number(taxaConversao).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}));
+                $("#resultDescontos").text(Number(valorComDesconto).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"}));
+                $("#resultValorDestino").text(Number(valorMoeda).toLocaleString("pt-BR", { style: "currency" , currency:moedaDestino}));
+                $("#resultValorFinal").text(Number(valorConvertido).toLocaleString("pt-BR", { style: "currency" , currency:moedaDestino}));
+
             }
         });
     }

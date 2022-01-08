@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('converter/{moeda}/{valor}/{pagamento}', 'App\Http\Controllers\Conversor@store');
+Route::post('email', 'App\Http\Controllers\Email@enviar');

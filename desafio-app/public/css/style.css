@@ -54,6 +54,26 @@ body, html {
   background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 
+.painel {
+  background-color:white; 
+  height: 60%; 
+  width:60%; 
+  border-radius: 10px; 
+  padding:50px
+}
+
+.mt25{
+  margin-top: 25px;
+}
+
+.mt15{
+  margin-top: 15px;
+}
+
+.mt10{
+  margin-top: 10px;
+}
+
 /* LOADING */
 
 .lds-dual-ring {
@@ -73,6 +93,31 @@ body, html {
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.lds-dual-ring-sm {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+.lds-dual-ring-sm:after {
+  content: " ";
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-top: 12px;
+  border-radius: 50%;
+  border: 4px solid #57b846;
+  border-color: #57b846 transparent #57b846 transparent;
+  animation: lds-dual-ring-sm 1.2s linear infinite;
+}
+@keyframes lds-dual-ring-sm {
   0% {
     transform: rotate(0deg);
   }
