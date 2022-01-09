@@ -1,31 +1,60 @@
-const currency_from = document.getElementById('currency_from');
-const currency_to = document.getElementById('currency_to');
-const payment_type = document.getElementById('payment_type');
+const currencyFrom = document.getElementById('currency_from');
+const currencyTo = document.getElementById('currency_to');
+const paymentType = document.getElementById('payment_type');
 
 // validates if BRL is in range
 document.getElementById('convert').addEventListener('click', () => {
 
   const message = document.getElementById('validation_range_value');
 
-  currency_from.classList.remove('is-invalid');
+  currencyFrom.classList.remove('is-invalid');
 
-  if (currency_from.value < 1000 || currency_from.value == '') {
+  if (currencyFrom.value < 1000 || currencyFrom.value == '') {
     message.innerText = 'Valor deve ser maior que R$ 1.000,00';
-    currency_from.classList.add('is-invalid');
+    currencyFrom.classList.add('is-invalid');
     return false;
   }
 
-  if (currency_from.value > 100000) {
+  if (currencyFrom.value > 100000) {
     message.innerText = 'Valor deve ser menor que R$ 100.000,00';
-    currency_from.classList.add('is-invalid');
+    currencyFrom.classList.add('is-invalid');
     return false;
   }
 
-  /**
-   * TODO Criar via fecth requisão para enviar os dados abaixo para o controle, para o tratamento
-   */
-  console.log(currency_from.value);
-  console.log(currency_to.value);
-  console.log(payment_type.value);
+  const price = priceQuotation(currencyTo.value);
+  price.then(result => {
+    sendValuesToController(currencyFrom.value, currencyTo.value, paymentType.value, result);
+  });
 
 });
+
+/**
+ *
+ * @param {*} currencyTo
+ * @returns data
+ * @description Function to get the quote value
+ */
+function priceQuotation(currencyTo) {
+  const url = `https://economia.awesomeapi.com.br/last/${currencyTo}-BRL`;
+  const settings = {
+    method: 'GET',
+    redirect: 'follow'
+  }
+
+  let data = fetch(url, settings)
+              .then(response => response.json());
+
+  return data;
+}
+
+/**
+ *
+ * @param {*} currencyFrom
+ * @param {*} currencyTo
+ * @param {*} paymentType
+ * @param {*} currencyQuote
+ * @description Function to send the information to the controller via ajax
+ */
+function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQuote) {
+  
+}
