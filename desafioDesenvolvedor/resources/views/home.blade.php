@@ -8,14 +8,14 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('quote') }}">
+                    <form action="{{ route('quote') }}" id="value_quote">
                         <div class="form-group">
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">BRL</div>
                                 </div>
                                 <input type="text" class="form-control " id="currency_from"
-                                    placeholder="entre R$ 1.000,00 ~ R$ 100.000,00">
+                                    placeholder="entre R$ 1.000,00 ~ R$ 100.000,00" value="5000">
                                 <div id="validation_range_value" class="invalid-feedback">
 
                                 </div>
@@ -24,10 +24,10 @@
                         <div class="form-group">
                             <label class="my-1 mr-2" for="currency_to">Moeda de destino:</label>
                             <select class="custom-select my-1 mr-sm-2" id="currency_to">
-                                <option value="BTC" selected>[BTC] Bitcoin</option>
+                                <option value="BTC">[BTC] Bitcoin</option>
                                 <option value="BOB">[BOB] Boliviano</option>
                                 <option value="VEF">[VEF] Bolívar Venezuelano</option>
-                                <option value="USD">[USD] Dólar Americano</option>
+                                <option value="USD" selected>[USD] Dólar Americano</option>
                                 <option value="AUD">[AUD] Dólar Australiano</option>
                                 <option value="CAD">[CAD] Dólar Canadense</option>
                                 <option value="JMD">[JMD] Dólar Jamaicano</option>

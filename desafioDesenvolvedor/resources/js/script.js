@@ -57,8 +57,7 @@ function priceQuotation(currencyTo) {
  */
 function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQuote) {
   const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-  const url = document.getElementsByTagName('form')[0].getAttribute('action');
-  const method = 'POST';
+  const url = document.getElementById('value_quote').getAttribute('action');
 
   const settings = {
     headers: {
@@ -67,8 +66,7 @@ function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQ
       "X-Requested-With": "XMLHttpRequest",
       "X-CSRF-TOKEN": token
     },
-    method: method,
-    credentials: "same-origin",
+    method: 'POST',
     body: JSON.stringify({
       currencyFrom: currencyFrom,
       currencyTo: currencyTo,
