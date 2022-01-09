@@ -56,5 +56,29 @@ function priceQuotation(currencyTo) {
  * @description Function to send the information to the controller via ajax
  */
 function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQuote) {
-  
+  const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  const url = document.getElementsByTagName('form')[0].getAttribute('action');
+  const method = 'POST';
+
+  const settings = {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json, text-plain, */*",
+      "X-Requested-With": "XMLHttpRequest",
+      "X-CSRF-TOKEN": token
+    },
+    method: method,
+    credentials: "same-origin",
+    body: JSON.stringify({
+      currencyFrom: currencyFrom,
+      currencyTo: currencyTo,
+      paymentType: paymentType,
+      currencyQuote: currencyQuote
+    })
+  }
+
+  fetch(url, settings)
+  .then(response => response.text())
+  .then(result => {console.log(result)})
+  .catch(error => console.log('error', error));
 }

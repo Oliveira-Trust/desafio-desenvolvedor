@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <form action="">
+                    <form action="{{ route('quote') }}">
                         <div class="form-group">
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">

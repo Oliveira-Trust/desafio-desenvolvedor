@@ -146,7 +146,34 @@ function priceQuotation(currencyTo) {
  */
 
 
-function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQuote) {}
+function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQuote) {
+  var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var url = document.getElementsByTagName('form')[0].getAttribute('action');
+  var method = 'POST';
+  var settings = {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json, text-plain, */*",
+      "X-Requested-With": "XMLHttpRequest",
+      "X-CSRF-TOKEN": token
+    },
+    method: method,
+    credentials: "same-origin",
+    body: JSON.stringify({
+      currencyFrom: currencyFrom,
+      currencyTo: currencyTo,
+      paymentType: paymentType,
+      currencyQuote: currencyQuote
+    })
+  };
+  fetch(url, settings).then(function (response) {
+    return response.text();
+  }).then(function (result) {
+    console.log(result);
+  })["catch"](function (error) {
+    return console.log('error', error);
+  });
+}
 
 /***/ }),
 
