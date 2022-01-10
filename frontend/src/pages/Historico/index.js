@@ -9,10 +9,12 @@ const PagePainel = ()=>{
   useEffect(()=>{
     (async()=>{
         const user = getLocalStorage()
-        const tResponse = await getTransactions(user.id)
-        setTransactions(c=>tResponse)
+        if(transactions.length === 0) {
+          const tResponse = await getTransactions(user.id)
+          setTransactions(c=>tResponse)
+        }
     })()
-  },[transactions])
+  },[])
 
     return (
       <Layout historico={true}>
