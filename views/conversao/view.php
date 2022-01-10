@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Conversao */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Conversaos'), 'url' => ['index']];
+$this->title = "Exibindo conversão: " . $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Histórico de Conversões'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('app', 'Tem certeza que deseja deletar esse item??'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,15 +29,41 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'moedaorigem',
-            'valororigem',
-            'moedadestino',
-            'cotacaoatual',
+            [
+                'attribute'=>'moedaorigem',
+                'label' => 'De'
+            ],
+            [
+                'attribute'=>'valororigem',
+                'label' => 'Valor BRL'
+            ],
+            [
+                'attribute'=>'moedadestino',
+                'label' => 'Para'
+            ],
+            [
+                'attribute'=>'cotacaoatual',
+                'label' => 'Cotação BRL'
+            ],
             'formadepagamento',
-            'taxapagamento',
-            'taxaconversao',
-            'valorconversao',
-            'datacriacao',
+            [
+                'attribute'=>'taxapagamento',
+                'label' => 'Taxa de Pag.'
+            ],
+            [
+                'attribute'=>'taxaconversao',
+                'label' => 'Taxa de Conv.'
+            ],
+            [
+                'attribute'=>'valorconversao',
+                'label' => 'Valor convertido'
+            ],
+            [
+                'attribute'=>'datacriacao',
+                'value' => function ($model) {
+                    return Yii::$app->formatter->asDateTime(strtotime($model->datacriacao), 'php: H:i:s d/m/Y');
+                },
+            ],
         ],
     ]) ?>
 

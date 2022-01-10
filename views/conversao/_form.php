@@ -12,7 +12,7 @@ use yii\helpers\Url;
 <div class="conversao-form">
 
     <?php $form = ActiveForm::begin(); ?>
-<?= $form->errorSummary($model)?>
+
     <?= $form->field($model, 'moedaorigem')->textInput(['maxlength' => true, 'readonly' => true]) ?>
 
     <?= $form->field($model, 'valororigem')->textInput(['maxlength' => true, 'type' => 'number']) ?>

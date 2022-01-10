@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Conversao;
 use app\models\ConversaoSearch;
 use yii\web\Controller;
@@ -9,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ConversaoController implements the CRUD actions for Conversao model.
+ * ConversaoController implementa as ações do CRUD do model.
  */
 class ConversaoController extends Controller
 {
@@ -32,7 +33,7 @@ class ConversaoController extends Controller
     }
 
     /**
-     * Lists all Conversao models.
+     * Exibe todas as conversões realizadas.
      *
      * @return string
      */
@@ -47,6 +48,13 @@ class ConversaoController extends Controller
         ]);
     }
     
+    /**
+     * Retorna a cotacao da moeda para a view via ajax
+     * 
+     * @param string $moeda abreviação da moeda (code)
+     *
+     * @return float
+     */
     public function actionCotacaoAtual($moeda)
     {
         $this->layout = false;
@@ -55,6 +63,16 @@ class ConversaoController extends Controller
         return $cotacaoMoeda;
     }
     
+    /**
+     * Retorna o valor convertido e o total de taxas via ajax
+     * 
+     * @param float $valororigem valor em BRL que será convertido
+     * @param float $cotacaoatual cotação da moeda escolhida
+     * @param string $formadepagamento forma de pagamento Boleto ou Cartão para
+     * que seja calculada a taxa
+     *
+     * @return json
+     */
     public function actionValorConvertido($valororigem, $cotacaoatual, $formadepagamento)
     {
         $this->layout = false;
@@ -70,10 +88,10 @@ class ConversaoController extends Controller
     }
 
     /**
-     * Displays a single Conversao model.
+     * Exibe os detalhes de uma conversão.
      * @param int $id ID
      * @return string
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException se esse modelo não for encontrado
      */
     public function actionView($id)
     {
@@ -83,8 +101,8 @@ class ConversaoController extends Controller
     }
 
     /**
-     * Creates a new Conversao model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Exibe a tela para conversão e salva após preenchida e válida.
+     * Se a conversão ocorrer normalmente, exibe os detalhes na view
      * @return string|\yii\web\Response
      */
     public function actionCreate()
@@ -94,8 +112,6 @@ class ConversaoController extends Controller
         
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                
-                /* Fazer o envio de email */
                 
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -111,31 +127,14 @@ class ConversaoController extends Controller
     }
 
     /**
-     * Updates an existing Conversao model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * Deleta uma conversão existente
+     * If o registro for apagado exibe a tela inidical
+     * 
      * @param int $id ID
-     * @return string|\yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Deletes an existing Conversao model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
+     * 
      * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * 
+     * @throws NotFoundHttpException se a conversão não for encontrada
      */
     public function actionDelete($id)
     {
@@ -145,11 +144,14 @@ class ConversaoController extends Controller
     }
 
     /**
-     * Finds the Conversao model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Conversao the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Encontra o modelo Conversao com base no valor de sua chave primária.
+     * Se o modelo não for encontrado, uma exceção 404 HTTP será lançada.
+     * 
+     * @param int $id ID do model
+     * 
+     * @return Conversao o modelo populado
+     * 
+     * @throws NotFoundHttpException Se o model não for encontrado
      */
     protected function findModel($id)
     {
@@ -157,6 +159,6 @@ class ConversaoController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        throw new NotFoundHttpException(Yii::t('app', 'A requisição não existe.'));
     }
 }

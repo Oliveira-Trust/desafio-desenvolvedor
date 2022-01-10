@@ -3,19 +3,15 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[Conversao]].
+ * Essa é uma classe ActiveQuery para o model Conversao.
  *
  * @see Conversao
  */
 class ConversaoQuery extends \yii\db\ActiveQuery
 {
-    /*public function active()
-    {
-        return $this->andWhere('[[status]]=1');
-    }*/
-
     /**
      * {@inheritdoc}
+     * 
      * @return Conversao[]|array
      */
     public function all($db = null)
@@ -25,6 +21,7 @@ class ConversaoQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
+     * 
      * @return Conversao|array|null
      */
     public function one($db = null)

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Conversao */
 
-$this->title = Yii::t('app', 'Create Conversao');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Conversaos'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Converter');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Histórico de Conversões'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="conversao-create">
