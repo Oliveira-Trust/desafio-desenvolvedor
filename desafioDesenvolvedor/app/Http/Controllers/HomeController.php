@@ -30,6 +30,12 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /**
+     * Get the value received by the interface and save
+     *
+     * @param Request $request
+     * @return array
+     */
     public function quote(Request $request)
     {
 
@@ -66,6 +72,12 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * Returns the quote value and percentage
+     *
+     * @param string $value
+     * @return array
+     */
     public function feeToValue(string $value)
     {
         if ($value <= 3000) {
@@ -84,6 +96,13 @@ class HomeController extends Controller
         ];
     }
 
+    /**
+     * Returns the fee for the type of payment (debit card, credit card)
+     *
+     * @param string $value
+     * @param string $paymentType
+     * @return array
+     */
     public function feeToPaymentType(string $value, string $paymentType)
     {
         /**
@@ -106,6 +125,13 @@ class HomeController extends Controller
         ];
     }
 
+    /**
+     * Returns the final quote
+     *
+     * @param String $value
+     * @param [type] $currencyQuote
+     * @return array
+     */
     public function finalQuote(String $value, $currencyQuote)
     {
 
