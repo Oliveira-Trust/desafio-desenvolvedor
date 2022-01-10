@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\QuotationHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,22 +32,26 @@ class HomeController extends Controller
 
     public function quote(Request $request)
     {
-        var_dump($request->all());
+
+        $user = Auth::user();
 
         $currencyFromValue =  $this->feeToValue($request->currencyFrom);
         $paymentTypeValue =  $this->feeToPaymentType($currencyFromValue, $request->paymentType);
         $currencyQuoteValue =  $this->directQuote($paymentTypeValue, $request->currencyQuote);
 
         $quoteHistory = new QuotationHistory();
-        $quoteHistory->currency_from = $request->currencyFrom;
+        $quoteHistory->setCurrencyFromAttribute($request->currencyFrom);
         $quoteHistory->currency_to = $request->currencyTo;
         $quoteHistory->payment_type = $request->paymentType;
-        $quoteHistory->quote_value = $currencyQuoteValue['value'];
+        $quoteHistory->setQuoteValueAttribute($currencyQuoteValue['value']);
         $quoteHistory->name = $currencyQuoteValue['name'];
-        $quoteHistory->bid = $currencyQuoteValue['bid'];
+        $quoteHistory->setBidAttribute($currencyQuoteValue['bid']);
         $quoteHistory->create_date = $currencyQuoteValue['create_date'];
+        $quoteHistory->fk_user = $user->id;
 
-        $quoteHistory->save();
+        //$quoteHistory->save();
+
+        return $this->quoteResponseData();
     }
 
     public function feeToValue(string $value)
@@ -90,5 +97,16 @@ class HomeController extends Controller
             'bid' => $currency['bid'],
             'create_date' => $currency['create_date']
         ];
+    }
+
+    public function quoteResponseData()
+    {
+        $user = Auth::user();
+
+        $quote = DB::table('quotation_histories')
+                    ->where('fk_user', '=', $user->id)
+                    ->get();
+
+        return $quote;
     }
 }

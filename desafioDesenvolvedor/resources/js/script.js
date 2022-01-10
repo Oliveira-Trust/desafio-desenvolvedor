@@ -77,6 +77,8 @@ function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQ
 
   fetch(url, settings)
   .then(response => response.text())
-  .then(result => {console.log(result)})
+  .then(result => {
+    console.log(result)
+  })
   .catch(error => console.log('error', error));
 }
