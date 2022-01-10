@@ -81,20 +81,12 @@
                 </div>
             </div>
 
-            <div class="card mt-5 d-none">
+            <div class="card mt-5 d-none" id="quote_result_main">
                 <div class="card-header">
                   Resultado da Conversão
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Moeda de origem: BRL</li>
-                  <li class="list-group-item">Moeda de destino: USD</li>
-                  <li class="list-group-item">Valor para conversão: R$ 5.000,00</li>
-                  <li class="list-group-item">Forma de pagamento: Boleto</li>
-                  <li class="list-group-item">Valor da "Moeda de destino" usado para conversão: $ 5,30</li>
-                  <li class="list-group-item">Valor comprado em "Moeda de destino": $ 920,18 (taxas aplicadas no valor de compra diminuindo no valor total de conversão)</li>
-                  <li class="list-group-item">Taxa de pagamento: R$ 72,50</li>
-                  <li class="list-group-item">Taxa de conversão: R$ 50,00</li>
-                  <li class="list-group-item">Valor utilizado para conversão descontando as taxas: R$ 4.877,50</li>
+                <ul class="list-group list-group-flush" id="quote_result_list">
+
                 </ul>
             </div>
         </div>

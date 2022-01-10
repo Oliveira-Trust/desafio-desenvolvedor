@@ -76,9 +76,22 @@ function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQ
   }
 
   fetch(url, settings)
-  .then(response => response.text())
+  .then(response => response.json())
   .then(result => {
-    console.log(result)
+
+    let paymentType = result.paymentType == 1 ? 'Boleto' : 'Cartão de Crédito'
+
+    document.getElementById('quote_result_main').classList.remove('d-none');
+    document.getElementById('quote_result_list').innerHTML = `
+      <li class="list-group-item">Moeda de origem: BRL</li>
+      <li class="list-group-item">Moeda de destino: ${result.currencyTo}</li>
+      <li class="list-group-item">Valor para conversão: R$ ${result.valueInit}</li>
+      <li class="list-group-item">Forma de pagamento: ${paymentType}</li>
+      <li class="list-group-item">Valor da "Moeda de destino" usado para conversão: $ ${result.currencyQuote}</li>
+      <li class="list-group-item">Valor comprado em "Moeda de destino": $ ${result.valueFinal} (taxas aplicadas no valor de compra diminuindo no valor total de conversão)</li>
+      <li class="list-group-item">Taxa de pagamento: R$ ${result.paymentFee}</li>
+      <li class="list-group-item">Taxa de conversão: R$ ${result.quoteFee}</li>
+      <li class="list-group-item">Valor utilizado para conversão descontando as taxas: R$ ${result.valueDescountFee}</li>`;
   })
   .catch(error => console.log('error', error));
 }

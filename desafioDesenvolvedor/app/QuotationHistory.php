@@ -18,14 +18,29 @@ class QuotationHistory extends Model
         $this->attributes['currency_from'] = $this->convertValueToFloat($value);
     }
 
+    public function getCurrencyFromAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
+
     public function setQuoteValueAttribute($value)
     {
         $this->attributes['quote_value'] = $this->convertValueToFloat($value);
     }
 
+    public function getQuoteValueAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
+
     public function setBidAttribute($value)
     {
         $this->attributes['bid'] = $this->convertValueToFloat($value);
+    }
+
+    public function getBidAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
     }
 
     private function convertValueToFloat($value)

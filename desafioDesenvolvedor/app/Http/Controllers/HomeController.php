@@ -36,8 +36,10 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $currencyFromValue =  $this->feeToValue($request->currencyFrom);
-        $paymentTypeValue =  $this->feeToPaymentType($currencyFromValue, $request->paymentType);
-        $currencyQuoteValue =  $this->directQuote($paymentTypeValue, $request->currencyQuote);
+        $paymentTypeValue =  $this->feeToPaymentType($currencyFromValue['value'], $request->paymentType);
+        $currencyQuoteValue =  $this->finalQuote($paymentTypeValue['value'], $request->currencyQuote);
+
+        $valueDescountFee = $request->currencyFrom - ($currencyFromValue['fee'] + $paymentTypeValue['fee']);
 
         $quoteHistory = new QuotationHistory();
         $quoteHistory->setCurrencyFromAttribute($request->currencyFrom);
@@ -51,20 +53,35 @@ class HomeController extends Controller
 
         //$quoteHistory->save();
 
-        return $this->quoteResponseData();
+        return [
+            'currencyTo' => $request->currencyTo,
+            'valueInit' => $request->currencyFrom,
+            'paymentType' => $request->paymentType,
+            'currencyQuote' => $currencyQuoteValue['bid'],
+            'valueFinal' => $currencyQuoteValue['value'],
+            'paymentFee' => $currencyFromValue['fee'],
+            'quoteFee' => $paymentTypeValue['fee'],
+            'valueDescountFee' => $valueDescountFee
+        ];
+
     }
 
     public function feeToValue(string $value)
     {
         if ($value <= 3000) {
             $value = $value + ($value * 0.02);
+            $fee = $value * 0.02;
         }
 
         if ($value > 3000) {
             $value = $value + ($value * 0.01);
+            $fee = $value * 0.01;
         }
 
-        return $value;
+        return [
+            'value' => $value,
+            'fee' => $fee
+        ];
     }
 
     public function feeToPaymentType(string $value, string $paymentType)
@@ -75,16 +92,21 @@ class HomeController extends Controller
          */
         if ($paymentType == 1) {
             $value = $value + ($value * 0.0145);
+            $fee = $value * 0.0145;
         }
 
         if ($paymentType == 2) {
             $value = $value + ($value * 0.0763);
+            $fee = $value * 0.0763;
         }
 
-        return $value;
+        return [
+            'value' => $value,
+            'fee' => $fee
+        ];
     }
 
-    public function directQuote(String $value, $currencyQuote)
+    public function finalQuote(String $value, $currencyQuote)
     {
 
         foreach ($currencyQuote as $key => $currency) {
@@ -92,10 +114,10 @@ class HomeController extends Controller
         }
 
         return [
-            'value' => $value,
-            'name' => $currency['name'],
             'bid' => $currency['bid'],
-            'create_date' => $currency['create_date']
+            'name' => $currency['name'],
+            'create_date' => $currency['create_date'],
+            'value' => $value
         ];
     }
 
