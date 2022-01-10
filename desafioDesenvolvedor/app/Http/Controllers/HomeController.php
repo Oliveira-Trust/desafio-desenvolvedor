@@ -51,7 +51,7 @@ class HomeController extends Controller
         $quoteHistory->create_date = $currencyQuoteValue['create_date'];
         $quoteHistory->fk_user = $user->id;
 
-        //$quoteHistory->save();
+        $quoteHistory->save();
 
         return [
             'currencyTo' => $request->currencyTo,
