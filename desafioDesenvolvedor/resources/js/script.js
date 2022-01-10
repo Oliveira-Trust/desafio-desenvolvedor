@@ -77,8 +77,12 @@ function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQ
 
   fetch(url, settings)
   .then(response => response.json())
+  .then(
+    document.getElementById('convert').innerText = 'Carregando...'
+  )
   .then(result => {
-
+    document.getElementById('convert').innerText = 'Converter'
+    
     let paymentType = result.paymentType == 1 ? 'Boleto' : 'Cartão de Crédito'
 
     document.getElementById('quote_result_main').classList.remove('d-none');

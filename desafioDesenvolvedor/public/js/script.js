@@ -166,7 +166,8 @@ function sendValuesToController(currencyFrom, currencyTo, paymentType, currencyQ
   };
   fetch(url, settings).then(function (response) {
     return response.json();
-  }).then(function (result) {
+  }).then(document.getElementById('convert').innerText = 'Carregando...').then(function (result) {
+    document.getElementById('convert').innerText = 'Converter';
     var paymentType = result.paymentType == 1 ? 'Boleto' : 'Cartão de Crédito';
     document.getElementById('quote_result_main').classList.remove('d-none');
     document.getElementById('quote_result_list').innerHTML = "\n      <li class=\"list-group-item\">Moeda de origem: BRL</li>\n      <li class=\"list-group-item\">Moeda de destino: ".concat(result.currencyTo, "</li>\n      <li class=\"list-group-item\">Valor para convers\xE3o: R$ ").concat(result.valueInit, "</li>\n      <li class=\"list-group-item\">Forma de pagamento: ").concat(paymentType, "</li>\n      <li class=\"list-group-item\">Valor da \"Moeda de destino\" usado para convers\xE3o: $ ").concat(result.currencyQuote, "</li>\n      <li class=\"list-group-item\">Valor comprado em \"Moeda de destino\": $ ").concat(result.valueFinal, " (taxas aplicadas no valor de compra diminuindo no valor total de convers\xE3o)</li>\n      <li class=\"list-group-item\">Taxa de pagamento: R$ ").concat(result.paymentFee, "</li>\n      <li class=\"list-group-item\">Taxa de convers\xE3o: R$ ").concat(result.quoteFee, "</li>\n      <li class=\"list-group-item\">Valor utilizado para convers\xE3o descontando as taxas: R$ ").concat(result.valueDescountFee, "</li>");
