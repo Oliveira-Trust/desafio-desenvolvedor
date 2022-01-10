@@ -18,3 +18,5 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::post('/cotacao-envida', 'HomeController@quote')->name('quote');
+
+Route::get('/historico', 'HistoryController@index')->name('history');

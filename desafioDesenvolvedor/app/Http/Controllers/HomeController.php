@@ -120,15 +120,4 @@ class HomeController extends Controller
             'value' => $value
         ];
     }
-
-    public function quoteResponseData()
-    {
-        $user = Auth::user();
-
-        $quote = DB::table('quotation_histories')
-                    ->where('fk_user', '=', $user->id)
-                    ->get();
-
-        return $quote;
-    }
 }
