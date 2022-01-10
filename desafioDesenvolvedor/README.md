@@ -48,7 +48,7 @@ php artisan migrate
 ```
 
 
-## Run Locally
+## Rodar Localmente
 
 Para rodar a aplicação digite
 ```bash
