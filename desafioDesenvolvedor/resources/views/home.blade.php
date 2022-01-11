@@ -15,7 +15,7 @@
                                     <div class="input-group-text">BRL</div>
                                 </div>
                                 <input type="text" class="form-control " id="currency_from"
-                                    placeholder="entre R$ 1.000,00 ~ R$ 100.000,00" value="5000">
+                                    placeholder="entre R$ 1.000,00 ~ R$ 100.000,00">
                                 <div id="validation_range_value" class="invalid-feedback">
 
                                 </div>

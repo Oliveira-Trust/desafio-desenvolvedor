@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Mail\newSendMail;
 use App\QuotationHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -58,6 +60,8 @@ class HomeController extends Controller
         $quoteHistory->fk_user = $user->id;
 
         $quoteHistory->save();
+
+        Mail::send(new newSendMail());
 
         return [
             'currencyTo' => $request->currencyTo,
