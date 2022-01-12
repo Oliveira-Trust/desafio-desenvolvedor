@@ -4,11 +4,14 @@
 - php artisan key:generate <br />
 - configurar o user, port e password do banco da sua maquina no arquivo .env <br />
 - Criar uma tabela no banco com o mesmo nome da tabela do .env <br />
-- php artisan migrate --seed <br /><br />
+- php artisan migrate --seed <br />
+- php artisan serve<br /><br />
 
 Os usuario já criados são : <br />
 **admin@trust.com** - user com permissão de admin  <br />
+senha: **123456789** <br />
 **karen@trust.com** - user com permissão comum <br />
+senha: **123456789**
 
 <br />
 
