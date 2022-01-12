@@ -1,48 +1,35 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+### Instalação:
+- composer install <br />
+- Criar um arquivo .env à partir do arquivo .env.example <br />
+- php artisan key:generate <br />
+- configurar o user, port e password do banco da sua maquina no arquivo .env <br />
+- Criar uma tabela no banco com o mesmo nome da tabela do .env <br />
+- php artisan migrate --seed <br /><br />
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Os usuario já criados são : <br />
+**admin@trust.com** - user com permissão de admin  <br />
+**karen@trust.com** - user com permissão comum <br />
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+<br />
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+### Design patterns utilizados no teste:
+**DDD** <br/>
+Para separação de pastas, arquivos e domínios <br />
+ref: https://julio-falbo.medium.com/minha-vis%C3%A3o-de-desenvolvedor-sobre-domain-driven-design-ddd-841afbe2fbc7 <br />  <br />
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+**Service-Repository** <br/>
+Trabalhando o conceito de separação de responsabilidades das classes. <br />
+ref: https://dev.to/jsf00/implement-crud-with-laravel-service-repository-pattern-1dkl  <br />  <br />
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+**Strategy** <br/>
+Usando o conceito de separar a regra de negócio de cada tipo de pagamento por classes, e instanciando elas dinamicamente e importando as regras de cada tipo de pagamento.  <br />
+ref: https://blog.caelum.com.br/entendendo-o-pattern-strategy-em-php/amp/ <br />  <br />
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+**Gateway** <br/>
+Utiliza um conceito parecido com o Strategy, mas é utilizado para chamadas de serviços, APIs ou dados externos em geral <br />
+ref: https://martinfowler.com/articles/gateway-pattern.html  <br />  <br />
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
-
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
-
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+### Obs:
+A tabela fees foi criada com strings como valores por uma questão de tempo de entrega, o correto seria os valores serem foreign keys de outras tabelas. <br />
