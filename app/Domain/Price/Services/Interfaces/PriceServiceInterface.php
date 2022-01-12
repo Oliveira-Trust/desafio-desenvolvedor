@@ -4,7 +4,7 @@ namespace App\Domain\Price\Services\Interfaces;
 
 interface PriceServiceInterface{
 
-    public function getPriceData(string $currencyCode):array;
+    public function getPriceData(string $currencyCode):?array;
 
     public function prepareDataForView(array $data):array;
 

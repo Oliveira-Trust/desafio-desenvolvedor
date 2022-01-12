@@ -7,9 +7,14 @@ use Illuminate\Support\Facades\Http;
 
 class AwesomeApiEconomiaGateway implements PriceGatewayInterface {
 
-    public function getPrice(string $currencyCode):array
+    public function getPrice(string $currencyCode):?array
     {
-        $response = Http::get('https://economia.awesomeapi.com.br/json/last/'.$currencyCode);
+        try {
+            $response = Http::get('https://economia.awesomeapi.com.br/json/last/'.$currencyCode);
+        } catch (\Exception $e) {
+
+            return null;
+        }
 
         if($response->failed()) {
             return null;

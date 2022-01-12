@@ -13,7 +13,7 @@ class PriceService implements PriceServiceInterface {
         $this->priceGateway = $priceGateway;
     }
 
-    public function getPriceData(string $currencyCode):array
+    public function getPriceData(string $currencyCode):?array
     {
         $priceData = $this->priceGateway->getPrice($currencyCode);
 
