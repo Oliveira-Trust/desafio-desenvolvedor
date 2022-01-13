@@ -1,0 +1,36 @@
+.pull-right{
+    float: right;
+}
+
+.border-red{
+    border: 1px red solid!important;
+}
+
+.font-12{
+    font-size: 12px!important;
+}
+
+.bold{
+    font-weight: 800!important;
+}
+
+.start-controller-calc{
+    min-height: 650px!important;
+}
+
+.div-pagination, .div-pagination nav{
+    width: 100%!important;
+}
+
+@media(max-width: 650px){
+    .hide-cellphone{
+        display: none;
+    }
+
+    .table-cellphone tr{
+        font-size: 12px!important;
+    }
+    .table-cellphone td{
+        font-size: 10px!important;
+    }
+}

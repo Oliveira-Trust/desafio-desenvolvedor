@@ -1,0 +1,77 @@
+{
+  "_from": "jquery-maskmoney",
+  "_id": "jquery-maskmoney@3.0.2",
+  "_inBundle": false,
+  "_integrity": "sha1-8Y3k8GuMZq2XyuizIFcck2rGN7c=",
+  "_location": "/jquery-maskmoney",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "jquery-maskmoney",
+    "name": "jquery-maskmoney",
+    "escapedName": "jquery-maskmoney",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/jquery-maskmoney/-/jquery-maskmoney-3.0.2.tgz",
+  "_shasum": "f18de4f06b8c66ad97cae8b320571c936ac637b7",
+  "_spec": "jquery-maskmoney",
+  "_where": "/home/pedro/projects/st_production/admin",
+  "author": {
+    "name": "Diego Plentz",
+    "email": "diego@plentz.org",
+    "url": "http://plentz.org"
+  },
+  "bugs": {
+    "url": "https://github.com/plentz/jquery-maskmoney/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "jquery": ">=1.6"
+  },
+  "deprecated": false,
+  "description": "jQuery plugin to mask data entry in the input text in the form of money (currency)",
+  "devDependencies": {
+    "amdefine": "latest",
+    "grunt": "latest",
+    "grunt-cli": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-qunit": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-jquerymanifest": "latest"
+  },
+  "filename": "jquery.maskMoney.min.js",
+  "homepage": "https://github.com/plentz/jquery-maskmoney",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/plentz/jquery-maskmoney/master/LICENSE"
+    }
+  ],
+  "name": "jquery-maskmoney",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "jquery.maskMoney.min.js"
+      ]
+    }
+  ],
+  "npmName": "jquery-maskmoney",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plentz/jquery-maskmoney.git"
+  },
+  "scripts": {
+    "test": "grunt test --verbose"
+  },
+  "version": "3.0.2"
+}
