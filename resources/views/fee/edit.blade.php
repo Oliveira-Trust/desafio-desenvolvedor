@@ -57,7 +57,7 @@
                                 <div class="col-12 col-md-6 col-sm-12 mt-2">
                                     <div class="form-group">
                                         {{ Form::label('fee', 'Porcentagem', ['class' => 'control-label']) }}
-                                        {!! Form::number('fee', null,  ['class' => 'form-control', 'id' => 'depends_on', 'min' => 0.01, 'step' => .01 ]) !!}
+                                        {!! Form::number('fee', null,  ['class' => 'form-control', 'id' => 'depends_on', 'min' => 0, 'max' => 99, 'step' => .01 ]) !!}
                                     </div>
                                 </div>
                             </div>

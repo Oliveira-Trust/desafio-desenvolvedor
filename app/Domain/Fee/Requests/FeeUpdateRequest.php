@@ -25,7 +25,7 @@ class FeeUpdateRequest extends FormRequest
     {
         return [
             'dependsOn' => 'nullable|numeric|min:1000|max:100000',
-            'fee'        => 'nullable|numeric|min:0|max:99'
+            'fee'        => 'nullable|numeric|min:0.01|max:99'
         ];
     }
 
@@ -43,8 +43,8 @@ class FeeUpdateRequest extends FormRequest
           'dependsOn.max'     => 'Quantia para desconto deve ser no máximo BRL 100.000',
 
           'fee.numeric' => 'Porcentagem de desconto inválida',
-          'fee.min'     => 'Porcentagem de desconto deve ser no mínimo 0%',
-          'fee.max'     => 'Porcentagem de desconto deve ser no máximo 100%'
+          'fee.min'     => 'Porcentagem de desconto deve ser no mínimo 0.01%',
+          'fee.max'     => 'Porcentagem de desconto deve ser no máximo 99%'
       ];
     }
 }
