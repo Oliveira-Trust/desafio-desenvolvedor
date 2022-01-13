@@ -2,7 +2,7 @@
 
 namespace App\Domain\Price\Services\Interfaces;
 
-interface PriceServiceInterface{
+interface PriceServiceInterface {
 
     public function getPriceData(string $currencyCode):?array;
 
