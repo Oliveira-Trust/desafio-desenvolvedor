@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuotationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['prefix' => 'quotation'], function () {
+    Route::post('', [QuotationController::class, 'quotation']);
+    Route::get('coin', [QuotationController::class, 'getAllCoin']);
+    Route::get('payment', [QuotationController::class, 'getPaymentType']);
 });

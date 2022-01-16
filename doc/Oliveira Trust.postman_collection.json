@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "00aa6ab3-ec0b-456d-adc4-2b7b22b30fb4",
+		"name": "Oliveira Trust",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List All Coins",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/quotation/coin",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"quotation",
+						"coin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/quotation/payment",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"quotation",
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Quotation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"originCoin\": \"BRL\",\n    \"finalCoin\": \"USD\",\n    \"conversionValue\": 5000.50,\n    \"paymentType\": \"Boleto\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/quotation",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"quotation"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
