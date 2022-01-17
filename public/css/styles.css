@@ -1,0 +1,27 @@
+#navbar h1 {
+    width: 550px;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #CCC;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.row .col{
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    background-color: rgba(91,177,239,.15);
+    border: 1px solid rgba(49,65,255,.2);
+}
+
+.row .btn {
+    font-weight: 100;
+}
+
+footer {
+    margin-top: 20px;
+}
