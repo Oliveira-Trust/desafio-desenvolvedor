@@ -1,7 +1,9 @@
 <?php
 namespace App\Libs\Http\Contracts;
 
+use LeoCarmo\CircuitBreaker\CircuitBreaker as ICircuitBreaker;
+
 interface CircuitBreaker
 {
-     public function createAdapter($adapter, string $service): mixed;
+    public function create(): ICircuitBreaker;
 }

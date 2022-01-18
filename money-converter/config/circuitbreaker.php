@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'service' => 'converter',
     'adapters' => [
         'redis' => [
             'namespace' => 'money-converter',

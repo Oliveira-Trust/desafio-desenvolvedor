@@ -6,13 +6,13 @@ use LeoCarmo\CircuitBreaker\Adapters\{RedisAdapter as Adapter};
 
 class RedisAdapter implements CircuitBreakerAdapter
 {
-    private $host;
+    private string $host;
 
-    private $port;
+    private string $port;
 
-    private $password;
+    private string $password;
 
-    private $namespace;
+    private string $namespace;
 
     public function __construct()
     {
