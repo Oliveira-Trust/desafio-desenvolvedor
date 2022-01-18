@@ -3,14 +3,13 @@ namespace App\Libs\Http\Adapters;
 
 use App\Libs\Http\Contracts\CircuitBreakerAdapter;
 use LeoCarmo\CircuitBreaker\Adapters\{RedisAdapter as Adapter};
+use Redis;
 
 class RedisAdapter implements CircuitBreakerAdapter
 {
     private string $host;
 
     private string $port;
-
-    private string $password;
 
     private string $namespace;
 
@@ -19,14 +18,12 @@ class RedisAdapter implements CircuitBreakerAdapter
         $this->namespace = config('circuitbreaker.adapters.redis.namespace');
         $this->host = config('circuitbreaker.adapters.redis.host');
         $this->port = config('circuitbreaker.adapters.redis.host');
-        $this->password = config('circuitbreaker.adapters.redis.password');
     }
 
-    public function connect(): \Redis
+    public function connect(): Redis
     {
-        $redis = new \Redis();
-        $redis->connect($this->host, $this->port);
-        $redis->auth($this->password);
+        $redis = new Redis();
+        $redis->connect($this->host, (int)$this->port);
 
         return $redis;
     }
