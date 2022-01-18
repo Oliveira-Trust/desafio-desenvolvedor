@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c61ff82cbf0142a401a48a8161e1595a",
+    "content-hash": "fbf8905064b808095410e54096e10024",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1657,6 +1657,59 @@
                 }
             ],
             "time": "2021-11-21T11:48:40+00:00"
+        },
+        {
+            "name": "leocarmo/circuit-breaker-php",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leocarmo/circuit-breaker-php.git",
+                "reference": "de4f117e962a9c88ebd4446cd13fd02d27f280e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leocarmo/circuit-breaker-php/zipball/de4f117e962a9c88ebd4446cd13fd02d27f280e0",
+                "reference": "de4f117e962a9c88ebd4446cd13fd02d27f280e0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.0",
+                "phpunit/php-code-coverage": "^9.2",
+                "phpunit/phpunit": "^9",
+                "swoole/ide-helper": "dev-master",
+                "symfony/var-dumper": "^5.2"
+            },
+            "suggest": {
+                "ext-redis": "Required to use Redis Adapter.",
+                "ext-swoole": "Required to use Swoole Table Adapter.",
+                "guzzlehttp/guzzle": "Allows the usage of the GuzzleMiddleware"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeoCarmo\\CircuitBreaker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leonardo Carmo",
+                    "email": "leonardo.docarmo@hotmail.com"
+                }
+            ],
+            "description": "Circuit Breaker for PHP",
+            "support": {
+                "issues": "https://github.com/leocarmo/circuit-breaker-php/issues",
+                "source": "https://github.com/leocarmo/circuit-breaker-php/tree/4.0.2"
+            },
+            "time": "2021-12-28T17:26:17+00:00"
         },
         {
             "name": "monolog/monolog",
