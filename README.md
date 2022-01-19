@@ -1,12 +1,13 @@
 ### Instalação Keycloak:
  - Entrar na pasta keycloak e subir o container com o comando "docker-compose up --build"
 ### Instalação Lumen:
+ - Documentação laradock https://laradock.io/ para instalação dos container.
  - Após o container do keycloak subir, entrar na pasta api-lumen-back/laradock criar um arquivo .env e copiar o .env.example para ele.
  - Entrar na pasta api-lumen-back criar um arquivo .env e copiar o .env.example para ele e executar o comando "composer install".
  - Entrar na pasta api-lumen-back/laradock novamente e rodar o comando "docker-compose up nginx mysql phpmayadmin".
  - Após o container do laradock subir, entrar no terminal do container com o seguinte comando "docker-compose exec --user=laradock workspace bash"
  - Uma vez dentro do terminal do container laradock, rodar o comando "php artisan migrate" e em seguida "php artisan db:seed".
- - Documentação laradock https://laradock.io/
+
 ### Instalação React:
  - Após o container do laradock subir, entrar na pasta react-front e rodar o comando "docker-compose up --build"
  - Este comando já irá gerar o .env à partir do .env.example.
