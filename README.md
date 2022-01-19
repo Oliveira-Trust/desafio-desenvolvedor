@@ -6,6 +6,7 @@
  - Entrar na pasta api-lumen-back/laradock novamente e rodar o comando "docker-compose up nginx mysql phpmayadmin".
  - Após o container do laradock subir, entrar no terminal do container com o seguinte comando "docker-compose exec --user=laradock workspace bash"
  - Uma vez dentro do terminal do container laradock, rodar o comando "php artisan migrate" e em seguida "php artisan db:seed".
+ - Documentação laradock https://laradock.io/
 ### Instalação React:
  - Após o container do laradock subir, entrar na pasta react-front e rodar o comando "docker-compose up --build"
  - Este comando já irá gerar o .env à partir do .env.example.
