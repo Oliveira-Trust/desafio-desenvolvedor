@@ -1,48 +1,23 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
-
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
-
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
-
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
-
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
-
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
-
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
-
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
-
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
-
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
-
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
-
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+### Instalação Keycloak:
+ - Entrar na pasta keycloak e subir o container com o comando "docker-compose up --build"
+### Instalação Lumen:
+ - Após o container do keycloak subir, entrar na pasta api-lumen-back/laradock criar um arquivo .env e copiar o .env.example para ele.
+ - Entrar na pasta api-lumen-back criar um arquivo .env e copiar o .env.example para ele e executar o comando "composer install".
+ - Entrar na pasta api-lumen-back/laradock novamente e rodar o comando "docker-compose up nginx mysql phpmayadmin".
+ - Após o container do laradock subir, entrar no terminal do container com o seguinte comando "docker-compose exec --user=laradock workspace bash"
+ - Uma vez dentro do terminal do container laradock, rodar o comando "php artisan migrate" e em seguida "php artisan db:seed".
+### Instalação React:
+ - Após o container do laradock subir, entrar na pasta react-front e rodar o comando "docker-compose up --build"
+ - Este comando já irá gerar o .env à partir do .env.example.
+### Uso Keycloak:
+ - Para acessar o painel administrativo do keycloak terá que abrir a url localhost:8084 no seu browser e clicar em Administration Console.
+ - À partir desse ponto irá abrir a tela de login onde o username e a senha seram admin.
+ - Confirme se o Realm "PHP-Developer-Test" existe passando o mouse abaixo do logo do Keycloak.
+ - Confirme se os clients "lumen" e "react" existem clicando em Clients.
+ - Verifique se em Users clicando em "View all users" existem 2 usuários cadastrados.
+### Uso React:
+ - O React estará rodando na porta 3002.
+### Uso Api Lumen:
+ - O Lumen estará rodando na porta 8081
+ - Haverão dois endpoints disponíveis "http://localhost:8081/api/converted-values" com os métodos POST e GET.
+ - Exemplo de payload de cadastro: {"originValue":5000,"convertedCurrency":"EUR","paymentMethod":"CREDIT_CARD"}
