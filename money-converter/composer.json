@@ -6,13 +6,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-redis": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^0.4.5",
         "laravel/framework": "^8.75",
-        "laravel/sanctum": "^2.11",
+        "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.5",
         "leocarmo/circuit-breaker-php": "^4.0",
-        "ext-redis": "*"
+        "nilportugues/serializer": "^1.2",
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
