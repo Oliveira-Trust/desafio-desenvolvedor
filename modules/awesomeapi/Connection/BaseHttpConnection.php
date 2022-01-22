@@ -1,8 +1,13 @@
 <?php
 
-namespace Awesomeapi\Connection;
+declare(strict_types=1);
 
-class BaseHttpConnection
+namespace AwesomeApi\Connection;
+
+abstract class BaseHttpConnection
 {
-
+    protected function getBaseUrl(): string
+    {
+        return config('awesomeapi.basePath');
+    }
 }
