@@ -4,6 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="row justify-content-center mb-5">
+                <img src="https://www.oliveiratrust.com.br/wp-content/themes/OliveiraTrust_WP/assets/img/logotipo_padrao_grey.svg"
+                     alt="logotipo Oliveira Trust"
+                     class="logo-olveira-trust"
+                >
+            </div>
             <div class="card">
                 <div class="card-header text-center">
                     Entre na plataforma
