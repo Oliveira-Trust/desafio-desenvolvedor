@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        AwesomeApi\Providers\AwesomeApiServiceProvider::class,
 
         /*
          * Application Service Providers...
