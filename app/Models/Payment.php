@@ -6,5 +6,5 @@ namespace App\Models;
 
 abstract class Payment
 {
-    abstract protected function tax(Money $money): float;
+    abstract public function getValueFees(): float;
 }
