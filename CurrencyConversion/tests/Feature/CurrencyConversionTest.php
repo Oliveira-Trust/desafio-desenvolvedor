@@ -97,12 +97,13 @@ class CurrencyConversionTest extends TestCase
 
 
         //Adiciona um CurrencyConversion no banco de dados
-        $response           = $this->post(route('CurrencyConversion.store'),$CurrencyConversion);
+        $response           = $this->post(route('CurrencyConversion.store'),$CurrencyConversion)->assertSuccessful();
 
-        $Id = \DB::getPdo()->lastInsertId();
+
+        $CurrencyConversion = CurrencyConversion::all()->last();
 
         //Quando o usuário visita o CurrencyConversion
-        $response = $this->get(route('CurrencyConversion.show', $Id))->assertSuccessful();
+        $response = $this->get(route('CurrencyConversion.show', $CurrencyConversion->id))->assertSuccessful();
 
 
         //Ele pode ver os detalhes que foram  adicionados

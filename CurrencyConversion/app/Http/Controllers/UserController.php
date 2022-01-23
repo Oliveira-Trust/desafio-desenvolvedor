@@ -12,6 +12,17 @@ use DataTables;
 
 class UserController extends Controller
 {
+
+
+    function __construct()
+    {
+        $this->middleware('role:User view', ['only' => ['index','show', 'DataTable']]);
+        $this->middleware('role:User create', ['only' => ['create','store']]);
+        $this->middleware('role:User edit', ['only' => ['edit','update']]);
+        $this->middleware('role:User delete', ['only' => ['destroy']]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *

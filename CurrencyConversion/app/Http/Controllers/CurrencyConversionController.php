@@ -15,7 +15,7 @@ class CurrencyConversionController extends Controller
 
     function __construct()
     {
-        $this->middleware('role:Currency Conversion view', ['only' => ['index','show']]);
+        $this->middleware('role:Currency Conversion view', ['only' => ['index','show', 'DataTable']]);
         $this->middleware('role:Currency Conversion create', ['only' => ['create','store']]);
         $this->middleware('role:Currency Conversion edit', ['only' => ['edit','update']]);
         $this->middleware('role:Currency Conversion delete', ['only' => ['destroy']]);
@@ -58,7 +58,7 @@ class CurrencyConversionController extends Controller
 
     public function create()
     {
-        
+
         $CurrencyList   = CurrencyConversion::CurrencyList();
         $PaymentMethodList  =  CurrencyConversion::PAYMENT_METHOD;
         return view('CurrencyConversion/Create', compact(['CurrencyList', 'PaymentMethodList']));

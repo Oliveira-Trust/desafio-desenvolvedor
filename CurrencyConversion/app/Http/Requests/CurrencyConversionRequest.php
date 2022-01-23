@@ -16,6 +16,15 @@ class CurrencyConversionRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+
+        $this->merge([
+            'origin_value' => str_replace(',', '.', str_replace('.', '', $this->origin_value))
+        ]);
+
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,7 +34,7 @@ class CurrencyConversionRequest extends FormRequest
     {
         return [
             'cur_id' => 'required',
-            'origin_value' => 'required|between:1000,100000',
+            'origin_value' => 'required|numeric|between:1000,100000',
             'payment_method' => 'required',
         ];    
     }

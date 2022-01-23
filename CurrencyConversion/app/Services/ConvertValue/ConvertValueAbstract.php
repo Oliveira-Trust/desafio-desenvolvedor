@@ -17,7 +17,7 @@ abstract class ConvertValueAbstract extends ConvertValueBase
     public function execConvertion() :? CurrencyConversion
     {
 
-        $OriginValue        = str_replace(',', '.', str_replace('.', '', $this->params['origin_value']));
+        $OriginValue        = $this->params['origin_value'];
         $PaymentMethod      = $this->params['payment_method'];
         $cur_id             = $this->params['cur_id'];
         $Currency           = Currency::findOrFail($cur_id);
