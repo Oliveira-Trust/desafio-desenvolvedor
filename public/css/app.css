@@ -1,0 +1,294 @@
+.desafio-oliveira__header {
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  box-shadow: 2px 5px 2px 2px #ededed;
+  font-size: 25px;
+}
+.desafio-oliveira__header__content {
+  max-width: 1350px;
+  min-width: 1130px;
+  height: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.desafio-oliveira__header__content p {
+  position: absolute;
+  right: 0;
+  float: right;
+  font-size: 17px;
+}
+.desafio-oliveira__header__content img {
+  max-width: 300px;
+}
+.desafio-oliveira__menu {
+  max-width: 1350px;
+  min-width: 1130px;
+  height: 60px;
+  margin-top: 15px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.desafio-oliveira__menu__option {
+  width: 200px;
+  height: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.desafio-oliveira__menu__option button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: white;
+  background-color: #999999;
+  box-shadow: 2px 2px 3px 2px #c5c5c5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.desafio-oliveira__menu__option button:hover {
+  transform: scale(1.05, 1.05);
+  transition: 0.3s;
+}
+.desafio-oliveira__historic {
+  max-width: 1350px;
+  min-width: 1130px;
+  height: 200px;
+  margin-top: 15px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+.desafio-oliveira__historic__body {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+.desafio-oliveira__historic__body__content {
+  width: 88%;
+  min-height: 300px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  border: 1px solid #e6e6e6;
+}
+.desafio-oliveira__historic__body__content table {
+  width: 100%;
+}
+.desafio-oliveira__historic__body__content table thead {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 15px;
+}
+.desafio-oliveira__historic__body__content table thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 2px 5px 2px 2px #ededed;
+}
+.desafio-oliveira__historic__body__content table tbody tr td {
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+}
+.desafio-oliveira__operation {
+  max-width: 1350px;
+  min-width: 1130px;
+  height: 200px;
+  margin-top: 15px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+.desafio-oliveira__operation__body {
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+.desafio-oliveira__operation__body__content {
+  width: 38%;
+  height: 300px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: 1px solid #e6e6e6;
+}
+.desafio-oliveira__operation__body__content h1 {
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 19px;
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: center;
+}
+.desafio-oliveira__operation__body__content p {
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 15px;
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.desafio-oliveira__operation__body__content p span {
+  font-weight: 500;
+}
+.desafio-oliveira__operation__body__content p:nth-child(1) {
+  margin-top: 30px;
+}
+.desafio-oliveira__operation__control {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.desafio-oliveira__operation__control__field {
+  width: 200px;
+  height: 60px;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desafio-oliveira__operation__control__field label {
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.desafio-oliveira__operation__control__field select {
+  width: 90%;
+  height: 40px;
+  border: 0.03px solid #e6e6e6;
+  border-radius: 3px;
+  outline: none;
+}
+.desafio-oliveira__operation__control__field input {
+  width: 90%;
+  height: 40px;
+  border: 0.03px solid #e6e6e6;
+  border-radius: 3px;
+  outline: none;
+  padding-left: 10px;
+}
+.desafio-oliveira__operation__control__field button {
+  position: absolute;
+  top: 30px;
+  width: 200px;
+  height: 40px;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  background-color: #999999;
+  box-shadow: 2px 2px 3px 2px #c5c5c5;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.desafio-oliveira__modal {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.desafio-oliveira__modal__content {
+  width: 600px;
+  height: 500px;
+  background-color: white;
+  box-shadow: 2px 5px 2px 2px #ededed;
+  font-size: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.desafio-oliveira__modal__content p {
+  position: absolute;
+  right: 0;
+  float: right;
+  font-size: 17px;
+}
+.desafio-oliveira__modal__content h1 {
+  font-size: 30px;
+  color: #4F4F4F;
+  text-align: center;
+  margin-top: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.desafio-oliveira__modal__content img {
+  width: 300px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-self: center;
+  margin-top: 20px;
+}
+.desafio-oliveira__modal__content__form {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.desafio-oliveira__modal__content__form label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #4F4F4F;
+  margin-top: 15px;
+}
+.desafio-oliveira__modal__content__form input {
+  height: 30px;
+  border: 0.03px solid #e6e6e6;
+  outline: none;
+  margin-top: 5px;
+}
+.desafio-oliveira__modal__content__form button {
+  margin-top: 20px;
+  height: 40px;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  background-color: #999999;
+  box-shadow: 2px 2px 3px 2px #c5c5c5;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  border: 0;
+  margin: 0;
+  background-color: #eaeaea;
+  color: #919aae;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}

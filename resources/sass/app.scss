@@ -1,0 +1,23 @@
+
+@import 'home-page.scss';
+@import 'login.scss';
+
+
+body {
+	border: 0;
+	margin: 0;
+    // background-color: #f9fbfb;
+    background-color: #eaeaea;
+    color: #919aae;
+}
+
+
+h1, h2, h3, h4, h5, p {
+	margin: 0;
+	padding: 0;
+}
+
+table { 
+    border-spacing: 0;
+    border-collapse: collapse;
+}

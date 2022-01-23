@@ -1,48 +1,85 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# DESAFIO OLIVEIRA TRUST
+## _Desenvolvido por Lucas Candido_
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Este desafio foi desenvolvido para vaga de Desenvolvedor Back-End Laravel Pleno para empresa Oliveira Trust.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## RECURSOS
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+- Conversão de moeda em tempo real
+- Histórico de operações realizadas
+- Autenticação por usuário
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+## Tecnologias
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+Tecnologias utilizadas para o desenvolvimento:
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+- [Laravel] - Laravel é um framework de aplicação web com sintaxe expressiva e elegante.
+- [ReactJS] - O React é uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web.
+- [JWT] - O JSON Web Token é um padrão da Internet para a criação de dados com assinatura opcional e/ou criptografia cujo payload contém o JSON que afirma algum número de declarações.
+- [MySQL] - O MySQL é um sistema de gerenciamento de banco de dados, que utiliza a linguagem SQL como interface.
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+## Instalação
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+O desafio foi desenvolvido nas seguintes versões:
+- [Laravel] - 8.80.0
+- [PHP] - 7.4.16
+- [Composer] - 2.0.12
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+Instale as dependências do projeto com o composer.
+O arquivo .env foi removido do gitignore para que as configurações sejam feitas mais rapidamente.
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+```sh
+composer update
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+Após todas as dependências serem instaladas, vamos gerar uma nova chave de API para a aplicação.
+
+```sh
+php artisan key:generate
+```
+
+Esta aplicação utiliza JWT para realizar autenticação por meio de um token assinado que autentica uma requisição web.
+Então precisamos gerar uma chave que será usada para assinar seus tokens.
+
+```sh
+php artisan jwt:secret
+```
+
+Agora vamos criar o banco de dados e inserir alguns dados iniciais.
+
+```sh
+//Este comando ira criar um banco de dados se o mesmo não existir
+php artisan db:create desafio_oliveira_trust
+
+//Criando as tabelas no banco de dados
+php artisan migrate
+
+//Inserindo alguns dados iniciais
+php artisan db:seed
+```
+
+Após o banco ser criado e todas as configurações feitas, vamos iniciar o projeto.
+
+```sh
+php artisan serve
+```
+
+## Estrutura do Front-End
+
+O Front-End foi desenvolvido em ReactJS, e todo o Javascript e CSS ficam na pasta /Resources.
+
+| Tela | Arquivo |
+| ------ | ------ |
+| Login | /resources/js/component/Login.js [JS] - /resources/sass/login.scss [css/scss]  |
+| HomePage | /resources/js/component/HomePage.js [JS] - /resources/sass/home-page.scss [css/scss] |
+| Operações (Component) | /resources/js/component/Operation.js [JS] - /resources/sass/home-page.scss [css/scss] |
+| Histórico (Component) | /resources/js/component/Historic.js [JS] - /resources/sass/home-page.scss [css/scss] |
+
+
+## Contato
+
+Caso tenham alguma duvida, segue minhas redes:
+
+- [Linkedin] - https://www.linkedin.com/in/lucascandido-ti/
+
+
