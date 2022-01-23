@@ -6,5 +6,5 @@ namespace AwesomeApi\Connection;
 
 final class AwesomeRoutes
 {
-    public const FIRST_ROUTE = '/json/available';
+    public const AVAILABLE_CURRENCIES = '/json/available';
 }
