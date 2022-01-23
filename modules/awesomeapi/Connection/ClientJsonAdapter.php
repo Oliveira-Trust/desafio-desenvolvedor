@@ -11,6 +11,8 @@ class ClientJsonAdapter extends BaseHttpConnection implements HttpConnection
 {
     public function currenciesAvailable(): Response
     {
-        return Http::get($this->getBaseUrl() . AwesomeRoutes::FIRST_ROUTE);
+        $response = Http::get($this->getBaseUrl() . AwesomeRoutes::AVAILABLE_CURRENCIES);
+        throw_if($response->failed(), new \DomainException('Não foi possível listar as moedas'));
+        return $response;
     }
 }
