@@ -22,4 +22,5 @@ Auth::routes();
 
 Route::middleware('auth')->group(function(): void {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/quote-history', 'HomeController@quoteHistory')->name('quoteHistory');
 });
