@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AwesomeApi\Services;
 
+use AwesomeApi\Adapters\AdapterCurrencyCollection;
 use AwesomeApi\Connection\HttpConnection;
-use Illuminate\Http\Client\Response;
 
 class AwesomeApiService
 {
@@ -16,8 +16,11 @@ class AwesomeApiService
         $this->httpConnection = $httpConnection;
     }
 
-    public function currenciesAvailable(): Response
+    public function currenciesAvailable(): array
     {
-        return $this->httpConnection->currenciesAvailable();
+        return (new AdapterCurrencyCollection(
+            $this->httpConnection->currenciesAvailable()->json()
+        ))
+            ->getCurrencies();
     }
 }

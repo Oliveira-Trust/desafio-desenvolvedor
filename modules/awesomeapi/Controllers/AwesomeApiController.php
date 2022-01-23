@@ -6,7 +6,6 @@ namespace AwesomeApi\Controllers;
 
 use App\Http\Controllers\Controller;
 use AwesomeApi\Services\AwesomeApiService;
-use Illuminate\Http\Client\Response;
 
 class AwesomeApiController extends Controller
 {
@@ -17,7 +16,7 @@ class AwesomeApiController extends Controller
         $this->awesomeApiService = $awesomeApiService;
     }
 
-    public function listAvailableCurrencies(): Response
+    public function listAvailableCurrencies(): array
     {
         return $this->awesomeApiService->currenciesAvailable();
     }
