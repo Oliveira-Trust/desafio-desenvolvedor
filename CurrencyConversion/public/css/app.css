@@ -1,0 +1,105 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:200,500,600,700,800);
+
+body, html { 
+  font-weight: 500;
+  font-size: 1em;
+  margin: 0px;
+  height: 100%;
+  font-family: 'Raleway', Arial, sans-serif;
+  color: #404d5b;
+}
+a, a:visited, a:link, a:hover, a:active  {
+  text-decoration: none;
+  color: #404d5b;
+}
+header {
+  background: #EDEDED;
+  width: 100%;
+  height: 48px;
+  border-bottom: 1px solid #D9DEE4;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+header ol {
+  margin: 0px;
+}
+header ol li{
+  display: inline; 
+}
+header li+li:before { 
+  content: "/\00a0"
+}
+
+header span img {
+  vertical-align: middle;
+
+}
+
+
+.SideBar {
+  position: fixed;
+  z-index: 1;
+  width: 160px;
+  height: 100%;
+  float:left;
+  background-color: #1a2942;
+  background-color: #101329;
+  -moz-perspective: 200px;
+  -ms-perspective: 200px;
+  -webkit-perspective: 200px;
+  -o-perspective: 200px;
+  perspective: 200px;
+}
+
+
+
+
+.SideBar a:first-child{
+  margin-top: 20px;
+}
+.SideBar a {
+  transition: all .5s ease-out 0s;
+  color: #b4b6bd;
+  cursor: pointer;
+  display:block;
+  height:50px;
+  padding-left: 20px;
+  text-decoration:none;
+  width:100%;
+  font-size: 1em;
+}
+.SideBar a:hover{
+  color: #fff;
+  text-decoration:none;
+}
+.SideBar i {
+  margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+.Content {
+  margin-left: 160px;
+}
+
+
+
+.Group {
+  margin-top: 6px;
+  margin-left: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);    
+  padding: 0px 10px 15px 15px;
+  border-top: 1px solid #ddd;
+  border-radius: 5px;
+  webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  display: inline-block;
+}
