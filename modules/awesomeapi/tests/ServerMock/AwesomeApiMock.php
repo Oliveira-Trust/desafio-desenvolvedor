@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AwesomeApiMock
 {
     private const ROUTES = [
-        AwesomeRoutes::FIRST_ROUTE => AuthenticateMock::class
+        AwesomeRoutes::AVAILABLE_CURRENCIES => AuthenticateMock::class
     ];
 
     public function handle(Request $request): PromiseInterface

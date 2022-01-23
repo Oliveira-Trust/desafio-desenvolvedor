@@ -11,6 +11,5 @@ class AwesomeApiTest extends TestCase
     public function test_should_return_an_json(): void
     {
         $response = $this->json('GET', '/list-currencies');
-        dd($response->json());
     }
 }
