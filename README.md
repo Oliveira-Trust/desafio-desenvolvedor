@@ -1,48 +1,48 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+## Desafio Oliveira Trust
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+### Tecnologias utilizadas
+* PHP 8.0
+* Laravel 8
+* AlpineJS
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+---
+Aplicação que faz a conversão da nossa moeda nacional para uma moeda estrangeira, aplicando
+algumas taxas e regras de negócio.
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+![](https://user-images.githubusercontent.com/16580745/150660406-b8e35b5c-c113-46cf-8b85-a778f75fcc54.png)
+![](https://user-images.githubusercontent.com/16580745/150660404-ecdf206d-5a53-4a37-bb9e-449345a9aef7.png)
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+**Instruções:**
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+Clone o projeto:
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+```bash
+$ git clone git@github.com:webmasterdro/oliveira-trust-test.git
+```
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+Instale as dependências do projeto:
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+```bash
+$ composer install
+$ cp .env.example .env # Configure as credenciais do banco de dados
+$ php artisan key:generate
+```
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+Rodando as migrates e testes:
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+```bash
+$ php artisan migrate --seed
+$ php artisan test
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+Acessando o projeto ([http://127.0.0.1:8000/](http://127.0.0.1:8000/))
+
+```bash
+$ php artisan serve
+```
+---
+**Usuario de teste:**
+
+Email: admin@admin.com
+
+Password: admin
