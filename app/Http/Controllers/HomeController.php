@@ -8,6 +8,8 @@ use App\Http\Requests\QuoteGenerateFormRequest;
 use App\Services\PaymentService;
 use AwesomeApi\Services\AwesomeApiService;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
@@ -22,16 +24,17 @@ class HomeController extends Controller
 
     public function index(): Renderable
     {
-        return view('home')
-            ->with(
-                'data',
-                $this->awesomeApiService->currenciesAvailable()
-            );
+//        $attribute = null;
+//        if ($request->method() === 'POST') {
+//            $attribute = $this->paymentService->quoteGenerate($request->validated());
+//        }
+        return view('home')->with('data', $this->awesomeApiService->currenciesAvailable());
     }
 
-    public function generateQuote(QuoteGenerateFormRequest $request)
+    public function generateQuote(QuoteGenerateFormRequest $request): JsonResponse
     {
-        $this->paymentService->quoteGenerate($request->validated());
+        $data = $this->paymentService->quoteGenerate($request->validated());
+        return response()->json(['data' => $data], Response::HTTP_OK);
     }
 
     public function quoteHistory(): Renderable

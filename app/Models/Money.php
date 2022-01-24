@@ -8,24 +8,23 @@ class Money
 {
     private const MAXIMUM_MONEY = 100000;
     private const MINIMUM_MONEY = 1000;
-    private float $money;
+    private ?float $money;
 
-    public function __construct(float $money)
+    public function __construct(?float $money)
     {
-        $this->money = $this->setMoney($money);
+        $this->setMoney($money);
     }
 
     /** @throws \Throwable */
-    private function setMoney(): float
+    private function setMoney($money)
     {
         throw_if(
-            $this->money <= self::MINIMUM_MONEY || $this->money >= self::MAXIMUM_MONEY,
+            $money <= self::MINIMUM_MONEY || $money >= self::MAXIMUM_MONEY,
             new \DomainException(
                 'Valor permitido maior R$' . self::MINIMUM_MONEY . 'e menor que R$' . self::MAXIMUM_MONEY
             )
         );
-
-        return $this->money;
+        $this->money = $money;
     }
 
     public function getMoney(): float

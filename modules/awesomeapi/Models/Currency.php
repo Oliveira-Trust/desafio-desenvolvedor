@@ -11,7 +11,7 @@ class Currency
     private ?string $code;
     private ?string $codeIn;
     private ?string $name;
-    private ?int $bid;
+    private ?float $bid;
     private ?string $createDate;
 
     public function __construct(CurrencyAdapter $currencyAdapter)
@@ -38,7 +38,7 @@ class Currency
         return $this->name;
     }
 
-    public function getBid(): ?int
+    public function getBid(): ?float
     {
         return $this->bid;
     }

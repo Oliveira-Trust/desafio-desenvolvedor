@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <form method="POST" action="{{ route('generateQuote') }}">
+                <form method="POST" action="{{ route('generateQuote') }}" id="form">
                     @csrf
                     <div class="card-header text-center">Conversor de Moedas</div>
                     <div class="card-body">
@@ -36,7 +36,7 @@
                                         <option
                                             value="{{ $d['prefix'] }}"
                                         >
-                                            {{ $d['label'] }} ({{ str_replace('-BRL', '', $d['prefix']) }})
+                                            {{ $d['label'] }} ({{ str_replace('BRL-', '', $d['prefix']) }})
                                         </option>
                                     @endforeach
                                 </select>
@@ -59,11 +59,15 @@
                             </div>
                         </div>
                         <div class="row mt-4 justify-content-center">
-                            <button class="btn btn-primary btn-block mr-2 ml-2" id="getForm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <button class="btn btn-primary btn-block mr-2 ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     class="bi bi-check-lg" viewBox="0 0 16 16">
                                     <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
                                 </svg>
                                 Gerar Cotação
+                            </button>
+                            <button id="test">
+                                TEST
                             </button>
                         </div>
                     </div>
@@ -71,29 +75,58 @@
             </div>
         </div>
 
+{{--        @if(isset($descriptionQuote))--}}
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <div class="card-header">Descrição da cotação</div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <div class="row ml-1">
+                        <label>Moeda de Origem: Real Brasileiro (BRL)</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Moeda de Destino: Dolar Americano (USD)</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Valor para Conversão: R$5.000,00</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Forma de pagamento: Boleto</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Valor da Moeda de Destino: $5,38</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Valor comprado em Moeda de Destino: $920,18</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Taxa de Pagamento: R$72,50</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Taxa de conversão: R$50,00</label>
+                    </div>
+                    <div class="row ml-1">
+                        <label>Valor utilizado para conversão descontando as taxas: R$4.877,50</label>
+                    </div>
                 </div>
             </div>
         </div>
+{{--        @endif--}}
     </div>
 </div>
 @endsection
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $('#test').on('click', function() {
+            form = $('form').serializeArray();
+            console.log(form);
+        });
+    })
+</script>
+<script type="text/javascript">
+
     window.onload = function () {
         var element = document.getElementById('money');
-        var button = document.getElementById('getForm');
 
         element.addEventListener('keyup', () => {
             var value = element.value;
@@ -111,8 +144,4 @@
             if(value == 'NaN') element.value = '';
         });
     }
-
-
-
-
 </script>

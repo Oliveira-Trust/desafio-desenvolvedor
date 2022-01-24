@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\BankInvoice;
+use App\Models\ConversionRate;
 use App\Models\CreditCard;
 use App\Models\Money;
 use App\Models\Payment;
+use App\Models\Quote;
 use AwesomeApi\Connection\HttpConnection;
 
 class PaymentService
@@ -19,15 +21,16 @@ class PaymentService
         $this->httpConnection = $httpConnection;
     }
 
-    public function quoteGenerate(array $attributes)
+    public function quoteGenerate(array $attributes): array
     {
         $attributes['money'] = $this->adapterTemporary($attributes);
-        $currency = $this->httpConnection->quoteCurrency(data_get($attributes, 'destination-currency'));
 
+        $currency = $this->httpConnection->quoteCurrency(data_get($attributes, 'destination-currency'));
         $money = new Money(data_get($attributes, 'money'));
         $methodPayment = $this->getMethodPayment($attributes, $money);
+        $conversionRate = new ConversionRate($money);
 
-
+        return (new Quote($methodPayment, $money, $conversionRate, $currency))->generate()->toArray();
     }
 
     public function getMethodPayment(array $attributes, Money $money): Payment

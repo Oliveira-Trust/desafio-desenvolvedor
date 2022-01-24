@@ -28,10 +28,10 @@ class AdapterCurrencyCollection
 
     private function AdaptCombinationOnlyBrl($prefix, $label): void
     {
-        if (str_contains($prefix, '-' . self::CURRENCY_DEFAULT)) {
+        if (str_contains($prefix, self::CURRENCY_DEFAULT . '-')) {
             $this->currenciesAdapted[] = [
                 'prefix' => $prefix,
-                'label' => explode('/', $label)[0] ?? ''
+                'label' => explode('/', $label)[1] ?? ''
             ];
         }
     }

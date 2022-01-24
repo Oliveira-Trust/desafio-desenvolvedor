@@ -37,9 +37,9 @@ class CurrencyAdapter
         return $this->name;
     }
 
-    public function getBid(): ?int
+    public function getBid(): ?float
     {
-        return (int) str_replace('.', '', $this->bid);
+        return (float) ($this->bid ?? 0);
     }
 
     public function getCreateDate(): ?string
