@@ -23,10 +23,9 @@ class PaymentService
 
     public function quoteGenerate(array $attributes): array
     {
-        $attributes['money'] = $this->adapterTemporary($attributes);
+        $currency = $this->httpConnection->quoteCurrency($attributes);
 
-        $currency = $this->httpConnection->quoteCurrency(data_get($attributes, 'destination-currency'));
-        $money = new Money(data_get($attributes, 'money'));
+        $money = new Money($attributes);
         $methodPayment = $this->getMethodPayment($attributes, $money);
         $conversionRate = new ConversionRate($money);
 
@@ -35,10 +34,17 @@ class PaymentService
 
     public function getMethodPayment(array $attributes, Money $money): Payment
     {
-        if (array_key_exists(CreditCard::NAME, $attributes)) {
-            return new CreditCard($money);
+        $payment = data_get($attributes, 'payment');
+        $payments = [
+            CreditCard::NAME => new CreditCard($money),
+            BankInvoice::NAME => new BankInvoice($money)
+        ];
+
+        if (array_key_exists(data_get($attributes, 'payment'), $payments)) {
+            return $payments[$payment];
         }
-        return new BankInvoice($money);
+
+        return $payment[BankInvoice::NAME];
     }
 
     private function adapterTemporary($attributes): float

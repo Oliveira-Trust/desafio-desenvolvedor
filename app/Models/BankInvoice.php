@@ -6,7 +6,7 @@ namespace App\Models;
 
 class BankInvoice extends Payment
 {
-    public const NAME = 'bank-invoice';
+    public const NAME = 'bank_invoice';
     private const TAX = 0.0145;
     private Money $money;
 

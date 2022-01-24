@@ -8,5 +8,5 @@ use Illuminate\Http\Client\Response;
 interface HttpConnection
 {
     public function currenciesAvailable(): Response;
-    public function quoteCurrency(string $currency): Currency;
+    public function quoteCurrency(array $attributes): Currency;
 }

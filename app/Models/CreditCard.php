@@ -6,7 +6,7 @@ namespace App\Models;
 
 class CreditCard extends Payment
 {
-    public const NAME = 'credit-card';
+    public const NAME = 'credit_card';
     private const TAX = 0.0763;
     private Money $money;
 

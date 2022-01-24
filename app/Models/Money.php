@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Exceptions\DomainExceptions;
+
 class Money
 {
-    private const MAXIMUM_MONEY = 100000;
-    private const MINIMUM_MONEY = 1000;
+    public const MAXIMUM_MONEY = 100000;
+    public const MINIMUM_MONEY = 1000;
     private ?float $money;
 
-    public function __construct(?float $money)
+    public function __construct(array $attributes)
     {
-        $this->setMoney($money);
+        $this->setMoney((float) data_get($attributes, 'money'));
     }
 
     /** @throws \Throwable */
@@ -20,9 +22,7 @@ class Money
     {
         throw_if(
             $money <= self::MINIMUM_MONEY || $money >= self::MAXIMUM_MONEY,
-            new \DomainException(
-                'Valor permitido maior R$' . self::MINIMUM_MONEY . 'e menor que R$' . self::MAXIMUM_MONEY
-            )
+            DomainExceptions::valueNotAuthorized()
         );
         $this->money = $money;
     }

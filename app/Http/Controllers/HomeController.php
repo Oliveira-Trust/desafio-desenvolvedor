@@ -24,17 +24,13 @@ class HomeController extends Controller
 
     public function index(): Renderable
     {
-//        $attribute = null;
-//        if ($request->method() === 'POST') {
-//            $attribute = $this->paymentService->quoteGenerate($request->validated());
-//        }
         return view('home')->with('data', $this->awesomeApiService->currenciesAvailable());
     }
 
     public function generateQuote(QuoteGenerateFormRequest $request): JsonResponse
     {
         $data = $this->paymentService->quoteGenerate($request->validated());
-        return response()->json(['data' => $data], Response::HTTP_OK);
+        return response()->json($data, Response::HTTP_OK);
     }
 
     public function quoteHistory(): Renderable

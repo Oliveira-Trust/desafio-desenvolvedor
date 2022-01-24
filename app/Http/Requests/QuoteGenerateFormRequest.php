@@ -11,13 +11,24 @@ class QuoteGenerateFormRequest extends FormRequest
         return true;
     }
 
+    /** @return string[] */
     public function rules(): array
     {
         return [
-            'destination-currency' => 'required|string',
-            'money' => 'required|string',
-            'bank-invoice' => 'sometimes|string',
-            'credit-card' => 'sometimes|string'
+            'destination_currency' => 'required|string',
+            'money' => 'required|numeric',
+            'payment' => 'required',
         ];
     }
+
+    /** @return string[] */
+    public function messages(): array
+    {
+        return [
+            'destination_currency.required' => 'Moeda de Destino é obrigatório',
+            'money.required' => 'Valor é obrigatório',
+            'payment.required' => 'Escolha a forma de pagamento',
+        ];
+    }
+
 }
