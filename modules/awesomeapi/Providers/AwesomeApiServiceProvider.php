@@ -8,6 +8,7 @@ use AwesomeApi\Connection\ClientJsonAdapter;
 use AwesomeApi\Connection\HttpConnection;
 use AwesomeApi\Tests\ServerMock\AwesomeApiMock;
 use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,8 +20,10 @@ class AwesomeApiServiceProvider extends ServiceProvider
 
         $this->app->bind(HttpConnection::class, ClientJsonAdapter::class);
 
-        Http::fake(function(Request $request) {
-            return (new AwesomeApiMock())->handle($request);
-        });
+//        if (App::environment('') === 'test') {
+            Http::fake(function(Request $request) {
+                return (new AwesomeApiMock())->handle($request);
+            });
+//        }
     }
 }

@@ -103,6 +103,16 @@
         </div>
     </div>
 </div>
+<div class="modal mt-5" tabindex="-1" role="dialog" id="modalError">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content justify-content-center">
+            <div class="modal-body text-center" id="contentMessage"></div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -122,6 +132,8 @@
         var descriptionConversionFee = $('#description-conversion-fee')
         var descriptionFinalValue = $('#description-final-value');
         var buttonLoading = $('#buttonLoading');
+        var modalError = $('#modalError');
+        var contentMessage = $('#contentMessage');
 
         var payment = $('#payment');
         var payload = {};
@@ -138,6 +150,10 @@
                     }
             })
             .catch(({response}) => {
+                if (response.data?.shortMessage) {
+                    modalError.modal('show')
+                    contentMessage.append(`<p>` + response.data?.message + `</p>`)
+                }
                 setErrosParametersInvalids(response)
             });
         });
