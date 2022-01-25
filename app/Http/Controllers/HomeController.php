@@ -38,4 +38,10 @@ class HomeController extends Controller
         $data = $this->quoteService->quoteGenerate($request->validated());
         return response()->json($data, Response::HTTP_OK);
     }
+
+    public function sendInEmail(): JsonResponse
+    {
+        $this->quoteService->sendEmail();
+        return response()->json([], 200);
+    }
 }
