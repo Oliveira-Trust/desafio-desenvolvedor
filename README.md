@@ -19,6 +19,9 @@
     - docker-compose build
 - levantar o container
     - docker-compose up -d
+- Executar somente na primeira vez que subir o projeto
+    - docker exec -ti oliveira_api sh -c "composer install"
+    - docker exec -ti oliveira_api sh -c "php artisan migrate --seed"
 - Derrubar o container
     - docker-compose down
 - Reiniciar o container
