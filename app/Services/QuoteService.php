@@ -12,8 +12,10 @@ use App\Models\Payment;
 use App\Models\Quotation;
 use App\Repositories\QuoteRepository;
 use AwesomeApi\Connection\HttpConnection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 
-class PaymentService
+class QuoteService
 {
     private HttpConnection $httpConnection;
     private QuoteRepository $quoteRepository;
@@ -33,7 +35,7 @@ class PaymentService
         $conversionRate = new ConversionRate($money);
 
         $quote = (new Quotation($methodPayment, $money, $conversionRate, $currency))->generate()->toArray();
-        $this->quoteRepository->save($quote);
+        $this->saveQuote($quote);
         return $quote;
     }
 
@@ -50,5 +52,17 @@ class PaymentService
         }
 
         return $payment[BankInvoice::NAME];
+    }
+
+    public function getQuoteHistory(): LengthAwarePaginator
+    {
+        return $this->quoteRepository->getQuotes(Auth::user()->id);
+    }
+
+
+    private function saveQuote(array $quote): void
+    {
+        $quote['userId'] = Auth::user()->id;
+        $this->quoteRepository->save($quote);
     }
 }
