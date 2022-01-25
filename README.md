@@ -4,8 +4,6 @@
 
 - Backend: Laravel
 - ORM: Eloquent
-- Frontend: VueJS
-- HTTP Client: Axios
 
 #### Ambiente Docker
 
