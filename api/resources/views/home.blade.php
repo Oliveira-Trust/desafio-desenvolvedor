@@ -39,6 +39,10 @@
         td, tr {
             text-align: center;
         }
+
+        .input + .input {
+            margin-top: 1vh;
+        }
     </style>
 
     <main>
@@ -63,7 +67,7 @@
                     @endif
                     <form id="form-conversao-moeda" method="POST" action="{{ route('conversao') }}">
                         @csrf
-                        <div class="">
+                        <div class="input">
                             <label for="moeda-destino">Moeda de destino</label>
                             <select class="form-select" id="moeda-destino" name="moeda-destino">
                                 <option {{ isset($dados['moeda-destino']) ? '' : 'selected' }} value="0">Selecione uma opção</option>
@@ -71,7 +75,7 @@
                                 <option {{ isset($dados['moeda-destino']) && $dados['moeda-destino'] == "2" ? 'selected' : '' }} value="2">EUR - Euro</option>
                             </select>
                         </div>
-                        <div class="">
+                        <div class="input">
                             <label for="valor-conversao">Valor para conversão (BRL - Real Brasileiro)</label>
                             <input
                                 type="number"
@@ -81,12 +85,12 @@
                                 value="{{ isset($dados['valor-conversao']) ? $dados['valor-conversao'] : '' }}"
                             >
                         </div>
-                        <div class="">
-                            <label for="forma-pagamento">forma de pagamento</label>
+                        <div class="input">
+                            <label for="forma-pagamento">Forma de pagamento</label>
                             <select class="form-select" id="forma-pagamento" name="forma-pagamento">
                                 <option {{ isset($dados['forma-pagamento']) ? '' : 'selected' }} value="0">Selecione uma opção</option>
-                                <option {{ isset($dados['forma-pagamento']) && $dados['forma-pagamento'] == "1" ? 'selected' : '' }} value="1">Boleto</option>
-                                <option {{ isset($dados['forma-pagamento']) && $dados['forma-pagamento'] == "2" ? 'selected' : '' }} value="2">Cartão de Crédito</option>
+                                <option {{ isset($dados['forma-pagamento']) && $dados['forma-pagamento'] == "1" ? 'selected' : '' }} value="1">Boleto (Taxa de 1.45%)</option>
+                                <option {{ isset($dados['forma-pagamento']) && $dados['forma-pagamento'] == "2" ? 'selected' : '' }} value="2">Cartão de Crédito (Taxa de 7.63%)</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Converter</button>
