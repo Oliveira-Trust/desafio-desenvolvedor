@@ -59,11 +59,15 @@
                         </div>
                         <div class="row mt-4 justify-content-center">
                             <button class="btn btn-primary btn-block mr-2 ml-2" id="sendQuote">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                     class="bi bi-check-lg" viewBox="0 0 16 16">
-                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                </svg>
-                                Gerar Cotação
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                         class="bi bi-check-lg" viewBox="0 0 16 16">
+                                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                    </svg>
+                                    <span>Gerar Cotação</span>
+                            </button>
+                            <button class="btn btn-primary btn-block mr-2 ml-2 d-none" id="buttonLoading" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
                             </button>
                         </div>
                     </div>
@@ -99,10 +103,12 @@
         </div>
     </div>
 </div>
+
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        var buttonSendQuote = $('#sendQuote');
         var inputMoney = $('#money');
         var inputDestinationCurrency = $('#destination-currency');
         var inputCreditCard = $('#credit-card');
@@ -115,17 +121,19 @@
         var descriptionPaymentFee = $('#description-payment-fee');
         var descriptionConversionFee = $('#description-conversion-fee')
         var descriptionFinalValue = $('#description-final-value');
+        var buttonLoading = $('#buttonLoading');
 
         var payment = $('#payment');
         var payload = {};
 
-        $('#sendQuote').on('click', function(event) {
+        buttonSendQuote.on('click', function(event) {
             event.preventDefault();
+            buttonSendQuote.hide();
+            buttonLoading.removeClass('d-none');
 
             axios.post('{{ route('generateQuote') }}', payload)
                 .then((response) => {
                     if (response.status === 200) {
-                        console.log(response)
                         setDescriptionQuote(response.data)
                     }
             })
@@ -152,6 +160,8 @@
             descriptionFinalValue.children().remove();
             descriptionFinalValue.append(`<label>Valor utilizado para conversão descontando as taxas: `+ data?.discountedValue +`</label>`);
             $('#description-quote').removeClass('d-none');
+            buttonLoading.addClass('d-none');
+            buttonSendQuote.show();
         }
 
         function translatePayment(paymentSlug) {
@@ -175,6 +185,8 @@
                 payment.addClass('is-invalid');
                 payment.after(`<span class="col-12 invalid-feedback">` + response.data?.errors?.payment + `</span>`);
             }
+            buttonLoading.addClass('d-none');
+            buttonSendQuote.show();
         }
 
         inputCreditCard.on('click', function () {
