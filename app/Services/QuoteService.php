@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Mail\QuoteMail;
 use App\Models\BankInvoice;
 use App\Models\ConversionRate;
 use App\Models\CreditCard;
@@ -14,6 +15,7 @@ use App\Repositories\QuoteRepository;
 use AwesomeApi\Connection\HttpConnection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class QuoteService
 {
@@ -57,6 +59,12 @@ class QuoteService
     public function getQuoteHistory(): LengthAwarePaginator
     {
         return $this->quoteRepository->getQuotes(Auth::user()->id);
+    }
+
+    public function sendEmail(): void
+    {
+        $quote = $this->quoteRepository->findByOne('methodPayment', 'credit_card');
+        Mail::send(new QuoteMail($quote));
     }
 
 
