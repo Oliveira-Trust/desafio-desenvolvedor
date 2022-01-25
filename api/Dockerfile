@@ -46,7 +46,7 @@ RUN set -eux && \
 
 WORKDIR /var/www/html/api
 
-#RUN php artisan key:generate
+RUN COMPOSER_VENDOR_DIR="/var/www/vendor" composer install
 
 EXPOSE 80 9000 2525
 
