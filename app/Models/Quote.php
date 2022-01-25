@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property $currency
@@ -14,9 +15,9 @@ namespace App\Models;
  * @property $conversionFee
  * @property $discountedValue
  */
-class Quotations extends BaseModel
+class Quote extends BaseModel
 {
-    protected $table = 'quotation';
+    protected $table = 'quotes';
 
     /** @var string[] */
     protected $fillable = [
@@ -31,5 +32,8 @@ class Quotations extends BaseModel
         'userId'
     ];
 
-
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'userId');
+    }
 }
