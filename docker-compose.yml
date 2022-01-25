@@ -1,33 +1,33 @@
 version: '3.1'
 services:
-  satisclient-db:
-    container_name: satisclient_pgslq_db
+  oliveira-db:
+    container_name: oliveira_pgslq_db
     image: postgres
     environment:
-      POSTGRES_DB: 'dbsatisclient'
+      POSTGRES_DB: 'dboliveira'
       POSTGRES_PASSWORD: 'root'
       POSTGRES_USER: 'root'
     ports:
       - '5432:5432'
     volumes:
-      - ./db/satisclient/pgdata:/var/lib/postgresql/data
+      - ./db/oliveira/pgdata:/var/lib/postgresql/data
 
-  satisclient-api:
-    container_name: satisclient_api
+  oliveira-api:
+    container_name: oliveira_api
     build:
       context: ./api
       dockerfile: Dockerfile
     ports:
-      - 7092:80
+      - 10007:80
     environment:
       APP_ENV: 'local'
       APP_DEBUG: 'true'
-      API_URL: 'http://localhost:7092'
+      API_URL: 'http://localhost:10007'
 
       DATABASE_DRIVER: 'pdo_pgsql'
-      DATABASE_HOST: satisclient-db
+      DATABASE_HOST: oliveira-db
       DATABASE_PORT: '5432'
-      DATABASE_NAME: 'dbsatisclient'
+      DATABASE_NAME: 'dboliveira'
       DATABASE_USER: 'root'
       DATABASE_PASSWORD: 'root'
     
@@ -35,15 +35,15 @@ services:
     volumes:
       - ./api:/var/www/html/api
     depends_on:
-      - satisclient-db
+      - oliveira-db
 
-  satisclient-frontend:
-    container_name: satisclient_frontend
+  oliveira-frontend:
+    container_name: oliveira_frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
     environment:
-      - NODE_ENV_API=http://localhost:7092
+      - NODE_ENV_API=http://localhost:10007
       - NODE_ENV_AMB=dev
       - CHOKIDAR_USEPOLLING=true
     volumes:
@@ -52,7 +52,7 @@ services:
     command: >
       bash -c "yarn && yarn serve"
     ports:
-      - 7093:8080
+      - 10008:8080
 
 networks:
   default:
