@@ -1,0 +1,59 @@
+version: '3.1'
+services:
+  satisclient-db:
+    container_name: satisclient_pgslq_db
+    image: postgres
+    environment:
+      POSTGRES_DB: 'dbsatisclient'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_USER: 'root'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db/satisclient/pgdata:/var/lib/postgresql/data
+
+  satisclient-api:
+    container_name: satisclient_api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 7092:80
+    environment:
+      APP_ENV: 'local'
+      APP_DEBUG: 'true'
+      API_URL: 'http://localhost:7092'
+
+      DATABASE_DRIVER: 'pdo_pgsql'
+      DATABASE_HOST: satisclient-db
+      DATABASE_PORT: '5432'
+      DATABASE_NAME: 'dbsatisclient'
+      DATABASE_USER: 'root'
+      DATABASE_PASSWORD: 'root'
+    
+      restart: always
+    volumes:
+      - ./api:/var/www/html/api
+    depends_on:
+      - satisclient-db
+
+  satisclient-frontend:
+    container_name: satisclient_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV_API=http://localhost:7092
+      - NODE_ENV_AMB=dev
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend:/app
+    working_dir: /app
+    command: >
+      bash -c "yarn && yarn serve"
+    ports:
+      - 7093:8080
+
+networks:
+  default:
+    driver: bridge
