@@ -27,7 +27,3 @@
     - docker-compose down
 - Reiniciar o container
     - docker-compose restart
-
-##### Orientações
-
-- Após subir o container, o container do node (frontend) irá executar automaticamente o comando yarn && yarn serve, então será necessário esperar o build do Vue que pode ser acompanhado observando os logs do CLI do container do frontend.

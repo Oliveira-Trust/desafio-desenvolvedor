@@ -24,7 +24,7 @@ services:
       APP_DEBUG: 'true'
       API_URL: 'http://localhost:10007'
 
-      DATABASE_DRIVER: 'pdo_pgsql'
+      DATABASE_DRIVER: 'pgsql'
       DATABASE_HOST: oliveira-db
       DATABASE_PORT: '5432'
       DATABASE_NAME: 'dboliveira'
@@ -36,23 +36,6 @@ services:
       - ./api:/var/www/html/api
     depends_on:
       - oliveira-db
-
-  oliveira-frontend:
-    container_name: oliveira_frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    environment:
-      - NODE_ENV_API=http://localhost:10007
-      - NODE_ENV_AMB=dev
-      - CHOKIDAR_USEPOLLING=true
-    volumes:
-      - ./frontend:/app
-    working_dir: /app
-    command: >
-      bash -c "yarn && yarn serve"
-    ports:
-      - 10008:8080
 
 networks:
   default:
