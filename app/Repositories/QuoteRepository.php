@@ -21,4 +21,9 @@ class QuoteRepository extends BaseRepository
     {
         return $this->createModel()->where('userId', $userId)->paginate(10);
     }
+
+    public function findByOne(string $key, string $value)
+    {
+        return $this->createModel()->where('userId', Auth::user()->id)->where($key, $value)->first();
+    }
 }
