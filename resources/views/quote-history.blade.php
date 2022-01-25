@@ -39,28 +39,17 @@
         </div>
     </div>
     {!! $quotes->links() !!}
-    <div class="modal fade" tabindex="-1" id="spinnerModal">
-        <div class="modal-dialog modal-dialog-centered text-center justify-content-center">
-            <div class="spinner-border"></div>
-        </div>
-    </div>
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         var buttonSend = $('#sendEmail');
-
         buttonSend.on('click', function() {
-            // $('#spinnerModal').show();
-
-            {{--axios.get('{{ route('sendEmail') }}')--}}
-            axios.get('nada')
+            axios.get('{{ route('sendEmail') }}')
             .then((response) => {
-                $('#spinnerModal').hide();
                 console.log(response)
             })
             .catch((response) => {
-                $('#spinnerModal').hide();
                 console.log(response)
             })
         });
