@@ -139,6 +139,13 @@
                     this.formErrors = [];
                 } catch (error) {
                     const { status } = error.response;
+
+                    if (status !== 422) {
+                        this.formErrors.push({
+                             message: error.response.data.message,
+                        })
+                    }
+
                     if (status === 422) {
                         Object.keys(error.response.data.errors).forEach(key => {
                             this.formErrors.push({

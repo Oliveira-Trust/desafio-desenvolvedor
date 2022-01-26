@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Client\ConnectionException;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,8 +36,12 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        $this->renderable(function (ConnectionException $e, $request) {
+            return response()->json(['message' => 'Não foi possível obter informações de câmbio no momento, tente novamente mais tarde.'], Response::HTTP_SERVICE_UNAVAILABLE);
+        });
+
         $this->reportable(function (Throwable $e) {
-            //
+
         });
     }
 }
