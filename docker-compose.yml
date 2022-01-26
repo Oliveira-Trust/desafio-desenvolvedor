@@ -1,0 +1,35 @@
+version: '3'
+
+# Named volumes
+volumes:
+    test-mysql-data:
+        driver: local
+
+services:
+    # MySQL (5.7)
+    mysql:
+        image: mysql:5.7
+        container_name: test-mysql
+        volumes:
+            - test-mysql-data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=test
+            - MYSQL_DATABASE=test
+            - MYSQL_USER=test
+            - MYSQL_PASSWORD=test
+    app:
+        image: ambientum/php:8.0-nginx
+        container_name: test-app-oliveira-trust
+        volumes:
+            - .:/var/www/app
+        ports:
+            - "80:8080"
+        links:
+            - mysql
+    mailhog:
+        image: 'mailhog/mailhog:latest'
+        ports:
+            - 1025:1025
+            - 8025:8025

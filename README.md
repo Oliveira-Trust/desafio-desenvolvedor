@@ -20,8 +20,18 @@ Clone o projeto:
 $ git clone git@github.com:webmasterdro/oliveira-trust-test.git
 ```
 
-Instale as dependências do projeto:
+Rode o comando para subir os containers:
 
+```bash
+$ docker-compose up -d
+```
+
+Acesse o container
+
+```bash
+$ docker exec -it test-app-oliveira-trust sh 
+```
+Rode os comandos
 ```bash
 $ composer install
 $ cp .env.example .env # Configure as credenciais do banco de dados
@@ -35,14 +45,12 @@ $ php artisan migrate --seed
 $ php artisan test
 ```
 
-Acessando o projeto ([http://127.0.0.1:8000/](http://127.0.0.1:8000/))
+Acessando o projeto 
+- [localhost](http://localhost/)
+- Acessar [Mailhog](http://localhost:8025/)
 
-```bash
-$ php artisan serve
-```
 ---
 **Usuario de teste:**
 
-Email: admin@admin.com
-
-Password: admin
+- Email: admin@admin.com
+- Password: admin
