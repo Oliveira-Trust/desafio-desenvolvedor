@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('test', function() {
+    return ['status' => 'OK', request()->all()];
+})->middleware('xss-filter');
