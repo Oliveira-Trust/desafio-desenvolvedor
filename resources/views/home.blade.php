@@ -162,22 +162,30 @@
             descriptionCurrency.children().remove();
             descriptionCurrency.append(`<label>Moeda de Destino: ` + data?.currency + `</label>`);
             descriptionValue.children().remove();
-            descriptionValue.append(`<label>Valor para Conversão: `+ data?.value +`</label>`);
+            descriptionValue.append(`<label>Valor para Conversão: `+ formatValue(data?.value) +`</label>`);
             descriptionPaymentLabel.children().remove();
             descriptionPaymentLabel.append(`<label>Forma de pagamento: `+ translatePayment(data?.methodPayment) +`</label>`);
             descriptionCurrencyPrice.children().remove();
-            descriptionCurrencyPrice.append(`<label>Valor da Moeda de Destino: `+ data?.priceCurrency +`</label>`);
+            descriptionCurrencyPrice.append(`<label>Valor da Moeda de Destino: `+ formatValueCurrency(data?.priceCurrency) +`</label>`);
             descriptionCurrencyValue.children().remove();
-            descriptionCurrencyValue.append(`<label>Valor comprado em Moeda de Destino: `+ data?.finalValue +`</label>`);
+            descriptionCurrencyValue.append(`<label>Valor comprado em Moeda de Destino: `+ formatValueCurrency(data?.finalValue) +`</label>`);
             descriptionPaymentFee.children().remove();
-            descriptionPaymentFee.append(`<label>Taxa de Pagamento: `+ data?.methodPaymentFee +`</label>`);
+            descriptionPaymentFee.append(`<label>Taxa de Pagamento: `+ formatValue(data?.methodPaymentFee) +`</label>`);
             descriptionConversionFee.children().remove();
-            descriptionConversionFee.append(`<label>Taxa de conversão: `+ data?.conversionFee +`</label>`);
+            descriptionConversionFee.append(`<label>Taxa de conversão: `+ formatValue(data?.conversionFee) +`</label>`);
             descriptionFinalValue.children().remove();
-            descriptionFinalValue.append(`<label>Valor utilizado para conversão descontando as taxas: `+ data?.discountedValue +`</label>`);
+            descriptionFinalValue.append(`<label>Valor utilizado para conversão descontando as taxas: `+ formatValue(data?.discountedValue) +`</label>`);
             $('#description-quote').removeClass('d-none');
             buttonLoading.addClass('d-none');
             buttonSendQuote.show();
+        }
+
+        function formatValueCurrency(value) {
+            return value.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2, });
+        }
+
+        function formatValue(value) {
+            return formCurrency.format(value)
         }
 
         function translatePayment(paymentSlug) {
@@ -204,6 +212,12 @@
             buttonLoading.addClass('d-none');
             buttonSendQuote.show();
         }
+
+        const formCurrency = new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+            minimumFractionDigits: 2
+        })
 
         inputCreditCard.on('click', function () {
             if (payment.hasClass('is-invalid')) {

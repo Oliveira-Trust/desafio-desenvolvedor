@@ -35,10 +35,12 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="row justify-content-center align-items-center">
+                    {!! $quotes->links() !!}
+                </div>
             </card>
         </div>
     </div>
-    {!! $quotes->links() !!}
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -53,5 +55,5 @@
                 console.log(response)
             })
         });
-    })
+    });
 </script>
