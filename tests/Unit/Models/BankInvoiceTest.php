@@ -10,9 +10,21 @@ use Tests\TestCase;
 
 class BankInvoiceTest extends TestCase
 {
-    public function test_sim(): void
+    public function test_should_get_fee_of_bank_invoice(): void
     {
-        $attributes['money'] = 5000;
-        (new BankInvoice(new Money($attributes)))->getValueFees();
+        foreach ($this->getMoneyObjects() as $money) {
+            $bankInvoiceFee = (new BankInvoice($money))->getValueFees();
+            $this->assertEquals($bankInvoiceFee, $money->getMoney() * BankInvoice::TAX);
+        }
+    }
+
+    public function getMoneyObjects(): array
+    {
+        return [
+            new Money(['money' => 5000]),
+            new Money(['money' => 10000]),
+            new Money(['money' => 70000]),
+            new Money(['money' => 45372]),
+        ];
     }
 }
