@@ -15,10 +15,10 @@ services:
         ports:
             - "3306:3306"
         environment:
-            - MYSQL_ROOT_PASSWORD=test
-            - MYSQL_DATABASE=test
-            - MYSQL_USER=test
-            - MYSQL_PASSWORD=test
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
     app:
         image: ambientum/php:8.0-nginx
         container_name: test-app-oliveira-trust

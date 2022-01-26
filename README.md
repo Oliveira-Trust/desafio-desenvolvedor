@@ -31,17 +31,16 @@ Acesse o container
 ```bash
 $ docker exec -it test-app-oliveira-trust sh 
 ```
-Rode os comandos
+
+Rode o comando
+
 ```bash
 $ composer install
-$ cp .env.example .env # Configure as credenciais do banco de dados
-$ php artisan key:generate
 ```
 
-Rodando as migrates e testes:
+Rodando os testes
 
 ```bash
-$ php artisan migrate --seed
 $ php artisan test
 ```
 
