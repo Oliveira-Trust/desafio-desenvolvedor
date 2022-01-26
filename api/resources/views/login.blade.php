@@ -7,19 +7,13 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <style>
 
-            .row {
-                margin-top: 25%
-            }
-
-        </style>
-
-        <title>Laravel</title>
+        <title>Oliveira Trust - Desafio</title>
     </head>
     <body>
         <section>
             <div class="container">
+                <h1 class="h2">Autenticação do Usuário</h1>
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
 
@@ -43,7 +37,11 @@
                                 <label for="password">Senha</label>
                                 <input type="password" name="password" class="form-control" id="password">
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <div class="botoes">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="button" class="btn btn-success" onclick="window.location='{{ route('registro.page') }}'">Cadastre-se</button>
+
+                            </div>
                         </form>
                     </div>
                 </div>
