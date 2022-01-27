@@ -18,7 +18,7 @@ class BankInvoiceTest extends TestCase
         }
     }
 
-    public function getMoneyObjects(): array
+    private function getMoneyObjects(): array
     {
         return [
             new Money(['money' => 5000]),
