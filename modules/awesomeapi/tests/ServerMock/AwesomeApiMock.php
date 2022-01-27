@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AwesomeApi\Tests\ServerMock;
 
 use AwesomeApi\Connection\AwesomeRoutes;
-use AwesomeApi\Tests\ServerMock\Responses\AuthenticateMock;
+use AwesomeApi\Tests\ServerMock\Responses\AvailableCurrencies;
 use AwesomeApi\Tests\ServerMock\Responses\QuoteCurrencyMock;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Request;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AwesomeApiMock
 {
     private const ROUTES = [
-        AwesomeRoutes::AVAILABLE_CURRENCIES => AuthenticateMock::class,
+        AwesomeRoutes::AVAILABLE_CURRENCIES => AvailableCurrencies::class,
         AwesomeRoutes::QUOTE_CURRENCY => QuoteCurrencyMock::class
     ];
 
