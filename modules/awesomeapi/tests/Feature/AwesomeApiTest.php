@@ -4,12 +4,19 @@ declare(strict_types=1);
 
 namespace AwesomeApi\Tests\Feature;
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AwesomeApiTest extends TestCase
 {
-    public function test_should_return_an_json(): void
+    use RefreshDatabase;
+
+    public function test_should_return_an_json_and_status_ok_200(): void
     {
-        $response = $this->json('GET', '/list-currencies');
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $this->json('GET', '/list-currencies')
+            ->assertOk();
     }
 }
