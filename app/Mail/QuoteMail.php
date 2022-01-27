@@ -6,6 +6,7 @@ namespace App\Mail;
 
 use App\Models\Quote;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Auth;
 
 class QuoteMail extends Mailable
 {
@@ -16,12 +17,11 @@ class QuoteMail extends Mailable
         $this->quote = $quote;
     }
 
-    public function build()
+    public function build(): void
     {
-        $this->from('vitorpmelo20@gmail.com')
-            ->to('vitorpmelo00@gmail.com')
+        $this->to(Auth::user()->email)
             ->subject('Detalhes da Cotação');
 
-        return $this->view('mail.mail', ['data' => $this->quote]);
+        $this->view('mail.mail', ['data' => $this->quote]);
     }
 }
