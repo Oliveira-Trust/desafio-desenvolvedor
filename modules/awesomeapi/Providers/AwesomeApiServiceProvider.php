@@ -20,10 +20,10 @@ class AwesomeApiServiceProvider extends ServiceProvider
 
         $this->app->bind(HttpConnection::class, ClientJsonAdapter::class);
 
-//        if (App::environment('') === 'test') {
+        if (App::environment() === 'test') {
             Http::fake(function(Request $request) {
                 return (new AwesomeApiMock())->handle($request);
             });
-//        }
+        }
     }
 }

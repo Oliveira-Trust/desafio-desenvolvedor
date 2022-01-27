@@ -11,8 +11,6 @@ services:
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=oliveiratrust
-            - MYSQL_USER=root
-            - MYSQL_PASSWORD=root
         ports:
             - '8082:3306'
 
