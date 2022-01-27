@@ -9,7 +9,7 @@ use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthenticateMock extends BaseResponseMock
+class AvailableCurrencies extends BaseResponseMock
 {
     private Request $request;
 
