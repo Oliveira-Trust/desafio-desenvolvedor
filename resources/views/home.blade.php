@@ -6,7 +6,6 @@
         <div class="col-md-6">
             <div class="card">
                 <form method="POST" action="{{ route('generateQuote') }}" id="form">
-                    @csrf
                     <div class="card-header text-center">Conversor de Moedas</div>
                     <div class="card-body">
                         <div class="row">
@@ -151,6 +150,7 @@
             })
             .catch(({response}) => {
                 if (response.data?.shortMessage) {
+                    contentMessage.children().remove();
                     modalError.modal('show')
                     contentMessage.append(`<p>` + response.data?.message + `</p>`)
                 }
