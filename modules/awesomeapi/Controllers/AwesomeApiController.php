@@ -6,6 +6,8 @@ namespace AwesomeApi\Controllers;
 
 use App\Http\Controllers\Controller;
 use AwesomeApi\Services\AwesomeApiService;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class AwesomeApiController extends Controller
 {
@@ -16,8 +18,10 @@ class AwesomeApiController extends Controller
         $this->awesomeApiService = $awesomeApiService;
     }
 
-    public function listAvailableCurrencies(): array
+    public function listAvailableCurrencies(): JsonResponse
     {
-        return $this->awesomeApiService->currenciesAvailable();
+        return response()->json(
+            $this->awesomeApiService->currenciesAvailable(),
+            Response::HTTP_OK);
     }
 }
