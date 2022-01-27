@@ -6,7 +6,9 @@ namespace App\Models;
 
 class ConversionRate
 {
-    private const VALUE = 3000;
+    public const VALUE = 3000;
+    public const TAX_LARGER_THREE_THOUSAND = 0.01;
+    public const TAX_SMALLER_THREE_THOUSAND = 0.02;
     private Money $money;
 
     public function __construct(Money $money)
@@ -17,8 +19,8 @@ class ConversionRate
     public function getFees(): float
     {
         if ($this->money->getMoney() > self::VALUE) {
-            return $this->money->getMoney() * 0.01;
+            return $this->money->getMoney() * self::TAX_LARGER_THREE_THOUSAND;
         }
-        return $this->money->getMoney() * 0.02;
+        return $this->money->getMoney() * self::TAX_SMALLER_THREE_THOUSAND;
     }
 }
