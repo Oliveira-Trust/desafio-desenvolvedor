@@ -23,3 +23,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get("/price", [PriceController::class, 'index']);
+
+Route::post("/price", [PriceController::class, 'create']);
