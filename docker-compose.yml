@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  php-nginx:
+    build: .
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    restart: always
+    ports:
+      - "80:8000"      
+    depends_on:
+      - mysqldb
+  mysqldb:
+        image: mysql:${MYSQL_VERSION}
+        container_name: ${MYSQL_HOST}
+        restart: always
+        env_file:
+            - ".env"
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        ports:
+            - "3306:3306"
+        volumes:
+            - "./storage/mysql:/var/lib/mysql"
+  front:
+    build: ./front-react/.
+    working_dir: /var/www/html
+    volumes:
+      - ./front-react/:/var/www/html
+    restart: always
+    ports:
+      - "8080:8001"      
+    

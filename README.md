@@ -1,48 +1,97 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Indice
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+- [Sobre](#sobre)
+- [Funcionalidades desenvolvidas](#funcionalidades-desenvolvidas)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Dependências](#dependências)
+- [Instalando o docker](#instalando-o-docker)
+- [.Env](#.env)
+- [Como baixar o projeto](#como-baixar-o-projeto)
+- [Rodando ambiente com Docker](#rodando-ambiente-com-docker)
+- [Usuário e Senha do sistema](#usuário-e-senha-do-sistema)
+- [Observações](#observações)
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## Sobre
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+Projeto de desafio de desenvolvedor no qual o sistema realiza conversões de moeda de acordo com a cotação baseada na api do 
+[economia.awesomeapi.com.br](economia.awesomeapi.com.br).
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+---
+## Funcionalidades desenvolvidas
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+- Autenticação de usuário e senha.
+- Realização de Conversão de moedas.
+- Registro de histórico de conversões.
+- Alteração de taxas de pagamento.
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+---
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+## Tecnologias utilizadas
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+O projeto foi desenvolvido utilizando as seguintes tecnologias
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+- [PHP:7.4](https://www.php.net)
+- FrameWork [Laravel:8](https://laravel.com)
+- [Mysql:5.7](https://www.mysql.com)
+- [Nginx](https://www.nginx.com)
+- [Reactjs](https://pt-br.reactjs.org)
+- [Material.io React](https://mui.com/pt/)
+- [Axios](https://github.com/axios/axios)
+- [Docker](https://www.docker.com)
+
+---
+
+## Dependências
+
+```bash
+
+    - Docker
+    - WSL (para ambientes Windows)
+```
+
+## Instalando o Docker
+
+O **Docker** pode ser baixado através do [https://www.docker.com](https://www.docker.com). Caso esteja utilizando ambiente Windows, é necessário instalar o WSL (Windows Subsystem for Linux) através do [link](https://docs.microsoft.com/pt-br/windows/wsl/install).
+
+---
+
+## .Env
+
+A fins de avaliação e teste, mantive os dados reais de produção no ".env.example" no diretório. 
+Realizar uma cópia para ".env".
+
+## Rodando ambiente com Docker
+
+Acesse o diretório em que o repositório foi clonado através do terminal e
+execute os comandos:
+ - `docker-compose build` para compilar imagens, criar container etc.
+ - `docker-compose up -d` para inicializar os container.
+ - `docker-compose down` para encerrar os contâiners.
+
+** Observação: Certifique que no repositório contenha os arquivos `Dockerfile` e `docker-compose.yml`
+---
+
+## Passo a Passo de configuração do laravel
+
+Após o ambiente docker iniciado, utilize o comando dentro do diretório `docker ps` e localize o container `php-nginx`. 
+Copie o ID do contâiner e realize o comando `docker exect -it <id_container> bash` e execute os seguintes comandos:
+- `composer install` para instalar todas depências do projeto.
+- `php artisan migrate:refresh --seed` para criar todas as tabelas da base de dados e para popular o banco com alguns dados.
+- `php artisan config:clear` para limpar o cache de configuração ( referente as variáveis de ambiente).
+
+## Usuário e Senha do sistema
+---
+Login: caio.kozano@live.com
+Senha: teste123
+
+URL APi = http://localhost
+URL Front = http://localhost:8080
+
+---
+
+## Observações
+ - O front-end **Reactjs** se encontra dentro do diretório "/front-react" já no formato de build.
+
+Desenvolvido por Caio Kozano.
