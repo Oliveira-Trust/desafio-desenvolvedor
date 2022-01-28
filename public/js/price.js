@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                console.log(data);
+                getAllPrices();
                 // var todo = '<tr id="todo' + data.id + '"><td>' + data.id + '</td><td>' + data.title + '</td><td>' + data.description + '</td>';
                 // if (state == "add") {
                 //     jQuery('#todo-list').append(todo);
@@ -38,4 +38,39 @@ jQuery(document).ready(function($){
             }
         });
     });
+
+
+    function getAllPrices()
+    {
+
+        var type = "GET";
+        var ajaxurl = 'price/getall';
+
+        $.ajax({
+            type: type,
+            url: ajaxurl,
+            dataType: 'json',
+            success: function (data) {
+
+                var html = ''
+
+                $(data).each(function(index, element) {
+                
+                    html += "<div>" + element.from + "-" + element.to + "("+ element.total + ") </div>";
+                    html += "<div> TP:" + element.payment_rate + "TC:" + element.conversion_rate + "</div>";
+
+                });
+            
+                jQuery('#myPrices').html(html);
+
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+    }
+
+    getAllPrices();
+
 });

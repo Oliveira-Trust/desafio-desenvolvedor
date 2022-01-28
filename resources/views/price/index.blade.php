@@ -1,41 +1,65 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Create Team') }}
+        </h2>
+    </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+    <div>
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <x-jet-form-section submit="">
 
-        <form id="myForm" name="myForm">
-            @csrf
+                <x-slot name="title">
+                    {{ __('Últimas cotações') }}
+                </x-slot>
 
-            <div>
-                <x-jet-label for="currency_from" value="{{ __('Moeda de origem') }}" />
-                <x-jet-input id="currency_from" class="block mt-1 w-full" type="text" name="currency_from" :value="old('currency_from')" value="BRL" required />
-            </div>
+                <x-slot name="description">
+                    <div id="myPrices"></div>
+                </x-slot>
 
-            <div class="mt-4">
-                <x-jet-label for="currency_to" value="{{ __('Moeda de destino') }}" />
-                <x-jet-input id="currency_to" class="block mt-1 w-full" type="text" name="currency_to" :value="old('currency_to')" value="USD" required />
-            </div>
+                <x-slot name="form">
+                    <div class="col-span-6">
+                        <x-jet-label value="{{ __('Team Owner') }}" />
 
-            <div class="mt-4">
-                <x-jet-label for="total" value="{{ __('Valor para conversão') }}" />
-                <x-jet-input id="total" class="block mt-1 w-full" type="number" name="total" :value="old('total')" value="5000" required />
-            </div>
+                        <div class="flex items-center mt-2">
+                            <div class="ml-4 leading-tight">
+                                <div>TESTE</div>
+                                <div class="text-gray-700 text-sm">TESTE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-4">
+                        <form id="myForm" name="myForm">
+
+                            <x-jet-label for="currency_from" value="{{ __('Team currency_from') }}" />
+                            <x-jet-input id="currency_from" type="text" class="mt-1 block w-full"
+                                wire:model.defer="state.currency_from" autofocus value="BRL" />
+
+                            <x-jet-label for="currency_to" value="{{ __('Team currency_to') }}" />
+                            <x-jet-input id="currency_to" type="text" class="mt-1 block w-full"
+                                wire:model.defer="state.currency_to" autofocus value="USD" />
+
+                            <x-jet-label for="total" value="{{ __('Team total') }}" />
+                            <x-jet-input id="total" type="text" class="mt-1 block w-full" wire:model.defer="state.total"
+                                autofocus value="5000" />
+
+                            <x-jet-label for="payment_method" value="{{ __('Team payment_method') }}" />
+                            <x-jet-input id="payment_method" type="text" class="mt-1 block w-full"
+                                wire:model.defer="state.payment_method" autofocus value="ticket" />
 
 
-            <div class="mt-4">
-                <x-jet-label for="payment_method" value="{{ __('Forma de pagamento') }}" />
-                <x-jet-input id="payment_method" class="block mt-1 w-full" type="text" name="payment_method" :value="old('payment_method')" value="ticket" required />
-            </div>
+                            <x-jet-input-error for="name" class="mt-2" />
+                    </div>
+                </x-slot>
 
-            <div class="flex items-center justify-end mt-4">
+                <x-slot name="actions">
+                    <x-jet-button type="button" id="btn-save">
+                        {{ __('Salvar') }}
+                    </x-jet-button>
+                </x-slot>
 
-                <x-jet-button class="ml-4" id="btn-save">
-                    {{ __('Solicitar cotação') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            </x-jet-form-section>
+        </div>
+    </div>
+</x-app-layout>

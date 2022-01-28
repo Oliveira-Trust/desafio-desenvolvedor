@@ -14,6 +14,13 @@ class PriceController extends Controller
         return view('price.index');
     }
 
+    public function getAll()
+    {
+        $price = Price::limit(5)->orderBy('created_at', 'DESC')->get();
+
+        return $price;
+    }
+
 
     public function create(Request $request)
     {
@@ -50,15 +57,15 @@ class PriceController extends Controller
         $price['total_rate'] = $price['total'] - ($price['payment_rate'] + $price['conversion_rate']);
 
 
-        $data = $request->validate([
-            'currency_from' => 'required|max:3',
-            'currency_to' => 'required|max:3',
-            'total' => 'required|between:1,10',
-            'payment_method' => 'required'
-        ]);
+        // $data = $request->validate([
+        //     'currency_from' => 'required|max:3',
+        //     'currency_to' => 'required|max:3',
+        //     'total' => 'required|between:2000,5000',
+        //     'payment_method' => 'required'
+        // ]);
 
-        $price = Price::create($price);
-
+        $data = Price::create($price);
+        
         return Response::json($data);
 
     }

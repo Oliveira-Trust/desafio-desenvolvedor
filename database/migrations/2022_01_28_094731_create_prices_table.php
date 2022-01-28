@@ -14,7 +14,7 @@ class CreatePricesTable extends Migration
     public function up()
     {
         Schema::create('prices', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('currency_from');
             $table->string('currency_to');
             $table->string('total');
@@ -24,7 +24,7 @@ class CreatePricesTable extends Migration
             $table->string('payment_rate')->nullable();
             $table->string('conversion_rate')->nullable();
             $table->string('buy_to_rate')->nullable();
-            $table->string('total_rat')->nullable();
+            $table->string('total_rate')->nullable();
             $table->timestamps();
         });
     }

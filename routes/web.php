@@ -15,7 +15,7 @@ use App\Http\Controllers\PriceController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('weblcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -23,5 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get("/price", [PriceController::class, 'index']);
+
+Route::get("/price/getall", [PriceController::class, 'getAll']);
 
 Route::post("/price", [PriceController::class, 'create']);
