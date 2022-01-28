@@ -1,0 +1,19 @@
+version: "3.7"
+
+networks:
+  money_converter_network:
+    driver: bridge
+
+services:
+
+
+  mysql:
+    image: mysql:8.0.28
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=pipoca453
+      - MYSQL_DATABASE=money-converter
+    networks:
+      - money_converter_network
