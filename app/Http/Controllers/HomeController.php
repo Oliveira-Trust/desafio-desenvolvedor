@@ -8,6 +8,7 @@ use App\Http\Requests\QuoteGenerateFormRequest;
 use App\Services\QuoteService;
 use AwesomeApi\Services\AwesomeApiService;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Client\Request;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -39,9 +40,9 @@ class HomeController extends Controller
         return response()->json($data, Response::HTTP_OK);
     }
 
-    public function sendInEmail(): JsonResponse
+    public function sendInEmail(int $code): JsonResponse
     {
-        $this->quoteService->sendEmail();
+        $this->quoteService->sendEmail($code);
         return response()->json([], 200);
     }
 }

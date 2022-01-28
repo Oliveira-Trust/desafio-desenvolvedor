@@ -6,7 +6,6 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
@@ -37,17 +36,6 @@ class QuoteTest extends TestCase
         $this->actingAs($user);
         $this->json('GET', '/quote-history')
             ->assertStatus(Response::HTTP_OK);
-    }
-
-    public function test_should_return_an_array_empty_and_status_200_ok(): void
-    {
-        Mail::fake();
-
-        $user = factory(User::class)->create();
-        $this->actingAs($user);
-        $this->json('GET', '/send-email')
-            ->assertOk()
-            ->assertJson([]);
     }
 
     /** @return mixed[] */

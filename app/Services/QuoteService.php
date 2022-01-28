@@ -61,9 +61,9 @@ class QuoteService
         return $this->quoteRepository->getQuotes(Auth::user()->id);
     }
 
-    public function sendEmail(): void
+    public function sendEmail(int $code): void
     {
-        $quote = $this->quoteRepository->findByOne('methodPayment', 'credit_card');
+        $quote = $this->quoteRepository->findByOne('id', (string) $code);
         Mail::send(new QuoteMail($quote));
     }
 

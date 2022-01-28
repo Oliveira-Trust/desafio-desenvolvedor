@@ -24,5 +24,5 @@ Route::middleware('auth')->group(function(): void {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::post('/generate-quote', 'HomeController@generateQuote')->name('generateQuote');
     Route::get('/quote-history', 'HomeController@quoteHistory')->name('quoteHistory');
-    Route::get('/send-email', 'HomeController@sendInEmail')->name('sendEmail');
+    Route::get('/send-email/{code?}', 'HomeController@sendInEmail')->name('sendEmail');
 });
