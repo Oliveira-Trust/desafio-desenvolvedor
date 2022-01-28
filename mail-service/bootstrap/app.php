@@ -39,12 +39,12 @@ $app->withEloquent();
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    App\Core\Exceptions\Handler::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    App\Core\Console\Kernel::class
 );
 
 /*
@@ -93,7 +93,7 @@ $app->configure('database');
 
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
-$app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Core\Providers\EventServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 
 /*

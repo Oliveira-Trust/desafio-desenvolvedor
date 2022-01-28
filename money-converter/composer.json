@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "spatie/data-transfer-object": "^2.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -22,7 +23,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
+            "App\\": "app/App/",
+            "Domain\\": "app/Domain/",
+            "Support\\": "app/Support",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

@@ -2,9 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\ExampleEvent;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Core\Events\ExampleEvent;
 
 class ExampleListener
 {
@@ -21,7 +19,7 @@ class ExampleListener
     /**
      * Handle the event.
      *
-     * @param  \App\Events\ExampleEvent  $event
+     * @param  \App\Core\Events\ExampleEvent  $event
      * @return void
      */
     public function handle(ExampleEvent $event)
