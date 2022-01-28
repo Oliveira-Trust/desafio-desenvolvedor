@@ -1,6 +1,7 @@
 # API Conversor de Moedas
 
 Tarefas:
+
     1 - Criar Aplicação com Laravel
         1 - Aplicação deve ficar dentro do repositório, nomeado como "conversor-moedas".
         2 - Configurar conforme documentação.
