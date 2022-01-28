@@ -1,0 +1,80 @@
+# Imagem do docker que o código será executado
+image: node:8.9.0
+
+# listage dos stages do pipeline
+stages:
+  - install_dependencies
+  - build
+  - tests
+  - publish
+  - deploy
+
+# instalação de dependências do projeto
+install:dependencies:
+  stage: install_dependencies
+  cache:
+    paths:
+      - node_modules/
+  tags:
+    - docker
+  script:
+    - npm install --loglevel --silent warn
+  artifacts:
+    paths:
+      - node_modules/
+  only:
+    - /^v?\d+\.\d+\.\d+(|\-.+)$/
+
+# realiza o build do projeto
+build:
+  stage: build
+  tags:
+    - docker
+  script:
+    - npm run build
+    - grep '"version"' package.json | xargs | sed s/,// >> build/version-fe.txt
+    - date >> build/version.txt
+  dependencies:
+    - install:dependencies
+  artifacts:
+    paths:
+      - build/
+  only:
+    - /^v?\d+\.\d+\.\d+\-dev$/
+
+# realiza os testes unitários do projeto
+test:unit:
+  stage: tests
+  tags:
+    - docker
+  script:
+    - npm run test
+  dependencies:
+    - install:dependencies
+  allow_failure: true
+  only:
+    - /^v?\d+\.\d+\.\d+(|\-.+)$/
+
+# após o build, realiza a publicação da imagem do projeto no docker hub
+publish:docker_registry:
+  stage: publish
+  tags:
+    - shell
+    - duss
+  script:
+    - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+    - docker build --pull --rm -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
+  only:
+    - /^v?\d+\.\d+\.\d+(|\-.+)$/
+  dependencies:
+    - build
+
+
+  # Job 3: Executa o deploy da aplicação na AWS
+  deployToAWS:
+    only:
+      - master
+    stage: deploy
+    script:
+      - bash deploy/deploy.sh
