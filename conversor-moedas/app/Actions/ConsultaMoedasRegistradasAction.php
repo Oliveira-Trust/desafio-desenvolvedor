@@ -6,7 +6,6 @@ use App\Models\Coin;
 use App\Models\CoinPrice;
 use App\Services\EconomiaApi;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Facades\Cache;
 
 class ConsultaMoedasRegistradasAction
 {
@@ -18,7 +17,7 @@ class ConsultaMoedasRegistradasAction
         $coinCombinations = $this->makeCoinPricesCombinations();
 
         $economiaApi = new EconomiaApi();
-        $coinPrices = Cache::get('coin_prices', fn () => $economiaApi->last($coinCombinations));
+        $coinPrices = $economiaApi->last($coinCombinations);
 
         $this->upsertCoinPrices($coinPrices);
     }

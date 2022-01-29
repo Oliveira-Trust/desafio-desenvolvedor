@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\ConsultaMoedasRegistradasAction;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('coin_prices', function () {
+    $this->comment('Realizando consulta para coin_prices...');
+    (new ConsultaMoedasRegistradasAction)->consultaMoedas();
+    $this->comment('Consulta finalizada.');
+});
