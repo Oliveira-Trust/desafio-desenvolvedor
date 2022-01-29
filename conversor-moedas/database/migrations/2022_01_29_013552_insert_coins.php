@@ -9,8 +9,7 @@ class InsertCoins extends Migration
         [ 'name' => 'BRL' ],
         [ 'name' => 'USD' ],
         [ 'name' => 'EUR' ],
-        [ 'name' => 'BTC' ],
-        [ 'name' => 'DOGE' ]
+        [ 'name' => 'JPY' ],
     ];
     /**
      * Run the migrations.
