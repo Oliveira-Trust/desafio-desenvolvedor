@@ -14,7 +14,7 @@ class CurrencyTradeChangeCurrencyRateAdd extends Migration
     public function up()
     {
         Schema::table('currency_trades', function (Blueprint $table) {
-            $table->decimal('currency_rate', 8, 5);
+            $table->double('currency_rate', 12, 4);
         });    
     }
 
