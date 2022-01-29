@@ -20,3 +20,6 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::get('/payment-methods', [App\Http\Controllers\PaymentMethodController::class, 'index'])
     ->name('payment-methods');
+
+Route::get('/coins', [App\Http\Controllers\CoinController::class, 'index'])
+    ->name('coins');
