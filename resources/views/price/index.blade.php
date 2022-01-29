@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Team') }}
+            {{ __('Painel de cotações') }}
         </h2>
     </x-slot>
 
@@ -9,22 +9,31 @@
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <x-jet-form-section submit="">
 
-                <x-slot name="title">
-                    {{ __('Últimas cotações') }}
+                <x-slot name="title" class='text-center'>
+                    {{ __('Histórico de cotações') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    <div id="myPrices"></div>
+                    <div id="myPrices" class="col-span-6"></div>
+                    
+                    <div id="legend" class="col-span-6 sm:col-span-4 text-sm" style='display:none'>
+                         
+                        <b>TP</b>: Taxa de pagamento <br />
+                        <b>TC</b>: Taxa de conversão <br />
+                        <b>VC</b>: Valor comprado em "Moeda de destino"
+                    
+                    </div>
+
                 </x-slot>
 
                 <x-slot name="form">
                     <div class="col-span-6">
-                        <x-jet-label value="{{ __('Team Owner') }}" />
+                 
 
                         <div class="flex items-center mt-2">
                             <div class="ml-4 leading-tight">
-                                <div>TESTE</div>
-                                <div class="text-gray-700 text-sm">TESTE</div>
+                                <div>Solicitar cotação</div>
+      
                             </div>
                         </div>
                     </div>
@@ -32,22 +41,26 @@
                     <div class="col-span-6 sm:col-span-4">
                         <form id="myForm" name="myForm">
 
-                            <x-jet-label for="currency_from" value="{{ __('Team currency_from') }}" />
-                            <x-jet-input id="currency_from" type="text" class="mt-1 block w-full"
-                                wire:model.defer="state.currency_from" autofocus value="BRL" />
+                            <x-jet-label for="currency_from" value="{{ __('Moeda de origem') }}" />
+                            <select id="currency_from"  class="mt-1 block w-full" name="currency_from" wire:model.defer="state.currency_from" autofocus>
+                                <option value="BRL" selected> BRL </option>
+                            </select>
 
-                            <x-jet-label for="currency_to" value="{{ __('Team currency_to') }}" />
-                            <x-jet-input id="currency_to" type="text" class="mt-1 block w-full"
-                                wire:model.defer="state.currency_to" autofocus value="USD" />
+                            <x-jet-label for="currency_to" value="{{ __('Moeda de origem') }}" />
+                            <select id="currency_to"  class="mt-1 block w-full" name="currency_to" wire:model.defer="state.currency_to" autofocus>
+                                <option value="USD" selected> USD </option>
+                                <option value="EUR"> EUR </option>
+                            </select>
 
-                            <x-jet-label for="total" value="{{ __('Team total') }}" />
-                            <x-jet-input id="total" type="text" class="mt-1 block w-full" wire:model.defer="state.total"
-                                autofocus value="5000" />
+                            <x-jet-label for="total" value="{{ __('Total') }}" />
+                            <x-jet-input id="total" type="number" step=".01" min="1000" max="100000" class="mt-1 block w-full" wire:model.defer="state.total"
+                                autofocus value="1000" />
 
-                            <x-jet-label for="payment_method" value="{{ __('Team payment_method') }}" />
-                            <x-jet-input id="payment_method" type="text" class="mt-1 block w-full"
-                                wire:model.defer="state.payment_method" autofocus value="ticket" />
-
+                            <x-jet-label for="payment_method" value="{{ __('Forma de pagamento') }}" />
+                            <select id="payment_method"  class="mt-1 block w-full" name="payment_method" wire:model.defer="state.payment_method" autofocus>
+                                <option value="ticket" > Boleto </option>
+                                <option value="card" > Cartão </option>
+                            </select>
 
                             <x-jet-input-error for="name" class="mt-2" />
                     </div>
@@ -55,11 +68,30 @@
 
                 <x-slot name="actions">
                     <x-jet-button type="button" id="btn-save">
-                        {{ __('Salvar') }}
+                        {{ __('Solicitar') }}
                     </x-jet-button>
                 </x-slot>
 
             </x-jet-form-section>
         </div>
     </div>
+
+    <div class="modal fade" id="formModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="formModalLabel">Cotação</h4>
+                </div>
+                <div class="modal-body" id=todo-list>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btn-close"> Fechar
+                    </button>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
 </x-app-layout>

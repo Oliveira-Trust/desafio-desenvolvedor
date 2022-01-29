@@ -15,16 +15,16 @@ class CreatePricesTable extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('currency_from');
+            $table->string('currency_from')->default('BRL');
             $table->string('currency_to');
-            $table->string('total');
-            $table->string('payment_method');
+            $table->decimal('total', 19, 8)->default(0);
+            $table->enum('payment_method', ['ticket', 'card']);
             $table->string('weight_from')->nullable();
             $table->string('weight_to')->nullable();
-            $table->string('payment_rate')->nullable();
-            $table->string('conversion_rate')->nullable();
-            $table->string('buy_to_rate')->nullable();
-            $table->string('total_rate')->nullable();
+            $table->decimal('payment_rate', 19, 8)->default(0);
+            $table->decimal('conversion_rate', 19, 8)->default(0);
+            $table->decimal('buy_to_rate', 19, 8)->default(0);
+            $table->decimal('total_rate', 19, 8)->default(0);
             $table->timestamps();
         });
     }

@@ -3,27 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PriceController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('weblcome');
+    return view('welcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get("/price", [PriceController::class, 'index']);
+Route::get("/prices", [PriceController::class, 'index'])->name('prices');
 
-Route::get("/price/getall", [PriceController::class, 'getAll']);
+Route::get("/prices/getall", [PriceController::class, 'getAll']);
 
-Route::post("/price", [PriceController::class, 'create']);
+Route::post("/prices", [PriceController::class, 'create']);
+
+Route::get("/settings", [PriceController::class, 'index'])->name('settings');

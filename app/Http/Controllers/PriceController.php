@@ -16,9 +16,9 @@ class PriceController extends Controller
 
     public function getAll()
     {
-        $price = Price::limit(5)->orderBy('created_at', 'DESC')->get();
-
-        return $price;
+        $prices = Price::limit(5)->orderBy('created_at', 'DESC')->get();
+        
+        return $prices;
     }
 
 
@@ -33,15 +33,16 @@ class PriceController extends Controller
         $price['payment_method'] = $request->post("payment_method");
 
         //Valor da "Moeda de destino" usado para conversão:
-        //BRL-USD
         $get = Http::get("https://economia.awesomeapi.com.br/json/last/{$price['currency_from']}-{$price['currency_to']}");
         
         if($get->status() != 200){
-            return 'erro na api';
+            return Response::json($get);
         }
 
+        $conversion = $price['currency_from'].$price['currency_to'];
+
         $price['weight_from'] = 1;
-        $price['weight_to']   = (float) $get->json()['BRLUSD']['bid'] ?? 0;
+        $price['weight_to']   = (float) $get->json()[$conversion]['bid'] ?? 0;
         // $price['weight_to']   = $price['weight_from'] / $price['weight_to'];
 
         //Taxa de pagamento
@@ -55,14 +56,6 @@ class PriceController extends Controller
         
         //Valor utilizado para conversão descontando as taxas
         $price['total_rate'] = $price['total'] - ($price['payment_rate'] + $price['conversion_rate']);
-
-
-        // $data = $request->validate([
-        //     'currency_from' => 'required|max:3',
-        //     'currency_to' => 'required|max:3',
-        //     'total' => 'required|between:2000,5000',
-        //     'payment_method' => 'required'
-        // ]);
 
         $data = Price::create($price);
         
