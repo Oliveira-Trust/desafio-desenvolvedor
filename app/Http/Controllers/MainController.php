@@ -65,8 +65,12 @@ class MainController extends Controller
             'Valor em moeda estrangeira a ser comprado' => number_format($data["amount"], 2, ".", ","),
         ];
        
-        \Mail::to(auth()->user()->email)->send(new \App\Mail\CurrencyTradeEmail($fields));
-        $message_email = 'Cotação enviada para o email '.auth()->user()->email;
+        try {
+            \Mail::to(auth()->user()->email)->send(new \App\Mail\CurrencyTradeEmail($fields));
+            $message_email = 'Cotação enviada para o email '.auth()->user()->email;
+        } catch(\Exception $e) {
+            $message_email = 'Problemas ao enviar cotação para o email '.auth()->user()->email;
+        }
 
         if (count(\Mail::failures()) > 0) {
             $message_email = 'Problemas ao enviar cotação para o email '.auth()->user()->email;
