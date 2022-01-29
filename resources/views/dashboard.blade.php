@@ -27,7 +27,7 @@
                             <label for="value_for_conversion_BRL">Valor para conversão em BRL</label>
                             <input  id="amount_brl" 
                                     class="block mt-1 w-full" 
-                                    type="number" min="0.00" max="10000.00" step="0.01" 
+                                    type="number" min="0.00" max="100000.00" step="0.01" 
                                     name="amount_brl" :value="old('value_for_conversion_BRL')" 
                                     required autofocus />
                         </div>
