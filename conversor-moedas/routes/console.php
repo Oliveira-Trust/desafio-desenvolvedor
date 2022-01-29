@@ -21,6 +21,6 @@ Artisan::command('inspire', function () {
 
 Artisan::command('coin_prices', function () {
     $this->comment('Realizando consulta para coin_prices...');
-    (new ConsultaMoedasRegistradasAction)->consultaMoedas();
+    (new ConsultaMoedasRegistradasAction)->execute();
     $this->comment('Consulta finalizada.');
 });

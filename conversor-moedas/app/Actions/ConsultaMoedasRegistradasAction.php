@@ -11,7 +11,7 @@ class ConsultaMoedasRegistradasAction
 {
     private EloquentCollection $coins;
 
-    public function consultaMoedas(): void
+    public function execute(): void
     {
         $this->coins = Coin::all();
         $coinCombinations = $this->makeCoinPricesCombinations();

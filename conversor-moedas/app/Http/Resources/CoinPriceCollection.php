@@ -3,8 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Str;
 
-class CoinCollection extends ResourceCollection
+class CoinPriceCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,11 +15,6 @@ class CoinCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        $response = collect([
-            'data' => $this->collection,
-            'cacheable' => true
-        ]);
-
-        return $response;
+        return $this->collection;
     }
 }

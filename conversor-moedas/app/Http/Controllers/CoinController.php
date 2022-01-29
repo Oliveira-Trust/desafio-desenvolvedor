@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CoinCollection;
-use App\Models\Coin;
-use Illuminate\Support\Facades\Cache;
+use App\Actions\CoinListAction;
+use Illuminate\Http\Request;
 
 class CoinController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Cache::get('coins', fn () => new CoinCollection(Coin::all()));
+        return (new CoinListAction())->execute($request->get('with', ''));
     }
 }
