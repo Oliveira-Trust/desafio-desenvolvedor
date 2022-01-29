@@ -16,17 +16,20 @@ class CreateCoinPricesTable extends Migration
     {
         Schema::create('coin_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('coin_base_id')
-                ->constrained('users')
-                ->references('id')->on('users')
-                ->cascadeOnDelete();
-            $table->foreignId('coin_convert_id')
-                ->constrained('users')
-                ->references('id')->on('users')
-                ->cascadeOnDelete();
-            $table->float('value');
-            $table->date('reference');
             $table->timestamps();
+
+            $table->foreignIdFor(Coin::class, 'coin_base_id')
+                ->constrained('coins')
+                ->cascadeOnDelete();
+            $table->foreignIdFor(Coin::class, 'coin_convert_id')
+                ->constrained('coins')
+                ->cascadeOnDelete();
+
+            $table->string('name');
+            $table->float('value');
+            $table->date('reference')->index();
+
+            $table->unique(['coin_base_id', 'coin_convert_id', 'reference']);
         });
     }
 

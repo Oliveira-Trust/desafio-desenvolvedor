@@ -15,9 +15,10 @@ class CreateCoinsTable extends Migration
     {
         Schema::create('coins', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 4)->nullable(false);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->string('name', 4);
         });
     }
 
