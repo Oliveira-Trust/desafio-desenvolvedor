@@ -34,7 +34,7 @@ class CoinConvertionRequest extends FormRequest
 
         return [
             'currency' => 'required|in:' . $config->active_currency,
-            'convertion_value' => 'required|numeric|between:' . $config->min_value_convertion . ',' . $config->max_value_convertion,
+            'convertion_value' => 'required|numeric|gt:' . $config->min_value_convertion . '|lt:' . $config->max_value_convertion,
             'payment_method' => 'required|in:' . $configuredPaymentMethods,
         ];
     }
@@ -59,9 +59,11 @@ class CoinConvertionRequest extends FormRequest
             'currency.in' => trans('coin_convertion.currency.in'),
             'payment_method.in' => trans('coin_convertion.payment_method.in'),
 
-            // Between's
-            'convertion_value.between' => trans('coin_convertion.convertion_value.between'),
+            // Lt's
+            'convertion_value.lt' => trans('coin_convertion.convertion_value.lt'),
 
+            // Gt's
+            'convertion_value.gt' => trans('coin_convertion.convertion_value.gt'),
         ];
     }
 

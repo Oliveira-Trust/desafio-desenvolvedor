@@ -10,7 +10,10 @@ return [
     'currency.in' => 'Você selecionou uma "Moeda" inválida',
     'payment_method.in' => 'Você selecionou uma "Forma de Pagamento" inválida',
 
-    // Between
-    'convertion_value.between' => 'O "Valor de Compra" precisa estar entre :min e :max',
+    // Lt
+    'convertion_value.lt' => 'O "Valor de Compra" precisa ser menor que :value',
+
+    // Gt
+    'convertion_value.gt' => 'O "Valor de Compra" precisa ser maior que :value',
 
 ];
