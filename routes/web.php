@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\AweSomeApi;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +19,5 @@ Route::get("/prices/getall", [PriceController::class, 'getAll']);
 Route::post("/prices", [PriceController::class, 'create']);
 
 Route::get("/settings", [PriceController::class, 'index'])->name('settings');
+
+Route::get("/awesomeapi/conversion-currency/{from}/{to}", [AweSomeApi::class, 'conversionCurrency']);

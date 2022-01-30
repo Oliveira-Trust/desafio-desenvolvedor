@@ -29,18 +29,25 @@ jQuery(document).ready(function($){
             dataType: 'json',
             success: function (data) {
                 getAllPrices();
-                var price = `
+
+                var price = '';
+
+                $(data).each(function(index, element) {
+
+                    price += `<h2> ID: ${element.id} ${element.currency_from}/${element.currency_to}</h2>`
                 
-                Moeda de origem: ${data.currency_from} <br />
-                Moeda de destino: ${data.currency_to} <br />
-                Valor para conversão: ${data.total} <br />
-                Forma de pagamento: ${data.payment_method} <br />
-                Valor da "Moeda de destino" usado para conversão: ${data.weight_to} <br />
-                Valor comprado em "Moeda de destino": ${data.buy_to_rate} (taxas aplicadas no valor de compra diminuindo no valor total de conversão) <br />
-                Taxa de pagamento: ${data.payment_rate} <br />
-                Taxa de conversão: ${data.conversion_rate} <br />
-                Valor utilizado para conversão descontando as taxas: ${data.total_rate} <br />
-                `;
+                    price += `
+                        Moeda de origem: ${element.currency_from} <br />
+                        Moeda de destino: ${element.currency_to} <br />
+                        Valor para conversão: ${element.total} <br />
+                        Forma de pagamento: ${element.payment_method} <br />
+                        Valor da "Moeda de destino" usado para conversão: ${element.weight_to} <br />
+                        Valor comprado em "Moeda de destino": ${element.buy_to_rate} (taxas aplicadas no valor de compra diminuindo no valor total de conversão) <br />
+                        Taxa de pagamento: ${element.payment_rate} <br />
+                        Taxa de conversão: ${element.conversion_rate} <br />
+                        Valor utilizado para conversão descontando as taxas: ${element.total_rate} <br />
+                    `;
+                });
 
                 jQuery('#todo-list').html(price);
                 jQuery('#formModal').modal('show')
@@ -72,7 +79,7 @@ jQuery(document).ready(function($){
             },
             success: function (data) {
 
-                var html = ''
+                var html = '';
 
                 if(data.length == 0){
                     html = '<div> Nehuma cotação disponível no momento, aproveite para fazer a primeira :)'

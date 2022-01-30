@@ -47,7 +47,7 @@
                             </select>
 
                             <x-jet-label for="currency_to" value="{{ __('Moeda de origem') }}" />
-                            <select id="currency_to"  class="mt-1 block w-full" name="currency_to" wire:model.defer="state.currency_to" autofocus>
+                            <select id="currency_to"  class="mt-1 block w-full" name="currency_to" wire:model.defer="state.currency_to" autofocus multiple>
                                 <option value="USD" selected> USD </option>
                                 <option value="EUR"> EUR </option>
                             </select>
@@ -80,7 +80,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="formModalLabel">Cotação</h4>
+                    <h4 class="modal-title" id="formModalLabel">Cotações</h4>
                 </div>
                 <div class="modal-body" id=todo-list>
                 </div>
