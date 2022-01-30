@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Conversion extends Model
 {
@@ -18,5 +19,10 @@ class Conversion extends Model
     public function coinPrice(): BelongsTo
     {
         return $this->belongsTo(CoinPrice::class);
+    }
+
+    public function exchange(): HasOne
+    {
+        return $this->hasOne(Exchange::class);
     }
 }
