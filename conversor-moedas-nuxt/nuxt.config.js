@@ -58,14 +58,26 @@ export default {
     },
     auth: {
         strategies: {
-            local: {
-                user: {
-                    property: 'user',
-                    autoFetch: true
+            cookie: {
+                cookie: {
+                  // (optional) If set, we check this cookie existence for loggedIn check
+                  name: 'XSRF-TOKEN',
                 },
                 endpoints: {
-                    login: { url: 'auth/login', method: 'post' },
-                    logout: { url: 'auth/logout', method: 'post' },
+                  // (optional) If set, we send a get request to this endpoint before login
+                  csrf: {
+                    url: 'sanctum/csrf-cookie'
+                  }
+                }
+            },
+            laravelSanctum: {
+                provider: 'laravel/sanctum',
+                url: 'http://localhost'
+            },
+            local: {
+                endpoints: {
+                    login: { url: 'login', method: 'post' },
+                    logout: { url: 'logout', method: 'post' },
                     user: { url: 'api/user', method: 'get' }
                 }
             }
