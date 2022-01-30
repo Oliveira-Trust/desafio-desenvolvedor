@@ -18,6 +18,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.layout { @apply w-full min-h-screen; }
-.layout main { @apply mx-10 mt-5; }
+.layout { @apply w-full min-h-screen bg-gray-50; }
+.layout main { @apply sm:mx-10 mt-5; }
 </style>

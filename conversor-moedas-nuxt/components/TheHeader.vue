@@ -13,5 +13,5 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-header { @apply w-full h-24 border-b px-10 py-5; }
+header { @apply w-full h-24 border-b px-10 py-5 border-gray-400; }
 </style>
