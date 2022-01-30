@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Config;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,6 +15,7 @@ class CreateConfigsTable extends Migration
     public function up()
     {
         Schema::create('configs', function (Blueprint $table) {
+
             $table->id();
 
             /**
@@ -78,10 +80,25 @@ class CreateConfigsTable extends Migration
             /**
              * Minimum value to accept a coin convertion
              */
-            $table->float('min_value_convertion')->default(3000);
+            $table->float('min_value_convertion')->default(1000);
+
+            /**
+             * Maximum value to accept a coin convertion
+             */
+            $table->float('max_value_convertion')->default(100000);
+
+            /**
+             * Api convertion URI
+             */
+            $table->string('api_uri', 255)->default('https://economia.awesomeapi.com.br/last/');
 
             $table->timestamps();
+
+            $table->softDeletes();
+
         });
+
+        Config::create([]);
     }
 
     /**
