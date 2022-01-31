@@ -30,26 +30,31 @@ class SettingController extends Controller
         //
         $data["user_id"] = \Auth::user()->id;
 
-        //Registra moeda padrão
-        $data["code"] = "price";
-        $data["key"] = 'currency_from';
-        $data["value"] = $request->post("currency_from");
-        Setting::updateOrCreate(["user_id" => $data["user_id"], "code" => "price", "key" => "currency_from"], $data);
+        try {
+            //Registra moeda padrão
+            $data["code"] = "price";
+            $data["key"] = 'currency_from';
+            $data["value"] = $request->post("currency_from");
+            Setting::updateOrCreate(["user_id" => $data["user_id"], "code" => "price", "key" => "currency_from"], $data);
 
-         //Registra taxa para boleto
-         $data["code"] = "price";
-         $data["key"] = 'ticket';
-         $data["value"] = $request->post("ticket");
-         Setting::updateOrCreate(["user_id" => $data["user_id"], "code" => "price", "key" => "ticket"], $data);
+            //Registra taxa para boleto
+            $data["code"] = "price";
+            $data["key"] = 'ticket';
+            $data["value"] = $request->post("ticket");
+            Setting::updateOrCreate(["user_id" => $data["user_id"], "code" => "price", "key" => "ticket"], $data);
 
-        //Registra taxa para cartão
-        $data["code"] = "price";
-        $data["key"] = "card";
-        $data["value"] = $request->post("card");
-        Setting::updateOrCreate(["user_id" => $data["user_id"], "code" => "price", "key" => "card"], $data);
+            //Registra taxa para cartão
+            $data["code"] = "price";
+            $data["key"] = "card";
+            $data["value"] = $request->post("card");
+            Setting::updateOrCreate(["user_id" => $data["user_id"], "code" => "price", "key" => "card"], $data);
+
+        } catch (\Throwable $e) {
+    
+            return $e;
+        }
 
         return Response::json(true);
-
     }
 
     /**
@@ -59,9 +64,22 @@ class SettingController extends Controller
      */
     public function getAll()
     {
-        $settings = Setting::where("user_id",1)->where("code", "price")->get();
+        $user_id = \Auth::user()->id;
 
-        return Response::json($settings);
+        $settings = Setting::where("user_id", $user_id)->where("code", "price")->get();
+
+        //valor padrão
+        $data = [
+            'currency_from' => "BRL",
+            'ticket' => 1.45,
+            'card' => 7.63
+        ];
+
+        //preenche com valores capturados do bd
+        foreach ($settings as $setting) {
+            $data[$setting->key] = $setting->value;
+        }
+
+        return $data;
     }
-
 }

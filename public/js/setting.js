@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+jQuery(document).ready(function ($) {
 
     // CREATE OR UPDATE
     $("#btn-save-setting").click(function (e) {
@@ -21,16 +21,15 @@ jQuery(document).ready(function($){
             data: formData,
             dataType: 'json',
             success: function (data) {
-               console.log(data)
+                jQuery('#feedback').html('Configurações salvas com sucesso!');
             },
-            error: function (data) {     
-                console.log(data)
+            error: function (data) {
+                jQuery('#feedback').html('Houve algum erro ao salvar suas configurações!');
             }
         });
     });
 
-    function getAllSettings()
-    {
+    function getAllSettings() {
         var type = "GET";
         var ajaxurl = 'settings/getall';
 
@@ -39,13 +38,11 @@ jQuery(document).ready(function($){
             url: ajaxurl,
             dataType: 'json',
             success: function (data) {
-                $(data).each(function(index, element) {
-                    jQuery(`#${element.key}`).val(`${element.value}`)
 
-                    if(element.key == "currency_from"){
-                        $(`#currency_from option[value=${element.value}]`).attr('selected', true);
-                    }
-                });
+                $(`#currency_from option[value=${data.currency_from}]`).attr('selected', true);
+                jQuery("#ticket").val(`${data.ticket}`);
+                jQuery("#card").val(`${data.card}`);
+
             },
             error: function (data) {
                 console.log(data);

@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
             total: jQuery('#total').val(),
             payment_method: jQuery('#payment_method').val(),
         };
-        var state = jQuery('#btn-save').val();
+
         var type = "POST";
         var ajaxurl = 'prices';
         $.ajax({
@@ -49,14 +49,17 @@ jQuery(document).ready(function($){
                     `;
                 });
 
+                if(price.length ==0 ){
+                    price += "<h2> Critério de aceitação </h2>";
+                    price += "Deve ser possível escolher uma moeda estrangeira entre pelo menos 2 opções sendo o seu valor de compra maior que R$ 1.000 e menor que R$ 100.000,00 e sua forma de pagamento em boleto ou cartão de crédito tendo como resultado o valor que será adquirido na moeda de destino e as taxas aplicadas";
+                }
+
                 jQuery('#todo-list').html(price);
                 jQuery('#formModal').modal('show')
             },
             error: function (data) {     
                 var error = `Código do erro ${data.status} <br />
-                            Mensagem: ${data.statusText} <br />
-                            
-                            Nosso time ja esta sabendo disso, tente novamente mais tarde =]`;
+                            Mensagem: ${data.statusText} <br />`;
 
                 jQuery('#todo-list').html(error);
                 jQuery('#formModal').modal('show')

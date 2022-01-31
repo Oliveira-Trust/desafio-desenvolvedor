@@ -62,7 +62,9 @@
                                 <option value="card" > Cartão </option>
                             </select>
 
-                            <x-jet-input-error for="name" class="mt-2" />
+                            <x-jet-input-error for="name" class="mt-2"/>
+
+                            <div id="feedback"></div>
                     </div>
                 </x-slot>
 

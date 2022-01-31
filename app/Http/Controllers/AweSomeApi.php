@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Http;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class AweSomeApi extends Controller
 {
@@ -21,20 +20,18 @@ class AweSomeApi extends Controller
 
         $resources = [];
 
-        foreach($currency_to as $to){
-            array_push($resources, $currency_from."-".$to);
+        foreach ($currency_to as $to) {
+            array_push($resources, $currency_from . "-" . $to);
         }
 
         $resources = implode(",", $resources);
 
         $get = Http::get("{$this->url}/last/{$resources}");
 
-        if($get->status() == 200)
-        {
+        if ($get->status() == 200) {
             return $get->json();
         }
-            
+
         return [];
     }
-
 }

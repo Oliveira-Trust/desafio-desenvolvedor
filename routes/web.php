@@ -8,29 +8,31 @@ use App\Http\Controllers\AweSomeApi;
 //Routes General
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('register');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-//Routes Prices
+    //Routes Prices
 
-Route::get("/prices", [PriceController::class, 'index'])->name('prices');
+    Route::get("/prices", [PriceController::class, 'index'])->name('prices');
 
-Route::get("/prices/getall", [PriceController::class, 'getAll']);
+    Route::get("/prices/getall", [PriceController::class, 'getAll']);
 
-Route::post("/prices", [PriceController::class, 'create']);
+    Route::post("/prices", [PriceController::class, 'create']);
 
-//Routes Settings
+    //Routes Settings
 
-Route::get("/settings", [SettingController::class, 'index'])->name("settings");
+    Route::get("/settings", [SettingController::class, 'index'])->name("settings");
 
-Route::post("/settings", [SettingController::class, 'store']);
+    Route::post("/settings", [SettingController::class, 'store']);
 
-Route::get("/settings/getall", [SettingController::class, 'getAll']);
+    Route::get("/settings/getall", [SettingController::class, 'getAll']);
 
-//Routes AweSomeApi
+    //Routes AweSomeApi
 
-Route::get("/awesomeapi/conversion-currency/{from}/{to}", [AweSomeApi::class, 'conversionCurrency']);
+    Route::get("/awesomeapi/conversion-currency/{from}/{to}", [AweSomeApi::class, 'conversionCurrency']);
+
+    Route::get("/awesomeapi/get-avaliable-uniq", [AweSomeApi::class, 'getAvaliableUniq']);
+
+});
