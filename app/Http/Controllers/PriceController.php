@@ -66,6 +66,11 @@ class PriceController extends Controller
 
         unset($price);
 
+        //Remover comentário para testar rotina de envio de e-mail
+        // if(count($prices) > 0){
+        //     \Mail::to( \Auth::user()->email)->send(new \App\Mail\PriceMail($prices));
+        // }
+
         return Response::json($prices);
     }
 
