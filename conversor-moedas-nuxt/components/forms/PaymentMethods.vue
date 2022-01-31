@@ -36,6 +36,7 @@ import CoinPrice from '~/types/CoinPrice';
 import ButtonVue from '~/components/Button.vue';
 
 import PaymentMethod from '~/types/PaymentMethod';
+import Conversion from '~/types/Conversion';
 
 export default Vue.extend({
     components: { ButtonVue },
@@ -85,13 +86,20 @@ export default Vue.extend({
                 payment_method_id: this.paymentMethodId,
                 value: this.valorBase
             }
+
             this.$axios.$post('/laravel/api/conversions', data)
-                .then(response => {}) // TODO - Adicionar listagem.
+                .then(response => {
+                    let conversoes: Array<Conversion> = this.$store.state.conversions.conversoes;
+                    conversoes = [response].concat(conversoes);
+                    this.$store.commit('conversions/setConversoes', conversoes);
+                })
                 .catch(err => {
                     if (err.response.status === 422) {
                         this.errors = err.response.data.errors
                     }
-                })
+                });
+
+
         }
 
     }

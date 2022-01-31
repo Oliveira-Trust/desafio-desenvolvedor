@@ -16,4 +16,6 @@ export default class CoinPrice implements CoinPriceContract
         this.name = name;
         this.value = value;
     }
+
+    get value_locale(): String { return this.value.toLocaleString(); }
 }

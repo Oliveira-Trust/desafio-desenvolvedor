@@ -8,7 +8,7 @@
             <div class="mt-10">
                 <conversor />
 
-                <div class="mt-10">
+                <div class="mt-10" v-if="loggedIn">
                     <card>
                         <div class="card-title-md">
                             <span>Realizar troca de moeda</span>
@@ -28,10 +28,19 @@
                         </div>
                     </card>
                 </div>
+
+                <div class="mt-10" v-if="loggedIn">
+                    <div class="text-center">
+                        <h2 class="text-2xl">Transações realizadas</h2>
+                    </div>
+
+                    <div class="mt-5 w-full">
+                        <conversions-list />
+                    </div>
+                </div>
             </div>
         </div>
-
-    </Card>
+    </card>
 </template>
 
 <script lang="ts">
@@ -39,17 +48,23 @@ import Vue from 'vue'
 import Card from '~/components/Card.vue'
 import Conversor from '~/components/Conversor.vue'
 import PaymentMethods from '~/components/forms/PaymentMethods.vue'
-import ButtonVue from '~/components/Button.vue'
+import ConversionsList from '~/components/lists/ConversionsList.vue'
 
 export default Vue.extend({
     name: "IndexPage",
-    components: { Card, Conversor, PaymentMethods, ButtonVue },
+    components: { Card, Conversor, PaymentMethods, ConversionsList },
     computed: {
         getNomeMoeda(): String {
             return this.$store.state.exchange.moedaConversao
         },
         getValor(): Number {
             return this.$store.state.exchange.valorConvertido
+        },
+        loggedIn(): Boolean {
+            return this.$auth.loggedIn;
+        },
+        hasTransacoes(): Boolean {
+            return Boolean(this.$store.state.conversions.conversoes.legnth);
         }
     },
     mounted(): void {

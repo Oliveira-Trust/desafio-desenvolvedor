@@ -7,6 +7,10 @@ export default interface Exchange
     conversion_id: Number;
     user_id: Number;
     payment_method_id: Number;
+
+    payment_price: Number;
+    conversion_price: Number;
+    conversior_tax: Number;
     price: Number;
     value: Number;
 
