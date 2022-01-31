@@ -19,7 +19,7 @@ class CreatePaymentMethodsTable extends Migration
             $table->softDeletes();
 
             $table->string('name')->nullable(false);
-            $table->float('tax', 3, 2)->default(0);
+            $table->float('tax', 5)->default(0);
         });
     }
 
