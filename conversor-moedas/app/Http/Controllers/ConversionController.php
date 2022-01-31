@@ -11,12 +11,19 @@ class ConversionController extends Controller
 {
     public function index(Request $request)
     {
-        $conversions = Conversion::with('exchange')
+        $conversions = Conversion::with([
+            'exchange',
+            'coinPrice',
+            'coinPrice.coinBase',
+            'coinPrice.coinConvert'
+        ])
             ->whereHas('exchange.user', function (Builder $query) use (&$request) {
                 $query->whereId($request->user()->id);
-            });
+            })
+            ->latest()
+            ->get();
 
-        return $conversions->first();
+        return response($conversions);
     }
 
     public function store(StoreConversionRequest $request)
