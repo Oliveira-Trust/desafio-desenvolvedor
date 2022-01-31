@@ -14,7 +14,8 @@ class Exchange extends Model
         'conversion_id',
         'user_id',
         'payment_method_id',
-        'value'
+        'value',
+        'price'
     ];
 
     public function conversion(): BelongsTo
@@ -30,5 +31,21 @@ class Exchange extends Model
     public function paymentMethod(): BelongsTo
     {
         return $this->belongsTo(PaymentMethod::class);
+    }
+
+    public function calculatePriceForSaving(): void
+    {
+        $paymentMethod = PaymentMethod::find($this->payment_method_id);
+        $conversion = Conversion::with('coinPrice')->find($this->conversion_id);
+
+        $baseValue = $conversion->value;
+        $transactionTax = ($baseValue < 3000) ? config('prices.tax.menor_3k') : config('prices.tax.maior_3k');
+
+        $paymentMethodPrice = $baseValue * ($paymentMethod->tax / 100);
+        $transactionPrice = $baseValue * ($transactionTax / 100);
+
+        $this->value = $baseValue * $conversion->coinPrice->value;
+        $this->price = ($baseValue + $paymentMethodPrice + $transactionPrice);
+
     }
 }

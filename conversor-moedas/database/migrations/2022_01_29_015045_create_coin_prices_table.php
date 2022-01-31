@@ -26,7 +26,7 @@ class CreateCoinPricesTable extends Migration
                 ->cascadeOnDelete();
 
             $table->string('name');
-            $table->float('value');
+            $table->float('value', 10);
             $table->date('reference')->index();
 
             $table->unique(['coin_base_id', 'coin_convert_id', 'reference']);

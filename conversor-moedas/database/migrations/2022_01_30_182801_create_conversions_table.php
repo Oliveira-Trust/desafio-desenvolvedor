@@ -21,7 +21,7 @@ class CreateConversionsTable extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->float('value', 6);
+            $table->float('value');
         });
     }
 

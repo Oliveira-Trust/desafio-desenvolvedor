@@ -23,3 +23,11 @@ Route::get('/payment-methods', [App\Http\Controllers\PaymentMethodController::cl
 
 Route::get('/coins', [App\Http\Controllers\CoinController::class, 'index'])
     ->name('coins');
+
+Route::group([
+    'prefix' => '/conversions',
+    'middlewares' => ['auth:sanctum']
+], function () {
+    Route::get('/', [App\Http\Controllers\ConversionController::class, 'index']);
+    Route::post('/', [App\Http\Controllers\ConversionController::class, 'store']);
+});
