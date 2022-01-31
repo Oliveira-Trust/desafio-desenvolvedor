@@ -1,29 +1,29 @@
 ## Desafio Oliveira trust 
-- **Informações sobre o projeto** na pasta *infos-projeto*, na pasta raiz da aplicação.
+- **Informações sobre o projeto e doumentação de requisitos estão na pasta infos-projeto**.
 
-### Instalação (pasta raiz da aplicação)
-#### Execute os comandos:<br />
- - **composer update** - para instalar o Laravél.<br />
- - **php artisan system:install** - para instalar e configurar os bancos de dados e limpar a configuração.<br />
+### Instalação
+#### Execute os comandos:
+ - **composer update** - para instalar o Laravél.
+ - **php artisan system:install** - para instalar e configurar os bancos de dados e limpar a configuração.
 
-### Desinstação (pasta raiz da aplicação)
+### Desinstação
 #### Execute os comando:
--**php artisan system:uninstall** - remove todas as tabelas do banco de dados.<br />
+-**php artisan system:uninstall** - remove todas as tabelas do banco de dados.
 
 ### Acesso ao Sistema
-Os acessos ao sistema já estão consfigurados por login/senha de cada ambiente.<br />
-Caso haja alguma falha, atualize a página, pois o sistema de usuários usa sessão.<br />
+Os acessos ao sistema já estão consfigurados por login/senha de cada ambiente.
+Caso haja alguma falha, atualize a página, pois o sistema de usuários usa sessão.
 
 ### Bancos de dados
-Os bancos de dados são em **.sqlite** e estão dentro da pasta *database*.<br />
+Os bancos de dados são em **sqlite** e estão dentro da pasta *database*.
 
 ### Disparo de e-mails
-Os e-mails, na configuração atual, são disparados para o **log**.<br />
-Essa configuração está em **.env** e os testes foram feitos usando o **mailtrap.io**.<br />
-Caso queira configurar um e-mail real para envio: <br />
-a) execute a desinstação; <br />
-b) insira um e-mail de usuário real no arquivo **database/seeds/PopulateCustomersTable.php**;<br />
-c) execute a instação novamente e acesse como cliente e a senha *secret*.<br /><br /><br />
+Os e-mails, na configuração atual, são disparados para o *log*.
+Essa configuração está em **.env** e os testes foram feitos usando o **mailtrap.io**.
+Caso queira configurar um e-mail real para envio: 
+a) execute a desinstação; 
+b) insira um e-mail de usuário real no arquivo **database/seeds/PopulateCustomersTable.php**;
+c) execute a instação novamente e acesse como cliente e a senha *secret*.
 
 
 ### A Oliveira Trust:
