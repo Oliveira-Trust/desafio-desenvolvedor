@@ -6,6 +6,15 @@
             <form @submit.prevent="login" method="post" action="/login">
                 <div class="mt-5 space-y-5">
                     <div class="group-input">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" v-model="form.name" name="name" required />
+
+                        <div v-if="errors.name" class="text-red-500 bg-red-200 mt-2 p-2 border border-red-500 rounded">
+                            <span v-for="(message, index) in errors.name" :key="index">{{ message }}</span>
+                        </div>
+                    </div>
+
+                    <div class="group-input">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" v-model="form.email" name="email" required />
 
@@ -13,8 +22,9 @@
                             <span v-for="(message, index) in errors.email" :key="index">{{ message }}</span>
                         </div>
                     </div>
+
                     <div class="group-input">
-                        <label for="password">Password</label>
+                        <label for="password">Senha</label>
                         <input type="password" id="password" v-model="form.password" name="password" required />
 
                         <div v-if="errors.password" class="text-red-500 bg-red-200 mt-2 p-2 border border-red-500 rounded">
@@ -22,12 +32,20 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end mt-5">
-                        <span>Ainda não tem conta? <NuxtLink to="/register" class="text-blue-500 hover:text-blue-600">Registre-se</NuxtLink></span>
-                    </div>
+                    <div class="group-input">
+                        <label for="password_confirmation">Confirmar senha</label>
+                        <input type="password" id="password_confirmation" v-model="form.password_confirmation" name="password_confirmation" required />
 
+                        <div v-if="errors.password_confirmation" class="text-red-500 bg-red-200 mt-2 p-2 border border-red-500 rounded">
+                            <span v-for="(message, index) in errors.password_confirmation" :key="index">{{ message }}</span>
+                        </div>
+
+                        <div v-if="form.password !== form.password_confirmation" class="text-red-500 bg-red-200 mt-2 p-2 border border-red-500 rounded">
+                            <span>The password must be the same!</span>
+                        </div>
+                    </div>
                     <div class="flex items-center justify-end mt-5">
-                        <Button class="mt-5" type="submit" :disabled="!loginBusy">Login</Button>
+                        <Button class="mt-5" type="submit" :disabled="!registerBusy">Registrar-se</Button>
                     </div>
                 </div>
             </form>
@@ -48,19 +66,20 @@ export default Vue.extend({
     data() {
         return {
             form: {
+                name: '',
                 email: '',
                 password: '',
-                remember: true
+                password_confirmation: ''
             },
             errors: {}
         };
     },
     methods: {
         async login() {
-            await this.$auth.loginWith('laravelSanctum', { data: this.form })
-            this.$router.push({ name: 'index' });
+            await this.$axios.$post('/laravel/register', this.form)
+                .then(res => this.$auth.loginWith('laravelSanctum', { data: this.form }))
         },
-        loginBusy(): Boolean {
+        registerBusy(): Boolean {
             return this.$auth.busy
         }
     }
