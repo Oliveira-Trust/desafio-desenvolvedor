@@ -37,7 +37,8 @@ export default Vue.extend({
     components: { Button },
     computed: {
         userName(): String {
-            return this.$auth?.user?.name
+            let user = this.$auth.user
+            return (user) ? user.name : ''
         },
         loggedIn(): Boolean {
             return this.$auth.loggedIn
