@@ -1,22 +1,7 @@
-import Coin from "~/interfaces/Coin";
+import Coin from "~/types/Coin";
+import ExchangeState from "~/types/ExchangeState";
 
-export interface ExchangeState {
-    valorBase: Number,
-    valorConversao: Number,
-    valorConvertido: Number,
-    moedaBase: String,
-    moedaConversao?: String,
-    moedas: Array<Coin>
-}
-
-export const state = () => ({
-    valorBase: 0,
-    valorConversao: 0,
-    valorConvertido: 0,
-    moedaBase: 'BRL',
-    moedaConversao: '',
-    moedas: [],
-});
+export const state = () => new ExchangeState();
 
 export const mutations = {
     setValorBase(state: ExchangeState, valorBase: Number): void {
@@ -31,7 +16,7 @@ export const mutations = {
     setMoedaBase(state: ExchangeState, moedaBase: String): void {
         state.moedaBase = moedaBase;
     },
-    setMoedaConversao(state: ExchangeState, moedaConversao?: String): void {
+    setMoedaConversao(state: ExchangeState, moedaConversao: String): void {
         state.moedaConversao = moedaConversao;
     },
     setMoedas(state: ExchangeState, moedas: Array<Coin>): void {
