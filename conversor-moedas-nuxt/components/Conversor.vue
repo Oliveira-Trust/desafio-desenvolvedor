@@ -2,7 +2,7 @@
     <form-group>
         <input-group class="group-inputs">
             <label for="moeda-base">Moeda base</label>
-            <input-select id="moeda-base" :value="exchangeState.moedaBase" @change="setLocalMoedaBase">
+            <input-select id="moeda-base" :value="exchangeState.moedaBase" @change="setLocalMoedaBase" :canBeEmpty="!Boolean(moedasBase)">
                 <option v-for="coin in moedasBase" :key="coin.id" :value="coin.name">{{ coin.name }}</option>
             </input-select>
 
@@ -29,9 +29,9 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import Coin from '~/interfaces/Coin'
-import CoinPrice from '~/interfaces/CoinPrice'
-import ExchangeState from '~/store/exchange'
+import Coin from '~/types/Coin'
+import CoinPrice from '~/types/CoinPrice'
+import ExchangeState from '~/types/ExchangeState'
 
 import InputSelect from './forms/inputs/InputSelect.vue'
 import FormGroup from './forms/sections/FormGroup.vue'
@@ -48,38 +48,57 @@ export default Vue.extend({
             return this.exchangeState.moedas;
         },
         moedasConversao(): Array<Coin> {
+            if (!Boolean(this.moedasBase)) return [];
             return this.moedasBase.filter((coin: Coin) => coin.name !== this.exchangeState.moedaBase);
         },
     },
     data() {
+        let moedaBase: Coin = new Coin(),
+            moedaConversao: Coin = new Coin(),
+            valorBase: Number = 0;
+
         return {
-            moedaBase: {},
-            moedaConversao: {},
-            valorBase: 0,
+            moedaBase,
+            moedaConversao,
+            valorBase
         }
     },
     mounted() {
         this.moedaBase = this.getMoedaByName(this.exchangeState.moedaBase)
-        this.moedaConversao = this.exchangeState.moedaConversao
+        this.moedaConversao = this.getMoedaByName(this.exchangeState.moedaConversao)
         this.valorBase = this.exchangeState.valorBase
     },
     methods: {
         // -- Gets --
         getMoedaByName(name: String): Coin {
-            return this.moedasBase.filter((moeda: Coin) => moeda.name === name)[0]
+            let moedas:Array<Coin> = this.moedasBase.filter((moeda: Coin) => moeda.name === name)
+            if (!Boolean(moedas.length)) return new Coin()
+
+            return moedas[0]
         },
         getMoedaConversao(): Coin {
-            let moedas = this.moedasConversao
-                .filter((coin: Coin) => coin.name === this.moedaConversao);
+            let moedas: Array<Coin> = this.moedasConversao
+                .filter((coin: Coin) => {coin.name === this.moedaConversao.name});
             return moedas[0];
         },
         getMoedaValorConversao(): Number {
-             let moedaPrecos = this.moedaBase.coin_prices
-                .filter((moedaPreco: CoinPrice) => moedaPreco.coin_convert.name === this.moedaConversao);
+            if (this.moedaBase.coin_prices === undefined) return 0;
 
-            if (!moedaPrecos.length) return 0;
+            let moedaPrecos: Array<CoinPrice> = this.moedaBase.coin_prices;
+            moedaPrecos = moedaPrecos
+                .filter((moedaPreco: CoinPrice): Boolean => {
+                    if (moedaPreco.coin_convert === undefined) return false;
+                    let coinConvert = moedaPreco.coin_convert
 
-            return Number(moedaPrecos[0].value);
+                    if (coinConvert.name === undefined) return false;
+                    if (coinConvert.name === undefined) return false;
+                    return (coinConvert.name === this.moedaConversao.name)
+                });
+
+            if (!Boolean(moedaPrecos.length)) return 0;
+
+            let precoMoeda: CoinPrice = moedaPrecos[0];
+            return Number(precoMoeda.value);
         },
         // -- Sets --
         setLocalMoedaBase(moeda: String): void {
@@ -92,7 +111,7 @@ export default Vue.extend({
         },
         setLocalMoedaConversao(moeda?: String): void {
             moeda = moeda ? moeda : ''
-            this.moedaConversao = moeda
+            this.moedaConversao = this.getMoedaByName(moeda)
             this.setMoedaConversao(moeda)
             this.setValorConversao()
         },
@@ -103,10 +122,10 @@ export default Vue.extend({
             this.$store.commit('exchange/setValorBase', valor)
             this.setValorConversao()
         },
-        async setValorConversao(): Promise<void> {
+        setValorConversao(): void {
             let valor: Number = this.getMoedaValorConversao()
-            await this.$store.commit('exchange/setValorConversao', valor)
-            this.setValorConvertido((valor * this.valorBase))
+            this.$store.commit('exchange/setValorConversao', valor)
+            this.setValorConvertido((Number(valor) * Number(this.valorBase)))
         },
         setValorConvertido(valor: Number): void {
             this.$store.commit('exchange/setValorConvertido', valor)
