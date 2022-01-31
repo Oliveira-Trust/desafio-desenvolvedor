@@ -2,8 +2,8 @@
 
 return [
     // Required
-    'currency.required' => 'O campo "Moeda" é obrigatório',
-    'convertion_value.required' => 'O campo "Valor de Compra" é obrigatório',
+    'currency.required' => 'O campo "Moeda a Comprar" é obrigatório',
+    'convertion_value.required' => 'O campo "Valor a ser Convertido" é obrigatório',
     'payment_method.required' => 'O campo "Forma de Pagamento" é obrigatório',
 
     // In
@@ -25,8 +25,8 @@ return [
     'success.array.currency_destin' => 'Moeda de destino: ',
     'success.array.conversion_value' => 'Valor para conversão: R$ ',
     'success.array.payment_method' => 'Forma de pagamento: ',
-    'success.array.current_quote_destin' => 'Valor da "Moeda de destino" usado para conversão: R$ ',
-    'success.array.purchased_total' => 'Valor comprado em "Moeda de destino": R$ ',
+    'success.array.current_quote_destin' => 'Valor da "Moeda de destino" usado para conversão: $ ',
+    'success.array.purchased_total' => 'Valor comprado em "Moeda de destino": $ ',
     'success.array.payment_fee' => 'Taxa de pagamento: R$ ',
     'success.array.convertion_fee' => 'Taxa de conversão: R$ ',
     'success.array.used_value_currency_conversion' => 'Valor utilizado para conversão descontando as taxas: R$ ',

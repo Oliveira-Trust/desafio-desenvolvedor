@@ -24,7 +24,7 @@ Route::group([
 ], function() {
 
     Route::controller(CoinConvertionControllerApi::class)->group( function () {
-        Route::get('/coin-convert', 'convertCoin');
+        Route::post('/coin-convert', 'convertCoin')->name('api.coin-convert');
     });
 
 });
