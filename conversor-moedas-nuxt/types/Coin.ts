@@ -5,7 +5,7 @@ export default class Coin implements CoinContract
 {
     id: Number;
     name: String;
-    coin_prices?: Array<Coin>;
+    coin_prices?: Array<CoinPrice>;
     coin_convert?: CoinPrice;
 
     constructor(id: Number = 0, name: String = '') {
