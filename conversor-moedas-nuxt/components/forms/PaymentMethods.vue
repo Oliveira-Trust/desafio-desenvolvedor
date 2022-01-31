@@ -8,7 +8,7 @@
                     :value="metodoPagamento" v-model="paymentMethod">
                 <label :for="`metodoPagamento-${metodoPagamento.name}`" class="ml-2">
                     <span>{{ metodoPagamento.name }}</span>
-                    <em class="ml-1 text-xs">{{ `(Taxa: ${metodoPagamento.tax}%)` }}</em>
+                    <em class="ml-1 text-xs">{{ `(Taxa: ${metodoPagamento.tax.toLocaleString()}%)` }}</em>
                 </label>
             </div>
         </div>
