@@ -16,6 +16,7 @@ class Exchange extends Model
         'payment_method_id',
         'payment_price',
         'conversion_price',
+        'conversion_tax',
         'price',
         'value'
     ];
@@ -41,10 +42,12 @@ class Exchange extends Model
         $conversion = Conversion::with('coinPrice')->find($this->conversion_id);
 
         $baseValue = $conversion->value;
-        $transactionTax = ($baseValue < 3000) ? config('prices.tax.menor_3k') : config('prices.tax.maior_3k');
+
+        $this->conversion_tax = ($baseValue < 3000) ? config('prices.tax.menor_3k') : config('prices.tax.maior_3k');
 
         $this->payment_price = $baseValue * ($paymentMethod->tax / 100);
-        $this->conversion_price = $baseValue * ($transactionTax / 100);
+        $this->conversion_price = $baseValue * ($this->conversion_tax / 100);
+
         $this->price = ($baseValue + $this->payment_price + $this->conversion_price);
         $this->value = $baseValue * $conversion->coinPrice->value;
 

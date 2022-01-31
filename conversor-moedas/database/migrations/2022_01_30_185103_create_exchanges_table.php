@@ -31,6 +31,7 @@ class CreateExchangesTable extends Migration
 
             $table->float('payment_price');
             $table->float('conversion_price');
+            $table->float('conversion_tax', 5);
             $table->float('price');
             $table->float('value', 10);
         });

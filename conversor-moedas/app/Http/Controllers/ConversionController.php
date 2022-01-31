@@ -14,6 +14,7 @@ class ConversionController extends Controller
     {
         $conversions = Conversion::with([
             'exchange',
+            'exchange.paymentMethod',
             'coinPrice',
             'coinPrice.coinBase',
             'coinPrice.coinConvert'
@@ -30,10 +31,10 @@ class ConversionController extends Controller
     public function store(StoreConversionRequest $request)
     {
         $id = $request->store()->id;
-        // return response($id);
 
         $conversion = Conversion::with([
             'exchange',
+            'exchange.paymentMethod',
             'coinPrice',
             'coinPrice.coinBase',
             'coinPrice.coinConvert'
