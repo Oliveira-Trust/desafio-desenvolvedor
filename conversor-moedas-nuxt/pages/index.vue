@@ -37,10 +37,14 @@ import Conversor from '~/components/Conversor.vue'
 export default Vue.extend({
     name: "IndexPage",
     components: { Card, Conversor },
-    async asyncData({ $axios, store }) {
-        if (!store.state.exchange.moedas.length) {
-            $axios.$get('api/coins', { params: { with: 'prices,conversions' }})
-            .then(data => store.commit('exchange/setMoedas', data.data));
+    mounted(): void {
+        this.setMoedas()
+    },
+    methods: {
+        setMoedas(): void {
+            this.$axios.$get('/laravel/api/coins', { params: { with: 'prices,conversions' }})
+                .then(data => this.$store.commit('exchange/setMoedas', data.data))
+                .catch(err => window.console.warn('A rota de configuração para proxy em nuxt.config.ts está errada.'));
         }
     }
 })
