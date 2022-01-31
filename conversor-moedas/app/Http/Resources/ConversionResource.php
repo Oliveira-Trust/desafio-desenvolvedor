@@ -18,7 +18,7 @@ class ConversionResource extends JsonResource
         $response = [
             'id' => $this->id,
             'coin_price_id' => $this->id,
-            'value' => $this->id,
+            'value' => $this->value,
         ];
 
 
