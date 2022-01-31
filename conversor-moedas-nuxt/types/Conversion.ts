@@ -17,6 +17,4 @@ export default class Conversion implements ConversionContract
         this.coin_price_id = 0;
         this.value = 0;
     }
-
-    get value_locale(): String { return this.value.toLocaleString(); }
 }

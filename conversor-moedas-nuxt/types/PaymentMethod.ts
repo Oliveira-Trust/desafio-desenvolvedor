@@ -12,6 +12,4 @@ export default class PaymentMethod implements PaymentMethodContract
         this.name = name;
         this.tax = tax;
     }
-
-    get tax_locale(): String { return this.tax.toLocaleString() }
 }

@@ -40,10 +40,4 @@ export default class Exchange implements ExchangeContract
         this.price = price;
         this.value = value;
     }
-
-    get payment_price_locale(): String { return this.payment_price.toLocaleString(); }
-    get conversion_price_locale(): String { return this.conversion_price.toLocaleString(); }
-    get conversior_tax_locale(): String { return this.conversior_tax.toLocaleString(); }
-    get price_locale(): String { return this.price.toLocaleString(); }
-    get value_locale(): String { return this.value.toLocaleString(); }
 }
