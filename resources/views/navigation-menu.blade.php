@@ -19,7 +19,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('settings') }}" :active="request()->routeIs('settings')">
-                        {{ __('Configurar taxas') }}
+                        {{ __('Configurações') }}
                     </x-jet-nav-link>
                 </div>
 
