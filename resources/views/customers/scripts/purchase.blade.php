@@ -4,8 +4,8 @@
     const calculate = async () => {
         const url = '{{ route('customer.exchanges.calculate-purchase') }}';
         const data = await getDataForm('#exchange_puchase')
-        const minValue = {{$purchaseInterval->min}};
-        const maxValue = {{$purchaseInterval->max}};
+        const minValue = {{$purchaseInterval->min ?? '1001'}}  ;
+        const maxValue = {{$purchaseInterval->max ?? '100001'}} ;
         const isValidAmount = (data['calc[purchase_value]'] > minValue && data['calc[purchase_value]'] < maxValue);
 
         if (isValidAmount) {
@@ -21,7 +21,7 @@
                     $('#info-exchange').show();
                 })
                 .fail(function () {
-                    alert("Não foi possível carregar as cidades do processamento!");
+                    alert("Falha na consulta!");
                 })
                 .always(function () {
                     // alert("complete");

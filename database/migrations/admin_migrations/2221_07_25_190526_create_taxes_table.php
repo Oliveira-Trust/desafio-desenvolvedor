@@ -22,8 +22,8 @@ class CreateTaxesTable extends Migration
             $table->uuid('id')->default(\DB::raw("'uuid_generate_v4()'"));
             $table->primary('id');
             $table->uuid('setup_id');
-            $table->string('name');
-            $table->decimal('value', 4)->nullable();
+            $table->string('name')->default('default');
+            $table->decimal('value', 4)->default(0.0000);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,3 +1,30 @@
+## Desafio Oliveira trust 
+- Informações sobre o projeto e doumentação de requisitos estão na pasta *infos-projeto*.
+
+### Instalação
+#### Execute os comandos:
+ - *composer update* - para instalar o Laravél.
+ - *php artisan system:install* - para instalar e configurar os bancos de dados e limpar a configuração.
+
+### Desinstação
+#### Execute os comando:
+-*php artisan system:uninstall* - remove todas as tabelas do banco de dados.
+
+### Acesso ao Sistema
+Os acessos ao sistema já estão consfigurados por login/senha de cada ambiente.
+Caso haja alguma falha, atualize a página, pois o sistema de usuários usa sessão.
+
+### Bancos de dados
+Os bancos de dados são em *sqlite* e estão dentro da pasta *database*.
+
+### Disparo de e-mails
+Os e-mails, na configuração atual, são disparados para o *log*.
+Essa configuração está em *.env* e os testes foram feitos usando o mailtrap.io.
+Caso queira configurar um e-mail real para envio: 
+a) execute a desinstação; 
+b) insira um e-mail de usuário eral no arquivo *database/seeds/PopulateCustomersTable.php*;
+c) execute a instação novamente e acesse como cliente e a senha *secret*
+
 ### A Oliveira Trust:
 A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
 

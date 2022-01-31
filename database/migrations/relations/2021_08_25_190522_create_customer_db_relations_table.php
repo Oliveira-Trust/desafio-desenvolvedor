@@ -34,13 +34,5 @@ class CreateCustomerDBRelationsTable extends Migration
     public function down()
     {
 
-        Schema::connection($this->connection)->table('customer_exchanges', function (Blueprint $table) {
-            $table->dropForeign(['customer_id']);
-        });
-
-        Schema::connection($this->connection)->table('users', function (Blueprint $table) {
-            $table->dropForeign(['customer_id']);
-        });
-
     }
 }

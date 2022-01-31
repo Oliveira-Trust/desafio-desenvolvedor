@@ -22,8 +22,8 @@ class CreateIntervalsTable extends Migration
             $table->uuid('id')->default(\DB::raw("'uuid_generate_v4()'"));
             $table->primary('id');
             $table->uuid('tax_id');
-            $table->decimal('min', 4)->nullable();
-            $table->decimal('max', 4)->nullable();
+            $table->decimal('min', 4)->default(0.0000);
+            $table->decimal('max', 4)->default(0.0000);
             $table->timestamps();
             $table->softDeletes();
         });

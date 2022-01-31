@@ -34,13 +34,6 @@ class CreateAdminDBRelationsTable extends Migration
     public function down()
     {
 
-        Schema::connection($this->connection)->table('taxes', function (Blueprint $table) {
-            $table->dropForeign(['setup_id']);
-        });
-
-        Schema::connection($this->connection)->table('tax_intervals', function (Blueprint $table) {
-            $table->dropForeign(['tax_id']);
-        });
 
     }
 }

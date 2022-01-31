@@ -54,7 +54,8 @@
 
                                 <div class="col-md-5">
                                     <input id="password" type="password"
-                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : 'secret' }}"
+                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                           value="secret"
                                            name="password" required>
 
                                     @if ($errors->has('password'))
