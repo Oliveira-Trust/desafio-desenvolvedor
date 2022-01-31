@@ -76,6 +76,7 @@ export default Vue.extend({
     },
     methods: {
         async login() {
+            await this.$axios.$get('/laravel/sanctum/csrf-cookie')
             await this.$axios.$post('/laravel/register', this.form)
                 .then(res => this.$auth.loginWith('laravelSanctum', { data: this.form }))
         },
