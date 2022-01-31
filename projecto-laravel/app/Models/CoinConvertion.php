@@ -12,16 +12,21 @@ class CoinConvertion extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'origin_coin',
-        'destin_coin',
-        'current_quote_origin',
+        'currency_origin',
+        'currency_destin',
         'conversion_value',
-        'form_payment',
+        'payment_method',
+        'current_quote_destin',
+        'purchased_total',
+        'payment_fee',
+        'convertion_fee',
+        'used_value_currency_conversion',
         'config_id',
+        'status',
     ];
 
     public function config()
     {
-        return $this->hasOne(Config::class);
+        return $this->hasOne(Config::class, 'id', 'config_id');
     }
 }
