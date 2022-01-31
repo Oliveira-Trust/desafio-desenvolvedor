@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <h1 class="h2 col-12">Restrições de acesso</h1>
+        </div>
+    </div>
+    <div class="card-body">
+        <form name="">
+            <div class="row">
+                <div class="form-group">
+                    <label for="sync_processings_active">Limite de conexões simultâneas</label>
+                    <input type="number" id="sync_processings_active" name="user_constraint[sync_processings_active]"
+                           placeholder="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="month_limit">Limite mensal de consultas</label>
+                    <input type="number" id="month_limit" name="user_constraint[month_limit]" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="day_limit">Limite diário de consultas</label>
+                    <input type="number" id="day_limit" name="user_constraint[day_limit]" placeholder=""
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="hour_limit">Limite de consultas por hora</label>
+                    <input type="number" id="hour_limit" name="user_constraint[hour_limit]" placeholder=""
+                           class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <button type="button">Salvar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

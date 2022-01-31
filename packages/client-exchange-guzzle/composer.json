@@ -1,0 +1,31 @@
+{
+    "name": "mario/client-exchange-guzzle",
+    "description": "Pacote de consulta às cotações",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ExchangeRate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Meireles de Aquino",
+            "email": "mario.aquino.dev@gmail.com"
+        }
+    ]
+}
