@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ConversionResource extends JsonResource
 {
@@ -16,15 +16,20 @@ class ConversionResource extends JsonResource
     public function toArray($request)
     {
         $response = [
-            'id' => $this->collection->id,
-            'coin_price_id' => $this->collection->id,
-            'value' => $this->collection->id,
+            'id' => $this->id,
+            'coin_price_id' => $this->id,
+            'value' => $this->id,
         ];
 
 
         collect($this->getRelations())
             ->each(function ($relation, string $relationName) use (&$response) {
-                $response[Str::snake($relationName)] = new CoinPriceCollection($this->$relationName);
+                if ($relationName === 'coinPrice') {
+                    $response[Str::snake($relationName)] = new CoinPriceResource($this->$relationName);
+                    return;
+                }
+
+                $response[Str::snake($relationName)] = $this->$relationName;
             });
 
         return $response;

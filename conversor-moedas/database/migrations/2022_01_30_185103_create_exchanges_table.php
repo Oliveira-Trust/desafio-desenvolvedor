@@ -29,6 +29,8 @@ class CreateExchangesTable extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
+            $table->float('payment_price');
+            $table->float('conversion_price');
             $table->float('price');
             $table->float('value', 10);
         });

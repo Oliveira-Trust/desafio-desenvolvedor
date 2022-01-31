@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Conversion\StoreConversionRequest;
+use App\Http\Resources\ConversionResource;
 use App\Models\Conversion;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -28,6 +29,16 @@ class ConversionController extends Controller
 
     public function store(StoreConversionRequest $request)
     {
-        return response($request->store(), 201);
+        $id = $request->store()->id;
+        // return response($id);
+
+        $conversion = Conversion::with([
+            'exchange',
+            'coinPrice',
+            'coinPrice.coinBase',
+            'coinPrice.coinConvert'
+        ])->find($id);
+
+        return response(new ConversionResource($conversion), 201);
     }
 }

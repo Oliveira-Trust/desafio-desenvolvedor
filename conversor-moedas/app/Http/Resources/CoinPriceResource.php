@@ -19,6 +19,7 @@ class CoinPriceResource extends JsonResource
             'id' => $this->id,
             'coin_base_id' => $this->coin_base_id,
             'coin_convert_id' => $this->coin_convert_id,
+            'name' => $this->name,
             'value' => $this->value,
             'reference' => $this->reference
         ];

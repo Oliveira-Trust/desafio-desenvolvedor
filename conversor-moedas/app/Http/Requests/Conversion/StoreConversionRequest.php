@@ -49,8 +49,7 @@ class StoreConversionRequest extends FormRequest
             'payment_method_id' => $this->get('payment_method_id'),
         ]);
         $exchange->calculatePriceForSaving();
-        $exchange->save();
 
-        return $exchange;
+        return Exchange::create($exchange->toArray());
     }
 }
