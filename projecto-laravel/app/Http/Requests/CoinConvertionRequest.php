@@ -135,4 +135,5 @@ class CoinConvertionRequest extends FormRequest
         return $paymentMethodsConfigured;
 
     }
+
 }
