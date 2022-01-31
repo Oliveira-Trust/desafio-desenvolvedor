@@ -47,13 +47,20 @@ export default {
     },
 
     axios: {
-        baseURL: 'http://localhost/', // Used as fallback if no runtime config is provided
+        withCredentials: true,
         credentials: true,
+        proxy: true,
         headers: {
             common: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
+        }
+    },
+    proxy: {
+        '/laravel': {
+            target: 'http://localhost',
+            pathRewrite: { '^/laravel': '/' }
         }
     },
     auth: {
@@ -76,9 +83,9 @@ export default {
             },
             local: {
                 endpoints: {
-                    login: { url: 'login', method: 'post' },
-                    logout: { url: 'logout', method: 'post' },
-                    user: { url: 'api/user', method: 'get' }
+                    login: { url: '/login', method: 'post' },
+                    logout: { url: '/logout', method: 'post' },
+                    user: { url: '/api/user', method: 'get' }
                 }
             }
         }
