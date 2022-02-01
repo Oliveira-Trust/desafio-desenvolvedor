@@ -2,7 +2,7 @@
 
 namespace App\Core\Console;
 
-use App\Core\Console\Commands\PurchaseMailSubscriber;
+use App\Console\RabbitMQ\Commands\PurchaseMailSubscribe;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        PurchaseMailSubscriber::class,
+        PurchaseMailSubscribe::class,
     ];
 
     /**

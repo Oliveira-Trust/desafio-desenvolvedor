@@ -60,6 +60,12 @@ $app->singleton(
 
 $app->configure('app');
 $app->configure('database');
+$app->configure('rabbitMQ');
+
+$app->configure('mail');
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +101,7 @@ $app->configure('database');
 // $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Core\Providers\EventServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
