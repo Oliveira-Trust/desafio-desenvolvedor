@@ -4,7 +4,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 text-center py-5">
-                <img src="{{url('dist/img/logo-texto.png')}}">
             </div>
         </div>
         <div class="row justify-content-center">
