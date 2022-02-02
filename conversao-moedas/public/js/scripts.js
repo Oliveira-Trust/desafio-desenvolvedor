@@ -1,31 +1,25 @@
-$("#converter").click(function(){
-   console.log('cliquei');
+$("#converter").click(function() {
    $.ajax({
-        url : '/conversao-moeda',
-        type : "POST",
-        dataType : "json",
-        data: {
+         url  : '/conversao-moeda',
+         type : "POST",
+         dataType : "json",
+         data : {
             _token : $("input[name='_token']").val(),
             moedaDestino : $("#moeda-destino").val(),
             valorConversao : $("input[name='valor-conversao']").val(),
             formaPagamento : $("#forma-pagamento").val(),
-        },
-        success:function(data) {
+         },
+         success:function(data) {
            console.log('data', data);
-
-            // let mensagens = '';
-
-            // if(data.message && typeof data.message === 'object') {
-            //     $.each(data.message, function(key,value){
-            //         mensagens += value + "\n";
-            //     });
-            //     alert('Aviso \n ' + mensagens);
-            // }
-            // else {
-            //     alert(data.message);
-            // }
-        }
-    });
+         },
+         error: function(data) {
+            let mensagens = '';
+            $.each(data.responseJSON.errors, function(field,message){
+               mensagens += message[0] + "\n";
+            });
+            alert('Aviso \n ' + mensagens);
+         },
+   });
 });
 
 $(document).ready(function(){
