@@ -1,10 +1,4 @@
 $("#converter").click(function() {
-   
-   // function formatarValorMonetarioAPI(val) {
-   //    let valor     = val.replace('.', '');
-   //    let novoValor = valor.replace(',', '.');
-   //    return novoValor;
-   // }
    $.ajax({
          url  : '/conversao-moeda',
          type : "POST",
