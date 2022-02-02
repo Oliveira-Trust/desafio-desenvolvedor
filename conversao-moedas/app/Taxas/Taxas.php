@@ -7,8 +7,14 @@ class Taxas
     private $formaPagamento;
     private $valorConversao;
     private $listaFormasPagamento = [
-        'B' => 1.45,
-        'C' => 7.63,
+        'B' => [
+            'percentualTaxa' => 1.45,
+            'descricao'      => 'Boleto',
+        ],
+        'C' => [
+            'percentualTaxa' => 7.63,
+            'descricao'      => 'Cartão de Crédito',
+        ],
     ];
 
     public function __construct($formaPagamento, $valorConversao)
