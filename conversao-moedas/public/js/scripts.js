@@ -1,10 +1,10 @@
 $("#converter").click(function() {
    
-   function formatarValorMonetarioAPI(val) {
-      let valor     = val.replace('.', '');
-      let novoValor = valor.replace(',', '.');
-      return novoValor;
-   }
+   // function formatarValorMonetarioAPI(val) {
+   //    let valor     = val.replace('.', '');
+   //    let novoValor = valor.replace(',', '.');
+   //    return novoValor;
+   // }
    $.ajax({
          url  : '/conversao-moeda',
          type : "POST",
@@ -31,3 +31,9 @@ $("#converter").click(function() {
 $(document).ready(function(){
    $('#valor-conversao').mask('000.000.000.000.000,00', {reverse: true});
 });
+
+function formatarValorMonetarioAPI(val) {
+   let valor     = val.replace('.', '');
+   let novoValor = valor.replace(',', '.');
+   return novoValor;
+}
