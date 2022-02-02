@@ -16,4 +16,4 @@ use App\Http\Controllers\ConversorMoedaController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/conversao-moeda', [ConversorMoedaController::class, 'converterMoeda']);
+Route::post('/conversao-moeda', [ConversorMoedaController::class, 'converterMoeda']);

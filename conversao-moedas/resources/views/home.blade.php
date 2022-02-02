@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link href="{{ asset('css/semantic.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
     <title>Conversor de Moedas</title>
 </head>
 
@@ -21,10 +22,11 @@
     </div>
     <div class="ui divider"></div>
     <div class="ui container">
-        <form class="ui form">
+        <form method="POST" class="ui form">
+            @csrf
             <div class="field">
                 <label>Moeda de destino</label>
-                <select class="ui fluid dropdown">
+                <select name="moeda-destino" id="moeda-destino" class="ui fluid dropdown">
                     <option value=""> Selecione </option>
                     @foreach ($moedas as $moeda => $index)
                     <option value="{{ $moeda }}">{{ $index}}</option>
@@ -33,11 +35,11 @@
             </div>
             <div class="field">
                 <label>Valor para Conversão</label>
-                <input type="text" name="last-name" placeholder="Valor">
+                <input type="text" name="valor-conversao" id="valor-conversao" placeholder="Valor">
             </div>
             <div class="field">
                 <label>Forma de Pagamento</label>
-                <select class="ui fluid dropdown">
+                <select name="forma-pagamento" id="forma-pagamento" class="ui fluid dropdown">
                     <option value="">Selecione</option>
                     <option value="B">Boleto</option>
                     <option value="C">Cartão de Crédito</option>
