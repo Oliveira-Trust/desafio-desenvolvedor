@@ -10,10 +10,12 @@
 
 <body>
     <div class="ui grid">
-        <div class="three column wide row">
-            <div class="column wide">Logo</div>
-            <div class="column wide">Conversor de Moedas</div>
-            <div class="column wide">&nbsp;</div>
+        <div class="three column row">
+            <div class="column"><img class="ui small image" src={{ asset('images/oliveira-trust-logo.jfif') }}></div>
+            <div class="column">
+                <h1 class="ui header"> Conversor de Moedas </h1>
+            </div>
+            <div class="column">&nbsp;</div>
 
         </div>
     </div>
