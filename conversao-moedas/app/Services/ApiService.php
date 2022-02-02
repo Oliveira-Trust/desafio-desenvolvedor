@@ -2,14 +2,21 @@
 
 namespace App\Services;
 
+use Exception;
 use Illuminate\Support\Facades\Http;
 
 class ApiService
 {
-    private $endPoint = 'https://economia.awesomeapi.com.br';
+    private static $urlBase = 'https://economia.awesomeapi.com.br/';
 
     public static function getAll()
     {
-        $response = Http::get(self::$endPoint);
+        $endPoint = 'json/all';
+        try {
+            $response = Http::get(self::$urlBase . "{$endPoint}")->json();
+            return $response;
+        } catch (\Exception $error) {
+            throw new Exception("Ocorreu um erro ao retornar os dados {$error->getMessage()}");
+        }
     }
 }

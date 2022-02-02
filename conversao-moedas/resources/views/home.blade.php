@@ -9,26 +9,39 @@
 </head>
 
 <body>
+    <div class="ui grid">
+        <div class="three column wide row">
+            <div class="column wide">Logo</div>
+            <div class="column wide">Conversor de Moedas</div>
+            <div class="column wide">&nbsp;</div>
+
+        </div>
+    </div>
     <div class="ui divider"></div>
     <div class="ui container">
         <form class="ui form">
             <div class="field">
                 <label>Moeda de destino</label>
                 <select class="ui fluid dropdown">
-                    <option value="">State</option>
+                    <option value=""> Selecione </option>
+                    @foreach ($moedas as $moeda => $index)
+                    <option value="{{ $moeda }}">{{ $index}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="field">
                 <label>Valor para Conversão</label>
-                <input type="text" name="last-name" placeholder="Last Name">
+                <input type="text" name="last-name" placeholder="Valor">
             </div>
             <div class="field">
                 <label>Forma de Pagamento</label>
                 <select class="ui fluid dropdown">
-                    <option value="">State</option>
+                    <option value="">Selecione</option>
+                    <option value="B">Boleto</option>
+                    <option value="C">Cartão de Crédito</option>
                 </select>
             </div>
-            <button class="ui button" type="submit">Submit</button>
+            <button class="ui button compact large green" type="button">Converter</button>
         </form>
     </div>
     <div class="ui divider"></div>
