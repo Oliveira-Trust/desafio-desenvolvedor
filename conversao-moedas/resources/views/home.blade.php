@@ -43,10 +43,11 @@
                     <option value="C">Cartão de Crédito</option>
                 </select>
             </div>
-            <button class="ui button compact large green" type="button">Converter</button>
+            <button id="converter" class="ui button compact large green" type="button">Converter</button>
         </form>
     </div>
     <div class="ui divider"></div>
 </body>
 
 </html>
+<script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
