@@ -1,4 +1,10 @@
 $("#converter").click(function() {
+   
+   function formatarValorMonetarioAPI(val) {
+      let valor     = val.replace('.', '');
+      let novoValor = valor.replace(',', '.');
+      return novoValor;
+   }
    $.ajax({
          url  : '/conversao-moeda',
          type : "POST",
@@ -6,7 +12,7 @@ $("#converter").click(function() {
          data : {
             _token : $("input[name='_token']").val(),
             moedaDestino : $("#moeda-destino").val(),
-            valorConversao : $("input[name='valor-conversao']").val(),
+            valorConversao : formatarValorMonetarioAPI($("input[name='valor-conversao']").val()),
             formaPagamento : $("#forma-pagamento").val(),
          },
          success:function(data) {
@@ -25,8 +31,3 @@ $("#converter").click(function() {
 $(document).ready(function(){
    $('#valor-conversao').mask('000.000.000.000.000,00', {reverse: true});
 });
-
-
-
-
-

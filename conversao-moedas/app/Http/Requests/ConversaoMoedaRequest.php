@@ -25,7 +25,7 @@ class ConversaoMoedaRequest extends FormRequest
     {
         return [
             'moedaDestino'    => 'required',
-            'valorConversao'  => 'required',
+            'valorConversao'  => 'required|numeric|between:1000,100000',
             'formaPagamento'  => 'required',
         ];
     }
