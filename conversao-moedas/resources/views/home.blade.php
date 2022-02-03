@@ -49,6 +49,50 @@
         </form>
     </div>
     <div class="ui divider"></div>
+    <div class="ui container" id="dadosConversao" style="display: none;">
+        <div class="ui centered card">
+            <div class="content">
+                <div class="header">Compra/Conversão de Moeda</div>
+            </div>
+            <div class="content">
+                <h4 class="ui sub header">Informações</h4>
+                <div class="ui small feed">
+                    <div class="event">
+                        <div class="content">
+                            <div class="summary">
+                                <span id="moedaOrigem"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="moedaDestino"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="valorConversao"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="formaPagamento"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="valorMoedaDestino"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="valorCompradoMoedaDestino"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="taxaPagamento"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="taxaConversao"></span>
+                            </div>
+                            <div class="summary">
+                                <span id="valorConversaoDescontos"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui divider"></div>
 </body>
 
 </html>

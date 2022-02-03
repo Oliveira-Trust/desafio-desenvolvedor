@@ -20,13 +20,13 @@ class ConversorMoedaController extends Controller
         return  response()->json([
             'moedaOrigem'       => 'BRL',
             'moedaDestino'      => $request->moedaDestino,
-            'valorConversao'    => $request->valorConversao,
+            'valorConversao'    => number_format($request->valorConversao, 2, ',', '.'),
             'formaPagamento'    => $taxas->retornaTaxaFormaPagamento()['descricao'],
-            'valorMoedaDestino' => $valorCompraMoeda,
-            'valorCompradoMoedaDestino' => $valorCompradoMoeda - $totalTaxasConvertidas,
-            'taxaPagamento' => $taxaPagamento,
-            'taxaConversao' => $taxaConversao,
-            'valorConversaoDescontos' => $request->valorConversao - $taxaPagamento - $taxaConversao,
+            'valorMoedaDestino' => number_format($valorCompraMoeda, 2, ',', '.'),
+            'valorCompradoMoedaDestino' => number_format(($valorCompradoMoeda - $totalTaxasConvertidas), 2, ',', '.'),
+            'taxaPagamento' => number_format($taxaPagamento, 2, ',', '.'),
+            'taxaConversao' => number_format($taxaConversao, 2, ',', '.'),
+            'valorConversaoDescontos' => number_format(($request->valorConversao - $taxaPagamento - $taxaConversao), 2, ',', '.'),
         ], 200, [], JSON_NUMERIC_CHECK);
     }
 }
