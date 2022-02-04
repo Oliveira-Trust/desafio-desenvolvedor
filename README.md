@@ -15,5 +15,5 @@
 
 #### O Sistema foi adicionado em um Servidor AWS Online para testes:
 
- - http://ec2-3-141-23-195.us-east-2.compute.amazonaws.com/public/
+ - http://ec2-3-141-23-195.us-east-2.compute.amazonaws.com/
 
