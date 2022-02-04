@@ -1,0 +1,22 @@
+:: Limpar dados do projeto
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+php artisan config:cache
+php artisan view:clear
+php artisan jwt:secret
+
+
+:: comandos migrations
+:: Conversoes
+ ->php artisan make:migration create_conversoes_table --create=conversoes_moedas
+ -> php artisan make:controller Gerencial/ConversoesController --resource --model=Http/Models/ConversoesMoeda
+
+:: forma_pagamento_taxas
+ ->php artisan make:migration create_taxa_forma_pagamento_taxas__table --create=forma_pagamento_taxas
+ -> php artisan make:controller Gerencial/FormaPagamentoTaxasController --resource --model=Http/Models/FormaPagamentoTaxa
+
+:: conversao_taxas
+ ->php artisan make:migration create_taxa_conversao_taxas__table --create=conversao_taxas
+ -> php artisan make:controller Gerencial/ConversaoTaxasController --resource --model=Http/Models/ConversaoTaxa
+

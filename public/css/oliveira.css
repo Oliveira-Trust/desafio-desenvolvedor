@@ -1,0 +1,54 @@
+form .required label:after {
+	color:#F00;
+	content: '*';
+	display:inline;
+}
+/* Implementado para remover background */
+.breadcrumb-gv {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.75rem 1rem;
+	margin-bottom: 1rem;
+	list-style: none;
+	/* background-color: #eaecf4; */
+	border-radius: 0.35rem;
+}
+
+.breadcrumb-gv-item + .breadcrumb-gv-item {
+	padding-left: 0.5rem;
+}
+
+.breadcrumb-gv-item + .breadcrumb-gv-item::before {
+	display: inline-block;
+	padding-right: 0.5rem;
+	color: #858796;
+	content: "/";
+}
+
+.breadcrumb-gv-item + .breadcrumb-gv-item:hover::before {
+	text-decoration: underline;
+}
+
+.breadcrumb-gv-item + .breadcrumb-gv-item:hover::before {
+	text-decoration: none;
+}
+
+.breadcrumb-gv-item.active {
+	color: #858796;
+}
+.invalid-feedback-input-group {
+	/* display: none; */
+	width: 100%;
+	/* margin-top: -10px !important; */
+	margin-top: -1.35rem;
+	font-size: 80%;
+	color: #e74a3b;
+}
+/* Fonte BlackOps */
+@font-face {
+    font-family: BlackOpsOne;
+    src: url(../sb-admin-2-assets/fonts-gv/black-ops-one/BlackOpsOne-Regular.ttf)
+}
+.font-black-ops-one {
+    font-family: BlackOpsOne;
+}

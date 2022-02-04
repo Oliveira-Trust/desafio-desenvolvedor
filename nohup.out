@@ -1,0 +1,66 @@
+Laravel development server started: http://127.0.0.1:8000
+[Sun Apr 26 12:41:59 2020] 127.0.0.1:56560 [200]: /favicon.ico
+Laravel development server started: http://127.0.0.1:8000
+[Sun Apr 26 12:42:11 2020] 127.0.0.1:56576 [200]: /favicon.ico
+Laravel development server started: http://127.0.0.1:8000
+[Sun Apr 26 12:42:30 2020] 127.0.0.1:56624 [200]: /favicon.ico
+[Sun Apr 26 12:42:31 2020] 127.0.0.1:56628 [200]: /favicon.ico
+[Sun Apr 26 12:42:31 2020] 127.0.0.1:56632 [200]: /favicon.ico
+[Sun Apr 26 12:43:47 2020] 127.0.0.1:56648 [200]: /js/app.js
+[Sun Apr 26 12:43:47 2020] 127.0.0.1:56650 [200]: /css/app.css
+[Sun Apr 26 12:43:47 2020] 127.0.0.1:56652 [200]: /favicon.ico
+[Sun Apr 26 12:43:55 2020] 127.0.0.1:56668 [200]: /css/app.css
+[Sun Apr 26 12:43:55 2020] 127.0.0.1:56670 [200]: /js/app.js
+[Sun Apr 26 12:43:55 2020] 127.0.0.1:56672 [200]: /favicon.ico
+[Sun Apr 26 12:43:59 2020] 127.0.0.1:56678 [200]: /favicon.ico
+[Sun Apr 26 12:46:26 2020] 127.0.0.1:56914 [200]: /favicon.ico
+[Sun Apr 26 12:46:26 2020] 127.0.0.1:56920 [200]: /favicon.ico
+[Sun Apr 26 12:46:27 2020] 127.0.0.1:56926 [200]: /favicon.ico
+Laravel development server started: http://127.0.0.1:8000
+Laravel development server started: http://127.0.0.1:8000
+[Sun Apr 26 14:45:06 2020] 127.0.0.1:42244 [200]: /favicon.ico
+[Sun Apr 26 14:45:06 2020] 127.0.0.1:42246 [200]: /favicon.ico
+[Sun Apr 26 14:45:06 2020] 127.0.0.1:42250 [200]: /favicon.ico
+[Sun Apr 26 14:45:08 2020] 127.0.0.1:42254 [200]: /favicon.ico
+[Sun Apr 26 14:45:08 2020] 127.0.0.1:42258 [200]: /favicon.ico
+[Sun Apr 26 14:45:09 2020] 127.0.0.1:42260 [200]: /favicon.ico
+[Sun Apr 26 14:57:31 2020] 127.0.0.1:42342 [200]: /favicon.ico
+[Sun Apr 26 14:57:31 2020] 127.0.0.1:42344 [200]: /favicon.ico
+[Sun Apr 26 14:57:32 2020] 127.0.0.1:42350 [200]: /favicon.ico
+[Sun Apr 26 15:05:34 2020] 127.0.0.1:42634 [200]: /js/app.js
+[Sun Apr 26 15:05:34 2020] 127.0.0.1:42636 [200]: /css/app.css
+[Sun Apr 26 15:05:34 2020] 127.0.0.1:42638 [200]: /favicon.ico
+[Sun Apr 26 15:05:34 2020] 127.0.0.1:42642 [200]: /favicon.ico
+[Sun Apr 26 15:05:35 2020] 127.0.0.1:42652 [200]: /favicon.ico
+[Sun Apr 26 15:05:41 2020] 127.0.0.1:42710 [200]: /js/app.js
+[Sun Apr 26 15:05:41 2020] 127.0.0.1:42712 [200]: /css/app.css
+[Sun Apr 26 15:05:41 2020] 127.0.0.1:42714 [200]: /favicon.ico
+[Sun Apr 26 15:05:41 2020] 127.0.0.1:42718 [200]: /favicon.ico
+[Sun Apr 26 15:05:42 2020] 127.0.0.1:42730 [200]: /favicon.ico
+[Sun Apr 26 19:19:26 2020] 127.0.0.1:51464 [200]: /favicon.ico
+[Sun Apr 26 19:19:27 2020] 127.0.0.1:51466 [200]: /favicon.ico
+[Sun Apr 26 19:19:36 2020] 127.0.0.1:51562 [200]: /favicon.ico
+[Sun Apr 26 19:19:36 2020] 127.0.0.1:51564 [200]: /favicon.ico
+[Sun Apr 26 19:19:37 2020] 127.0.0.1:51574 [200]: /favicon.ico
+[Sun Apr 26 19:20:01 2020] 127.0.0.1:51778 [200]: /favicon.ico
+[Sun Apr 26 19:20:01 2020] 127.0.0.1:51780 [200]: /favicon.ico
+[Sun Apr 26 19:20:02 2020] 127.0.0.1:51790 [200]: /favicon.ico
+[Sun Apr 26 19:20:21 2020] 127.0.0.1:51962 [200]: /favicon.ico
+[Sun Apr 26 19:20:21 2020] 127.0.0.1:51964 [200]: /favicon.ico
+[Sun Apr 26 19:20:22 2020] 127.0.0.1:51974 [200]: /favicon.ico
+[Sun Apr 26 19:20:23 2020] 127.0.0.1:51986 [200]: /favicon.ico
+[Sun Apr 26 19:20:23 2020] 127.0.0.1:51988 [200]: /favicon.ico
+[Sun Apr 26 19:20:24 2020] 127.0.0.1:51998 [200]: /favicon.ico
+[Sun Apr 26 19:20:25 2020] 127.0.0.1:52002 [200]: /js/app.js
+[Sun Apr 26 19:20:25 2020] 127.0.0.1:52012 [200]: /css/app.css
+[Sun Apr 26 19:20:25 2020] 127.0.0.1:52014 [200]: /favicon.ico
+[Sun Apr 26 19:20:25 2020] 127.0.0.1:52016 [200]: /favicon.ico
+[Sun Apr 26 19:20:26 2020] 127.0.0.1:52026 [200]: /favicon.ico
+[Sun Apr 26 19:20:29 2020] 127.0.0.1:52060 [200]: /js/app.js
+[Sun Apr 26 19:20:29 2020] 127.0.0.1:52062 [200]: /css/app.css
+[Sun Apr 26 19:20:29 2020] 127.0.0.1:52064 [200]: /favicon.ico
+[Sun Apr 26 19:20:29 2020] 127.0.0.1:52066 [200]: /favicon.ico
+[Sun Apr 26 19:20:30 2020] 127.0.0.1:52078 [200]: /favicon.ico
+[Sun Apr 26 19:20:32 2020] 127.0.0.1:52102 [200]: /favicon.ico
+[Sun Apr 26 19:20:32 2020] 127.0.0.1:52104 [200]: /favicon.ico
+[Sun Apr 26 19:20:33 2020] 127.0.0.1:52114 [200]: /favicon.ico
