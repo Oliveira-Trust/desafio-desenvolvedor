@@ -1,0 +1,360 @@
+{
+	"id": "841b0287-b264-80a4-8c56-60b7d070741d",
+	"name": "endpoints",
+	"description": "",
+	"order": [
+		"dad5240d-87bb-9399-f49c-fe926abd77d4",
+		"c3cbb2c1-b0c2-ffe7-ebf8-0f97ae6acb57",
+		"bb952684-79db-19fa-59b6-59ed05af6b11",
+		"c645b0d8-6f64-82b1-535e-97ec9f0260b0",
+		"db88f7ac-b960-6570-714f-294929ca4c50",
+		"f3e306a6-08a3-11bc-e726-3b015fc90d66",
+		"10b9b801-8280-2ffe-49ee-27ada2ce909e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1636203312829,
+	"owner": "10499386",
+	"public": false,
+	"requests": [
+		{
+			"id": "10b9b801-8280-2ffe-49ee-27ada2ce909e",
+			"headers": "Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/laravel-8-test/public/api/v1/update",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "full_name",
+					"value": "Naelson",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1636204719521,
+			"name": "update",
+			"description": "",
+			"collectionId": "841b0287-b264-80a4-8c56-60b7d070741d",
+			"responses": []
+		},
+		{
+			"id": "bb952684-79db-19fa-59b6-59ed05af6b11",
+			"headers": "Accept: application/json\nAuthorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/laravel-8-test/public/api/v1/selectAll",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1636204479554,
+			"name": "selecionar todos",
+			"description": "",
+			"collectionId": "841b0287-b264-80a4-8c56-60b7d070741d",
+			"responses": []
+		},
+		{
+			"id": "c3cbb2c1-b0c2-ffe7-ebf8-0f97ae6acb57",
+			"headers": "Accept: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/laravel-8-test/public/api/v1/register",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "naelson",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "naelson.g.saraiva@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "admin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "c_password",
+					"value": "admin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1636204355089,
+			"name": "criar conta de acesso",
+			"description": "",
+			"collectionId": "841b0287-b264-80a4-8c56-60b7d070741d",
+			"responses": []
+		},
+		{
+			"id": "c645b0d8-6f64-82b1-535e-97ec9f0260b0",
+			"headers": "Accept: application/json\nAuthorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/laravel-8-test/public/api/v1/create",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "full_name",
+					"value": "NaelsonBr",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "brithday_age",
+					"value": "1993-10-07",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "weight",
+					"value": "70",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "height",
+					"value": "190",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "career",
+					"value": "programador",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1636204560277,
+			"name": "criar cadastro",
+			"description": "",
+			"collectionId": "841b0287-b264-80a4-8c56-60b7d070741d",
+			"responses": []
+		},
+		{
+			"id": "dad5240d-87bb-9399-f49c-fe926abd77d4",
+			"headers": "Accept: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/laravel-8-test/public/api/v1/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "naelson.g.saraiva@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "admin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1636204359899,
+			"name": "login de autenticar conta de acesso",
+			"description": "login e senha",
+			"collectionId": "841b0287-b264-80a4-8c56-60b7d070741d",
+			"responses": []
+		},
+		{
+			"id": "db88f7ac-b960-6570-714f-294929ca4c50",
+			"headers": "Accept: application/json\nAuthorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/laravel-8-test/public/api/v1/selectBy",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "full_name",
+					"value": "dasdasdsass",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1636112598201,
+			"name": "selecionar unico",
+			"description": "Obter apenas 1 pelo seu nome",
+			"collectionId": "841b0287-b264-80a4-8c56-60b7d070741d",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "75dc5bca-5495-bf26-426f-8a494a748c81"
+		},
+		{
+			"id": "f3e306a6-08a3-11bc-e726-3b015fc90d66",
+			"headers": "Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGNjZTBhNS1lYzZlLTRkZjctYTFjOC02YjEyOTA1OTY5YTYiLCJqdGkiOiJiODNjZTViNjE1YzkwODRkNzE1NzhjMDg4MWRkNTcxMzc5NDE4OTA0NmZlMWYxNDU4MzUyYmU5MmVlZjhkYjY1MjczMzIwYjYxODc3ZDJkZiIsImlhdCI6MTYzNjEwNjQxMy43NDA1MTcsIm5iZiI6MTYzNjEwNjQxMy43NDA1MjMsImV4cCI6MTY2NzY0MjQxMy42OTcyMjIsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.FcJxMg_xLSKtLBA1g6GftAnCvPaNn0Cscc4aOy5BnpRkmQggiSz57eSmGPAZSM8rbaXSzOU66gqbHaH11-ch4YUb7b-i5PpXVTr9mp-Z2gFVZqlNJth6ovYsJhc5wO4wO1y09CzCHENEodEK0RGoW7-MtvxRg1SZ5AtNck7N4ZqXHVE7H7PtUIPL1MCEBMEL_aY-gHSPrGtGnrcwDE5JX9EBfxwF9Oh09iJYCOH3G0jZxF410UP9kq2oy82YZuo9OrmJg1m0nLPh3sQBwRtJ0i7kgnZT1d9zxQn0ynI0cd5ZTIPo0IXkbdx-DxaU9JBASs64plwOnYi104P-eZWiSucj3e-5fd6uvDZosNrVqfVkcCq8M1SFAjy6-YHlz4IpHEAZbvq2FfoMUynnZIsbK4rIPG_x90nA4plCZL9jfX4JY7ihR0O-trLtOgcNufLaPNoboZeFbMWZ3eWoTeyZyAfkOG0dR8Seyxv_KpcvHDCD4LPiLLbC-PfGwOtvAIA7GV_bx99fWGATqlV91rnFeoa0q8V_XM57MnxHErQ48Ub0EQhz1eBXM5Um17A-S0bhxIoVK518xklgnQvWDssPaCu7gxwVRlTNguDxc8XpJYKtLnI4WK8485rgthnuMQj8X0vuhSL745jJkMmAahfXWqZzp9oRw0QXYMC2O836RX8",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/laravel-8-test/public/api/v1/deleteAll",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1636113006663,
+			"name": "deletar todos",
+			"description": "",
+			"collectionId": "841b0287-b264-80a4-8c56-60b7d070741d",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "1630f3c2-96e5-1575-60be-3e37e907a25c"
+		}
+	]
+}
