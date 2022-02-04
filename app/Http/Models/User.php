@@ -86,8 +86,7 @@ class User extends Authenticatable implements JWTSubject
     public function atualizar($dados){
         $usuario = [];
         $usuario = $this->update($dados);
-        // dd($usuario);
-        return $usuario;
+        return $usuario;-
     }
     /**
      * Buscar Por ID
@@ -131,7 +130,6 @@ class User extends Authenticatable implements JWTSubject
                             ['empresa_id','=',  $empresa_id],
                             ['permissao_api','=', $permissao_api]
                         ])->get();
-        // dd($usuario);
         return $usuario;
     }
     /**
@@ -146,7 +144,6 @@ class User extends Authenticatable implements JWTSubject
                         ->where([
                             ['empresa_id','=',  $empresa_id]
                         ])->get();
-        // dd($usuario);
         return $usuario;
     }
 

@@ -77,7 +77,6 @@ class Empresa extends Model
     public function atualizar($dados){
         $empresa = [];
         $empresa = $this->update($dados);
-        // dd($empresa);
         return $empresa;
     }
 }

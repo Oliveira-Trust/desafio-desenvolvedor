@@ -60,7 +60,6 @@ class ConversoesMoeda extends Model{
                         ->where([
                             ['empresa_id','=',  $empresa_id]
                         ])->get();
-        // dd($conversaoMoeda);
         return $conversaoMoeda;
     }
     /**
@@ -75,7 +74,6 @@ class ConversoesMoeda extends Model{
                         ->where([
                             ['id','=',  $id]
                         ])->first();
-        // dd($conversaoMoeda);
         return $conversaoMoeda;
     }
 }

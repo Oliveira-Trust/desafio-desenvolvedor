@@ -118,8 +118,6 @@ class ConversoesController extends Controller{
             //Subtrair taxa de pagamento
             $valor_final_conversao = floatval($request->valor_conversao - ($request->taxa_pagamento + $request->taxa_conversao ) ) ;
             
-            // $valor_comprado_moeda_destino =  (floatval($valor_final_conversao) / floatval($valor_moeda_destino));
-            // dd(\App\Helpers\FormataHelper::formataValor($valor_comprado_moeda_destino,'2', '.','',''));
             //Valor comprado 
             $valor_comprado_moeda_destino = \App\Helpers\FormataHelper::formataValor(ceil(floatval($valor_final_conversao) / floatval($valor_moeda_destino)),'2', '.','');
             
@@ -127,7 +125,6 @@ class ConversoesController extends Controller{
             $request->request->add(['valor_moeda_destino' => floatval($valor_moeda_destino)]);
             $request->request->add(['valor_comprado_moeda_destino' => floatval($valor_comprado_moeda_destino)]);
             $request->request->add(['valor_final_conversao' => $valor_final_conversao]);
-            // dd($request->all());
         }else{
             return redirect()->route($this->entidade.'.index')
                     ->withInput()

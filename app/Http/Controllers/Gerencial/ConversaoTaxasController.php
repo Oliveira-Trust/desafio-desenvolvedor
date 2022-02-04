@@ -25,7 +25,6 @@ class ConversaoTaxasController extends Controller{
         $condicoes[] = ['conversao_taxas.empresa_id', '=', Auth::user()->empresa_id];
         
         $conversaoTaxas = $objConversaoTaxa->listaPaginacao($condicoes);
-        // dd($conversaoTaxas);
         unset($objConversaoTaxa);
         return view($this->modulo.'.'.$this->entidade.'.index',compact('conversaoTaxas'))
                ->with('i', (request()->input('page', 1) - 1) * 4);

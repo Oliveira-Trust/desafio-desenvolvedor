@@ -28,8 +28,6 @@ class CotacaoEmail extends Mailable
      */
     public function build()
     {
-        // return $this->view('view.name');
-        // dd($this->details );
         return $this->subject('Cotação de moedas')
                     ->view('emails.cotacao_email');
     }

@@ -76,7 +76,7 @@ CREATE TABLE `conversoes_moedas` (
   KEY `conversoes_moedas_user_id_foreign` (`user_id`),
   CONSTRAINT `conversoes_moedas_empresa_id_foreign` FOREIGN KEY (`empresa_id`) REFERENCES `empresas` (`id`) ON DELETE CASCADE,
   CONSTRAINT `conversoes_moedas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `conversoes_moedas` (
 
 LOCK TABLES `conversoes_moedas` WRITE;
 /*!40000 ALTER TABLE `conversoes_moedas` DISABLE KEYS */;
-INSERT INTO `conversoes_moedas` VALUES (1,1,1,1000.00,'BRL','USD',5.28,173.05,'C',76.30,10.00,'pedro.phnb@gmail.com','N',913.70,'2022-02-03 23:44:15','2022-02-03 23:44:15'),(2,1,1,10000.00,'BRL','USD',5.28,1.71,'C',763.00,200.00,'leeogvieira@gmail.com','N',9037.00,'2022-02-04 00:46:03','2022-02-04 00:46:03'),(3,1,1,50000.00,'BRL','USD',5.28,9.14,'B',725.00,1000.00,'joao@gmail.com','N',48275.00,'2022-02-04 00:52:16','2022-02-04 00:52:16'),(4,1,1,50000.00,'BRL','USD',5.28,9143.00,'B',725.00,1000.00,'pedro.phnb@gmail.com','N',48275.00,'2022-02-04 01:02:34','2022-02-04 01:02:34'),(5,1,1,50000.00,'BRL','EUR',6.05,7469.00,'C',3815.00,1000.00,'ruga@ruga.com','N',45185.00,'2022-02-04 01:02:55','2022-02-04 01:02:55');
+INSERT INTO `conversoes_moedas` VALUES (1,1,1,50000.00,'BRL','USD',5.28,8558.00,'C',3815.00,1000.00,'pedro.phnb@gmail.com','N',45185.00,'2022-02-04 01:37:24','2022-02-04 01:37:24'),(2,1,1,5000.00,'BRL','EUR',6.05,798.00,'B',72.50,100.00,'joao@gmail.com','N',4827.50,'2022-02-04 01:37:33','2022-02-04 01:37:33');
 /*!40000 ALTER TABLE `conversoes_moedas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -346,4 +346,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-03 22:32:27
+-- Dump completed on 2022-02-03 22:38:00

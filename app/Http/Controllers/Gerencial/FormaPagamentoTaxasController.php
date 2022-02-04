@@ -24,7 +24,6 @@ class FormaPagamentoTaxasController extends Controller{
         $condicoes[] = ['forma_pagamento_taxas.empresa_id', '=', Auth::user()->empresa_id];
         
         $formaPagamentoTaxas = $objFormaPagamentoTaxa->listaPaginacao($condicoes);
-        // dd($formaPagamentoTaxas);
         unset($objFormaPagamentoTaxa);
         return view($this->modulo.'.'.$this->entidade.'.index',compact('formaPagamentoTaxas'))
                ->with('i', (request()->input('page', 1) - 1) * 4);
