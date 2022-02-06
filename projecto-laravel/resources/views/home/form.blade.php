@@ -1,5 +1,3 @@
-@extends('layout.app')
-@section('content')
 <form id="form-coin-conversion" class="container-coin-conversion">
     <div class="row">
         <div class="mb-3 col-md-6">
@@ -34,40 +32,3 @@
     <div class="alert alert-danger error-coin-convert d-none"></div>
     <input type="hidden" id="token" value="{{csrf_token()}}">
 </div>
-@endsection
-
-@push('css')
-    <link rel="stylesheet" href="{{asset('site/css/home.css')}}">
-@endpush
-
-@push('js')
-<script>
-    $('body #form-coin-conversion').submit(() => {
-        $('.error-coin-convert').html('').addClass('d-none')
-        $('.success-coin-convert').html('').addClass('d-none')
-
-        $.post('{{route('api.coin-convert')}}', {
-            _token:             $('#token').val(),
-            payment_method:     $('#payment_method').val(),
-            currency:           $('#currency').val(),
-            convertion_value:   $('#convertion_value').val(),
-        })
-        .done((data) => {
-            console.log(data)
-            $('.success-coin-convert').html('').removeClass('d-none')
-            $.each(data, (i, v) => {
-                $('.success-coin-convert').append(`<span> * ${v} </span>`)
-            })
-        })
-        .fail((data) => {
-            $('.error-coin-convert').html('').removeClass('d-none')
-            $.each(data.responseJSON.errors, (i, v) => {
-                $('.error-coin-convert').append(`<span> * ${v} </span>`)
-            })
-        })
-
-        event.preventDefault()
-        console.log('OK')
-    })
-</script>
-@endpush

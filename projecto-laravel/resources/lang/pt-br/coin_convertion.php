@@ -35,4 +35,5 @@ return [
     'success.array.payment_method.debit-card' => 'Cartão de Débito',
     'success.array.payment_method.ticket' => 'Boleto',
 
+    'error.unauthenticated' => 'Sua sessão expirou. Atualize a página e faça o login novamente',
 ];

@@ -20,11 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group([
-    'middleware' => ['xss-filter', 'auth'],
+    'middleware' => ['xss-filter', 'auth:api'],
 ], function() {
-
     Route::controller(CoinConvertionControllerApi::class)->group( function () {
-        Route::get('/coin-convert', 'convertCoin')->name('api.coin-convert');
+        Route::post('/coin-convert', 'convertCoin')->name('api.coin-convert');
     });
 
 });

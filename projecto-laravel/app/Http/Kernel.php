@@ -66,5 +66,8 @@ class Kernel extends HttpKernel
 
         // filtro xss
         'xss-filter' => \App\Http\Middleware\FilterXSS::class,
+
+        // refresh token api
+        'refresh-token-api' => \App\Http\Middleware\RefreshTokenApi::class,
     ];
 }

@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('css')
 </head>
 <body>
     <div id="app">
@@ -76,15 +77,17 @@
         </nav>
 
         <main class="py-4">
-            @hasSection ('title')
-                <div class="row mt-5">
-                    <h3>
+            <div class="container">
+                @hasSection ('title')
+                    <div class="row mt-5">
                         @yield('title')
-                    </h3>
-                </div>
-            @endif
-            @yield('content')
+                    </div>
+                @endif
+                @yield('content')
+            </div>
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    @stack('js')
 </body>
 </html>

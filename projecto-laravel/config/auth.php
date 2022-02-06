@@ -40,6 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        // Auth API - https://laravel.com/docs/5.8/api-authentication
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +76,7 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
     ],
 
     /*
