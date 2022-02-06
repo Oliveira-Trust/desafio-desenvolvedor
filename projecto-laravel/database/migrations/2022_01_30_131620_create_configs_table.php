@@ -98,7 +98,6 @@ class CreateConfigsTable extends Migration
 
         });
 
-        Config::create([]);
     }
 
     /**

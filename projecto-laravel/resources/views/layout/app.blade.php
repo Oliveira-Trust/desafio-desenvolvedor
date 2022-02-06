@@ -19,10 +19,8 @@
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="alert alert-warning">
-                {{trans('home.info')}}
-            </div>
+        <div class="row mt-5">
+            <h3>{{trans('home.title')}}</h3>
         </div>
         <div class="row">
             @yield('content')

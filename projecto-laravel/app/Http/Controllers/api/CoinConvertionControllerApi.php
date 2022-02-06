@@ -32,17 +32,27 @@ class CoinConvertionControllerApi extends Controller
 
         $coinConvertion = $this->getTotalConvertionService($coinConvertion, $current_quote_origin);
 
+        // Result Set
         return [
 
             trans('coin_convertion.success.array.currency_origin') . $coinConvertion->currency_origin,
+
             trans('coin_convertion.success.array.currency_destin') . $coinConvertion->currency_destin,
+
             trans('coin_convertion.success.array.conversion_value') . number_format($coinConvertion->conversion_value, 2, ',', '.'),
+
             trans('coin_convertion.success.array.payment_method') . trans('coin_convertion.success.array.payment_method.' . strtolower($coinConvertion->payment_method)),
+
             trans('coin_convertion.success.array.current_quote_destin') . number_format($coinConvertion->current_quote_destin, 2, ',', '.'),
+
             trans('coin_convertion.success.array.purchased_total') . number_format($coinConvertion->purchased_total, 2, ',', '.'),
+
             trans('coin_convertion.success.array.payment_fee') . number_format($coinConvertion->payment_fee, 2, ',', '.'),
+
             trans('coin_convertion.success.array.convertion_fee') . number_format($coinConvertion->convertion_fee, 2, ',', '.'),
+
             trans('coin_convertion.success.array.used_value_currency_conversion') . number_format($coinConvertion->used_value_currency_conversion, 2, ',', '.'),
+
         ];
     }
 
