@@ -1,0 +1,36 @@
+[29-Sep-2021 23:25:49 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[29-Sep-2021 23:35:13 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[30-Sep-2021 00:17:36 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[30-Sep-2021 00:25:00 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[30-Sep-2021 00:27:49 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[30-Sep-2021 00:32:17 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[30-Sep-2021 00:43:04 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[30-Sep-2021 00:43:23 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
+[30-Sep-2021 00:44:52 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php:49
+Stack trace:
+#0 {main}
+  thrown in /home2/compet24/encontrogaucho.competitividade-fun.com/encontrogaucho-back/public/index.php on line 49
