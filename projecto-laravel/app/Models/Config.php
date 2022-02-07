@@ -21,6 +21,7 @@ class Config extends Model
         'fee_level_two',
         'fee_limit_level_two',
         'active_currency',
+        'min_value_convertion',
         'max_value_convertion',
     ];
 

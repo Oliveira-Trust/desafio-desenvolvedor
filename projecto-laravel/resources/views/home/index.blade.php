@@ -6,6 +6,11 @@
 @endsection
 
 @section('content')
+
+    @if(auth()->user()->type == 'admin')
+        @include('config.form', ['config'=>$config])
+    @endif
+
     @include('home.form')
     <hr>
     <h4>{{trans('coin_convertion.title-historic')}}</h4>
