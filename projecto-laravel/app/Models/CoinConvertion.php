@@ -22,6 +22,7 @@ class CoinConvertion extends Model
         'convertion_fee',
         'used_value_currency_conversion',
         'config_id',
+        'user_id',
         'status',
     ];
 

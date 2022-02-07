@@ -49,10 +49,15 @@ Valor utilizado para conversão descontando as taxas: R$ 4.877,50 - OK
 
             $table->unsignedBigInteger('config_id');
 
+            // history
+            $table->unsignedBigInteger('user_id');
+
             /**
              * Danger on delete because cascade!!! But this provides integrity
              */
             $table->foreign('config_id')->references('id')->on('configs')->onDelete('cascade');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->enum('status', ['SUCCESS', 'ERROR', 'WAITING'])->default('WAITING');
 

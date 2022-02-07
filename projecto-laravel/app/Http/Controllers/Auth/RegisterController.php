@@ -65,12 +65,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $newToken = Str::random(60);
+
+        session(['token_api' => $newToken]);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'type' => 'client',// system locked for testing only
-            'api_token' => Str::random(60),
+            'api_token' => $newToken,
         ]);
     }
 }

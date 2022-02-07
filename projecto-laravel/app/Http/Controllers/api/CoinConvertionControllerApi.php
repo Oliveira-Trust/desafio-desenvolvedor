@@ -25,7 +25,7 @@ class CoinConvertionControllerApi extends Controller
             'conversion_value'                  => $request->convertion_value,
             'payment_method'                    => $request->payment_method,
             'config_id'                         => $config->id,
-
+            'user_id'                           => auth()->user()->id,
         ]);
 
         $current_quote_origin = $this->getCurrentQuote($coinConvertion);

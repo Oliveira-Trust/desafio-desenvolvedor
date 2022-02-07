@@ -1,6 +1,11 @@
 <?php
 
 return [
+    // Format Date
+    'datetime_format' => 'd/m/Y H\hi',
+
+    'title-historic' => 'Histórico de conversões',
+
     // Required
     'currency.required' => 'O campo "Moeda a Comprar" é obrigatório',
     'convertion_value.required' => 'O campo "Valor a ser Convertido" é obrigatório',
@@ -36,4 +41,15 @@ return [
     'success.array.payment_method.ticket' => 'Boleto',
 
     'error.unauthenticated' => 'Sua sessão expirou. Atualize a página e faça o login novamente',
+
+    'table.head.origin' => 'Moeda de Origem',
+    'table.head.destin' => 'Moeda de Destino',
+    'table.head.payment' => 'Forma Pagto',
+    'table.head.value_to_convert' => 'Valor para Conversão',
+    'table.head.purchased_total' => 'Total Convertido',
+    'table.head.date' => 'Data',
+
+    'table.empty' => 'Lista vazia',
+    'table.error' => 'Ocorreu um erro ao tentar atualizar o histórico',
+
 ];

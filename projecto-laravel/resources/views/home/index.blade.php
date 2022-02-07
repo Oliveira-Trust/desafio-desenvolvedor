@@ -4,8 +4,26 @@
     {{trans('home.title')}}
 </h3>
 @endsection
+
 @section('content')
     @include('home.form')
+    <hr>
+    <h4>{{trans('coin_convertion.title-historic')}}</h4>
+    <table id="table-historic" class="table-xl table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>{{trans('coin_convertion.table.head.origin')}}</th>
+                <th>{{trans('coin_convertion.table.head.destin')}}</th>
+                <th>{{trans('coin_convertion.table.head.payment')}}</th>
+                <th>{{trans('coin_convertion.table.head.value_to_convert')}}</th>
+                <th>{{trans('coin_convertion.table.head.purchased_total')}}</th>
+                <th>{{trans('coin_convertion.table.head.date')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            @include('home.table-historic')
+        </tbody>
+    </table>
 @endsection
 
 @push('css')
@@ -28,16 +46,20 @@
             payment_method:     $('#payment_method').val(),
             currency:           $('#currency').val(),
             convertion_value:   $('#convertion_value').val(),
-        })
-        .done((data) => {
-            console.log(data)
+        }).done((data) => {
+
             $('.success-coin-convert').html('').removeClass('d-none')
             $.each(data, (i, v) => {
                 $('.success-coin-convert').append(`<span> * ${v} </span>`)
             })
 
-        })
-        .fail((data) => {
+            $.get('{{route('refresh-historic')}}').done((data) => {
+                $('#table-historic tbody').html(data)
+            }).fail((data) => {
+                alert('{{trans('coin_convertion.table.error')}}')
+            })
+
+        }).fail((data) => {
 
             $('.error-coin-convert').html('').removeClass('d-none')
 
@@ -50,7 +72,7 @@
         })
 
         event.preventDefault()
-        console.log('OK')
+
     })
 </script>
 @endpush

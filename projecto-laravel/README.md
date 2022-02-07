@@ -28,3 +28,12 @@
 
 # Acessar
 http://LINK_DO_PROJETO_INSTALADO
+
+# Login root:
+> username - root@root
+> password - 123
+
+## O usuário ROOT (root@root - 123) pode alterar as configurações de taxa
+## O histórico de conversões é apresentado abaixo do formulário
+## Há fator de autenticação do usuário
+## Por padrão, novos usuários são clientes
