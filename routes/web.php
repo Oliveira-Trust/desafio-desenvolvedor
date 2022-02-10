@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\ConversionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['as' => 'web.'], function() {
+    Route::get('conversion', [ConversionController::class, 'index'])->name('conversion.index');
 });
