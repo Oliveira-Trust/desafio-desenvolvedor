@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Http;
 
 class CurrencyConversionSevice
 {
-
-    public const PAYMENT_TAX = 72.50;
-    public const CONVERSION_TAX = 50.00;
-
     public function listAllCurrencies()
     {
         $payload = Http::get("https://economia.awesomeapi.com.br/available/uniq");
@@ -29,24 +25,32 @@ class CurrencyConversionSevice
         return [
             "bidOnConversion" => $this->getCurrentBid($payload),
             "convertedAmount" => $this->applyConversion($payload, $amountWithTaxes),
-            "amountWithTaxes" => number_format($amountWithTaxes, 2) . " " . $payload['initial_currency']
+            "amountWithTaxes" => number_format($amountWithTaxes, 2, ",", ".") . " " . $payload['initial_currency']
         ];
     }
 
-    public function getPaymentTax(): string
+    public function getTaxes(array $payload): array
     {
-        return number_format(self::PAYMENT_TAX, 2);
-    }
+        $paymentTax = ((float)$payload['amount_to_convert']) * (7.63 / 100);
+        if ((float)$payload['payment_method'] == 'bank_payment') {
+            $paymentTax = ((float)$payload['amount_to_convert']) * (1.45 / 100);
+        }
 
-    public function getConversionTax(): string
-    {
-        return number_format(self::CONVERSION_TAX, 2);
+        $conversionTax = ((float)($payload['amount_to_convert']) * (2 / 100));
+        if ($payload['amount_to_convert'] > 3000) {
+            $conversionTax = ((float)($payload['amount_to_convert']) * (1 / 100));
+        }
+
+        return [
+            'paymentTax' => number_format($paymentTax, 2, ",", "."),
+            'conversionTax' => number_format($conversionTax, 2, ",", ".")
+        ];
     }
 
     private function applyConversion(array $payload, float $amountWithTaxes): string
     {
         $request = Http::get("https://economia.awesomeapi.com.br/json/" . $payload['initial_currency'] . "-" . $payload['final_currency']);
-        return number_format(($request->json())[0]['bid'] * $amountWithTaxes, 2) . " " . $payload['final_currency'];
+        return number_format(($request->json())[0]['bid'] * $amountWithTaxes, 2, ",", ".") . " " . $payload['final_currency'];
     }
 
     private function getCurrentBid(array $payload)
@@ -56,7 +60,22 @@ class CurrencyConversionSevice
 
     private function applyTaxes(array $payload)
     {
-        return $payload['amount_to_convert'] - self::PAYMENT_TAX - self::CONVERSION_TAX;
+        $amountToConvert = (float)$payload['amount_to_convert'];
+
+        $amountWithTaxes = ($amountToConvert) + (($amountToConvert) * (2 / 100));
+        if ($amountToConvert > 3000) {
+            $amountWithTaxes = ($amountToConvert) + (($amountToConvert) * (1 / 100));
+        }
+
+        $bankPaymentTax = ($amountToConvert) * (1.45 / 100);
+        $creditCardTax = ($amountToConvert) * (7.63 / 100);
+
+        $amountWithTaxes -= $creditCardTax;
+        if ($payload['payment_method'] == 'bank_payment') {
+            $amountWithTaxes -= $bankPaymentTax;
+        }
+
+        return $amountWithTaxes;
     }
 
     private function isCurrencyCombinationValid(array $payload): bool

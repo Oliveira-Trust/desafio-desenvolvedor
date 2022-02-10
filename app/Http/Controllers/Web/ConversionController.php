@@ -4,19 +4,23 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Services\CurrencyConversionSevice;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class ConversionController extends Controller
 {
 
-    public function index(): JsonResponse
+    public function index(): Application|Factory|View
     {
 
         $service = resolve(CurrencyConversionSevice::class);
         $currencies = $service->listAllCurrencies();
 
-        return response()->json([
-            'message' => 'Welcome to the currency conversion'
-        ]);
+        $data = [
+            'currencies' => $currencies
+        ];
+
+        return view("currency_conversion.index")->with($data);
     }
 }

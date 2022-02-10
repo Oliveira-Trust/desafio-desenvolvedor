@@ -36,12 +36,12 @@ class ConversionController extends Controller
             'result' => [
                 'initialCurrency' => $payload['initial_currency'],
                 'finalCurrency' => $payload['final_currency'],
-                'amountToConvert' => $payload['amount_to_convert'] . " " . $payload['initial_currency'],
+                'amountToConvert' => number_format($payload['amount_to_convert'], 2, ",", ".") . " " . $payload['initial_currency'],
                 'paymentMethod' => $payload['payment_method'],
-                'bidOnConversion' => $convertedAmount['bidOnConversion'] . " " . $payload['final_currency'],
+                'bidOnConversion' => number_format($convertedAmount['bidOnConversion'], 2, ",", ".") . " " . $payload['final_currency'],
                 'convertedAmount' => $convertedAmount['convertedAmount'],
-                'paymentTax' => $service->getPaymentTax() . " " . $payload['initial_currency'],
-                'conversion' => $service->getConversionTax() . " " . $payload['initial_currency'],
+                'paymentTax' => $service->getTaxes($payload)['paymentTax'] . " " . $payload['initial_currency'],
+                'conversionTax' => $service->getTaxes($payload)['conversionTax'] . " " . $payload['initial_currency'],
                 'amountWithTaxes' => $convertedAmount['amountWithTaxes']
             ]
         ]);

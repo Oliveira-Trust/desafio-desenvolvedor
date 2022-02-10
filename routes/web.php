@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['as' => 'web.'], function() {
-    Route::get('conversion', [ConversionController::class, 'index'])->name('conversion.index');
+    Route::get('apps/currency-conversion', [ConversionController::class, 'index'])->name('conversion.index');
 });
