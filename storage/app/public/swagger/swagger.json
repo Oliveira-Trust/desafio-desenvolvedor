@@ -1,0 +1,367 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Conversor Moedas",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://localhost:8000/api"
+        },
+        {
+            "url": "http://apiconversormoeda.local:81/api"
+        }
+    ],
+    "paths": {
+        "/converter": {
+            "post": {
+                "tags": [
+                    "/"
+                ],
+                "description": "Lista as combinações das moedas disponíveis para compra.<br><br><strong>Regras de negócio</strong><ol><li>A moeda base para conversão será sempre BRL</li><li>O valor de origem deve ser maior que R$ 1.000,00 e menor que R$ 100.000,00</li><li>Taxas forma de pagamento: 1,45% para boleto e 7,63% cartão</li><li>Para compras abaixo de R$ 3000,00 será cobrada uma taxa de 2% sobre o valor base. Outros valores considerar a taxa 1%</li></ol>",
+                "operationId": "8415789442fa1cfcffb37163c382be7a",
+                "requestBody": {
+                    "$ref": "#components/requestBodies/bodyConverter"
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#components/responses/sucessoConverterMoedas"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/erroInternoGenerico"
+                    }
+                }
+            }
+        },
+        "/moedas": {
+            "get": {
+                "tags": [
+                    "moedas"
+                ],
+                "description": "Lista de moedas disponíveis para conversão",
+                "operationId": "34c4fe8aa4133eca9a8c8832618d597f",
+                "responses": {
+                    "200": {
+                        "$ref": "#components/responses/sucessoIndexMoedas"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/erroInternoGenerico"
+                    }
+                }
+            }
+        },
+        "/moedas/{MOEDA}": {
+            "get": {
+                "tags": [
+                    "moedas"
+                ],
+                "description": "Diposnibiliza o detalhamento sobre a moeda desejada",
+                "operationId": "a21acc4caaac4b33e755aa7d5333a8bc",
+                "parameters": [
+                    {
+                        "$ref": "#components/parameters/moeda"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#components/responses/sucessoShowMoedas"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/erroInternoGenerico"
+                    },
+                    "406": {
+                        "$ref": "#components/responses/modeloNaoEncontrato"
+                    }
+                }
+            }
+        },
+        "/moedas/combinacoes": {
+            "get": {
+                "tags": [
+                    "moedas"
+                ],
+                "description": "Lista as combinações das moedas disponíveis para compra",
+                "operationId": "b92e3b4ad7fee532b298c6c796d77e09",
+                "responses": {
+                    "200": {
+                        "$ref": "#components/responses/sucessoCombinacoesMoedas"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/erroInternoGenerico"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "sucessoConverterMoedas": {
+                "description": "Exemplo de como o detalhamento da moeda será disponibilizado",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "USDBRL": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "moeda_origem": {
+                                                        "type": "string",
+                                                        "example": "BRL"
+                                                    },
+                                                    "moeda_destino": {
+                                                        "type": "string",
+                                                        "example": "USD"
+                                                    },
+                                                    "valor_solicitado": {
+                                                        "type": "numeric",
+                                                        "example": "5000"
+                                                    },
+                                                    "forma_pagamento": {
+                                                        "type": "string",
+                                                        "example": "BOLETO"
+                                                    },
+                                                    "cotacao_moeda_destino": {
+                                                        "type": "numeric",
+                                                        "example": "5.159"
+                                                    },
+                                                    "valor_comprado": {
+                                                        "type": "numeric",
+                                                        "example": "945.44"
+                                                    },
+                                                    "taxa_forma_pagamento": {
+                                                        "type": "numeric",
+                                                        "example": "72.5"
+                                                    },
+                                                    "taxa_conversao": {
+                                                        "type": "numeric",
+                                                        "example": "50"
+                                                    },
+                                                    "valor_base_conversao": {
+                                                        "type": "numeric",
+                                                        "example": "4877.5"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "modeloNaoEncontrato": {
+                "description": "Resposta obtida quando a instrução está correta porém não poderá ser processada",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Não foi possível realizar o processamento da instrução informada."
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "erroInternoGenerico": {
+                "description": "Erro interno.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Serviço indisponível no momento. Tente novamente mais tarde!"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "sucessoIndexMoedas": {
+                "description": "Exemplo de como as informações das moedas serão listadas",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "AFN": {
+                                            "type": "string",
+                                            "example": "Afghani do Afeganistão"
+                                        },
+                                        "MGA": {
+                                            "type": "string",
+                                            "example": "Ariary Madagascarense"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "sucessoShowMoedas": {
+                "description": "Exemplo de como o detalhamento da moeda será disponibilizado",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "USDBRL": {
+                                            "properties": {
+                                                "code": {
+                                                    "type": "string",
+                                                    "example": "USD"
+                                                },
+                                                "codein": {
+                                                    "type": "string",
+                                                    "example": "BRL"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Dólar Americano/Real Brasileiro"
+                                                },
+                                                "high": {
+                                                    "type": "numeric",
+                                                    "example": "5.2154"
+                                                },
+                                                "low": {
+                                                    "type": "numeric",
+                                                    "example": "5.2154"
+                                                },
+                                                "varBid": {
+                                                    "type": "numeric",
+                                                    "example": "0.0004"
+                                                },
+                                                "pctChange": {
+                                                    "type": "numeric",
+                                                    "example": "0.01"
+                                                },
+                                                "bid": {
+                                                    "type": "numeric",
+                                                    "example": "5.2149"
+                                                },
+                                                "ask": {
+                                                    "type": "numeric",
+                                                    "example": "5.2158"
+                                                },
+                                                "timestamp": {
+                                                    "type": "numeric",
+                                                    "example": "1644874197"
+                                                },
+                                                "create_date": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2022-02-14 18:29:57"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "sucessoCombinacoesMoedas": {
+                "description": "Exemplo as combinações das moedas disponíveis para compras serão listadas",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "BRL-USD": {
+                                            "type": "string",
+                                            "example": "Real Brasileiro/Dólar Americano"
+                                        },
+                                        "BRL-LBP": {
+                                            "type": "string",
+                                            "example": "Real Brasileiro/Libra Libanesa"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "moeda": {
+                "name": "moeda",
+                "in": "path",
+                "description": "moeda desejada",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "bodyConverter": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "cambio"
+                            ],
+                            "properties": {
+                                "cambio": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "moeda": {
+                                                "type": "string",
+                                                "example": "USD"
+                                            },
+                                            "valor": {
+                                                "type": "numeric",
+                                                "example": "5000"
+                                            },
+                                            "forma_pagamento": {
+                                                "type": "string",
+                                                "example": "BOLETO"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

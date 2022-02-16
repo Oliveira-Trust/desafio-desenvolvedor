@@ -1,0 +1,64 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentação IS",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://apiinfinitesales.local:81/api"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "description": "Realiza a validação das credenciais de acesso",
+                "operationId": "App\\Http\\Controllers\\UsuarioController::login",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "teste",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "cpf": {
+                                        "type": "string"
+                                    },
+                                    "senha": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "cpf": "12345678910",
+                                    "senha": "1234"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Conversor Moedas",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://apiconversormoeda.local:81/api"
+        },
+        {
+            "url": "https://localhost:8080/api"
+        }
+    ]
+}
