@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('historics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('payment');
-            $table->decimal('fee', 4);
-            $table->string('origin_currency');
-            $table->string('destination_currency');
-            $table->decimal('currency_value');
-            $table->decimal('destination_currency_value');
-            $table->decimal('purchased_value');
-            $table->decimal('payment_fee');
-            $table->decimal('conversion_fee');
-            $table->decimal('conversion_value');
+            $table->string('payment', 50);
+            $table->string('fee', 25);
+            $table->string('origin_currency', 15);
+            $table->string('destination_currency', 15);
+            $table->string('currency_value', 25);
+            $table->string('destination_currency_value', 25);
+            $table->string('purchased_value', 25);
+            $table->string('payment_fee', 25);
+            $table->string('conversion_fee', 25);
+            $table->string('conversion_value', 25);
             $table->timestamps();
 
             $table->foreign('user_id')

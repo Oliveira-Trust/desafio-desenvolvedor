@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\HistoricController;
+use App\Http\Controllers\CurrencyConversionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,5 @@ Route::get('/payment', [PaymentController::class, 'listAllPayments']);
 
 Route::get('/historic', [HistoricController::class, 'listAllHistorics']);
 Route::get('/historic/{user}', [HistoricController::class, 'listAllHistoricByUser']);
+
+Route::get('/currency-conversion', [CurrencyConversionController::class, 'currencyConversion']);
