@@ -16,7 +16,6 @@ class PaymentController extends Controller
 
     public function listAllPayments()
     {
-        $t = $this->paymentService->getAll();
-        return $t;
+        return $this->paymentService->getAll();
     }
 }
