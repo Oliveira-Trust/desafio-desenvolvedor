@@ -16,7 +16,6 @@ class CurrencyController extends Controller
 
     public function listAllCurrency()
     {
-        $t = $this->currencyService->getAll();
-        return $t;
+        return $this->currencyService->getAll();
     }
 }

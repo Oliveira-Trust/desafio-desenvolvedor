@@ -16,13 +16,11 @@ class HistoricController extends Controller
 
     public function listAllHistorics()
     {
-        $t = $this->historicService->getAll();
-        return $t;
+        return $this->historicService->getAll();
     }
 
     public function listAllHistoricByUser(int $userId)
     {
-        $t = $this->historicService->listAllHistoricByUser($userId);
-        return $t;
+        return $this->historicService->listAllHistoricByUser($userId);
     }
 }
