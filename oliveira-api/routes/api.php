@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\HistoricController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/', function () {
-    // response()->json([
-    //     'message' => 'dener campos foi'
-    // ], 200);
+Route::get('/currency', [CurrencyController::class, 'listAllCurrency']);
 
-    echo "teste";
-});
+Route::get('/payment', [PaymentController::class, 'listAllPayments']);
+
+Route::get('/historic', [HistoricController::class, 'listAllHistorics']);
+Route::get('/historic/{user}', [HistoricController::class, 'listAllHistoricByUser']);
