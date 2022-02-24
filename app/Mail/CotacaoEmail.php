@@ -20,7 +20,7 @@ class CotacaoEmail extends Mailable
     public $valorMoedaDestino;
     public $dataCotacao;
     public $valorConversao;
-    public $to;
+    public $email;
 
     /**
      * Create a new message instance.
@@ -29,7 +29,7 @@ class CotacaoEmail extends Mailable
      */
     public function __construct(array $cotacao)
     {
-        $this->nome             = session()->get('name');
+        $this->nome             = auth()->user()->name;
         $this->valorConversao   = $cotacao['valor_conversao'];
         $this->moedaDestino     = $cotacao['moeda_destino'];
         $this->valorComprado    = $cotacao['valor_comprado'];
@@ -38,7 +38,7 @@ class CotacaoEmail extends Mailable
         $this->taxaPagamento    = $cotacao['taxa_pagamento'];
         $this->valorMoedaDestino = $cotacao['valor_moeda_destino'];
         $this->dataCotacao      = date('d/m/Y');
-        $this->to               = $cotacao['to'];
+        $this->email               = $cotacao['to'];
     }
 
     /**
@@ -49,7 +49,7 @@ class CotacaoEmail extends Mailable
     public function build()
     {
         return $this->markdown('mail.email-usuario')
-        ->to($this->to)
+        //->to($this->to, $this->nome)
         ->subject('Conversão de Valores');
     }
 }

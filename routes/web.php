@@ -16,10 +16,7 @@ use App\Models\Historico;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return redirect('/conversao');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('conversao')->group(function () {
     Route::get('/', [HistoricoController::class, 'index'])->name('conversoes');
@@ -46,3 +43,5 @@ Route::prefix('conversao')->group(function () {
         Route::delete('delete/{id}', [FormasPagamentoController::class, 'destroy'])->name('formas.pag.destroy');
     });
 });
+
+Auth::routes();

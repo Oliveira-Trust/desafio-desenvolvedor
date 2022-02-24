@@ -2,17 +2,15 @@
 <html lang="en">
 
 <style>
-    li a.active {
-        border-bottom: 3px #fff solid;
-        color: black;
-    }
-
     .bd-example {
         position: relative;
         padding: 1rem;
         margin: 1rem -0.75rem 0;
         border: solid #dee2e6;
         border-width: 1px;
+    }
+    .m-t-30 {
+        margin-top: 30px;
     }
 </style>
 
@@ -31,25 +29,16 @@
 <body>
 
     <div class="container">
-        <div class="row" style="background-color: #e5e5e5;padding: 10px;">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link {{ $type == 'conversao' ? 'active' : '' }}" aria-current="page" href="{{ route('conversoes') }}">Conversões</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ $type == 'moeda' ? 'active' : '' }}" href="{{ route('moedas') }}">Moedas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ $type == 'pagamento' ? 'active' : '' }}" href="{{ route('formas.pags') }}">Formas de Pagamentos</a>
-                </li>
-            </ul>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{ $slot }}
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-        <!-- Content here -->
-        {{ $slot }}
     </div>
-
 
     <!-- Optional JavaScript; choose one of the two! -->
 

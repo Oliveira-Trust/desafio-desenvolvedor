@@ -36,7 +36,7 @@ class TaxasController extends Controller
         $totalTotal = $valorTotal - $taxaPagamento - $taxaConversao;
 
         return [
-            'user_id' => 1,
+            'user_id' => auth()->user()->id,
             'moeda_origem' => $moedaOrigem,
             'moeda_destino' => $moedaDestino,
             'valor_conversao' => $valorTotal,

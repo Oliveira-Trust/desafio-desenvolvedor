@@ -7,20 +7,12 @@ use Illuminate\View\Component;
 class Layout extends Component
 {
     /**
-     * The alert type.
-     *
-     * @var string
-     */
-    public $type;
-
-    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type)
+    public function __construct()
     {
-        $this->type = $type;
     }
 
     /**

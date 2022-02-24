@@ -16,6 +16,7 @@ class HistoricoController extends Controller
     public function __construct(TaxasController $taxa)
     {
         $this->taxa = $taxa;
+        $this->middleware('auth');
     }
 
     /**
@@ -79,9 +80,12 @@ class HistoricoController extends Controller
     private function enviarEmail(int $id)
     {
         $dados = Historico::find($id);
-dd(session()->get('email'));
-        Mail::send(new CotacaoEmail([
-            'to'                => [session()->get('email')],
+
+        Mail::to(
+            auth()->user()->email,
+            auth()->user()->name
+            )->send(new CotacaoEmail([
+            'to'                => auth()->user()->email,
             'valor_conversao'   => $dados['valor_conversao'],
             'taxa_conversao'    => $dados['taxa_conversao'],
             'taxa_pagamento'    => $dados['taxa_pagamento'],
