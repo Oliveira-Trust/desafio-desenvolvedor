@@ -17,7 +17,7 @@
 
         <div class="mb-3">
             <label class="form-label">Taxa:</label>
-            <input type="number" class="form-control @error('taxa') is-invalid @enderror" placeholder="" name="taxa" value="{{ old('taxa') }}">
+            <input type="text" class="form-control @error('taxa') is-invalid @enderror" placeholder="Ex: 1.5" name="taxa" value="{{ old('taxa') }}">
 
             @error('taxa')
             <div class="alert alert-danger">{{ $message }}</div>
