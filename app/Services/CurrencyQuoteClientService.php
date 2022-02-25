@@ -6,15 +6,21 @@ use GuzzleHttp\Client;
 
 class CurrencyQuoteClientService
 {
+    const PROTOCOL = 'https://';
+    const DOMAIN = 'economia.awesomeapi.com.br';
+    const URI = '/last/';
     public function __construct(private Client $client)
     {
     }
 
     public function getLastQuote(string $origin, string $target): float
     {
-        $currentQuoteRequest = $this->client->request('GET', "https://economia.awesomeapi.com.br/last/{$origin}-{$target}");
-        $currentQuote = json_decode($currentQuoteRequest->getBody()->getContents(), true);
+        $uri = self::PROTOCOL . self::DOMAIN . self::URI . $origin . '-' . $target;
 
-        return $currentQuote[$origin . $target]['ask'];
+        $request = $this->client->request('GET', $uri);
+
+        $currentQuoteList = json_decode($request->getBody()->getContents(), true);
+
+        return $currentQuoteList[$origin . $target]['ask'];
     }
 }
