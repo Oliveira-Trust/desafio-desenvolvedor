@@ -30,13 +30,13 @@ class DatabaseSeeder extends Seeder
         ConversionRate::create([
             'value' => 3000,
             'conditional' => 'bigger_then',
-            'rate' => 2,
+            'rate' => 1,
         ]);
 
         ConversionRate::create([
             'value' => 3000,
             'conditional' => 'less_then',
-            'rate' => 1,
+            'rate' => 2,
         ]);
 
         PaymentMethod::create([
