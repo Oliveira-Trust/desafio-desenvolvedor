@@ -4,6 +4,11 @@ namespace App\Helpers;
 
 class StringHelpers
 {
+    /**
+     * Format monetary value
+     * @param string $amount
+     * @return float
+     */
     public static function formatValue(string $amount): float
     {
         $cleanString = preg_replace('/([^0-9\.,])/i', '', $amount);

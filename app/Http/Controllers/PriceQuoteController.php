@@ -4,23 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\PriceQuote;
 use App\Models\PaymentMethod;
-use App\Support\CurrencyQuoteApi;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreConvertRequest;
 
 class PriceQuoteController extends Controller
 {
     /**
-     * Display the login view.
+     * Display the create view.
      *
      */
     public function create()
     {
-        $currency_quote_client = new CurrencyQuoteApi();
-        $currencies = $currency_quote_client->getAvailableCurrencies();
-
         return view('price-quote.create', [
-            'currencies' => $currencies,
+            'currencies' => array_keys(PriceQuote::AVAILABLE_CURRENCIES),
             'payment_methods' => PaymentMethod::all(),
         ]);
     }
@@ -31,14 +27,15 @@ class PriceQuoteController extends Controller
      */
     public function index()
     {
-        $price_quotes = PriceQuote::where('user_id', Auth::user()->id)->get();
+        $price_quotes = PriceQuote::where('user_id', Auth::user()->id)->orderByDesc('created_at')->get();
 
         return view('price-quote.index', ['price_quotes' =>  $price_quotes]);
     }
 
     /**
-     * Show the confirm password view.
+     * Display the specified resource.
      *
+     * @param  PriceQuote $price_quote
      */
     public function show(PriceQuote $price_quote)
     {
@@ -63,7 +60,7 @@ class PriceQuoteController extends Controller
     }
 
     /**
-     * Send email result.
+     * Send email price quote
      *
      * @param  PriceQuote $history
      */

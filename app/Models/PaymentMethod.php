@@ -25,6 +25,10 @@ class PaymentMethod extends Model
         'method_name',
     ];
 
+    /**
+     * Returns the text of the selected payment method
+     *
+     */
     public function getMethodNameAttribute()
     {
         $methods = [

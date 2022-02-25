@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\ConversionRate;
-use App\Models\PaymentMethod;
 use App\Http\Requests\UpdateConversionRateRequest;
 
 class ConversionRatesController extends Controller
@@ -29,7 +28,7 @@ class ConversionRatesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  PaymentMethod $payment_method
+     * @param  ConversionRate $conversion_rate
      */
     public function show(ConversionRate $conversion_rate)
     {

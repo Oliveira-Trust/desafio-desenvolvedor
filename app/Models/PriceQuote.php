@@ -17,6 +17,13 @@ class PriceQuote extends Model
 {
     use HasFactory;
 
+    public const AVAILABLE_CURRENCIES = [
+        'USD' => '$',
+        'EUR' => '€',
+        'CAD' => '$',
+        'GBP' => '£',
+    ];
+
     protected $table = 'price_quotes';
 
     /**
@@ -46,25 +53,30 @@ class PriceQuote extends Model
         return $this->belongsTo(PaymentMethod::class);
     }
 
+    /**
+     * Returns the total amount with discount
+     *
+     */
     public function getDiscountedValueAttribute(): float
     {
         return $this->value - $this->conversion_rate - $this->payment_rate;
     }
 
+    /**
+     * Returns the currency symbol for the selected currency
+     *
+     */
     public function getCurrencySymbolAttribute(): string|null
     {
-        $symbold = [
-            'USD' => '$',
-            'EUR' => '€',
-            'CAD' => '$',
-            'JPY' => '¥',
-            'GBP' => '£',
-            'BTC' => '₿',
-        ];
-
-        return Arr::get($symbold, $this->to_currency);
+        return Arr::get(self::AVAILABLE_CURRENCIES, $this->to_currency);
     }
 
+    /**
+     * Returns the payment fee amount
+     * @param float $amount
+     * @param int $payment_method_id
+     * @return float
+     */
     public static function getPaymentRate(float $amount, int $payment_method_id): float
     {
         $payment_rate = PaymentMethod::find($payment_method_id);
@@ -72,6 +84,11 @@ class PriceQuote extends Model
         return ($payment_rate->fee / 100) * $amount;
     }
 
+    /**
+     * Returns the conversion rate value
+     * @param float $amount
+     * @return float
+     */
     public static function getConversionRate(float $amount): float
     {
         $conversion_rate = ConversionRate::getConversionRate($amount);
@@ -79,11 +96,22 @@ class PriceQuote extends Model
         return ($conversion_rate / 100) * $amount;
     }
 
+    /**
+     * Returns the purchase price of the selected currency
+     * @param float $amount
+     * @param float $price
+     * @return float
+     */
     public static function getPurchasePrice(float $amount, float $price): float
     {
-        return $amount / $price;
+        return $amount / number_format($price, 2);
     }
 
+    /**
+     * Save the requested quote
+     * @param array $payload
+     * @return self|bool
+     */
     public static function savePriceQuote(array $payload): self|bool
     {
         $currency_quote_client = new CurrencyQuoteApi();
@@ -111,6 +139,9 @@ class PriceQuote extends Model
         ]);
     }
 
+    /**
+     * Send the email with the quote
+     */
     public function sendEmail(): void
     {
         try {

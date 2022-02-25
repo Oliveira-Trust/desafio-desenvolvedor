@@ -34,11 +34,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -47,6 +42,10 @@ class User extends Authenticatable
         'permission',
     ];
 
+    /**
+     * Return user permission
+     *
+     */
     public function getPermissionAttribute()
     {
         $permission = $this->permissions->first();

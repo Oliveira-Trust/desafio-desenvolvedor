@@ -29,6 +29,10 @@ class ConversionRate extends Model
         'conditional_name',
     ];
 
+    /**
+     * Returns the text of the selected conditional
+     *
+     */
     public function getConditionalNameAttribute()
     {
         $conditionals = [
@@ -39,6 +43,11 @@ class ConversionRate extends Model
         return $conditionals[$this->conditional];
     }
 
+    /**
+     * Return conversion rate
+     * @param float $amount
+     * @return float
+     */
     public static function getConversionRate(float $amount): float
     {
         $bigger_then = self::where('conditional', self::BIGGER_TO)->first();
