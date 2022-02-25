@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\ConversionRate;
 use App\Models\PriceQuote;
 use App\Models\PaymentMethod;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('price_quote', function ($price_quote) {
-            return PriceQuote::find($price_quote);
+            return PriceQuote::where(['id' => $price_quote, 'user_id' => Auth::user()->id])->first();
         });
 
         Route::bind('payment_method', function ($payment_method) {
