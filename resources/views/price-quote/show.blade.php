@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="flex items-center">
-                        <a href="{{ url()->previous() }}" class="text-sm text-gray-700 dark:text-gray-500 underline mr-4">{{ __('Voltar') }}</a>
+                        <a href="{{ url("/history") }}" class="text-sm text-gray-700 dark:text-gray-500 underline mr-4">{{ __('Acessar histórico') }}</a>
                         <form method="POST" action="{{ route('send-email', ['price_quote' => $price_quote]) }}">
                             @csrf
     

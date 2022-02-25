@@ -26,9 +26,7 @@ Route::middleware('auth')->group(function () {
         return redirect()->route('login');
     })->name('dashboard');
 
-    Route::group(['middleware' => ['can:admin']], function () {
-        Route::get('conversion-rates', [ConversionRatesController::class, 'index'])->name('conversion-rates');
-        
+    Route::group(['middleware' => ['can:admin']], function () {        
         Route::get('payment-methods/{payment_method}/edit', [PaymentMethodController::class, 'show'])->name('payment-methods-edit');
         Route::get('conversion-rates/{conversion_rate}/edit', [ConversionRatesController::class, 'show'])->name('conversion-rates-edit');
         Route::get('users', [UsersController::class, 'index'])->name('users');
@@ -37,7 +35,8 @@ Route::middleware('auth')->group(function () {
         Route::put('conversion-rates/{conversion_rate}', [ConversionRatesController::class, 'update'])->name('conversion-rates-update'); 
                
     });
-       
+    
+    Route::get('conversion-rates', [ConversionRatesController::class, 'index'])->name('conversion-rates');
     Route::get('price-quote', [PriceQuoteController::class, 'create'])->name('price-quote');
     Route::get('price-quote/{price_quote}', [PriceQuoteController::class, 'show'])->name('price-quote-show');
     Route::get('history', [PriceQuoteController::class, 'index'])->name('history');

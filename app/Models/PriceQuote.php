@@ -58,6 +58,8 @@ class PriceQuote extends Model
             'EUR' => '€',
             'CAD' => '$',
             'JPY' => '¥',
+            'GBP' => '£',
+            'BTC' => '₿',
         ];
 
         return Arr::get($symbold, $this->to_currency);
