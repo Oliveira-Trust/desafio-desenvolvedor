@@ -8,6 +8,7 @@ use App\Enums\PaymentMethod;
 use App\Helpers\FormatsTrait;
 use App\Http\Requests\ToConvertRequest;
 use App\Services\CurrencyExchangeService;
+use Illuminate\Support\Facades\Auth;
 
 class CurrencyQuoteController extends Controller
 {
@@ -16,33 +17,22 @@ class CurrencyQuoteController extends Controller
     public function index()
     {
         $options = $this->getOptions();
-        return view('currencyQuote.index', compact('options'));
+        $quotationHistory = $this->getQuotationHistoryByUser();
+
+        return view('currencyQuote.index', compact('options', 'quotationHistory'));
     }
 
     public function toConvert(CurrencyExchangeService $currencyExchangeService, ToConvertRequest $request)
     {
         $value = $this->formatCurrencyBrlToDecimal($request->value);
 
-        $quotaInfo = $currencyExchangeService->calculateExchange($value, $request->currency_origin, $request->target_currency, $request->payment_method);
-
-        $quota = $this->normalizerQuotaInfo($quotaInfo);
+        $currencyExchangeService->registerExchange($value, $request->currency_origin, $request->target_currency, $request->payment_method);
 
         $options = $this->getOptions();
 
-        return view('currencyQuote.index', compact('quota', 'options'));
-    }
+        $quotationHistory = $this->getQuotationHistoryByUser();
 
-    private function normalizerQuotaInfo(array $quotaInfo): array
-    {
-        return [
-            ...$quotaInfo,
-            'valueOrigin' => $this->formatCurrencyToBrl($quotaInfo['valueOrigin']),
-            'valueOriginWithDiscount' => $this->formatCurrencyToBrl($quotaInfo['valueOriginWithDiscount']),
-            'ratePayment' => $this->formatCurrencyToBrl($quotaInfo['ratePayment']),
-            'rateConvert' => $this->formatCurrencyToBrl($quotaInfo['rateConvert']),
-            'valueTargetCurrency' => $this->formatCurrencyToBrl($quotaInfo['valueTargetCurrency'], $quotaInfo['targetCurrency']),
-            'valueBaseConvert' => $this->formatCurrencyToBrl($quotaInfo['valueBaseConvert']),
-        ];
+        return view('currencyQuote.index', compact('quotationHistory', 'options'));
     }
 
     private function getOptions(): array
@@ -52,5 +42,10 @@ class CurrencyQuoteController extends Controller
             'currencyTarget' => CurrencyTarget::cases(),
             'paymentMethod' => PaymentMethod::cases()
         ];
+    }
+
+    private function getQuotationHistoryByUser()
+    {
+        return (Auth::user())->load('quotationHistory')->quotationHistory;
     }
 }

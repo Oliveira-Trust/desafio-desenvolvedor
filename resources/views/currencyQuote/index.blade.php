@@ -72,8 +72,8 @@
         </div>
     </form>
 
-    @isset($quota)
-    <table class="table">
+    @isset($quotationHistory)
+    <table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">Currency Origin</th>
@@ -88,17 +88,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>{{$quota['currencyOrigin']}}</td>
-            <td>{{$quota['targetCurrency']}}</td>
-            <td>{{$quota['valueOrigin']}}</td>
-            <td>{{$quota['valueOriginWithDiscount']}}</td>
-            <td>{{$quota['paymentMethod']}}</td>
-            <td>{{$quota['ratePayment']}}</td>
-            <td>{{$quota['rateConvert']}}</td>
-            <td>{{$quota['valueTargetCurrency']}}</td>
-            <td>{{$quota['valueBaseConvert']}}</td>
-        </tr>
+        @foreach ($quotationHistory as $quota)
+            <tr>
+                <td>{{$quota->currency_origin}}</td>
+                <td>{{$quota->target_currency}}</td>
+                <td>{{$quota->value_origin}}</td>
+                <td>{{$quota->value_origin_with_discount}}</td>
+                <td>{{$quota->payment_method}}</td>
+                <td>{{$quota->rate_payment}}</td>
+                <td>{{$quota->rate_convert}}</td>
+                <td>{{$quota->value_target_currency}}</td>
+                <td>{{$quota->value_base_convert}}</td>
+            </tr>
+        @endforeach
     </tbody>
 </table>
 </div>
