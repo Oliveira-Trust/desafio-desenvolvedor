@@ -7,32 +7,47 @@ use App\Enums\CurrencyTarget;
 use App\Enums\PaymentMethod;
 use App\Helpers\FormatsTrait;
 use App\Http\Requests\ToConvertRequest;
+use App\Jobs\QuotaMailJob;
+use App\Models\QuotationHistory;
+use App\Models\User;
 use App\Services\CurrencyExchangeService;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class CurrencyQuoteController extends Controller
 {
     use FormatsTrait;
 
-    public function index()
+    public function index(Request $request)
     {
         $options = $this->getOptions();
-        $quotationHistory = $this->getQuotationHistoryByUser();
+        $quotationHistory = $this->getQuotationHistoryByUser($request->user());
 
         return view('currencyQuote.index', compact('options', 'quotationHistory'));
     }
 
-    public function toConvert(CurrencyExchangeService $currencyExchangeService, ToConvertRequest $request)
+    public function toConvert(CurrencyExchangeService $currencyExchangeService, QuotationHistory $quotationHistory, ToConvertRequest $request)
     {
-        $value = $this->formatCurrencyBrlToDecimal($request->value);
+        $user = $request->user();
 
-        $currencyExchangeService->registerExchange($value, $request->currency_origin, $request->target_currency, $request->payment_method);
+        $quotationHistory->value_origin = $this->formatCurrencyBrlToDecimal($request->value);
+        $quotationHistory->currency_origin = $request->currency_origin;
+        $quotationHistory->target_currency = $request->target_currency;
+        $quotationHistory->payment_method = $request->payment_method;
+
+        $currencyExchangeService->registerExchange($user, $quotationHistory);
 
         $options = $this->getOptions();
 
-        $quotationHistory = $this->getQuotationHistoryByUser();
+        $quotationHistory = $this->getQuotationHistoryByUser($user);
 
         return view('currencyQuote.index', compact('quotationHistory', 'options'));
+    }
+
+    public function sendToEmail(QuotationHistory $quotationHistory)
+    {
+        dispatch(new QuotaMailJob($quotationHistory));
+        return to_route('currencyQuote.index');
     }
 
     private function getOptions(): array
@@ -44,8 +59,8 @@ class CurrencyQuoteController extends Controller
         ];
     }
 
-    private function getQuotationHistoryByUser()
+    private function getQuotationHistoryByUser(User $user): Collection
     {
-        return (Auth::user())->load('quotationHistory')->quotationHistory;
+        return $user->load('quotationHistory')->quotationHistory;
     }
 }

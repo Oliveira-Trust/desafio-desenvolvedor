@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Enums\PaymentMethod;
 use App\Helpers\RateTrait;
 use App\Models\QuotationHistory;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class CurrencyExchangeService
 {
@@ -15,34 +15,28 @@ class CurrencyExchangeService
     {
     }
 
-    public function registerExchange(float $value, string $currencyOrigin, string $targetCurrency, string $paymentMethod): QuotationHistory
+    public function registerExchange(User $user, QuotationHistory $quotationHistory): void
     {
-        $quote = $this->getQuote($currencyOrigin, $targetCurrency);
-        $discountRates = $this->applyDiscountRates($value, $paymentMethod);
+        $quote = $this->getQuote($quotationHistory->currency_origin, $quotationHistory->target_currency);
+        $discountRates = $this->applyDiscountRates($quotationHistory->value_origin, $quotationHistory->payment_method);
         $valueWithDiscounts = $discountRates['valueWithDiscounts'];
 
         $valueTargetCurrency = $this->calculateConvertCurrency($valueWithDiscounts, $quote);
 
         $valueBaseConvert = $this->calculateValueBaseConvert($valueWithDiscounts, $valueTargetCurrency);
 
-        $quotaInto = [
-            'currency_origin' => $currencyOrigin,
-            'target_currency' => $targetCurrency,
-            'value_origin' => $value,
-            'value_origin_with_discount' => $valueWithDiscounts,
-            'rate_payment' => $discountRates['ratePayment'],
-            'rate_convert' => $discountRates['rateConvert'],
-            'value_target_currency' => $valueTargetCurrency,
-            'value_base_convert' => $valueBaseConvert,
-            'payment_method' => PaymentMethod::getView($paymentMethod)
-        ];
+        $quotationHistory->value_origin_with_discount = $valueWithDiscounts;
+        $quotationHistory->rate_payment = $discountRates['ratePayment'];
+        $quotationHistory->rate_convert = $discountRates['rateConvert'];
+        $quotationHistory->value_target_currency = $valueTargetCurrency;
+        $quotationHistory->value_base_convert = $valueBaseConvert;
 
-        return $this->saveInHistory($quotaInto);
+        $this->saveInHistory($user, $quotationHistory);
     }
 
     private function getQuote(string $currencyOrigin, string $targetCurrency): float
     {
-        return $this->currencyQuoteClient->getLastQuote($currencyOrigin, $targetCurrency);
+        return $this->currencyQuoteClient->getLastAks($currencyOrigin, $targetCurrency);
     }
 
     private function applyDiscountRates(float $value, string $paymentMethod): array
@@ -57,9 +51,8 @@ class CurrencyExchangeService
         ];
     }
 
-    private function saveInHistory(array $quoteInfo): QuotationHistory
+    private function saveInHistory(User $user, QuotationHistory $quoteInfo): void
     {
-        $userId = Auth::user()->id;
-        return $this->quotationHistory->create([...$quoteInfo, 'user_id' => $userId]);
+        $user->quotationHistory()->save($quoteInfo);
     }
 }
