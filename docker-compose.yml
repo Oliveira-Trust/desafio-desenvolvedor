@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+    #PHP Service
+    app:
+        container_name: app
+        build:
+            args:
+                user: app
+                uid: 1000
+            context: .
+            dockerfile: Dockerfile
+        image: app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - .:/var/www
+            - ./docker/php/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+        depends_on:
+            - postgres
+
+    #Nginx Service
+    nginx:
+        image: nginx
+        container_name: nginx
+        restart: unless-stopped
+        ports:
+            - 8000:80
+        volumes:
+            - .:/var/www
+            - ./docker/nginx:/etc/nginx/conf.d
+            - ./docker/logs/nginx:/var/log/nginx/
+        depends_on:
+            - app
+
+    #Database Service
+    postgres:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: "postgres"
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./docker/postgreSQL:/var/lib/postgresql/data
+            - ./docker/db:/docker-entrypoint-initdb.d/
+
+    #Database Client Service
+    pgadmin:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+            PGADMIN_DEFAULT_PASSWORD: "admin"
+        ports:
+            - "9000:80"
+        depends_on:
+            - postgres
