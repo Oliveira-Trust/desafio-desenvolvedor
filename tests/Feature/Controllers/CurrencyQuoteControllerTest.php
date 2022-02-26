@@ -1,13 +1,17 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Controllers\Feature;
 
 use App\Enums\CurrencyOrigin;
 use App\Enums\CurrencyTarget;
 use App\Enums\PaymentMethod;
+use App\Mail\QuotaMail;
+use App\Models\QuotationHistory;
 use App\Models\User;
 use App\Services\CurrencyQuoteClientService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Mockery;
 use Tests\TestCase;
 
@@ -44,27 +48,21 @@ class CurrencyQuoteControllerTest extends TestCase
         $currencyQuoteClientService = Mockery::mock(CurrencyQuoteClientService::class);
         app()->instance(CurrencyQuoteClientService::class, $currencyQuoteClientService);
 
-        $currencyQuoteClientService->shouldReceive('getLastQuote')
+        $currencyQuoteClientService->shouldReceive('getLastAks')
             ->once()
             ->andReturn(0.1962);
 
-        $this->postJson(route('currencyQuote.toConvert'), [
+        $response = $this->postJson(route('currencyQuote.toConvert'), [
             "currency_origin" => "BRL",
             "target_currency" => "USD",
             "value" => "5000",
             "payment_method" => "bankSlip"
-        ])->assertViewHasAll([
-            'quota' => [
-                'currencyOrigin' => 'BRL',
-                'targetCurrency' => 'USD',
-                'valueOrigin' => 'BRL 5000,00',
-                'valueOriginWithDiscount' => 'BRL 4877,50',
-                'ratePayment' => 'BRL 72,50',
-                'rateConvert' => 'BRL 50,00',
-                'valueTargetCurrency' => 'USD 956,97',
-                'valueBaseConvert' => 'BRL 5,10',
-                'paymentMethod' => 'Bank slip',
-            ]
+        ]);
+
+        $quotationHistory = (Auth::user())->load('quotationHistory')->quotationHistory;
+
+        $response->assertViewHasAll([
+            'quotationHistory' => $quotationHistory
         ]);
     }
 
@@ -76,6 +74,31 @@ class CurrencyQuoteControllerTest extends TestCase
     {
         $this->postJson(route('currencyQuote.toConvert'), $payload)
             ->assertJsonValidationErrors($error);
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldSendMail()
+    {
+        $quotationHistory = QuotationHistory::factory()->create([
+            "currency_origin" => "BRL",
+            "target_currency" => "USD",
+            "value_origin" => "5000.00",
+            "value_origin_with_discount" => "4877.50",
+            "rate_payment" => "72.50",
+            "rate_convert" => "50.00",
+            "value_target_currency" => "944.77",
+            "value_base_convert" => "5.16",
+            "payment_method" => "bankSlip",
+            'user_id' => User::factory()->create()->id
+        ]);
+
+        Mail::fake();
+
+        $this->get(route('currencyQuote.sendToEmail', ['quotationHistory' => $quotationHistory->id]));
+
+        Mail::assertSent(QuotaMail::class);
     }
 
     public function dataProviderError(): array
