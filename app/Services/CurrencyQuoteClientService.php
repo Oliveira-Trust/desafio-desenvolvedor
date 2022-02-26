@@ -13,7 +13,7 @@ class CurrencyQuoteClientService
     {
     }
 
-    public function getLastQuote(string $origin, string $target): float
+    public function getLastAks(string $origin, string $target): float
     {
         $uri = self::PROTOCOL . self::DOMAIN . self::URI . $origin . '-' . $target;
 
