@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Helpers\FormatsTrait;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,45 +24,13 @@ class QuotationHistory extends Model
         'user_id'
     ];
 
-    protected function valueOrigin(): Attribute
+    public function user()
     {
-        return Attribute::make(
-            get: fn ($value) => $this->formatCurrencyToBrl($value),
-        );
+        return $this->belongsTo(User::class);
     }
 
-    protected function valueOriginWithDiscount(): Attribute
+    public function formatvalueToBrl(string $field, string $prefix = 'BRL'): mixed
     {
-        return Attribute::make(
-            get: fn ($value) => $this->formatCurrencyToBrl($value),
-        );
-    }
-
-    protected function ratePayment(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => $this->formatCurrencyToBrl($value),
-        );
-    }
-
-    protected function rateConvert(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => $this->formatCurrencyToBrl($value),
-        );
-    }
-
-    protected function valueTargetCurrency(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => $this->formatCurrencyToBrl($value, $this->target_currency),
-        );
-    }
-
-    protected function valueBaseConvert(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => $this->formatCurrencyToBrl($value),
-        );
+        return $this->formatCurrencyToBrl($this->{$field}, $prefix);
     }
 }

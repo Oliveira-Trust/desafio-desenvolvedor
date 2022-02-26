@@ -85,6 +85,7 @@
             <th scope="col">Rate Convert</th>
             <th scope="col">Value Target Currency</th>
             <th scope="col">Value Base Convert</th>
+            <th scope="col">Options</th>
         </tr>
     </thead>
     <tbody>
@@ -92,13 +93,14 @@
             <tr>
                 <td>{{$quota->currency_origin}}</td>
                 <td>{{$quota->target_currency}}</td>
-                <td>{{$quota->value_origin}}</td>
-                <td>{{$quota->value_origin_with_discount}}</td>
+                <td>{{$quota->formatvalueToBrl('value_origin')}}</td>
+                <td>{{$quota->formatvalueToBrl('value_origin_with_discount')}}</td>
                 <td>{{$quota->payment_method}}</td>
-                <td>{{$quota->rate_payment}}</td>
-                <td>{{$quota->rate_convert}}</td>
-                <td>{{$quota->value_target_currency}}</td>
-                <td>{{$quota->value_base_convert}}</td>
+                <td>{{$quota->formatvalueToBrl('rate_payment')}}</td>
+                <td>{{$quota->formatvalueToBrl('rate_convert')}}</td>
+                <td>{{$quota->formatvalueToBrl('value_target_currency',$quota->target_currency)}}</td>
+                <td>{{$quota->formatvalueToBrl('value_base_convert')}}</td>
+                <td><a href="{{route('currencyQuote.sendToEmail',['quotationHistory' => $quota->id])}}" class="btn btn-sm btn-danger">Send e-mail</a></td>
             </tr>
         @endforeach
     </tbody>
