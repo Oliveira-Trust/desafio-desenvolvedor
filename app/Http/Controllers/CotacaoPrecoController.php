@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Repositories\TaxaConversaoRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ContacaoMoedaClientService;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class CotacaoPrecoController extends Controller
 {
@@ -53,7 +54,7 @@ class CotacaoPrecoController extends Controller
         $desconto       = $valor - $taxa_pagamento - $taxa_conversao;
         $preco_compra   = CotacaoPreco::getPrecoCompra($desconto, $valor_moeda);
 
-        CotacaoPreco::create([
+        $cotacao_preco = CotacaoPreco::create([
             'user_id'           => Auth::user()->id,
             'meio_pagamento_id' => $meio_pagamento_id,
             'origem_moeda'      => 'BRL',
@@ -65,6 +66,53 @@ class CotacaoPrecoController extends Controller
             'taxa_conversao'    => $taxa_conversao,
         ]);
 
+        $this->sendEmail(Auth::user()->name, Auth::user()->email, $cotacao_preco);
+
         return redirect()->route('cotacao-preco.index')->with('success', 'Dados inseridos com sucesso!');
+    }
+
+    private function sendEmail($nome, $email, $cotacao_preco)
+    {
+
+        $nome_pessoa_mail = $nome;
+        $email_user_mail = $email;
+
+        $corpo  = view('cotacao-preco-email', ['cotacao_preco' => $cotacao_preco]);
+        $titulo = "[ COTAÇÃO ]";
+
+        $sender = 'Desafio Desenvolvendor';
+
+        $mail   = new PHPMailer(true);
+        try {
+            $mail->isSMTP();          // Set mailer to use SMTP
+            $mail->Host = '';         // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;   // Enable SMTP authentication
+            $mail->Username = '';     // SMTP username
+            $mail->Password = '';     // SMTP password
+            $mail->SMTPSecure = '';   // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 1025; //587 // TCP port to connect to
+
+            $mail->SetFrom('noreply@rmwebsoftware.com', $sender);
+            $mail->Sender = 'noreply@rmwebsoftware.com';
+            $mail->addAddress($email_user_mail, $nome_pessoa_mail); // Add a recipient
+
+            $mail->isHTML(true);
+            // Set email format to HTML
+
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+
+            $mail->Subject = utf8_decode($titulo);
+            $mail->Body    = utf8_decode($corpo);
+
+            $mail->Send();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'E-mail não enviado, verificar configuração');
+        }
     }
 }

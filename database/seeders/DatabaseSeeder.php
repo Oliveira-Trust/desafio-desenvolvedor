@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
         TaxasConversao::create([
             'valor' => 3000,
             'tipo' => 'maior',
-            'taxa' => 2,
+            'taxa' => 1,
         ]);
 
         TaxasConversao::create([
             'valor' => 3000,
             'tipo' => 'menor',
-            'taxa' => 1,
+            'taxa' => 2,
         ]);
 
         MeiosPagamento::create([

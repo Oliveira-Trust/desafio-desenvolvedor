@@ -105,9 +105,9 @@
                 <td>{{ $cotacao->MeioPagamento->meio_pagamento }}</td>
                 <td>{{ number_format($cotacao->valor_moeda, 2, ',', '.')  }}</td>
                 <td>{{ number_format($cotacao->preco_compra, 2, ',', '.') }}</td>
-                <td>{{ $cotacao->taxa_pagamento }}</td>
+                <td>{{ number_format($cotacao->taxa_pagamento, 2, ',', '.') }}</td>
                 <td>{{ $cotacao->taxa_conversao }} %</td>
-                <td>{{ $cotacao->valor - $cotacao->taxa_pagamento - $cotacao->taxa_conversao }}</td>
+                <td>{{ number_format($cotacao->valor - $cotacao->taxa_pagamento - $cotacao->taxa_conversao, 2, ',', '.') }}</td>
 
             </tr>
             @endforeach

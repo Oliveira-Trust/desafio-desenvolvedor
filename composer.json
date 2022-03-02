@@ -11,7 +11,8 @@
         "infyomlabs/laravel-ui-adminlte": "^3.2",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "phpmailer/phpmailer": "^6.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
