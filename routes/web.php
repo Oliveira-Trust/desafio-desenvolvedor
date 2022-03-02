@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CotacaoPrecoController;
+use App\Http\Controllers\TaxasConversaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,8 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+
+Route::get('cotacao-preco', [CotacaoPrecoController::class, 'index'])->name('cotacao-preco.index');
+Route::post('cotacao-preco/converte', [CotacaoPrecoController::class, 'save'])->name('cotacao-preco.converte');
+
+Route::resource('conversao-taxa', TaxasConversaoController::class);

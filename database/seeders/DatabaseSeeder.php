@@ -35,12 +35,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         MeiosPagamento::create([
-            'meio_pagamento' => 'card',
+            'meio_pagamento' => 'Cartão de crédito',
             'taxa' => 7.63,
         ]);
 
         MeiosPagamento::create([
-            'meio_pagamento' => 'billet',
+            'meio_pagamento' => 'Boleto',
             'taxa' => 1.45,
         ]);
     }

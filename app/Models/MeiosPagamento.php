@@ -14,14 +14,4 @@ class MeiosPagamento extends Model
         'meio_pagamento',
         'taxa'
     ];
-
-    public function getMeiosPagamento()
-    {
-        $meios = [
-            'cartao' => 'Cartão de crédito',
-            'boleto' => 'Boleto',
-        ];
-
-        return $meios[$this->meio];
-    }
 }
