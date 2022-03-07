@@ -47,3 +47,8 @@ hr {
 .result .result-value .data{
     font-size: 1rem;
 }
+
+.msg-error {
+    color: red;
+    padding-top: 10px;
+}

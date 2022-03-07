@@ -17,7 +17,8 @@
                 <div class="row">
                     <div class="form-group col-md-2">
                         <label for="value" class="title">Valor</label>
-                        <input type="number" name="value" id="value" class="form-control form-control-md" value="{{(isset($viewData->valueToConvert) ? $viewData->valueToConvert : null)}}"
+                        <input type="number" name="value" id="value" class="form-control form-control-md" 
+                        value = "{{ $viewData->valueToConvert ?? null }}"
                         placeholder="Ex:1000" required min="1000" max="100000" step="0.01">
                     </div>
                     <div class="form-group col-md-3">
@@ -54,6 +55,11 @@
     </fieldset>
     <hr>
     <fieldset>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <p class="msg-error">{{ $error }}</p>
+            @endforeach
+        @endif
         @if(isset($viewData->destinyCurrencyBought))
             <h2>Resultado</h2>
             <div class="result">
