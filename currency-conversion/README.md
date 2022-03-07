@@ -27,7 +27,17 @@ composer install
 ```shell
 npm install
 ```
-- Criar um arquivo .env
+- Criar um arquivo .env a partir do .envexample
+
+- Executar:
+```shell
+npm run dev
+```
+
+- Executar:
+```shell
+php artisan serve
+```
 
 ## Features
 O projeto apresenta na sua única tela, um formulário com os campos de valor a ser convertido, moeda origem (Real BRL), moeda destino e método de pagamento.
