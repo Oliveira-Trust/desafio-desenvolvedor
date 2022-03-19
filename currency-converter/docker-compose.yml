@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   mariadb:
@@ -10,7 +10,8 @@ services:
       - MARIADB_DATABASE=currency-converter
     ports:
       - "3306:3306"
-  myapp:
+  currencyconverter:
+    build: .
     image: docker.io/bitnami/laravel:9
     ports:
       - '8000:8000'
@@ -19,6 +20,8 @@ services:
       - DB_PORT=3306
       - DB_USERNAME=cc_user
       - DB_DATABASE=currency-converter
+    tty: true
+    stdin_open: true
     volumes:
       - '.:/app'
     depends_on:
