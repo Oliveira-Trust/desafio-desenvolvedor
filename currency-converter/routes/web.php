@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuyCurrencyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('currency-converter')->group(function() {
+    Route::controller(BuyCurrencyController::class)->group(function () {
+        Route::get('/', 'index')->name('currency-converter');
+        Route::post('/buy', 'buy')->name('api.currency-converter.buy');
+    });    
 });
