@@ -34,6 +34,10 @@ return [
     'currency-api' => [
         'enabled' => env('CURRENCY_API_ENABLED', false),
         'url' => env('CURRENCY_API_URL', 'https://economia.awesomeapi.com.br/json/'),
+        'availability' => [
+            'enabled' => env('CURRENCY_API_AVAILABILITY_ENABLED', false),
+            'endpoint' => env('CURRENCY_API_AVAILABILITY_ENDPOINT', 'available'),
+        ],
     ],
 
 ];

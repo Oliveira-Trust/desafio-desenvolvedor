@@ -1,28 +1,45 @@
-version: '3'
-
+# For more information: https://laravel.com/docs/sail
+version: '3.9'
 services:
-  mariadb:
-    image: docker.io/bitnami/mariadb:10.6
-    environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_USER=cc_user
-      - MARIADB_DATABASE=currency-converter
-    ports:
-      - "3306:3306"
-  currencyconverter:
-    build: .
-    image: docker.io/bitnami/laravel:9
-    ports:
-      - '8000:8000'
-    environment:
-      - DB_HOST=mariadb
-      - DB_PORT=3306
-      - DB_USERNAME=cc_user
-      - DB_DATABASE=currency-converter
-    tty: true
-    stdin_open: true
-    volumes:
-      - '.:/app'
-    depends_on:
-      - mariadb
+    currency_converter:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.1
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.1/app
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            - '${APP_PORT:-80}:80'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+        volumes:
+            - '.:/var/www/html'
+        networks:
+          sail:
+            ipv4_address: 172.18.0.3
+        depends_on:
+            - mariadb
+        container_name: currency_converter
+    mariadb:
+      image: docker.io/bitnami/mariadb:10.6
+      environment:
+        # ALLOW_EMPTY_PASSWORD is recommended only for development.
+        - ALLOW_EMPTY_PASSWORD=yes
+        - MARIADB_USER=cc_user
+        - MARIADB_DATABASE=currency-converter
+      ports:
+        - "3306:3306"
+      networks:
+        - sail
+networks:
+  sail:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24

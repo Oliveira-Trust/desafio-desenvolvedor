@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\PaymentType\PaymentType;
+use App\Services\CurrencyService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
 
@@ -18,6 +19,13 @@ class BuyRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'originCurrency' => $this->originCurrency ?? 'BRL',
+        ]);
+    }   
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,16 +35,34 @@ class BuyRequest extends FormRequest
     {
         return [
             'paymentType' => $this->getPaymentTypeRules(),
+            'originCurrency' => 'required',
             'destinationCurrency' => 'required',
-            'value' => 'required',
+            'value' => $this->getValueRules(),
         ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'value.between' => 'The :attribute :input is not between :min and :max.',
+        ];
+    }
+
+    private function getValueRules(): string
+    {
+        $floorValue = CurrencyService::getFloorValueToBuy();
+        $ceilValue = CurrencyService::getCeilValueToBuy();
+
+        return "required|gte:{$floorValue}|lte:{$ceilValue}";
     }
 
     private function getPaymentTypeRules(): string
     {
-        return 'required|in:' . $this->formatSlugFromPaymentType(
+        $possibleSlugs = $this->formatSlugFromPaymentType(
             PaymentType::getAllSlugs()
         );
+
+        return "required|in:{$possibleSlugs}";
     }
 
     private function formatSlugFromPaymentType(Collection $allPaymentSlugs): string
