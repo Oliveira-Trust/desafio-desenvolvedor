@@ -9,7 +9,7 @@
 @endif
 
 
-<form class="row g-3" method="POST" action="{{ route('currency-converter.buy')}} ">
+<form class="row" method="POST" action="{{ route('currency-converter.buy')}} ">
     @csrf
     {{-- destination currency --}}
     <div class="col-auto">
