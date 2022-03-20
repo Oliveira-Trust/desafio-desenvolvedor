@@ -21,6 +21,6 @@ Route::get('/', function () {
 Route::prefix('currency-converter')->group(function() {
     Route::controller(BuyCurrencyController::class)->group(function () {
         Route::get('/', 'index')->name('currency-converter');
-        Route::post('/buy', 'buy')->name('api.currency-converter.buy');
+        Route::post('/buy', 'buy')->name('currency-converter.buy');
     });    
 });

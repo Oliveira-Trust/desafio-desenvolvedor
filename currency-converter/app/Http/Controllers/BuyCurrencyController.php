@@ -12,16 +12,19 @@ class BuyCurrencyController extends Controller
     {
         return view('buy.index', [
             'paymentTypeOptions' => $currencyService->formapPaymentType(),
-            'destinationCurrencyOptions' => $currencyService->getPossibleCurrencyOptionsTo(CurrencyService::DEFAULT_CURRENCY_ORIGIN),
+            'destinationCurrencyOptions' => $currencyService->getPossibleCurrencyOptionsTo(
+                CurrencyService::DEFAULT_CURRENCY_ORIGIN
+            ),
             'rules' => [
-                'floorValueToBuy' => '$currencyService::getFloorValueToBuy()',
-                'ceilValueToBuy' => '$currencyService::getCeilValueToBuy()',
+                'floorValueToBuy' => $currencyService::getFloorValueToBuy(),
+                'ceilValueToBuy' => $currencyService::getCeilValueToBuy(),
             ]
         ]);
     }
 
     public function buy(BuyRequest $buyRequest)
     {
+
         return $buyRequest->all();
     }
 }
