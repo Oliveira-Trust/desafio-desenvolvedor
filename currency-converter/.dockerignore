@@ -1,0 +1,6 @@
+Dockerfile
+.env-example
+docker-compose.yml
+.vscode
+docker
+!docker/config/xdebug.ini
