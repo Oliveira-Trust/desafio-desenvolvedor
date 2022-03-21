@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\BuyCurrencyModel;
 use App\Models\PaymentType\PaymentType;
 use App\Services\CurrencyAPIService\AvailabilityCurrencyApiService;
 
@@ -70,6 +71,11 @@ class CurrencyService
     public static function getCeilValueToBuy(): int
     {
         return self::DEFAULT_MAX_VALUE;
+    }
+
+    public function buy(BuyCurrencyModel $buyCurrencyModel)
+    {
+        $buyCurrencyModel->save();
     }
 
 }
