@@ -75,7 +75,29 @@ class CurrencyService
 
     public function buy(BuyCurrencyModel $buyCurrencyModel)
     {
+        $convertionFee = $this->extractConvertionFee($buyCurrencyModel->value);
+        dd($convertionFee);
         $buyCurrencyModel->save();
+        // $paymentFee = $this->extractPaymentFee($buyCurrencyModel->payment_type);
     }
+
+    public static function extractConvertionFee(float $value): float
+    {
+        // @todo passar para o bd as regras
+        if ($value < 3000) {
+            return .02;
+        }
+
+        if ($value > 3000) {
+            return .01;
+        }
+
+        return 0;
+    }
+
+    // public function extractPaymentFee(string $paymentSlugType): float
+    // {
+
+    // }
 
 }
