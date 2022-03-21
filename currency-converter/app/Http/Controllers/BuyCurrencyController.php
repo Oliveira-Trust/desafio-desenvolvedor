@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BuyRequest;
-use App\Models\PaymentType\PaymentType;
+use App\Models\BuyCurrencyModel;
 use App\Services\CurrencyService;
 
 class BuyCurrencyController extends Controller
@@ -22,9 +22,9 @@ class BuyCurrencyController extends Controller
         ]);
     }
 
-    public function buy(BuyRequest $buyRequest)
+    public function buy(BuyRequest $buyRequest, CurrencyService $currencyService)
     {
-
+        $currencyService->buy(new BuyCurrencyModel($buyRequest->all()));
         return $buyRequest->all();
     }
 }
