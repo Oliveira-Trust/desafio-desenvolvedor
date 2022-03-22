@@ -44,4 +44,4 @@
     <div class="col-auto">
       <button type="submit" class="btn btn-primary mb-3">{{ trans('buy.title') }}</button>
     </div>
-  </form>
+</form>

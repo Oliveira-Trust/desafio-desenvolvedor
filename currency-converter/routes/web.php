@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuyCurrencyController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/purchases', [PurchaseController::class, 'index'])
+->middleware(['auth'])->name('purchases');
 
 Route::prefix('currency-converter')->group(function() {
     Route::controller(BuyCurrencyController::class)->group(function () {

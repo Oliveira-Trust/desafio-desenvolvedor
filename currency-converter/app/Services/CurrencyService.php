@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Factories\PaymentTypeFactory;
 use App\Models\BuyCurrencyModel;
 use App\Models\PaymentType\PaymentType;
+use App\Models\User;
 use App\Services\CurrencyAPIService\AvailabilityCurrencyApiService;
 use App\Services\CurrencyAPIService\CurrencyConvertionAPIService;
 use Illuminate\Support\Facades\Auth;
@@ -129,6 +130,11 @@ class CurrencyService
             * $this->paymentTypeFactory
                 ->bySlug($paymentSlugType)
                 ->getTax());
+    }
+
+    public function getAllPurchasesByUser(User $user)
+    {
+        return BuyCurrencyModel::whereBelongsTo($user)->get();
     }
 
 }
