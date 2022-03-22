@@ -8,7 +8,7 @@ class CreditCard extends PaymentType implements PaymentTypeContract
 {
     public function getTax(): float
     {
-        return 7.63;
+        return .0763;
     }
 
     public function getReadableName(): string

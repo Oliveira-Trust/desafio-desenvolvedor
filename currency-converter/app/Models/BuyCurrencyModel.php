@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Services\StringConvertion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class BuyCurrencyModel extends Model
 {
@@ -22,10 +22,22 @@ class BuyCurrencyModel extends Model
         'payment_fee',
     ];
 
+    protected $hidden = [
+        'id',
+        'user_id',
+        'updated_at',
+        'created_at',
+    ];
+
     public function __construct(array $attributes = [])
     {
         $attributes = $this->formapAttributeKeys($attributes);
         parent::__construct($attributes);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     private function formapAttributeKeys(array $attributes = []): array
@@ -36,7 +48,7 @@ class BuyCurrencyModel extends Model
          * */ 
         return collect($attributes)->mapWithKeys(function($value, $keys) {
             return [
-                StringConvertion::convertCamelCaseToSnake($keys) => $value
+                Str::snake($keys) => $value
             ];
         })->toArray();
     }

@@ -21,6 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('currency-converter')->group(function() {
     Route::controller(BuyCurrencyController::class)->group(function () {
-        Route::post('/buy', 'buy')->name('api.currency-converter.buy');
+        Route::post('/buy', 'buyApi')->name('api.currency-converter.buy');
     });
 });

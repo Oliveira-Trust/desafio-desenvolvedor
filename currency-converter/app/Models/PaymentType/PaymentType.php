@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaymentType extends Model
 {
+    // Este Factory não é o que eu preciso
     use HasFactory;
 
     /**

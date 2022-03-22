@@ -24,6 +24,7 @@ services:
             ipv4_address: 172.18.0.3
         depends_on:
             - mariadb
+        restart: always
         container_name: currency_converter
     mariadb:
       image: docker.io/bitnami/mariadb:10.6
@@ -32,10 +33,12 @@ services:
         - ALLOW_EMPTY_PASSWORD=yes
         - MARIADB_USER=cc_user
         - MARIADB_DATABASE=currency-converter
+      container_name: mariadb
       ports:
         - "3306:3306"
       networks:
-        - sail
+        sail:
+          ipv4_address: 172.18.0.2
 networks:
   sail:
     driver: bridge

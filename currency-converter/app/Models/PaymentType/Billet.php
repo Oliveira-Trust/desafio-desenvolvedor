@@ -8,7 +8,7 @@ class Billet extends PaymentType implements PaymentTypeContract
 {
     public function getTax(): float
     {
-        return 1.45;
+        return .0145;
     }
 
     public function getReadableName(): string
