@@ -51,7 +51,7 @@ Password |
 
 ### 4) Test like a user
 
-You can go at http://localhost/ now and exchange some money :money: or
+You can go at http://localhost/ now and exchange some money :money_with_wings: or
 
 ### 5) Test like a nerd
 
