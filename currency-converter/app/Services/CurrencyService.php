@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Factories\PaymentTypeFactory;
 use App\Models\BuyCurrencyModel;
+use App\Models\ConvertionFeeRuleModel;
 use App\Models\PaymentType\PaymentType;
 use App\Models\User;
 use App\Services\CurrencyAPIService\AvailabilityCurrencyApiService;
@@ -107,16 +108,14 @@ class CurrencyService
         return $buyCurrencyModel;
     }
 
-    /** @todo quando for passar para bd retirar static */
-    public static function extractConvertionFee(float $value): float
+    public function extractConvertionFee(float $value): float
     {
-        /** @todo passar para o bd as regras */
-        if ($value < 3000) {
-            return MoneyFormatterService::round($value * .02);
-        }
-
-        if ($value > 3000) {
-            return MoneyFormatterService::round($value * .01);
+        $allConvertionFeeRulesActives = ConvertionFeeRuleModel::active()->get();
+        /** @var ConvertionFeeRuleModel $convertionFeeRule */
+        foreach ($allConvertionFeeRulesActives as $convertionFeeRule) {
+            if (ConvertionFeeRuleModel::isOnRule($convertionFeeRule, $value)) {
+                return $convertionFeeRule->applyFee($value);
+            }
         }
 
         return 0;
