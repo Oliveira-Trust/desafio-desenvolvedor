@@ -7,7 +7,6 @@
         <p class="msg">Payment Value: {{session('buyStatus')->value}}</p>
         <p class="msg">Convertion Fee: {{session('buyStatus')->convertion_fee}}</p>
         <p class="msg">Payment Fee: {{session('buyStatus')->payment_fee}}</p>
-        <td></td>
         <p class="msg">Total Received: {{session('buyStatus')->selling_price}}</p>
         @endif
 
