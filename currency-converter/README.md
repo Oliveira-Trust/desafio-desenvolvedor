@@ -1,7 +1,7 @@
 # Requirements
-- [] [composer](https://getcomposer.org/download/) 
-- [] [docker](https://docs.docker.com/get-docker/)
-- [] [git](https://git-scm.com/downloads)
+- [ ] [composer](https://getcomposer.org/download/) 
+- [ ] [docker](https://docs.docker.com/get-docker/)
+- [ ] [git](https://git-scm.com/downloads)
 
 # Instructions
 
