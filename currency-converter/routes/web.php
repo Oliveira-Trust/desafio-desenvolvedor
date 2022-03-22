@@ -18,9 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 Route::prefix('currency-converter')->group(function() {
     Route::controller(BuyCurrencyController::class)->group(function () {
         Route::get('/', 'index')->name('currency-converter');
         Route::post('/buy', 'buy')->name('currency-converter.buy');
     });    
 });
+
+require __DIR__.'/auth.php';

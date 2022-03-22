@@ -1,12 +1,12 @@
 ## Instructions
 
-### 1) Go to folder
+### Go to the folder (if you dont)
 
 ```sh
 cd currency-converter
 ```
 
-### 2) Start docker services
+### Start docker services
 
 ```sh
 docker-compose up
@@ -16,10 +16,20 @@ after services is ready to listen
 - mariadb
 - currency_converter
 
-### 3) Run migrate
+### Run migrate
 
 ```sh
 docker exec currency_converter php artisan migrate
+```
+
+### Run Yarn Install 
+```sh
+docker exec currency_converter yarn install
+```
+
+### Run Yarn Run Dev 
+```sh
+docker exec currency_converter yarn run dev
 ```
 
 ### (Optional) You can access database with connection:
