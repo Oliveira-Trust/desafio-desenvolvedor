@@ -32,6 +32,11 @@ after services is ready to listen
 - currency_converter
 - mailhog (dont dispatch email, it will just log for you)
 
+## Generate application key
+```sh
+docker exec currency_converter php artisan key:generate
+```
+
 ## Run migrate
 
 ```sh
