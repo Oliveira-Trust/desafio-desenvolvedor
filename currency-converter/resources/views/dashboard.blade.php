@@ -4,6 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <iframe src="{{route('currency-converter')}}" width="100%" height="600px" scrolling="no"  frameborder="0"></iframe>
-
+    
+    @include('components.exchanger')
+    
 </x-app-layout>
