@@ -32,11 +32,15 @@ return [
     ],
 
     'currency-api' => [
-        'enabled' => env('CURRENCY_API_ENABLED', false),
+        'enabled' => env('CURRENCY_API_ENABLED', true),
         'url' => env('CURRENCY_API_URL', 'https://economia.awesomeapi.com.br/json/'),
         'availability' => [
-            'enabled' => env('CURRENCY_API_AVAILABILITY_ENABLED', false),
+            'enabled' => env('CURRENCY_API_AVAILABILITY_ENABLED', true),
             'endpoint' => env('CURRENCY_API_AVAILABILITY_ENDPOINT', 'available'),
+        ],
+        'currency-convertion' => [
+            'enabled' => env('CURRENCY_API_CURRENCY_CONVERTION_ENABLED', true),
+            'endpoint' => env('CURRENCY_API_CURRENCY_CONVERTION_ENDPOINT', 'last/:destinationCurrency-:originCurrency'),
         ],
     ],
 

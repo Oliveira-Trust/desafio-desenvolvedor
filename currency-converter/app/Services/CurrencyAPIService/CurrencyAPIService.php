@@ -8,8 +8,6 @@ use Throwable;
 
 abstract class CurrencyAPIService
 {
-    private $method = HttpMethods::GET;
-    private $endpoint = '';
     private $client;
 
     const BASE_CONFIG = 'services.currency-api.';
@@ -26,10 +24,9 @@ abstract class CurrencyAPIService
 
     public function request($payload)
     {
+        $payload = $this->beforeRequest($payload);
         $url = $this->getUrl() . $this->getEndpoint();
         $methodName = $this->getMethod()->name;
-
-        $payload = $this->beforeRequest($payload);
 
         try {
 
