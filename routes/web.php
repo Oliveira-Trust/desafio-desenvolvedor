@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\PaymentTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(CurrencyController::class)->middleware(['auth'])->group(function(){
-    Route::get('/dashboard', 'index')->name('dashboard');
-    Route::get('/get-currencies-purchases', 'getCurrenciesPurchases')->name('get-currencies-purchases');
-    Route::post('/buy-currency', 'buyCurrency')->name('buy-currency');
-    Route::post('/get-converted-currency', 'getConvertedCurrency')->name('get-converted-currency');
+Route::middleware(['auth'])->group(function(){
+
+    Route::controller(PaymentTypeController::class)->group(function() {
+        Route::get('/payment_types', 'index')->name('payment_types');
+        Route::get('/get-payment-types', 'getPaymentTypes')->name('get-payment-types');
+        Route::patch('/save-payment-type/{id}', 'savePaymentType')->name('save-payment-type');
+    });
+
+    Route::controller(CurrencyController::class)->group(function(){
+        Route::get('/dashboard', 'index')->name('dashboard');
+        Route::get('/get-currencies-purchases', 'getCurrenciesPurchases')->name('get-currencies-purchases');
+        Route::post('/buy-currency', 'buyCurrency')->name('buy-currency');
+        Route::post('/get-converted-currency', 'getConvertedCurrency')->name('get-converted-currency');
+    });
+
 });
+
+
 
 require __DIR__.'/auth.php';

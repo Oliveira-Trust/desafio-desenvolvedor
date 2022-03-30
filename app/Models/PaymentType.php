@@ -25,4 +25,18 @@ class PaymentType extends Model
     {
         $this->hasMany(CurrencyPurchase::class);
     }
+
+    public function scopeSearch($query, $data = [])
+    {
+        $query->when(Arr::get($data, 'name'), function($query) use($data){
+            $query->where('name', Arr::get($data, 'name'));
+        });
+
+        $query->when(Arr::get($data, 'status'), function($query) use($data){
+            $query->where('status', Arr::get($data, 'status'));
+        });
+
+        $query->orderBy('name');
+        return $query;
+    }
 }

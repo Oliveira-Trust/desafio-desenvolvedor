@@ -29,7 +29,7 @@ class BuyCurrencyRequest extends FormRequest
     {
         return [
             'origin_currency' => 'required|in:BRL',
-            'origin_currency_value' => 'required|numeric|min:1000|max:100000',
+            'origin_currency_value' => 'required|numeric|between:1000,100000',
             'destination_currency_id' => [
                 'required',
                 Rule::exists('currencies', 'id')->where(function ($query) {

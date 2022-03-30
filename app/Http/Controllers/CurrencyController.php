@@ -15,8 +15,7 @@ class CurrencyController extends Controller
 
     public function index()
     {
-        $currenciesPurchases = $this->currencyService->getPurchases();
-        return view('dashboard', compact('currenciesPurchases'));
+        return view('dashboard');
     }
 
     public function getCurrenciesPurchases()

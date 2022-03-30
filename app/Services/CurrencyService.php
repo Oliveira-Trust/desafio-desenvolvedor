@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Mail\BuyCurrency;
 use App\Models\Currency;
 use App\Models\CurrencyPurchase;
 use App\Rest\AwesomeApiQuoteCurrency;
+use Illuminate\Support\Facades\Mail;
 
 class CurrencyService
 {
@@ -21,7 +23,10 @@ class CurrencyService
 
     public function buyCurrency(array $data)
     {
-        return $this->fillCurrencyData(new CurrencyPurchase(), $data)->save();
+        $currencyData = $this->fillCurrencyData(new CurrencyPurchase(), $data);
+        $saved = $currencyData->save();
+        Mail::to(auth()->user()->email)->send(new BuyCurrency($currencyData));
+        return $saved;
     }
 
     public function getConvertedCurrency(array $data)
@@ -79,5 +84,6 @@ class CurrencyService
     {
         return $originCurrencyValue < 3000 ? 2 : 1;
     }
+
 
 }

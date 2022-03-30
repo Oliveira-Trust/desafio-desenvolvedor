@@ -5058,19 +5058,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/js/alpine_data/currency.js":
+/*!**********************************************!*\
+  !*** ./resources/js/alpine_data/currency.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('dataCurrenciesPurchases', function () {
   return {
     openModal: false,
@@ -5092,16 +5089,24 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('buyCurrencyForm', functio
       payment_type_id: '',
       destination_currency_id: ''
     },
-    errors: [],
-    submitData: function submitData($dispatch) {
+    submitData: function submitData() {
       var _this2 = this;
 
       this.errors = [];
       axios.post('/buy-currency', this.formData).then(function (response) {
-        $dispatch('closemodal');
-        $dispatch('searchcurrenciespurchases');
+        _this2.$dispatch('closemodal');
+
+        _this2.$dispatch('searchcurrenciespurchases');
+
+        _this2.$dispatch('notify', {
+          message: 'Comprado com sucesso',
+          type: 'success'
+        });
       })["catch"](function (error) {
-        _this2.errors = error.response.data;
+        _this2.$dispatch('notify', {
+          errors: error.response.data,
+          type: 'danger'
+        });
       });
     },
     convertCurrency: function convertCurrency() {
@@ -5111,11 +5116,80 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('buyCurrencyForm', functio
       axios.post('/get-converted-currency', this.formData).then(function (response) {
         _this3.formData = response.data;
       })["catch"](function (error) {
-        _this3.errors = error.response.data;
+        _this3.$dispatch('notify', {
+          errors: error.response.data,
+          type: 'danger'
+        });
       });
     }
   };
 });
+
+/***/ }),
+
+/***/ "./resources/js/alpine_data/payment_types.js":
+/*!***************************************************!*\
+  !*** ./resources/js/alpine_data/payment_types.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('dataPaymentTypes', function (e) {
+  return {
+    paymentTypes: [],
+    searchPaymentTypes: function searchPaymentTypes() {
+      var _this = this;
+
+      axios.get('/get-payment-types').then(function (response) {
+        _this.paymentTypes = response.data;
+      });
+    },
+    savePaymentType: function savePaymentType(data, id) {
+      var _this2 = this;
+
+      axios.patch('/save-payment-type/' + id, data).then(function (response) {
+        _this2.$dispatch('notify', {
+          title: 'Salvo com sucesso!',
+          type: 'success'
+        });
+
+        _this2.$dispatch('searchpaymenttypes');
+
+        _this2.$dispatch('paymenttypesaved', {
+          id: id
+        });
+      })["catch"](function (error) {
+        _this2.$dispatch('notify', {
+          errors: error.response.data,
+          type: 'danger'
+        });
+      });
+    }
+  };
+});
+
+/***/ }),
+
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _alpine_data_currency__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alpine_data/currency */ "./resources/js/alpine_data/currency.js");
+/* harmony import */ var _alpine_data_payment_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./alpine_data/payment_types */ "./resources/js/alpine_data/payment_types.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+
+
+
+window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 /***/ }),

@@ -17,13 +17,6 @@
             <h2 class="font-bold uppercase text-xl">Nova compra de moeda estrangeira</h2>
         </div>
         <div class="mb-3">
-            <div >
-                <template x-for="error in errors">
-                    <template x-for="message in error">
-                        <p x-text="message" class="bg-red-100 py-2 rounded-md px-6 text-red-600 mb-1"></p>
-                    </template>
-                </template>
-            </div>
             <div class="flex flex-col items-center">
                 <div class="flex items-center items-end p-2">
                     <div class="flex items-end p-2">
@@ -40,7 +33,7 @@
                                 <option value="">Selecione</option>
                                 @foreach ($paymentTypes as $paymentType)
                                     <option value="{{ $paymentType->id }}">
-                                        {{ $paymentType->name }}
+                                        {{ $paymentType->name }} (taxa: {{ $paymentType->fee }}%)
                                     </option>
                                 @endforeach
                             </select>
