@@ -8,6 +8,7 @@
     <div class="py-12" x-data="dataPaymentTypes" @searchpaymenttypes="searchPaymentTypes()">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" x-init="searchPaymentTypes()">
             <div class="grid grid-cols-3">
+
                 <template x-for="paymentType in paymentTypes">
                     <div class="p-2">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

@@ -15,8 +15,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('payment_types')" :active="request()->routeIs('payment_types')">
+
+                    <x-nav-link :href="route('payment-types')" :active="request()->routeIs('payment-types')">
                         {{ __('Formas de pagamento') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('conversion-fee')" :active="request()->routeIs('conversion=fee')">
+                        {{ __('Taxas de conversões') }}
                     </x-nav-link>
                 </div>
             </div>

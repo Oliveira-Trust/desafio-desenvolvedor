@@ -16,7 +16,7 @@ class PaymentTypeService
         return PaymentType::query()->search($data)->get();
     }
 
-    public function updatePaymentTypes(array $data = [], $id)
+    public function updatePaymentTypes(array $data, $id)
     {
         return PaymentType::query()->find($id)->fill($data)->update();
     }

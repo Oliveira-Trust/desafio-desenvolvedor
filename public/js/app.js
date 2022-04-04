@@ -5058,6 +5058,84 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/alpine_data/conversion_fee.js":
+/*!****************************************************!*\
+  !*** ./resources/js/alpine_data/conversion_fee.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('dataConversionFee', function (e) {
+  return {
+    openModal: false,
+    conversionFees: [],
+    formData: {
+      fee: '',
+      comparison_operator: '',
+      comparator_value: ''
+    },
+    searchConversionFee: function searchConversionFee() {
+      var _this = this;
+
+      axios.get('/get-conversion-fees').then(function (response) {
+        _this.conversionFees = response.data;
+      });
+    },
+    createConversionFee: function createConversionFee() {
+      var _this2 = this;
+
+      this.errors = [];
+      axios.post('/create-conversion-fee', this.formData).then(function (response) {
+        _this2.$dispatch('closemodal');
+
+        _this2.$dispatch('searchconversionfees');
+
+        _this2.$dispatch('notify', {
+          message: 'Cadastrado com sucesso',
+          type: 'success'
+        });
+
+        _this2.formData = {
+          fee: '',
+          comparison_operator: '',
+          comparator_value: ''
+        };
+      })["catch"](function (error) {
+        _this2.$dispatch('notify', {
+          errors: error.response.data,
+          type: 'danger'
+        });
+      });
+    },
+    updateConversionFee: function updateConversionFee(data, id) {
+      var _this3 = this;
+
+      axios.patch('/update-conversion-fee/' + id, data).then(function (response) {
+        _this3.$dispatch('notify', {
+          title: 'Salvo com sucesso!',
+          type: 'success'
+        });
+
+        _this3.$dispatch('searchconversionfees');
+
+        _this3.$dispatch('conversionfeesaved', {
+          id: id
+        });
+      })["catch"](function (error) {
+        _this3.$dispatch('notify', {
+          errors: error.response.data,
+          type: 'danger'
+        });
+      });
+    }
+  };
+});
+
+/***/ }),
+
 /***/ "./resources/js/alpine_data/currency.js":
 /*!**********************************************!*\
   !*** ./resources/js/alpine_data/currency.js ***!
@@ -5184,7 +5262,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
 /* harmony import */ var _alpine_data_currency__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alpine_data/currency */ "./resources/js/alpine_data/currency.js");
 /* harmony import */ var _alpine_data_payment_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./alpine_data/payment_types */ "./resources/js/alpine_data/payment_types.js");
+/* harmony import */ var _alpine_data_conversion_fee__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./alpine_data/conversion_fee */ "./resources/js/alpine_data/conversion_fee.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 

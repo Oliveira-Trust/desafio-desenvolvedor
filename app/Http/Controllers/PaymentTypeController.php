@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BuyCurrencyRequest;
 use App\Http\Requests\PaymentTypeRequest;
-use App\Http\Resources\CurrencyPurchaseResource;
-use App\Services\CurrencyService;
 use App\Services\PaymentTypeService;
-use Illuminate\Support\Facades\Request;
 
 class PaymentTypeController extends Controller
 {

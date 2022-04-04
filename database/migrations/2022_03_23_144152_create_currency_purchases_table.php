@@ -22,8 +22,6 @@ return new class extends Migration
             $table->unsignedBigInteger('destination_currency_id');
             $table->foreign('destination_currency_id')->references('id')->on('currencies');
             $table->float('destination_currency_price', 10, 2);
-            $table->float('convertion_fee', 5, 2)->nullable();
-            $table->float('convertion_fee_value', 10, 2)->nullable();
             $table->float('payment_fee', 5, 2)->nullable();
             $table->float('converted_currency_value', 10, 2);
             $table->float('payment_fee_value', 10, 2)->nullable();

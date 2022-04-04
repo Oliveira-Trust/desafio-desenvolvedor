@@ -8,7 +8,7 @@
     <form method="POST"
           x-show="{{ $open }}"
           x-transition
-          class="flex flex-col w-3/6 bg-white z-50 p-4 rounded-md mt-3"
+          class="flex flex-col w-5/6 md:w-5/6 lg:w-4/6 bg-white z-50 p-4 rounded-md mt-3"
           x-data="buyCurrencyForm"
           @submit.prevent="submitData($dispatch)"
     >
@@ -18,7 +18,7 @@
         </div>
         <div class="mb-3">
             <div class="flex flex-col items-center">
-                <div class="flex items-center items-end p-2">
+                <div class="md:flex items-center items-end p-2">
                     <div class="flex items-end p-2">
                         <div class="p-2">BRL - R$</div>
                         <div class="flex flex-col">
@@ -26,7 +26,7 @@
                             <input type="number" name="value" id="value" placeholder="" x-model="formData.origin_currency_value">
                         </div>
                     </div>
-                    <div class="flex items-end p-2">
+                    <div class="md:flex items-end p-2">
                         <div class="flex flex-col">
                             <label for="value" class="font-bold">Forma de pagamento:</label>
                             <select x-model="formData.payment_type_id">
@@ -49,7 +49,7 @@
                         <span class="font-bold">Converter para</span>
                     </button>
                 </div>
-                <div class="flex items-center items-end p-2">
+                <div class="md:flex items-center items-end p-2">
                     <div class="flex flex-col px-2">
                         <label for="value" class="font-bold">Moeda que você quer comprar</label>
                         <select x-model="formData.destination_currency_id" >
@@ -73,9 +73,23 @@
                 <template x-if="formData.payment_fee">
                     <p class="text-sm">Taxa de R$ <span x-text="formData.payment_fee_value"></span> (<span x-text="formData.payment_type.fee"></span>%) para pagamento em <span x-text="formData.payment_type.name"></span>.</p>
                 </template>
-                <template x-if="formData.convertion_fee">
-                    <p class="text-sm">Taxa de R$ <span x-text="formData.convertion_fee_value"></span> (<span x-text="formData.convertion_fee"></span>%) sobre a conversão.</p>
-                </template>
+
+{{--                <template x-if="formData.conversion_fees.length > 0">--}}
+                    <div>
+                        <p class="text-xs">Taxa(s) de conversão:</p>
+                        <template x-for="conversion_fees in formData.conversion_fees">
+                            <p>
+                                <span class="font-bold text-xs" x-text="conversion_fees.convertion_fee_value"></span>
+                                <span class="text-xs" x-text="`(${conversion_fees.convertion_fee}%) para valor`"></span>
+                                <span class="text-xs" x-text="conversion_fees.conversion_rule"></span>
+                            </p>
+                        </template>
+                    </div>
+{{--                </template>--}}
+
+{{--                <template x-if="formData.convertion_fee">--}}
+{{--                    <p class="text-sm">Taxa de R$ <span x-text="formData.convertion_fee_value"></span> (<span x-text="formData.convertion_fee"></span>%) sobre a conversão.</p>--}}
+{{--                </template>--}}
             </div>
         </div>
         <div class="flex justify-end border-t py-2">

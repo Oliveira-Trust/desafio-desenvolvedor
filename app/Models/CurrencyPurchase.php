@@ -59,13 +59,18 @@ class CurrencyPurchase extends Model
         return $this->belongsTo(PaymentType::class);
     }
 
+    public function conversionFees()
+    {
+        return $this->hasMany(CurrencyPurchaseConversionFee::class);
+    }
+
     public function scopeSearch($query, array $data = [])
     {
-
         $query->with([
             'paymentType',
             'destinationCurrency',
-            'user'
+            'user',
+            'conversionFees.conversionFee'
         ]);
         $query->orderBy('id', 'desc');
         return $query;

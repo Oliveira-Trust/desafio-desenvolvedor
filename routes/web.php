@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConversionFeeController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\PaymentTypeController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,16 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function(){
 
     Route::controller(PaymentTypeController::class)->group(function() {
-        Route::get('/payment_types', 'index')->name('payment_types');
+        Route::get('/payment-types', 'index')->name('payment-types');
         Route::get('/get-payment-types', 'getPaymentTypes')->name('get-payment-types');
         Route::patch('/save-payment-type/{id}', 'savePaymentType')->name('save-payment-type');
+    });
+
+    Route::controller(ConversionFeeController::class)->group(function() {
+        Route::get('/conversion-fee', 'index')->name('conversion-fee');
+        Route::get('/get-conversion-fees', 'getConversionFees')->name('get-conversion-fee');
+        Route::patch('/update-conversion-fee/{id}', 'updateConversionFee')->name('update-conversion-fee');
+        Route::post('/create-conversion-fee', 'createConversionFee')->name('create-conversion-fee');
     });
 
     Route::controller(CurrencyController::class)->group(function(){

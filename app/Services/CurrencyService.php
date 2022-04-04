@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Mail\BuyCurrency;
 use App\Models\Currency;
 use App\Models\CurrencyPurchase;
+use App\Models\CurrencyPurchaseConversionFee;
 use App\Rest\AwesomeApiQuoteCurrency;
 use Illuminate\Support\Facades\Mail;
 
@@ -25,6 +26,10 @@ class CurrencyService
     {
         $currencyData = $this->fillCurrencyData(new CurrencyPurchase(), $data);
         $saved = $currencyData->save();
+        $currencyData->conversionFees->each(function($conversion) use($currencyData){
+            $conversion->fill(['currency_purchase_id' => $currencyData->id])->save();
+        });
+
         Mail::to(auth()->user()->email)->send(new BuyCurrency($currencyData));
         return $saved;
     }
@@ -38,8 +43,16 @@ class CurrencyService
     {
         $currencyPurchase->fill($data);
 
-        $convertionFeeValue = $this->calcConvertionFee($currencyPurchase->origin_currency_value);
+        $conversionFees = $this->applyConvertionFees($currencyPurchase->origin_currency_value);
+        $currencyPurchase->setRelation('conversionFees', $conversionFees);
+
+        $convertionFeeValue = $conversionFees->reduce(function($carry, $item) {
+            $carry += $item->convertion_fee_value;
+            return $carry;
+        });
+
         $paymentFeeValue = $this->calcPaymentFee($currencyPurchase->origin_currency_value, $currencyPurchase->paymentType->fee);
+
         $convertedCurrency = $this->convertCurrency(
             $currencyPurchase->origin_currency,
             $currencyPurchase->destinationCurrency->symbol,
@@ -50,8 +63,6 @@ class CurrencyService
             'user_id' => auth()->user()->id,
             'converted_currency_value' => $convertedCurrency['result'],
             'destination_currency_price' => $convertedCurrency['price'],
-            'convertion_fee' => $this->getConvertionFee($currencyPurchase->origin_currency_value),
-            'convertion_fee_value' => $convertionFeeValue,
             'payment_fee' => $currencyPurchase->paymentType->fee,
             'payment_fee_value' => $paymentFeeValue
         ]);
@@ -63,7 +74,11 @@ class CurrencyService
     {
         $awesomeApiQuoteCurrency = new AwesomeApiQuoteCurrency;
         $response = $awesomeApiQuoteCurrency->lastCurrencyPrice($destinationCurrencySymbol, $originCurrencySymbol);
-        $purchasePrice = data_get($response, $destinationCurrencySymbol . $originCurrencySymbol . '.bid');
+        $purchasePrice = data_get($response,
+            $destinationCurrencySymbol . $originCurrencySymbol . '.bid',
+            data_get($response, $destinationCurrencySymbol . '.bid', 1)
+        );
+
         return [
             'price' => $purchasePrice,
             'result' => $originCurrencyValue / $purchasePrice
@@ -75,15 +90,26 @@ class CurrencyService
         return $originCurrencyValue * $fee / 100;
     }
 
-    public function calcConvertionFee($originCurrencyValue)
+    public function applyConvertionFees($originCurrencyValue)
     {
-        return $originCurrencyValue * $this->getConvertionFee($originCurrencyValue) / 100;
+        $conversionFees = app(ConversionFeeService::class)->getConversionFees(['status' => true]);
+        return $conversionFees->map(function($conversionFee) use($originCurrencyValue){
+            if($this->getConvertionFee($originCurrencyValue, $conversionFee)) {
+                $currencyPurchaseConversionFee = new CurrencyPurchaseConversionFee();
+                $currencyPurchaseConversionFee->fill([
+                    'conversion_fee_id' => $conversionFee->id,
+                    'convertion_fee' => $conversionFee->fee,
+                    'convertion_fee_value' => $originCurrencyValue * $conversionFee->fee / 100,
+                    'conversion_rule' => __('enum.' . $conversionFee->comparison_operator) . ' R$ ' . number_format($conversionFee->comparator_value * 1, 2, ',', '')
+                ]);
+                return $currencyPurchaseConversionFee;
+            }
+        })->filter(function($conversionFee){ return $conversionFee !== null; });
     }
 
-    public function getConvertionFee($originCurrencyValue)
+    public function getConvertionFee($originCurrencyValue, $conversionFee)
     {
-        return $originCurrencyValue < 3000 ? 2 : 1;
+        $comparatorCode = "return (($originCurrencyValue $conversionFee->comparison_operator $conversionFee->comparator_value) ? $conversionFee->fee : 0);";
+        return eval($comparatorCode);
     }
-
-
 }

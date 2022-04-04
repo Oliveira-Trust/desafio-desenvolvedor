@@ -6,9 +6,10 @@ use App\Exceptions\ValidatorException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
-class PaymentTypeRequest extends FormRequest
+class ConversionFeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +29,9 @@ class PaymentTypeRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required',
             'fee' => 'required|numeric|between:0,100',
-            'status' => 'required|boolean',
+            'comparison_operator' => 'required|in:<,>,<=,>=',
+            'comparator_value' => 'required|between:0,99999999'
         ];
         return $this->method() === 'PATCH' ? Arr::only($rules, $this->request->keys()) : $rules;
     }

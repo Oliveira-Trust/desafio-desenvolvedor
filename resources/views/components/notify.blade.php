@@ -22,8 +22,8 @@
             message = '';
             title = '';
             type = 'success'
-        }, 3000)"
-    class="fixed right-5 top-5  z-50">
+        }, 5000)"
+    class="fixed right-5 top-5 z-50">
     <div x-show="open"
         class=" border-l-4 p-4 mb-2"
         role="alert"
