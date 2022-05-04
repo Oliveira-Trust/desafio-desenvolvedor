@@ -1,0 +1,47 @@
+{
+    "name": "ldmuniz/awesomeapi-moedas",
+    "description": "AwesomeAPI-Moedas",
+    "keywords": [
+        "awesomeapi moedas"
+      ],
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/http": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ldmuniz\\PostReplicator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ldmuniz\\PostReplicator\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": false,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ldmuniz\\AwesomeAPIMoedas\\ServiceProvider"
+            ],
+            "aliases":{
+                "AwesomeAPIMoedas": "Ldmuniz\\AwesomeAPIMoedas\\AwesomeAPIMoedas"
+            }
+        },
+        "branch-alias": {
+            "dev-master": "1.00-dev"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leandro Dividino Muniz",
+            "email": "leandro.webmond@gmail.com"
+        }
+    ]
+}
