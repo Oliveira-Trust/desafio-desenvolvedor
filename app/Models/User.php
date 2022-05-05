@@ -42,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function exchanges()
+    {
+      return $this->hasMany(\App\Models\Exchange::class,'user_id');
+    }
 }

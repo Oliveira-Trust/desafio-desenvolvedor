@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PaymentMethod extends Model
+class ExchangeTax extends Model
 {
     use HasFactory;
 
@@ -13,4 +13,9 @@ class PaymentMethod extends Model
     {
       return $this->belongsTo(\App\Models\Tax::class, 'tax_id');
     } 
+
+    public function scopeGetTax($query, $value)
+    {
+        $query->where('from', '<=', $value)->where('to', '>=', $value);
+    }
 }

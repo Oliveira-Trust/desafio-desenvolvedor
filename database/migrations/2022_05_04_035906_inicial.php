@@ -29,7 +29,7 @@ class Inicial extends Migration
             $table->timestamps();
         });
 
-        Schema::create('conversion_taxes', function (Blueprint $table) {
+        Schema::create('exchange_taxes', function (Blueprint $table) {
             $table->id();
             $table->decimal('from',10,2);
             $table->decimal('to',10,2);
@@ -57,7 +57,7 @@ class Inicial extends Migration
             $table->decimal('ask',10,2);
             $table->decimal('rate',10,2);
             $table->decimal('payment_tax',10,2);
-            $table->decimal('conversion_tax',10,2);            
+            $table->decimal('exchange_tax',10,2);            
             $table->timestamps();
         });
     }
@@ -71,7 +71,7 @@ class Inicial extends Migration
     {
         Schema::dropIfExists('exchanges');
         Schema::dropIfExists('payment_methods');
-        Schema::dropIfExists('conversion_taxes');
+        Schema::dropIfExists('exchange_taxes');
         Schema::dropIfExists('currencies');
         Schema::dropIfExists('taxes');
     }
