@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::controller(CompraController::class)->group(function () {
+    Route::post('/compra','comprarMoeda')->name('compra');
+    // Route::post('/orders', 'store');
+});
+
+// Route::post('/compra',[CompraController::class, 'comprarMoeda'])->name('Home');
