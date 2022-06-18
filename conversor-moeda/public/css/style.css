@@ -1,0 +1,110 @@
+@font-face {
+    font-family: Edu;
+    src: url("font/Letters-for-Learners.ttf");
+    /* font-family: Edu2;
+    src: url("font/TheStudentsTeacher-Regular.ttf"); */
+}
+
+html {
+    background-color: #e6e6e6;
+}
+.div-ret{
+    margin: 20px;
+}
+.m-t-20{
+    margin-top: 20px;
+}
+.menu-superior{
+    padding: 0px 20px;
+}
+
+.section{
+    margin: 20px 10px;
+    background-color: #ffff;
+    border-radius: 5px;
+    padding: 20px;
+}	
+    
+.load {
+    animation: is-rotating 1s infinite;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #51d4db;
+    height: 50px;
+    width: 50px;
+  }
+  
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+.msg_error{
+    background-color: rgba(255, 55, 55, 0.349);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.msg_success{
+    background-color: rgb(13 156 0 / 58%);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.msg_warning{
+    background-color: #ff9800;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+
+.icon_swap{
+    position: relative;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.keyboard_arrow_up{
+    color: green;
+}
+
+.keyboard_arrow_down{
+color: red;
+}
+
+.card-metric{
+    padding: 10px;
+}
+.displayNone {
+    display: none;
+}
+.btn-convert{
+    margin-top: 25px;
+    width: 20%;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+
+.modal-imagem {
+    width: 95% !important;
+    height: 100% !important;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .btn-convert{
+        margin-top: 25px;
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+}

@@ -14,5 +14,16 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('index');
 });
+
+$router->post('/converterValores', 'CalculoController@converterValores');
+
+$router->post('/loginAcesso', 'UserController@loginAcesso');
+
+$router->post('/loginCadastro', 'UserController@loginCadastro');
+
+$router->post('/consultarHistorico', 'UserController@consultarHistorico');
+
+
+
