@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompraController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +15,9 @@ use App\Http\Controllers\CompraController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-Route::controller(CompraController::class)->group(function () {
-    Route::post('/compra','comprarMoeda')->name('compra');
-    // Route::post('/orders', 'store');
-});
+Route::get('/dashboard', [CompraController::class, 'montaTela'])->middleware(['auth'])->name('dashboard');
 
-// Route::post('/compra',[CompraController::class, 'comprarMoeda'])->name('Home');
+require __DIR__.'/auth.php';

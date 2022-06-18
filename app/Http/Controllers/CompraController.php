@@ -13,6 +13,11 @@ class CompraController extends Controller
         $this->compraService = new CompraService();
     }
 
+    public function montaTela()
+    {
+        return view('conversao-header-view');
+    }
+
     public function comprarMoeda(Request $request){
         //todo: separar validação em outra classe
         $validated = Validator::make($request->all(),[

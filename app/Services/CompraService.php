@@ -55,7 +55,7 @@ class CompraService{
   }
 
   private function getTaxaTipoPagamento($tipoPagamento){
-      $taxa = Pagamento::getTipoPagamentoByID($moedaDestino)->abreviacao_moeda;
+      return Pagamento::getTipoPagamentoByID($tipoPagamento)->abreviacao_moeda;
   }
 
   private function aplicarTaxaConversao($valorInicial, $taxaConversao){
