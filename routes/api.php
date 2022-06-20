@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('quotation', [\Oliveiratrust\Quotation\QuotationController::class, 'store']);
-
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('quotation', [\Oliveiratrust\Quotation\QuotationController::class, 'index']);
+    Route::post('quotation', [\Oliveiratrust\Quotation\QuotationController::class, 'store']);
     Route::get('quotation/{id}', [\Oliveiratrust\Quotation\QuotationController::class, 'show']);
+    Route::post('quotation/{id}/email', [\Oliveiratrust\Quotation\QuotationController::class, 'sendEmail']);
 });

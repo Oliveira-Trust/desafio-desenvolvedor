@@ -11,6 +11,10 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
 
 COPY 90-xdebug.ini "${PHP_INI_DIR}/conf.d"
 
+RUN apk add --no-cache pcre-dev $PHPIZE_DEPS \
+        && pecl install redis \
+        && docker-php-ext-enable redis.so
+
 WORKDIR /var/www
 
 RUN rm -rf /var/www/html

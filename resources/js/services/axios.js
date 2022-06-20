@@ -11,8 +11,15 @@ const $axios = axios.create({
 
 $axios.defaults.withCredentials = true;
 
-if (store.state.user.id > 0) {
-    $axios.defaults.headers.common.Authorization = `Bearer ${store.state.user.token}`;
-}
+$axios.interceptors.request.use(function (config) {
+    if (store.state.user.id > 0) {
+        config.headers.Authorization = `Bearer ${store.state.user.token}`;
+    }
+
+    return config;
+}, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+});
 
 export default $axios;

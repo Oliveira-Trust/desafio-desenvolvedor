@@ -5,20 +5,7 @@ const routes = [
     {
         path: "/",
         name: "index",
-        component: () => import("../pages/Index.vue"),
-        meta: {requiresAuth: false}
-    },
-    {
-        path: "/auth/login",
-        name: "login",
-        component: () => import("../pages/AuthLogin.vue"),
-        meta: {requiresAuth: false}
-    },
-    {
-        path: "/auth/register",
-        name: "register",
-        component: () => import("../pages/AuthRegister.vue"),
-        meta: {requiresAuth: false}
+        component: () => import("../pages/Index.vue")
     }
 ];
 
@@ -27,6 +14,7 @@ const router = createRouter({
     routes,
 })
 
+/*
 router.beforeEach((to, from, next) => {
     const isAuthenticated = store.state.user.id > 0;
     const isAdmin = store.state.user.is_admin;
@@ -43,5 +31,6 @@ router.beforeEach((to, from, next) => {
         next()
     }
 });
+*/
 
 export default router;

@@ -15,7 +15,7 @@ class UserSeeder extends Seeder {
     public function run()
     {
         \Oliveiratrust\Models\User\User::create([
-            'name'     => 'Admin',
+            'name'     => 'Administrador',
             'email'    => 'admin@admin.com',
             'password' => 'admin',
             'is_admin' => true

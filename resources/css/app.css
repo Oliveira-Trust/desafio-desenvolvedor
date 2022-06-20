@@ -5,3 +5,145 @@
 .content {
     @apply min-h-screen;
 }
+
+.quotation {
+    @apply border p-10 rounded-md
+}
+
+.quotation h1 {
+    @apply font-bold text-gray-900 text-xl
+}
+
+.input-form {
+    @apply mt-4;
+}
+
+.quotation .input-form {
+    @apply mt-6;
+}
+
+.input-form {
+    @apply w-full;
+}
+
+.input-form label {
+    @apply block text-sm font-medium text-gray-700;
+}
+
+.input-form-row {
+    @apply mt-1 flex rounded-md shadow-sm;
+}
+
+.input-form-row.no-shadow {
+    @apply shadow-none;
+}
+
+.input-form-group {
+    @apply inline-flex flex-1 items-center border;
+}
+
+.input-form-group span {
+    @apply px-4 text-gray-500 text-sm border-r;
+}
+
+.input-form-group input, .input-form-group select {
+    @apply h-full px-4 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300;
+}
+
+.radio-image {
+    @apply ml-2
+}
+
+.input-form button {
+    @apply flex items-center justify-center w-full mt-8 py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max text-white font-semibold
+
+}
+
+.input-form button.button-loading {
+    @apply bg-sky-300 hover:bg-sky-300 active:bg-sky-300 focus:bg-sky-300 hover:cursor-not-allowed
+}
+
+.button-login {
+    @apply inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+}
+
+.button-login.button-loading {
+    @apply text-white bg-gray-300 hover:bg-gray-300 focus:bg-gray-300  hover:cursor-not-allowed
+}
+
+.button-link {
+    @apply w-full text-xs text-left transition hover:underline active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold
+}
+
+.icon-loading {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.has-errors .input-form-group {
+    @apply border-red-500
+}
+
+.has-errors label {
+    @apply text-red-500
+}
+
+.msg-error {
+    @apply text-red-500 text-sm;
+}
+
+.resultado .separator{
+    @apply flex flex-1 mx-2 border-b border-gray-200 border-dashed;
+}
+
+.resultado > div {
+    @apply flex mt-5 justify-between;
+}
+
+.resultado .taxas {
+    @apply flex flex-col;
+}
+
+.resultado .taxas > div {
+    @apply flex text-gray-400
+}
+
+.minhas-cotacoes{
+    @apply mt-10
+}
+
+.minhas-cotacoes h1{
+    @apply font-bold text-gray-900 text-xl
+}
+
+.minhas-cotacoes table{
+    @apply w-full text-sm text-left
+}
+
+.minhas-cotacoes table thead{
+    @apply text-xs text-gray-700 uppercase  border-b border-gray-300
+}
+
+.minhas-cotacoes table thead th{
+    @apply px-6 py-3
+}
+
+.minhas-cotacoes table tbody tr{
+    @apply border-b border-gray-300
+}
+
+.minhas-cotacoes table td{
+    @apply px-6 py-4 font-medium text-gray-500 whitespace-nowrap;
+}
+
+.minhas-cotacoes table td.value{
+    @apply text-red-500 font-bold text-sm;
+}

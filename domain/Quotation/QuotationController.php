@@ -3,31 +3,32 @@
 namespace Oliveiratrust\Quotation;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
-use Oliveiratrust\Base\Traits\ResponseTrait;
-use Oliveiratrust\Models\Quotation\Quotation;
 
 class QuotationController extends Controller {
 
-    use ResponseTrait;
-
     public function __construct(
-        private QuotationService $service
+        private QuotationService    $service,
+        private QuotationRepository $repository
     ){}
 
-    public function show(int $id)
+    public function index()
     {
-        $data = Quotation::find($id);
+        $data = $this->repository->list();
 
-        return new QuotationResource($data);
+        return QuotationResource::collection($data);
     }
 
     public function store(QuotationRequest $request)
     {
-        $data = $data === 0
-        ? $this->service->quotation($request->validated())
-        : $this->service->quotation($request->validated());
+        $data = $this->service->quotation($request->validated());
 
-        return  QuotationResource::collection($data);
+        return new QuotationResource($data);
+    }
+
+    public function sendEmail($id)
+    {
+        $this->service->sendEmail($id);
+
+        return [];
     }
 }

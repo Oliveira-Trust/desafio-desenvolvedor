@@ -7,7 +7,7 @@ use Oliveiratrust\Models\FeeType\FeeType;
 
 class FeeRepository {
 
-    private Fee   $fee;
+    private $fee;
     private float $amount;
 
     public function __construct(

@@ -38,19 +38,23 @@
                                 </ul>
 
                                 <ul class="border-t space-y-2 pt-2 lg:space-y-0 lg:space-x-2 lg:pt-0 lg:pl-2 lg:border-t-0 lg:border-l lg:items-center lg:flex">
-                                    <li>
-                                        <button type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max">
-                                    <span class="block text-cyan-600 font-semibold">
-                                        Criar uma conta grátis
-                                    </span>
+                                    <li v-if="!isLoggedIn">
+                                        <button @click.prevent="openLoginModal(false)" type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold">
+                                            Criar uma conta grátis
                                         </button>
                                     </li>
 
-                                    <li>
-                                        <button type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max">
-                                    <span class="block text-white font-semibold">
-                                        Fazer login
-                                    </span>
+                                    <li v-if="!isLoggedIn">
+                                        <button @click.prevent="openLoginModal(true)" type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max font-semibold text-white">
+                                            Fazer login
+                                        </button>
+                                    </li>
+
+                                    <li v-if="isLoggedIn" class="ml-4">{{ name }}</li>
+
+                                    <li v-if="isLoggedIn">
+                                        <button @click.prevent="logout" type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold">
+                                            Sair
                                         </button>
                                     </li>
                                 </ul>
@@ -105,58 +109,68 @@
                         <div class="flex">
                             🔥🌟
                             <span>Você poderá também receber a cotação por </span>
-                            <a href="#" class="font-semibold text-gray-700 flex">
+                            <span class="font-semibold text-gray-700 flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                 </svg>
 
                                 EMAIL
-                            </a>
+                            </span>
                         </div>
                     </div>
 
                     <div class="lg:block lg:w-5/12">
-                        <Quotation />
+                        <Quotation @created="carregarCotacoes"/>
                     </div>
+                </div>
+
+                <div class="w-full" v-if="isLoggedIn">
+                    <minhas-cotacoes ref="cotacoes"/>
                 </div>
             </div>
         </div>
 
-        <div class="pb-8">
-            <div class="container m-auto px-6 md:px-12 lg:px-6">
-                <div class="py-8 px-12 bg-cyan-50 rounded-2xl">
-                    <span class="block text-center font-medium text-cyan-700">Trusted by your favorite giants</span>
-                    <div class="mt-8 flex justify-center flex-wrap items-center gap-4 md:gap-6 lg:gap-8">
-                        <div class="flex items-center">
-                            <img class="w-36" src="images/clients/microsoft.png" alt="client logo" loading="lazy" width="584" height="122">
-                        </div>
-                        <div class="flex items-center">
-                            <img class="w-28" src="images/clients/myob.png" alt="client logo" loading="lazy" width="400" height="219">
-                        </div>
-                        <div class="flex items-center">
-                            <img class="w-28" src="images/clients/grabyo.png" alt="client logo" loading="lazy" width="400" height="219">
-                        </div>
-                        <div class="flex items-center">
-                            <img class="w-32" src="images/clients/lifegroups.png" alt="client logo" loading="lazy" width="400" height="219">
-                        </div>
-                        <div class="flex items-center">
-                            <img class="w-24" src="images/clients/lilly.png" alt="client logo" loading="lazy" width="400" height="219">
-                        </div>
-                        <div class="flex items-center">
-                            <img class="w-28" src="images/clients/grabyo.png" alt="client logo" loading="lazy" width="400" height="219">
-                        </div>
-                        <div class="flex items-center">
-                            <img class="w-32" src="images/clients/lifegroups.png" alt="client logo" loading="lazy" width="400" height="219">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <login-modal ref="loginModal"></login-modal>
     </div>
 </template>
 <script>
 import Quotation from "./Quotation";
+import LoginModal from '../components/LoginModal';
+import MinhasCotacoes from "../components/MinhasCotacoes";
+
 export default {
-    components: {Quotation}
+    components: {MinhasCotacoes, LoginModal, Quotation},
+
+    computed: {
+        isLoggedIn() {
+            return this.$store.state.user.id > 0;
+        },
+
+        name() {
+            return this.$store.state.user.name;
+        }
+    },
+
+    data() {
+        return {}
+    },
+
+    methods: {
+        openLoginModal(isLogin) {
+            if (this.$store.state.user.id > 0) {
+                return;
+            }
+
+            this.$refs.loginModal.fazerLogin(isLogin, true);
+        },
+
+        logout() {
+            this.$refs.loginModal.logout();
+        },
+
+        carregarCotacoes(){
+            this.$refs.cotacoes.load();
+        }
+    }
 }
 </script>

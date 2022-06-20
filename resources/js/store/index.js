@@ -17,6 +17,12 @@ export const store = createStore({
 
             localStorage.setItem('user', user);
         },
+
+        removeUser(state) {
+            localStorage.removeItem('user');
+
+            state.user = {};
+        }
     },
     actions: {},
     getters: {},

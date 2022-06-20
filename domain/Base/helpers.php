@@ -5,7 +5,7 @@ function getTimezone()
     return 'America/Sao_Paulo';
 }
 
-function toData($data, bool $time = true, string $date_format = '', string $time_format = 'H:i:s', $setTimeZone = true)
+function toDate($data, bool $time = true, string $date_format = '', string $time_format = 'H:i:s', $setTimeZone = true)
 {
     if ( ! $data) {
         return null;

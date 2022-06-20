@@ -54,11 +54,12 @@ return new class extends Migration {
 
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('payment_type_id')->constrained('payment_types');
             $table->foreignId('currency_id')->constrained('currencies');
             $table->foreignId('currency_price_id')->constrained('currency_prices');
             $table->decimal('amount')->unsigned();
+            $table->decimal('price', 12, 4)->unsigned();
             $table->json('fees');
             $table->decimal('exchanged_amount', 15)->unsigned();
             $table->timestamps();
