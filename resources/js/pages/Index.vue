@@ -257,11 +257,6 @@ export default {
         }
     },
 
-    mounted() {
-        this.buscarMoedas();
-        this.buscarTaxas();
-    },
-
     data() {
         return {
             isAdminMode: false,

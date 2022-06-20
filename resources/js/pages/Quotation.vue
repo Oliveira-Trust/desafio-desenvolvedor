@@ -188,6 +188,7 @@ export default {
 
                     this.$emit('created');
                     this.isLoading = false;
+                    this.isEmailEnviado = false;
                 }).catch((error) => {
                     this.isLoading = false;
 
@@ -211,6 +212,7 @@ export default {
 
         limparCotacao() {
             this.quotation = false;
+            this.isEmailEnviado = false;
         },
 
         getError,
