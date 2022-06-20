@@ -188,6 +188,125 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TaxaModal.vue?vue&type=script&lang=js":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TaxaModal.vue?vue&type=script&lang=js ***!
+  \***************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/components/transitions/transition.js");
+/* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/components/dialog/dialog.js");
+/* harmony import */ var _components_CurrencyInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/CurrencyInput */ "./resources/js/components/CurrencyInput.vue");
+/* harmony import */ var _utils_getError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/getError */ "./resources/js/utils/getError.js");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    TransitionRoot: _headlessui_vue__WEBPACK_IMPORTED_MODULE_2__.TransitionRoot,
+    TransitionChild: _headlessui_vue__WEBPACK_IMPORTED_MODULE_2__.TransitionChild,
+    Dialog: _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__.Dialog,
+    DialogPanel: _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__.DialogPanel,
+    DialogTitle: _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__.DialogTitle,
+    CurrencyInput: _components_CurrencyInput__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      isOpen: false,
+      isEdit: true,
+      isLoading: false,
+      callback: null,
+      fee: null,
+      form: this.resetForm(),
+      errors: {}
+    };
+  },
+  methods: {
+    resetForm: function resetForm() {
+      return {
+        fee_type_id: 1,
+        payment_type_id: 1,
+        min_amount: 0,
+        max_amount: 0,
+        percent: 0,
+        fixed_value: 0
+      };
+    },
+    abrirModal: function abrirModal(fee, callback) {
+      this.fee = fee;
+      this.form = this.resetForm();
+      this.errors = {};
+      this.isLoading = false;
+      this.isEdit = false;
+
+      if (fee && fee.id > 0) {
+        this.form = {
+          fee_type_id: fee.fee_type_id,
+          payment_type_id: fee.payment_type_id,
+          min_amount: fee.min_amount,
+          max_amount: fee.max_amount,
+          percent: fee.percent,
+          fixed_value: fee.fixed_value
+        };
+        this.isEdit = true;
+      }
+
+      this.isOpen = true;
+      this.callback = callback;
+    },
+    closeModal: function closeModal() {
+      if (this.callback && typeof this.callback === "function") {
+        this.callback();
+      }
+
+      this.isOpen = false;
+    },
+    submit: function submit() {
+      var _this = this;
+
+      if (this.isLoading) {
+        return;
+      }
+
+      this.isLoading = true;
+      this.errors = {};
+
+      if (!this.isEdit) {
+        this.axios.post('/api/admin/fees', this.form).then(function (response) {
+          _this.isLoading = false;
+
+          _this.closeModal();
+        })["catch"](function (error) {
+          _this.isLoading = false;
+
+          if (error.response.status === 422 && error.response.data.errors) {
+            _this.errors = error.response.data.errors;
+          }
+        });
+      } else {
+        this.axios.put('/api/admin/fees/' + this.fee.id, this.form).then(function (response) {
+          _this.isLoading = false;
+
+          _this.closeModal();
+        })["catch"](function (error) {
+          _this.isLoading = false;
+
+          if (error.response.status === 422 && error.response.data.errors) {
+            _this.errors = error.response.data.errors;
+          }
+        });
+      }
+    },
+    getError: _utils_getError__WEBPACK_IMPORTED_MODULE_1__.getError
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/Index.vue?vue&type=script&lang=js":
 /*!******************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/Index.vue?vue&type=script&lang=js ***!
@@ -200,17 +319,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Quotation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Quotation */ "./resources/js/pages/Quotation.vue");
 /* harmony import */ var _components_LoginModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/LoginModal */ "./resources/js/components/LoginModal.vue");
-/* harmony import */ var _components_MinhasCotacoes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/MinhasCotacoes */ "./resources/js/components/MinhasCotacoes.vue");
+/* harmony import */ var _components_TaxaModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TaxaModal */ "./resources/js/components/TaxaModal.vue");
+/* harmony import */ var _components_MinhasCotacoes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/MinhasCotacoes */ "./resources/js/components/MinhasCotacoes.vue");
+/* harmony import */ var _utils_formatValue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/formatValue */ "./resources/js/utils/formatValue.js");
+
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    MinhasCotacoes: _components_MinhasCotacoes__WEBPACK_IMPORTED_MODULE_2__["default"],
+    MinhasCotacoes: _components_MinhasCotacoes__WEBPACK_IMPORTED_MODULE_3__["default"],
     LoginModal: _components_LoginModal__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Quotation: _Quotation__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Quotation: _Quotation__WEBPACK_IMPORTED_MODULE_0__["default"],
+    TaxaModal: _components_TaxaModal__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   computed: {
+    isAdmin: function isAdmin() {
+      return this.$store.state.user.is_admin;
+    },
     isLoggedIn: function isLoggedIn() {
       return this.$store.state.user.id > 0;
     },
@@ -218,8 +345,17 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.user.name;
     }
   },
+  mounted: function mounted() {
+    this.buscarMoedas();
+    this.buscarTaxas();
+  },
   data: function data() {
-    return {};
+    return {
+      isAdminMode: false,
+      isLoadingRefresh: false,
+      moedas: [],
+      taxas: []
+    };
   },
   methods: {
     openLoginModal: function openLoginModal(isLogin) {
@@ -230,11 +366,69 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.loginModal.fazerLogin(isLogin, true);
     },
     logout: function logout() {
+      this.isAdminMode = false;
       this.$refs.loginModal.logout();
     },
     carregarCotacoes: function carregarCotacoes() {
       this.$refs.cotacoes.load();
-    }
+    },
+    changeAdminMode: function changeAdminMode(value) {
+      this.isAdminMode = value;
+      this.buscarMoedas();
+      this.buscarTaxas();
+    },
+    buscarMoedas: function buscarMoedas() {
+      var _this = this;
+
+      this.isLoadingRefresh = true;
+      this.axios.get('/api/admin/currencies').then(function (response) {
+        _this.isLoadingRefresh = false;
+        _this.moedas = response.data.data;
+      })["catch"](function () {
+        _this.isLoadingRefresh = false;
+      });
+    },
+    sincronizarMoedas: function sincronizarMoedas() {
+      var _this2 = this;
+
+      this.isLoadingRefresh = true;
+      this.axios.get('/api/admin/currencies/refresh').then(function (response) {
+        _this2.buscarMoedas();
+      })["catch"](function () {
+        _this2.isLoadingRefresh = false;
+      });
+    },
+    buscarTaxas: function buscarTaxas() {
+      var _this3 = this;
+
+      this.axios.get('/api/admin/fees').then(function (response) {
+        _this3.taxas = response.data.data;
+      });
+    },
+    adicionarTaxa: function adicionarTaxa() {
+      var _this4 = this;
+
+      this.$refs.taxaModal.abrirModal(null, function () {
+        _this4.buscarTaxas();
+      });
+    },
+    editarTaxa: function editarTaxa(fee) {
+      var _this5 = this;
+
+      this.$refs.taxaModal.abrirModal(fee, function () {
+        _this5.buscarTaxas();
+      });
+    },
+    excluirTaxa: function excluirTaxa(fee) {
+      var _this6 = this;
+
+      if (window.confirm("Você tem certeza que quer excluir essa taxa?")) {
+        this.axios["delete"]('/api/admin/fees/' + fee.id).then(function (response) {
+          _this6.buscarTaxas();
+        });
+      }
+    },
+    formatValue: _utils_formatValue__WEBPACK_IMPORTED_MODULE_4__.formatValue
   }
 });
 
@@ -285,24 +479,7 @@ __webpack_require__.r(__webpack_exports__);
         currency_id: 2,
         payment_type_id: 1
       },
-      quotation: {
-        "id": 8,
-        "user_id": 1,
-        "payment_type_id": 8,
-        "payment_type_description": "Cartão de crédito",
-        "currency_id": 8,
-        "currency_code": "GBP",
-        "currency_name": "Libra Esterlina",
-        "amount": 10000,
-        "price": 6.2591,
-        "fees": {
-          "1": 763,
-          "2": 100,
-          "total": 863
-        },
-        "exchanged_amount": 1459.79,
-        "created_at": "20/06/2022 11:40"
-      },
+      quotation: false,
       isLoading: false,
       errors: {},
       isEmailEnviado: false,
@@ -773,6 +950,481 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TaxaModal.vue?vue&type=template&id=7f37e8dc":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TaxaModal.vue?vue&type=template&id=7f37e8dc ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "fixed inset-0 bg-black bg-opacity-25"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  "class": "fixed inset-0 overflow-y-auto"
+};
+var _hoisted_3 = {
+  "class": "flex min-h-full items-center justify-center p-4 text-center"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Qual o tipo de taxa?", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "input-form-row no-shadow"
+};
+var _hoisted_6 = {
+  "class": "flex mr-10 items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "fee_type_id_1",
+  "class": "ml-2"
+}, "Forma de pagamento", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "flex mr-10 items-center"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "fee_type_id_2",
+  "class": "ml-2"
+}, "Taxa de conversão", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  key: 0,
+  "class": "msg-error"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Qual a forma de pagamento?", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "input-form-row no-shadow"
+};
+var _hoisted_13 = {
+  "class": "flex mr-10 items-center"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "payment_type_id_1",
+  "class": "ml-2"
+}, "Boleto", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "flex mr-10 items-center"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "payment_type_id_2",
+  "class": "ml-2"
+}, "Cartão de crédito", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
+  key: 0,
+  "class": "msg-error"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "min_amount"
+}, "Valor mínimo", -1
+/* HOISTED */
+);
+
+var _hoisted_19 = {
+  "class": "input-form-row h-10"
+};
+var _hoisted_20 = {
+  "class": "input-form-group"
+};
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "has-input"
+}, "BRL", -1
+/* HOISTED */
+);
+
+var _hoisted_22 = {
+  key: 0,
+  "class": "msg-error"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "max_amount"
+}, "Valor máximo", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
+  "class": "input-form-row h-10"
+};
+var _hoisted_25 = {
+  "class": "input-form-group"
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "has-input"
+}, "BRL", -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  key: 0,
+  "class": "msg-error"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "percent"
+}, "Taxa em porcentagem (%)", -1
+/* HOISTED */
+);
+
+var _hoisted_29 = {
+  "class": "input-form-row h-10"
+};
+var _hoisted_30 = {
+  "class": "input-form-group"
+};
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "has-input"
+}, "%", -1
+/* HOISTED */
+);
+
+var _hoisted_32 = {
+  key: 0,
+  "class": "msg-error"
+};
+
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "fixed_value"
+}, "Taxa fixa (R$)", -1
+/* HOISTED */
+);
+
+var _hoisted_34 = {
+  "class": "input-form-row h-10"
+};
+var _hoisted_35 = {
+  "class": "input-form-group"
+};
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "has-input"
+}, "BRL", -1
+/* HOISTED */
+);
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Útil caso precisar uma porcentagem + um pequeno valor fixo. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Ex: 4% + R$1,50")], -1
+/* HOISTED */
+);
+
+var _hoisted_38 = {
+  key: 0,
+  "class": "msg-error"
+};
+var _hoisted_39 = {
+  "class": "mt-10"
+};
+var _hoisted_40 = {
+  key: 0,
+  "class": "icon-loading mr-2"
+};
+
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  "class": "w-5 h-5",
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "stroke-width": "2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_42 = [_hoisted_41];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
+  var _component_TransitionChild = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TransitionChild");
+
+  var _component_DialogTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DialogTitle");
+
+  var _component_CurrencyInput = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CurrencyInput");
+
+  var _component_DialogPanel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DialogPanel");
+
+  var _component_Dialog = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dialog");
+
+  var _component_TransitionRoot = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TransitionRoot");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_TransitionRoot, {
+    appear: "",
+    show: $data.isOpen,
+    as: "template"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dialog, {
+        as: "div",
+        onClose: $options.closeModal,
+        "class": "relative z-10"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TransitionChild, {
+            as: "template",
+            enter: "duration-300 ease-out",
+            "enter-from": "opacity-0",
+            "enter-to": "opacity-100",
+            leave: "duration-200 ease-in",
+            "leave-from": "opacity-100",
+            "leave-to": "opacity-0"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_1];
+            }),
+            _: 1
+            /* STABLE */
+
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TransitionChild, {
+            as: "template",
+            enter: "duration-300 ease-out",
+            "enter-from": "opacity-0 scale-95",
+            "enter-to": "opacity-100 scale-100",
+            leave: "duration-200 ease-in",
+            "leave-from": "opacity-100 scale-100",
+            "leave-to": "opacity-0 scale-95"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DialogPanel, {
+                "class": "w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              }, {
+                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DialogTitle, {
+                    as: "h3",
+                    "class": "text-lg font-medium leading-6 text-gray-900"
+                  }, {
+                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.isEdit ? 'Editar taxa' : 'Cadastrar taxa'), 1
+                      /* TEXT */
+                      )];
+                    }),
+                    _: 1
+                    /* STABLE */
+
+                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+                    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+                      return $options.submit && $options.submit.apply($options, arguments);
+                    }, ["prevent"])),
+                    "class": "mt-2"
+                  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-form", {
+                      'has-errors': $options.getError(_this.errors, 'fee_type_id') !== ''
+                    }])
+                  }, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+                    type: "radio",
+                    id: "fee_type_id_1",
+                    name: "fee_type_id",
+                    value: 1,
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+                      return $data.form.fee_type_id = $event;
+                    })
+                  }, null, 512
+                  /* NEED_PATCH */
+                  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.fee_type_id]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+                    type: "radio",
+                    id: "fee_type_id_2",
+                    name: "fee_type_id",
+                    value: 2,
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+                      return $data.form.fee_type_id = $event;
+                    })
+                  }, null, 512
+                  /* NEED_PATCH */
+                  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.fee_type_id]]), _hoisted_9])]), $options.getError(_this.errors, 'fee_type_id') !== '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getError(_this.errors, 'fee_type_id')), 1
+                  /* TEXT */
+                  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+                  /* CLASS */
+                  ), $data.form.fee_type_id === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                    key: 0,
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-form", {
+                      'has-errors': $options.getError(_this.errors, 'payment_type_id') !== ''
+                    }])
+                  }, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+                    type: "radio",
+                    id: "payment_type_id_1",
+                    name: "payment_type_id",
+                    value: 1,
+                    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+                      return $data.form.payment_type_id = $event;
+                    })
+                  }, null, 512
+                  /* NEED_PATCH */
+                  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.payment_type_id]]), _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+                    type: "radio",
+                    id: "payment_type_id_2",
+                    name: "payment_type_id",
+                    value: 2,
+                    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+                      return $data.form.payment_type_id = $event;
+                    })
+                  }, null, 512
+                  /* NEED_PATCH */
+                  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.payment_type_id]]), _hoisted_16])]), $options.getError(_this.errors, 'payment_type_id') !== '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getError(_this.errors, 'payment_type_id')), 1
+                  /* TEXT */
+                  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+                  /* CLASS */
+                  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-form", {
+                      'has-errors': $options.getError(_this.errors, 'min_amount') !== ''
+                    }])
+                  }, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CurrencyInput, {
+                    id: "min_amount",
+                    modelValue: $data.form.min_amount,
+                    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+                      return $data.form.min_amount = $event;
+                    }),
+                    options: {
+                      currency: 'BRL',
+                      hideCurrencySymbolOnFocus: true,
+                      autoDecimalDigits: true,
+                      precision: 2
+                    }
+                  }, null, 8
+                  /* PROPS */
+                  , ["modelValue"])])]), $options.getError(_this.errors, 'min_amount') !== '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getError(_this.errors, 'min_amount')), 1
+                  /* TEXT */
+                  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+                  /* CLASS */
+                  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-form", {
+                      'has-errors': $options.getError(_this.errors, 'max_amount') !== ''
+                    }])
+                  }, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CurrencyInput, {
+                    id: "max_amount",
+                    modelValue: $data.form.max_amount,
+                    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+                      return $data.form.max_amount = $event;
+                    }),
+                    options: {
+                      currency: 'BRL',
+                      hideCurrencySymbolOnFocus: true,
+                      autoDecimalDigits: true,
+                      precision: 2
+                    }
+                  }, null, 8
+                  /* PROPS */
+                  , ["modelValue"])])]), $options.getError(_this.errors, 'max_amount') !== '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getError(_this.errors, 'max_amount')), 1
+                  /* TEXT */
+                  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+                  /* CLASS */
+                  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-form", {
+                      'has-errors': $options.getError(_this.errors, 'percent') !== ''
+                    }])
+                  }, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CurrencyInput, {
+                    id: "percent",
+                    modelValue: $data.form.percent,
+                    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+                      return $data.form.percent = $event;
+                    }),
+                    options: {
+                      currency: 'BRL',
+                      currencyDisplay: 'hidden',
+                      hideCurrencySymbolOnFocus: true,
+                      autoDecimalDigits: true,
+                      precision: 2
+                    }
+                  }, null, 8
+                  /* PROPS */
+                  , ["modelValue"])])]), $options.getError(_this.errors, 'percent') !== '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getError(_this.errors, 'percent')), 1
+                  /* TEXT */
+                  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+                  /* CLASS */
+                  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["input-form", {
+                      'has-errors': $options.getError(_this.errors, 'fixed_value') !== ''
+                    }])
+                  }, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CurrencyInput, {
+                    id: "fixed_value",
+                    modelValue: $data.form.fixed_value,
+                    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+                      return $data.form.fixed_value = $event;
+                    }),
+                    options: {
+                      currency: 'BRL',
+                      hideCurrencySymbolOnFocus: true,
+                      autoDecimalDigits: true,
+                      precision: 2
+                    }
+                  }, null, 8
+                  /* PROPS */
+                  , ["modelValue"])])]), _hoisted_37, $options.getError(_this.errors, 'fixed_value') !== '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getError(_this.errors, 'fixed_value')), 1
+                  /* TEXT */
+                  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+                  /* CLASS */
+                  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["button-login", {
+                      'button-loading': $data.isLoading
+                    }])
+                  }, [$data.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, _hoisted_42)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.isLoading ? 'Gravando...' : 'Gravar'), 1
+                  /* TEXT */
+                  )], 2
+                  /* CLASS */
+                  )])], 32
+                  /* HYDRATE_EVENTS */
+                  )];
+                }),
+                _: 1
+                /* STABLE */
+
+              })];
+            }),
+            _: 1
+            /* STABLE */
+
+          })])])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["onClose"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show"]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/Index.vue?vue&type=template&id=71c33819":
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/Index.vue?vue&type=template&id=71c33819 ***!
@@ -830,31 +1482,145 @@ var _hoisted_10 = {
   key: 1
 };
 var _hoisted_11 = {
-  key: 2,
-  "class": "ml-4"
+  key: 2
 };
 var _hoisted_12 = {
-  key: 3
+  key: 3,
+  "class": "ml-4"
 };
 var _hoisted_13 = {
-  "class": "pt-32 pb-20 md:pt-40"
+  key: 4
 };
 var _hoisted_14 = {
-  "class": "container m-auto px-6 md:px-12 lg:px-6"
+  "class": "pt-32 pb-20 md:pt-40"
 };
 var _hoisted_15 = {
+  key: 0,
+  "class": "container m-auto px-6 md:px-12 lg:px-6"
+};
+var _hoisted_16 = {
   "class": "lg:flex lg:items-center lg:gap-x-16"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"space-y-8 lg:w-7/12\"><h1 class=\"font-bold text-gray-900 text-4xl md:text-5xl\">Fazer uma cotação online ficou ainda mais fácil com nossa ferramenta.</h1><p class=\"text-gray-600 lg:w-11/12\"> Faça uma cotação em BRL com as principais moedas do mundo. <br>Veja como é fácil. </p><span class=\"block font-semibold\">Siga os passos abaixo</span><div class=\"grid grid-cols-3 space-x-4 md:space-x-6 md:flex\"><a aria-label=\"add to slack\" href=\"#\" class=\"p-4 border border-gray-200 rounded-md hover:border-cyan-400 hover:shadow-lg\"><div class=\"flex justify-center space-x-4\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z\"></path></svg><span class=\"hidden font-medium md:block\">Escolha o valor em real (BRL)</span></div></a><a aria-label=\"add to chat\" href=\"#\" class=\"p-4 border border-gray-200 rounded-md hover:border-green-400 hover:shadow-lg\"><div class=\"flex justify-center space-x-4\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg><span class=\"hidden font-medium md:block\">Escolha a moeda de destino</span></div></a><a aria-label=\"add to zoom\" href=\"#\" class=\"p-4 border border-gray-200 rounded-md hover:border-blue-400 hover:shadow-lg\"><div class=\"flex justify-center space-x-4\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z\"></path></svg><span class=\"hidden font-medium md:block\">Pronto, simples assim!</span></div></a></div><div class=\"flex\"> 🔥🌟 <span>Você poderá também receber a cotação por </span><span class=\"font-semibold text-gray-700 flex\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 ml-2\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z\"></path></svg> EMAIL </span></div></div>", 1);
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"space-y-8 lg:w-7/12\"><h1 class=\"font-bold text-gray-900 text-4xl md:text-5xl\">Fazer uma cotação online ficou ainda mais fácil com nossa ferramenta.</h1><p class=\"text-gray-600 lg:w-11/12\"> Faça uma cotação em BRL com as principais moedas do mundo. <br>Veja como é fácil. </p><span class=\"block font-semibold\">Siga os passos abaixo</span><div class=\"grid grid-cols-3 space-x-4 md:space-x-6 md:flex\"><a aria-label=\"add to slack\" href=\"#\" class=\"p-4 border border-gray-200 rounded-md hover:border-cyan-400 hover:shadow-lg\"><div class=\"flex justify-center space-x-4\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z\"></path></svg><span class=\"hidden font-medium md:block\">Escolha o valor em real (BRL)</span></div></a><a aria-label=\"add to chat\" href=\"#\" class=\"p-4 border border-gray-200 rounded-md hover:border-green-400 hover:shadow-lg\"><div class=\"flex justify-center space-x-4\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg><span class=\"hidden font-medium md:block\">Escolha a moeda de destino</span></div></a><a aria-label=\"add to zoom\" href=\"#\" class=\"p-4 border border-gray-200 rounded-md hover:border-blue-400 hover:shadow-lg\"><div class=\"flex justify-center space-x-4\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z\"></path></svg><span class=\"hidden font-medium md:block\">Pronto, simples assim!</span></div></a></div><div class=\"flex\"> 🔥🌟 <span>Você poderá também receber a cotação por </span><span class=\"font-semibold text-gray-700 flex\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 ml-2\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z\"></path></svg> EMAIL </span></div></div>", 1);
 
-var _hoisted_17 = {
+var _hoisted_18 = {
   "class": "lg:block lg:w-5/12"
 };
-var _hoisted_18 = {
+var _hoisted_19 = {
   key: 0,
   "class": "w-full"
 };
+var _hoisted_20 = {
+  key: 1,
+  "class": "container m-auto px-6 md:px-12 lg:px-6"
+};
+var _hoisted_21 = {
+  "class": "flex flex-col"
+};
+var _hoisted_22 = {
+  "class": "w-4/12"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Cotações", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Moeda"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Preço Atual"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Data de alteração")])], -1
+/* HOISTED */
+);
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-6 w-6",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "stroke-width": "2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "O sistema de cotação está configurado para atualizar os preços automaticamente a cada 1 hora. Essa opção pode ser fácilmente alterada.")], -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "w-full mt-20"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Taxas", -1
+/* HOISTED */
+);
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Tipo"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Valor min."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Valor max."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Taxa (%)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Taxa Fixa (R$)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Atualizado em"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  colspan: "2"
+}, "Ações")])], -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
+  key: 0
+};
+var _hoisted_31 = ["onClick"];
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-6 w-6",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "stroke-width": "2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_33 = [_hoisted_32];
+var _hoisted_34 = ["onClick"];
+
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-6 w-6",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "stroke-width": "2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M6 18L18 6M6 6l12 12"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_36 = [_hoisted_35];
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-6 w-6",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "stroke-width": "2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M12 4v16m8-8H4"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Adicionar taxa ");
+
+var _hoisted_39 = [_hoisted_37, _hoisted_38];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Quotation = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Quotation");
 
@@ -862,39 +1628,110 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_login_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("login-modal");
 
+  var _component_taxa_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("taxa-modal");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_8, [!$options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.openLoginModal(false);
     }, ["prevent"])),
     type: "button",
-    title: "Start buying",
     "class": "w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold"
   }, " Criar uma conta grátis ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.openLoginModal(true);
     }, ["prevent"])),
     type: "button",
-    title: "Start buying",
     "class": "w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max font-semibold text-white"
-  }, " Fazer login ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.name), 1
+  }, " Fazer login ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.isLoggedIn && $options.isAdmin ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_11, [!$data.isAdminMode ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
+    onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.changeAdminMode(true);
+    }, ["prevent"])),
+    type: "button",
+    "class": "w-full py-3 px-6 rounded-md text-center transition bg-red-500 hover:bg-red-600 active:bg-red-700 focus:bg-red-600 sm:w-max font-semibold text-white"
+  }, " Ir para o painel Administrativo ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 1,
+    onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.changeAdminMode(false);
+    }, ["prevent"])),
+    type: "button",
+    "class": "w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max font-semibold text-white"
+  }, " Ir para o painel de cotações "))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.name), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.logout && $options.logout.apply($options, arguments);
     }, ["prevent"])),
     type: "button",
-    title: "Start buying",
     "class": "w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold"
-  }, " Sair ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Quotation, {
+  }, " Sair ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [!$data.isAdminMode ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Quotation, {
     onCreated: $options.carregarCotacoes
   }, null, 8
   /* PROPS */
-  , ["onCreated"])])]), $options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_minhas_cotacoes, {
+  , ["onCreated"])])]), $options.isLoggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_minhas_cotacoes, {
     ref: "cotacoes"
   }, null, 512
   /* NEED_PATCH */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login_modal, {
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.moedas, function (moeda) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(moeda.code), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "R$" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(moeda.last_price), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(moeda.created_at), 1
+    /* TEXT */
+    )]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "button-link my-5 p-2",
+    onClick: _cache[5] || (_cache[5] = function () {
+      return $options.sincronizarMoedas && $options.sincronizarMoedas.apply($options, arguments);
+    })
+  }, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.isLoadingRefresh ? 'Atualizando...' : 'Sincronizar utilizando a API'), 1
+  /* TEXT */
+  )]), _hoisted_26]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.taxas, function (taxa) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(taxa.fee_type_description) + " ", 1
+    /* TEXT */
+    ), taxa.fee_type_id === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(taxa.payment_type_description), 1
+    /* TEXT */
+    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatValue(taxa.min_amount)), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatValue(taxa.max_amount)), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatValue(taxa.percent)) + "%", 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatValue(taxa.fixed_value)), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(taxa.updated_at), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+        return $options.editarTaxa(taxa);
+      }, ["prevent"]),
+      title: "Editar"
+    }, _hoisted_33, 8
+    /* PROPS */
+    , _hoisted_31)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+        return $options.excluirTaxa(taxa);
+      }, ["prevent"]),
+      title: "Excluir"
+    }, _hoisted_36, 8
+    /* PROPS */
+    , _hoisted_34)])]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "button-link my-5 p-2",
+    onClick: _cache[6] || (_cache[6] = function () {
+      return $options.adicionarTaxa && $options.adicionarTaxa.apply($options, arguments);
+    })
+  }, _hoisted_39)])])]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login_modal, {
     ref: "loginModal"
+  }, null, 512
+  /* NEED_PATCH */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_taxa_modal, {
+    ref: "taxaModal"
   }, null, 512
   /* NEED_PATCH */
   )]);
@@ -1999,6 +2836,33 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/TaxaModal.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/TaxaModal.vue ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _TaxaModal_vue_vue_type_template_id_7f37e8dc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaxaModal.vue?vue&type=template&id=7f37e8dc */ "./resources/js/components/TaxaModal.vue?vue&type=template&id=7f37e8dc");
+/* harmony import */ var _TaxaModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaxaModal.vue?vue&type=script&lang=js */ "./resources/js/components/TaxaModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _Users_nando_Sites_test_oliveiratrust_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_nando_Sites_test_oliveiratrust_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_TaxaModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TaxaModal_vue_vue_type_template_id_7f37e8dc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/TaxaModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/pages/Index.vue":
 /*!**************************************!*\
   !*** ./resources/js/pages/Index.vue ***!
@@ -2098,6 +2962,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/TaxaModal.vue?vue&type=script&lang=js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/TaxaModal.vue?vue&type=script&lang=js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TaxaModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TaxaModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TaxaModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TaxaModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/pages/Index.vue?vue&type=script&lang=js":
 /*!**************************************************************!*\
   !*** ./resources/js/pages/Index.vue?vue&type=script&lang=js ***!
@@ -2169,6 +3048,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MinhasCotacoes_vue_vue_type_template_id_56babe46__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MinhasCotacoes_vue_vue_type_template_id_56babe46__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./MinhasCotacoes.vue?vue&type=template&id=56babe46 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/MinhasCotacoes.vue?vue&type=template&id=56babe46");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TaxaModal.vue?vue&type=template&id=7f37e8dc":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/TaxaModal.vue?vue&type=template&id=7f37e8dc ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TaxaModal_vue_vue_type_template_id_7f37e8dc__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TaxaModal_vue_vue_type_template_id_7f37e8dc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TaxaModal.vue?vue&type=template&id=7f37e8dc */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TaxaModal.vue?vue&type=template&id=7f37e8dc");
 
 
 /***/ }),

@@ -158,24 +158,7 @@ export default {
                 payment_type_id: 1
             },
 
-            quotation: {
-                "id": 8,
-                "user_id": 1,
-                "payment_type_id": 8,
-                "payment_type_description": "Cartão de crédito",
-                "currency_id": 8,
-                "currency_code": "GBP",
-                "currency_name": "Libra Esterlina",
-                "amount": 10000,
-                "price": 6.2591,
-                "fees": {
-                    "1": 763,
-                    "2": 100,
-                    "total": 863
-                },
-                "exchanged_amount": 1459.79,
-                "created_at": "20/06/2022 11:40"
-            },
+            quotation: false,
             isLoading: false,
             errors: {},
 

@@ -12,8 +12,4 @@ class FeeType extends Model {
     const FORMA_DE_PAGAMENTO = 1;
     const TAXAS_DE_CONVERSAO = 2;
 
-    public function fees()
-    {
-        return $this->hasMany(Fee::class);
-    }
 }

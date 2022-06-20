@@ -1,0 +1,5 @@
+/**
+ * Vue Currency Input 2.4.0
+ * (c) 2018-2022 Matthias Stiller
+ * @license MIT
+ */

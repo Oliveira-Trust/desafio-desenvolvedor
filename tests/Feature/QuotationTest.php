@@ -114,16 +114,4 @@ class QuotationTest extends TestCase {
              ->assertStatus(200);
     }
 
-    /*
-        public function test_must_fail_because_user_not_logged()
-        {
-            $this->json('GET', 'api/transactions/' . $transaction->id)
-                 ->assertStatus(200)
-                 ->assertJsonPath('success', true)
-                 ->assertJsonStructure(['success', 'transaction'])
-                 ->assertJsonPath('transaction.status_id', TransactionStatus::ACCEPTED)
-                 ->assertJsonPath('transaction.type_id', TransactionType::PURCHASE)
-                 ->assertJsonPath('transaction.customer_id', $user->id);
-        }
-    */
 }

@@ -72,7 +72,7 @@
 }
 
 .button-link {
-    @apply w-full text-xs text-left transition hover:underline active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold
+    @apply flex w-full items-center text-xs text-left transition hover:underline active:bg-sky-200 focus:bg-sky-100 sm:w-max text-cyan-600 font-semibold
 }
 
 .icon-loading {
@@ -120,30 +120,30 @@
     @apply mt-10
 }
 
-.minhas-cotacoes h1{
+h1{
     @apply font-bold text-gray-900 text-xl
 }
 
-.minhas-cotacoes table{
+table{
     @apply w-full text-sm text-left
 }
 
-.minhas-cotacoes table thead{
+table thead{
     @apply text-xs text-gray-700 uppercase  border-b border-gray-300
 }
 
-.minhas-cotacoes table thead th{
+table thead th{
     @apply px-6 py-3
 }
 
-.minhas-cotacoes table tbody tr{
+table tbody tr{
     @apply border-b border-gray-300
 }
 
-.minhas-cotacoes table td{
+table td{
     @apply px-6 py-4 font-medium text-gray-500 whitespace-nowrap;
 }
 
-.minhas-cotacoes table td.value{
+table td.value{
     @apply text-red-500 font-bold text-sm;
 }

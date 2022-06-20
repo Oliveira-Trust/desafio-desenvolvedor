@@ -39,21 +39,31 @@
 
                                 <ul class="border-t space-y-2 pt-2 lg:space-y-0 lg:space-x-2 lg:pt-0 lg:pl-2 lg:border-t-0 lg:border-l lg:items-center lg:flex">
                                     <li v-if="!isLoggedIn">
-                                        <button @click.prevent="openLoginModal(false)" type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold">
+                                        <button @click.prevent="openLoginModal(false)" type="button" class="w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold">
                                             Criar uma conta grátis
                                         </button>
                                     </li>
 
                                     <li v-if="!isLoggedIn">
-                                        <button @click.prevent="openLoginModal(true)" type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max font-semibold text-white">
+                                        <button @click.prevent="openLoginModal(true)" type="button" class="w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max font-semibold text-white">
                                             Fazer login
+                                        </button>
+                                    </li>
+
+                                    <li v-if="isLoggedIn && isAdmin">
+                                        <button v-if="!isAdminMode" @click.prevent="changeAdminMode(true)" type="button" class="w-full py-3 px-6 rounded-md text-center transition bg-red-500 hover:bg-red-600 active:bg-red-700 focus:bg-red-600 sm:w-max font-semibold text-white">
+                                            Ir para o painel Administrativo
+                                        </button>
+
+                                        <button v-else @click.prevent="changeAdminMode(false)" type="button" class="w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max font-semibold text-white">
+                                            Ir para o painel de cotações
                                         </button>
                                     </li>
 
                                     <li v-if="isLoggedIn" class="ml-4">{{ name }}</li>
 
                                     <li v-if="isLoggedIn">
-                                        <button @click.prevent="logout" type="button" title="Start buying" class="w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold">
+                                        <button @click.prevent="logout" type="button" class="w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max block text-cyan-600 font-semibold">
                                             Sair
                                         </button>
                                     </li>
@@ -66,7 +76,7 @@
         </header>
 
         <div class="pt-32 pb-20 md:pt-40">
-            <div class="container m-auto px-6 md:px-12 lg:px-6">
+            <div v-if="!isAdminMode" class="container m-auto px-6 md:px-12 lg:px-6">
                 <div class="lg:flex lg:items-center lg:gap-x-16">
                     <div class="space-y-8 lg:w-7/12">
                         <h1 class=" font-bold text-gray-900 text-4xl md:text-5xl">Fazer uma cotação online ficou ainda mais fácil com nossa ferramenta.</h1>
@@ -128,20 +138,116 @@
                     <minhas-cotacoes ref="cotacoes"/>
                 </div>
             </div>
+
+            <div v-else class="container m-auto px-6 md:px-12 lg:px-6">
+                <div class="flex flex-col">
+                    <div class="w-4/12">
+                        <h1>Cotações</h1>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Moeda</th>
+                                <th>Preço Atual</th>
+                                <th>Data de alteração</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(moeda) in moedas">
+                                <td>{{ moeda.code }}</td>
+                                <td>R${{ moeda.last_price }}</td>
+                                <td>{{ moeda.created_at }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <button class="button-link my-5 p-2" @click="sincronizarMoedas">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+
+                            {{ isLoadingRefresh ? 'Atualizando...' : 'Sincronizar utilizando a API' }}
+                        </button>
+                        <p><small>O sistema de cotação está configurado para atualizar os preços automaticamente a cada 1 hora. Essa opção pode ser fácilmente alterada.</small></p>
+                    </div>
+
+                    <div class="w-full mt-20">
+                        <h1>Taxas</h1>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Valor min.</th>
+                                <th>Valor max.</th>
+                                <th>Taxa (%)</th>
+                                <th>Taxa Fixa (R$)</th>
+                                <th>Atualizado em</th>
+                                <th colspan="2">Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="taxa in taxas">
+                                <td>
+                                    {{ taxa.fee_type_description }}
+                                    <div v-if="taxa.fee_type_id === 1">
+                                        {{ taxa.payment_type_description }}
+                                    </div>
+                                </td>
+                                <td>{{ formatValue(taxa.min_amount) }}</td>
+                                <td>{{ formatValue(taxa.max_amount) }}</td>
+                                <td>{{ formatValue(taxa.percent) }}%</td>
+                                <td>{{ formatValue(taxa.fixed_value) }}</td>
+                                <td>{{ taxa.updated_at }}</td>
+                                <td>
+                                    <button @click.prevent="editarTaxa(taxa)" title="Editar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button @click.prevent="excluirTaxa(taxa)" title="Excluir">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <button class="button-link my-5 p-2" @click="adicionarTaxa">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                            </svg>
+
+                            Adicionar taxa
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <login-modal ref="loginModal"></login-modal>
+        <taxa-modal ref="taxaModal"></taxa-modal>
     </div>
 </template>
 <script>
 import Quotation from "./Quotation";
 import LoginModal from '../components/LoginModal';
+import TaxaModal from '../components/TaxaModal';
 import MinhasCotacoes from "../components/MinhasCotacoes";
+import {formatValue} from "../utils/formatValue";
 
 export default {
-    components: {MinhasCotacoes, LoginModal, Quotation},
+    components: {MinhasCotacoes, LoginModal, Quotation, TaxaModal},
 
     computed: {
+        isAdmin() {
+            return this.$store.state.user.is_admin;
+        },
+
         isLoggedIn() {
             return this.$store.state.user.id > 0;
         },
@@ -151,8 +257,18 @@ export default {
         }
     },
 
+    mounted() {
+        this.buscarMoedas();
+        this.buscarTaxas();
+    },
+
     data() {
-        return {}
+        return {
+            isAdminMode: false,
+            isLoadingRefresh: false,
+            moedas: [],
+            taxas: []
+        }
     },
 
     methods: {
@@ -165,12 +281,71 @@ export default {
         },
 
         logout() {
+            this.isAdminMode = false;
+
             this.$refs.loginModal.logout();
         },
 
-        carregarCotacoes(){
+        carregarCotacoes() {
             this.$refs.cotacoes.load();
-        }
+        },
+
+        changeAdminMode(value) {
+            this.isAdminMode = value;
+
+            this.buscarMoedas();
+            this.buscarTaxas();
+        },
+
+        buscarMoedas() {
+            this.isLoadingRefresh = true;
+
+            this.axios.get('/api/admin/currencies').then((response) => {
+                this.isLoadingRefresh = false;
+
+                this.moedas = response.data.data;
+            }).catch(() => {
+                this.isLoadingRefresh = false;
+            });
+        },
+
+        sincronizarMoedas() {
+            this.isLoadingRefresh = true;
+
+            this.axios.get('/api/admin/currencies/refresh').then((response) => {
+                this.buscarMoedas();
+            }).catch(() => {
+                this.isLoadingRefresh = false;
+            });
+        },
+
+        buscarTaxas() {
+            this.axios.get('/api/admin/fees').then((response) => {
+                this.taxas = response.data.data;
+            });
+        },
+
+        adicionarTaxa() {
+            this.$refs.taxaModal.abrirModal(null, () => {
+                this.buscarTaxas();
+            })
+        },
+
+        editarTaxa(fee) {
+            this.$refs.taxaModal.abrirModal(fee, () => {
+                this.buscarTaxas();
+            })
+        },
+
+        excluirTaxa(fee) {
+            if (window.confirm("Você tem certeza que quer excluir essa taxa?")) {
+                this.axios.delete('/api/admin/fees/' + fee.id).then((response) => {
+                    this.buscarTaxas();
+                });
+            }
+        },
+
+        formatValue
     }
 }
 </script>

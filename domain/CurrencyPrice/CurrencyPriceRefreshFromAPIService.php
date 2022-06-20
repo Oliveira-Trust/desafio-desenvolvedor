@@ -15,21 +15,23 @@ class CurrencyPriceRefreshFromAPIService {
         private CurrencyPrice          $model,
         private CurrencyRepository     $repository,
         private CurrencyPricewesomeAPI $api
-    )
-    {
-    }
+    ){}
 
     public function call(Command $command = null, int $currency_id = null)
     {
         $currencies = $this->repository->getActivesCurrencies($currency_id);
 
         foreach ($currencies as $currency) {
-            $command->info('Starting refresh price: ' . $currency->code);
+            if ($command) {
+                $command->info('Starting refresh price: ' . $currency->code);
+            }
 
             $newPrice = $this->refreshPrice($currency);
 
-            $command->info('[OK] ' . $currency->code . ' new price: R$' . $newPrice->price);
-            $command->info('================================');
+            if ($command) {
+                $command->info('[OK] ' . $currency->code . ' new price: R$' . $newPrice->price);
+                $command->info('================================');
+            }
         }
     }
 
