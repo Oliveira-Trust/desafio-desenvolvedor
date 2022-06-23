@@ -4,17 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class Moeda extends Model
+class Taxa extends Model
 {
     use HasFactory;
-
-    protected $table = 'moedas';
+    protected $table = 'taxa_conversao';
     protected $fillable = [
         'id',
-        'nome_moeda',
-        'abreviacao_moeda',
+        'valor_limite',
+        'taxa_abaixo',
+        'taxa_acima',
         'created_at',
         'updated_at',
     ];

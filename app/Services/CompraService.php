@@ -5,27 +5,41 @@ namespace App\Services;
 use App\Models\Cotacao;
 use App\Models\Moeda;
 use App\Models\Pagamento;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use function PHPUnit\Framework\isEmpty;
+use App\Services\TaxaService;
 
 class CompraService{
-    //todo:separar alguns métodos em novas classes
-  public function comprarMoeda($moedaDestino, $moedaOriginal, $tipoPagamento, $valorInicial)
+
+    /**
+     * @var string
+     */
+
+    private $url;
+    public function __construct()
+    {
+        $this->url = 'https://economia.awesomeapi.com.br/last/';
+    }
+  public function converterMoeda($moedaDestino, $moedaInicial, $tipoPagamento, $valorInicial)
   {
-      $taxaConversao = $this->getTaxaDeConversao($valorInicial);
-      $taxaTipoPagamento = $this->getTaxaTipoPagamento($tipoPagamento);
+      $taxaService = new TaxaService();
 
-      $valorDescontadoConversao = $this->aplicarTaxaConversao($valorInicial, $taxaConversao);
-      $valorDescontadoTipoPagamento = $this->aplicarTaxaTipoPagamento($valorInicial, $taxaTipoPagamento);
+      $taxaConversao = $taxaService->getTaxaDeConversao($valorInicial);
+      $taxaTipoPagamento = $taxaService->getTaxaTipoPagamento($tipoPagamento);
 
-      $valorParaConversao = $this->aplicarTaxas($valorInicial, $valorDescontadoConversao, $valorDescontadoTipoPagamento);
+      $valorDescontadoConversao = $taxaService->aplicarTaxaConversao($valorInicial, $taxaConversao);
+      $valorDescontadoTipoPagamento = $taxaService->aplicarTaxaTipoPagamento($valorInicial, $taxaTipoPagamento);
 
-      $valorMoedaAtual = $this->getValorMoedaAtual($moedaDestino, $moedaOriginal);
+      $valorParaConversao = $taxaService->aplicarTaxas($valorInicial, $valorDescontadoConversao, $valorDescontadoTipoPagamento);
+
+      $valorMoedaAtual = $this->getValorMoedaAtual($moedaDestino, $moedaInicial);
       $valorConvertido = $this->converteValor($valorParaConversao, $valorMoedaAtual);
 
       $data = [
-          'usuario_id'                => 99,
-          'moeda_original'            => $moedaDestino,
-          'moeda_destino'             => $moedaOriginal,
+          'usuario_id'                => Auth::id(),
+          'moeda_original'            => $moedaInicial,
+          'moeda_destino'             => $moedaDestino,
           'tipo_pagamento_id'         => $tipoPagamento,
           'valor_inicial'             => $valorInicial,
           'valor_taxa_conversao'      => $valorDescontadoConversao,
@@ -35,53 +49,68 @@ class CompraService{
           'valor_comprado'            => $valorConvertido
       ];
 
-      Cotacao::insertData($data);
+      $data = Cotacao::create($data);
 
       return $data;
   }
 
-  private function getTaxaDeConversao($valorInicial){
-      $taxa = 1;
-
-      if($valorInicial > 3000){
-          $taxa = 1/100;
-      }
-
-      if($valorInicial <= 3000 && $valorInicial < 1000){
-          $taxa = 2/100;
-      }
-
-      return $taxa;
-  }
-
-  private function getTaxaTipoPagamento($tipoPagamento){
-      return Pagamento::getTipoPagamentoByID($tipoPagamento)->abreviacao_moeda;
-  }
-
-  private function aplicarTaxaConversao($valorInicial, $taxaConversao){
-      return $valorInicial*$taxaConversao;
-  }
-
-  private function aplicarTaxaTipoPagamento($valorInicial, $taxaTipoPagamento){
-      return $valorInicial*$taxaTipoPagamento;
-  }
-
-  private function aplicarTaxas($valorInicial, $valorDescontadoConversao, $valorDescontadoTipoPagamento){
-      return $valorInicial - ($valorDescontadoConversao + $valorDescontadoTipoPagamento);
-  }
-
   private function getValorMoedaAtual($moedaDestino, $moedaInicial){
-      $moedaDestino = Moeda::getMoedasByID($moedaDestino)->abreviacao_moeda;
-      $moedaInicial = Moeda::getMoedasByID($moedaInicial)->abreviacao_moeda;
+      $moedaDestino = Moeda::find($moedaDestino)->abreviacao_moeda;
+      $moedaInicial = Moeda::find($moedaInicial)->abreviacao_moeda;
 
-      //todo: tratar em caso de falha
-      //todo:injeção de dependencia
-      //todo:colocar no env o link principal
-      $response = Http::get('https://economia.awesomeapi.com.br/last/'.$moedaDestino.'-'.$moedaInicial); //tratar
+      $response = Http::get($this->url.$moedaDestino.'-'.$moedaInicial);
       return $response->json()[$moedaDestino.$moedaInicial]["bid"];
   }
 
   private function converteValor($valorParaConversao, $valorMoedaAtual){
       return $valorParaConversao/$valorMoedaAtual;
+  }
+
+  public function montaTela(): array
+  {
+      $userId = Auth::id();
+      $moedas = Moeda::all();
+      $tiposPagamento = Pagamento::all();
+
+
+      $historicos = Cotacao::getCotacaoByUserId($userId);
+
+      $dados = [
+          'moedas'         => $moedas,
+          'tiposPagamento' => $tiposPagamento,
+          'historicos'     => $historicos
+      ];
+
+      return $dados;
+  }
+
+  public function trataDadosParaView($dados): array
+  {
+    $moedaoriginal          = $dados['moeda_original'];
+    $moedaDestino           = $dados['moeda_destino'];
+    $valorInicial           = $dados['valor_inicial'];
+    $tipoPagamentoId        = $dados['tipo_pagamento_id'];
+    $valorTaxaConversao     = round($dados['valor_taxa_conversao'], 3);
+    $valorTaxaTipoPagamento = round($dados['valor_taxa_tipo_pagamento'],3);
+    $valorInicialTaxado     = round($dados['valor_inicial_taxado'],3);
+    $valorMoedaDestino      = round($dados['valor_moeda_destino'],3);
+    $valorConvertido        = round($dados['valor_comprado'],3);
+
+    $dadosMoedaOriginal = Moeda::find($moedaoriginal);
+    $dadosMoedaDestino = Moeda::find($moedaDestino);
+
+    $dadosPagamento = Pagamento::find($tipoPagamentoId);
+
+      return [
+        'valorInicial'             => $valorInicial,
+        'dadosMoedaOriginal'       => $dadosMoedaOriginal,
+        'dadosMoedaDestino'        => $dadosMoedaDestino,
+        'dadosPagamento'           => $dadosPagamento,
+        'valorTaxaConversao'       => $valorTaxaConversao,
+        'valorTaxaTipoPagamento'   => $valorTaxaTipoPagamento,
+        'valorInicialTaxado'       => $valorInicialTaxado,
+        'valorMoedaDestino'        => $valorMoedaDestino,
+        'valorConvertido'          => $valorConvertido
+    ];
   }
 }

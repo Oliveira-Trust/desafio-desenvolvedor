@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.2.0-beta1",
-        "bootstrap-icons": "^1.8.3"
+        "bootstrap-icons": "^1.8.3",
+        "inputmask": "^5.0.7"
     }
 }

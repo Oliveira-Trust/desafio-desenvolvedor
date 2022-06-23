@@ -10,6 +10,7 @@ class Pagamento extends Model
 {
     use HasFactory;
 
+    protected $table = 'metodos_de_pagamento';
     protected $fillable = [
         'id',
         'tipo_pagamento',
@@ -17,9 +18,4 @@ class Pagamento extends Model
         'created_at',
         'updated_at',
     ];
-
-    public static function getTipoPagamentoByID($tipo)
-    {
-        return DB::table('metodos_de_pagamento')->find($tipo);
-    }
 }

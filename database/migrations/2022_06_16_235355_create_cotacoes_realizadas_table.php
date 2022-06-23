@@ -26,6 +26,7 @@ class CreateCotacoesRealizadasTable extends Migration
             $table->double('valor_taxa_conversao');
             $table->double('valor_inicial_taxado');
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
         });
     }
 
