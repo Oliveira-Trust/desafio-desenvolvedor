@@ -7,30 +7,25 @@ use App\Facades\Api;
 
 class ApiController extends Controller
 {
+    /**
+     * Método responsável por consultar a cotação geral e atualizada das Moedas
+     */
     public function __invoke()
     {
-        return Api::get('/last/USD-BRL,EUR-BRL,BTC-BRL')->json();
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+        $cotacao = Api::get('/last/USD-BRL,EUR-BRL,BTC-BRL,CAD-BRL,GBP-BRL,ARS-BRL,AUD-BRL,CHF-BRL,CNY-BRL')->json();
+        return view('cotacao')->with('data', $cotacao);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * Método responsável por executar a requisição na API.
+     * @param string $resource
+     * @return array
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function get($resource)
     {
-        //
+        $endpoint = $this->getEndpoint($resource);
+
     }
 
     /**

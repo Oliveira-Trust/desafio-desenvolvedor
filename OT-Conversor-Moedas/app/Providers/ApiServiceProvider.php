@@ -17,9 +17,7 @@ class ApiServiceProvider extends ServiceProvider
         $this->app->bind('api', function(){
             return Http::withOptions([
                 'verify'        => false,
-                'base_uri'      => 'https://economia.awesomeapi.com.br/'
-            ])->withHeaders([
-                'Authorization' => 'Bearer',
+                'base_uri'      => 'https://economia.awesomeapi.com.br/json'
             ]);
         });
     }
