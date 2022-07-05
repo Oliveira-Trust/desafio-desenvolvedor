@@ -5,7 +5,7 @@
 **PRIMEIRA ETAPA: INICIAR APLICAÇÃO**
 - [x] Iniciar aplicação laravel
 - [x] Utilizar docker <em>(bônus)</em>
-- [ ] Implementar autenticação <em>(bônus)</em>
+- [x] Implementar autenticação <em>(bônus)</em>
 - [ ] Desenvolver seed de usuário
 
 <br/>
