@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
+
+            $table->string('slug', 15);
+            $table->string('name', 25);
+            $table->float('fee_percent');
+
             $table->timestamps();
         });
     }
