@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
+        Schema::create('convertion_fees', function (Blueprint $table) {
             $table->id();
 
-            $table->string('slug', 15);
-            $table->string('name', 25);
-            $table->float('fee')->comment('deve ser um valor entre 0 e 100');
+            $table->float('base_value');
+            $table->float('lt_fee')->comment('taxa para valores menores; deve ser um valor entre 0 e 100');
+            $table->float('gt_fee')->comment('taxa para valores maiores; deve ser um valor entre 0 e 100');
+            $table->boolean('active')->comment('indica se a regra está ativa');
 
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('convertion_fees');
     }
 };

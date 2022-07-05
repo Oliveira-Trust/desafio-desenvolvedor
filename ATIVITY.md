@@ -11,9 +11,9 @@
 
 **SEGUNDA ETAPA: DESENVOLVER MODELS**
 - [x] Desenvolver model para métodos de pagamento
-- [ ] Desenvolver model para taxa de conversão
-- [ ] Desenvolver model para histórico do usuário
-- [ ] Desenvolver seeds
+- [x] Desenvolver model para taxa de conversão
+- [x] Desenvolver model para histórico do usuário
+- [x] Desenvolver seeds
 
 **TERCEIRA ETAPA: DESENVOLVER VIEWS**
 - [ ] Desenvolver view para histórico e nova cotação
