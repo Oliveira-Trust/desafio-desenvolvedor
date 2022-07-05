@@ -6,12 +6,11 @@
 - [x] Iniciar aplicação laravel
 - [x] Utilizar docker <em>(bônus)</em>
 - [x] Implementar autenticação <em>(bônus)</em>
-- [ ] Desenvolver seed de usuário
 
 <br/>
 
 **SEGUNDA ETAPA: DESENVOLVER MODELS**
-- [ ] Desenvolver model para métodos de pagamento
+- [x] Desenvolver model para métodos de pagamento
 - [ ] Desenvolver model para taxa de conversão
 - [ ] Desenvolver model para histórico do usuário
 - [ ] Desenvolver seeds
