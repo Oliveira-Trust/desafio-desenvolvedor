@@ -16,27 +16,19 @@
 - [x] Desenvolver seeds
 
 **TERCEIRA ETAPA: DESENVOLVER VIEWS**
-- [ ] Desenvolver view para histórico e nova cotação
+- [x] Desenvolver view para histórico e nova cotação
 - [ ] Desenvolver view para configurações
 
 <br/>
 
 **QUARTA ETAPA: IMPLEMENTAR CONVERSÃO**
-- [ ] Desenvolver serviço para a API
-- [ ] Criar rota POST para requisição de conversão
-- [ ] Criar serviço responsável pela conversão
-- [ ] Registrar cotação realizada pelo usuário autenticado
+- [x] Desenvolver serviço para a API
+- [X] Criar rota POST para requisição de conversão
+- [X] Criar serviço responsável pela conversão
+- [x] Registrar cotação realizada pelo usuário autenticado
 - [ ] Criar evento que notifica o usuário por email sempre que ocorrer uma nova cotação
-
-<br/>
-
-**QUARTA ETAPA: EMVIO DE EMAIL**
-- [ ] Criar rota POST para requisição de conversão
-- [ ] Criar serviço responsável pela conversão
-- [ ] Registrar cotação realizada pelo usuário autenticado
 
 <br/>
 
 **QUINTA ETAPA: FINALIZAÇÃO**
-- [ ] Criar evento que notifica o usuário por email sempre que ocorrer uma nova cotação
 - [ ] Colocar a aplicação no ar

@@ -11,4 +11,15 @@ class UserHistoryService
     {
         return $user->histories;
     }
+
+
+    public function saveHistory(UserHistory $user_history)
+    {
+        $user_history->user()->associate(auth()->user());
+        $user_history->save();
+
+        // TODO: DISPARAR EMAIL
+
+        return $user_history;
+    }
 }
