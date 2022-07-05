@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserHistoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' => ['auth']], function () {
+    // ROTA DESTINADA AO HISTÓRICO
+    Route::get('/historico', [UserHistoryController::class, 'index'])->name('user-history.index');
 
+});
 require __DIR__.'/auth.php';
