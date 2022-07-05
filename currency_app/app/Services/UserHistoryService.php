@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\ExchangeCreatedEvent;
 use App\Models\User;
 use App\Models\UserHistory;
 
@@ -18,7 +19,8 @@ class UserHistoryService
         $user_history->user()->associate(auth()->user());
         $user_history->save();
 
-        // TODO: DISPARAR EMAIL
+        // DISPARAR EMAIL
+        event(new ExchangeCreatedEvent($user_history));
 
         return $user_history;
     }
