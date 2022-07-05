@@ -3,8 +3,8 @@
 <br/>
 
 **PRIMEIRA ETAPA: INICIAR APLICAÇÃO**
-- [ ] Iniciar aplicação laravel
-- [ ] Utilizar docker <em>(bônus)</em>
+- [x] Iniciar aplicação laravel
+- [x] Utilizar docker <em>(bônus)</em>
 - [ ] Implementar autenticação <em>(bônus)</em>
 - [ ] Desenvolver seed de usuário
 
