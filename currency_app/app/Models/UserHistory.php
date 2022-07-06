@@ -28,4 +28,8 @@ class UserHistory extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function paymentMethod() {
+        return $this->belongsTo(PaymentMethod::class, 'payment_method', 'slug');
+    }
 }
