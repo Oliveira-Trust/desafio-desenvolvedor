@@ -7,7 +7,7 @@ use App\Models\PaymentMethod;
 
 class ExchangeService
 {
-    public function applyFees(array $request_data, $quote)
+    public function applyFees(array $request_data, object $quote) : array
     {
         $exchange = [
             'origin_currency'            => $quote[0]['codein'],
@@ -29,7 +29,7 @@ class ExchangeService
         return $exchange;
     }
 
-    private function applyPaymentMethodFee(string $slug, $value)
+    private function applyPaymentMethodFee(string $slug, float|string $value) : float
     {
         $payment_method = PaymentMethod::firstWhere('slug', $slug);
 
@@ -37,7 +37,7 @@ class ExchangeService
     }
 
 
-    private function applyConvertionFee($value)
+    private function applyConvertionFee(float|string $value) : float
     {
         $convertion_fee = ConvertionFee::active()->first();
 

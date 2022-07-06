@@ -14,7 +14,7 @@ class UserHistoryService
     }
 
 
-    public function saveHistory(UserHistory $user_history)
+    public function saveHistory(UserHistory $user_history) : UserHistory
     {
         $user_history->user()->associate(auth()->user());
         $user_history->save();

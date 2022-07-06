@@ -8,12 +8,13 @@ use Illuminate\Support\Str;
 
 class AwesomeAPI
 {
-    private function getEndpoint($uri = '')
+    private function getEndpoint(string $uri = '') : string
     {
         return Str::finish(config('services.awesome_api.base_url'), '/') . $uri;
     }
 
-    public function request(string $url, $data = [], $cache_key) {
+    public function request(string $url, array $data = [], string $cache_key) : ?object
+    {
         if (Cache::has($cache_key)) {
             return $this->getFromCache($cache_key);
         }
@@ -31,7 +32,8 @@ class AwesomeAPI
 
     }
 
-    public function getAvailableCurrencies() {
+    public function getAvailableCurrencies() : object
+    {
         $url = $this->getEndpoint('available/uniq');
 
         $cache_key = $this->getKeyCache('all_currencies');
@@ -40,7 +42,8 @@ class AwesomeAPI
         return $currencies->sort()->forget(config('currency.origin'));
     }
 
-    public function getCurrencyQuote(string $origin, string $destination) {
+    public function getCurrencyQuote(string $origin, string $destination) : ?object
+    {
         $url = $this->getEndpoint("{$destination}-{$origin}");
 
         $cache_key = $this->getKeyCache($destination, $origin);
@@ -67,7 +70,7 @@ class AwesomeAPI
     }
 
 
-    private function getFromCache($key)
+    private function getFromCache($key) : object
     {
         $from_cache = Cache::get($key);
         return collect($from_cache);
