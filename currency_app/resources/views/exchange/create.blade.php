@@ -20,8 +20,8 @@
                     <div class="grid gap-4 grid-cols-2">
                         <div>
                             <x-label for="origin_currency" :value="'Moeda de origem'" />
-                            <x-select id="origin_currency" class="block mt-1 w-full" type="text" name="origin_currency" :options="['BRL' => 'BRL']" :disabled="true" />
-                            <p class="text-red-500 text-xs italic">Por padrão utilizamos a moeda BRL.</p>
+                            <x-select id="origin_currency" class="block mt-1 w-full" type="text" name="origin_currency" :options="[config('currency.origin') => config('currency.origin') ]" :disabled="true" />
+                            <p class="text-red-500 text-xs italic">Por padrão utilizamos a moeda {{ config('currency.origin') }}.</p>
                         </div>
 
                         <div>
