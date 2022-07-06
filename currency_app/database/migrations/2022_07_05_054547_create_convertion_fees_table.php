@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
 
             $table->float('base_value');
-            $table->float('lt_fee')->comment('taxa para valores menores; deve ser um valor entre 0 e 100');
-            $table->float('gt_fee')->comment('taxa para valores maiores; deve ser um valor entre 0 e 100');
-            $table->boolean('active')->comment('indica se a regra está ativa');
+            $table->float('lt_fee')->comment('deve ser um valor entre 0 e 100');
+            $table->float('gt_fee')->comment('deve ser um valor entre 0 e 100');
+            $table->boolean('active');
 
             $table->timestamps();
         });
