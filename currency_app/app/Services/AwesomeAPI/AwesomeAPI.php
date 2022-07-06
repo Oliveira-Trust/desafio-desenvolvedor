@@ -18,11 +18,17 @@ class AwesomeAPI
             return $this->getFromCache($cache_key);
         }
 
-        $response = Http::asJson()->acceptJson()->get($url, $data)->json();
+        $response = Http::asJson()->acceptJson()->get($url, $data);
+        $data = $response->json();
 
-        $this->storeCache($cache_key, $response);
+        if ($response->successful()) {
+            $this->storeCache($cache_key, $data);
 
-        return collect($response);
+            return collect($data);
+        } else {
+            return null;
+        }
+
     }
 
     public function getAvailableCurrencies() {
@@ -31,7 +37,7 @@ class AwesomeAPI
         $cache_key = $this->getKeyCache('all_currencies');
         $currencies = $this->request($url, [], $cache_key);
 
-        return $currencies;
+        return $currencies->sort()->forget(config('currency.origin'));
     }
 
     public function getCurrencyQuote(string $origin, string $destination) {

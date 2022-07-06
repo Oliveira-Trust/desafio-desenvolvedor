@@ -30,14 +30,22 @@ class ExchangeController extends Controller
 
     public function store(ExchangeStoreRequest $request)
     {
+        $input = $request->except('_token');
+
         // REGATANDO COTAÇÃO
         $quote = $this->awesome_api->getCurrencyQuote(
             config('currency.origin'),
             $request->destination_currency
         );
 
+        if (!$quote) {
+            return back()->with([
+                'error' => 'Não foi possível realizar a conversão, tente com outra moeda.'
+            ])->withInput($input);
+        };
+
         // TRANSFORMANDO DADOS PARA CÁLCULO DE TAXAS
-        $exchange = $this->exchange_service->applyFees($request->except('_token'), $quote);
+        $exchange = $this->exchange_service->applyFees($input, $quote);
 
         // REGISTRANDO HISTÓRICO
         $user_history = $this->user_history_service->saveHistory(
