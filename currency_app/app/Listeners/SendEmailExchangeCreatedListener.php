@@ -28,6 +28,6 @@ class SendEmailExchangeCreatedListener
      */
     public function handle(ExchangeCreatedEvent $event)
     {
-        Mail::to('david.desenvolvedor@gmail.com')->send(new ExchangeCreatedMail($event->getUserHistory()));
+        Mail::to(auth()->user()->email)->send(new ExchangeCreatedMail($event->getUserHistory()));
     }
 }
