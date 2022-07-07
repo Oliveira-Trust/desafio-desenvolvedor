@@ -7,6 +7,13 @@ use App\Models\PaymentMethod;
 
 class ExchangeService
 {
+    /**
+     * Função responsável por processar conversão aplicando taxas
+     *
+     * @param array $request_data
+     * @param object $quote
+     * @return array
+     */
     public function applyFees(array $request_data, object $quote) : array
     {
         $exchange = [
@@ -29,6 +36,13 @@ class ExchangeService
         return $exchange;
     }
 
+    /**
+     * Função responsável por aplicar taxa de método de pagamento
+     *
+     * @param string $slug
+     * @param float|string $value
+     * @return float
+     */
     private function applyPaymentMethodFee(string $slug, float|string $value) : float
     {
         $payment_method = PaymentMethod::firstWhere('slug', $slug);
@@ -36,7 +50,12 @@ class ExchangeService
         return $value * $payment_method->fee / 100;
     }
 
-
+    /**
+     * Função responsável por aplicar taxa de conversão
+     *
+     * @param float|string $value
+     * @return float
+     */
     private function applyConvertionFee(float|string $value) : float
     {
         $convertion_fee = ConvertionFee::active()->first();

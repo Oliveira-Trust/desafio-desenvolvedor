@@ -21,6 +21,11 @@ class ExchangeController extends Controller
         $this->awesome_api = $awesome_api;
     }
 
+    /**
+     * Exibe formulário para realização de nova conversão.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
     public function create()
     {
         return view('exchange.create', [
@@ -28,6 +33,12 @@ class ExchangeController extends Controller
         ]);
     }
 
+    /**
+     * Realiza a ação de cadastro de nova conversão.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(ExchangeStoreRequest $request)
     {
         $input = $request->except('_token');
