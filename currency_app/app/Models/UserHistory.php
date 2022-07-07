@@ -32,4 +32,16 @@ class UserHistory extends Model
     public function paymentMethod() {
         return $this->belongsTo(PaymentMethod::class, 'payment_method', 'slug');
     }
+
+    public function setValueAttribute($value) {
+        $this->attributes['value'] = round($value, 2);
+    }
+
+    public function setDestinationCurrencyPriceAttribute($value) {
+        $this->attributes['destination_currency_price'] = round($value, 2);
+    }
+
+    public function setSellingPriceAttribute($value) {
+        $this->attributes['selling_price'] = round($value, 2);
+    }
 }
