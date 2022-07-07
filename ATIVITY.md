@@ -26,7 +26,7 @@
 - [X] Criar rota POST para requisição de conversão
 - [X] Criar serviço responsável pela conversão
 - [x] Registrar cotação realizada pelo usuário autenticado
-- [ ] Criar evento que notifica o usuário por email sempre que ocorrer uma nova cotação
+- [x] Criar evento que notifica o usuário por email sempre que ocorrer uma nova cotação
 
 <br/>
 
