@@ -2,13 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\ExchangeCreatedEvent;
+use App\Events\ExchangeCreated;
 use App\Mail\ExchangeCreatedMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class SendEmailExchangeCreatedListener
+class SendEmailExchangeCreated
 {
     /**
      * Create the event listener.
@@ -26,7 +26,7 @@ class SendEmailExchangeCreatedListener
      * @param  object  $event
      * @return void
      */
-    public function handle(ExchangeCreatedEvent $event)
+    public function handle(ExchangeCreated $event)
     {
         Mail::to(auth()->user()->email)->send(new ExchangeCreatedMail($event->getUserHistory()));
     }
