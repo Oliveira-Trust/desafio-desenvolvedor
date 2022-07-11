@@ -17,7 +17,6 @@
 
 **TERCEIRA ETAPA: DESENVOLVER VIEWS**
 - [x] Desenvolver view para histórico e nova cotação
-- [ ] Desenvolver view para configurações
 
 <br/>
 
@@ -27,8 +26,3 @@
 - [X] Criar serviço responsável pela conversão
 - [x] Registrar cotação realizada pelo usuário autenticado
 - [x] Criar evento que notifica o usuário por email sempre que ocorrer uma nova cotação
-
-<br/>
-
-**QUINTA ETAPA: FINALIZAÇÃO**
-- [ ] Colocar a aplicação no ar
