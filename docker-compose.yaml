@@ -1,0 +1,35 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: application-php
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+
+  nginx:
+    image: nginx:alpine
+    container_name: application-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+      - ./deploy/nginx:/etc/nginx/conf.d/
+
+  mysql:
+    image: mysql:5.7
+    container_name: application-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: application_database
+      MYSQL_USER: application_user
+      MYSQL_PASSWORD: application_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./deploy/mysql:/var/lib/mysql
