@@ -1,6 +1,6 @@
 # Currency Exchanger
 
-![Project web interface](https://github.com/cristianvuolo/desafio-desenvolvedor/bloob/cristian-vuolo-bitencourt/screenshot.png?raw=true)
+![Project web interface](https://raw.githubusercontent.com/cristianvuolo/desafio-desenvolvedor/cristian-vuolo-bitencourt/screenshot.png)
 
 ## Usage
 
