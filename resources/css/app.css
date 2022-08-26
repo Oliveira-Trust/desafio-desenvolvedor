@@ -1,0 +1,14 @@
+@import '../../vendor/filament/forms/dist/module.esm.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply text-slate-700 dark:text-slate-100 bg-slate-50 dark:bg-slate-800;
+    font-family: 'Nunito', sans-serif;
+}
+
+[x-cloak] {
+    display: none !important;
+}
