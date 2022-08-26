@@ -41,13 +41,13 @@
                 primary
             />
         </div>
-        <hr class="col-span-12 border-gray-200 dark:border-gray-700">
+        <hr class="col-span-12 border-gray-300 dark:border-gray-700">
         <div class="col-span-12 mt-2 flex items-center justify-center gap-4">
             <a
                 class="text-primary-500 text-sm hover:underline"
                 href="{{ route('auth.registration.index') }}"
             >
-                Clique aqui para se cadastrar
+                Cadastre-se aqui
             </a>
         </div>
     </x-auth-layout>
