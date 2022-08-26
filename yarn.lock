@@ -19,6 +19,11 @@
   resolved "https://registry.yarnpkg.com/@alpinejs/mask/-/mask-3.10.3.tgz#b0d4c7cca55588e7c76c7e680d29f0adc02f153e"
   integrity sha512-nOz21GlDDUaxhXCigbNVvO73csmLYvkoI2TX94TeuZOAiyvGHyURNb94L6L7Kv4E9eF5T6W70pN0Af/1sWxr0w==
 
+"@alpinejs/persist@^3.10.3":
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/@alpinejs/persist/-/persist-3.10.3.tgz#4d65154d9318b53c1b974fb078532f5f1323b50a"
+  integrity sha512-c5BWcCn4RHPtkeNEe0Mj99FuGuqcBgD1MBmYg8zKEFIjuu0bePd5LkfL8I8gVhrPIL2Ip7xXnREaWK6rVvUWSA==
+
 "@esbuild/linux-loong64@0.14.54":
   version "0.14.54"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.14.54.tgz#de2a4be678bd4d0d1ffbb86e6de779cde5999028"

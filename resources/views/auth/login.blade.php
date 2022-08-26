@@ -41,7 +41,7 @@
                 primary
             />
         </div>
-        <hr class="col-span-12">
+        <hr class="col-span-12 border-slate-200 dark:border-slate-700">
         <div class="col-span-12 mt-2 flex items-center justify-center gap-4">
             <a
                 class="text-primary-500 text-sm hover:underline"

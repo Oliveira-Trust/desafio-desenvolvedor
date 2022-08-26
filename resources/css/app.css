@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 body {
-    @apply text-slate-700 dark:text-slate-100 bg-slate-50 dark:bg-slate-800;
+    @apply text-slate-700 dark:text-slate-100 bg-slate-50 dark:bg-slate-900;
     font-family: 'Nunito', sans-serif;
 }
 
-[x-cloak] {
+[x-cloak], [hidden] {
     display: none !important;
 }

@@ -26,8 +26,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
 
             Notification::make() 
-            ->title("Logado como " . auth()->user()->name)
-            ->body("Bem vindo(a)!")
+            ->title("Bem vindo(a)!")
+            ->body("Logado como " . auth()->user()->name)
             ->success()
             ->send();
 
@@ -49,7 +49,8 @@ class LoginController extends Controller
         session()->flush();
         Auth::logout();
 
-        Notification::make() 
+        Notification::make()
+            ->success()
             ->title("Sessão encerrada.")
             ->send();
   

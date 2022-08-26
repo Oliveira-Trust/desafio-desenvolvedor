@@ -16,11 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('auth.login.index'));
 
-Route::get('acesso', [Auth\LoginController::class, 'index'])->name('auth.login.index');
-Route::post('acesso', [Auth\LoginController::class, 'handle'])->name('auth.login.handle');
+Route::middleware('guest')->group(function () {
+    Route::get('acesso', [Auth\LoginController::class, 'index'])->name('auth.login.index');
+    Route::post('acesso', [Auth\LoginController::class, 'handle'])->name('auth.login.handle');
 
-Route::get('cadastro', [Auth\RegistrationController::class, 'index'])->name('auth.registration.index');
-Route::post('cadastro', [Auth\RegistrationController::class, 'handle'])->name('auth.registration.handle');
+    Route::get('cadastro', [Auth\RegistrationController::class, 'index'])->name('auth.registration.index');
+    Route::post('cadastro', [Auth\RegistrationController::class, 'handle'])->name('auth.registration.handle');
 
-Route::get('redefinir-senha', [Auth\ForgotPasswordController::class, 'index'])->name('auth.forgot-password.index');
-Route::post('redefinir-senha', [Auth\ForgotPasswordController::class, 'handle'])->name('auth.forgot-password.handle');
+    Route::get('redefinir-senha', [Auth\ForgotPasswordController::class, 'index'])->name('auth.forgot-password.index');
+    Route::post('redefinir-senha', [Auth\ForgotPasswordController::class, 'handle'])->name('auth.forgot-password.handle');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('logout', [Auth\LoginController::class, 'logout'])->name('auth.logout');
+});

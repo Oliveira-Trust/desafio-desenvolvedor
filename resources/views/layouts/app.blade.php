@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
     lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    :class="{ 'dark': false }"
+    :class="{ 'dark': darkMode }"
     x-data="{ darkMode: $persist(false) }"
 >
 
@@ -41,7 +41,20 @@
 </head>
 
 <body class="antialiased">
-    {{ $slot }}
+    @auth
+        <main class="flex min-h-screen flex-col items-center">
+            <x-header />
+            <div class="flex w-full max-w-screen-xl flex-1 p-4 sm:mx-auto md:p-6">
+                <div class="w-full rounded-md bg-white p-2 shadow-lg dark:bg-slate-800">
+                    {{ $slot }}
+                </div>
+            </div>
+        </main>
+    @endauth
+
+    @guest
+        {{ $slot }}
+    @endguest
 
     @livewireScripts
     @livewire('notifications')
