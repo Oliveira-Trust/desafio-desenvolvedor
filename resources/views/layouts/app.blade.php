@@ -45,7 +45,7 @@
         <main class="flex min-h-screen flex-col items-center">
             <x-header />
             <div class="flex w-full max-w-screen-xl flex-1 p-4 sm:mx-auto md:p-6">
-                <div class="w-full rounded-md bg-white p-2 shadow-lg dark:bg-slate-800">
+                <div class="w-full rounded-md bg-white p-4 shadow-lg dark:bg-gray-800 md:p-6">
                     {{ $slot }}
                 </div>
             </div>

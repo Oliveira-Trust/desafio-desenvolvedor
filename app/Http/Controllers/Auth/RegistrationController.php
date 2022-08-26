@@ -6,15 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use Filament\Notifications\Notification;
+use Illuminate\Contracts\View\View;
 
 class RegistrationController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('auth.registration');
     }
       
-    public function handle(RegistrationRequest $request)
+    public function handle(RegistrationRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         $this->create($request->all());
 

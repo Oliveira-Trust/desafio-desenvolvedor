@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Filament\Notifications\Notification;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('auth.login');
     }
 
-    public function handle(Request $request)
+    public function handle(Request $request): \Illuminate\Routing\Redirector | \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'email' => 'required',
@@ -45,7 +46,8 @@ class LoginController extends Controller
                 ->withErrors(['error' => 'Email ou senha inválidos.']);
     }
 
-    public function logout() {
+    public function logout(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    {
         session()->flush();
         Auth::logout();
 

@@ -2,7 +2,7 @@
 
 <div class="grid min-h-screen place-items-center p-6">
     <div
-        class="flex w-full max-w-md flex-col justify-center rounded-md border border-slate-100 bg-white p-6 shadow-xl dark:border-slate-700 dark:bg-slate-800">
+        class="flex w-full max-w-md flex-col justify-center rounded-md border border-gray-100 bg-white p-6 shadow-xl dark:border-gray-700 dark:bg-gray-800">
         <x-errors
             title="Não foi possível continuar"
             only="error"

@@ -1,5 +1,5 @@
+@push('title', 'Dashboard')
+
 <x-app-layout>
-    <div class="">
-        Dashboard, {{ auth()->user()->name }}
-    </div>
+    Dashboard
 </x-app-layout>

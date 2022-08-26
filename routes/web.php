@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,8 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('cotacoes', Livewire\Quotations\Index::class)->name('quotations.index');
+    Route::get('cotacoes/visualizar/{id}', Livewire\Quotations\Edit::class)->name('quotations.edit');
+    Route::get('cotacoes/nova', Livewire\Quotations\Create::class)->name('quotations.create');
     Route::get('logout', [Auth\LoginController::class, 'logout'])->name('auth.logout');
 });
