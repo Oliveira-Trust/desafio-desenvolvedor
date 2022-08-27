@@ -55,11 +55,11 @@ class Create extends Component implements Forms\Contracts\HasForms
                 ->numeric()
                 ->mask(
                     fn (Components\TextInput\Mask $mask) => $mask
-                    ->numeric()
-                    ->decimalPlaces(2)
-                    ->normalizeZeros(false)
-                    ->thousandsSeparator('.')
-                    ->decimalSeparator(',')
+                        ->numeric()
+                        ->decimalPlaces(2)
+                        ->normalizeZeros(false)
+                        ->thousandsSeparator('.')
+                        ->decimalSeparator(',')
                 )
                 ->rules([
                     'required',

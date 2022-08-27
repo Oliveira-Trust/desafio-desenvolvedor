@@ -83,7 +83,7 @@ class Quotation extends Model
         $data['source_taxed_amount'] = $data['source_amount'] - ($data['conversion_fee_amount'] + $data['payment_method_fee_amount']);
     
         $targetAmount = $data['source_taxed_amount'] / $data['target_currency_quote'];
-        $data['target_amount'] = number_format($targetAmount, 2);
+        $data['target_amount'] = number_format($targetAmount, 2, '.', '');
 
         return $data;
     }
