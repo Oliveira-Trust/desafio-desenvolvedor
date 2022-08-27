@@ -1,3 +1,5 @@
+@push('title', 'Adicionar moeda de origem')
+
 <form wire:submit.prevent="submit">
     {{ $this->form }}
 

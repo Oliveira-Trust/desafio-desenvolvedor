@@ -36,7 +36,7 @@ class Edit extends Component implements Forms\Contracts\HasForms
         return [
             Components\TextInput::make('acronym')
                 ->label('Sigla')
-                ->unique('currencies', 'acronym', $this->sourceCurrency)
+                ->unique('source_currencies', 'acronym', $this->sourceCurrency)
                 ->maxLength(3)
                 ->placeholder('Ex.: BRL')
                 ->required(),
@@ -53,7 +53,7 @@ class Edit extends Component implements Forms\Contracts\HasForms
 
     public function submit(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-       $this->sourceCurrency->fill($this->form->getState())->save;
+       $this->sourceCurrency->fill($this->form->getState())->save();
 
         Notification::make()
             ->title('Moeda adicionada com sucesso!')

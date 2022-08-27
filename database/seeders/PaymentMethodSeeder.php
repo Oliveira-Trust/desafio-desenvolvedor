@@ -17,13 +17,13 @@ class PaymentMethodSeeder extends Seeder
         \App\Models\PaymentMethod::create([
             'id' => 1,
             'title' => 'Boleto',
-            'fee' => 0.0145
+            'fee' => 1.45
         ]);
 
         \App\Models\PaymentMethod::create([
             'id' => 2,
             'title' => 'Cartão de Crédito',
-            'fee' => 0.0763
+            'fee' => 7.63
         ]);
     }
 }

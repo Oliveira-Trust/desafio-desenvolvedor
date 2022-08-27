@@ -16,7 +16,7 @@ class PaymentMethod extends Model
 
     public function getTitleFeeAttribute()
     {
-        return $this->title . " - taxa de " . number_format(($this->fee * 100), 2, ',', '.') . "%";
+        return $this->title . " - taxa de " . number_format(($this->fee), 2, ',', '.') . "%";
     }
 
     public function quotations()

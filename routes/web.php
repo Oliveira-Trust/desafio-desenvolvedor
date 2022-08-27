@@ -35,6 +35,14 @@ Route::middleware('auth')->group(function () {
     Route::get('cotacoes/adicionar', Livewire\Quotations\Create::class)->name('quotations.create');
     
     Route::middleware('isAdmin')->group(function () {
+        Route::get('usuarios', Livewire\Users\Index::class)->name('users.index');
+        Route::get('usuarios/editar/{id}', Livewire\Users\Edit::class)->name('users.edit');
+        Route::get('usuarios/adicionar', Livewire\Users\Create::class)->name('users.create');
+
+        Route::get('formas-de-pagamento', Livewire\PaymentMethod\Index::class)->name('payment-method.index');
+        Route::get('formas-de-pagamento/editar/{id}', Livewire\PaymentMethod\Edit::class)->name('payment-method.edit');
+        Route::get('formas-de-pagamento/adicionar', Livewire\PaymentMethod\Create::class)->name('payment-method.create');
+        
         Route::get('moedas-de-origem', Livewire\SourceCurrencies\Index::class)->name('source-currencies.index');
         Route::get('moedas-de-origem/editar/{id}', Livewire\SourceCurrencies\Edit::class)->name('source-currencies.edit');
         Route::get('moedas-de-origem/adicionar', Livewire\SourceCurrencies\Create::class)->name('source-currencies.create');

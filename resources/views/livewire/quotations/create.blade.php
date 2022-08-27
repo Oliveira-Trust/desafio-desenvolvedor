@@ -1,3 +1,5 @@
+@push('title', 'Realizar cotação')
+
 <form wire:submit.prevent="submit">
     {{ $this->form }}
 
