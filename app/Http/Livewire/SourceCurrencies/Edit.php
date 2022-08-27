@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Currencies;
+namespace App\Http\Livewire\SourceCurrencies;
 
-use App\Models\Currency;
+use App\Models\SourceCurrency;
 use Filament\Forms;
 use Filament\Forms\Components;
 use Filament\Notifications\Notification;
@@ -13,21 +13,21 @@ class Edit extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
-    public Currency $currency;
+    public SourceCurrency $sourceCurrency;
 
-    protected function getFormModel(): Currency
+    protected function getFormModel(): SourceCurrency
     {
-        return $this->currency;
+        return $this->sourceCurrency;
     }
 
     public function mount($id): void
     {
-        $this->currency = Currency::findOrFail($id);
+        $this->sourceCurrency = SourceCurrency::findOrFail($id);
 
         $this->form->fill([
-            'acronym' => $this->currency->acronym,
-            'symbol' => $this->currency->symbol,
-            'description' => $this->currency->description,
+            'acronym' => $this->sourceCurrency->acronym,
+            'symbol' => $this->sourceCurrency->symbol,
+            'description' => $this->sourceCurrency->description,
         ]);
     }
 
@@ -36,14 +36,12 @@ class Edit extends Component implements Forms\Contracts\HasForms
         return [
             Components\TextInput::make('acronym')
                 ->label('Sigla')
-                ->unique('currencies', 'acronym', $this->currency)
+                ->unique('currencies', 'acronym', $this->sourceCurrency)
                 ->maxLength(3)
                 ->placeholder('Ex.: BRL')
                 ->required(),
             Components\TextInput::make('symbol')
                 ->label('Símbolo')
-                ->unique('currencies', 'symbol', $this->currency)
-                ->maxLength(3)
                 ->placeholder('Ex.: R$')
                 ->required(),
             Components\TextInput::make('description')
@@ -55,17 +53,17 @@ class Edit extends Component implements Forms\Contracts\HasForms
 
     public function submit(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-       $this->currency->fill($this->form->getState())->save;
+       $this->sourceCurrency->fill($this->form->getState())->save;
 
         Notification::make()
             ->title('Moeda adicionada com sucesso!')
             ->success()
             ->send();
 
-        return redirect()->route('currencies.index');
+        return redirect()->route('source-currencies.index');
     }
     public function render(): View
     {
-        return view('livewire.currencies.edit');
+        return view('livewire.source-currencies.edit');
     }
 }

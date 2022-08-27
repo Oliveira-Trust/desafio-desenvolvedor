@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire\Quotations;
 
-use App\Models\Currency;
+use App\Http\Services\CurrencyApiService;
 use App\Models\PaymentMethod;
 use App\Models\Quotation;
+use App\Models\SourceCurrency;
+use App\Models\TargetCurrency;
 use Filament\Forms;
 use Filament\Forms\Components;
 use Filament\Notifications\Notification;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
@@ -32,34 +33,30 @@ class Create extends Component implements Forms\Contracts\HasForms
             Components\Select::make('source_currency_id')
                 ->label('Moeda de origem')
                 ->reactive()
-                ->exists(Currency::class, 'id')
-                ->relationship('sourceCurrency', 'acronym', fn (Builder $query) => $query->where('acronym', 'BRL'))
-                ->getOptionLabelFromRecordUsing(fn (Currency $record) => "$record->acronym - $record->description")
+                ->exists(SourceCurrency::class, 'id')
+                ->options(fn ($get) => SourceCurrency::query()->where('acronym', '!=', TargetCurrency::find($get('target_currency_id'))?->acronym)->get()->pluck('acronym_description', 'id'))
                 ->required(),
             Components\Select::make('target_currency_id')
                 ->label('Moeda de destino')
                 ->reactive()
-                ->relationship('targetCurrency', 'acronym', fn (Builder $query, $get) => $query->where('acronym', '!=', Currency::find($get('source_currency_id'))?->acronym))
-                ->getOptionLabelFromRecordUsing(fn (Currency $record) => "$record->acronym - $record->description")
+                ->exists(TargetCurrency::class, 'id')
+                ->options(fn ($get) => TargetCurrency::query()->where('acronym', '!=', SourceCurrency::find($get('source_currency_id'))?->acronym)->get()->pluck('acronym_description', 'id'))
                 ->required(),
             Components\Select::make('payment_method_id')
                 ->label('Método de pagamento')
-                ->relationship('paymentMethod', 'title')
-                ->getOptionLabelFromRecordUsing(fn (PaymentMethod $record) => "$record->title - taxa de " . number_format($record->fee * 100, 2, ',', '.') . "%")
+                ->options(fn () => PaymentMethod::all()->pluck('title_fee', 'id'))
                 ->required(),
             Components\TextInput::make('source_amount')
                 ->label('Valor para conversão')
-                ->prefix(function ($get) {
-                    return Currency::find($get('source_currency_id'))?->symbol;
-                })
+                ->prefix(fn ($get): string => SourceCurrency::find($get('source_currency_id'))?->symbol ?? '')
                 ->numeric()
                 ->mask(
                     fn (Components\TextInput\Mask $mask) => $mask
-                        ->numeric()
-                        ->decimalPlaces(2)
-                        ->normalizeZeros(false)
-                        ->thousandsSeparator('.')
-                        ->decimalSeparator(',')
+                    ->numeric()
+                    ->decimalPlaces(2)
+                    ->normalizeZeros(false)
+                    ->thousandsSeparator('.')
+                    ->decimalSeparator(',')
                 )
                 ->rules([
                     'required',
@@ -79,9 +76,9 @@ class Create extends Component implements Forms\Contracts\HasForms
 
     public function submit(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-        $quotation = Quotation::getUpdatedQuotationValues($this->form->getState());
+        $updatedQuotationValues = CurrencyApiService::getUpdatedQuotationValues($this->form->getState());
 
-        (new Quotation)->fill($quotation)->save();
+        (new Quotation)->fill($updatedQuotationValues)->save();
 
         Notification::make()
             ->title('Cotação realizada!')

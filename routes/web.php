@@ -32,12 +32,17 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
     Route::get('cotacoes', Livewire\Quotations\Index::class)->name('quotations.index');
-    Route::get('cotacoes/editar/{id}', Livewire\Quotations\Edit::class)->middleware('isAdmin')->name('quotations.edit');
     Route::get('cotacoes/adicionar', Livewire\Quotations\Create::class)->name('quotations.create');
     
-    Route::get('moedas', Livewire\Currencies\Index::class)->middleware('isAdmin')->name('currencies.index');
-    Route::get('moedas/editar/{id}', Livewire\Currencies\Edit::class)->middleware('isAdmin')->name('currencies.edit');
-    Route::get('moedas/adicionar', Livewire\Currencies\Create::class)->middleware('isAdmin')->name('currencies.create');
+    Route::middleware('isAdmin')->group(function () {
+        Route::get('moedas-de-origem', Livewire\SourceCurrencies\Index::class)->name('source-currencies.index');
+        Route::get('moedas-de-origem/editar/{id}', Livewire\SourceCurrencies\Edit::class)->name('source-currencies.edit');
+        Route::get('moedas-de-origem/adicionar', Livewire\SourceCurrencies\Create::class)->name('source-currencies.create');
+
+        Route::get('moedas-de-destino', Livewire\TargetCurrencies\Index::class)->name('target-currencies.index');
+        Route::get('moedas-de-destino/editar/{id}', Livewire\TargetCurrencies\Edit::class)->name('target-currencies.edit');
+        Route::get('moedas-de-destino/adicionar', Livewire\TargetCurrencies\Create::class)->name('target-currencies.create');
+    });
 
     Route::get('sair', [Auth\LoginController::class, 'logout'])->name('auth.logout');
 });

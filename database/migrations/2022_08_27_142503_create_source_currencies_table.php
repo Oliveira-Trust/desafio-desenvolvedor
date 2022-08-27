@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('currencies', function (Blueprint $table) {
+        Schema::create('source_currencies', function (Blueprint $table) {
             $table->id();
             $table->string('acronym')->unique();
             $table->string('symbol');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('currencies');
+        Schema::dropIfExists('source_currencies');
     }
 };

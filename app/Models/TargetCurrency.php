@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class TargetCurrency extends Model
 {
     use HasFactory;
 
@@ -14,4 +14,9 @@ class Currency extends Model
         'acronym',
         'description',
     ];
+
+    public function getAcronymDescriptionAttribute()
+    {
+        return $this->acronym . " - " . $this->description;
+    }
 }

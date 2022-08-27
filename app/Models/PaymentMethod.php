@@ -14,6 +14,11 @@ class PaymentMethod extends Model
         'fee'
     ];
 
+    public function getTitleFeeAttribute()
+    {
+        return $this->title . " - taxa de " . number_format(($this->fee * 100), 2, ',', '.') . "%";
+    }
+
     public function quotations()
     {
         return $this->hasMany(Quotation::class);

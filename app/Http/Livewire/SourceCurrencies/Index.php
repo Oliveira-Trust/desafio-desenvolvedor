@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Currencies;
+namespace App\Http\Livewire\SourceCurrencies;
 
-use App\Models\Currency;
-use Filament\Notifications\Notification;
+use App\Models\SourceCurrency;
 use Filament\Tables;
 use Illuminate\Contracts\Database\Eloquent\Builder;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
@@ -16,7 +14,7 @@ class Index extends Component implements Tables\Contracts\HasTable
     
     protected function getTableQuery(): Builder
     {
-        return Currency::query()->latest();
+        return SourceCurrency::query()->latest();
     }
 
     protected function getTableColumns(): array
@@ -47,11 +45,11 @@ class Index extends Component implements Tables\Contracts\HasTable
         return [
             Tables\Actions\EditAction::make('editar')
                 ->icon('heroicon-o-pencil')
-                ->url(fn (Currency $record): string => route('currencies.edit', ['id' => $record->id])),
+                ->url(fn (SourceCurrency $record): string => route('source-currencies.edit', ['id' => $record->id])),
             Tables\Actions\DeleteAction::make('excluir')
-                ->modalHeading('Excluir moeda')
+                ->modalHeading('Excluir moeda de origem')
                 ->icon('heroicon-o-trash')
-                ->action(fn (Currency $record) => $record->delete())
+                ->action(fn (SourceCurrency $record) => $record->delete())
         ];
     }
 

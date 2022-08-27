@@ -19,9 +19,16 @@
             @if (auth()->user()->admin)
                 <li>
                     <x-header-link
-                        page="Moedas"
-                        route="currencies.index"
-                        route-is="currencies.*"
+                        page="Moedas de Origem"
+                        route="source-currencies.index"
+                        route-is="source-currencies.*"
+                    />
+                </li>
+                <li>
+                    <x-header-link
+                        page="Moedas de Destino"
+                        route="target-currencies.index"
+                        route-is="target-currencies.*"
                     />
                 </li>
             @endif

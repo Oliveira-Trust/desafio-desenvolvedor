@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
             $table->string('source_currency_acronym');
+            $table->string('source_currency_symbol');
             $table->string('target_currency_acronym');
+            $table->string('target_currency_symbol');
             $table->float('target_currency_quote');
             $table->float('source_amount');
             $table->float('payment_method_fee_amount');

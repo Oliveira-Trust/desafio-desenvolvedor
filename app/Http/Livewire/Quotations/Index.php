@@ -2,12 +2,10 @@
 
 namespace App\Http\Livewire\Quotations;
 
-use App\Models\Currency;
 use App\Models\Quotation;
 use Filament\Notifications\Notification;
 use Filament\Tables;
 use Illuminate\Contracts\Database\Eloquent\Builder;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
@@ -46,74 +44,34 @@ class Index extends Component implements Tables\Contracts\HasTable
             Tables\Columns\TextColumn::make('source_amount')
                 ->label('Valor de Origem')
                 ->description('(sem taxas)')
-                ->prefix(function (Quotation $record): string {
-                    $currency = Currency::query()->where('acronym', $record->source_currency_acronym)->first();
-                    
-                    if ($currency) {
-                        return $currency->symbol;
-                    }
-
-                    return "$record->source_currency_acronym ";
-                })
+                ->prefix(fn (Quotation $record): string => $record->source_currency_symbol)
                 ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
                 ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('source_taxed_amount')
                 ->label('Valor de Origem')
                 ->description('(incluindo taxas)')
-                ->prefix(function (Quotation $record): string {
-                    $currency = Currency::query()->where('acronym', $record->source_currency_acronym)->first();
-                    
-                    if ($currency) {
-                        return $currency->symbol;
-                    }
-
-                    return "$record->source_currency_acronym ";
-                })
+                ->prefix(fn (Quotation $record): string => $record->source_currency_symbol)
                 ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
                 ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('conversion_fee_amount')
                 ->label('Taxa de conversão')
-                ->prefix(function (Quotation $record): string {
-                    $currency = Currency::query()->where('acronym', $record->source_currency_acronym)->first();
-                    
-                    if ($currency) {
-                        return $currency->symbol;
-                    }
-
-                    return "$record->source_currency_acronym ";
-                })
+                ->prefix(fn (Quotation $record): string => $record->source_currency_symbol)
                 ->description(fn (Quotation $record):string => "Taxa de " . $record->conversion_fee_percentage * 100 . "%")
-                ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
-                ->sortable()
-                ->searchable(),
-            Tables\Columns\TextColumn::make('target_amount')
-                ->label('Valor convertido')
-                ->prefix(function (Quotation $record): string {
-                    $currency = Currency::query()->where('acronym', $record->target_currency_acronym)->first();
-                    
-                    if ($currency) {
-                        return $currency->symbol;
-                    }
-
-                    return "$record->target_currency_acronym ";
-                })
                 ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
                 ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('payment_method_fee_amount')
                 ->label('Taxa do método de pagamento')
-                ->prefix(function (Quotation $record): string {
-                    $currency = Currency::query()->where('acronym', $record->source_currency_acronym)->first();
-                    
-                    if ($currency) {
-                        return $currency->symbol;
-                    }
-
-                    return "$record->source_currency_acronym ";
-                })
+                ->prefix(fn (Quotation $record): string => $record->source_currency_symbol)
                 ->description(fn (Quotation $record):string => "Taxa de " . $record->payment_method_fee_percentage * 100 . "%")
+                ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
+                ->sortable()
+                ->searchable(),
+            Tables\Columns\TextColumn::make('target_amount')
+                ->label('Valor convertido')
+                ->prefix(fn (Quotation $record): string => $record->target_currency_symbol)
                 ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
                 ->sortable()
                 ->searchable(),
@@ -152,9 +110,6 @@ class Index extends Component implements Tables\Contracts\HasTable
         if (auth()->user()->admin) {
             array_push(
                 $actions,
-                Tables\Actions\EditAction::make('editar')
-                    ->icon('heroicon-o-pencil')
-                    ->url(fn (Quotation $record): string => route('quotations.edit', ['id' => $record->id])),
                 Tables\Actions\DeleteAction::make('excluir')
                     ->modalHeading('Excluir cotação')
                     ->icon('heroicon-o-trash')

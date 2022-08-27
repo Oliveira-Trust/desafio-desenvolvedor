@@ -7,6 +7,6 @@
         spinner="submit"
         positive
     >
-        Editar moeda
+        Adicionar moeda de destino
     </x-button>
 </form>
