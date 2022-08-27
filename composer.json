@@ -13,7 +13,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
-        "wireui/wireui": "^1.14"
+        "wireui/wireui": "^1.14",
+        "ext-pdo_sqlite": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
