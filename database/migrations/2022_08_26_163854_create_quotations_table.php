@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('source_currency_symbol');
             $table->string('target_currency_acronym');
             $table->string('target_currency_symbol');
-            $table->float('target_currency_quote');
+            $table->float('target_currency_quote', 8, 4);
             $table->float('source_amount');
             $table->float('payment_method_fee_amount');
             $table->float('payment_method_fee_percentage', 8, 4);

@@ -1,3 +1,5 @@
+@push('title', 'Adicionar forma de pagamento')
+
 <form wire:submit.prevent="submit">
     {{ $this->form }}
 
@@ -7,6 +9,6 @@
         spinner="submit"
         positive
     >
-        Refazer cotação
+        Adicionar forma de pagamento
     </x-button>
 </form>

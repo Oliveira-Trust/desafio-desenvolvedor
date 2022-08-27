@@ -1,4 +1,4 @@
-@push('title', 'Cotações Realizadas')
+@push('title', 'Cotações realizadas')
 
 <div class="flex flex-col justify-center gap-4">
     <div class="flex justify-end">

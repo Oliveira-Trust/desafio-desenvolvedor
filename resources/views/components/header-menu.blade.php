@@ -19,6 +19,20 @@
             @if (auth()->user()->admin)
                 <li>
                     <x-header-link
+                        page="Usuários"
+                        route="users.index"
+                        route-is="users.*"
+                    />
+                </li>
+                <li>
+                    <x-header-link
+                        page="Formas de Pagamento"
+                        route="payment-method.index"
+                        route-is="payment-method.*"
+                    />
+                </li>
+                <li>
+                    <x-header-link
                         page="Moedas de Origem"
                         route="source-currencies.index"
                         route-is="source-currencies.*"

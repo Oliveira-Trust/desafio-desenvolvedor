@@ -1,5 +1,5 @@
-@push('title', 'Dashboard')
+@push('title', 'Painel')
 
 <x-app-layout>
-    Dashboard
+    Painel
 </x-app-layout>

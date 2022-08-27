@@ -58,14 +58,14 @@ class Index extends Component implements Tables\Contracts\HasTable
             Tables\Columns\TextColumn::make('conversion_fee_amount')
                 ->label('Taxa de conversão')
                 ->prefix(fn (Quotation $record): string => $record->source_currency_symbol)
-                ->description(fn (Quotation $record):string => "Taxa de " . $record->conversion_fee_percentage * 100 . "%")
+                ->description(fn (Quotation $record):string => "Taxa de " . $record->conversion_fee_percentage . "%")
                 ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
                 ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('payment_method_fee_amount')
                 ->label('Taxa do método de pagamento')
                 ->prefix(fn (Quotation $record): string => $record->source_currency_symbol)
-                ->description(fn (Quotation $record):string => "Taxa de " . $record->payment_method_fee_percentage * 100 . "%")
+                ->description(fn (Quotation $record):string => "Taxa de " . $record->payment_method_fee_percentage . "%")
                 ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
                 ->sortable()
                 ->searchable(),

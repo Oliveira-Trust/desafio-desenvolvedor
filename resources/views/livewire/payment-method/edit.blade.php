@@ -1,4 +1,4 @@
-@push('title', 'Editar moeda de origem')
+@push('title', 'Editar forma de pagamento')
 
 <form wire:submit.prevent="submit">
     {{ $this->form }}
@@ -9,6 +9,6 @@
         spinner="submit"
         positive
     >
-        Editar moeda de origem
+        Editar forma de pagamento
     </x-button>
 </form>

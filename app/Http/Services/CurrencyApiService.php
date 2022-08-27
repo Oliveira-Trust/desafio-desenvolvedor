@@ -48,7 +48,7 @@ class CurrencyApiService
 
             if ($comparison) {
                 $conversionFeePercentage = $value->percentage;
-                $conversionFeeAmount = $data['source_amount'] * $value->percentage;
+                $conversionFeeAmount = $data['source_amount'] * ($value->percentage / 100);
                 break;
             }
         }
@@ -63,7 +63,7 @@ class CurrencyApiService
         $data['target_currency_quote'] = number_format($currentApiQuotation->bid, 2);
         $data['payment_method'] = $paymentMethod->title;
         $data['payment_method_fee_percentage'] = $paymentMethodFee;
-        $data['payment_method_fee_amount'] = $data['source_amount'] * $paymentMethodFee;
+        $data['payment_method_fee_amount'] = $data['source_amount'] * ($paymentMethodFee / 100);
         $data['conversion_fee_percentage'] = $conversionFeePercentage ?? 0;
         $data['conversion_fee_amount'] = $conversionFeeAmount ?? 0;
         $data['source_taxed_amount'] = $data['source_amount'] - ($data['conversion_fee_amount'] + $data['payment_method_fee_amount']);

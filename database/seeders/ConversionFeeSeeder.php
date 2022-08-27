@@ -15,13 +15,13 @@ class ConversionFeeSeeder extends Seeder
     public function run()
     {
         \App\Models\ConversionFee::create([
-            'percentage' => 0.02,
+            'percentage' => 2.0,
             'begin_amount' => 3000,
             'conversion_fee_math_operator_id' => 1,
         ]);
 
         \App\Models\ConversionFee::create([
-            'percentage' => 0.01,
+            'percentage' => 1.0,
             'begin_amount' => 3000,
             'conversion_fee_math_operator_id' => 4,
         ]);
