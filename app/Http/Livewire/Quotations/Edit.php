@@ -26,7 +26,7 @@ class Edit extends Component implements Forms\Contracts\HasForms
 
     public function mount($id): void
     {
-        $this->quotation = Quotation::find($id);
+        $this->quotation = Quotation::findOrFail($id);
         
         $this->form->fill([
             'source_currency_id' => $this->quotation->source_currency_id,
@@ -39,28 +39,34 @@ class Edit extends Component implements Forms\Contracts\HasForms
     protected function getFormSchema(): array
     {
         return [
-            Components\Select::make('source_currency_id')
+            Components\Select::make('source_currency_acronym')
                 ->label('Moeda de origem')
                 ->reactive()
-                ->exists(Currency::class, 'id')
-                ->relationship('sourceCurrency', 'acronym', fn (Builder $query) => $query->where('acronym', 'BRL'))
+                ->exists(Currency::class, 'acronym')
+                ->options(Currency::query()->where('acronym', 'BRL')->pluck('acronym', 'acronym'))
                 ->getOptionLabelFromRecordUsing(fn (Currency $record) => "$record->acronym - $record->description")
                 ->required(),
-            Components\Select::make('target_currency_id')
+            Components\Select::make('target_currency_acronym')
                 ->label('Moeda de destino')
                 ->reactive()
-                ->relationship('targetCurrency', 'acronym', fn (Builder $query, $get) => $query->where('acronym', '!=', Currency::find($get('source_currency_id'))?->acronym))
+                ->options(fn ($get) => Currency::query()->where('acronym', '!=', $get('source_currency'))->pluck('acronym', 'acronym'))
                 ->getOptionLabelFromRecordUsing(fn (Currency $record) => "$record->acronym - $record->description")
                 ->required(),
-            Components\Select::make('payment_method_id')
+            Components\Select::make('payment_method')
                 ->label('Método de pagamento')
-                ->relationship('paymentMethod', 'title')
+                ->options(fn () => PaymentMethod::all()->pluck('title', 'id'))
                 ->getOptionLabelFromRecordUsing(fn (PaymentMethod $record) => "$record->title - taxa de " . number_format($record->fee * 100, 2, ',', '.') . "%")
                 ->required(),
             Components\TextInput::make('source_amount')
                 ->label('Valor para conversão')
-                ->prefix(function ($get) {
-                    return Currency::find($get('source_currency_id'))?->symbol;
+                ->prefix(function (Quotation $record): string {
+                    $currency = Currency::query()->where('acronym', $record->source_currency)->first();
+                    
+                    if ($currency) {
+                        return $currency->symbol;
+                    }
+
+                    return "$record->source_currency ";
                 })
                 ->numeric()
                 ->mask(

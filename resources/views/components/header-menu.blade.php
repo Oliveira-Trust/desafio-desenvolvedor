@@ -16,6 +16,15 @@
                     route-is="quotations.*"
                 />
             </li>
+            @if (auth()->user()->admin)
+                <li>
+                    <x-header-link
+                        page="Moedas"
+                        route="currencies.index"
+                        route-is="currencies.*"
+                    />
+                </li>
+            @endif
         </ul>
 
     </div>

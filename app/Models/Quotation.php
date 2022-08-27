@@ -10,47 +10,30 @@ class Quotation extends Model
     use HasFactory;
 
     protected $fillable = [
+        'source_currency_acronym',
+        'target_currency_acronym',
         'target_currency_quote',
         'source_amount',
         'payment_method_fee_amount',
+        'payment_method_fee_percentage',
         'conversion_fee_amount',
+        'conversion_fee_percentage',
         'source_taxed_amount',
         'target_amount',
+        'payment_method',
         'payment_status',
-        'source_currency_id',
-        'target_currency_id',
         'user_id',
-        'payment_method_id',
-        'conversion_fee_id',
     ];
-
-    public function paymentMethod()
-    {
-        return $this->belongsTo(PaymentMethod::class);
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function conversionFee()
-    {
-        return $this->belongsTo(ConversionFee::class);
-    }
-
-    public function sourceCurrency()
-    {
-        return $this->belongsTo(Currency::class, 'source_currency_id', 'id');
-    }
-
-    public function targetCurrency()
-    {
-        return $this->belongsTo(Currency::class, 'target_currency_id', 'id');
-    }
-
     /**
      * Pega as informações escolhidas pelo usuário e faz a cotação
+     * @param array $dada
+     * @return ?array
      */
     public static function getUpdatedQuotationValues(array $data): ?array
     {

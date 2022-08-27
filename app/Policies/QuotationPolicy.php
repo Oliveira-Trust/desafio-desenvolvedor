@@ -5,90 +5,26 @@ namespace App\Policies;
 use App\Models\Quotation;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class QuotationPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
+     * Create a new policy instance.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @return void
      */
-    public function viewAny(User $user)
+    public function __construct()
     {
-        return true;
+        //
     }
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Quotation  $quotation
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Quotation $quotation)
+    
+    public function update()
     {
-        return true;
-    }
-
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user)
-    {
-        return true;
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Quotation  $quotation
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, Quotation $quotation)
-    {
-        return $user->admin;
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Quotation  $quotation
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, Quotation $quotation)
-    {
-        return $user->admin;
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Quotation  $quotation
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Quotation $quotation)
-    {
-        return $user->admin;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Quotation  $quotation
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Quotation $quotation)
-    {
-        return $user->admin;
+        return auth()->user()->admin
+            ? Response::allow()
+            : Response::denyAsNotFound();
     }
 }
