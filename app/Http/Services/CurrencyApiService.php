@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\ConversionFee;
+use App\Models\ConversionFeeMathOperator;
 use App\Models\PaymentMethod;
 use App\Models\SourceCurrency;
 use App\Models\TargetCurrency;
@@ -28,7 +29,6 @@ class CurrencyApiService
         $targetCurrencyAcronym = $targetCurrency->acronym;
         $targetCurrencySymbol = $targetCurrency->symbol;
 
-
         $currentApiQuotation = \App\Http\Services\CurrencyApiService::currentQuotationForCurrencies($sourceCurrencyAcronym, $targetCurrencyAcronym);
 
         if (!$currentApiQuotation) {
@@ -38,14 +38,18 @@ class CurrencyApiService
         $paymentMethod = PaymentMethod::find($data['payment_method_id']);
         $paymentMethodFee = $paymentMethod->fee;
 
-        $conversionFees = ConversionFee::all();
-
+        $conversionFees = ConversionFee::query()
+                ->orderBy('fee_relative_amount')
+                ->get();
         $conversionFeePercentage = "";
         $conversionFeeAmount = "";
 
         foreach ($conversionFees as $key => $value) {
-            $comparison = eval("return \$data['source_amount'] {$value->conversionFeeMathOperator->symbol} \$value->fee_relative_amount;"); // Para saber a taxa de conversão pelo valor - retorna Ex.: 5000 < 3000 (false), 6000 > 2000 (true)...
+            $symbol = $value->conversionFeeMathOperator->symbol;
 
+            // Para saber a taxa de conversão pelo valor - retorna Ex.: 5000 < 3000 (false), 6000 > 2000 (true)...
+            $comparison = eval("return \$data['source_amount'] $symbol \$value->fee_relative_amount;");
+            
             if ($comparison) {
                 $conversionFeePercentage = $value->fee;
                 $conversionFeeAmount = $data['source_amount'] * ($value->fee / 100);
