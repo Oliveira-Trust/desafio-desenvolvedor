@@ -17,23 +17,14 @@ class RegistrationController extends Controller
       
     public function handle(RegistrationRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-        $this->create($request->all());
+        $user = User::create([...$request->only('name', 'email'), bcrypt($request->password)]);
 
         Notification::make() 
             ->title("Cadastro realizado!")
-            ->body("Bem vindo(a), " . auth()->user()->name)
+            ->body("Bem vindo(a), " . $user->name)
             ->success()
             ->send();
          
-        return redirect()->route('auth.login.index')->withSuccess('Registrado com sucesso!');
-    }
-
-    public function create(array $data): \Illuminate\Database\Eloquent\Model | null
-    {
-        return User::create([
-          'name' => $data['name'],
-          'email' => $data['email'],
-          'password' => bcrypt($data['password'])
-        ]);
+        return redirect()->route('auth.login.index');
     }
 }

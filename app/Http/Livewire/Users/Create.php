@@ -50,7 +50,10 @@ class Create extends Component implements Forms\Contracts\HasForms
 
     public function submit(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-        User::create($this->form->getState());
+        $form = $this->form->getState();
+        $form['password'] = bcrypt($form['password']);
+
+        User::create($form);
 
         Notification::make()
             ->title('Usuário adicionado com sucesso!')
