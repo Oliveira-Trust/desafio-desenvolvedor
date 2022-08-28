@@ -44,7 +44,7 @@ class Index extends Component implements Tables\Contracts\HasTable
         return [
             Tables\Actions\EditAction::make('editar')
                 ->icon('heroicon-o-pencil')
-                ->url(fn (PaymentMethod $record): string => route('payment-method.edit', ['id' => $record->id])),
+                ->url(fn (PaymentMethod $record): string => route('payment-methods.edit', ['id' => $record->id])),
             Tables\Actions\DeleteAction::make('excluir')
                 ->modalHeading('Excluir forma de pagamento')
                 ->icon('heroicon-o-trash')

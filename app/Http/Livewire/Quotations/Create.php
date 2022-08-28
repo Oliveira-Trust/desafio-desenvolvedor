@@ -78,7 +78,7 @@ class Create extends Component implements Forms\Contracts\HasForms
     {
         $updatedQuotationValues = CurrencyApiService::getUpdatedQuotationValues($this->form->getState());
 
-        (new Quotation)->fill($updatedQuotationValues)->save();
+        Quotation::create($updatedQuotationValues);
 
         Notification::make()
             ->title('Cotação realizada!')

@@ -39,9 +39,9 @@ Route::middleware('auth')->group(function () {
         Route::get('usuarios/editar/{id}', Livewire\Users\Edit::class)->name('users.edit');
         Route::get('usuarios/adicionar', Livewire\Users\Create::class)->name('users.create');
 
-        Route::get('formas-de-pagamento', Livewire\PaymentMethod\Index::class)->name('payment-method.index');
-        Route::get('formas-de-pagamento/editar/{id}', Livewire\PaymentMethod\Edit::class)->name('payment-method.edit');
-        Route::get('formas-de-pagamento/adicionar', Livewire\PaymentMethod\Create::class)->name('payment-method.create');
+        Route::get('formas-de-pagamento', Livewire\PaymentMethod\Index::class)->name('payment-methods.index');
+        Route::get('formas-de-pagamento/editar/{id}', Livewire\PaymentMethod\Edit::class)->name('payment-methods.edit');
+        Route::get('formas-de-pagamento/adicionar', Livewire\PaymentMethod\Create::class)->name('payment-methods.create');
         
         Route::get('moedas-de-origem', Livewire\SourceCurrencies\Index::class)->name('source-currencies.index');
         Route::get('moedas-de-origem/editar/{id}', Livewire\SourceCurrencies\Edit::class)->name('source-currencies.edit');
@@ -50,6 +50,10 @@ Route::middleware('auth')->group(function () {
         Route::get('moedas-de-destino', Livewire\TargetCurrencies\Index::class)->name('target-currencies.index');
         Route::get('moedas-de-destino/editar/{id}', Livewire\TargetCurrencies\Edit::class)->name('target-currencies.edit');
         Route::get('moedas-de-destino/adicionar', Livewire\TargetCurrencies\Create::class)->name('target-currencies.create');
+
+        Route::get('taxas-de-conversao', Livewire\ConversionFees\Index::class)->name('conversion-fees.index');
+        Route::get('taxas-de-conversao/editar/{id}', Livewire\ConversionFees\Edit::class)->name('conversion-fees.edit');
+        Route::get('taxas-de-conversao/adicionar', Livewire\ConversionFees\Create::class)->name('conversion-fees.create');
     });
 
     Route::get('sair', [Auth\LoginController::class, 'logout'])->name('auth.logout');

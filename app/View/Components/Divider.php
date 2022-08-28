@@ -4,22 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class HeaderLink extends Component
+class Divider extends Component
 {
-    public string $label;
-    public ?string $route;
-    public ?string $routeIs;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $label, ?string $route = null, ?string $routeIs = null)
+    public function __construct()
     {
-        $this->label = $label;
-        $this->route = $route;
-        $this->routeIs = $routeIs;
+        //
     }
 
     /**
@@ -29,6 +23,6 @@ class HeaderLink extends Component
      */
     public function render()
     {
-        return view('components.header-link');
+        return view('components.divider');
     }
 }

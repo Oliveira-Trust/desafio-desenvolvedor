@@ -39,45 +39,50 @@
                         </div>
                         <ul class="py-1">
                             <li>
-                                <a
+                                <x-dropdown-menu-link
                                     x-on:click.prevent="darkMode = !darkMode"
-                                    class="block cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    separator
                                 >
-                                    <div
-                                        x-cloak
-                                        x-show="darkMode"
-                                        class="flex items-center gap-2"
-                                    >
-                                        <x-icon
-                                            name="sun"
-                                            class="h-5 w-5"
-                                        />
-                                        <span>Modo claro</span>
-                                    </div>
-                                    <div
-                                        x-cloak
-                                        x-show="!darkMode"
-                                        class="flex items-center gap-2"
-                                    >
-                                        <x-icon
-                                            name="moon"
-                                            class="h-5 w-5"
-                                        />
-                                        <span>Modo escuro</span>
-                                    </div>
-                                </a>
+                                    <x-slot name="label">
+                                        <div
+                                            x-cloak
+                                            x-show="darkMode"
+                                            class="flex items-center gap-2"
+                                        >
+                                            <x-icon
+                                                name="sun"
+                                                class="h-5 w-5"
+                                            />
+                                            <span>Modo claro</span>
+                                        </div>
+                                        <div
+                                            x-cloak
+                                            x-show="!darkMode"
+                                            class="flex items-center gap-2"
+                                        >
+                                            <x-icon
+                                                name="moon"
+                                                class="h-5 w-5"
+                                            />
+                                            <span>Modo escuro</span>
+                                        </div>
+                                    </x-slot>
+                                </x-dropdown-menu-link>
                             </li>
+                            @if (auth()->user()->admin)
+                                <li>
+                                    <x-dropdown-menu-link
+                                        label="Usuários"
+                                        route="users.index"
+                                        routeIs="users.*"
+                                    />
+                                </li>
+                            @endif
                             <li>
-                                <a
-                                    href="#"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >Configurações</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="{{ route('auth.logout') }}"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >Sair</a>
+                                <x-dropdown-menu-link
+                                    label="Sair"
+                                    route="auth.logout"
+                                />
                             </li>
                         </ul>
                     </div>

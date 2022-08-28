@@ -3,7 +3,6 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
-    "./resources/**/*.js",
     './vendor/wireui/wireui/resources/**/*.blade.php',
     './vendor/wireui/wireui/ts/**/*.ts',
     './vendor/wireui/wireui/src/View/**/*.php',
