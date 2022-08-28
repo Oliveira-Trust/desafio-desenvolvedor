@@ -69,6 +69,12 @@ class Index extends Component implements Tables\Contracts\HasTable
                 ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
                 ->sortable()
                 ->searchable(),
+            Tables\Columns\TextColumn::make('target_currency_quote')
+                ->label('Valor da moeda de destino')
+                ->prefix(fn (Quotation $record): string => $record->target_currency_symbol)
+                ->formatStateUsing(fn (?string $state):string => number_format($state, 2, ',', '.'))
+                ->sortable()
+                ->searchable(),
             Tables\Columns\TextColumn::make('target_amount')
                 ->label('Valor convertido')
                 ->prefix(fn (Quotation $record): string => $record->target_currency_symbol)
@@ -95,6 +101,7 @@ class Index extends Component implements Tables\Contracts\HasTable
     {
         $actions = [
             Tables\Actions\Action::make('Efetuar pagamento')
+                ->hidden(fn (Quotation $record) => $record->payment_status !== 'Em aberto')
                 ->icon('heroicon-o-currency-dollar')
                 ->action(function (Quotation $record) {
                     $record->payment_status = "Pago";

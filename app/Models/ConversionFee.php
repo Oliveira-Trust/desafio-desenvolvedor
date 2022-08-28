@@ -10,8 +10,9 @@ class ConversionFee extends Model
     use HasFactory;
 
     protected $fillable = [
-        'percentage',
-        'begin_amount',
+        'fee',
+        'fee_relative_amount',
+        'conversion_fee_math_operator_id'
     ];
 
     public function conversionFeeMathOperator()

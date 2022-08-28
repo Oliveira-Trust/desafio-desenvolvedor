@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('conversion_fees', function (Blueprint $table) {
             $table->id();
-            $table->float('percentage', 8, 4);
-            $table->float('begin_amount');
+            $table->float('fee', 8, 4);
+            $table->float('fee_relative_amount');
             $table->foreignIdFor(\App\Models\ConversionFeeMathOperator::class);
             $table->timestamps();
         });

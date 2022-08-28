@@ -17,25 +17,25 @@ class ConversionFeeMathOperatorSeeder extends Seeder
         \App\Models\ConversionFeeMathOperator::create([
             'id' => 1,
             'symbol' => '<',
-            'description' => 'menor que',
+            'description' => 'para valores menores que',
         ]);
 
         \App\Models\ConversionFeeMathOperator::create([
             'id' => 2,
             'symbol' => '<=',
-            'description' => 'menor ou igual a',
+            'description' => 'para valores menores ou iguais a',
         ]);
 
         \App\Models\ConversionFeeMathOperator::create([
             'id' => 3,
             'symbol' => '>',
-            'description' => 'maior que',
+            'description' => 'para valores maiores que',
         ]);
         
         \App\Models\ConversionFeeMathOperator::create([
             'id' => 4,
             'symbol' => '>=',
-            'description' => 'maior ou igual a',
+            'description' => 'para valores maiores ou iguais a',
         ]);
     }
 }

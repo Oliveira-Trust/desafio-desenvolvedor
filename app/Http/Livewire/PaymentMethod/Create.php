@@ -49,11 +49,11 @@ class Create extends Component implements Forms\Contracts\HasForms
             ->success()
             ->send();
 
-        return redirect()->route('payment-method.index');
+        return redirect()->route('payment-methods.index');
     }
 
     public function render(): View
     {
-        return view('livewire.payment-method.create');
+        return view('livewire.payment-methods.create');
     }
 }

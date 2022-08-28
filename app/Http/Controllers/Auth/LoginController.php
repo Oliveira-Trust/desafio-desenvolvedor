@@ -25,13 +25,6 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-
-            Notification::make() 
-            ->title("Bem vindo(a)!")
-            ->body("Logado como " . auth()->user()->name)
-            ->success()
-            ->send();
-
             return redirect()
                     ->intended('dashboard');
         }
