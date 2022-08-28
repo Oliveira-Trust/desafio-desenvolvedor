@@ -64,7 +64,10 @@ class Edit extends Component implements Forms\Contracts\HasForms
 
     public function submit(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-       $this->user->fill($this->form->getState())->save();
+        $form = $this->form->getState();
+        $form['password'] = bcrypt($form['password']);
+        
+        $this->user->fill($form)->save();
 
         Notification::make()
             ->title('Informações do usuário atualizadas com sucesso!')
