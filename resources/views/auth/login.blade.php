@@ -1,10 +1,10 @@
-@push('title', 'Acesso')
+@push('title', 'Login')
 
 <x-app-layout>
     <x-auth-layout formActionRoute="{{ route('auth.login.index') }}">
         <x-slot name="head">
             <div class="col-span-12 mb-4 flex flex-col gap-1">
-                <h3 class="text-xl font-bold">Acesso</h3>
+                <h3 class="text-xl font-bold">Login</h3>
                 <small class="text-xs">Insira suas credenciais para continuar.</small>
             </div>
         </x-slot>

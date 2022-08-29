@@ -19,8 +19,8 @@ use App\Mail\QuotationRealizedMail;
 Route::get('/', fn () => redirect()->route('auth.login.index'));
 
 Route::middleware('guest')->group(function () {
-    Route::get('acesso', [Auth\LoginController::class, 'index'])->name('auth.login.index');
-    Route::post('acesso', [Auth\LoginController::class, 'handle'])->name('auth.login.handle');
+    Route::get('login', [Auth\LoginController::class, 'index'])->name('auth.login.index');
+    Route::post('login', [Auth\LoginController::class, 'handle'])->name('auth.login.handle');
 
     Route::get('cadastro', [Auth\RegistrationController::class, 'index'])->name('auth.registration.index');
     Route::post('cadastro', [Auth\RegistrationController::class, 'handle'])->name('auth.registration.handle');
