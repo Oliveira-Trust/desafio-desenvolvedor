@@ -61,6 +61,6 @@ class Edit extends Component implements Forms\Contracts\HasForms
     }
     public function render(): View
     {
-        return view('livewire.payment-methods.edit');
+        return view('livewire.payment-method.edit');
     }
 }

@@ -54,6 +54,6 @@ class Create extends Component implements Forms\Contracts\HasForms
 
     public function render(): View
     {
-        return view('livewire.payment-methods.create');
+        return view('livewire.payment-method.create');
     }
 }
