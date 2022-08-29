@@ -8,6 +8,7 @@
     cp .env.example .env
 ```
 ##### Configure para utilizar sqlite 
+Crie o arquivo database.sqlite em database/database.sqlite
 ```sh
     DB_CONNECTION=sqlite
     # DB_HOST=127.0.0.1
