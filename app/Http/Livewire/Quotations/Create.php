@@ -40,7 +40,21 @@ class Create extends Component implements Forms\Contracts\HasForms
                 ->label('Moeda de destino')
                 ->reactive()
                 ->exists(TargetCurrency::class, 'id')
-                ->options(fn ($get) => TargetCurrency::query()->where('acronym', '!=', SourceCurrency::find($get('source_currency_id'))?->acronym)->get()->pluck('acronym_description', 'id'))
+                ->options(function ($get) {
+                    return TargetCurrency::query()
+                                ->where(
+                                    'acronym',
+                                    '!=',
+                                    SourceCurrency::find($get('source_currency_id'))
+                                            ?->acronym
+                                )
+                                ->whereIn(
+                                    'acronym',
+                                    ['BRL', 'USD', 'EUR']
+                                )
+                                ->get()
+                                ->pluck('acronym_description', 'id');
+                })
                 ->required(),
             Components\Select::make('payment_method_id')
                 ->label('Método de pagamento')
@@ -86,7 +100,7 @@ class Create extends Component implements Forms\Contracts\HasForms
             ->send();
 
         return redirect()->route('quotations.index');
-    } 
+    }
 
     public function render(): View
     {
