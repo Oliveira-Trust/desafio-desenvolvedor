@@ -79,13 +79,13 @@
 
 
 @if ($quotation->payment_status === 'Em aberto')
-    @component('mail::button', ['url' => route('quotations.index')])
-        Efetuar pagamento
-    @endcomponent
+@component('mail::button', ['url' => route('quotations.index')])
+    Efetuar pagamento
+@endcomponent
 @else
-    @component('mail::button', ['url' => route('quotations.index')])
-        Visualizar no sistema
-    @endcomponent
+@component('mail::button', ['url' => route('quotations.index')])
+    Visualizar no sistema
+@endcomponent
 @endif
 Atenciosamente,<br>
 {{ config('app.name') }}
