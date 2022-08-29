@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire;
+use App\Mail\QuotationRealizedMail;
 
 /*
 |--------------------------------------------------------------------------

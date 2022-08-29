@@ -1,13 +1,24 @@
 <header class="w-full">
     <nav class="bg-white dark:bg-gray-800">
         <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 py-2.5 md:px-6">
-            <a
-                href="{{ route('dashboard') }}"
-                class="flex flex-col items-start justify-center gap-2"
-            >
-                <x-app-logo class="h-6" />
-                <span class="text-sm font-light">Desenvolvedor PHP (Jr/Pleno/Sênior)</span>
-            </a>
+            <div class="flex flex-col items-start justify-center gap-2">
+                <a href="{{ route('dashboard') }}">
+                    <x-app-logo class="h-6" />
+                </a>
+                <span class="text-sm font-light">
+                    Desafio desenvolvedor PHP (Jr/Pleno/Sênior)
+                </span>
+                <div class="text-xs font-light">
+                    Desenvolvido por
+                    <a
+                        class="text-primary-400 underline"
+                        target="_blank"
+                        href="https://github.com/gabriel-torres-brum"
+                    >
+                        Gabriel Torres Brum
+                    </a>
+                </div>
+            </div>
             <div
                 class="flex items-center"
                 x-data="{ userDropdown: false }"
