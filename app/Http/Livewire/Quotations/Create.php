@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Quotations;
 
-use App\Http\Services\CurrencyApiService;
+use App\Http\Services\ExchangeApiService;
 use App\Models\PaymentMethod;
 use App\Models\Quotation;
 use App\Models\SourceCurrency;
@@ -76,7 +76,7 @@ class Create extends Component implements Forms\Contracts\HasForms
 
     public function submit(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-        $updatedQuotationValues = CurrencyApiService::getUpdatedQuotationValues($this->form->getState());
+        $updatedQuotationValues = ExchangeApiService::getUpdatedQuotationValues($this->form->getState());
 
         Quotation::create($updatedQuotationValues);
 
