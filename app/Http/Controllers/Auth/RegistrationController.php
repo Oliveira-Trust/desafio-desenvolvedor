@@ -17,8 +17,13 @@ class RegistrationController extends Controller
       
     public function handle(RegistrationRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-        $user = User::create([...$request->only('name', 'email'), bcrypt($request->password)]);
+        $credentials = [
+            ...$request->only('name', 'email'),
+            'password' => bcrypt($request->password)
+        ];
 
+        $user = User::create($credentials);
+        
         Notification::make() 
             ->title("Cadastro realizado!")
             ->body("Bem vindo(a), " . $user->name)
