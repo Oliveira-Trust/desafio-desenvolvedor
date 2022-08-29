@@ -30,6 +30,7 @@
                     <x-button.circle
                         icon="user"
                         x-on:click="userDropdown = !userDropdown"
+                        x-on:click.away="userDropdown = false"
                         outline
                         primary
                         sm
