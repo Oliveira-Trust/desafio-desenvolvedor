@@ -41,8 +41,7 @@
                 <x-slot name="append">
                     <div class="absolute inset-y-0 right-0 flex items-center p-0.5">
                         <x-button
-                            x-on:mousedown="showPassword = !showPassword"
-                            x-on:mouseup="showPassword = false"
+                            x-on:click="showPassword = !showPassword"
                             class="h-full rounded-r-md"
                             primary
                         >

@@ -25,21 +25,29 @@ class ForgotPasswordController extends Controller
         );
 
         
-        $sent = Password::sendResetLink(
-            $request->only('email')
-        );
-
-        if ($sent === Password::RESET_LINK_SENT) {
+        try {
+            $sent = Password::sendResetLink(
+                $request->only('email')
+            );
+    
+            if ($sent === Password::RESET_LINK_SENT) {
+                Notification::make()
+                    ->title('Link para redefinição de senha enviado!')
+                    ->body('Verifique seu email para continuar')
+                    ->duration(10000)
+                    ->success()
+                    ->send();
+            }
+        } catch (\Throwable) {
             Notification::make()
-                ->title('Link para redefinição de senha enviado!')
-                ->body('Verifique seu email para continuar')
-                ->duration(10000)
-                ->success()
-                ->send();
-            return back();
+                    ->title('Erro ao enviar o email de redefinição de senha')
+                    ->body('Tente novamente mais tarde')
+                    ->duration(10000)
+                    ->danger()
+                    ->send();
         }
 
-        return back()->withErrors(['email' => __($sent)]);
+        return back();
     }
 
     public function resetPasswordIndex(Request $request)
