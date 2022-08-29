@@ -43,15 +43,16 @@ class CurrencyApiService
                 ->get();
         $conversionFeePercentage = "";
         $conversionFeeAmount = "";
-        $conversionFeeSymbol = "";
 
         foreach ($conversionFees as $key => $value) {
-            $comparison = eval("return \$data['source_amount'] {$value->conversionFeeMathOperator->symbol} \$value->begin_amount;"); // Para saber a taxa de conversão pelo valor - retorna Ex.: 5000 < 3000 (false), 6000 > 2000 (true)...
+            $symbol = $value->conversionFeeMathOperator->symbol;
 
+            // Para saber a taxa de conversão pelo valor - retorna Ex.: 5000 < 3000 (false), 6000 > 2000 (true)...
+            $comparison = eval("return \$data['source_amount'] $symbol \$value->fee_relative_amount;");
+            
             if ($comparison) {
-                $conversionFeePercentage = $value->percentage;
-                $conversionFeeAmount = $data['source_amount'] * $value->percentage;
-                break;
+                $conversionFeePercentage = $value->fee;
+                $conversionFeeAmount = $data['source_amount'] * ($value->fee / 100);
             }
         }
 
