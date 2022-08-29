@@ -16,8 +16,12 @@ class QuotationObserver
      */
     public function created(Quotation $quotation)
     {
-        Mail::to(auth()->user()->email)
+        try {
+            Mail::to(auth()->user()->email)
             ->send(new QuotationRealizedMail($quotation->id));
+        } catch (\Throwable $error) {
+            // Auditoria de erros
+        }
     }
 
     /**

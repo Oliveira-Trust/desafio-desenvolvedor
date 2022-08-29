@@ -25,8 +25,11 @@ Route::middleware('guest')->group(function () {
     Route::get('cadastro', [Auth\RegistrationController::class, 'index'])->name('auth.registration.index');
     Route::post('cadastro', [Auth\RegistrationController::class, 'handle'])->name('auth.registration.handle');
 
-    Route::get('redefinir-senha', [Auth\ForgotPasswordController::class, 'index'])->name('auth.forgot-password.index');
-    Route::post('redefinir-senha', [Auth\ForgotPasswordController::class, 'handle'])->name('auth.forgot-password.handle');
+    Route::get('esqueceu-a-senha', [Auth\ForgotPasswordController::class, 'index'])->name('auth.forgot-password.index');
+    Route::post('esqueceu-a-senha', [Auth\ForgotPasswordController::class, 'handle'])->name('auth.forgot-password.handle');
+
+    Route::get('/redefinir-senha/{token}', [Auth\ForgotPasswordController::class, 'resetPasswordIndex'])->name('password.reset');
+    Route::post('/redefinir-senha', [Auth\ForgotPasswordController::class, 'resetPasswordHandle'])->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {

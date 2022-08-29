@@ -61,13 +61,13 @@
         <strong style="font-weight: 600">
             {{ $quotation->source_currency_symbol . number_format($quotation->conversion_fee_amount, 2, ',', '.') }}
         </strong>
-    </span>    
+    </span>
     <span style="display: block">
         Valor utilizado para conversão (com as taxas):
         <strong style="font-weight: 600">
             {{ $quotation->source_currency_symbol . number_format($quotation->source_taxed_amount, 2, ',', '.') }}
         </strong>
-    </span> 
+    </span>
     <span style="display: block">
         Status do pagamento:
         <strong style="font-weight: 600">
@@ -78,13 +78,15 @@
 </div>
 
 
-@if ($quotation->payment_status === "Em aberto")
-@component('mail::button', ['url' => route('quotations.index')])
-    Efetuar pagamento
-@endcomponent
+@if ($quotation->payment_status === 'Em aberto')
+    @component('mail::button', ['url' => route('quotations.index')])
+        Efetuar pagamento
+    @endcomponent
 @else
-@component('mail::button', ['url' => route('quotations.index')])
-    Visualizar no sistema
-@endcomponent
+    @component('mail::button', ['url' => route('quotations.index')])
+        Visualizar no sistema
+    @endcomponent
 @endif
+Atenciosamente,<br>
+{{ config('app.name') }}
 @endcomponent
