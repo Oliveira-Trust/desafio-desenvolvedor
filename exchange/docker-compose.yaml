@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: exchange
+    restart: unless-stopped
+    working_dir: /var/www/
+    env_file:
+      .env.example
+    volumes:
+      - ./:/var/www
+  cqrs:
+    build:
+      context: ../laravel-cqrs-template
+      dockerfile: Dockerfile
+    container_name: exchange-cqrs
+    restart: unless-stopped
+    working_dir: /var/www/
+    env_file:
+      .env.example
+    volumes:
+      - ../laravel-cqrs-template:/var/www
+  nginx:
+    image: nginx:alpine
+    container_name: exchange-nginx
+    restart: unless-stopped
+    ports:
+      - "8083:80"
+    volumes:
+      - ./:/var/www
+      - ./deploy/nginx:/etc/nginx/conf.d/
+
+  nginx-cqrs:
+    image: nginx:alpine
+    container_name: exchange-nginx-cqrs
+    restart: unless-stopped
+    ports:
+      - "8087:80"
+    volumes:
+      - ../laravel-cqrs-template:/var/www
+      - ../laravel-cqrs-template/deploy/nginx:/etc/nginx/conf.d/
+
+  mysql:
+    image: mysql:5.7
+    container_name: exchange-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: exchange_database
+      MYSQL_USER: exchange_user
+      MYSQL_PASSWORD: exchange***12345
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./deploy/mysql:/var/lib/mysql

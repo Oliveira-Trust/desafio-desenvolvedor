@@ -1,0 +1,134 @@
+version: "3.7"
+
+volumes:
+    db-data:
+    
+services:
+  notification:
+    build:
+      context: ./notification
+      dockerfile: Dockerfile
+    container_name: notification
+    working_dir: /var/www/
+    command: "php start.php start"
+    # tty: true
+    ports:
+      - "2120:2120"
+      - "2121:2121"
+      - "2123:2123"
+    volumes:
+      - ./notification:/var/www
+  
+  exchange:
+    build:
+      context: ./exchange
+      dockerfile: Dockerfile
+    container_name: exchange
+    restart: unless-stopped
+    working_dir: /var/www/
+    env_file:
+      ./exchange/.env.example
+    volumes:
+      - ./exchange:/var/www
+
+  quotation:
+    build:
+      context: ./quotation
+      dockerfile: Dockerfile
+    container_name: quotation
+    restart: unless-stopped
+    working_dir: /var/www/
+    env_file:
+      ./quotation/.env.example
+    volumes:
+      - ./quotation:/var/www
+  
+  user:
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    container_name: user
+    restart: unless-stopped
+    working_dir: /var/www/
+    env_file:
+      ./user/.env.example
+    volumes:
+      - ./user:/var/www
+    depends_on:
+      - db
+
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    container_name: front-end
+    restart: unless-stopped
+    working_dir: /var/www/
+    env_file:
+      ./front-end/.env.example
+    volumes:
+      - ./front-end:/var/www
+
+
+
+
+  nginx-exchange:
+    image: nginx:alpine
+    container_name: nginx-exchange
+    restart: unless-stopped
+    ports:
+      - "8081:81"
+    volumes:
+      - ./exchange:/var/www/
+      - ./exchange/deploy/nginx:/etc/nginx/conf.d/
+  
+  nginx-quotation:
+    image: nginx:alpine
+    container_name: nginx-quotation
+    restart: unless-stopped
+    ports:
+      - "8082:82"
+    volumes:
+      - ./quotation:/var/www/
+      - ./quotation/deploy/nginx:/etc/nginx/conf.d/
+  
+  nginx-user:
+    image: nginx:alpine
+    container_name: nginx-user
+    restart: unless-stopped
+    ports:
+      - "8083:83"
+    volumes:
+      - ./user:/var/www/
+      - ./user/deploy/nginx:/etc/nginx/conf.d/
+  
+  nginx-front-end:
+    image: nginx:alpine
+    container_name: nginx-front-end
+    restart: unless-stopped
+    ports:
+      - "8085:85"
+    volumes:
+      - ./front-end:/var/www
+      - ./front-end/deploy/nginx:/etc/nginx/conf.d/
+  
+  localstack:
+    image: localstack/localstack
+    ports:
+      - '4566-4597:4566-4597'
+    environment:
+      - DEFAULT_REGION=sa-east-1
+    volumes: 
+      - ./localstack:/docker-entrypoint-initaws.d
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  db:
+    image: mysql:5.7
+    container_name: db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: exchange_database
+      MYSQL_USER: exchange_user
+      MYSQL_PASSWORD: exchange***12345
+    volumes:
+      - db-data:/var/lib/mysql
