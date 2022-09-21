@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('login', 'LoginController@login')->name('login');
+Route::post('login', 'LoginController@logar')->name('logar');
+Route::get('logout', 'LoginController@logout')->name('logout');
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/', function () {
+        return view('layout.home');
+    });
+
+    Route::get('/conversao', 'ConversaoController@index')->name('conversao.index');
+    Route::post('/conversao', 'ConversaoController@calcula')->name('conversao.calcula');
+
+    Route::get('/historicos', 'HistoricoController@index')->name('historicos.index');
+
+    Route::resource('configuracoes', ConfiguracaoController::class);
 });
