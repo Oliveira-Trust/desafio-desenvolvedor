@@ -1,48 +1,42 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+### Desafio:
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Olá, completei o desafio incluindo as opções de bônus para: 
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+- Armazenar histórico;
+- Autenticar usuário;
+- Enviar e-mail com a cotação;
+- Alteração das configurações de taxas;
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+Para a consulta do câmbio via API, optei usar uma interface para que possa ser utilizado outras APIs caso necessário.
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+Criei algumas migrations para armazenar os dados nas tabelas, neste projeto usei o SQLite para facilitar mas pode ser construindo em MySQL também.
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+Criei dois Seeders para criação do usuário teste para autenticação e outra para inserir os dados das taxas na tabela de configurações.
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+Publiquei o projeto em um servidor e pode ser acessado com os dados abaixo:
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+http://150.230.80.10/
+Usuário: teste@teste.com
+Senha: teste
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+Algumas telas da aplicação:
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+### Login
+<img src="http://150.230.80.10/desafio/login.jpg">
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+### Conversão
+<img src="http://150.230.80.10/desafio/conversao.jpg">
+
+### Resultado
+<img src="http://150.230.80.10/desafio/resultado.jpg">
+
+### Histórico
+<img src="http://150.230.80.10/desafio/historico.jpg">
+
+### Configurações
+<img src="http://150.230.80.10/desafio/configuracoes.jpg">
+
+### E-mail
+<img src="http://150.230.80.10/desafio/mailtrap.jpg">
+
