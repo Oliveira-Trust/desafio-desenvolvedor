@@ -67,6 +67,7 @@ class ConversaoService
     {
         if ($valor < 3000) {
             $taxa_conversao = ($valor * $this->configuracoes->taxa_conversao_abaixo_3mil) / 100;
+            return $taxa_conversao;
         }
 
         $taxa_conversao = ($valor * $this->configuracoes->taxa_conversao_acima_3mil) / 100;
