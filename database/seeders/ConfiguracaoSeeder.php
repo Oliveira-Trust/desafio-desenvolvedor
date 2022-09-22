@@ -18,8 +18,8 @@ class ConfiguracaoSeeder extends Seeder
         DB::table('configuracoes')->insert([
             'taxa_boleto' => 1.45,
             'taxa_cartao' => 7.63,
-            'taxa_conversao_abaixo_3mil' => 2,
-            'taxa_conversao_acima_3mil' => 1
+            'taxa_conversao_abaixo_3mil' => 1,
+            'taxa_conversao_acima_3mil' => 2
         ]);
     }
 }
