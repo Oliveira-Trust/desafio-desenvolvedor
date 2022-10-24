@@ -15,24 +15,32 @@ class ConverterControllerTest extends TestCase
     public function provideCurrenciesData(): array
     {
         return [
-            'USD' => [
-                'USD',
+            'USD-BRL' => [
+                ['USD', 'BRL'],
                 true
             ],
-            'EUR' => [
-                'EUR',
+            'EUR-BRL' => [
+                ['EUR', 'BRL'],
                 true
             ],
-            'BTC' => [
-                'BTC',
+            'BTC-EUR' => [
+                ['BTC', 'EUR'],
                 true
             ],
-            'BRL' => [
-                'BRL',
+            'BRL-BRL' => [
+                ['BRL', 'BRL'],
                 false
             ],
-            'invalid' => [
-                'invalid',
+            'BRL-invalid' => [
+                ['BRL','invalid'],
+                false
+            ],
+            'invalid-USD' => [
+                ['invalid', 'USD'],
+                false
+            ],
+            'invalid-invalid' => [
+                ['invalid', 'invalid'],
                 false
             ]
         ];
@@ -41,12 +49,12 @@ class ConverterControllerTest extends TestCase
     /**
      * @dataProvider provideCurrenciesData
      */
-    public function testShouldAcceptOnlyValidCurrencies(String $input, bool $expectedResult): void
+    public function testShouldAcceptOnlyValidCurrencies(array $currencies, bool $expectedResult): void
     {
         $converter = new ConverterController();
 
-        $validateInput = $this->getPrivateMethod(ConverterController::class, 'validateCurrency');
-        $result = $validateInput->invokeArgs($converter, array($input));
+        $validateCurrency = $this->getPrivateMethod(ConverterController::class, 'validateCurrencies');
+        $result = $validateCurrency->invokeArgs($converter, array($currencies[0], $currencies[1]));
 
         $this->assertSame($expectedResult, $result);
     }

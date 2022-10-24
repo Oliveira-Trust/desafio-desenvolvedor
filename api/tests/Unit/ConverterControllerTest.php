@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\Http\Controllers\ConverterController;
 use App\Traits\TestHelper;
-use PhpParser\Node\Expr\Cast\Double;
 use PHPUnit\Framework\TestCase;
 
 class ConverterControllerTest extends TestCase
@@ -16,7 +15,8 @@ class ConverterControllerTest extends TestCase
         return [
             'correct input' => [
                 [
-                    'currency',
+                    'currency_to',
+                    'currency_from',
                     'value',
                     'method'
                 ],
@@ -32,7 +32,8 @@ class ConverterControllerTest extends TestCase
             'different data' => [
                 [
                     'value',
-                    'currency',
+                    'currency_to',
+                    'currency_from',
                     'metodo'
                 ],
                 false
@@ -47,8 +48,8 @@ class ConverterControllerTest extends TestCase
     {
         $converter = new ConverterController();
 
-        $validateInput = $this->getPrivateMethod(ConverterController::class, 'validateInputParams');
-        $result = $validateInput->invokeArgs($converter, array($input));
+        $validateInputKeys = $this->getPrivateMethod(ConverterController::class, 'validateInputKeys');
+        $result = $validateInputKeys->invokeArgs($converter, array($input));
 
         $this->assertSame($expectedResult, $result);
     }
@@ -102,8 +103,43 @@ class ConverterControllerTest extends TestCase
     {
         $converter = new ConverterController();
 
-        $validateInput = $this->getPrivateMethod(ConverterController::class, 'validateValue');
-        $result = $validateInput->invokeArgs($converter, array($value));
+        $validateValue = $this->getPrivateMethod(ConverterController::class, 'validateValue');
+        $result = $validateValue->invokeArgs($converter, array($value));
+
+        $this->assertSame($expectedResult, $result);
+    }
+
+    public function provideMethods(): array
+    {
+        return [
+            'credit card' => [
+                'credit_card',
+                true
+            ],
+            'payment slip' => [
+                'payment_slip',
+                true
+            ],
+            'pix' => [
+                'pix',
+                false
+            ],
+            'incorrect' => [
+                'incorrect',
+                false
+            ]
+        ];
+    }
+
+    /**
+     * @dataProvider provideMethods
+     */
+    public function testShouldAcceptOnlyValidMethods(String $method, bool $expectedResult): void
+    {
+        $converter = new ConverterController();
+
+        $validateMethod = $this->getPrivateMethod(ConverterController::class, 'validateMethod');
+        $result = $validateMethod->invokeArgs($converter, array($method));
 
         $this->assertSame($expectedResult, $result);
     }
