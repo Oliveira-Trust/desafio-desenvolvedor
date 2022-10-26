@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use App\Traits\GeneralHelper;
+use App\Services\ConsumeApiService;
 use \Exception;
+use Illuminate\Http\JsonResponse;
 
 class ConverterController extends Controller
 {
@@ -22,16 +23,23 @@ class ConverterController extends Controller
         'max' => 100000
     ];
     const ACCEPTED_METHODS_RATES = [
-        'payment_slip' => 1.45,
-        'credit_card' => 7.63
+        'payment_slip' => 0.0145,
+        'credit_card' => 0.0763
     ];
 
+    private object $consumeApiService;
     private float $value;
     private String $currencyFrom;
     private String $currencyTo;
     private String $method;
     private float $paymentMethodRate;
     private float $conversionRate;
+
+    public function __construct(ConsumeApiService $consumeApiService)
+    {
+        $this->consumeApiService = $consumeApiService;
+    }
+
     /**
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -49,13 +57,17 @@ class ConverterController extends Controller
 
             $this->paymentMethodRate = $this->calculatePaymentMethodRate();
             $this->conversionRate = $this->calculateConversionRate();
+
+            $this->exchangeData = $this->getExchange($this->currencyFrom, $this->currencyTo);
+
+            $convertedExchangeData = $this->convertExchangeData();
             
-            return [
-                $this->value,
-                $this->method,
-                $this->currencyFrom,
-                $this->currencyTo
-            ];
+            return array_merge([
+                'value'         =>$this->value,
+                'method'        => $this->method,
+                'currency_from' => $this->currencyFrom,
+                'currency_to'   => $this->currencyTo
+            ], $convertedExchangeData);
 
         } catch (Exception $e) {
             $statusCode = $e->getCode() >= 100 && $e->getCode() < 600? $e->getCode(): 500;
@@ -104,11 +116,8 @@ class ConverterController extends Controller
         if ($currencyFrom === $currencyTo) {
             return false;
         }
-        // Verificação desabilitada para funcionamento dos testes e para evitar perda de tempo em correções de ambiente
-        // Assim, evitando afetar a duração ou a qualidade do desafio
-        $response = Http::withOptions([
-            'verify' => false
-        ])->get('https://economia.awesomeapi.com.br/json/available/uniq')->json();
+
+        $response = $this->consumeApiService->fetchCurrencyList();
         return in_array($currencyFrom, array_keys($response)) && in_array($currencyTo, array_keys($response));
     }
 
@@ -119,6 +128,41 @@ class ConverterController extends Controller
 
     private function calculateConversionRate(): float
     {
-        return $this->value > 3000? 1.01: 1.02;
+        return $this->value >= 3000? 0.01: 0.02;
+    }
+
+    private function getExchange($currencyFrom, $currencyTo): array
+    {
+        try {
+            $response = $this->consumeApiService->getExchange($currencyFrom, $currencyTo);
+            if (isset($response['status']) && $response['status'] === ConsumeApiService::NOT_FOUND_HTTP_STATUS_CODE) {
+                throw new Exception('Conversão indisponível', 404);
+            }
+            $jsonKey = sprintf('%s%s', $currencyFrom, $currencyTo);
+            return $response[$jsonKey];
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage(), $e->getCode());
+        }
+    }
+
+    private function convertExchangeData(): array
+    {
+        $exchangeName = $this->exchangeData['name'];
+        $exchangeDateTime = $this->exchangeData['create_date'];
+        $bid = (float) $this->exchangeData['bid'];
+        $paymentMethodRateDiscount = round($this->value * $this->paymentMethodRate, 2);
+        $conversionRateDiscount = round($this->value * $this->conversionRate, 2);
+        $discountedValue = round($this->value - $paymentMethodRateDiscount - $conversionRateDiscount, 2);
+        $convertedValue = round($discountedValue * $bid, 2);
+
+        return [
+            'exchange_name'                 => $exchangeName,
+            'exchange_date_time'            => $exchangeDateTime,
+            'bid'                           => $bid,
+            'payment_method_rate_discount'  => $paymentMethodRateDiscount,
+            'conversion_rate_discount'      => $conversionRateDiscount,
+            'discounted_value'              => $discountedValue,
+            'converted_value'               => $convertedValue
+        ];
     }
 }

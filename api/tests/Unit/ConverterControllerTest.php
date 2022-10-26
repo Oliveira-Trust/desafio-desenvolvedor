@@ -3,12 +3,21 @@
 namespace Tests\Unit;
 
 use App\Http\Controllers\ConverterController;
+use App\Services\ConsumeApiService;
 use App\Traits\TestHelper;
 use PHPUnit\Framework\TestCase;
 
 class ConverterControllerTest extends TestCase
 {
     use TestHelper;
+
+    private object $converterController;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->converterController = new ConverterController(new ConsumeApiService());
+    }
 
     public function provideInputParamsData(): array
     {
@@ -46,10 +55,8 @@ class ConverterControllerTest extends TestCase
      */
     public function testShouldAcceptOnlyValidInputParams(array $input, bool $expectedResult): void
     {
-        $converter = new ConverterController();
-
         $validateInputKeys = $this->getPrivateMethod(ConverterController::class, 'validateInputKeys');
-        $result = $validateInputKeys->invokeArgs($converter, array($input));
+        $result = $validateInputKeys->invokeArgs($this->converterController, array($input));
 
         $this->assertSame($expectedResult, $result);
     }
@@ -101,10 +108,8 @@ class ConverterControllerTest extends TestCase
      */
     public function testShouldAcceptOnlyValidValues(String|int|float $value, bool $expectedResult): void
     {
-        $converter = new ConverterController();
-
         $validateValue = $this->getPrivateMethod(ConverterController::class, 'validateValue');
-        $result = $validateValue->invokeArgs($converter, array($value));
+        $result = $validateValue->invokeArgs($this->converterController, array($value));
 
         $this->assertSame($expectedResult, $result);
     }
@@ -136,10 +141,8 @@ class ConverterControllerTest extends TestCase
      */
     public function testShouldAcceptOnlyValidMethods(String $method, bool $expectedResult): void
     {
-        $converter = new ConverterController();
-
         $validateMethod = $this->getPrivateMethod(ConverterController::class, 'validateMethod');
-        $result = $validateMethod->invokeArgs($converter, array($method));
+        $result = $validateMethod->invokeArgs($this->converterController, array($method));
 
         $this->assertSame($expectedResult, $result);
     }
