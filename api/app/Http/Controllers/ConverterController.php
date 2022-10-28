@@ -63,7 +63,7 @@ class ConverterController extends Controller
             $convertedExchangeData = $this->convertExchangeData();
             
             return array_merge([
-                'value'         =>$this->value,
+                'value'         => $this->value,
                 'method'        => $this->method,
                 'currency_from' => $this->currencyFrom,
                 'currency_to'   => $this->currencyTo
