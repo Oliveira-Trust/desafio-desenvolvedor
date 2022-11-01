@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  client:
+    container_name: client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '8081:8080'
+    environment:
+      - CHOKIDAR_USEPOLLING=true

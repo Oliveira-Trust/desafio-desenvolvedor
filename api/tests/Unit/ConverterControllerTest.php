@@ -73,11 +73,11 @@ class ConverterControllerTest extends TestCase
                 true
             ],
             'int above range' => [
-                100000,
+                100001,
                 false
             ],
             'string below range' => [
-                '1000',
+                '999',
                 false
             ],
             'string in range' => [

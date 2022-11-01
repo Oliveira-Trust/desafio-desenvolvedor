@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Traits\GeneralHelper;
 use App\Services\ConsumeApiService;
 use \Exception;
-use Illuminate\Http\JsonResponse;
 
 class ConverterController extends Controller
 {
@@ -62,16 +61,22 @@ class ConverterController extends Controller
 
             $convertedExchangeData = $this->convertExchangeData();
             
-            return array_merge([
+            $exchange = array_merge([
                 'value'         => $this->value,
                 'method'        => $this->method,
                 'currency_from' => $this->currencyFrom,
                 'currency_to'   => $this->currencyTo
             ], $convertedExchangeData);
 
+            return response()->json([
+                'success' => true,
+                'values' => $exchange
+            ], 200);
+
         } catch (Exception $e) {
             $statusCode = $e->getCode() >= 100 && $e->getCode() < 600? $e->getCode(): 500;
             return response()->json([
+                'error' => true,
                 'message' => $e->getMessage()
             ], $statusCode);
         }
@@ -103,7 +108,7 @@ class ConverterController extends Controller
 
     private function validateValue(String|int|float $value): bool
     {
-        return (float) $value > $this::VALUE_RANGE['min'] && $value < $this::VALUE_RANGE['max'];
+        return (float) $value >= $this::VALUE_RANGE['min'] && $value <= $this::VALUE_RANGE['max'];
     }
 
     private function validateMethod(String $method): bool
