@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\GeneralHelper;
 use App\Services\ConsumeApiService;
+use Illuminate\Support\Facades\Auth;
 use \Exception;
 
 class ConverterController extends Controller
@@ -67,6 +68,12 @@ class ConverterController extends Controller
                 'currency_from' => $this->currencyFrom,
                 'currency_to'   => $this->currencyTo
             ], $convertedExchangeData);
+
+            if (Auth::user()) {
+                // TODO Services de salvamento de histórico e envio de email (caso queira enviar)
+                $user = Auth::user();
+                var_dump($user);
+            }
 
             return response()->json([
                 'success' => true,
