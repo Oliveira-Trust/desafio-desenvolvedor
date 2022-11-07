@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConverterController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::get(
     CurrencyController::class
 )->name('currencies');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('/user')->prefix('user')->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'revokeUserTokens']);
+    Route::post('/', [AuthController::class, 'authenticate']);
 });

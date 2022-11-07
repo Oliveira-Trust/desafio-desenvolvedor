@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\GeneralHelper;
 use App\Services\ConsumeApiService;
+use App\Services\ExchangeService;
 use Illuminate\Support\Facades\Auth;
 use \Exception;
 
@@ -28,6 +29,8 @@ class ConverterController extends Controller
     ];
 
     private object $consumeApiService;
+    private object $exchangeService;
+    private object|null $user;
     private float $value;
     private String $currencyFrom;
     private String $currencyTo;
@@ -35,16 +38,14 @@ class ConverterController extends Controller
     private float $paymentMethodRate;
     private float $conversionRate;
 
-    public function __construct(ConsumeApiService $consumeApiService)
+    public function __construct(ConsumeApiService $consumeApiService, ExchangeService $exchangeService)
     {
         $this->consumeApiService = $consumeApiService;
+        $this->exchangeService = $exchangeService;
+        $this->user = Auth::user();
     }
 
-    /**
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
             $input = $request->all();
@@ -69,10 +70,10 @@ class ConverterController extends Controller
                 'currency_to'   => $this->currencyTo
             ], $convertedExchangeData);
 
-            if (Auth::user()) {
-                // TODO Services de salvamento de histórico e envio de email (caso queira enviar)
-                $user = Auth::user();
-                var_dump($user);
+            if ($this->user) {
+                $this->exchangeService->saveExchange($this->user, $exchange);
+                
+                // TODO Service de envio de email (caso queira enviar)
             }
 
             return response()->json([
@@ -81,11 +82,7 @@ class ConverterController extends Controller
             ], 200);
 
         } catch (Exception $e) {
-            $statusCode = $e->getCode() >= 100 && $e->getCode() < 600? $e->getCode(): 500;
-            return response()->json([
-                'error' => true,
-                'message' => $e->getMessage()
-            ], $statusCode);
+            return $this->responseWithError($e, 'Erro ao simular conversão');
         }
     }
 
