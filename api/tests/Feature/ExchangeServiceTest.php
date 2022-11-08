@@ -4,12 +4,11 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use App\Http\Controllers\ConverterController;
-use App\Services\ConsumeApiService;
+use App\Services\ExchangeService;
 use App\Traits\TestHelper;
 use Tests\TestCase;
 
-class ConverterControllerTest extends TestCase
+class ExchangeServiceTest extends TestCase
 {
     use TestHelper;
 
@@ -52,10 +51,10 @@ class ConverterControllerTest extends TestCase
      */
     public function testShouldAcceptOnlyValidCurrencies(array $currencies, bool $expectedResult): void
     {
-        $converterController = new ConverterController(new ConsumeApiService());
+        $exchangeService = new ExchangeService();
 
-        $validateCurrency = $this->getPrivateMethod(ConverterController::class, 'validateCurrencies');
-        $result = $validateCurrency->invokeArgs($converterController, array($currencies[0], $currencies[1]));
+        $validateCurrency = $this->getPrivateMethod(ExchangeService::class, 'validateCurrencies');
+        $result = $validateCurrency->invokeArgs($exchangeService, array($currencies[0], $currencies[1]));
 
         $this->assertSame($expectedResult, $result);
     }

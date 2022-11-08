@@ -15,7 +15,7 @@ class CurrencyController extends Controller
         $this->consumeApiService = $consumeApiService;
     }
 
-    public function __invoke(Request $request): \Illuminate\Http\JsonResponse
+    public function __invoke(): \Illuminate\Http\JsonResponse
     {
         try {
             $currencyList = $this->consumeApiService->fetchCurrencyList();

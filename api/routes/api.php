@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ConverterController;
+use App\Http\Controllers\ExchangeController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\AuthController;
 
@@ -18,9 +18,14 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get(
-    '/converter',
-    ConverterController::class
-)->name('converter');
+    '/exchange',
+    [ExchangeController::class, 'simulateExchange']
+)->name('exchange');
+
+Route::get(
+    '/exchanges',
+    [ExchangeController::class, 'getUserExchanges']
+)->name('historic');
 
 Route::get(
     '/currencies',

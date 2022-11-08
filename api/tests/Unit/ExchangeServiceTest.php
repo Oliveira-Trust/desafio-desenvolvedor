@@ -2,21 +2,20 @@
 
 namespace Tests\Unit;
 
-use App\Http\Controllers\ConverterController;
-use App\Services\ConsumeApiService;
+use App\Services\ExchangeService;
 use App\Traits\TestHelper;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
-class ConverterControllerTest extends TestCase
+class ExchangeServiceTest extends TestCase
 {
     use TestHelper;
 
-    private object $converterController;
+    private object $exchangeService;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->converterController = new ConverterController(new ConsumeApiService());
+        $this->exchangeService = new ExchangeService();
     }
 
     public function provideInputParamsData(): array
@@ -55,8 +54,8 @@ class ConverterControllerTest extends TestCase
      */
     public function testShouldAcceptOnlyValidInputParams(array $input, bool $expectedResult): void
     {
-        $validateInputKeys = $this->getPrivateMethod(ConverterController::class, 'validateInputKeys');
-        $result = $validateInputKeys->invokeArgs($this->converterController, array($input));
+        $validateInputKeys = $this->getPrivateMethod(ExchangeService::class, 'validateInputKeys');
+        $result = $validateInputKeys->invokeArgs($this->exchangeService, array($input));
 
         $this->assertSame($expectedResult, $result);
     }
@@ -108,8 +107,8 @@ class ConverterControllerTest extends TestCase
      */
     public function testShouldAcceptOnlyValidValues(String|int|float $value, bool $expectedResult): void
     {
-        $validateValue = $this->getPrivateMethod(ConverterController::class, 'validateValue');
-        $result = $validateValue->invokeArgs($this->converterController, array($value));
+        $validateValue = $this->getPrivateMethod(ExchangeService::class, 'validateValue');
+        $result = $validateValue->invokeArgs($this->exchangeService, array($value));
 
         $this->assertSame($expectedResult, $result);
     }
@@ -141,8 +140,8 @@ class ConverterControllerTest extends TestCase
      */
     public function testShouldAcceptOnlyValidMethods(String $method, bool $expectedResult): void
     {
-        $validateMethod = $this->getPrivateMethod(ConverterController::class, 'validateMethod');
-        $result = $validateMethod->invokeArgs($this->converterController, array($method));
+        $validateMethod = $this->getPrivateMethod(ExchangeService::class, 'validateMethod');
+        $result = $validateMethod->invokeArgs($this->exchangeService, array($method));
 
         $this->assertSame($expectedResult, $result);
     }
