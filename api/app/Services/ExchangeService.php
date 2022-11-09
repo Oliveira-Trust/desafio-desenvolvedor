@@ -5,18 +5,13 @@ namespace App\Services;
 use App\Models\Exchange;
 use Exception;
 use App\Traits\GeneralHelper;
+use App\Traits\ValidatorsHelper;
 use App\Services\ConsumeApiService;
 
 class ExchangeService
 {
-    use GeneralHelper;
+    use GeneralHelper, ValidatorsHelper;
 
-    const ACCEPTED_INPUT_KEYS = [
-        'value',
-        'currency_to',
-        'currency_from',
-        'method'
-    ];
     const VALUE_RANGE = [
         'min' => 1000,
         'max' => 100000
@@ -33,6 +28,7 @@ class ExchangeService
     private String $method;
     private float $paymentMethodRate;
     private float $conversionRate;
+    private bool $sendEmail = false;
 
     public function __construct()
     {
@@ -41,8 +37,6 @@ class ExchangeService
 
     public function simulateExchange(array $input): array
     {
-        $this->validateInput($input);
-
         foreach ($input as $key => $value) {
             $this->{$this->underscoreToCamelCase($key)} = $value;
         }
@@ -78,28 +72,21 @@ class ExchangeService
         return $exchangeList->toArray();
     }
 
-    private function validateInput($input): void
+    public function validateInput($input): void
     {
-        if (!$this->validateInputKeys(array_keys($input))) {
-            throw new Exception('Entrada inválida', 400);
-        }
-
+        $this->validateExchangeSimulation($input);
+        
         if (!$this->validateValue($input['value'])) {
-            throw new Exception('Valor inválido', 400);
+            throw new Exception(json_encode(['value' => ['Valor inválido']]), 400);
         }
         
         if (!$this->validateMethod($input['method'])) {
-            throw new Exception('Forma de pagamento inválida', 400);
+            throw new Exception(json_encode(['method' => ['Forma de pagamento inválida']]), 400);
         }
         
         if (!$this->validateCurrencies($input['currency_from'], $input['currency_to'])) {
-            throw new Exception('Moeda inválida', 400);
+            throw new Exception(json_encode(['currency_from/currency_to' => ['Moeda inválida']]), 400);
         }
-    }
-
-    private function validateInputKeys(array $inputKeys): bool
-    {
-        return empty(array_diff($this::ACCEPTED_INPUT_KEYS, $inputKeys));
     }
 
     private function validateValue(String|int|float $value): bool

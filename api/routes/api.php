@@ -35,5 +35,5 @@ Route::get(
 Route::prefix('/user')->prefix('user')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'revokeUserTokens']);
-    Route::post('/', [AuthController::class, 'authenticate']);
+    Route::post('/authenticate', [AuthController::class, 'authenticate']);
 });

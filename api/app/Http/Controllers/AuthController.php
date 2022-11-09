@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Traits\GeneralHelper;
 use App\Traits\ValidatorsHelper;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -11,7 +10,7 @@ use Exception;
 
 class AuthController extends Controller
 {
-    use GeneralHelper, ValidatorsHelper;
+    use ValidatorsHelper;
 
     public function authenticate(Request $request): \Illuminate\Http\JsonResponse
     {

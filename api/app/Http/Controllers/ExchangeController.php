@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ExchangeService;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\GeneralHelper;
 use \Exception;
 
 class ExchangeController extends Controller
 {
+    use GeneralHelper;
     private object $exchangeService;
     private object|null $user;
 
@@ -22,6 +24,8 @@ class ExchangeController extends Controller
     {
         try {
             $input = $request->all();
+
+            $this->exchangeService->validateInput($input);
 
             $exchange = $this->exchangeService->simulateExchange($input);
 

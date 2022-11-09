@@ -18,48 +18,6 @@ class ExchangeServiceTest extends TestCase
         $this->exchangeService = new ExchangeService();
     }
 
-    public function provideInputParamsData(): array
-    {
-        return [
-            'correct input' => [
-                [
-                    'currency_to',
-                    'currency_from',
-                    'value',
-                    'method'
-                ],
-                true
-            ],
-            'missing data' => [
-                [
-                    'value',
-                    'currency'
-                ],
-                false
-            ],
-            'different data' => [
-                [
-                    'value',
-                    'currency_to',
-                    'currency_from',
-                    'metodo'
-                ],
-                false
-            ]
-        ];
-    }
-
-    /**
-     * @dataProvider provideInputParamsData
-     */
-    public function testShouldAcceptOnlyValidInputParams(array $input, bool $expectedResult): void
-    {
-        $validateInputKeys = $this->getPrivateMethod(ExchangeService::class, 'validateInputKeys');
-        $result = $validateInputKeys->invokeArgs($this->exchangeService, array($input));
-
-        $this->assertSame($expectedResult, $result);
-    }
-
     public function provideValues(): array
     {
         return [
