@@ -58,12 +58,9 @@ class ExchangeService
 
     public function saveExchange(object $user, array $exchange): void
     {
-        $data = [
-            'user_id' => $user->id,
-            'values'  => json_encode($exchange)
-        ];
+        $exchange['user_id'] = $user->id;
 
-        Exchange::create($data);
+        Exchange::create($exchange);
     }
 
     public function getExchangesByUserId(object $user): array
