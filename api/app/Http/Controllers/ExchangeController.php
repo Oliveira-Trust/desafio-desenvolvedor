@@ -33,10 +33,7 @@ class ExchangeController extends Controller
                 $this->exchangeService->saveExchange($this->user, $exchange);
             }
 
-            return response()->json([
-                'success' => true,
-                'values' => $exchange
-            ], 200);
+            return $this->sendResponse($exchange, 'Simulação feita com sucesso');
 
         } catch (Exception $e) {
             return $this->responseWithError($e, 'Erro ao simular conversão');
@@ -47,14 +44,13 @@ class ExchangeController extends Controller
     {
         try {
             $exchangeList = [];
+            $message = 'Usuário não autenticado';
             if ($this->user) {
                 $exchangeList = $this->exchangeService->getExchangesByUserId($this->user);
+                $message = 'Lista de simulações obtida com sucesso';
             }
 
-            return response()->json([
-                'success' => true,
-                'values' => $exchangeList
-            ], 200);
+            return $this->sendResponse($exchangeList, $message);
 
         } catch (Exception $e) {
             return $this->responseWithError($e, 'Erro ao buscar simulações de conversão');

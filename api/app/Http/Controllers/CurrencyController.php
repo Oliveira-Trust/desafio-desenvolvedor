@@ -20,16 +20,9 @@ class CurrencyController extends Controller
         try {
             $currencyList = $this->consumeApiService->fetchCurrencyList();
 
-        return response()->json([
-            'success' => true,
-            'values' => $currencyList
-        ], 200);
+            return $this->sendResponse($currencyList, 'Lista de moedas encontrada com sucesso');
         } catch (Exception $e) {
-            $statusCode = $e->getCode() >= 100 && $e->getCode() < 600? $e->getCode(): 500;
-            return response()->json([
-                'error' => true,
-                'message' => $e->getMessage()
-            ], $statusCode);
+            return $this->responseWithError($e, 'Erro ao buscar moedas');
         }
     }
 }
