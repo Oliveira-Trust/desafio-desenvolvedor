@@ -1,45 +1,43 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "vue-black-dashboard",
+  "version": "1.0.0",
   "private": true,
+  "description": "A sample admin dashboard based on black dashboard UI template",
+  "author": "cristian.jora <joracristi@gmail.com>",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "e2e": "node test/e2e/runner.js",
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve --open",
+    "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
     "axios": "^1.1.3",
-    "core-js": "^3.8.3",
-    "vue": "^3.2.13",
-    "vue-toastification": "^2.0.0-rc.5"
+    "chart.js": "^2.9.3",
+    "register-service-worker": "^1.7.1",
+    "vue": "^2.6.11",
+    "vue-chartjs": "^3.5.0",
+    "vue-i18n": "^8.18.2",
+    "vue-loading-spinner": "^1.0.11",
+    "vue-router": "^3.3.4",
+    "vue-router-prefetch": "^1.6.0",
+    "vue-toastification": "^2.0.0-rc.5",
+    "vue2-transitions": "^0.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-plugin-pwa": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "vue-cli-plugin-i18n": "^1.0.1",
+    "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not dead",
-    "not ie 11"
+    "not ie <= 11"
   ]
 }

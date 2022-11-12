@@ -118,16 +118,12 @@ class ExchangeService
 
     private function getExchange($currencyFrom, $currencyTo): array
     {
-        try {
-            $response = $this->consumeApiService->getExchange($currencyFrom, $currencyTo);
-            if (isset($response['status']) && $response['status'] === ConsumeApiService::NOT_FOUND_HTTP_STATUS_CODE) {
-                throw new Exception('Conversão indisponível', 404);
-            }
-            $jsonKey = sprintf('%s%s', $currencyFrom, $currencyTo);
-            return $response[$jsonKey];
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage(), $e->getCode());
+        $response = $this->consumeApiService->getExchange($currencyFrom, $currencyTo);
+        if (isset($response['status']) && $response['status'] === ConsumeApiService::NOT_FOUND_HTTP_STATUS_CODE) {
+            throw new Exception(json_encode(['currency_from/currency_to' => ['Conversão indisponível']]), 404);
         }
+        $jsonKey = sprintf('%s%s', $currencyFrom, $currencyTo);
+        return $response[$jsonKey];
     }
 
     private function convertExchangeData(): array

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "http://localhost/api/"
+    baseURL: "http://localhost:8000/api/"
 });
 
 export const getApiCurrencies = async () => {
@@ -10,7 +10,6 @@ export const getApiCurrencies = async () => {
 }
 
 export const getApiExchange = async (params) => {
-    console.log(params)
-    const { data } = await api.get('converter', { params } )
+    const { data } = await api.get('exchange', { params } )
     return data
 }
