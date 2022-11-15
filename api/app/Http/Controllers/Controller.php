@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function sendResponse(array $values, String $message): \Illuminate\Http\JsonResponse
+    public function sendResponse(array $values, String $message, int $code = 200): \Illuminate\Http\JsonResponse
     {
     	$response = [
             'success' => true,
@@ -21,7 +21,7 @@ class Controller extends BaseController
         ];
 
 
-        return response()->json($response, 200);
+        return response()->json($response, $code);
     }
 
     public function sendError(String $message, int $code = 400, mixed $errors = []): \Illuminate\Http\JsonResponse

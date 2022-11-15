@@ -7,6 +7,8 @@ use App\Services\ExchangeService;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\GeneralHelper;
 use \Exception;
+use Mail;
+use app\Mail\SendExchange;
 
 class ExchangeController extends Controller
 {
@@ -31,6 +33,11 @@ class ExchangeController extends Controller
 
             if ($this->user) {
                 $this->exchangeService->saveExchange($this->user, $exchange);
+                // O envio de email foi não finalizado visto que o google removou a opção de acesso a apps menos seguros
+                // Por causa disso, não pude fazer todas as validações necessárias
+                // if ($input['send_email']) {
+                //     Mail::to($this->user->email)->send(new SendExchange($exchange));
+                // }
             }
 
             return $this->sendResponse($exchange, 'Simulação feita com sucesso');
@@ -43,12 +50,11 @@ class ExchangeController extends Controller
     public function getUserExchanges(): \Illuminate\Http\JsonResponse
     {
         try {
-            $exchangeList = [];
-            $message = 'Usuário não autenticado';
-            if ($this->user) {
-                $exchangeList = $this->exchangeService->getExchangesByUserId($this->user);
-                $message = 'Lista de simulações obtida com sucesso';
+            if (!$this->user) {
+                throw new Exception(json_encode(['email/senha' => ['Usuário não autenticado']]), 401);
             }
+            $exchangeList = $this->exchangeService->getExchangesByUserId($this->user);
+            $message = 'Lista de simulações obtida com sucesso';
 
             return $this->sendResponse($exchangeList, $message);
 

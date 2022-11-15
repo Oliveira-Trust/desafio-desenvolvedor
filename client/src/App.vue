@@ -6,7 +6,18 @@
 </template>
 
 <script>
+  import auth from './auth.js';
   export default {
+    data() {
+      return {
+          authenticated: auth.check(),
+          user: auth.user
+      };
+    },
+    mounted() {
+      this.$watch('$route', this.disableRTL, { immediate: true });
+      this.$watch('$sidebar.showSidebar', this.toggleNavOpen)
+    },
     methods: {
       disableRTL() {
         if (!this.$rtl.isRTL) {
@@ -17,10 +28,6 @@
         let root = document.getElementsByTagName('html')[0];
         root.classList.toggle('nav-open');
       }
-    },
-    mounted() {
-      this.$watch('$route', this.disableRTL, { immediate: true });
-      this.$watch('$sidebar.showSidebar', this.toggleNavOpen)
     }
   };
 </script>

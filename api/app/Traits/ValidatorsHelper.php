@@ -13,7 +13,8 @@ trait ValidatorsHelper
         'email'     => 'O campo :attribute precisa ser um endereço de email válido.',
         'same'      => 'Os campos :attribute e :other precisam ser iguais.',
         'unique'    => 'O campo :attribute já existe no sistema.',
-        'numeric'   => 'O campo :attribute precisa ser um número.'
+        'numeric'   => 'O campo :attribute precisa ser um número.',
+        'min'       => 'O campo :attribute precisa ter ao menos :min caracteres.'
     ];
 
     public function validateUserRegister($input): void
@@ -21,7 +22,7 @@ trait ValidatorsHelper
         $rules = [
             'name'              => 'required',
             'email'             => 'required|email|unique:users',
-            'password'          => 'required',
+            'password'          => 'required|min:8',
             'confirm_password'  => 'required|same:password'
         ];
 

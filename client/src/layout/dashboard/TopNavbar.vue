@@ -13,7 +13,6 @@
             <span class="navbar-toggler-bar bar3"></span>
           </button>
         </div>
-        <a class="navbar-brand" href="#pablo">{{routeName}}</a>
       </div>
       <button class="navbar-toggler" type="button"
               @click="toggleMenu"
@@ -27,54 +26,13 @@
       </button>
 
       <collapse-transition>
-        <div class="collapse navbar-collapse show" v-show="showMenu">
+        <div class="collapse navbar-collapse show" v-if="isLogged" v-show="showMenu">
           <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-            <div class="search-bar input-group" @click="searchModalVisible = true">
-              <!-- <input type="text" class="form-control" placeholder="Search...">
-              <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div> -->
-              <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
-                <i class="tim-icons icon-zoom-split"></i>
-              </button>
-              <!-- You can choose types of search input -->
-            </div>
-            <modal :show.sync="searchModalVisible"
-                   class="modal-search"
-                   id="searchModal"
-                   :centered="false"
-                   :show-close="true">
-              <input slot="header" v-model="searchQuery" type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
-            </modal>
             <base-dropdown tag="li"
-                           :menu-on-right="!$rtl.isRTL"
-                           title-tag="a" class="nav-item">
-              <a slot="title" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
-                <div class="notification d-none d-lg-block d-xl-block"></div>
-                <i class="tim-icons icon-sound-wave"></i>
-                <p class="d-lg-none">
-                  New Notifications
-                </p>
-              </a>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">You have 5 more tasks</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Your friend Michael is in town</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Another notification</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Another one</a>
-              </li>
-            </base-dropdown>
-            <base-dropdown tag="li"
-                           :menu-on-right="!$rtl.isRTL"
-                           title-tag="a"
-                           class="nav-item"
-                           menu-classes="dropdown-navbar">
+                :menu-on-right="!$rtl.isRTL"
+                title-tag="a"
+                class="nav-item"
+                menu-classes="dropdown-navbar">
               <a slot="title" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
                 <div class="photo">
                   <img src="img/anime3.png">
@@ -84,14 +42,7 @@
                   Log out
                 </p>
               </a>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Profile</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Settings</a>
-              </li>
-              <div class="dropdown-divider"></div>
-              <li class="nav-link">
+              <li class="nav-link" @click="logout">
                 <a href="#" class="nav-item dropdown-item">Log out</a>
               </li>
             </base-dropdown>
@@ -102,6 +53,8 @@
   </nav>
 </template>
 <script>
+  import auth from '../../auth.js';
+  import { logoutUser } from '../../services/apiService';
   import { CollapseTransition } from 'vue2-transitions';
   import Modal from '@/components/Modal';
 
@@ -109,6 +62,15 @@
     components: {
       CollapseTransition,
       Modal
+    },
+    data() {
+      return {
+        activeNotifications: false,
+        showMenu: false,
+        searchModalVisible: false,
+        searchQuery: '',
+        isLogged: auth.check()
+      };
     },
     computed: {
       routeName() {
@@ -119,15 +81,17 @@
         return this.$rtl.isRTL;
       }
     },
-    data() {
-      return {
-        activeNotifications: false,
-        showMenu: false,
-        searchModalVisible: false,
-        searchQuery: ''
-      };
-    },
     methods: {
+      async logout () {
+        try {
+          await logoutUser()
+          auth.logout()
+          this.isLogged = auth.check()
+          this.$router.go('dashboard')
+        } catch (e) {
+          console.log(e)
+        }
+      },
       capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       },

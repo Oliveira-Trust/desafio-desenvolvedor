@@ -19,11 +19,14 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $success['token'] =  $user->createToken('Auth')->plainTextToken;
-            $success['name'] =  $user->name;
+            $success['user'] =  $user;
    
             return $this->sendResponse($success, 'Login efetuado com sucesso');
         } else {
-            return $this->sendError('Email e/ou senha incorretos', 401);
+            return $this->responseWithError(
+                new Exception(json_encode(['email/senha' => ['Email e/ou senha incorretos']]), 401),
+                'Falha ao realizar o login'
+            );
         }
     }
 
@@ -35,9 +38,9 @@ class AuthController extends Controller
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
             $success['token'] =  $user->createToken('Auth')->plainTextToken;
-            $success['name'] =  $user->name;
+            $success['user'] =  $user;
        
-            return $this->sendResponse($success, 'Usuário criado com sucesso');
+            return $this->sendResponse($success, 'Usuário criado com sucesso', 201);
         } catch (Exception $e) {
             return $this->responseWithError($e, 'Erro no cadastro de usuário');
         }
@@ -49,10 +52,13 @@ class AuthController extends Controller
             $user = Auth::user();
             if ($user) {
                 $user->tokens()->delete();
-                return $this->sendResponse([], 'Usuário deslogado com sucesso');
+                return $this->sendResponse([], 'Usuário deslogado com sucesso', 205);
             }
 
-            return $this->sendResponse([], 'Não existe sessão ativa');
+            return $this->responseWithError(
+                new Exception(json_encode(['sessao' => ['Não existe sessão ativa']]), 404),
+                'Erro ao deslogar'
+            );
 
         } catch (Exception $e) {
             return $this->responseWithError($e, 'Erro ao deslogar usuário');

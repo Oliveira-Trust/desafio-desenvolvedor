@@ -57,7 +57,7 @@
             <p><strong>Taxa de pagamento</strong> ${{simulatedResult.payment_method_rate_discount}}</p>
             <p><strong>Taxa de conversão</strong> ${{simulatedResult.conversion_rate_discount}}</p>
             <p><strong>Valor utilizado para conversão descontando as taxas</strong> ${{simulatedResult.discounted_value}}</p>
-            <p><strong>Valor comprado</strong> ${{simulatedResult.converted_value}}</p>
+            <p><strong>Valor recebido</strong> ${{simulatedResult.converted_value}}</p>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
         },
         selectedPaymentMethod: null,
         value: 1000,
-        sendEmail: false,
+        sendEmail: true,
         simulatedResult: null,
         successMessage: null,
         errorTable: {

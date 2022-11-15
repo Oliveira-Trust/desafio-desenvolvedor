@@ -28,7 +28,6 @@ class ExchangeService
     private String $method;
     private float $paymentMethodRate;
     private float $conversionRate;
-    private bool $sendEmail = false;
 
     public function __construct()
     {
