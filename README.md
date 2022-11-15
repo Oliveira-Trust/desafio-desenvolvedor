@@ -17,19 +17,19 @@ bash ./vendor/bin/sail up
 Caso tenha sucesso, o endereço `http://localhost:8081` estará disponível e pronto para utilização do projeto.
 
 ## Considerações:
-Por estar utilizando o sail, tenha preferência por substituir os comandos iniciados em `php artisan ...` por `bash ./vendor/bin/sail artisan ...`
-Não esqueça de copiar o .env.example criando o arquivo .env e gerando a key do projeto com o comando `bash ./vendor/bin/sail artisan key:generate`
-Por ter sido feito critérios bônus de autenticação/histórico, é necessário rodar as migrations para criação das tabelas: `bash ./vendor/bin/sail artisan migrate`
-Caso queira realizar consulta para verificar o banco de dados, pode-se utilizar o [Tinker](https://laravel.com/docs/9.x/artisan#tinker): `bash ./vendor/bin/sail artisan tinker`
+Por estar utilizando o sail, tenha preferência por substituir os comandos iniciados em `php artisan ...` por `bash ./vendor/bin/sail artisan ...`.
+Não esqueça de copiar o .env.example criando o arquivo .env e gerando a key do projeto com o comando `bash ./vendor/bin/sail artisan key:generate`.
+Por ter sido feito critérios bônus de autenticação/histórico, é necessário rodar as migrations para criação das tabelas: `bash ./vendor/bin/sail artisan migrate`.
+Caso queira realizar consulta para verificar o banco de dados, pode-se utilizar o [Tinker](https://laravel.com/docs/9.x/artisan#tinker): `bash ./vendor/bin/sail artisan tinker`.
 
 
 ## Testes:
-Foram criados testes na API, infelizmente eu criei menos testes do que eu gostaria, mas caso queira executá-los, utilize o comando
+Foram criados testes na API, infelizmente eu criei menos testes do que eu gostaria, mas caso queira executá-los, utilize o comando.
 ```bash
 bash ./vendor/bin/sail test
 ```
-Também é possível passar a flag `--coverage` para gerar a porcentagem de cobertura de testes do projeto
+Também é possível passar a flag `--coverage` para gerar a porcentagem de cobertura de testes do projeto.
 
 ## Envio de email:
 Criei a classe de envio de email e parte da implementação, quando fui pego de surpresa com a noticia de que o gmail não permite mais o acesso a apps menos seguros, [leia](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4NRU_E-a2rHdOexADhYNBnJg3Syued55t10XSECEtNmBcJlCsqL_jtU6IR_0TqDBi4nVQGobpbDaIs5fERp03KtFwUsZg)
-Com isso, o disparo de email não ficou completamente funcional
+Com isso, o disparo de email não ficou completamente funcional.
