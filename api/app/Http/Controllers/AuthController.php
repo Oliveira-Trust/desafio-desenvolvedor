@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Traits\ValidatorsHelper;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use \Illuminate\Http\JsonResponse;
 use Exception;
 
 class AuthController extends Controller
 {
     use ValidatorsHelper;
 
-    public function authenticate(Request $request): \Illuminate\Http\JsonResponse
+    public function authenticate(Request $request): JsonResponse
     {
         $credentials = $request->only('email', 'password');
  
@@ -30,7 +31,7 @@ class AuthController extends Controller
         }
     }
 
-    public function register(Request $request): \Illuminate\Http\JsonResponse
+    public function register(Request $request): JsonResponse
     {
         try {
             $input = $request->all();
@@ -46,8 +47,8 @@ class AuthController extends Controller
         }
     }
 
-    public function revokeUserTokens(): \Illuminate\Http\JsonResponse
-    {   
+    public function revokeUserTokens(): JsonResponse
+    {
         try {
             $user = Auth::user();
             if ($user) {

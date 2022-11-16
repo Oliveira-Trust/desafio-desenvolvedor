@@ -24,7 +24,7 @@ Caso queira realizar consulta para verificar o banco de dados, pode-se utilizar 
 
 
 ## Testes:
-Foram criados testes na API, infelizmente eu criei menos testes do que eu gostaria, mas caso queira executá-los, utilize o comando.
+Foram criados testes na API, caso queira executá-los, utilize o comando:
 ```bash
 bash ./vendor/bin/sail test
 ```

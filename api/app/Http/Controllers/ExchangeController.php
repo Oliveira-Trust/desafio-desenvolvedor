@@ -7,22 +7,24 @@ use App\Services\ExchangeService;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\GeneralHelper;
 use \Exception;
+use \Illuminate\Http\JsonResponse;
+use App\Models\User;
 use Mail;
 use app\Mail\SendExchange;
 
 class ExchangeController extends Controller
 {
     use GeneralHelper;
-    private object $exchangeService;
-    private object|null $user;
+    private ExchangeService $exchangeService;
+    private User|null $user;
 
-    public function __construct()
+    public function __construct(ExchangeService $exchangeService)
     {
-        $this->exchangeService = app(ExchangeService::class);
+        $this->exchangeService = $exchangeService;
         $this->user = Auth::user();
     }
 
-    public function simulateExchange(Request $request): \Illuminate\Http\JsonResponse
+    public function simulateExchange(Request $request): JsonResponse
     {
         try {
             $input = $request->all();
@@ -47,7 +49,7 @@ class ExchangeController extends Controller
         }
     }
 
-    public function getUserExchanges(): \Illuminate\Http\JsonResponse
+    public function getUserExchanges(): JsonResponse
     {
         try {
             if (!$this->user) {

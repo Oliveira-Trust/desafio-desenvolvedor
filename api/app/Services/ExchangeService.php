@@ -7,6 +7,7 @@ use Exception;
 use App\Traits\GeneralHelper;
 use App\Traits\ValidatorsHelper;
 use App\Services\ConsumeApiService;
+use App\Models\User;
 
 class ExchangeService
 {
@@ -21,7 +22,7 @@ class ExchangeService
         'credit_card' => 0.0763
     ];
 
-    private object $consumeApiService;
+    private ConsumeApiService $consumeApiService;
     private float $value;
     private String $currencyFrom;
     private String $currencyTo;
@@ -29,9 +30,9 @@ class ExchangeService
     private float $paymentMethodRate;
     private float $conversionRate;
 
-    public function __construct()
+    public function __construct(ConsumeApiService $consumeApiService)
     {
-        $this->consumeApiService = app(ConsumeApiService::class);
+        $this->consumeApiService = $consumeApiService;
     }
 
     public function simulateExchange(array $input): array
@@ -55,20 +56,20 @@ class ExchangeService
         ], $simulatedExchange);
     }
 
-    public function saveExchange(object $user, array $exchange): void
+    public function saveExchange(User $user, array $exchange): void
     {
         $exchange['user_id'] = $user->id;
 
         Exchange::create($exchange);
     }
 
-    public function getExchangesByUserId(object $user): array
+    public function getExchangesByUserId(User $user): array
     {
         $exchangeList = Exchange::where('user_id', $user->id)->paginate(20);
         return $exchangeList->toArray();
     }
 
-    public function validateInput($input): void
+    public function validateInput(array $input): void
     {
         $this->validateExchangeSimulation($input);
         
@@ -85,9 +86,9 @@ class ExchangeService
         }
     }
 
-    private function validateValue(String|int|float $value): bool
+    private function validateValue(String $value): bool
     {
-        return (float) $value >= $this::VALUE_RANGE['min'] && $value <= $this::VALUE_RANGE['max'];
+        return (float) $value >= $this::VALUE_RANGE['min'] && (float) $value <= $this::VALUE_RANGE['max'];
     }
 
     private function validateMethod(String $method): bool
@@ -115,7 +116,7 @@ class ExchangeService
         return $this->value >= 3000? 0.01: 0.02;
     }
 
-    private function getExchange($currencyFrom, $currencyTo): array
+    private function getExchange(String $currencyFrom, String $currencyTo): array
     {
         $response = $this->consumeApiService->getExchange($currencyFrom, $currencyTo);
         if (isset($response['status']) && $response['status'] === ConsumeApiService::NOT_FOUND_HTTP_STATUS_CODE) {

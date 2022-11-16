@@ -17,7 +17,7 @@ trait ValidatorsHelper
         'min'       => 'O campo :attribute precisa ter ao menos :min caracteres.'
     ];
 
-    public function validateUserRegister($input): void
+    public function validateUserRegister(array $input): void
     {
         $rules = [
             'name'              => 'required',
@@ -33,7 +33,7 @@ trait ValidatorsHelper
         }
     }
 
-    public function validateExchangeSimulation($input): void
+    public function validateExchangeSimulation(array $input): void
     {
         $rules = [
             'value'         => 'required|numeric',

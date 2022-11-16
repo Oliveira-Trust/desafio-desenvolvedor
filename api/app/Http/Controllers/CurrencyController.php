@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ConsumeApiService;
 use \Exception;
+use \Illuminate\Http\JsonResponse;
 
 class CurrencyController extends Controller
 {
-    private object $consumeApiService;
+    private ConsumeApiService $consumeApiService;
 
     public function __construct(ConsumeApiService $consumeApiService)
     {
         $this->consumeApiService = $consumeApiService;
     }
 
-    public function __invoke(): \Illuminate\Http\JsonResponse
+    public function __invoke(): JsonResponse
     {
         try {
             $currencyList = $this->consumeApiService->fetchCurrencyList();

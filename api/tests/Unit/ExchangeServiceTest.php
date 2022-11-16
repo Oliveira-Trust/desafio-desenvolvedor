@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Services\ConsumeApiService;
 use App\Services\ExchangeService;
 use App\Traits\TestHelper;
 use Tests\TestCase;
@@ -15,7 +16,7 @@ class ExchangeServiceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->exchangeService = new ExchangeService();
+        $this->exchangeService = new ExchangeService(new ConsumeApiService());
     }
 
     public function provideValues(): array

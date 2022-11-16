@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Services\ConsumeApiService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use App\Services\ExchangeService;
@@ -51,7 +52,7 @@ class ExchangeServiceTest extends TestCase
      */
     public function testShouldAcceptOnlyValidCurrencies(array $currencies, bool $expectedResult): void
     {
-        $exchangeService = new ExchangeService();
+        $exchangeService = new ExchangeService(new ConsumeApiService());
 
         $validateCurrency = $this->getPrivateMethod(ExchangeService::class, 'validateCurrencies');
         $result = $validateCurrency->invokeArgs($exchangeService, array($currencies[0], $currencies[1]));
