@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DadosFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/home', [DadosFormController::class, 'dados_form']);
+Route::post('/valida', [DadosFormController::class, 'valida']);
