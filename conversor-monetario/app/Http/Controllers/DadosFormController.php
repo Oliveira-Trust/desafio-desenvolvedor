@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class DadosFormController extends Controller
 {
-    public function dados_form(){
+    public function dadosForm(){
         return view ('conversor/home');
     }
     
@@ -15,9 +15,9 @@ class DadosFormController extends Controller
         
         $data= $request->all();
 
-        dd($data);
+        //dd($data);
 
-        //return;
+        return $data;
     }
     
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsomeApiController;
 use App\Http\Controllers\DadosFormController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', [DadosFormController::class, 'dados_form']);
+Route::get('/home', [DadosFormController::class, 'dadosForm']);
 Route::post('/valida', [DadosFormController::class, 'valida']);
+
+Route::get('/legenda', [ConsomeApiController::class, 'pegaLegenda']);
