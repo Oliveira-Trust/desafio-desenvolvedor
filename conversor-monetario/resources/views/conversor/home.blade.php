@@ -15,15 +15,15 @@
                 <div>
                     <h1>Moeda base</h1>
                     <select name="base" id="base">
-                        <option value="{{ $siglas[0] }}">{{ $moedasValidas[0] }}</option>
+                        <option value="{{ $siglas[0] }}">{{ $siglas[0] . ' - ' . $moedasValidas[0] }}</option>
                     </select>
                 </div>
                 <div>
                     <h1>Moeda de destino</h1>
                     <select name="destino" id="destino">
-                        <option value="{{ $siglas[1] }}">{{ $moedasValidas[1] }}</option>
-                        <option value="{{ $siglas[2] }}">{{ $moedasValidas[2] }}</option>
-                        <option value="{{ $siglas[3] }}">{{ $moedasValidas[3] }}</option>
+                        <option value="{{ $siglas[1] }}">{{ $siglas[1] . ' - ' . $moedasValidas[1] }}</option>
+                        <option value="{{ $siglas[2] }}">{{ $siglas[2] . ' - ' . $moedasValidas[2] }}</option>
+                        <option value="{{ $siglas[3] }}">{{ $siglas[3] . ' - ' . $moedasValidas[3] }}</option>
                     </select>
                 </div>
                 
