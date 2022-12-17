@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\DadosFormController;
+use App\Services\ConversaoApiService;
 use Illuminate\Support\Facades\Http;
 
 class ConsomeApiController extends Controller
 {
+    protected $conversaoApiService;
+
+    public function __construct(ConversaoApiService $conversaoApiService){
+        $this->conversaoApiService = $conversaoApiService;
+    }
+
     public function pegaLegenda(){
-        $traducaoMoeda = Http::get('https://economia.awesomeapi.com.br/json/available/uniq');
-        $traducaoMoeda = (array)json_decode($traducaoMoeda->body());
-        
-        unset($traducaoMoeda['BRL'], $traducaoMoeda['BRLT']);
+        $traducaoMoeda = $this->conversaoApiService->getLegenda();
 
         return view('/conversor/home', ['traducaoMoeda' => $traducaoMoeda]); 
     }
