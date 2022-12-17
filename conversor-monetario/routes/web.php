@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 
 Route::get('/home', [DadosFormController::class, 'dadosForm']);
 Route::post('/valida', [DadosFormController::class, 'valida']);
 
-Route::get('/legenda', [ConsomeApiController::class, 'pegaLegenda']);
+Route::get('/', [ConsomeApiController::class, 'pegaLegenda']);
+Route::get('/cotacao', [ConsomeApiController::class, 'mostraDadosCotacao']);

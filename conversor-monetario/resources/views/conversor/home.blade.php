@@ -12,6 +12,11 @@
         <section>
             <form action="/valida" method="POST">
                 @csrf
+
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+
                 <div>
                     <h1>Moeda base</h1>
                     <select name="base" id="base">

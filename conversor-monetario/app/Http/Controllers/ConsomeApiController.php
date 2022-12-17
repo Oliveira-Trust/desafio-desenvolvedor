@@ -30,6 +30,6 @@ class ConsomeApiController extends Controller
     }
 
     public function pegaDadosCotacao(){
-
+        
     }
 }

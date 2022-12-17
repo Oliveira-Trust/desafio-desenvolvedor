@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreConversao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -11,13 +12,13 @@ class DadosFormController extends Controller
         return view ('conversor/home');
     }
     
-    public function valida(Request $request){
+    public function valida(StoreConversao $request){
         
-        $data= $request->all();
+        $dado= $request->all();
 
-        //dd($data);
+        //dd($dado);
 
-        return $data;
+        return $dado;
     }
     
 }
