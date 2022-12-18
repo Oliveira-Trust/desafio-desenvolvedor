@@ -10,7 +10,7 @@
         </header>
 
         <section>
-            <form action="/valida" method="POST">
+            <form action="{{ route('consome_api.store_conversao') }}" method="POST">
                 @csrf
 
                 @foreach ($errors->all() as $error)
@@ -27,7 +27,7 @@
                     <h1>Moeda de destino</h1>
                     <select name="destino" id="destino">
                         @foreach($traducaoMoeda as $traducao => $tr)
-                            <option value="$traducao">{{ $traducao  }} - {{ $tr }}</option>
+                            <option value="{{ $traducao }}">{{ $traducao  }} - {{ $tr }}</option>
                         @endforeach  
                     </select>
                 </div>

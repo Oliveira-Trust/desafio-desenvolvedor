@@ -20,8 +20,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 
-Route::get('/home', [DadosFormController::class, 'dadosForm']);
-Route::post('/valida', [DadosFormController::class, 'valida']);
 
-Route::get('/', [ConsomeApiController::class, 'pegaLegenda']);
-Route::get('/cotacao', [ConsomeApiController::class, 'mostraDadosCotacao']);
+Route::post('/storeConversao', [ConsomeApiController::class, 'storeConversao'])->name('consome_api.store_conversao');
+
+Route::get('/', [ConsomeApiController::class, 'index']);
