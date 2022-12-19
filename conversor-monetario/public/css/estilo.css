@@ -1,0 +1,89 @@
+/* Geral */
+* {
+    font-family: 'Roboto';
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Cabecalho */
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #be8989;
+    width: 100%;
+    top: 0;
+}
+
+
+/* Conteudo */
+.principal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formulario-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 30px;
+    border: 1px solid #be8989;
+}
+.titulo-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #be8989;
+    width: 600px;
+}
+.campo-form{
+    width: 600px;
+    margin: 10px;
+}
+.campo-form > h1{
+    background-color: #be8989;
+}
+.campo{
+    
+    width: 600px;
+    height: 30px;
+}
+
+.botao{
+    height: 30px;
+    width: 200px;
+    margin: 20px;
+    background-color: #be8989;
+}
+
+
+/* Erro */
+.erro{
+    background-color: #FFC0CB;
+    display: flex;
+    align-items: center;
+    width: 600px;
+    justify-content: center;
+    margin-top: 10px;
+    border: 1px solid #FF0000;
+    color: #FF0000;
+    font-size: 10px;
+}
+
+/* Rodape */
+footer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+    margin-top: 50px;
+    border-top: 1px solid #be8989;
+}

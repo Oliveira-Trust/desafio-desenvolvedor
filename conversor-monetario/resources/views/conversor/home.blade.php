@@ -2,50 +2,67 @@
 <html> 
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/estilo.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
         <title>Home</title>
     </head>
 
     <body>
         <header>
+            <h1>Desafio desenvolverdor - Oliveira Trust </h1>
         </header>
 
-        <section>
-            <form action="{{ route('consome_api.store_conversao') }}" method="POST">
+        <section class="principal">
+            <form class="formulario-principal" action="{{ route('consome_api.store_conversao') }}" method="POST">
                 @csrf
-
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-
-                <div>
-                    <h1>Moeda base</h1>
-                    <select name="base" id="base">
-                        <option value="BRL">BRL - Real Brasileiro</option>
-                    </select>
+                <div class="titulo-form">
+                   <h2>Insira os dados para conversão</h2>
                 </div>
-                <div>
+                
+                <div class="erro">
+                    @foreach ($errors->all() as $error)
+                        <h2>{{ $error }}</h2>
+                    @endforeach
+                </div>
+
+                <div class="campo-form">
+                    <h1>Moeda base</h1>
+                    <select class="campo" name="base" id="base">
+                        <option value="BRL"><p>BRL - Real Brasileiro</p></option>
+                    </select>
+                </div> 
+                <div class="campo-form">
                     <h1>Moeda de destino</h1>
-                    <select name="destino" id="destino">
+                    <select class="campo" name="destino" id="destino">
                         @foreach($traducaoMoeda as $traducao => $tr)
-                            <option value="{{ $traducao }}">{{ $traducao  }} - {{ $tr }}</option>
+                            <option value="{{ $traducao }}"><p>{{ $traducao  }} - {{ $tr }}</p></option>
                         @endforeach  
                     </select>
                 </div>
                 
-                <div>
+                <div class="campo-form">
                     <h1>Valor da coversão</h1>
-                    <input type="text" name ="valor" id="valor">
+                    <input class="campo" type="text" name ="valor" id="valor">
                 </div>
                 
-                <div>
+                <div class="campo-form">
                     <h1>Forma de pagamento</h1>
-                    <select name="pagamento" id="pagamento">
-                        <option value="Boleto">Boleto</option>
-                        <option value="Cartao">Cartão de crédito</option>
+                    <select class="campo" name="pagamento" id="pagamento">
+                        <option value="Boleto"> <p>Boleto</p></option>
+                        <option value="Cartao"> <p>Cartão de crédito</p> </option>
                     </select>
                 </div>
-                <input type="submit" value="Converter">
+                <input class="botao" type="submit" value="Converter">
            </form>
         </section>
+
+        <section class="secundario">
+            
+        </section>
+
+        <footer>
+            <h4>&copy; Rafael Goncalves da Silva Vargas 2022</h4>
+        </footer>
     </body>
 </html>
