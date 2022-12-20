@@ -17,9 +17,9 @@ class CalculaService
     ];
      
     public function calculaTaxa($cotacao, $valor, $tipoPagamento){
-        $taxaPagamento = array_search($tipoPagamento, $this->taxas);
+        $taxaPagamento = $this->taxas[$tipoPagamento];
         $taxaPagamento *= $valor;
-
+        
         switch($valor){
             case $valor < self::MIN_MAX_VALOR;
                 $taxaConversao = ($valor * 0.02);

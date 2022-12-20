@@ -49,8 +49,8 @@
                 <div class="campo-form">
                     <h1>Forma de pagamento</h1>
                     <select class="campo" name="pagamento" id="pagamento">
-                        <option value="Boleto"> <p>Boleto</p></option>
-                        <option value="Cartao"> <p>Cartão de crédito</p> </option>
+                        <option value="boleto"> <p>Boleto</p></option>
+                        <option value="cartao"> <p>Cartão de crédito</p> </option>
                     </select>
                 </div>
                 <input class="botao" type="submit" value="Converter">
