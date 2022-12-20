@@ -27,9 +27,19 @@ class ConsomeApiController extends Controller
 
     public function storeConversao(StoreConversao $request){
         $cotacao = $this->conversaoApiService->getCotacao($request->base, $request->destino);
-        $valorFinal = $this->calculaService->calculaTaxa($cotacao, $request->valor, $request->pagamento);
+        $valores = $this->calculaService->calculaTaxa($cotacao, $request->valor, $request->pagamento);
 
-        //dd($valorFinal);
+        return $dadosSaida = [
+            'moedadaOrigem' => $request->base,
+            'moedaDestino' => $request->destino,
+            'valorConversao' => number_format($request->valor, 2, ',', '.'),
+            'formaPagamento' => $request->pagamento,
+            'valorMoedaDestino' => number_format((1 / $cotacao), 2, ',', '.'),
+            'valorComprado' => number_format($valores[0], 2, ',', '.'),
+            'taxaPagamento' => number_format($valores[1], 2, ',', '.'),
+            'taxaConversao' => number_format($valores[2], 2, ',', '.'),
+            'valorUtilizado' => number_format($valores[3], 2, ',', '.'),
+        ];
 
     }
 }

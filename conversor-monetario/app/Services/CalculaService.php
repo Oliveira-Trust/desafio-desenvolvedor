@@ -30,8 +30,15 @@ class CalculaService
                 $taxaConversao = ($valor * 0.01);
             break;
         }
+        
+        $valor = ($valor - $taxaConversao - $taxaPagamento);
+        $valorUtilizado = $valor;
 
-        $valor -= ($taxaConversao - $taxaPagamento);
-        return $valor * $cotacao;
+        return $valores = [
+            $valorComprado = ($valor * $cotacao),
+            $taxaPagamento,
+            $taxaConversao,
+            $valorUtilizado
+        ]; 
     }
 }
