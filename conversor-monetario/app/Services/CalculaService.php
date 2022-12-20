@@ -12,12 +12,13 @@ class CalculaService
     const MIN_MAX_VALOR = 3000;
 
     protected $taxas = [
-        'boleto' => self::TAXA_CARTAO,
-        'cartao' => self::TAXA_BOLETO
+        'boleto' => self::TAXA_BOLETO,
+        'cartao' => self::TAXA_CARTAO
     ];
      
     public function calculaTaxa($cotacao, $valor, $tipoPagamento){
         $taxaPagamento = $this->taxas[$tipoPagamento];
+        
         $taxaPagamento *= $valor;
         
         switch($valor){
