@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Http;
 class ConversaoApiService 
 {
     private $calculaService;
-
-    // public function __construct(CalculaService $calculaService){
-    //     $this->calculaService = $calculaService;
-    // }
     
     public function getLegenda()
     {  
