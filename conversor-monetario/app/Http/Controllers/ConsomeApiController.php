@@ -21,8 +21,12 @@ class ConsomeApiController extends Controller
 
     public function index(){
         $traducaoMoeda = $this->conversaoApiService->getLegenda();
+        $conversoes = Conversao::all();
 
-        return view('/conversor/home', ['traducaoMoeda' => $traducaoMoeda]); 
+        return view('/conversor/home', [
+            'traducaoMoeda' => $traducaoMoeda, 
+            'conversoes' => $conversoes
+        ]); 
     }
 
     public function storeConversao(StoreConversao $request){

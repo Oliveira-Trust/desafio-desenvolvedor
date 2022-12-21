@@ -56,8 +56,38 @@
                 <input class="botao" type="submit" value="Converter">
            </form>
         </section>
-
+        <br><br><br><br>
         <section class="secundario">
+           <table>
+                <thead>
+                    <tr>
+                        <th>Moeda de Origem</th>
+                        <th>Moeda de Destino</th>
+                        <th>Valor para conversao</th>
+                        <th>Forma de pagamento</th>
+                        <th>Valor da "moeda de destino"</th>
+                        <th>Valor comprado em "moeda de destino"</th>
+                        <th>Taxa de pagamento</th>
+                        <th>Taxa de conversão</th>
+                        <th>Valor utilizado para conversão (descontando taxas)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($conversoes as $conversao)
+                    <tr>
+                        <td>{{ $conversao->moedadaOrigem  }}</td>
+                        <td>{{ $conversao->moedaDestino}}</td>
+                        <td>{{ $conversao->valorConversao }}</td>
+                        <td>{{ $conversao->formaPagamento }}</td>
+                        <td>{{ $conversao->valorMoedaDestino }}</td>
+                        <td>{{ $conversao->valorComprado }}</td>
+                        <td>{{ $conversao->taxaPagamento }}</td>
+                        <td>{{ $conversao->taxaConversao }}</td>
+                        <td>{{ $conversao->valorUtilizado }}</td>
+                    </tr>
+                @endforeach
+                </tbody>    
+           </table>
             
         </section>
 
