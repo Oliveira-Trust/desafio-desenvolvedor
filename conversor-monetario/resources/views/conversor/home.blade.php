@@ -58,32 +58,34 @@
         </section>
         <br><br><br><br>
         <section class="secundario">
-           <table>
+           <table class="secundario-table">
                 <thead>
                     <tr>
-                        <th>Moeda de Origem</th>
-                        <th>Moeda de Destino</th>
-                        <th>Valor para conversao</th>
-                        <th>Forma de pagamento</th>
-                        <th>Valor da "moeda de destino"</th>
-                        <th>Valor comprado em "moeda de destino"</th>
-                        <th>Taxa de pagamento</th>
-                        <th>Taxa de conversão</th>
-                        <th>Valor utilizado para conversão (descontando taxas)</th>
+                        <th class="secundario-chave"></th>
+                        <th class="secundario-chave">Moeda de Origem</th>
+                        <th class="secundario-chave">Moeda de Destino</th>
+                        <th class="secundario-chave">Valor para conversao</th>
+                        <th class="secundario-chave">Forma de pagamento</th>
+                        <th class="secundario-chave">Valor da <br>"moeda de destino"</th>
+                        <th class="secundario-chave">Valor comprado em <br> "moeda de destino"</th>
+                        <th class="secundario-chave">Taxa de pagamento</th>
+                        <th class="secundario-chave">Taxa de conversão</th>
+                        <th class="secundario-chave">Valor utilizado para <br> conversão (descontando taxas)</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($conversoes as $conversao)
-                    <tr>
-                        <td>{{ $conversao->moedadaOrigem  }}</td>
-                        <td>{{ $conversao->moedaDestino}}</td>
-                        <td>{{ $conversao->valorConversao }}</td>
-                        <td>{{ $conversao->formaPagamento }}</td>
-                        <td>{{ $conversao->valorMoedaDestino }}</td>
-                        <td>{{ $conversao->valorComprado }}</td>
-                        <td>{{ $conversao->taxaPagamento }}</td>
-                        <td>{{ $conversao->taxaConversao }}</td>
-                        <td>{{ $conversao->valorUtilizado }}</td>
+                    <tr >
+                        <td class="secundario-conversao">Conversão</td>
+                        <td class="secundario-valor"><p>{{ $conversao->moedadaOrigem  }}</p></td>
+                        <td class="secundario-valor"><p>{{ $conversao->moedaDestino}}</p></td>
+                        <td class="secundario-valor"><p>R$ {{ $conversao->valorConversao }}</p></td>
+                        <td class="secundario-valor"><p>{{ $conversao->formaPagamento }}</p></td>
+                        <td class="secundario-valor"><p>$ {{ $conversao->valorMoedaDestino }}</p></td>
+                        <td class="secundario-valor"><p>$ {{ $conversao->valorComprado }}</p></td>
+                        <td class="secundario-valor"><p>R$ {{ $conversao->taxaPagamento }}</p></td>
+                        <td class="secundario-valor"><p>R$ {{ $conversao->taxaConversao }}</p></td>
+                        <td class="secundario-valor"><p>R$ {{ $conversao->valorUtilizado }}</p></td>
                     </tr>
                 @endforeach
                 </tbody>    
@@ -92,7 +94,7 @@
         </section>
 
         <footer>
-            <h4>&copy; Rafael Goncalves da Silva Vargas 2022</h4>
+            <h4>&copy; Rafael Gonçalves da Silva Vargas 2022</h4>
         </footer>
     </body>
 </html>

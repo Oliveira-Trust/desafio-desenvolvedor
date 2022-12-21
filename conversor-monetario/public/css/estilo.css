@@ -21,6 +21,7 @@ header{
 
 
 /* Conteudo */
+/* Principal */
 .principal{
     display: flex;
     align-items: center;
@@ -62,6 +63,28 @@ header{
     background-color: #be8989;
 }
 
+/* Secundario */
+.secundario-table{
+    border: 1px solid #be8989;
+}
+.secundario-chave{
+    background-color: #be8989;
+    border: 1px solid #be8989;
+}
+.secundario-conversao{
+    font-weight: bold;
+    background-color: #be8989;
+    padding: 10px;
+}
+.secundario-valor{
+    text-align: center;
+    font-weight: 200;
+    border-bottom: 1px solid #be8989;
+    border-right: 1px solid #be8989;
+}
+.secundario-valor > p{
+    font-family: 'italic';
+}
 
 /* Erro */
 .erro{
