@@ -15,12 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-
-
 Route::post('/storeConversao', [ConsomeApiController::class, 'storeConversao'])->name('consome_api.store_conversao');
 
 Route::get('/', [ConsomeApiController::class, 'index']);

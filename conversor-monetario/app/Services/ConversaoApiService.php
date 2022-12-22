@@ -11,7 +11,7 @@ class ConversaoApiService
     
     public function getLegenda()
     {  
-        $traducaoMoeda = Http::get('https://economia.awesomeapi.com.br/json/available/uniq');
+        $traducaoMoeda = Http::get(env('BASE_URL') . 'json/available/uniq');
         $traducaoMoeda = (array)json_decode($traducaoMoeda->body());
         
         unset($traducaoMoeda['BRL'], $traducaoMoeda['BRLT']);
@@ -20,7 +20,7 @@ class ConversaoApiService
     }
 
     public function getCotacao(string $base, string $destino){
-        $cotacao = Http::get('https://economia.awesomeapi.com.br/last/' . $base . '-' . $destino);
+        $cotacao = Http::get(env('BASE_URL') . 'last/' . $base . '-' . $destino);
         
         return json_decode($cotacao->body())->{$base . $destino}->bid;
     }
