@@ -1,5 +1,5 @@
 # Desafio desenvolverdor Oliveira Trust
-Projeto desenvolvido para o processo seletivo de desenvolvedor junior da empresa Oliveira Trust.
+Projeto desenvolvido para o processo seletivo de desenvolvedor da empresa Oliveira Trust.
 
 ## Descrição
 O projeto consiste na utilização de uma determinada API para a realização de conversões monetárias,
