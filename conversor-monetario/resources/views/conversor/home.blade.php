@@ -9,11 +9,17 @@
     </head>
 
     <body>
+       
         <header>
             <h1>Desafio desenvolverdor - Oliveira Trust </h1>
         </header>
 
         <section class="principal">
+            @if (session()->has('message'))
+                <div class="alert alert-dismissable alert-success">
+                    {!! session()->get('message')!!}
+                </div>
+            @endif
             <form class="formulario-principal" action="{{ route('consome_api.store_conversao') }}" method="POST">
                 @csrf
                 <div class="titulo-form">

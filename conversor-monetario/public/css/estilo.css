@@ -26,6 +26,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .formulario-principal{
     display: flex;
