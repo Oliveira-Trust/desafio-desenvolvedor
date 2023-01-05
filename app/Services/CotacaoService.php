@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Historico;
 use Illuminate\Support\Facades\Http;
 
 class CotacaoService
@@ -32,7 +33,7 @@ class CotacaoService
             'total'       =>  ($txPagamento + $txConversao),
         ];
 
-        return [
+        $data = [
             'destino'   =>  $this->cotacao['code'],
             'valor'   =>  $this->valor,
             'pagamento_tipo'   =>  $pagamento->getInfo($this->pagamentoTipo)->nome,
@@ -42,6 +43,10 @@ class CotacaoService
             'moeda_comprada'    =>  round(($this->valor - $taxas['total']) / round($this->cotacao['bid'], 2), 2), //Considerando o valor descontado as taxas e dividindo pelo valor da moeda destino
             'taxas' =>  $taxas
         ];
+
+        $this->salvarCotacao($data);
+
+        return $data;
     }
 
     private function getCotacaoMoeda($moeda)
@@ -79,5 +84,23 @@ class CotacaoService
         $this->taxaConversao = $taxa->getTaxa($this->valor);
 
         return $this->taxaConversao;
+    }
+
+    private function salvarCotacao(array $data)
+    {
+        return Historico::create([
+            'user_id' => auth()->user()->id,
+            'moeda_origem' => 'BRL',
+            'moeda_destino' => $data['destino'],
+            'valor' => $data['valor'],
+            'pagamento_tipo' => $data['pagamento_tipo'],
+            'valor_moeda' => $data['valor_moeda'],
+            'valor_conversao' => $data['valor_conversao'],
+            'valor_convertido' => $data['valor_convertido'],
+            'moeda_comprada' => $data['moeda_comprada'],
+            'taxa_pagamento' => $data['taxas']['pagamento'],
+            'taxa_conversao' => $data['taxas']['conversao'],
+            'taxa_total' => $data['taxas']['total'],
+        ]);
     }
 }

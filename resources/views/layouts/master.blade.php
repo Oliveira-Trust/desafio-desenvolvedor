@@ -183,6 +183,12 @@
                 <p>Admin</p>
             </a>
           </li>
+            <li class="nav-item">
+                <a href="{{ route('historico.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-history"></i>
+                    <p>Histórico de Transações</p>
+                </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

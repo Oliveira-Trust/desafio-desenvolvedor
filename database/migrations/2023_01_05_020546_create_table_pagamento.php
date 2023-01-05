@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pagamento', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nome');
             $table->string('slug');
             $table->decimal('taxa', '8', 4);

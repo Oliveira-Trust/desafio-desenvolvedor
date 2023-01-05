@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('taxa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('user_id')->constrained('users');
             $table->decimal('valor', 10, 2)->unique();
             $table->decimal('taxa', '8', 4);
         });
