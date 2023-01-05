@@ -1,0 +1,11 @@
+{
+    "name": "Exchange",
+    "alias": "exchange",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Exchange\\Providers\\ExchangeServiceProvider"
+    ],
+    "files": []
+}

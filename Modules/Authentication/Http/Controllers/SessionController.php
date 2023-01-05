@@ -35,15 +35,15 @@ class SessionController extends Controller
 
             DB::commit();
 
-            return response([
-                'access_token' => $user->createToken($this->createToken)->plainTextToken,
+            return response()->json([
+                'access_token' => $user->createToken($this->createToken, $this->abilities($user))->plainTextToken,
                 'token_type'   => 'Bearer',
                 'user'         => new UserResource($user)
             ], JsonResponse::HTTP_CREATED);
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return response([
+            return response()->json([
                 'message' => 'Sorry! Registration is not successfull.',
             ], JsonResponse::HTTP_BAD_REQUEST);
         }
@@ -57,7 +57,7 @@ class SessionController extends Controller
     {
         try {
 
-            if (!Auth::guard('api')->attempt($request->only(['email', 'password']))){
+            if (!Auth::guard('api')->attempt($request->only(['email', 'password']))) {
                 return response()->json([
                     'message' => 'Email or Password does not match with our record.',
                 ], JsonResponse::HTTP_UNAUTHORIZED);
@@ -66,11 +66,10 @@ class SessionController extends Controller
             $user = $this->userService->findByColumn(['email' => $request->email]);
 
             return response()->json([
-                'access_token' => $user->createToken("MinhaMorada")->plainTextToken,
+                'access_token' => $user->createToken($this->createToken, $this->abilities($user))->plainTextToken,
                 'token_type' => 'Bearer',
                 'user' => new UserResource($user)
             ], JsonResponse::HTTP_OK);
-
         } catch (\Throwable $th) {
             return response()->json([], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -104,5 +103,14 @@ class SessionController extends Controller
                 'message' => 'Sorry! Logout not successfull.'
             ], JsonResponse::HTTP_BAD_REQUEST);
         }
+    }
+
+    /**
+     * @param User $user
+     * @return array
+     */
+    private function abilities(User $user): array
+    {
+        return $user->is_admin ? ['admin'] : ['exchanges'];
     }
 }

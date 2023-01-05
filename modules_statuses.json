@@ -1,5 +1,6 @@
 {
     "Authentication": true,
     "User": true,
-    "Job": true
+    "Job": true,
+    "Exchange": true
 }
