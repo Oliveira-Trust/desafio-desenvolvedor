@@ -3,22 +3,22 @@ services:
   app:
     build:
       args:
-        user: ot
+        user: oliveira-trust
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: ot
-    container_name: ot-app
+    image: oliveira-trust
+    container_name: oliveira-trust-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
     networks:
-      - ot
+      - oliveira-trust
 
   db:
     image: mysql:5.7
-    container_name: ot-db
+    container_name: oliveira-trust-db
     restart: unless-stopped
     ports:
       - 3307:3306
@@ -32,11 +32,11 @@ services:
     volumes:
       - ./docker/mysql:/docker-entrypoint-initdb.d
     networks:
-      - ot
+      - oliveira-trust
 
   nginx:
     image: nginx:alpine
-    container_name: ot-nginx
+    container_name: oliveira-trust-nginx
     restart: unless-stopped
     ports:
       - 8080:80
@@ -44,10 +44,10 @@ services:
       - ./:/var/www
       - ./docker/nginx:/etc/nginx/conf.d/
     networks:
-      - ot
+      - oliveira-trust
 
 volumes:
-  ot:
+  oliveira-trust:
 networks:
-  ot:
+  oliveira-trust:
     driver: bridge
