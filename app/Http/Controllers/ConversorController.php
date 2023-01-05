@@ -11,11 +11,9 @@ class ConversorController extends Controller
     {
         $cotacao = new CotacaoService($request->input('valor'), $request->input('moeda'), $request->input('pagamento'));
         $data = $cotacao->converterMoeda();
+
         return response()->json([
-            'data'  =>  [
-                'success'   =>  true,
-                'info'  =>  $data
-            ]
+            'data'  =>  $data
         ]);
     }
 }

@@ -32,8 +32,9 @@ class CotacaoService
         ];
 
         return [
-            'origem'    =>  'BRL',
             'destino'   =>  $this->cotacao['code'],
+            'valor'   =>  $this->valor,
+            'pagamento_tipo'   =>  $this->pagamentoTipo,
             'valor_moeda'   =>  round($this->cotacao['bid'], 2),
             'valor_conversao'   => $this->valor,
             'valor_convertido' =>  $this->valor - $taxas['total'],

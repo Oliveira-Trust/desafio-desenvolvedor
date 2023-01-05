@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $moedas = [
+            ['sigla' =>  'USD', 'nome'   =>  'Dólar Americano'],
+            ['sigla' =>  'CAD', 'nome'   =>  'Dólár Canadense'],
+            ['sigla' =>  'EUR', 'nome'   =>  'Euro'],
+            ['sigla' =>  'BTC', 'nome'   =>  'Bitcoin'],
+        ];
+
+        return view('home', compact('moedas'));
     }
 }
