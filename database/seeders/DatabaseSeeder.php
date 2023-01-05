@@ -7,6 +7,7 @@ use App\Models\Pagamento;
 use App\Models\Taxa;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $users = [
-            ['id' => 1, 'name' =>  'Admin', 'email' => 'admin@oliveiratrust.com', 'password' => 'admin@oliveiratrust.com'],
+            ['id' => 1, 'name' =>  'Admin', 'email' => 'admin@oliveiratrust.com', 'password' => Hash::make('admin@oliveiratrust.com')],
         ];
 
         $pagamentos = [
