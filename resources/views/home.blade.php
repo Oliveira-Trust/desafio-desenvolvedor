@@ -47,14 +47,12 @@
                 <div class="col-sm-6">
                     <label for="">Forma de Pagamento</label>
                     <div class="form-group">
+                        @foreach($pagamentos as $pagamento)
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" id="boleto" name="pagamento" value="boleto" {{ old('pagamento') === 'boleto' ? 'checked' : '' }}>
-                            <label for="boleto" class="custom-control-label">Boleto</label>
+                            <input class="custom-control-input" type="radio" id="pagamento-{{ $pagamento->id }}" name="pagamento" value="{{ $pagamento->id }}">
+                            <label for="pagamento-{{ $pagamento->id }}" class="custom-control-label">{{ $pagamento->nome }}</label>
                         </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" id="cartao" name="pagamento" value="cartao" {{ old('pagamento') === 'cartao' ? 'checked' : '' }}>
-                            <label for="cartao" class="custom-control-label">Cartão de Crédito</label>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

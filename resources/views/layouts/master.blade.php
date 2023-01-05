@@ -172,9 +172,15 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Início</p>
+            <a href="{{ route('home') }}" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>Início</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-toolbox"></i>
+                <p>Admin</p>
             </a>
           </li>
         </ul>

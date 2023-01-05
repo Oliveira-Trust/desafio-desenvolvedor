@@ -10,18 +10,19 @@ class CotacaoService
     private $taxaConversao;
     private $taxaPagamento;
 
-    public function __construct($valor, $moeda, $pagamentoTipo)
+    public function __construct($valor, $moeda, $pagamentoId)
     {
         $this->valor = floatval($valor);
         $this->moeda = $moeda;
-        $this->pagamentoTipo = $pagamentoTipo;
+        $this->pagamentoTipo = $pagamentoId;
         $this->cotacao = $this->getCotacaoMoeda($moeda);
-        $this->taxaConversao = $this->setTaxaConversao($valor);
-        $this->taxaPagamento = $this->setTaxaPagamento($pagamentoTipo);
+        $this->taxaConversao = $this->setTaxaConversao();
+        $this->taxaPagamento = $this->setTaxaPagamento();
     }
 
     public function converterMoeda()
     {
+        $pagamento = new PagamentoService();
         $txPagamento = $this->getTaxaPagamento();
         $txConversao = $this->getTaxaConversao();
 
@@ -34,7 +35,7 @@ class CotacaoService
         return [
             'destino'   =>  $this->cotacao['code'],
             'valor'   =>  $this->valor,
-            'pagamento_tipo'   =>  $this->pagamentoTipo,
+            'pagamento_tipo'   =>  $pagamento->getInfo($this->pagamentoTipo)->nome,
             'valor_moeda'   =>  round($this->cotacao['bid'], 2),
             'valor_conversao'   => $this->valor,
             'valor_convertido' =>  $this->valor - $taxas['total'],
@@ -58,14 +59,11 @@ class CotacaoService
         return $this->valor * $this->taxaPagamento;
     }
 
-    private function setTaxaPagamento($pagamentoTipo)
+    private function setTaxaPagamento()
     {
-        $taxas = [
-            'boleto'    =>  0.0145,
-            'cartao'    =>  0.0763
-        ];
+        $taxa = new PagamentoService();
 
-        $this->taxaPagamento = $taxas[$pagamentoTipo];
+        $this->taxaPagamento = $taxa->getInfo($this->pagamentoTipo)->taxa;
 
         return $this->taxaPagamento;
     }
@@ -75,9 +73,10 @@ class CotacaoService
         return $this->valor * $this->taxaConversao;
     }
 
-    private function setTaxaConversao($valor)
+    private function setTaxaConversao()
     {
-        $this->taxaConversao = ($valor >= 3000) ? 0.01 : 0.02;
+        $taxa = new TaxaService();
+        $this->taxaConversao = $taxa->getTaxa($this->valor);
 
         return $this->taxaConversao;
     }

@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Contracts\PagamentoInterface;
+use App\Contracts\TaxaInterface;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $pagamentoRepository;
+
+    public function __construct(PagamentoInterface $pagamentoRepository)
     {
-        $this->middleware('auth');
+        $this->pagamentoRepository = $pagamentoRepository;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
+        $userId = auth()->user()->id;
         $moedas = [
             ['sigla' =>  'USD', 'nome'   =>  'Dólar Americano'],
             ['sigla' =>  'CAD', 'nome'   =>  'Dólár Canadense'],
@@ -30,6 +24,8 @@ class HomeController extends Controller
             ['sigla' =>  'BTC', 'nome'   =>  'Bitcoin'],
         ];
 
-        return view('home', compact('moedas'));
+        $pagamentos = $this->pagamentoRepository->listarDoUsuario($userId);
+
+        return view('home', compact('moedas', 'pagamentos'));
     }
 }
