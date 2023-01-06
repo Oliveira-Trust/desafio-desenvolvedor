@@ -29,8 +29,9 @@
                                     <span class="text-lg font-medium text-gray-800">Moeda de Destino</span>
                                     <select
                                         class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded">
-                                        <option value="0">USD</option>
-                                        <option value="1">EUR</option>
+                                        @foreach (App\Enums\CoinOptionsEnum::values() as $key => $value)
+                                            <option value="{{ $value }}">{{ $key }}</option>
+                                        @endforeach
                                     </select>
                                     <span class="block font-medium text-brand-danger"></span>
                                 </label>
@@ -44,8 +45,9 @@
                                     <span class="text-lg font-medium text-gray-800">Tipo de Pagamento</span>
                                     <select
                                         class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded">
-                                        <option value="0">USD</option>
-                                        <option value="1">EUR</option>
+                                        @foreach (App\Enums\PaymentTypsEnum::values() as $key => $value)
+                                            <option value="{{ $value }}">{{ $key }}</option>
+                                        @endforeach
                                     </select>
                                     <span class="block font-medium text-brand-danger"></span>
                                 </label>
