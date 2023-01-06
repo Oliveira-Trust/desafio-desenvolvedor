@@ -4,7 +4,9 @@ namespace Modules\Exchange\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Exchange\Repositories\Contracts\ExchangeRepositoryInterface;
 use Modules\Exchange\Repositories\Contracts\RatesRepositoryInterface;
+use Modules\Exchange\Repositories\ExchangeRepository;
 use Modules\Exchange\Repositories\RatesRepository;
 
 class ExchangeServiceProvider extends ServiceProvider
@@ -42,6 +44,7 @@ class ExchangeServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
 
         $this->app->bind(RatesRepositoryInterface::class, RatesRepository::class);
+        $this->app->bind(ExchangeRepositoryInterface::class, ExchangeRepository::class);
     }
 
     /**

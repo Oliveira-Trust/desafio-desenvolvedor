@@ -4,9 +4,11 @@ namespace Modules\User\Entities;
 
 use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Exchange\Entities\Exchanges;
 
 class User extends Authenticatable
 {
@@ -43,4 +45,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean'
     ];
+
+    /** @return HasMany  */
+    public function exchanges(): HasMany
+    {
+        return $this->hasMany(Exchanges::class, 'user_id');
+    }
 }

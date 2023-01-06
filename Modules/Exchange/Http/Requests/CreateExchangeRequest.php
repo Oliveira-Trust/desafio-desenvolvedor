@@ -2,9 +2,12 @@
 
 namespace Modules\Exchange\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\Exchange\Enums\Currency;
+use Modules\Exchange\Enums\PaymentMethod;
 
-class CreateRatesRequest extends FormRequest
+class CreateExchangeRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,12 +17,9 @@ class CreateRatesRequest extends FormRequest
     public function rules()
     {
         return [
-            'bank_slips' => 'required|numeric',
-            'credit_card' => 'required|numeric',
-            'purchase_price_above' => 'required|numeric',
-            'purchase_price_below' => 'required|numeric',
-            'purchase_price' => 'required|numeric',
-            'base_currency' => 'nullable|string|max:3'
+            'destination_currency' => ['required', Rule::in(Currency::values())],
+            'conversion_value' => 'required|numeric|between:1000.00,100000.00',
+            'payment_method' => ['required', Rule::in(PaymentMethod::values())],
         ];
     }
 

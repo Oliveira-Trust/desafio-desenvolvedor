@@ -21,6 +21,7 @@ class RatesResource extends JsonResource
             'purchase_price_above' => $this->resource->purchase_price_above,
             'purchase_price_below' => $this->resource->purchase_price_below,
             'purchase_price' => $this->resource->purchase_price,
+            'base_currency' => $this->resource->base_currency
         ];
     }
 }

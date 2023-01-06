@@ -16,7 +16,6 @@ class Rates extends Model
         'purchase_price_above',
         'purchase_price_below',
         'purchase_price',
+        'base_currency'
     ];
-
-
 }

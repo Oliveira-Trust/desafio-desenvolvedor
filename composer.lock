@@ -4,8 +4,122 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f99090802742a3f62875cdb24ed7dfc7",
+    "content-hash": "717ae76ed2b923d69da8560e63a4bcd6",
     "packages": [
+        {
+            "name": "akaunting/laravel-money",
+            "version": "3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akaunting/laravel-money.git",
+                "reference": "cbc66d1dc457c169f6081e0ae6c661b499dad301"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/akaunting/laravel-money/zipball/cbc66d1dc457c169f6081e0ae6c661b499dad301",
+                "reference": "cbc66d1dc457c169f6081e0ae6c661b499dad301",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.67|^9.0",
+                "illuminate/support": "^8.67|^9.0",
+                "illuminate/view": "^8.67|^9.0",
+                "php": "^8.0",
+                "vlucas/phpdotenv": "^5.4.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.23|^7.4",
+                "phpunit/phpunit": "^9.5",
+                "vimeo/psalm": "^4.23"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Akaunting\\Money\\Provider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Akaunting\\Money\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Denis Duliçi",
+                    "email": "info@akaunting.com",
+                    "homepage": "https://akaunting.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Currency formatting and conversion package for Laravel",
+            "keywords": [
+                "convert",
+                "currency",
+                "format",
+                "laravel",
+                "money"
+            ],
+            "support": {
+                "issues": "https://github.com/akaunting/laravel-money/issues",
+                "source": "https://github.com/akaunting/laravel-money/tree/3.1.2"
+            },
+            "time": "2022-07-27T08:16:36+00:00"
+        },
+        {
+            "name": "archtechx/enums",
+            "version": "v0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/archtechx/enums.git",
+                "reference": "373a86a16e7233a56dd942d422af2cc59a2becb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/archtechx/enums/zipball/373a86a16e7233a56dd942d422af2cc59a2becb3",
+                "reference": "373a86a16e7233a56dd942d422af2cc59a2becb3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "nunomaduro/larastan": "^1.0|^2.0",
+                "orchestra/testbench": "^6.9|^7.0",
+                "pestphp/pest": "^1.2",
+                "pestphp/pest-plugin-laravel": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ArchTech\\Enums\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Štancl",
+                    "email": "samuel@archte.ch"
+                }
+            ],
+            "description": "Helpers for making PHP enums more lovable.",
+            "support": {
+                "issues": "https://github.com/archtechx/enums/issues",
+                "source": "https://github.com/archtechx/enums/tree/v0.3.1"
+            },
+            "time": "2022-08-24T22:27:44+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.10.2",
