@@ -18,4 +18,10 @@ class Rates extends Model
         'purchase_price',
         'base_currency'
     ];
+
+    /** @return Factory<static>  */
+    protected static function newFactory()
+    {
+        return \Modules\Exchange\Database\factories\RatesFactory::new();
+    }
 }

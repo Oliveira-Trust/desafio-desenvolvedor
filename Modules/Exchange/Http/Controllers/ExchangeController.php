@@ -40,17 +40,7 @@ class ExchangeController extends Controller
     public function conversion(CreateExchangeRequest $request)
     {
         try {
-            $rates = $this->ratesService->list();
-
-            ExchangeConversionJob::dispatchIf(
-                $rates,
-                $request->destination_currency,
-                $request->conversion_value,
-                $request->payment_method,
-                Auth::user(),
-                $this->exchangeService,
-                $rates
-            );
+            $this->exchangeService->conversion($request->all());
         } catch (\Throwable $th) {
             return response()->json([], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -68,6 +58,7 @@ class ExchangeController extends Controller
         }
     }
 
+    /** @return JsonResponse|void  */
     public function currencies()
     {
         try {

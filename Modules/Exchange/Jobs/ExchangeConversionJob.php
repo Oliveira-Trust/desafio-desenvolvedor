@@ -26,9 +26,10 @@ class ExchangeConversionJob implements ShouldQueue
         protected string $destinationCurrency,
         protected float $conversionValue,
         protected string $paymentMethod,
+        protected float $exchange,
         protected User $user,
         protected ExchangeService $exchangeService,
-        protected Rates $rate
+        protected $rates
     )
     {
     }
@@ -41,11 +42,11 @@ class ExchangeConversionJob implements ShouldQueue
     public function handle()
     {
         try {
-            $exchageConversion = new ExchangeConversionService($this->destinationCurrency, $this->conversionValue, $this->paymentMethod, $this->rate);
+            $exchangeConversion = new ExchangeConversionService($this->destinationCurrency, $this->conversionValue, $this->paymentMethod, $this->exchange, $this->rates);
 
-            $exchageConversion->execute();
+            $exchangeConversion->execute();
 
-            $exchage = $this->exchangeService->store($exchageConversion->toArray());
+            $exchage = $this->exchangeService->store($exchangeConversion->toArray());
 
             $this->user->notify(new ExchangeConversionNotification($this->user, $exchage));
         } catch (\Throwable $th) {

@@ -46,7 +46,7 @@ class ExchangeConversionNotification extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->subject('Your Exchange Conversion')
                     ->greeting("Hello! {$this->user->name}")
-                    ->line('The introduction to the notification.')
+                    ->line('Your quote for today.')
                     ->line(new HtmlString('Moeda Origem: <strong>' . $this->exchange->origin_currency->value . '</strong>'))
                     ->line(new HtmlString('Moeda Destino: <strong>' . $this->exchange->destination_currency->value . '</strong>'))
                     ->line(new HtmlString('Valor da conversão: <strong>' . formatCurrency($this->exchange->conversion_value) . '</strong>'))

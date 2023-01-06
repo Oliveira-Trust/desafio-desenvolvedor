@@ -3,6 +3,7 @@
 namespace Modules\User\Entities;
 
 use App\Traits\Uuids;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,5 +51,11 @@ class User extends Authenticatable
     public function exchanges(): HasMany
     {
         return $this->hasMany(Exchanges::class, 'user_id');
+    }
+
+    /** @return Factory<static>  */
+    protected static function newFactory()
+    {
+        return \Modules\User\Database\factories\UserFactory::new();
     }
 }
