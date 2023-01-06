@@ -69,7 +69,7 @@ class ExchangeService
             if ($exception->response->status() !== 200) {
                 return $exception instanceof ConnectionException;
             }
-        })->get("https://economia.awesomeapi.com.br/last/".implode('-', $currencies));
+        })->get(config('api.currency.quotes').implode('-', $currencies));
 
         return floatval(data_get($response->json(), implode('', $currencies).".high"));
     }
