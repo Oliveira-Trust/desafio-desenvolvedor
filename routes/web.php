@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(DashboardController::class)->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::post('/', [HomeController::class, 'store']);
