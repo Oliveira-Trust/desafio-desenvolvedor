@@ -32,4 +32,19 @@ class ConversionRequest extends FormRequest
             'type'      => ['required', Rule::in(\App\Enums\PaymentTypsEnum::names())],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'quantity.required' => 'O Valor é obrigatório!',
+            'quantity.integer' => 'Valor sem casas decimais',
+            'quantity.min' => 'O Valor mínimo é: 1000',
+            'quantity.max' => 'O Valor máximo é: 100.000',
+        ];
+    }
 }

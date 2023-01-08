@@ -11,6 +11,20 @@
 </head>
 
 <body class="dark">
+    @if (session('error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Algo inesperado ocorreu!</strong>
+            <span class="block sm:inline">A consulta não pode ser realidzada. Por favor, tente novamente.</span>
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" onClick="window.location.href=window.location.href">
+                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20">
+                    <title>Close</title>
+                    <path
+                        d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                </svg>
+            </span>
+        </div>
+    @endif
     <div class="fixed flex flex-col items-center justify-center w-full h-full dark:bg-black bg-opacity-50">
         <div class="my-5">
             <span class="text-white text-2xl font-medium text-white">
@@ -23,15 +37,16 @@
                     <div class="flex flex-col px-12 py-10 bg-white">
                         <div class="mt-1">
                             {{-- <form method="post" action="{{ route('store') }}"> --}}
-                            <form method="post" action="/">
+                            <form method="post" action="/" novalidate>
                                 @csrf
                                 <label class="block">
                                     <span class="text-lg font-medium text-gray-800">Moeda de Destino</span>
                                     <select name="currency"
                                         class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded">
                                         @foreach (App\Enums\CurrencyOptionsEnum::values() as $key => $value)
-                                            <option value="{{ $key }}">{{ $value }}</option>
-                                            {{-- <option value="{{ $value }}">{{ $key }}</option> --}}
+                                            <option value="{{ $key }}">
+                                                {{ $value }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('currency')
@@ -40,7 +55,7 @@
                                 </label>
                                 <label class="block mt-6">
                                     <span class="text-lg font-medium text-gray-800">Valor de Conversão</span>
-                                    <input type="number" name="quantity" min="1000" max="100000"
+                                    <input type="number" name="quantity"
                                         class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded" />
                                     @error('quantity')
                                         <span class="block font-medium text-brand-danger">{{ $message }}</span>
@@ -51,7 +66,9 @@
                                     <select name="type"
                                         class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded">
                                         @foreach (App\Enums\PaymentTypsEnum::values() as $key => $value)
-                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            <option value="{{ $key }}">
+                                                {{ $value }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('type')

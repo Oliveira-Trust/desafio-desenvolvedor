@@ -29,7 +29,11 @@ class HomeController extends Controller
     {
         $request = $request->validated();
 
-        $conversion = $service->conversion($request);
+        try {
+            $conversion = $service->conversion($request);
+        } catch (\Throwable $e) {
+            return back()->withError($e->getMessage())->withInput();
+        }
 
         return view('/home', ['data' => $conversion]);
     }

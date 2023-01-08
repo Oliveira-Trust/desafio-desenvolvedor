@@ -12,7 +12,7 @@ class ConversionService
     {
         $currency = CurrencyOptionsEnum::fromName($request['currency']);
         $type = PaymentTypsEnum::fromName($request['type']);
-        $conversionValue = $this->getCurrencyConversion();
+        $conversionValue = $this->getCurrencyConversion($request['currency']);
         $paymentTypeMonetaryTaxValue = $this->paymentTypeMonetaryTaxValue($request['quantity'], $request['type']);
         $monetaryTaxValue = $this->monetaryTaxValue($request['quantity']);
         $totalConversion = $request['quantity']  - $paymentTypeMonetaryTaxValue - $monetaryTaxValue;
@@ -30,9 +30,9 @@ class ConversionService
         ];
     }
 
-    private function getCurrencyConversion()
+    private function getCurrencyConversion(string $currency)
     {
-        $response = Http::get('https://economia.awesomeapi.com.br/USD-BRL');
+        $response = Http::get("https://economia.awesomeapi.com.br/${currency}-BRL");
 
         return $response->collect()->first()['bid'];
     }
