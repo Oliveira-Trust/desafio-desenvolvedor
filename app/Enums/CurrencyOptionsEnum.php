@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum PaymentTypsEnum: string
+enum CurrencyOptionsEnum: string
 {
-    case TICKET = 'Boleto';
-    case CREDIT = 'Cartão de Crédito';
+    case USD = 'Dólar';
+    case EUR = 'Euro';
 
     public static function values(): array
     {

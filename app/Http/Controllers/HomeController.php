@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ConversionRequest;
+use App\Http\Services\ConversionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -23,8 +25,12 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ConversionRequest $request, ConversionService $service)
     {
-        return view('/home', ['name' => 'Diego Dias']);
+        $request = $request->validated();
+
+        $conversion = $service->conversion($request);
+
+        return view('/home', ['data' => $conversion]);
     }
 }
