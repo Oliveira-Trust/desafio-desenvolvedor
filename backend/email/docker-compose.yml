@@ -1,0 +1,73 @@
+version: "3"
+
+networks:
+    default:
+    rabbitmq_shared:
+        external: true
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        working_dir: /var/www/
+        depends_on:
+            - redis
+        volumes:
+            - ./src:/var/www
+        networks:
+            - default
+            - rabbitmq_shared
+
+    redis:
+        image: redis:latest
+        networks:
+            - default
+
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        volumes:
+            - ./src:/var/www
+            - .docker/nginx/conf.d/:/etc/nginx/conf.d/
+        depends_on:
+            - app
+        networks:
+            - default
+
+    database:
+        image: mariadb
+        environment:
+            MYSQL_DATABASE: homestead
+            MYSQL_USER: homestead
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_PASSWORD: secret
+        networks:
+            - default
+
+    smtp:
+        platform: linux/x86_64
+        image: mailhog/mailhog
+        container_name: docker-workspace-smtp
+        logging:
+            driver: 'none'
+        ports:
+            - "8003:1025"
+            - "8100:8025"
+        networks:
+            - default
+
+    queue:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: 'php artisan queue:work'
+        working_dir: /var/www/
+        restart: unless-stopped
+        depends_on:
+            - app
+        volumes:
+            - ./src:/var/www
+        networks:
+            - default
+            - rabbitmq_shared
