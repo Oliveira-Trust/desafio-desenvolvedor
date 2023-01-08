@@ -46,8 +46,6 @@ services:
         container_name: user_api
         image: nginx:alpine
         restart: unless-stopped
-        ports:
-            - 8081:80
         volumes:
             - ./src:/var/www
             - .docker/nginx/conf.d/:/etc/nginx/conf.d/
