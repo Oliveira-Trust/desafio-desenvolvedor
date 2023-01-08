@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  client:
+    container_name: client
+    build: .
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '8000:8000'

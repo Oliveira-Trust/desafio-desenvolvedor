@@ -1,0 +1,32 @@
+.login-section {
+  background: #a9a9a9;
+}
+
+.input-group-merge {
+  .form-control {
+    &:not(:first-child) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    &:not(:last-child) {
+      padding-right: 0;
+      border-right: 0;
+    }
+
+    &.is-valid {
+      ~ .input-group-append {
+        .input-group-text {
+          border-color: $success;
+        }
+      }
+    }
+  }
+  .input-group-prepend {
+    ~ .form-control.is-valid {
+      .input-group-text & {
+        border-color: $success;
+      }
+    }
+  }
+}

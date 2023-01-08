@@ -1,0 +1,25 @@
+{
+  "name": "conversor",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "bootstrap-vue": "^2.23.1",
+    "pinia": "^2.0.16",
+    "vue": "^2.7.14",
+    "vue-router": "^3.5.4",
+    "@vue/composition-api": "1.4.9",
+    "@vueuse/core": "4.11.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^2.0.0",
+    "@vitejs/plugin-vue2": "^1.1.2",
+    "sass": "^1.57.1",
+    "terser": "^5.14.2",
+    "vite": "^3.0.2"
+  }
+}
