@@ -1,0 +1,74 @@
+version: "3"
+
+networks:
+    shared:
+        driver: bridge
+    rabbitmq_shared:
+        external: true
+    default:
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        working_dir: /var/www/
+        depends_on:
+            - database
+            - redis
+        volumes:
+            - ./src:/var/www
+        networks:
+            - default
+            - shared
+            - rabbitmq_shared
+
+
+    redis:
+        image: redis:latest
+        networks:
+            - default
+
+
+    database:
+        image: mariadb
+        ports:
+            - 3308:3306
+        environment:
+            MYSQL_DATABASE: homestead
+            MYSQL_USER: homestead
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_PASSWORD: secret
+        networks:
+            - default
+
+    nginx:
+        container_name: user_api
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - 8081:80
+        volumes:
+            - ./src:/var/www
+            - .docker/nginx/conf.d/:/etc/nginx/conf.d/
+        depends_on:
+            - app
+        networks:
+            - default
+            - shared
+
+
+    queue:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: 'php artisan queue:work'
+        working_dir: /var/www/
+        restart: unless-stopped
+        depends_on:
+            - app
+        volumes:
+            - ./src:/var/www
+        networks:
+            - default
+            - rabbitmq_shared
