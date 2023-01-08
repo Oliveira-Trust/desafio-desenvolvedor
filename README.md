@@ -98,8 +98,9 @@ docker-compose -f ./backend/email/docker-compose.yml exec app php artisan migrat
 ```
 
 - O painel de acesso ao MailHog pode ser acessado na url http://localhost:8100'. Com ele será possível monitorar os emails disparados durante o desenvolvimento.
-
-![art/email.png](art/email.png)
+<p>
+    <img src="art/email.png" width="600">
+ </p>
 
 ### User Service
 
@@ -131,4 +132,15 @@ docker-compose -f ./backend/api-gateway/docker-compose.yml exec app php artisan 
 ```
 
 Apos o serviço de  `API Gateway` estiver online, será possível acessar ele pela url http://localhost:8080/api
+
+
+
+# Documentação
+
+---
+
+A documentação da API foi gerada com swagger e pode tambem ser acessada pela url http://localhost:8080/api/documentation
+<p>
+    <img src="art/swagger_print.png" width="600">
+ </p>
 
