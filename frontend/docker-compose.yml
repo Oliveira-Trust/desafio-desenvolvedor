@@ -6,6 +6,6 @@ services:
     build: .
     volumes:
       - '.:/app'
-      - '/app/node_modules'
     ports:
-      - '8000:8000'
+      - '8001:8001'
+    command: 'npm run dev'

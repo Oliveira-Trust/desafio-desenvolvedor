@@ -1,8 +1,7 @@
-import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useAuthStore } from '@/stores/auth.js'
 
-Vue.use(VueRouter)
 
 const router = new VueRouter({
     mode: 'history',
@@ -11,7 +10,18 @@ const router = new VueRouter({
         {
             path: '/',
             name: 'home',
-            component: HomeView
+            component: HomeView,
+            meta: {
+                auth: true
+            }
+        },
+        {
+            path: '/taxas',
+            name: 'taxas',
+            component: () => import('../views/Taxas/TaxasView.vue'),
+            meta: {
+                auth: true
+            }
         },
         {
             path: '/login',
@@ -21,10 +31,7 @@ const router = new VueRouter({
         {
             path: '/about',
             name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import('../views/AboutView.vue')
+            component: () => import('../views/AboutView.vue'),
         },
         {
             path: '*',
@@ -32,5 +39,13 @@ const router = new VueRouter({
         },
     ]
 })
-
+router.beforeEach((to, _, next) => {
+    const authStore = useAuthStore();
+    if (to.meta?.auth) {
+        if (!authStore.accessToken) {
+            return next({ name: 'login' })
+        }
+    }
+    return next()
+})
 export default router

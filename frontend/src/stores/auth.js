@@ -5,7 +5,7 @@ import apiConfig from '@/services/api/apiConfig.js'
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
-    accessToken: useStorage(apiConfig.localStorageAccessTokenKey, null)
+    accessToken: useStorage(apiConfig.localStorageAccessTokenKey, '')
   }),
   actions: {
     setAccessToken(token) {

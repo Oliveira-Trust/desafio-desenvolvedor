@@ -1,1 +1,1 @@
-docker-compose exec frontend-client bash
+docker-compose exec client npm %1 %2

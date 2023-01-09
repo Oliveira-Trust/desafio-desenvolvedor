@@ -1,9 +1,21 @@
-<script setup lang="ts">
-import TheWelcome from "../components/TheWelcome.vue";
+<template>
+<div>
+  <nav-bar/>
+</div>
+</template>
+
+<script>
+import NavBar from '@/views/components/NavBar.vue'
+export default {
+  name: 'HomeView',
+  components:{
+    NavBar
+  },
+  mounted(){
+  }
+}
 </script>
 
-<template>
-  <main>
-    <the-welcome></the-welcome>
-  </main>
-</template>
+<style scoped>
+
+</style>

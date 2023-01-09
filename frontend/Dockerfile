@@ -9,4 +9,4 @@ COPY package.json /app/package.json
 RUN npm install
 RUN npm install @vue/cli@5.0.8 -g
 
-CMD ["npm", "run", "dev"]
+#CMD ["npm", "run", "dev"]
