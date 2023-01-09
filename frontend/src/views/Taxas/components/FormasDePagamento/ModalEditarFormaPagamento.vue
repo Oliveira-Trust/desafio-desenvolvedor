@@ -1,16 +1,18 @@
 <template>
   <div>
     <b-modal
-      id="modal"
-      title="Editar registro"
+      id="modal_edit_forma_pagamento"
+      title="Editar taxa"
       hide-header-close
       modal-body="position-static"
       static
     >
 
       <b-overlay :show="loading" no-wrap fixed></b-overlay>
+
       <label for="fee_rate">Percentual:</label>
       <b-form-input id="fee_rate" type="number" v-if="data" v-model="data.fee_rate"></b-form-input>
+
       <template #modal-footer="{ ok, cancel }">
         <b-button variant="secondary" @click="close()">
           Fechar
@@ -24,10 +26,11 @@
 </template>
 
 <script>
-import { feeUpdate } from '@/services/api/index.js'
+
+import { paymentMethodsApi } from '@/services/api/paymentMethodsApi.js'
 
 export default {
-  name: 'ModalEditarTaxa',
+  name: 'ModalEditarFormaPagamento',
   data() {
     return {
       loading: false,
@@ -36,22 +39,24 @@ export default {
   },
   methods: {
     open(data) {
-      this.data = data
-      this.$bvModal.show('modal')
+      this.data = {
+        ...data
+      }
+      this.$bvModal.show('modal_edit_forma_pagamento')
     },
     close() {
-      this.$bvModal.hide('modal')
+      this.$bvModal.hide('modal_edit_forma_pagamento')
     },
     save() {
       this.loading = true
-      feeUpdate(this.data.id, {
+      paymentMethodsApi.update(this.data.id, {
         fee_rate: this.data.fee_rate,
-        starting_value: this.data.starting_value,
       })
         .then((result) => {
           this.items = result
           this.$toast.success("Registro salvo com sucesso.");
           this.close();
+          this.$emit('saved',result);
         })
         .catch((error) => {
           console.error(error)

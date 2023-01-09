@@ -1,7 +1,11 @@
 <template>
   <div>
     <b-overlay :show="loading">
-      <h4>Taxas por valor</h4>
+
+      <div class="d-flex justify-content-between">
+          <h4 class="d-inline">Formas de pagamento</h4>
+      </div>
+
       <b-table
         class="mt-3"
         hover
@@ -17,60 +21,56 @@
           <div class="text-right">{{ data.item.fee_rate | toRate }}</div>
         </template>
 
-        <template #cell(starting_value)="data">
-          <div class="text-right">{{ data.item.starting_value  | toCurrency }}</div>
-        </template>
-
         <template #cell(actions)="data">
-          <div class="text-right">
-            <button class="btn btn-sm btn-dark" @click="openEditModal(data.item)">Editar</button>
+          <div class="d-flex justify-content-around">
+            <button class="btn btn-sm btn-dark mr-1" @click="openEditModal(data.item)">Editar</button>
           </div>
         </template>
 
       </b-table>
     </b-overlay>
 
-    <modal-editar-taxa ref="modal"/>
+    <modal-editar-forma-pagamento ref="modal_edit" @saved="fetchAll"/>
   </div>
 </template>
 
 <script>
-import { fees } from '@/services/api/index.js'
-import ModalEditarTaxa from '@/views/Taxas/components/ModalEditarTaxa.vue'
+import { paymentMethodsApi } from '@/services/api/paymentMethodsApi.js'
+import ModalEditarFormaPagamento from '@/views/Taxas/components/FormasDePagamento/ModalEditarFormaPagamento.vue'
 
 export default {
-  name: 'Taxas',
-  components: { ModalEditarTaxa },
+  name: 'FormasDePagamento',
+  components: { ModalEditarFormaPagamento },
   data() {
     return {
       loading: false,
       items: [],
       fields: [
         {
-          key: 'actions',
-          thStyle: { width: '10%', textAlign: 'right' },
-          label: ''
-        },
-        {
-          key: 'starting_value',
-          label: 'Valor inicial',
-          thStyle: { textAlign: 'right' },
+          key: 'name',
+          label: 'Nome',
+          thStyle: { textAlign: 'left' },
         },
         {
           key: 'fee_rate',
           label: 'Percentual',
           thStyle: { textAlign: 'right' },
-        }
+        },
+        {
+          key: 'actions',
+          thStyle: { width: '120px',  textAlign: 'right' },
+          label: ''
+        },
       ]
     }
   },
   methods: {
     openEditModal(data){
-      this.$refs.modal.open(data);
+      this.$refs.modal_edit.open(data);
     },
-    fetchFees() {
+    fetchAll() {
       this.loading = true
-      fees()
+      paymentMethodsApi.index()
         .then((result) => {
           console.log(result)
           this.items = result
@@ -85,10 +85,10 @@ export default {
           this.loading = false
         })
 
-    }
+    },
   },
   mounted() {
-    this.fetchFees()
+    this.fetchAll()
   },
 }
 </script>

@@ -25,14 +25,4 @@ export const login = async (parameters) => {
     return data
 }
 
-export const fees = async (parameters) => {
-    const { data } = await api.get('fee',  parameters )
-    return data
-}
-
-export const feeUpdate = async (id,parameters) => {
-    const { data } = await api.put('fee/'+id,  parameters )
-    return data
-}
-
 Vue.prototype.$api = api
