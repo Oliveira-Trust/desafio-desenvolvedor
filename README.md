@@ -144,8 +144,9 @@ A documentação da API foi gerada com swagger e pode tambem ser acessada pela u
 
 ---
 
-o client frontend foi desenvolvido com vue.js;
-Execute o seguintes comando para ter acesso ao client frontend
+O client frontend foi desenvolvido com vue.js
+
+Execute o seguinte comando para ter acesso ao client frontend
 
 ```
 docker-compose -f ./frontend/docker-compose.yml up -d
