@@ -9,15 +9,11 @@ networks:
 
 services:
     app:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        build: .
         container_name: api_gateway
         working_dir: /var/www/
         depends_on:
             - redis
-        volumes:
-            - ./src:/var/www
         networks:
             - default
             - user_shared

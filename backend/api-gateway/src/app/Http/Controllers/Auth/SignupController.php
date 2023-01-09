@@ -25,7 +25,7 @@ class SignupController extends Controller {
      *        required={"email","password","name"},
      *        @OA\Property(property="name", type="string", format="string", example="Jhon"),
      *        @OA\Property(property="email", type="string", format="email", example="user@user.com"),
-     *        @OA\Property(property="password", type="string", format="password", example="123456"),
+     *        @OA\Property(property="password", type="string", format="password", example="353535"),
      *     ),
      *  ),
      *  @OA\Response( response=200, description="OK", ),

@@ -7,14 +7,11 @@ networks:
 
 services:
     app:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        build: .
         working_dir: /var/www/
         depends_on:
             - redis
-        volumes:
-            - ./src:/var/www
+            - database
         networks:
             - default
             - rabbitmq_shared
@@ -58,16 +55,12 @@ services:
             - default
 
     queue:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        build: .
         command: 'php artisan queue:work'
         working_dir: /var/www/
         restart: unless-stopped
         depends_on:
             - app
-        volumes:
-            - ./src:/var/www
         networks:
             - default
             - rabbitmq_shared

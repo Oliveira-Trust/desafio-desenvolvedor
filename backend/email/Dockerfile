@@ -38,19 +38,22 @@ RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
 
-# Add xdebug
-RUN pecl install xdebug-3.1.5
-RUN docker-php-ext-enable xdebug
-RUN echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.log_level=0" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.discover_client_host=0" >> /usr/local/etc/php/conf.d/xdebug.ini
+## Add xdebug
+#RUN pecl install xdebug-3.1.5
+#RUN docker-php-ext-enable xdebug
+#RUN echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#    && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#    && echo "xdebug.log_level=0" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#    && echo "xdebug.discover_client_host=0" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 # Set working directory
 WORKDIR /var/www
 
+COPY ./src .
+RUN chown -R $user ./
 USER $user
+RUN composer install
 
 ENV PHP_IDE_CONFIG="serverName=email_api"
 

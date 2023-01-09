@@ -9,15 +9,11 @@ networks:
 
 services:
     app:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        build: .
         working_dir: /var/www/
         depends_on:
             - database
             - redis
-        volumes:
-            - ./src:/var/www
         networks:
             - default
             - shared
@@ -32,13 +28,13 @@ services:
 
     database:
         image: mariadb
-        ports:
-            - 3308:3306
         environment:
             MYSQL_DATABASE: homestead
             MYSQL_USER: homestead
             MYSQL_ROOT_PASSWORD: secret
             MYSQL_PASSWORD: secret
+        volumes:
+            - .docker/database/data:/var/lib/mysql
         networks:
             - default
 
@@ -57,16 +53,12 @@ services:
 
 
     queue:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        build: .
         command: 'php artisan queue:work'
         working_dir: /var/www/
         restart: unless-stopped
         depends_on:
             - app
-        volumes:
-            - ./src:/var/www
         networks:
             - default
             - rabbitmq_shared
