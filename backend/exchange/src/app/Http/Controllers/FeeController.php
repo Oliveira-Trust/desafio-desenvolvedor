@@ -42,6 +42,8 @@ class FeeController extends Controller {
     public function create(CreateFeeRequest $request) {
         $result = $this->fee_repository->create($request->validated());
 
+        Cache::delete([self::FEE_CACHE_ALL]);
+
         $cached_response = Cache::remember(
             self::FEE_CACHE_PREFIX . $result->id,
             now()->addMinutes(30),
