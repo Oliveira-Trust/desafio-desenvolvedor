@@ -51,6 +51,9 @@ RUN pecl install -o -f redis \
 WORKDIR /var/www
 
 COPY ./src .
+
+COPY ./src/.env.example .env
+
 RUN chown -R $user ./
 USER $user
 RUN composer install
