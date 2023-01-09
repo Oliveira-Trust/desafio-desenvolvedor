@@ -4,8 +4,8 @@
       <b-navbar-nav>
         <b-nav-item :to="{name:'home'}">Home</b-nav-item>
         <b-nav-item :to="{name:'taxas'}">Taxas</b-nav-item>
-        <b-nav-item href="#">Conversor</b-nav-item>
-        <b-nav-item href="#">Histórico de conversões</b-nav-item>
+        <b-nav-item :to="{name:'conversor'}">Conversor</b-nav-item>
+        <b-nav-item :to="{name:'historico-conversoes'}">Histórico de conversões</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item :to="{name:'login'}" right>Sair</b-nav-item>

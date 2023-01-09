@@ -25,4 +25,9 @@ export const login = async (parameters) => {
     return data
 }
 
+export const signup = async (parameters) => {
+    const { data } = await api.post('signup',  parameters )
+    return data
+}
+
 Vue.prototype.$api = api

@@ -47,6 +47,7 @@
 import ModalEditarTaxa from '@/views/Taxas/components/Taxas/ModalEditarTaxa.vue'
 import ModalCreateTaxa from '@/views/Taxas/components/Taxas/ModalCreateTaxa.vue'
 import { feeApi } from '@/services/api/feeApi.js'
+import { getApiErrorMessageFromResponse } from '@/utils/index.js'
 
 export default {
   name: 'Taxas',
@@ -89,10 +90,8 @@ export default {
           this.items = result
         })
         .catch((error) => {
-          console.error(error)
-          this.$toast.error(error.response?.data?.message ?? 'Ocorreu um problema, tente novamente mais tarde.', {
-            timeout: 2000
-          })
+          const errorMessage = getApiErrorMessageFromResponse(error);
+          this.$toast.error(errorMessage, { timeout: 3000 });
         })
         .finally(() => {
           this.loading = false
@@ -107,10 +106,8 @@ export default {
           this.fetchFees();
         })
         .catch((error) => {
-          console.error(error)
-          this.$toast.error(error.response?.data?.message ?? 'Ocorreu um problema, tente novamente mais tarde.', {
-            timeout: 2000
-          })
+          const errorMessage = getApiErrorMessageFromResponse(error);
+          this.$toast.error(errorMessage, { timeout: 3000 });
         })
         .finally(() => {
           this.loading = false

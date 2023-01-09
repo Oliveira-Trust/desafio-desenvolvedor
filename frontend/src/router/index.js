@@ -24,14 +24,30 @@ const router = new VueRouter({
             }
         },
         {
+            path: '/conversor',
+            name: 'conversor',
+            component: () => import('../views/Conversor/ConversorView.vue'),
+            meta: {
+                auth: true
+            }
+        },
+        {
+            path: '/historico-conversoes',
+            name: 'historico-conversoes',
+            component: () => import('../views/HistoricoConversoesView.vue'),
+            meta: {
+                auth: true
+            }
+        },
+        {
             path: '/login',
             name: 'login',
             component: () => import('../views/LoginView.vue')
         },
         {
-            path: '/about',
-            name: 'about',
-            component: () => import('../views/AboutView.vue'),
+            path: '/cadastro',
+            name: 'cadastro',
+            component: () => import('../views/CadastroView.vue')
         },
         {
             path: '*',

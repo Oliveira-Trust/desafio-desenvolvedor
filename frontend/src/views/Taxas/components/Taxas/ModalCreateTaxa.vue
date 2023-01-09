@@ -30,6 +30,7 @@
 <script>
 
 import { feeApi } from '@/services/api/feeApi.js'
+import { getApiErrorMessageFromResponse } from '@/utils/index.js'
 
 export default {
   name: 'ModalCreateTaxa',
@@ -41,8 +42,9 @@ export default {
     }
   },
   methods: {
-    open(data) {
-      this.data = data
+    open() {
+      this.starting_value = null;
+      this.fee_rate = null;
       this.$bvModal.show('modal_create_taxa')
     },
     close() {
@@ -61,10 +63,8 @@ export default {
           this.$emit('saved',result);
         })
         .catch((error) => {
-          console.error(error)
-          this.$toast.error(error.response?.data?.message ?? 'Ocorreu um problema, tente novamente mais tarde.', {
-            timeout: 2000
-          })
+          const errorMessage = getApiErrorMessageFromResponse(error);
+          this.$toast.error(errorMessage, { timeout: 3000 });
         })
         .finally(() => {
           this.loading = false;

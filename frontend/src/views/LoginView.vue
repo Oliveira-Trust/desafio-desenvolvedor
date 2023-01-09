@@ -39,8 +39,7 @@
                 </div>
 
                 <div>
-                  <p class="small mb-3 pb-lg-2"><a class="text-white-50" href="#">Esqueceu a senha?</a></p>
-                  <p class="mb-0">Não tem cadastro? <a href="#" class="text-white-50 fw-bold">Cadastre-se</a>
+                  <p class="mb-0">Não tem cadastro? <b-link :to="{name:'cadastro'}" class="text-white-50 fw-bold">Cadastre-se</b-link>
                   </p>
                 </div>
 
@@ -56,17 +55,14 @@
 <script>
 import { useAuthStore } from '@/stores/auth.js'
 import { login } from '@/services/api/index.js'
+import { getApiErrorMessageFromResponse } from '@/utils/index.js'
 
 export default {
   name: 'LoginView',
   data() {
     return {
-      registerActive: false,
-      email: 'user@user.com',
-      password: '353535',
-      emailReg: '',
-      passwordReg: '',
-      confirmReg: '',
+      email: '',
+      password: '',
       loading: false,
     }
   },
@@ -87,10 +83,8 @@ export default {
             this.$router.push({ name: 'home' })
           })
           .catch((error) => {
-            console.error(error)
-            this.$toast.error(error.response?.data?.message ?? 'Ocorreu um problema, tente novamente mais tarde.', {
-              timeout: 2000
-            })
+            const errorMessage = getApiErrorMessageFromResponse(error);
+            this.$toast.error(errorMessage, { timeout: 3000 });
           })
           .finally(() => {
             this.loading = false
@@ -98,14 +92,6 @@ export default {
 
       }
     },
-
-    doRegister() {
-      if (this.emailReg === '' || this.passwordReg === '' || this.confirmReg === '') {
-        this.emptyFields = true
-      } else {
-        alert('You are now registered')
-      }
-    }
   }
 }
 </script>

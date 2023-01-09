@@ -26,6 +26,7 @@ Vue.filter('toCurrency', function (value) {
     return formatter.format(value);
 });
 
+
 Vue.filter('toRate', function (value) {
     var formatter = new Intl.NumberFormat('pt-BR', {
         style: 'percent',
