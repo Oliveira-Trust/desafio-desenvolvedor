@@ -21,7 +21,7 @@ Em todos os ``microserviços`` foram utilizados ``Laravel 9`` e ``Docker`` em se
 - ``Exchange``
 - ``User``
 
- O projeto tambem conta com um serviço de ``RabbitMQ`` para comunicação com o microserviço de ``Emails``.
+ O projeto tambem conta com um serviço de ``RabbitMQ`` para comunicação com o microserviço de ``Emails`` e ``Redis`` para ``Cache`` .
 
 
  ![art/diagram.png](art/diagram.png)
@@ -69,6 +69,7 @@ Para o funcionamento desse projeto precisaremos do `Docker` instalado.
 
 ### Portas utilizadas
 - 8080 (Nginx Api-Gateway)
+- 8081 (Client frontend)
 - 5672 e 15672 (RabbitMQ)
 - 8003 e 8100 (MailHog)
 
@@ -91,8 +92,6 @@ docker-compose -f ./backend/rabbitmq/docker-compose.yml up -d
 
 ```
 docker-compose -f ./backend/email/docker-compose.yml up -d
-docker-compose -f ./backend/email/docker-compose.yml exec app cp .env.example .env -r
-docker-compose -f ./backend/email/docker-compose.yml exec app composer install
 docker-compose -f ./backend/email/docker-compose.yml exec app php artisan key:generate
 docker-compose -f ./backend/email/docker-compose.yml exec app php artisan migrate:fresh
 ```
@@ -106,8 +105,6 @@ docker-compose -f ./backend/email/docker-compose.yml exec app php artisan migrat
 
 ```
 docker-compose -f ./backend/user/docker-compose.yml up -d
-docker-compose -f ./backend/user/docker-compose.yml exec app cp .env.example .env -r
-docker-compose -f ./backend/user/docker-compose.yml exec app composer install
 docker-compose -f ./backend/user/docker-compose.yml exec app php artisan key:generate
 docker-compose -f ./backend/user/docker-compose.yml exec app php artisan migrate:fresh --seed
 ```
@@ -116,8 +113,6 @@ docker-compose -f ./backend/user/docker-compose.yml exec app php artisan migrate
 
 ```
 docker-compose -f ./backend/exchange/docker-compose.yml up -d
-docker-compose -f ./backend/exchange/docker-compose.yml exec app cp .env.example .env -r
-docker-compose -f ./backend/exchange/docker-compose.yml exec app composer install
 docker-compose -f ./backend/exchange/docker-compose.yml exec app php artisan key:generate
 docker-compose -f ./backend/exchange/docker-compose.yml exec app php artisan migrate:fresh --seed
 ```
@@ -126,7 +121,6 @@ docker-compose -f ./backend/exchange/docker-compose.yml exec app php artisan mig
 
 ```
 docker-compose -f ./backend/api-gateway/docker-compose.yml up -d
-docker-compose -f ./backend/api-gateway/docker-compose.yml exec app cp .env.example .env -r
 docker-compose -f ./backend/api-gateway/docker-compose.yml exec app composer install
 docker-compose -f ./backend/api-gateway/docker-compose.yml exec app php artisan key:generate
 ```
@@ -144,3 +138,17 @@ A documentação da API foi gerada com swagger e pode tambem ser acessada pela u
     <img src="art/swagger_print.png" width="600">
  </p>
 
+
+
+# Frontend
+
+---
+
+o client frontend foi desenvolvido com vue.js;
+Execute o seguintes comando para ter acesso ao client frontend
+
+```
+docker-compose -f ./frontend/docker-compose.yml up -d
+```
+
+Após isso, será possível o acesso atraves do link http://localhost:8001

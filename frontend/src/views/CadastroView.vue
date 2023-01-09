@@ -84,7 +84,7 @@ export default {
     doRegister() {
       if (!this.email || !this.password || !this.name) {
         this.$toast.error('Informe os campos obrigatórios!', { timeout: 3000 })
-
+        return;
       }
       this.loading = true
 
