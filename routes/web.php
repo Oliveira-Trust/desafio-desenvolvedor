@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminChecker as AdminChecker ;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\WhatsappController;
@@ -42,27 +43,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * Logout Routes
          */
-      
-    });
-
-
-    Route::prefix('whatsapp')->name('whatsapp.')->group(function () {
-        Route::get('/', 'App\Http\Controllers\WhatsappController@index')->name('index');
-        Route::get('/new', 'WhatsappController@new')->name('new');
-        Route::post('/store', 'WhatsappController@store')->name('store');
-        Route::post('/update', 'WhatsappController@update')->name('update');
-        Route::get('/{id}/edit', 'WhatsappController@edit')->name('edit');
-        Route::get('/{id}/send', 'WhatsappController@send')->name('send');
-        Route::get('/{id}/delete', 'WhatsappController@delete')->name('delete');
-    });
-
-    Route::resource('/coins', 'App\Http\Controllers\CoinController');
-    //Route::resource('/coin-ask', 'App\Http\Controllers\CoinAskController');
-    Route::resource('/campaign-items', 'App\Http\Controllers\CampaignItemController');
-    Route::post('/contact/import', 'App\Http\Controllers\ContactController@import')->name('contacts.import');
-    Route::get('/contact/clean', 'App\Http\Controllers\ContactController@clean')->name('contacts.clear');
+    Route::resource('/coins', 'App\Http\Controllers\CoinController')->middleware('App\Http\Middleware\AdminChecker');
+    Route::resource('/configs', 'App\Http\Controllers\ConfigController')->middleware('App\Http\Middleware\AdminChecker');
+    
 
     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     Route::resource('/coin-asks', 'App\Http\Controllers\CoinAskController');
+    });
+
+
+
 });
 
+Route::post('/coin-aks/ask', 'App\Http\Controllers\CoinAskController@store_public')->name('coin-ask-public');

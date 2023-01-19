@@ -6,11 +6,14 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-        <li><a href="/whatsapp" class="nav-link px-2 text-white">Whatsapp</a></li>
-        <li><a href="/campaigns" class="nav-link px-2 text-white">Campaign</a></li>
-        <li><a href="/contacts" class="nav-link px-2 text-white">Contacts</a></li>
-        <li><a href="{{route('campaign-items.index')}}" class="nav-link px-2 text-white">Items de Campanha </a></li>
+        <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+  @auth
+        @if(auth()->user()->IsAdmin())
+        <li><a href="/coins" class="nav-link px-2 text-white">Moedas</a></li>
+        <li><a href="/configs" class="nav-link px-2 text-white">Configs</a></li>
+        @endif
+        <li><a href="/coin-asks" class="nav-link px-2 text-white">Cotações</a></li>
+        @endauth
         <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
         <li><a href="#" class="nav-link px-2 text-white">About</a></li>
       </ul>

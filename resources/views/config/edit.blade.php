@@ -1,7 +1,7 @@
 @extends('layouts.app-master')
 
 @section('template_title')
-    Update Coin Ask
+    Update Config
 @endsection
 
 @section('content')
@@ -13,14 +13,14 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Coin Ask</span>
+                        <span class="card-title">Update Config</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('coin-asks.update', $coinAsk->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('configs.update', $config->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('coin-ask.form')
+                            @include('config.form')
 
                         </form>
                     </div>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campaign;
+use App\Models\Config;
 use Illuminate\Http\Request;
 
 /**
- * Class CampaignController
+ * Class ConfigController
  * @package App\Http\Controllers
  */
-class CampaignController extends Controller
+class ConfigController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::paginate();
+        $configs = Config::paginate();
 
-        return view('campaign.index', compact('campaigns'))
-            ->with('i', (request()->input('page', 1) - 1) * $campaigns->perPage());
+        return view('config.index', compact('configs'))
+            ->with('i', (request()->input('page', 1) - 1) * $configs->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        $campaign = new Campaign();
-        return view('campaign.create', compact('campaign'));
+        $config = new Config();
+        return view('config.create', compact('config'));
     }
 
     /**
@@ -43,12 +43,12 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Campaign::$rules);
+        request()->validate(Config::$rules);
 
-        $campaign = Campaign::create($request->all());
+        $config = Config::create($request->all());
 
-        return redirect()->route('campaigns.index')
-            ->with('success', 'Campaign created successfully.');
+        return redirect()->route('configs.index')
+            ->with('success', 'Config created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class CampaignController extends Controller
      */
     public function show($id)
     {
-        $campaign = Campaign::find($id);
+        $config = Config::find($id);
 
-        return view('campaign.show', compact('campaign'));
+        return view('config.show', compact('config'));
     }
 
     /**
@@ -72,26 +72,26 @@ class CampaignController extends Controller
      */
     public function edit($id)
     {
-        $campaign = Campaign::find($id);
+        $config = Config::find($id);
 
-        return view('campaign.edit', compact('campaign'));
+        return view('config.edit', compact('config'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Campaign $campaign
+     * @param  Config $config
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Campaign $campaign)
+    public function update(Request $request, Config $config)
     {
-        request()->validate(Campaign::$rules);
+        request()->validate(Config::$rules);
 
-        $campaign->update($request->all());
+        $config->update($request->all());
 
-        return redirect()->route('campaigns.index')
-            ->with('success', 'Campaign updated successfully');
+        return redirect()->route('configs.index')
+            ->with('success', 'Config updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class CampaignController extends Controller
      */
     public function destroy($id)
     {
-        $campaign = Campaign::find($id)->delete();
+        $config = Config::find($id)->delete();
 
-        return redirect()->route('campaigns.index')
-            ->with('success', 'Campaign deleted successfully');
+        return redirect()->route('configs.index')
+            ->with('success', 'Config deleted successfully');
     }
 }

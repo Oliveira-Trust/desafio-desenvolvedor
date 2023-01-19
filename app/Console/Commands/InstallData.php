@@ -6,6 +6,9 @@ use Illuminate\Console\Command;
 use Http;
 use App\Models\Coin;
 use Illuminate\Support\Facades\Artisan;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class InstallData extends Command
 {
@@ -30,10 +33,14 @@ class InstallData extends Command
      */
     public function handle()
     {
-        Artisan::call('php artisan migrate');
+        Artisan::call('migrate:fresh');
         //dd(env('API_COINS_URL'));
         $response = Http::get(env('API_COINS_URL'));
-        
+
+        DB::insert("
+        INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+        (1, 'Administrator', 'adm@gmail.com', '11111111', NULL, '".'$2y$10$mCdHq9cHtPLS5Q0ivD9n.OTUKsmzDQO.ysDSwebjIirFkon876Jx.'."', 'admin', NULL, '2023-01-19 18:14:46', '2023-01-19 18:14:46');
+        ");
         foreach(json_decode($response->body(),true) as $key => $value){
 
             if (str_starts_with($key, env('API_BASE_COIN') . '-')) {

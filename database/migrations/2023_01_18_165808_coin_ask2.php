@@ -25,7 +25,7 @@ return new class extends Migration
             $table->double('tax_payment');  
             $table->double('total_used');  
             $table->double('total_dest');  
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable(true);
             $table->timestamps();
         });
     }

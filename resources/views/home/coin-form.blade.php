@@ -26,6 +26,13 @@
     {{Form::text('value_of', '',['placeholder' => 'Valores acima de R$1000,00','class' => 'form-control'])}}
        </div>     
     </div>
+    @guest
+    <div class="form-group">
+    {{Form::label('email', 'Email:')}}
+    {{Form::text('email', '',['placeholder' => 'Receber por enmail','class' => 'form-control'])}}
+    </div>    
+       @endguest
+    
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

@@ -9,6 +9,13 @@
         <h1 class="h3 mb-3 fw-normal">Register</h1>
 
         <div class="form-group form-floating mb-3">
+            <input type="name" class="form-control" name="name" value="{{ old('name') }}" placeholder="name@example.com" required="required" autofocus>
+            <label for="floatingEmail">Nome</label>
+            @if ($errors->has('name'))
+                <span class="text-danger text-left">{{ $errors->first('email') }}</span>
+            @endif
+        </div>
+        <div class="form-group form-floating mb-3">
             <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
             <label for="floatingEmail">Email address</label>
             @if ($errors->has('email'))
@@ -16,13 +23,6 @@
             @endif
         </div>
 
-        <div class="form-group form-floating mb-3">
-            <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus>
-            <label for="floatingName">Username</label>
-            @if ($errors->has('username'))
-                <span class="text-danger text-left">{{ $errors->first('username') }}</span>
-            @endif
-        </div>
         <div class="form-group form-floating mb-3">
             <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Username" required="required" autofocus>
             <label for="floatingName">Phone</label>

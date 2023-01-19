@@ -27,8 +27,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'username',
         'password',
+        'role',
         'phone'
     ];
 
@@ -66,5 +66,12 @@ class User extends Authenticatable
     {
 return str_ireplace(['-','+',' '],'',$this->phone);
     }
+
+    public function isAdmin()
+    {
+return $this->role == 'admin' ;
+    }
+
+    
 
 }

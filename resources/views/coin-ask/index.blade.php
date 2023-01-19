@@ -45,7 +45,10 @@
 										<th>Tax Payment</th>
 										<th>Total Used</th>
 										<th>Total Dest</th>
-										<th>User Id</th>
+                                        @if(auth()->user()->IsAdmin())
+                                        <th>User Id</th>
+                                            @endif
+										
 
                                         <th></th>
                                     </tr>
@@ -64,12 +67,12 @@
 											<td>{{ $coinAsk->tax_payment }}</td>
 											<td>{{ $coinAsk->total_used }}</td>
 											<td>{{ $coinAsk->total_dest }}</td>
+                                            @if(auth()->user()->IsAdmin())
 											<td>{{ $coinAsk->user_id }}</td>
-
+                                            @endif
                                             <td>
                                                 <form action="{{ route('coin-asks.destroy',$coinAsk->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('coin-asks.show',$coinAsk->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('coin-asks.edit',$coinAsk->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('coin-asks.show',$coinAsk->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>                                                    
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>

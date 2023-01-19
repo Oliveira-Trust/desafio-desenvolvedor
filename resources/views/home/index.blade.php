@@ -4,8 +4,22 @@
     <div class="bg-light p-5 rounded">
         @auth
         <h1>Dashboard</h1>
-        <p class="lead">Only authenticated users can access this section.</p>
-        <a class="btn btn-lg btn-primary" href="https://codeanddeploy.com" role="button">View more tutorials here &raquo;</a>
+        <p class="lead">Seja bem vindo {{auth()->user()->name}}.</p>
+        
+        <div class="card card-default">
+                    <div class="card-header">
+                        <span class="card-title">Faça uma cotação conosco</span>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{route('coin-ask-public')}}"  role="form" enctype="multipart/form-data">
+                            @csrf
+
+                            @include('home.coin-form')
+
+                        </form>
+                    </div>
+                </div>
+
         @endauth
 
         @guest
@@ -24,7 +38,7 @@
                         <span class="card-title">Faça uma cotação conosco</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('ask-me')}}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{route('coin-ask-public')}}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('home.coin-form')

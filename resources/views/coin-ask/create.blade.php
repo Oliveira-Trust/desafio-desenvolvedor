@@ -16,10 +16,10 @@
                         <span class="card-title">Create Coin Ask</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('coin-asks.store') }}"  role="form" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('coin-ask-public')}}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('coin-ask.form')
+                            @include('home.coin-form')
 
                         </form>
                     </div>
