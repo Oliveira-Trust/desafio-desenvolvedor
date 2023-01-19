@@ -23,7 +23,7 @@
     </div>
     <div class="form-group">
     {{Form::label('value_of', 'Valor a ser convertido:')}}
-    {{Form::text('value_of', '',['placeholder' => 'Valores acima de R$1000,00','class' => 'form-control'])}}
+    {{Form::text('value_of', '1000',['placeholder' => 'Valores acima de R$1000,00','class' => 'form-control','min' => 1000,'max'=> 100000,'id' => 'inp'])}}
        </div>     
     </div>
     @guest
@@ -34,6 +34,20 @@
        @endguest
     
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="check()">Submit</button>
     </div>
 </div>
+
+@section('js')
+<script>
+function check(){
+    if(document.getElementById("inp").value < 1000  || document.getElementById("inp")>100000) return false;
+}
+document.getElementById("inp").addEventListener("change", function() {
+  let v = parseInt(this.value);
+  if (v < this.min) this.value = this.min;
+  if (v > this.max) this.value = this.max;
+});
+
+</script>
+@endsection
