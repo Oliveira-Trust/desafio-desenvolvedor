@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/unauthenticated', function(){
+    return ['error' => __('unauthenticated')];
+})->name('login');
+
+Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
+Route::get('/user-logout', [AuthController::class, 'userLogout'])->middleware('auth:sanctum');
+Route::post('/user-register', [AuthController::class, 'userRegister']);
+Route::post('/user-login', [AuthController::class, 'userLogin']);
