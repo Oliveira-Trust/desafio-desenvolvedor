@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Exchange extends Model
 {
@@ -30,5 +31,12 @@ class Exchange extends Model
         'exchange_rate' => 'float',
         'converted_ammount' => 'float',
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($exchange) {
+            $exchange->user_id = Auth::user()->id;
+        });
+    }
 
 }

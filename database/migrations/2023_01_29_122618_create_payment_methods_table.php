@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\PaymentMethod;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,8 +21,8 @@ return new class extends Migration
 
         DB::table('payment_methods')->insert(
             [
-                ['method' => 'Boleto', 'fee' => 1.45],
-                ['method' => 'Cartão de crédito', 'fee' => 7.63]
+                ['method' => 'Slip', 'fee' => 1.45],
+                ['method' => 'Card', 'fee' => 7.63]
             ]
         );
 

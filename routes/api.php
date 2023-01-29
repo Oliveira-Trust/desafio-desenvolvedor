@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExchangeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,5 @@ Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum')
 Route::get('/user-logout', [AuthController::class, 'userLogout'])->middleware('auth:sanctum');
 Route::post('/user-register', [AuthController::class, 'userRegister']);
 Route::post('/user-login', [AuthController::class, 'userLogin']);
+
+Route::post('/exchange', ExchangeController::class)->middleware('auth:sanctum');
