@@ -29,7 +29,7 @@ Route::post('/user-login', [AuthController::class, 'userLogin']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/exchange', ExchangeController::class);
     Route::get('/exchange', function () {
-        $exchanges = Exchange::with('user')->orderBy('created_at', 'desc')->paginate();
+        $exchanges = Exchange::with('user')->orderBy('created_at', 'desc')->paginate(10);
         return ExchangeResource::collection($exchanges);
     });
 });

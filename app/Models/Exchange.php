@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,9 @@ class Exchange extends Model
         static::creating(function ($exchange) {
             $exchange->user_id = Auth::user()->id;
         });
-    }
 
+        static::addGlobalScope('owner', function (Builder $builder) {
+            $builder->where('user_id', Auth::user()->id);
+        });
+    }
 }
