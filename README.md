@@ -50,15 +50,17 @@ Foi incluido o arquivo ```insomnia_test.json``` para ser importado no insomnia p
 
 **Registrar novo usuário**
 
-```json
+Payload e retornos.
+
 POST [address]/api/register-user
+
+```json
 {
   "email": "aurora@dog.com",
   "name": "Aurora",
   "password": "password"
 }
 
-Retorna:
 {
   "error": "",
   "token": "9|rsi42D0F6NP3vjVtARXedSUx9dpbQ9FWhtfqKIMD"
@@ -67,14 +69,14 @@ Retorna:
 
 **Autenticar usuário**
 
-```json
 POST [address]/api/login-user
+
+```json
 {
   "email": "aurora@dog.com",
   "password": "password"
 }
 
-Retorna:
 {
   "error": "",
   "token": "9|rsi42D0F6NP3vjVtARXedSUx9dpbQ9FWhtfqKIMD"
@@ -83,16 +85,16 @@ Retorna:
 
 **Solicitar uma Conversão**
 
+POST [address]/api/exchange (usando o Bearer token gerado na autenticação
+)
+
 ```json
-POST [address]/api/exchange
 {
     "currency": "EUR",
     "payment_method": "Card",
     "ammount": 1000
 }
-usando o Bearer token gerado na autenticação
 
-Retorna:
 {
   "currency": "EUR",
   "method": "Card",
@@ -111,11 +113,12 @@ Retorna:
 
 **Listar as Conversões**
 
-```json
 GET [address]/api/exchange
 usando o Bearer token gerado na autenticação
+Filtra para mostrar apenas os dados do usuário autenticado
+em ordem decrescente de data.
 
-Retorna:
+```json
 {
   "data": [
 	{
@@ -145,8 +148,6 @@ Retorna:
     ...
   ]
 }
-Filtrando para mostrar apenas os dados do usuário autenticado 
-em data decrescente.
 ```
 #### Operação como Aplicativo
 
