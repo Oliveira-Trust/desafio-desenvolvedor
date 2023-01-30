@@ -145,7 +145,6 @@ em ordem decrescente de data.
 		"created_at": "2023-01-30T14:40:46.000000Z",
 		"user": "aurora@dog.com"
 	},
-    ...
   ]
 }
 ```

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ammount_fees', function (Blueprint $table) {
             $table->id();
-            $table->decimal('ammount', 9)->unique();
+            $table->decimal('ammount', 9);
             $table->decimal('fee', 6);
         });
 
