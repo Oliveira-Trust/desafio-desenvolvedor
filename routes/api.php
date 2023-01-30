@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExchangeController;
+use App\Http\Resources\ExchangeResource;
+use App\Models\Exchange;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +26,10 @@ Route::get('/user-logout', [AuthController::class, 'userLogout'])->middleware('a
 Route::post('/user-register', [AuthController::class, 'userRegister']);
 Route::post('/user-login', [AuthController::class, 'userLogin']);
 
-Route::post('/exchange', ExchangeController::class)->middleware('auth:sanctum');
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/exchange', ExchangeController::class);
+    Route::get('/exchange', function () {
+        $exchanges = Exchange::with('user')->orderBy('created_at', 'desc')->paginate();
+        return ExchangeResource::collection($exchanges);
+    });
+});
