@@ -1,48 +1,153 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+### API DESAFIO
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+#### Resumo
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+Implementação de uma aplicação e API simples faz a conversão da nossa moeda nacional para uma moeda estrangeira, 
+aplicando algumas taxas e regras, no final da conversão o resultado deverá ficar em tela de forma detalhada.
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+Para conversão dos valores foi utilizada a https://docs.awesomeapi.com.br/api-de-moedas pela facilidade e boa documentação.
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+#### Premissas
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+- Implementar uma API REST, registrando um histórico das operações realizadas por usuário;
+- Autenticação de usuários por token (Sanctum);
+- Consulta via API das operações filtradas para o usuário corrente;
+- Implementar testes automatizados;
+- Acesso via web usando Filament;
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+#### Regras de negório
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+- Moeda origem sempre BRL (Real brasileiro)
+- Valores a converter entre R$ 1.000,00 e R$ 100.000,00
+- Forma de pagamento pode ser boleto (Slip) o cartão de crédito (Card)
+- Taxas por método de pagamento:
+  - Para pagamentos em boleto, taxa de 1,45%
+  - Para pagamentos em cartão de crédito, taxa de 7,63%
+- Taxa por valor de 2% pela conversão para valores abaixo de R$ 3.000,00 e 1% para valores maiores que R$ 3.000,00,
+  essa taxa deve ser aplicada apenas no valor da compra e não sobre o valor já com a taxa de forma de pagamento.
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+#### Instalação
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+1. Clonar repositório em um diretório local e acessá-lo;
+2. Rodar ```composer install``` para instalar dependências;
+3. Copiar .env.example para .env
+4. Editar o arquivo .env para configurar (vem pronto para rodar em sqlite)
+5. Criar banco de dados sqlite para testes: ```touch database_test.sqlite```
+6. Rodar as migrações: ```php artisan migrate```
+7. Rodar os testes: ```php artisan test```
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+Pronto para ser utilizado.
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+#### Operação como API
+
+O aplicativo pode funcionar como API ou com interface web. 
+Se estiver usando Laravel Valet, o endereço é ```desafio-desenvolvedor.test```, se não, rodar o servidor de
+desenvolvimento do Laravel ( ```php artisan serve```) e acessar em ```127.0.0.1:8000```.
+
+Foi incluido o arquivo ```insomnia_test.json``` para ser importado no insomnia para documentar a API, como abaixo:
+
+![Alt text](insomnia-test.png?raw=true "Insomnia")
+
+**Registrar novo usuário**
+
+```json
+POST [address]/api/register-user
+{
+  "email": "aurora@dog.com",
+  "name": "Aurora",
+  "password": "password"
+}
+
+Retorna:
+{
+  "error": "",
+  "token": "9|rsi42D0F6NP3vjVtARXedSUx9dpbQ9FWhtfqKIMD"
+}
+```
+
+**Autenticar usuário**
+
+```json
+POST [address]/api/login-user
+{
+  "email": "aurora@dog.com",
+  "password": "password"
+}
+
+Retorna:
+{
+  "error": "",
+  "token": "9|rsi42D0F6NP3vjVtARXedSUx9dpbQ9FWhtfqKIMD"
+}
+```
+
+**Solicitar uma Conversão**
+
+```json
+POST [address]/api/exchange
+{
+    "currency": "EUR",
+    "payment_method": "Card",
+    "ammount": 1000
+}
+usando o Bearer token gerado na autenticação
+
+Retorna:
+{
+  "currency": "EUR",
+  "method": "Card",
+  "ammount": 1000,
+  "ammount_fee": 20,
+  "method_fee": 76.3,
+  "net_ammount": 903.7,
+  "exchange_rate": 5.5484,
+  "converted_ammount": 162.88,
+  "user_id": 3,
+  "updated_at": "2023-01-30T14:43:52.000000Z",
+  "created_at": "2023-01-30T14:43:52.000000Z",
+  "id": 9
+}
+```
+
+**Listar as Conversões**
+
+```json
+GET [address]/api/exchange
+usando o Bearer token gerado na autenticação
+
+Retorna:
+{
+  "data": [
+	{
+		"currency": "EUR",
+		"method": "Card",
+		"ammount": 1000,
+		"ammount_fee": 20,
+		"method_fee": 76.3,
+		"net_ammount": 903.7,
+		"exchange_rate": 5.5484,
+		"converted_ammount": 162.88,
+		"created_at": "2023-01-30T14:43:52.000000Z",
+		"user": "aurora@dog.com"
+	},
+	{
+		"currency": "EUR",
+		"method": "Slip",
+		"ammount": 1000,
+		"ammount_fee": 20,
+		"method_fee": 14.5,
+		"net_ammount": 965.5,
+		"exchange_rate": 5.5461,
+		"converted_ammount": 174.09,
+		"created_at": "2023-01-30T14:40:46.000000Z",
+		"user": "aurora@dog.com"
+	},
+    ...
+  ]
+}
+Filtrando para mostrar apenas os dados do usuário autenticado 
+em data decrescente.
+```
+#### Operação como Aplicativo
+
+

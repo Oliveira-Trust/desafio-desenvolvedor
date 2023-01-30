@@ -21,11 +21,13 @@ Route::get('/unauthenticated', function(){
     return ['error' => __('unauthenticated')];
 })->name('login');
 
+// Authentication and registration routes
 Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 Route::get('/user-logout', [AuthController::class, 'userLogout'])->middleware('auth:sanctum');
 Route::post('/user-register', [AuthController::class, 'userRegister']);
 Route::post('/user-login', [AuthController::class, 'userLogin']);
 
+// API routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/exchange', ExchangeController::class);
     Route::get('/exchange', function () {
