@@ -18,7 +18,7 @@ class ExchangeService
         $ammount_fee = ($ammount * $ammount_disc) / 100;
         $net_ammount = $ammount - $method_fee - $ammount_fee;
         $exchange_rate = $this->getCurrencyRate($currency);
-        $converted_ammount = (float)number_format($net_ammount / $exchange_rate, 2);
+        $converted_ammount = round($net_ammount / $exchange_rate, 2);
 
         $payload = [
             'currency' => $currency,

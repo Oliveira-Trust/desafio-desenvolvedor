@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exchanges', function (Blueprint $table) {
+            $table->id();
             $table->string('currency', 30);
             $table->string('method', 30);
             $table->decimal('ammount', 9);
