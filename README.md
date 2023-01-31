@@ -33,26 +33,75 @@ Para conversão dos valores foi utilizada a https://docs.awesomeapi.com.br/api-d
 3. Copiar .env.example para .env
 4. Editar o arquivo .env para configurar (vem pronto para rodar em sqlite)
 5. Criar banco de dados sqlite para testes: ```touch database_test.sqlite```
-6. Rodar as migrações: ```php artisan migrate```
+6. Rodar as migrações: ```php artisan migrate``` (confirmar a criação do banco de dados sqlite)
 7. Rodar os testes: ```php artisan test```
 
 Pronto para ser utilizado.
 
-#### Operação como API
+#### Como funciona
 
-O aplicativo pode funcionar como API ou com interface web. 
-Se estiver usando Laravel Valet, o endereço é ```desafio-desenvolvedor.test```, se não, rodar o servidor de
+O aplicativo pode funcionar como API ou com uma interface web.
+
+Se estiver usando Laravel Valet, o endereço é ```desafio-desenvolvedor.test```. Se não, rodar o servidor de
 desenvolvimento do Laravel ( ```php artisan serve```) e acessar em ```127.0.0.1:8000```.
 
-Foi incluido o arquivo ```insomnia_test.json``` para ser importado no insomnia para documentar a API, como abaixo:
+#### Operação na Web
 
-![Alt text](insomnia-test.png?raw=true "Insomnia")
+Acessar a página principal e fazer o registro ou conectar com usuário existente.
+
+![Alt text](screens/screen0.png?raw=true "register")
+
+Clicar em *Create a new account* para registrar um novo usuário ou entrar com e-mail e senha de usuário existente.
+
+Ao nos conectar, acessamos a página principal:
+
+![Alt text](screens/screen.png?raw=true "main")
+
+O menu lateral apresenta as opções disponíveis:
+
+**Currencies** 
+>Cadastro de moedas.
+
+![Alt text](screens/screen1.png?raw=true "main")
+
+**Payment Methods**
+>Métodos de pagamento e suas respectivas taxas.
+
+![Alt text](screens/screen2.png?raw=true "main")
+
+**Ammount fees**
+>Taxas a aplicáveis por valor convertido
+
+![Alt text](screens/screen3.png?raw=true "main")
+
+O critério é o seguinte:
+
+1. Procurar o primeiro valor maior ou igual ao solicitado para conversão.
+2. Se encontrar usa a taxa.
+3. Se não encontrar usa a taxa do valor 0
+
+Desta forma, podemos criar diversas faixas de taxa, se necessário.
+
+**New Exchange**
+>Solicita uma nova conversão para um valor numa determinada moeda e um método de pagamento.
+
+![Alt text](screens/screen4.png?raw=true "main")
+
+**Exchanges**
+>Consulta conversões já realizadas pelo usuário corrente em ordem de data decrescente.
+
+![Alt text](screens/screen5.png?raw=true "main")
+
+#### Operação como API
+
+Além do acesso via página web, é possível operar via REST API.
+>Foi incluido o arquivo ```insomnia_test.json``` para ser importado no insomnia e documentar a API, como abaixo:
+
+![Alt text](screens/insomnia-test.png?raw=true "Insomnia")
 
 **Registrar novo usuário**
 
-Payload e retornos.
-
-POST [address]/api/register-user
+>POST [address]/api/register-user
 
 ```json
 {
@@ -69,7 +118,7 @@ POST [address]/api/register-user
 
 **Autenticar usuário**
 
-POST [address]/api/login-user
+>POST [address]/api/login-user
 
 ```json
 {
@@ -85,8 +134,7 @@ POST [address]/api/login-user
 
 **Solicitar uma Conversão**
 
-POST [address]/api/exchange (usando o Bearer token gerado na autenticação
-)
+>POST [address]/api/exchange (usando o Bearer token gerado na autenticação)
 
 ```json
 {
@@ -113,7 +161,7 @@ POST [address]/api/exchange (usando o Bearer token gerado na autenticação
 
 **Listar as Conversões**
 
-GET [address]/api/exchange
+>GET [address]/api/exchange
 usando o Bearer token gerado na autenticação
 Filtra para mostrar apenas os dados do usuário autenticado
 em ordem decrescente de data.
@@ -148,6 +196,5 @@ em ordem decrescente de data.
   ]
 }
 ```
-#### Operação como Aplicativo
 
 
