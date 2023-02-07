@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PaymentMethod extends Model
+class CurrencyType extends Model
 {
     use HasFactory;
 
-    public $table = "payment_methods";
+    public $tabel="corrency_types";
 
     protected $fillable = [
+        'code',
         'name',
-        'tax',
     ];
 }

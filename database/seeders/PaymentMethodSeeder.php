@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\PaymentMethod;
 
-class PaymentMethodsSeeder extends Seeder
+class PaymentMethodSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,12 +17,12 @@ class PaymentMethodsSeeder extends Seeder
     {
         //
         PaymentMethod::create([
-            'code' => 'USD',
-            'name' => 'Dólar',
+            'name' => 'Boleto',
+            'tax' => 1.45,
         ]);
         PaymentMethod::create([
-            'code' => 'EUR',
-            'name' => 'Euro',
+            'name' => 'Cartão de Crédito',
+            'tax' => 7.63,
         ]);
     }
 }
