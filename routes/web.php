@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\ConfirmPasswordController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +22,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+
+Route::get('/home',[HomeController::class,'home'])->name('home');
+
+Route::get('/edituser',[UserController::class,'edit'])->name('admin.editUser');
+Route::post('/edituser',[UserController::class,'update'])->name('admin.editUser');
+
+Route::get('/trocarsenha',[ConfirmPasswordController::class,'changePass'])->name('admin.trocarSenha');
+Route::post('/trocarsenha',[ConfirmPasswordController::class,'updChangePass'])->name('admin.trocarSenha');

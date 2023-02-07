@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ConfirmPasswordController extends Controller
 {
@@ -36,5 +39,37 @@ class ConfirmPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    protected function changePass(){
+        return view('admin.trocarSenha');
+    }
+
+    public function updChangePass(Request $request){
+        $regras = [
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ];
+        $mensagem =[
+            'confirmed' => "A senha esta diferente da confirmação.",
+            'required' => 'Este campo é obrigatório',
+            'min' => 'O campo deve conter no mínimo 8 caracteres',
+        ];
+        
+        $request->validate($regras,$mensagem);
+        $data = $request->all();
+
+        if(Auth::attempt(['email'=>Auth::user()->email,'password'=>$data['senhaatual']])){
+            $data['password'] = bcrypt($data['password']);
+
+            $update = auth()->user()->update($data);
+
+            if($update){
+                //return view('admin.trocarSenha')->with('alerta','Senha alterada com sucesso')->with('tipoalerta','success');
+                return redirect()->route('admin.trocarSenha')->with('alerta','Senha alterada com sucesso')->with('tipoalerta','success');
+            }
+        }else{
+            //return view('admin.trocarSenha')->withErrors(['senhaatual'=>'A senha atual está incorreta']);
+            return redirect()->route('admin.trocarSenha')->withErrors(['senhaatual'=>'A senha atual está incorreta']);
+        }
     }
 }
