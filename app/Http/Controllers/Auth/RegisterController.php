@@ -9,9 +9,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-use App\Models\State;
-use App\Models\City;
-
 
 class RegisterController extends Controller
 {
@@ -89,9 +86,5 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function showRegistrationForm()
-    {
-        $states = State::orderBY('name')->get();
-        return view('auth.register',compact('states'));
-    }
+    
 }
