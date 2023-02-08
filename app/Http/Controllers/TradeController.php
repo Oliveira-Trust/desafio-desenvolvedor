@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
 use App\Models\CurrencyType;
 use App\Models\Historic;
+use Illuminate\Support\Facades\Mail;
 
 class TradeController extends Controller
 {
@@ -85,6 +86,8 @@ class TradeController extends Controller
         $res['valor_conversao_descontado_taxa'] = number_format($resValue,2,',','.');
 
         $this->store($res); // Grava negociação na tabela historical
+
+        
         
         return view('admin.tradeResult',compact('res'));
 
@@ -134,7 +137,7 @@ class TradeController extends Controller
     }
 
     /**
-     * Salva a negociação na tabela historical
+     * Salva a negociação na tabela historical e envia email paar o usuário
      *
      * @param array $array
      */
@@ -152,7 +155,14 @@ class TradeController extends Controller
 
         $data['user_id'] = auth()->user()->id;
         $data['details'] = $txt;
-        Historic::create($data);
+        $res = Historic::create($data);
+        if($res){
+            Mail::send('email.tradeConfirmation',compact('txt'),function($m){
+                $m->to(auth()->user()->email);
+                $m->subject('Comprovante Negociação');
+            });
+        }
+
     }
 
 }
