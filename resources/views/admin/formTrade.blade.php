@@ -13,7 +13,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid animate__animated animate__fadeInUp animate__faster">
+      <div class="container-fluid">
         <div class="row">
           <!-- left column -->
           
@@ -34,50 +34,21 @@
                         <div class="form-group">
                             <form method="post" action="{{ route('admin.trade') }}" onsubmit="this.cadastrar.style.pointerEvents = 'none'; this.cadastrar.textContent = 'Enviando...'">
                                 @csrf
-                                @if(isset($material))
-                                    @method('PUT')
-                                @endif
+                                 
+                                 
                                  <div class="form-group row">
-                                     <label for="name" class="col-md-2 col-form-label text-md-right">Nome</label>
-                                     <div class="col-md-10">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  autocomplete="new-password" maxlength="100" value="{{ $material->name ?? old('name')}}" aria-describedby="nameHelp" >
-                                        <!--<small id="senhaatualHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                     </div>
-                                     
-                                 </div>  
-
-                                 <div class="form-group row">
-                                     <label for="name" class="col-md-2 col-form-label text-md-right">Quantidade</label>
-                                     <div class="col-md-10">
-                                        <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" required autocomplete="new-password" maxlength="100" value="{{ $material->quantity ?? old('quantity')}}" aria-describedby="quantityHelp" step=".01">
-                                        <!--<small id="senhaatualHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                                        @error('quantity')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                     </div>
-                                     
-                                 </div>  
-
-                                 <div class="form-group row">
-                                    <label for="unit_id" class="col-md-2 col-form-label text-md-right">Unidade de Medida</label>
+                                    <label for="currency_code" class="col-md-2 col-form-label text-md-right">Moeda Destino</label>
                                     <div class="col-md-10">
-                                      <select class="form-control @error('unit_id') is-invalid @enderror" name="unit_id" aria-describedby="vendedorHelp" required>
-                                        @if(!isset($material->unit_id)) <option value="" disabled selected>Selecione uma unidade de medida</option> @endif
+                                      <select class="form-control @error('currency_code') is-invalid @enderror" name="currency_code" aria-describedby="currency_codeHelp" required>
+                                        <option value="" disabled selected>Selecione a moeda que deseja comprar</option> 
                                         
-                                        @foreach ($units as $unit)
-                                            <option value="{{$unit->id}}" {{ (isset($material->unit_id)&&($material->unit_id == $unit->id))||(old('unit_id') == $unit->id) ? 'selected':''}}>{{$unit->name}}</option>
+                                        @foreach ($currencyTypes as $currency)
+                                            <option value="{{$currency->code}}" {{ (old('currency_code') == $currency->id) ? 'selected':''}}>{{$currency->name}}</option>
                                         @endforeach
                                       </select> 
                                       
                                       
-                                      @error('unit_id')
+                                      @error('currency_code')
                                           <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>
                                           </span>
@@ -91,7 +62,7 @@
                                  <div class="form-group row">
                                   <label for="tel" class="col-md-2 col-form-label text-md-right">Valor (R$)</label>
                                   <div class="col-md-10">
-                                    <input id="value" type="number" class="form-control @error('value') is-invalid @enderror" name="value" required autocomplete="new-password" value="{{$material->value ?? old('value')}}" aria-describedby="valueHelp" step=".01">
+                                    <input id="value" type="number" class="form-control @error('value') is-invalid @enderror" name="value" required autocomplete="new-password" value="{{old('value')}}" aria-describedby="valueHelp" min="1000" max="99999" step="0.01">
                                     <!--<small id="senhaatualHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                                     @error('value')
                                         <span class="invalid-feedback" role="alert">
@@ -101,21 +72,27 @@
                                   </div>
                                  </div>  
 
-                                 
                                  <div class="form-group row">
-                                  <label for="description" class="col-md-2 col-form-label text-md-right">Observação</label>
-      
+                                  <label for="payment_id" class="col-md-2 col-form-label text-md-right">Forma de Pagamento</label>
                                   <div class="col-md-10">
-                                      <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="10" maxlength="500" aria-describedby="descriptionHelp">{{ $material->description ?? old('description')}}</textarea>
-                                      <small id="descriptionHelp" class="form-text text-muted">** Opcional</small>
-                                      @error('description')
-                                          <span class="invalid-feedback" role="alert">
-                                              <strong>{{ $message }}</strong>
-                                          </span>
-                                      @enderror
+                                    <select class="form-control @error('payment_id') is-invalid @enderror" name="payment_id" aria-describedby="payment_idHelp" required>
+                                      <option value="" disabled selected>Selecione a forma de pagamento</option> 
+                                      
+                                      @foreach ($paymentsMethods as $payment)
+                                          <option value="{{$payment->id}}" {{ (old('payment_id') == $payment->id) ? 'selected':''}}>{{$payment->name}}</option>
+                                      @endforeach
+                                    </select> 
+                                    
+                                    
+                                    @error('payment_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                   </div>
-                                 </div>
-                                 @component('components.mascaraCel') @endcomponent
+                                </div>      
+
+
                                  <div class="form-group row mb-0">
                                     <div class="col-md-10 offset-md-2">
                                         <button type="submit" name="cadastrar" class="btn btn-primary">

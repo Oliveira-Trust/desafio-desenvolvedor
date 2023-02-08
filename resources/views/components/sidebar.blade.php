@@ -69,6 +69,16 @@
                     </ul>
                 </li>  
 
+                {{-- Negociação --}}
+                <li class="nav-item">
+                  <a id="menu_trade" href="{{route('admin.trade')}}" class="nav-link {{(Request::route()->getName()=='admin.trade')?'active':''}}">
+                      <i id="img_trade" class="far fa-edit nav-icon"></i>
+                      <p>
+                          Negociação
+                      </p>
+                  </a>
+                </li>
+
                 <li class="nav-item">
                   <a id="menu_sair" class="nav-link" href="#" data-toggle="modal" data-target="#LogoutModal">
                     <i id="img_sair" class="nav-icon far fa-circle text-warning"></i>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
+use App\Http\Controllers\TradeController;
 
 
 /*
@@ -37,3 +38,8 @@ Route::post('/edituser',[UserController::class,'update'])->name('admin.editUser'
 
 Route::get('/trocarsenha',[ConfirmPasswordController::class,'changePass'])->name('admin.trocarSenha');
 Route::post('/trocarsenha',[ConfirmPasswordController::class,'updChangePass'])->name('admin.trocarSenha');
+
+Route::get('/trade',[TradeController::class,'index'])->name('admin.trade');
+Route::post('/trade',[TradeController::class,'trade'])->name('admin.trade');
+
+
