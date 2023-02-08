@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\PaymentMethod;
 use App\Models\CurrencyType;
+use App\Models\Historic;
 
 class TradeController extends Controller
 {
@@ -73,8 +74,6 @@ class TradeController extends Controller
 
         $convertedValue = $resValue / $currencyValue->ask; // Resultado da conversão do valor subtraido as taxas.
         
-        // grava histórico
-
         $res['origem'] = 'BRL';
         $res['destino'] = $data['currency_code'];
         $res['valor_para_conversao'] = number_format($data['value'],2,',','.');
@@ -84,7 +83,8 @@ class TradeController extends Controller
         $res['taxa_pagamento'] = number_format($paymentTaxValue,2,',','.');
         $res['taxa_conversao'] = number_format($conversionTaxValue,2,',','.');
         $res['valor_conversao_descontado_taxa'] = number_format($resValue,2,',','.');
-        // dd($res);
+
+        $this->store($res); // Grava negociação na tabela historical
         
         return view('admin.tradeResult',compact('res'));
 
@@ -133,10 +133,26 @@ class TradeController extends Controller
         return $value * $tax / 100;
     }
 
-    public function store()
+    /**
+     * Salva a negociação na tabela historical
+     *
+     * @param array $array
+     */
+    public function store($array)
     {
+        $txt = 'Moeda origem = '.$array['origem'].'<br>';
+        $txt.='Moeda destino = '.$array['destino'].'<br>';
+        $txt.='Valor para conversão = '.$array['valor_para_conversao'].'<br>';
+        $txt.='Forma de pagamento = '.$array['forma_de_pagamento'].'<br>';
+        $txt.='Valor da moeda de destino = '.$array['valor_moeda_destino'].'<br>';
+        $txt.='Valor comprado da moeda de destino = '.$array['valor_comprado_moeda_destino'].'<br>';
+        $txt.='Taxa de pagamento = '.$array['taxa_pagamento'].'<br>';
+        $txt.='Taxa de conversão = '.$array['taxa_conversao'].'<br>';
+        $txt.='Valor utilizado para conversão descontando as taxas = '.$array['valor_conversao_descontado_taxa'].'<br>';
 
-
+        $data['user_id'] = auth()->user()->id;
+        $data['details'] = $txt;
+        Historic::create($data);
     }
 
 }
