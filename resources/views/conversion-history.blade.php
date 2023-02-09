@@ -13,6 +13,16 @@
 
     <div class="accordion" id="accordionExample">
         @forelse ($data as $item)
+        
+        @php($cipher = '')
+        
+        @if ($item->destination_currency == 'USD')
+           @php($cipher = '$') 
+        @endif
+        @if ($item->destination_currency == 'EUR')
+           @php($cipher = '€') 
+        @endif
+
             <div class="accordion-item p-20">
                 <h2 class="accordion-header" id="heading-{{ $item->id }}">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -31,25 +41,25 @@
                                 <p>Moeda de destino: <b>{{ $item->destination_currency }}</b></p>
                             </div>
                             <div class="col-lg-4 text-center">
-                                <p>Valor para conversão: <b>{{ $item->value_conversation }}</b></p>
+                                <p>Valor para conversão: <b>R$ {{ $item->value_conversation }}</b></p>
                             </div>
                             <div class="col-lg-4 text-center">
                                 <p>Forma de pagamento: <b>{{ $item->form_payment }}</b></p>
                             </div>
                             <div class="col-lg-4 text-center">
-                                <p>Valor da "MD" usado para conversão: <b>{{ $item->dest_currency_conv }}</b></p>
+                                <p>Valor da "MD" usado para conversão: <b>{{$cipher}} {{$item->dest_currency_conv }}</b></p>
                             </div>
                             <div class="col-lg-4 text-center">
-                                <p>Valor comprado em "MD": <b>{{ $item->purchased_amount_in }}</b></p>
+                                <p>Valor comprado em "MD": <b>{{$cipher}} {{$item->purchased_amount_in }}</b></p>
                             </div>
                             <div class="col-lg-4 text-center">
-                                <p>Taxa de pagamento: <b>{{ $item->pay_rate }}</b></p>
+                                <p>Taxa de pagamento: <b>R$ {{ $item->pay_rate }}</b></p>
                             </div>
                             <div class="col-lg-4 text-center">
-                                <p>Taxa de conversão: <b>{{ $item->conversion_rate }}</b></p>
+                                <p>Taxa de conversão: <b>R$ {{ $item->conversion_rate }}</b></p>
                             </div>
                             <div class="col-lg-4 text-center">
-                                <p>Valor utilizado para CDT: <b>{{ $item->amount_used_conv }}</b>
+                                <p>Valor utilizado para CDT: <b>R$ {{ $item->amount_used_conv }}</b>
                                 </p>
                             </div>
                         </div>
