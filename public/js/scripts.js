@@ -68,7 +68,7 @@ if (form) {
         // Recupera os dados do formulário
         const data = new FormData(form);
         const type = data.get('currency_type');
-        const purchaseAmount = data.get('purchase_amount');
+        let purchaseAmount = removeMaskMoeda(data.get('purchase_amount'));
         const paymentMethod = data.get('payment_method');
         const emailUser = document.querySelector('#email_user_send_email').value;
         const nameUser = document.querySelector('#name_user_send_email').value;
@@ -110,7 +110,7 @@ const displayCurrencyConversionData = (response) => {
     form.reset();
 
     // Variável que armazena a mensagem a ser exibida
-    var message = `Moeda de origem: ${response.data.origin_currency}<br>Moeda de destino: ${response.data.destination_currency}<br>Valor para conversão: ${response.data.value_conversation.toFixed(2)}<br>Forma de pagamento: ${response.data.form_payment}<br>Valor da "Moeda de destino" usado para conversão: ${response.data.dest_currency_conv}<br>Valor comprado em "Moeda de destino": ${response.data.purchased_amount_in.toFixed(2)}<br>Taxa de pagamento: ${response.data.pay_rate.toFixed(2)}<br>Taxa de conversão: ${response.data.conversion_rate.toFixed(2)}<br>Valor utilizado para conversão descontando as taxas: ${response.data.amount_used_conv.toFixed(2)}`;
+    var message = `Moeda de origem: ${response.data.origin_currency}<br>Moeda de destino: ${response.data.destination_currency}<br>Valor para conversão: ${realCurrencyFormat(response.data.value_conversation)}<br>Forma de pagamento: ${response.data.form_payment}<br>Valor da "Moeda de destino" usado para conversão: ${realCurrencyFormat(response.data.dest_currency_conv, response.data.destination_currency, false)}<br>Valor comprado em "Moeda de destino": ${realCurrencyFormat(response.data.purchased_amount_in, response.data.destination_currency)}<br>Taxa de pagamento: ${realCurrencyFormat(response.data.pay_rate)}<br>Taxa de conversão: ${realCurrencyFormat(response.data.conversion_rate)}<br>Valor utilizado para conversão descontando as taxas: ${realCurrencyFormat(response.data.amount_used_conv)}`;
 
     // Chama a função "generateNotification" para exibir a notificação
     generateNotification(false, 'success', message);
@@ -171,7 +171,7 @@ function createMessage(obj) {
 
         // Percorre cada item do array na propriedade do objeto
         obj[item].forEach((itemArray) => {
-            
+
             // Adiciona o item do array na mensagem
             message += itemArray + "<br>";
         });
@@ -187,4 +187,65 @@ function createMessage(obj) {
  */
 function clearBorder(element) {
     element.style.cssText = 'border: #dee2e6 solid 1px !important';
+}
+
+
+//Mask moeda real
+function maskCoin(o, f) {
+    setTimeout(function () {
+        var v = mCoin(o.value);
+        if (v != o.value) {
+            o.value = v;
+        }
+    }, 1);
+}
+//Regex
+function mCoin(v) {
+    var r = v.replace(/\D/g, "");
+
+    r = (r / 100).toFixed(2) + '';
+    r = r.replace(".", ",");
+    r = r.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    return r;
+}
+
+//Remove Mask moeda
+function removeMaskMoeda(value) {
+    value = value.replace(/[^\d,]/g, "");  // remove todos os caracteres não numéricos, exceto as vírgulas
+    value = value.replace(",", "");  // remove a vírgula restante
+    value = (parseInt(value) / 100);
+
+    return value;
+}
+
+
+/**
+ * Função para formatar o número em uma representação de moeda
+ * @param {Number} numero - Número a ser formatado
+ * @param {String} code - Código da moeda (opcional)
+ * @param {Boolean} toFixed - Indica se o número deve ser arredondado (opcional)
+ * @returns {String} Número formatado como moeda
+ */
+function realCurrencyFormat(numero, code = false, toFixed = true) {
+
+    // Define o símbolo da moeda como 'R$' por padrão
+    var cipher = 'R$';
+
+    // Verifica se o código é USD ou EUR e muda o símbolo da moeda de acordo
+    if (code == 'USD') {
+        cipher = '$';
+    } else if (code == 'EUR') {
+        cipher = '€';
+    }
+
+    // Verifica se o número deve ser arredondado
+    if (toFixed) {
+        var numero = numero.toFixed(2).split('.');
+    } else {
+        var numero = numero.split('.');
+    }
+
+    // Adiciona o símbolo da moeda e formata a parte inteira do número com ponto de milhar
+    numero[0] = cipher + " " + numero[0].split(/(?=(?:...)*$)/).join('.');
+    return numero.join(',');
 }
