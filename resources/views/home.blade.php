@@ -10,7 +10,8 @@
                 <div class="col-lg-4">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Digite o valor</label>
-                        <input onfocus="clearBorder(this)" id="purchaseAmount" name="purchase_amount" type="text"
+                        <input maxlength="15"
+                        onkeypress="maskCoin(this, mCoin);" onblur="maskCoin(this, mCoin);" onfocus="clearBorder(this)" id="purchaseAmount" name="purchase_amount" type="text"
                             class="form-control" id="exampleFormControlInput1" placeholder="Ex: 1.000,00">
                     </div>
                 </div>
