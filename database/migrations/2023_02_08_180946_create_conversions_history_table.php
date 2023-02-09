@@ -23,19 +23,19 @@ class CreateConversionsHistoryTable extends Migration
 
             $table->string('destination_currency');
 
-            $table->decimal('value_conversation', 7, 2);
+            $table->decimal('value_conversation', 8, 2);
 
             $table->string('form_payment');
 
-            $table->decimal('dest_currency_conv', 7, 2);
+            $table->decimal('dest_currency_conv', 8, 2);
 
-            $table->decimal('purchased_amount_in', 7, 2);
+            $table->decimal('purchased_amount_in', 8, 2);
 
-            $table->decimal('pay_rate', 7, 2);
+            $table->decimal('pay_rate', 8, 2);
 
-            $table->decimal('conversion_rate', 7, 2);
+            $table->decimal('conversion_rate', 8, 2);
 
-            $table->decimal('amount_used_conv', 7, 2);
+            $table->decimal('amount_used_conv', 8, 2);
 
             $table->timestamp('created_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'));
