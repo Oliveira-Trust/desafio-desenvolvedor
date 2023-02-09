@@ -1,0 +1,50 @@
+body {
+    background-color: #f0f2f5;
+    font-family: 'Montserrat', sans-serif !important;
+    overflow-x: hidden !important;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.div-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.p-5-bottom {
+    padding: 0 0 5px 0;
+}
+
+.color-text-empty {
+    color: #808080;
+}
+
+
+.div-form-perso {
+    box-shadow: 0 0 1em rgb(134, 133, 133);
+    padding: 50px;
+    border-radius: 5px;
+}
+
+.div-form-perso:hover {
+    box-shadow: 0 0 1em #000000;
+    padding: 50px;
+    border-radius: 5px;
+}
+
+.nav-link, .navbar-brand {
+    color: #fff !important;
+}
+
+.bg-danger {
+    background-color: #af0101 !important;
+}
