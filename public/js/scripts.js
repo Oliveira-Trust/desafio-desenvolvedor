@@ -110,7 +110,7 @@ const displayCurrencyConversionData = (response) => {
     form.reset();
 
     // Variável que armazena a mensagem a ser exibida
-    var message = `Moeda de origem: ${response.data.origin_currency}<br>Moeda de destino: ${response.data.destination_currency}<br>Valor para conversão: ${realCurrencyFormat(response.data.value_conversation)}<br>Forma de pagamento: ${response.data.form_payment}<br>Valor da "Moeda de destino" usado para conversão: ${realCurrencyFormat(response.data.dest_currency_conv, response.data.destination_currency, false)}<br>Valor comprado em "Moeda de destino": ${realCurrencyFormat(response.data.purchased_amount_in, response.data.destination_currency)}<br>Taxa de pagamento: ${realCurrencyFormat(response.data.pay_rate)}<br>Taxa de conversão: ${realCurrencyFormat(response.data.conversion_rate)}<br>Valor utilizado para conversão descontando as taxas: ${realCurrencyFormat(response.data.amount_used_conv)}`;
+    var message = `Moeda de origem: ${response.data.origin_currency}<br>Moeda de destino: ${response.data.destination_currency}<br>Valor para conversão: ${currencyFormat(response.data.value_conversation)}<br>Forma de pagamento: ${response.data.form_payment}<br>Valor da "Moeda de destino" usado para conversão: ${currencyFormat(response.data.dest_currency_conv, response.data.destination_currency, false)}<br>Valor comprado em "Moeda de destino": ${currencyFormat(response.data.purchased_amount_in, response.data.destination_currency)}<br>Taxa de pagamento: ${currencyFormat(response.data.pay_rate)}<br>Taxa de conversão: ${currencyFormat(response.data.conversion_rate)}<br>Valor utilizado para conversão descontando as taxas: ${currencyFormat(response.data.amount_used_conv)}`;
 
     // Chama a função "generateNotification" para exibir a notificação
     generateNotification(false, 'success', message);
@@ -226,7 +226,7 @@ function removeMaskMoeda(value) {
  * @param {Boolean} toFixed - Indica se o número deve ser arredondado (opcional)
  * @returns {String} Número formatado como moeda
  */
-function realCurrencyFormat(numero, code = false, toFixed = true) {
+function currencyFormat(numero, code = false, toFixed = true) {
 
     // Define o símbolo da moeda como 'R$' por padrão
     var cipher = 'R$';
