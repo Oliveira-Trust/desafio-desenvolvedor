@@ -10,10 +10,10 @@ export const generateNotification = (obj, status, message = false) => {
     document.getElementById('div-notification').style.display = 'block';
 
     // Recupera o elemento com id "msg"
-    var msg = document.getElementById('msg');
+    const msg = document.getElementById('msg');
 
     // Variável que armazena a mensagem de email enviado
-    var email = '<div style="padding: 20px" >A cotação foi enviada pra o email <b>' + document.querySelector('#email_user_send_email').value + '</b></div>';
+    let email = '<div style="padding: 20px" >A cotação foi enviada pra o email <b>' + document.querySelector('#email_user_send_email').value + '</b></div>';
 
     // Se o status não for "success" e não houver uma mensagem especificada
     if (status != 'success' && !message) {
@@ -41,7 +41,7 @@ export const generateNotification = (obj, status, message = false) => {
  */
 const createMessage = (obj) => {
     // Inicializa a variável que armazenará a mensagem
-    var message = '';
+    let message = '';
 
     // Percorre cada propriedade do objeto
     Object.keys(obj).forEach(function (item) {

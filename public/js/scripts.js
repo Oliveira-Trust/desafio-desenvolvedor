@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 const fetchData = (data) => {
 
     // Endpoint da API
-    var endpoint = 'api/convert-currency';
+    const endpoint = 'api/convert-currency';
 
     // Recupera o token CSRF do documento HTML
-    let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     //Exibe o elemento HTML com id "loading"
     document.getElementById('loading').style.display = 'block';
@@ -72,12 +72,12 @@ if (form) {
         // Recupera os dados do formulário
         const data = new FormData(form);
         const type = data.get('currency_type');
-        let purchaseAmount = removeMaskMoeda(data.get('purchase_amount'));
+        const purchaseAmount = removeMaskMoeda(data.get('purchase_amount'));
         const paymentMethod = data.get('payment_method');
         const emailUser = document.querySelector('#email_user_send_email').value;
         const nameUser = document.querySelector('#name_user_send_email').value;
         const userId = document.querySelector('#user_id').value;
-        console.log(purchaseAmount);
+        
         // Realiza a requisição à API com os dados do formulário
         fetchData({ type, purchaseAmount, paymentMethod, emailUser, nameUser, userId })
             .then(response => {

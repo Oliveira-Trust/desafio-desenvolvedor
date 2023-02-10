@@ -8,7 +8,7 @@
 export const currencyFormat = (numero, code = false, toFixed = true) => {
 
     // Define o símbolo da moeda como 'R$' por padrão
-    var cipher = 'R$';
+    let cipher = 'R$';
 
     // Verifica se o código é USD ou EUR e muda o símbolo da moeda de acordo
     if (code == 'USD') {
@@ -19,9 +19,9 @@ export const currencyFormat = (numero, code = false, toFixed = true) => {
 
     // Verifica se o número deve ser arredondado
     if (toFixed) {
-        var numero = numero.toFixed(2).split('.');
+        numero = numero.toFixed(2).split('.');
     } else {
-        var numero = numero.split('.');
+        numero = numero.split('.');
     }
 
     // Adiciona o símbolo da moeda e formata a parte inteira do número com ponto de milhar
