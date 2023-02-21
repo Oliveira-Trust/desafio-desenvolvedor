@@ -59,7 +59,12 @@ docker exec -it ms_phpfpm php artisan converter-moeda
 ```
 ![enter image description here](https://magnosanttana.com.br/desafio-oliveira-trust/conversor-moeda-terminal.jpg)
 
+#### Testes unitários
 
+Foi implementado alguns testes de unidade e um de integração, para executá-los basta executar o comando
+```sh
+docker exec -it ms_phpfpm vendor/bin/pest
+```
 
 #### Meu contato :sunglasses::
 
