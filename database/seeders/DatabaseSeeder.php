@@ -16,9 +16,18 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->count(2)
+        ->sequence(
+            ['name' => 'João', 'email' => 'joao@email.com', 'password' => bcrypt('12345678')],
+            ['name' => 'Maria', 'email' => 'maria@email.com', 'password' => bcrypt('12345678')],
+        )->create();
+
+        $this->call([
+            FormaPagamentoSeeder::class,
+            TaxaConversaoSeeder::class,
+            TipoMoedaSeeder::class,
+        ]);
     }
+
+
 }
