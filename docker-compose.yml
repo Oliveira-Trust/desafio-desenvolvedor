@@ -1,0 +1,31 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: '3.1'
+services:
+    mailhog:
+        image: 'mailhog/mailhog:latest'
+        container_name: ms_mailhog
+        ports:
+            - '8025:8025'
+
+    redis:
+        image: 'redis:alpine'
+
+    webserver:
+        image: 'nginx:alpine'
+        container_name: ms_webserver
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+        ports:
+            - '8081:80'
+
+    php-fpm:
+        build: phpdocker/php-fpm
+        container_name: ms_phpfpm
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.2/fpm/conf.d/99-overrides.ini'
