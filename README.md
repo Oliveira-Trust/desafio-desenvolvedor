@@ -1,48 +1,68 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+### Sobre o Projeto:
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Trata-se de um desafio técnico (conversor de moedas) proposto pela [Oliveira Trust](https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md) para o cargo de Desenvolvedor PHP.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+  
+#### O que é preciso para executar: 🧪
+Este projeto parte da premissa que você já tenha o docker instalado em sua máquina e que também esteja usando ambiente linux (ainda que via WSL).
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+ 1. Após clonar, entrar no diretório e mudar de branch
+```sh
+git checkout feature/magno-santana-da-silva
+```
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+2. Executar:
+```sh
+docker-compose up -d
+```
+Serão executados os serviços do apache, php-fpm, redis e mailhog. Caso haja algum conflito de portas que impeça a execução de algum serviço fique a vontade para alterar no arquivo ***docker-compose.yml*** presente na raiz do projeto.
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+3. Agora o arquivo ***.env.example*** deve ser copiado para um novo chamado apenas ***.env*** para isso execute:
+```sh
+docker exec -it ms_phpfpm cp .env.example .env
+```
+4. Agora instale as dependências php do projeto
+```sh
+docker exec -it ms_phpfpm composer install
+```
+5. Conceda permissões de escrita nos diretórios *storage* e *bootstrap/cache*:
+```sh
+sudo chmod 777 -R storage/
+```
+```sh
+sudo chmod 777 -R bootstrap/cache/
+```
+6. Agora precisamos rodar as *migrations* e popular o banco de dados com as informações iniciais. No arquivo .env já possui uma configuração de um banco remoto. Caso queira, fique a vontade para informar os dados de acesso de um outro banco de dados... 
+```sh
+docker exec -it ms_phpfpm php artisan migrate:fresh
+```
+```sh
+docker exec -it ms_phpfpm php artisan db:seed
+```
+7. Pronto, neste momento você ja deve ser capaz de acessar a aplicação no endereço http://localhost:8081/ ou em outra porta, caso você tenha alterado no arquivo ***docker-compose.yml***.
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+![enter image description here](https://magnosanttana.com.br/desafio-oliveira-trust/conversor-moeda-tela-login.jpg)
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+**Para logar use os dados:**
+Email: *joao@email.com* ou entao *maria@email.com*
+Senha: *12345678*
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+ **📨 Envio da conversão por email**
+ Sempre que uma conversão for feita a mesma será enviada para o email do usuário logado.
+ Para que você possa conseguir visualizar o email basta acessar a url http://localhost:8025/ onde estará rodando o serviço *mailhog*. 
+ *Caso você tenha alterado a porta, lembre de alterar esta informação no arquivo .env*
+#### O conversor também pode ser usado via terminal😍
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+Para isso basta executar o comando:
+```sh
+docker exec -it ms_phpfpm php artisan converter-moeda
+```
+![enter image description here](https://magnosanttana.com.br/desafio-oliveira-trust/conversor-moeda-terminal.jpg)
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+
+#### Meu contato :sunglasses::
+
+- Email: contato@magnosanttana.com.br
+
+- LinkedIn (https://www.linkedin.com/in/magnosanttana)
