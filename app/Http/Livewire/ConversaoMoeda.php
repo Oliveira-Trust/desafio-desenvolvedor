@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\ConversaoRealizada;
 use App\Models\Conversao;
 use App\Models\FormaPagamento;
 use App\Models\TaxaConversao;
 use App\Models\TipoMoeda;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use OT\ConversorMoedas\Application\UseCases\Conversor\ConverterValorUC;
 use OT\ConversorMoedas\Application\UseCases\Conversor\DTO\ConverterValorInputDTO;
@@ -72,6 +74,7 @@ class ConversaoMoeda extends Component
             $uc = new ConverterValorUC($input, $this->repositoryFormaPagamento, $this->repositoryConversao, $this->serviceCotacao->cotacao());
             $output = $uc->execute();
 
+            $this->sendEmail($output->toArray()); //MELHORIA LANÇAR EVENTO E CRIAR UM JOB PARA O ENVIO DO EMAIL
             $this->isConversaoRealizada = true;
             $this->resultadoConversao = $output->toArray();
 
@@ -90,4 +93,8 @@ class ConversaoMoeda extends Component
         $this->resultadoConversao = null;
     }
 
+    public function sendEmail($arrDados)
+    {
+        Mail::to(auth()->user())->send(new ConversaoRealizada($arrDados));
+    }
 }
