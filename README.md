@@ -1,48 +1,73 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Exchange Calculator
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+This is an application writen in PHP's Laravel to query exchange rates
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## About
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+This application run on PHP's Laravel framework
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+This application also uses Composer to handle dependencies. So, to run this application you must have installed on your environment:
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+* PHP (_https://www.php.net/manual/en/install.php_)
+* Composer (_https://getcomposer.org/download/_)
+* MySQL 5.x (_https://dev.mysql.com/doc/refman/5.7/en/installing.html_)
+* An SQL client application, such as MySQL Workbench (_https://www.mysql.com/products/workbench/_) or DBeaver (_https://dbeaver.io/download/_)
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+## Installation
+Once you have all necessary applications intalled on your environment, it's time to set up the app itself. For this, start by cloning this repository on a folder of your choosing, and then move into the newly created folder.
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+1. First, install all the project's dependencies by running the following:
+```
+composer install
+```
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+2. Get the app running with:
+```
+php artisan serve
+```
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+3. Then create a file named `.env` from the `.env.example` file by running:
+```
+cp .env.example .env
+```
+Make sure you set up your database information accordingly on the following configurations keys on the `.env` file
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ot_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
+This is just an example, the HOST, PORT, USERNAME and PASSWORD depends on the data you used when setting up your database server.
+Also, don't forget to create an "ot_db" database with default charset configuration (ug UTF-8) using your chosen database client
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+4. You're nearly there! Next you need to run Laravel's application key generation command. Laravel use this key for cross-request authentication. Use:
+```
+php artisan key:generate
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+5. In order for Laravel be able to write logs on your system, you must allowed it to do so. So run the following:
+```
+chmod -R 777 storage/
+```
+
+6. Now you must run the migration to create your app's tables. Use this:
+```
+php artisan migrate
+```
+
+7. And you're done! If you run into any troubles try cleaning Laravel's cache. Use:
+```
+php artisan cache:clear
+```
+
+## Usage
+To use this app, access it on your browser with the following URL `http://localhost:8000/`. 
+
+From the main page you can either:
+* Create a user login and be authenticated automatically
+* Log in with a previously created user
+
+From the authenticated main page you can now
+* Pick a from and to currency and get an conversion amount with taxes applied. The retrieved data is automatically stored for future reviews
