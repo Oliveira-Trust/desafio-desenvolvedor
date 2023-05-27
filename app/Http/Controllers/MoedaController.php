@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Http;
 
 class MoedaController extends Controller
 {
-
+    /**
+     * Retorna uma listagem das moedas disponiveis para conversão do Real com base na API https://economia.awesomeapi.com.br.
+     *
+     * @return view('main.index') 
+     */
     public function listarMoedas(){
         $endpoint = "https://economia.awesomeapi.com.br/json/available";
         $curl = curl_init();
@@ -38,6 +42,12 @@ class MoedaController extends Controller
 
     }
 
+
+    /**
+     * Realiza o processamento e retorna o resultado da conversão com a aplicação das regras de negócio
+     *
+     * @return view('main.resultado') 
+     */
     public function converterMoeda(Request $request)
     {
         try {

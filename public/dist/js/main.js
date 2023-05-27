@@ -30,10 +30,11 @@ function pagamento(valor, moeda,token){
 }
 
 function converter(valor, moeda, metodo_paganto, token){
-	var real  = $(valor).val(),
-		convertTo =	$(moeda).val(),
+	var real          = $(valor).val(),
+		convertTo     =	$(moeda).val(),
 		metodoPaganto = $(metodo_paganto).val(),
-		mytoken = $(token).val();
+		mytoken       = $(token).val();
+		
 		if(!real){
 			$("#aviso").html("<div class='col-sm-12'><div class='card' style='display:block;color:#fff;background:#D40000;border-radius: 5px; margin-bottom: 0; text-align: center;'><b> Informe um valor para conversão! </b></div></div>");
 		

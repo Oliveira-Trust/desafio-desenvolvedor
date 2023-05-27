@@ -26,10 +26,10 @@ Route::post('/pagamento', function(){
     return view('main.pagamento');
 });
 
-Route::post('/register', function(){
+Route::get('/register', function(){
     return view('auth.register');
 });
 
-Route::post('/login', function(){
+Route::get('/login', function(){
     return view('auth.login');
 });
