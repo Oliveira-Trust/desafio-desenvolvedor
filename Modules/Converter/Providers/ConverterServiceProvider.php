@@ -4,6 +4,10 @@ namespace Modules\Converter\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Converter\Repositories\Contracts\ConversionHistoryRepositoryInterface;
+use Modules\Converter\Repositories\ConversionHistoryRepository;
+use Modules\Converter\Services\Contracts\ConverterServiceInterface;
+use Modules\Converter\Services\ConverterService;
 
 class ConverterServiceProvider extends ServiceProvider
 {
@@ -38,6 +42,8 @@ class ConverterServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(ConverterServiceInterface::class, ConverterService::class);
+        $this->app->bind(ConversionHistoryRepositoryInterface::class, ConversionHistoryRepository::class);
     }
 
     /**
