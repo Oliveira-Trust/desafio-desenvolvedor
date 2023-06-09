@@ -6,9 +6,12 @@ body {
   
   body.dark-mode {
     color: #ddd;
-    background-color: #333;
+    background-color: #333; 
   }
 
+  .dark-color{
+    color: #333;
+  }
   
   .switch {
     position: relative;
