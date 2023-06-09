@@ -1,0 +1,11 @@
+{
+    "name": "Converter",
+    "alias": "converter",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Converter\\Providers\\ConverterServiceProvider"
+    ],
+    "files": []
+}
