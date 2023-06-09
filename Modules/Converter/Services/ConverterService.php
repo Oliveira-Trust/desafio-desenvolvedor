@@ -5,6 +5,7 @@ namespace Modules\Converter\Services;
 use Modules\Converter\Services\Contracts\ConverterServiceInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Collection;
 use Modules\Converter\Entities\ConversionHistory;
 use Modules\Converter\Repositories\Contracts\ConversionHistoryRepositoryInterface;
 
@@ -64,5 +65,10 @@ class ConverterService implements ConverterServiceInterface
     public function getConversionHistoryById(int $conversionHistoryId): ConversionHistory
     {
         return $this->conversionHistoryRepository->getById($conversionHistoryId);
+    }
+
+    public function getAllConversionsHistoryFromLoggedUser(): Collection
+    {
+        return $this->conversionHistoryRepository->getAllByUserId(auth()->user()->id);
     }
 }

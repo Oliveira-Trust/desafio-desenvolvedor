@@ -75,4 +75,10 @@ class ConverterController extends Controller
             Log::error("Erro ao encontrar histórico de conversão: " . $e->getMessage());
         }
     }
+
+    public function history()
+    {
+        $conversionHistories = $this->converterSevice->getAllConversionsHistoryFromLoggedUser();
+        return view('converter::history', ['conversionHistories' => $conversionHistories]);
+    }
 }

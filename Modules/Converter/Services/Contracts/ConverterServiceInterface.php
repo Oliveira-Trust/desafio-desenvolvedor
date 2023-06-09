@@ -2,6 +2,7 @@
 
 namespace Modules\Converter\Services\Contracts;
 
+use Illuminate\Support\Collection;
 use Modules\Converter\Entities\ConversionHistory;
 
 interface ConverterServiceInterface
@@ -37,4 +38,9 @@ interface ConverterServiceInterface
      * @return ConversionHistory
      */
     public function getConversionHistoryById(int $conversionHistoryId): ConversionHistory;
+
+    /**
+     * @return Collection
+     */
+    public function getAllConversionsHistoryFromLoggedUser(): Collection;
 }

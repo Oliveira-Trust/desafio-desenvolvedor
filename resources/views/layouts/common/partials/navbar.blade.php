@@ -12,7 +12,7 @@
                         <a class="nav-link" href="{{ route('converter.index') }}">Converter BRL</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Histórico</a>
+                        <a class="nav-link" href="{{route('converter.history')}}">Histórico</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('profile.edit')}}">Perfil</a>
