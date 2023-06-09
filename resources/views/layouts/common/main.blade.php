@@ -8,8 +8,10 @@
     <title>@yield('title')</title>
 </head>
 
-<body class="vh-100 d-flex align-items-center">
+<body class="d-flex align-items-center">
     <div class="container">
+        @include('layouts.common.partials.navbar')
+
         <div class="row justify-content-center">
             @yield('content')
         </div>

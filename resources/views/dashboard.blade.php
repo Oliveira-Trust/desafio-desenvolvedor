@@ -1,1 +1,0 @@
-Autenticado com Sucesso!
