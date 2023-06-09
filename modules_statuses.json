@@ -1,5 +1,6 @@
 {
     "Auth": true,
     "User": true,
-    "Converter": true
+    "Converter": true,
+    "Fee": true
 }
