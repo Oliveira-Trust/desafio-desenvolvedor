@@ -11,4 +11,10 @@ interface ConversionHistoryRepositoryInterface
      * @return ConversionHistory
      */
     public function store(array $data): ConversionHistory;
+
+    /**
+     * @param integer $id
+     * @return ConversionHistory
+     */
+    public function getById(int $id): ConversionHistory;
 }

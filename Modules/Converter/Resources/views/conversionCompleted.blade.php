@@ -1,57 +1,55 @@
 @extends('layouts.common.main')
 
-@section('title', 'Converter Real Brasileiro')
+@section('title', 'Conversão Finalizada')
 
 @section('content')
     <div class="col-md-6">
-        <h1 class="text-center">Converter Real Brasileiro</h1>
-        <form action="{{route('converter.make')}}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="destination_currency">Moeda de Destino</label>
-                <select name="destination_currency" id="destination_currency" class="form-control" required>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                </select>
-                @if ($errors->get('destination_currency'))
-                    @include('components.common.input-errors', [
-                        'errors' => $errors->get('destination_currency'),
-                    ])
-                @endif
-            </div>
+        <h1 class="text-center">Conversão Finalizada</h1>
 
-            <div class="mb-3">
-                <label for="value_to_convert" class="form-label">Valor para Conversão</label>
-                <input type="text" name="value_to_convert" class="form-control" id="value_to_convert" value=""
-                    required onkeypress="$(this).mask('#.##0,00', {reverse: true});">
-                @if ($errors->get('value_to_convert'))
-                    @include('components.common.input-errors', [
-                        'errors' => $errors->get('value_to_convert'),
-                    ])
-                @endif
-            </div>
+        <table>
+            <table>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>Moeda de origem</td>
+                    <td>BRL</td>
+                </tr>
+                <tr>
+                    <td>Moeda de destino</td>
+                    <td>{{$conversion->destination_currency}}</td>
+                </tr>
+                <tr>
+                    <td>Valor para conversão</td>
+                    <td>{{$conversion->value_to_convert}}</td>
+                </tr>
+                <tr>
+                    <td>Forma de pagamento</td>
+                    <td>{{$conversion->payment_method}}</td>
+                </tr>
+                <tr>
+                    <td>Valor da Moeda de destino </td>
+                    <td>{{$conversion->destination_currency_value}}</td>
+                </tr>
+                <tr>
+                    <td>Valor comprado em "Moeda de destino"</td>
+                    <td>{{$conversion->purchase_value}}</td>
+                </tr>
+                <tr>
+                    <td>Taxa de pagamento</td>
+                    <td>{{$conversion->payment_fee}}</td>
+                </tr>
+                <tr>
+                    <td>Taxa de conversão</td>
+                    <td>{{$conversion->conversion_fee}}</td>
+                </tr>
+                <tr>
+                    <td>Valor utilizado para conversão</td>
+                    <td>{{$conversion->final_conversion_value}}</td>
+                </tr>
+            </table>
+        </table>
 
-            <div class="mb-3">
-                <label for="payment_method">Forma de Pagamento</label>
-                <select name="payment_method" id="payment_method" class="form-control" required>
-                    <option value="boleto">Boleto</option>
-                    <option value="credit_card">Cartão de Crédito</option>
-                </select>
-                @if ($errors->get('payment_method'))
-                    @include('components.common.input-errors', [
-                        'errors' => $errors->get('payment_method'),
-                    ])
-                @endif
-            </div>
-
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Converter</button>
-            </div>
-        </form>
     </div>
-@endsection
-
-@section('javascript')
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 @endsection

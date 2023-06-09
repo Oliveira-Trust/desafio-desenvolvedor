@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Modules\Converter\Http\Requests\MakeConversionRequest;
 use Modules\Converter\Services\Contracts\ConverterServiceInterface;
 use Modules\Fee\Services\Contracts\FeeServiceInterface;
@@ -53,16 +54,25 @@ class ConverterController extends Controller
                 'conversion_fee' => $appliedFees['value_fee'],
                 'final_conversion_value' => $finalValueToConvert
             ];
-            
+
             DB::beginTransaction();
             $conversionHistory = $this->converterSevice->recordConversionHistory($data);
             DB::commit();
 
-            dd($conversionHistory);
-
+            return redirect()->route('converter.result', ['conversionHistoryResultId' => $conversionHistory->id]);
         } catch (Exception $e) {
-            dd($e->getMessage());
+            Log::error("Erro ao processar conversão:" . $e->getMessage());
             DB::rollBack();
+        }
+    }
+
+    public function result(string $conversionHistoryResultId)
+    {
+        try {
+            $conversionHistory = $this->converterSevice->getConversionHistoryById(intval($conversionHistoryResultId));
+            return view('converter::conversionCompleted', ['conversion' => $conversionHistory]);
+        } catch (Exception $e) {
+            Log::error("Erro ao encontrar histórico de conversão: " . $e->getMessage());
         }
     }
 }

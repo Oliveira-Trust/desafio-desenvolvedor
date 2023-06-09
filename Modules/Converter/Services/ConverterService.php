@@ -60,4 +60,9 @@ class ConverterService implements ConverterServiceInterface
         $data['user_id'] = auth()->user()->id;
         return $this->conversionHistoryRepository->store($data);
     }
+
+    public function getConversionHistoryById(int $conversionHistoryId): ConversionHistory
+    {
+        return $this->conversionHistoryRepository->getById($conversionHistoryId);
+    }
 }

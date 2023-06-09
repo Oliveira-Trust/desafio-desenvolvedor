@@ -31,4 +31,10 @@ interface ConverterServiceInterface
      * @return ConversionHistory
      */
     public function recordConversionHistory(array $conversionData): ConversionHistory;
+
+    /**
+     * @param integer $conversionHistoryId
+     * @return ConversionHistory
+     */
+    public function getConversionHistoryById(int $conversionHistoryId): ConversionHistory;
 }

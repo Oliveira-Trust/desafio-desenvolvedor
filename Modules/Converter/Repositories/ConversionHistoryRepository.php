@@ -18,4 +18,9 @@ class ConversionHistoryRepository implements ConversionHistoryRepositoryInterfac
     {
         return $this->model->create($data);
     }
+
+    public function getById(int $id): ConversionHistory
+    {
+        return $this->model->findOrFail($id);
+    }
 }
