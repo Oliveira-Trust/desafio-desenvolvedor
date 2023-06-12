@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class CotationRequest extends FormRequest
+class UpdateSettingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class CotationRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return Auth::check();;
     }
 
     /**
@@ -25,10 +25,10 @@ class CotationRequest extends FormRequest
     public function rules()
     {
         return [
-            'origin_currency' => 'required',
-            'destination_currency' => 'required',
-            'conversion_amount' => 'required|numeric|min:1000|max:100000',
-            'payment_method' => 'required',
+            'ticket_tax' => 'required|numeric',
+            'credit_card_tax' => 'required|numeric',
+            'conversion_tax_start' => 'required|numeric',
+            'conversion_tax_end' => 'required|numeric',
         ];
     }
 }

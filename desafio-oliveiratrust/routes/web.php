@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CotationController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,14 +34,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-// Route::middleware(['auth'])->group(function () {
-//     // Route::post('/cotations', [CotationController::class, 'store'])->name('cotations.add');
-    
-// });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\CotationController::class, 'index'])->name('home');
     Route::resource('cotations', CotationController::class);
+    Route::post('/cotations/sendEmail/{id}', [App\Http\Controllers\CotationController::class, 'sendEmail'])->name('send_email');
+    Route::resource('settings', SettingController::class);
 });

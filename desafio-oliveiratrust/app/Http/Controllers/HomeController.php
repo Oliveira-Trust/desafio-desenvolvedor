@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cotation;
+use App\Services\CotationService;
+use App\Services\EconomiaApiService;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    protected $economiaApiService;
+    protected $cotationService;
+
+    public function __construct(EconomiaApiService $economiaApiService, CotationService $cotationService)
     {
+        $this->economiaApiService = $economiaApiService;
+        $this->cotationService = $cotationService;
         $this->middleware('auth');
     }
 
@@ -23,6 +31,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
     }
 }

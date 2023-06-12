@@ -13,21 +13,7 @@ class Authenticate extends Middleware
     
     public function handle($request, Closure $next, ...$guards)
     {
-        // if (Auth::check()) {
-        //     $user = $request->user(); // Acessa o objeto User autenticado
-        //     $user_id = $user->id; // Acessa o ID do usuário autenticado
-        //     $user_email = $user->email; // Acessa o email do usuário autenticado
-        //     // Realize outras operações com os dados do usuário autenticado
-        // }
-
-        // dd($user);
-        // dd($request->all());
-        // if (Auth::check()) {
-        //     $user = $request->user(); // Acessa o objeto User autenticado
-        //     $user_id = $user->id; // Acessa o ID do usuário autenticado
-        //     $user_email = $user->email; // Acessa o email do usuário autenticado
-        //     // Realize outras operações com os dados do usuário autenticado
-        // }
+        
 
         return $next($request);
     }
