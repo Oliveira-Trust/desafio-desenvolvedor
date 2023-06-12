@@ -14,12 +14,12 @@ use Modules\Fee\Services\Contracts\FeeServiceInterface;
 class ConverterController extends Controller
 {
     private $feeService;
-    private $converterSevice;
+    private $converterService;
 
-    public function __construct(FeeServiceInterface $feeService, ConverterServiceInterface $converterSevice)
+    public function __construct(FeeServiceInterface $feeService, ConverterServiceInterface $converterService)
     {
         $this->feeService = $feeService;
-        $this->converterSevice = $converterSevice;
+        $this->converterService = $converterService;
     }
 
     /**
@@ -35,18 +35,17 @@ class ConverterController extends Controller
     {
         try {
 
-            $valueToConvert = $request->value_to_convert;
-            $appliedFees = $this->feeService->applyFees($valueToConvert, $request->payment_method);
+            $appliedFees = $this->feeService->applyFees($request->value_to_convert, $request->payment_method);
             $finalValueToConvert = $appliedFees['final_value'];
 
-            $conversionMade = $this->converterSevice->makeConversion(
+            $conversionMade = $this->converterService->makeConversion(
                 $request->destination_currency,
                 $finalValueToConvert
             );
 
             $data = [
                 'destination_currency' => $request->destination_currency,
-                'value_to_convert' => $valueToConvert,
+                'value_to_convert' => $request->value_to_convert,
                 'payment_method' => $request->payment_method == 'credit_card' ? 'Cartão de Crédito' : ucfirst($request->payment_method),
                 'destination_currency_value' => $conversionMade['destination_currency_value'],
                 'purchase_value' => $conversionMade['purchase_value'],
@@ -56,7 +55,7 @@ class ConverterController extends Controller
             ];
 
             DB::beginTransaction();
-            $conversionHistory = $this->converterSevice->recordConversionHistory($data);
+            $conversionHistory = $this->converterService->recordConversionHistory($data);
             DB::commit();
 
             return redirect()->route('converter.result', ['conversionHistoryResultId' => $conversionHistory->id]);
@@ -69,7 +68,7 @@ class ConverterController extends Controller
     public function result(string $conversionHistoryResultId)
     {
         try {
-            $conversionHistory = $this->converterSevice->getConversionHistoryById(intval($conversionHistoryResultId));
+            $conversionHistory = $this->converterService->getConversionHistoryById(intval($conversionHistoryResultId));
             return view('converter::conversionCompleted', ['conversion' => $conversionHistory]);
         } catch (Exception $e) {
             Log::error("Erro ao encontrar histórico de conversão: " . $e->getMessage());
@@ -78,7 +77,7 @@ class ConverterController extends Controller
 
     public function history()
     {
-        $conversionHistories = $this->converterSevice->getAllConversionsHistoryFromLoggedUser();
+        $conversionHistories = $this->converterService->getAllConversionsHistoryFromLoggedUser();
         return view('converter::history', ['conversionHistories' => $conversionHistories]);
     }
 }
