@@ -2,6 +2,8 @@
 
 namespace Modules\Fee\Services\Contracts;
 
+use Modules\Fee\Entities\Fee;
+
 interface FeeServiceInterface
 {
     /**
@@ -30,4 +32,15 @@ interface FeeServiceInterface
      * @return float
      */
     public function calcValueAfterFees(array $fees, float $value): float;
+
+    /**
+     * @return Fee
+     */
+    public function getFees(): Fee;
+
+    /**
+     * @param array $updateData
+     * @return void
+     */
+    public function updateFees(array $updateData): void;
 }

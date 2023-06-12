@@ -18,4 +18,15 @@ class FeeRepository implements FeeRepositoryInterface
     {
         return $this->model->first()->$columnName;
     }
+
+    public function getFees(): Fee
+    {
+        return $this->model->first();
+    }
+
+    public function update(array $data): void
+    {
+        $fees = $this->getFees();
+        $fees->update($data);
+    }
 }

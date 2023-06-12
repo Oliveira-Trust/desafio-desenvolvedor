@@ -2,6 +2,7 @@
 
 namespace Modules\Fee\Services;
 
+use Modules\Fee\Entities\Fee;
 use Modules\Fee\Repositories\Contracts\FeeRepositoryInterface;
 use Modules\Fee\Services\Contracts\FeeServiceInterface;
 
@@ -44,5 +45,15 @@ class FeeService implements FeeServiceInterface
     public function calcValueAfterFees(array $fees, float $value): float
     {
         return $value - array_sum($fees);
+    }
+
+    public function getFees(): Fee
+    {
+        return $this->feeRepository->getFees();
+    }
+
+    public function updateFees(array $updateData): void
+    {
+        $this->feeRepository->update($updateData);
     }
 }

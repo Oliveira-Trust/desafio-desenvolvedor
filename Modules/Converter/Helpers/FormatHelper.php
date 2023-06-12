@@ -14,4 +14,13 @@ class FormatHelper
         $floatValue = floatval($string);
         return $floatValue;
     }
+
+    /**
+     * @param string $inputNumberString
+     * @return float
+     */
+    public static function inputNumberStringToFloat(string $inputNumberString): float
+    {
+        return floatval(str_replace(',', '.', $inputNumberString));
+    }
 }

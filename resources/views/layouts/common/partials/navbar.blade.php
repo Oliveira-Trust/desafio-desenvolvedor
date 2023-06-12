@@ -17,6 +17,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profile.edit') }}">Perfil</a>
                     </li>
+
+                    @admin
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.settings') }}">Configurações</a>
+                        </li>
+                    @endadmin
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
