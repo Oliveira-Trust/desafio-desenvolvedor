@@ -42,6 +42,7 @@ class ConverterServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(EventServiceProvider::class);
         $this->app->bind(ConverterServiceInterface::class, ConverterService::class);
         $this->app->bind(ConversionHistoryRepositoryInterface::class, ConversionHistoryRepository::class);
     }
