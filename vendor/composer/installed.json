@@ -2908,6 +2908,90 @@
             "install-path": "../nunomaduro/termwind"
         },
         {
+            "name": "nwidart/laravel-modules",
+            "version": "v10.0.0",
+            "version_normalized": "10.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nWidart/laravel-modules.git",
+                "reference": "35e514f13cb8ae8dce093e9794785fea27319d81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nWidart/laravel-modules/zipball/35e514f13cb8ae8dce093e9794785fea27319d81",
+                "reference": "35e514f13cb8ae8dce093e9794785fea27319d81",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.6",
+                "laravel/framework": "^10.0",
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^10.0",
+                "spatie/phpunit-snapshot-assertions": "^5.0"
+            },
+            "time": "2023-02-16T11:08:15+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nwidart\\Modules\\LaravelModulesServiceProvider"
+                    ],
+                    "aliases": {
+                        "Module": "Nwidart\\Modules\\Facades\\Module"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "10.0-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Nwidart\\Modules\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "n.widart@gmail.com",
+                    "homepage": "https://nicolaswidart.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Module management",
+            "keywords": [
+                "laravel",
+                "module",
+                "modules",
+                "nwidart",
+                "rad"
+            ],
+            "support": {
+                "issues": "https://github.com/nWidart/laravel-modules/issues",
+                "source": "https://github.com/nWidart/laravel-modules/tree/v10.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/nwidart",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../nwidart/laravel-modules"
+        },
+        {
             "name": "phar-io/manifest",
             "version": "2.0.3",
             "version_normalized": "2.0.3.0",
