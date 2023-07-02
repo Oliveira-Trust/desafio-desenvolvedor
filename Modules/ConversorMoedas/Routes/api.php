@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Modules\ConversorMoedas\Http\Controllers\ConversorMoedasController;
+use App\Http\Controllers\AuthController as Autenticacao;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/conversormoedas', function (Request $request) {
     return $request->user();
 });
+
+Route::post('register-user', [Autenticacao::class, 'registerUser']);
+Route::post('login-user', [Autenticacao::class, 'login']);
+Route::get('lista-moedas', [ConversorMoedasController::class, 'getAll']);
+
+Route::group(['middleware'=>'auth:sanctum'], function(){
+    Route::post('moeda', [ConversorMoedasController::class, 'index']);
+    Route::post('logout-user', [Autenticacao::class, 'logout']);
+});
+
