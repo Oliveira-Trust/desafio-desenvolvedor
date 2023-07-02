@@ -54,6 +54,9 @@
 </div>
 @endsection
 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
 <script type="text/javascript">
 
     function modificar(e,input) {
@@ -61,7 +64,8 @@
             dados={"valor":input.value, "id":input.dataset.pk, "_token": "{{ csrf_token() }}"};    
             $.post("{{url('')}}"+"/painel/modificar-taxas",dados, function(data, status){
                 if(data)
-                    alert('Modificado com sucesso!');
+                    location.reload();
+                    //alert('Modificado com sucesso!');
             });
 
         };

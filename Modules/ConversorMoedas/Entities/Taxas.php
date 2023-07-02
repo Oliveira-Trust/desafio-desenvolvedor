@@ -10,7 +10,7 @@ class Taxas extends Model
     use HasFactory;
 
     protected $table = 'taxas';
-
+    public $timestamps = true;
     protected $fillable = ['id','tipo','created_at','updated_at','ativo','valor'];
     
     // protected static function newFactory()
