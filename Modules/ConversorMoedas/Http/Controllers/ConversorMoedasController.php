@@ -153,7 +153,7 @@ class ConversorMoedasController extends Controller
             $taxasConvertido = (($valorConvertido * (float)$taxas->valor)/100);
         }
 
-        if($valorCompra < 3700.00){
+        if($valorCompra < 3000.00){
             $taxaCompraConversao = ($valorCompra * 0.02);
             $taxaConversao = ($valorConvertido * 0.02);
         }else{
