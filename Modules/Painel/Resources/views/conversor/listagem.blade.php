@@ -47,6 +47,8 @@
 
 </div>
 @endsection
+
+@push('scripts')
 <script>
     function imprimir(){
         var printContents = document.getElementById("printarea").innerHTML;
@@ -56,3 +58,4 @@
         document.body.innerHTML = originalContents;
     };
 </script>
+@endpush
