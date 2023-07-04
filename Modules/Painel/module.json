@@ -1,0 +1,11 @@
+{
+    "name": "Painel",
+    "alias": "painel",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Painel\\Providers\\PainelServiceProvider"
+    ],
+    "files": []
+}

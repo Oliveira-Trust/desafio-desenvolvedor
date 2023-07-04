@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "2447c88b-021c-460d-939e-80ba92d9d6bf",
+		"name": "API-Desafio TRUST - Rota Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21977522"
+	},
+	"item": [
+		{
+			"name": "Conversor Moeda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "11|zEcB4yBNRGQsbfbhaFlEKFr1A3yE9wDuYW4wGDLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "\"Bearer 4|71ndCti2WMJ3PXhqWPq6KX7Oo4nnvVxJfMyQiCHx\"",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"moeda_origem\":\"BRL\",\r\n    \"moeda_destino\":\"USD\",\r\n    \"valor\":\"5000.00\",\r\n    \"forma_pgto\":\"Boleto\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{URL}}/api/moeda",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"moeda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar Usuario API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"testeapiw\",\r\n    \"email\":\"testeapiw@mailinator.com\",\r\n    \"password\":\"12345678\",\r\n    \"password_confirmation\":\"12345678\",\r\n    \"token_name\":\"tokenGerado1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/register-user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"register-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Usuario API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"testeapiw@mailinator.com\",\r\n    \"password\":\"12345678\",\r\n    \"token_name\":\"tokenGerado1\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{URL}}/api/login-user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"login-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout Usuario API",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "9|tzkAbaq8G2KSFsByrnqEqOKPWg4nbNFhzOjN9bB7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"testeapiw@mailinator.com\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{URL}}/api/logout-user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"logout-user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:8989",
+			"type": "string"
+		}
+	]
+}
