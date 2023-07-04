@@ -16,4 +16,5 @@ class Conversion extends Model
         'converted_value',
         'payment_method',
     ];
+
 }
