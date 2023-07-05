@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Conversion extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'origin_currency',
         'destination_currency',
         'conversion_value',
         'converted_value',
         'payment_method',
+        'user_id'
     ];
-
 }
