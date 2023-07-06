@@ -28,6 +28,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/create-conversion', 'ConversionController@createConversion');
     Route::get('conversion', [ConversionController::class, 'convert'])->name('conversion.convert');
     Route::get('conversion/history/{userid}', [ConversionController::class, 'getHistoryByUser'])->name('conversion.gethistory');
+    Route::post('/getauthenticateduser', [UserController::class, 'getAuthenticatedUser'])->name('user.getuser'); 
 
 });
 

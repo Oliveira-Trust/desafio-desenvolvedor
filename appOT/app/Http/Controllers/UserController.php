@@ -11,20 +11,37 @@
 
     class UserController extends Controller
     {
-        public function authenticate(Request $request)
-        {
-            $credentials = $request->only('email', 'password');
+        public function authenticate(Request $request){
+                $credentials = $request->only('email', 'password');
 
-            try {
-                if (! $token = JWTAuth::attempt($credentials)) {
-                    return response()->json(['error' => 'invalid_credentials'], 400);
+                try {
+                        if (! $token = JWTAuth::attempt($credentials)) {
+                        return response()->json(['error' => 'invalid_credentials'], 400);
+                        }
+
+                        $user = JWTAuth::user(); // Obter o usuário autenticado
+
+                        return response()->json(compact('token', 'user'));
+                } catch (JWTException $e) {
+                        return response()->json(['error' => 'could_not_create_token'], 500);
                 }
-            } catch (JWTException $e) {
-                return response()->json(['error' => 'could_not_create_token'], 500);
-            }
-
-            return response()->json(compact('token'));
         }
+
+        // public function authenticate(Request $request)
+        // {
+        //     $credentials = $request->only('email', 'password');
+        //     //\Log::info($credentials);
+
+        //     try {
+        //         if (! $token = JWTAuth::attempt($credentials)) {
+        //             return response()->json(['error' => 'invalid_credentials'], 400);
+        //         }
+        //     } catch (JWTException $e) {
+        //         return response()->json(['error' => 'could_not_create_token'], 500);
+        //     }
+       
+        //     return response()->json(compact('token'));
+        // }
 
         public function register(Request $request)
         {
