@@ -1,0 +1,33 @@
+{
+    "name": "vue-role-based-authorization-example",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cornflourblue/vue-role-based-authorization-example.git"
+    },
+    "license": "MIT",
+    "scripts": {
+        "start": "webpack-dev-server --open"
+    },
+    "dependencies": {
+        "rxjs": "^6.4.0",
+        "vue": "^2.6.8",
+        "vue-router": "^3.0.2",
+        "vuelidate": "^0.7.4"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.5",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "babel-preset-vue": "^2.0.2",
+        "css-loader": "^2.1.1",
+        "html-webpack-plugin": "^3.2.0",
+        "path": "^0.12.7",
+        "vue-loader": "^15.7.0",
+        "vue-template-compiler": "^2.6.8",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.2.3",
+        "webpack-dev-server": "^3.2.1"
+    }
+}
