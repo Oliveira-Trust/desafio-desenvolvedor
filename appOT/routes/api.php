@@ -35,7 +35,7 @@ Route::group(['prefix' => '/v1'], function () {
 
         //Conversion Routes
         Route::post('/create-conversion', 'ConversionController@createConversion');
-        Route::get('conversion', [ConversionController::class, 'convert'])->name('conversion.convert');
+        Route::post('conversion', [ConversionController::class, 'convert'])->name('conversion.convert');
         Route::get('conversion/history/{userid}', [ConversionController::class, 'getHistoryByUser'])->name('conversion.gethistory');
 
         //Payment Method Routes

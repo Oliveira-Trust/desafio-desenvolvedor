@@ -15,13 +15,8 @@ class ConversionController extends Controller
     }
     public function convert(ConversionRequest $request)
     {
-        $paramsToConversion = [
-            'origin_currency' => 'BLR',
-            'destination_currency' => $request->input('destination_currency'),
-            'conversion_value' => $request->input('conversion_value'),
-            'payment_method_id' => $request->input('payment_method_id'),
-
-        ];
+        $paramsToConversion = $request->all();
+        $paramsToConversion['origin_currency'] = 'BRL'; // especificação do desafio
 
         return $this->ConversionUseCase->execute($paramsToConversion);
     }
@@ -29,7 +24,6 @@ class ConversionController extends Controller
 
     public function getHistoryByUser($userid)
     {
-
         $conversions = $this->ConversionUseCase->getConversionHistorybyUserId($userid);
 
         return $conversions;

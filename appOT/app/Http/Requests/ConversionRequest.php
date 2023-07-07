@@ -23,7 +23,7 @@ class ConversionRequest extends FormRequest
      */
     public function rules(): array
     {
-      return [
+        return [
             'destination_currency' => 'required',
             'conversion_value' => 'required|numeric|min:1000|max:100000',
             'payment_method_id' => 'required',
@@ -32,7 +32,7 @@ class ConversionRequest extends FormRequest
 
     public function messages()
     {
-        
+
         return [
             'destination_currency.required' => 'O campo de moeda de destino é obrigatório.',
             'conversion_value.required' => 'O campo de valor de conversão é obrigatório.',
@@ -43,11 +43,11 @@ class ConversionRequest extends FormRequest
         ];
     }
     public function failedValidation(Validator $validator)
-{
-   throw new HttpResponseException(response()->json([
-     'success'   => false,
-     'message'   => 'Validation errors',
-     'data'      => $validator->errors()
-   ]));
-}
+    {
+        throw new HttpResponseException(response()->json([
+            'success'   => false,
+            'message'   => 'Validation errors',
+            'data'      => $validator->errors(),
+        ]));
+    }
 }
