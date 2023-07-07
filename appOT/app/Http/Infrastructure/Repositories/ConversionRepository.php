@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class ConversionRepository implements ConversionRepositoryInterface
 {
        public function create(Array $paramsToConversion): Conversion{
-    
+    //dd($paramsToConversion);
     $conversion = Conversion::create([
              'origin_currency' => 'BRL',
              'destination_currency' => $paramsToConversion['destination_currency'],

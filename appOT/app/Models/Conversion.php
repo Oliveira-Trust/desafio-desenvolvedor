@@ -13,7 +13,7 @@ class Conversion extends Model
         'destination_currency',
         'conversion_value',
         'converted_value',
-        'payment_method',
+        'payment_method_id',
         'user_id',
         'conversion_fee',
         'payment_tax',
