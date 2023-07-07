@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "e8d82bab-28ec-412e-8f24-b6736b9346fd",
+		"name": "Desafio OT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4247543"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"let token = jsonData.token",
+									"pm.environment.set(\"token\", token)",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/users/authenticate/?email=testeotadmin@ot.com&password=password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"authenticate",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "testeotadmin@ot.com"
+								},
+								{
+									"key": "password",
+									"value": "password"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS91c2Vycy9hdXRoZW50aWNhdGUiLCJpYXQiOjE2ODg2MjU5ODcsImV4cCI6MTY4ODYyOTU4NywibmJmIjoxNjg4NjI1OTg3LCJqdGkiOiJ6R3lNNkI1dHBLWldNWnR3Iiwic3ViIjoiMTMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KhciCzfAE4FFJemlyNlVzUjSXs6qxflGjQfQMNe-Y_8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/users/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS91c2Vycy9hdXRoZW50aWNhdGUiLCJpYXQiOjE2ODg2MjU5ODcsImV4cCI6MTY4ODYyOTU4NywibmJmIjoxNjg4NjI1OTg3LCJqdGkiOiJ6R3lNNkI1dHBLWldNWnR3Iiwic3ViIjoiMTMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KhciCzfAE4FFJemlyNlVzUjSXs6qxflGjQfQMNe-Y_8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAuthUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS91c2Vycy9hdXRoZW50aWNhdGUiLCJpYXQiOjE2ODg2MjU5ODcsImV4cCI6MTY4ODYyOTU4NywibmJmIjoxNjg4NjI1OTg3LCJqdGkiOiJ6R3lNNkI1dHBLWldNWnR3Iiwic3ViIjoiMTMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KhciCzfAE4FFJemlyNlVzUjSXs6qxflGjQfQMNe-Y_8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/getauthenticateduser/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getauthenticateduser",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTY4ODYxMDc2NCwiZXhwIjoxNjg4NjE0MzY0LCJuYmYiOjE2ODg2MTA3NjQsImp0aSI6ImVReGp5WGx3TWtHaU9MU0ciLCJzdWIiOiIxMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.u5hOS1NYEXuOIfk_D9xj1onhNDYryb-c9ZvoU4D6mUQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/refreshtoken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"refreshtoken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conversion",
+			"item": [
+				{
+					"name": "Conversion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/conversion?destination_currency=USD&payment_method=boleto&conversion_value=2000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"conversion"
+							],
+							"query": [
+								{
+									"key": "destination_currency",
+									"value": "USD"
+								},
+								{
+									"key": "payment_method",
+									"value": "boleto"
+								},
+								{
+									"key": "token",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "conversion_value",
+									"value": "2000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HistoryByUserId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTY4ODYyMTkzMCwiZXhwIjoxNjg4NjI1NTMwLCJuYmYiOjE2ODg2MjE5MzAsImp0aSI6IkoyUUxwbGxuVmphaVhGQ3YiLCJzdWIiOiIxMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VIvOMqjs8Gdc40d_rieHJ0Usvc6JrJ3mFl91ZxxKuuw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/conversion/history/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"conversion",
+								"history",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Métodos de Pagamento",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/payment-methods/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payment-methods",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
