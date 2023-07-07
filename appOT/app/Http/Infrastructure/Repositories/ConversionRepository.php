@@ -7,15 +7,19 @@ use Illuminate\Support\Facades\Auth;
 
 class ConversionRepository implements ConversionRepositoryInterface
 {
-    public function create(string $origin_currency,  string $destination_currency, float $conversion_value, float $converted_value, string $payment_method){
+       public function create(Array $paramsToConversion): Conversion{
     
     $conversion = Conversion::create([
              'origin_currency' => 'BRL',
-             'destination_currency' => $destination_currency,
-             'conversion_value' => $conversion_value,
-             'converted_value' => $converted_value,
-             'payment_method' => $payment_method,
+             'destination_currency' => $paramsToConversion['destination_currency'],
+             'conversion_value' => $paramsToConversion['conversion_value'],
+             'payment_method_id' => $paramsToConversion['payment_method_id'],
              'user_id'=> Auth::user()->id,
+             'conversion_fee' => $paramsToConversion['conversion_fee'],
+             'payment_tax' => $paramsToConversion['payment_tax'],
+             'total_amount_origin_currency' => $paramsToConversion['total_amount_origin_currency'],
+             'total_amount_destination_currency' => $paramsToConversion['total_amount_destination_currency'],
+
          ]);
 
         return $conversion;

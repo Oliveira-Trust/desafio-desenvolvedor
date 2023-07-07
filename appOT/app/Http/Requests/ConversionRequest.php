@@ -26,7 +26,7 @@ class ConversionRequest extends FormRequest
       return [
             'destination_currency' => 'required',
             'conversion_value' => 'required|numeric|min:1000|max:100000',
-            'payment_method' => 'required|in:boleto,cartao',
+            'payment_method_id' => 'required',
         ];
     }
 
@@ -39,8 +39,7 @@ class ConversionRequest extends FormRequest
             'conversion_value.numeric' => 'O valor de conversão deve ser numérico.',
             'conversion_value.min' => 'O valor de conversão deve ser no mínimo :min.',
             'conversion_value.max' => 'O valor de conversão deve ser no máximo :max.',
-            'payment_method.required' => 'O campo do método de pagamento é obrigatório.',
-            'payment_method.in' => 'O método de pagamento selecionado é inválido.',
+            'payment_method_id.required' => 'O campo do método de pagamento é obrigatório.',
         ];
     }
     public function failedValidation(Validator $validator)

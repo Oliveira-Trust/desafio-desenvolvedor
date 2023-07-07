@@ -14,6 +14,10 @@ class Conversion extends Model
         'conversion_value',
         'converted_value',
         'payment_method',
-        'user_id'
+        'user_id',
+        'conversion_fee',
+        'payment_tax',
+        'total_amount_origin_currency',
+        'total_amount_destination_currency',
     ];
 }

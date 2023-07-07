@@ -2,7 +2,6 @@
 
 namespace App\Http\Infrastructure\Service;
 use Illuminate\Support\Facades\Http;
-// @method static App\Http\Infrastructure\Service getExchangeRates(string $destinationCurrency='USD')
 class ExchangeRatesService
 {
   public function getExchangeRates(string $destinationCurrency='USD'){
