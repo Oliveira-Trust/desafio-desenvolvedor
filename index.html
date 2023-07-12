@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="eu">
+  <head>
+    <meta charset="UTF=8" />
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </head>
+    <meta name="viewport" content="width-divice-width, initial-scale-1.0" />
+    <title>Conversão moeda</title>
+  </head>
+
+  <body class="wrapper">
+    <header><h1>Conversões disponiveis:</h1></header>
+
+    <div class="container">
+      <div class="divPagamento">
+        <input
+          type="number"
+          id="InputReal"
+          placeholder="BRL-USD"
+          min="1000"
+          max="100000"
+        />
+        <h1 id="result">Resultado</h1>
+        <button onclick="getDolarValue()">BRL-USD</button>
+      </div>
+      <div class="buttomPagamento">
+        <select id="formaPagamento">
+          <option value="boleto">Boleto</option>
+          <option value="cartao">Cartao</option>
+        </select>
+      </div>
+
+      <div class="divBtc">
+        <input
+          type="number"
+          id="InputBtc"
+          placeholder="BTC-BRL"
+          min="1000"
+          max="100000"
+        />
+        <h1 id="result2">Resultado</h1>
+        <button onclick="getBtcValue()">BTC-BRL</button>
+      </div>
+    </div>
+    <footer>
+      <div class="sendemail">
+        <input
+          type="text"
+          id="InputEmail"
+          placeholder="Receba suas conversões por e-mail"
+        />
+        <button onclick="enviarEmail()">Enviar Email</button>
+      </div>
+    </footer>
+    <script>
+      const api_url = "http://localhost:3001/";
+
+      /** http://localhost:3001/converter?de=BRL&para=USD*/
+      /** http://localhost:3001/converter?de=BTC&para=BRL*/
+
+      function getDolarValue() {
+        const valor_em_reais = document.getElementById("InputReal").value;
+        const formaPagamento = document.getElementById("formaPagamento").value;
+        const resultadoBrl = document.getElementById("result").value;
+
+        const result_div = document.getElementById("result");
+        console.log(result_div);
+
+        $.getJSON(
+          api_url + "converter?de=BRL&para=USD",
+          function (data, status) {
+            const taxaConversao = valor_em_reais < 3000 ? 0.02 : 0.01;
+            const valor_com_taxa = valor_em_reais * (1 + taxaConversao);
+            const taxa_pagamento = calcularTaxa(formaPagamento, valor_com_taxa);
+            const valor_final =
+              data.BRLUSD.bid * valor_em_reais + taxa_pagamento;
+
+            result_div.innerText = valor_final;
+          }
+        );
+      }
+
+      function getBtcValue() {
+        const valor_em_btc = document.getElementById("InputBtc").value;
+        const formaPagamento = document.getElementById("formaPagamento").value;
+
+        const result_div = document.getElementById("result2");
+        console.log(result_div);
+
+        $.getJSON(
+          api_url + "converter?de=BTC&para=BRL",
+          function (data, status) {
+            const taxaConversao = valor_em_btc < 3000 ? 0.02 : 0.01;
+            const valor_com_taxa = valor_em_btc * (1 + taxaConversao);
+            const taxa_pagamento = calcularTaxa(formaPagamento, valor_com_taxa);
+            const valor_final = data.BTCBRL.bid * valor_em_btc + taxa_pagamento;
+
+            result_div.innerText = valor_final;
+          }
+        );
+      }
+      function enviarEmail() {
+        const email = document.getElementById("InputEmail").value;
+        const inputReal = document.getElementById("InputReal").value;
+        const selectPagamento = document.getElementById("formaPagamento");
+        const resultadoReal = document.getElementById("result").innerHTML;
+        const opcaoTexto =
+          selectPagamento.options[selectPagamento.selectedIndex].value;
+        const opcaoValor =
+          selectPagamento.options[selectPagamento.selectedIndex].value;
+        const taxaConversao = inputReal < 3000 ? 0.02 : 0.01;
+        const valor_com_taxa = inputReal * (1 + taxaConversao);
+        const taxa_pagamento = calcularTaxa(opcaoTexto, valor_com_taxa);
+        const InputBtc = document.getElementById("InputBtc").value;
+        const resultadoBtc = document.getElementById("result2").innerHTML;
+        const taxaConversaoBtc = InputBtc < 3000 ? 0.02 : 0.01;
+        const valor_com_taxaBtc = InputBtc * (1 + taxaConversao);
+
+        const dataEnvio = {
+          email: email,
+          inputReal: inputReal,
+          tipoPagamento: opcaoTexto,
+          resultadoReal: resultadoReal,
+          taxa_pagamento: taxa_pagamento,
+          InputBtc: InputBtc,
+          resultadoBtc: resultadoBtc,
+        };
+
+        $.post(api_url + "test_mail", dataEnvio, function (data, status) {});
+      }
+
+      function calcularTaxa(formaPagamento, valor) {
+        let taxa;
+
+        if (formaPagamento === "boleto") {
+          taxa = valor * 0.0145; // Taxa de 1,45%
+        } else if (formaPagamento === "cartao") {
+          taxa = valor * 0.0763; // Taxa de 7,63%
+        } else {
+          taxa = 0; // Sem taxa para outras formas de pagamento
+        }
+
+        return taxa;
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .container {
+    display: flex;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #cf2e2e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 400px;
+  }
+
+  select {
+    padding: 9px 20px;
+    background-color: #cf2e2e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  label {
+    padding: 9px 20px;
+    background-color: #cf2e2e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  input {
+    width: 380px;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+
+  .sendemail {
+    margin-top: 50px;
+  }
+  #formaPagamento {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+</style>
