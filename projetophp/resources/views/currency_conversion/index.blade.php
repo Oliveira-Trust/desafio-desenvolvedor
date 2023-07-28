@@ -4,6 +4,16 @@
     <title>Conversão de Moeda</title>
 </head>
 <body>
+
+    <div class="mb-4">
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+        <input type="email" name="email" id="email" class="form-input rounded-md shadow-sm mt-1 block w-full"
+            value="{{ old('email') }}" required>
+        @error('email')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
+    </div>
+
     <h2>Conversão de Moeda</h2>
     <!-- Formulário para a entrada dos dados -->
     <form action="{{ route('currency.convert') }}" method="POST">

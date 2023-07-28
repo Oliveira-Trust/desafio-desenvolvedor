@@ -7,6 +7,13 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\CurlHandler;
 use App\Models\Quotation;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CotacaoRealizadaEmail; 
+use Log;
+
+
+
+
 
 
 class CurrencyConversionController extends Controller
@@ -82,18 +89,27 @@ class CurrencyConversionController extends Controller
 
         // Implemente o restante da lógica de conversão aqui
 
-        //  // Cotação realizada com sucesso, enviar o email
-        //     Mail::to('email_destinatario')->send(new CotacaoRealizadaEmail([
-        //         'currencyOrigin' => 'BRL',
-        //         'currencyDestination' => $currencyDestination,
-        //         'amount' => $amount,
-        //         'paymentMethod' => $paymentMethod,
-        //         'paymentTax' => $paymentTax,
-        //         'conversionTax' => $conversionTax,
-        //         'amountWithConversionTax' => $amountWithConversionTax,
-        //         'conversionRate' => $conversionRate,
-        //         'foreignAmount' => $foreignAmount,
-        //     ]));
+        // Cotação realizada com sucesso, enviar o email
+        if (auth()->check()) {
+            $data = [
+                'userName' => auth()->user()->name,
+                'currencyOrigin' => 'BRL',
+                'currencyDestination' => $currencyDestination,
+                'amount' => $amount,
+                'paymentMethod' => $paymentMethod,
+                'paymentTax' => $paymentTax,
+                'conversionTax' => $conversionTax,
+                'amountWithConversionTax' => $amountWithConversionTax,
+                'conversionRate' => $conversionRate,
+                'foreignAmount' => $foreignAmount,
+            ];
+
+            Mail::to(auth()->user()->email)->send(new CotacaoRealizadaEmail($data));
+
+            // Adicionar log para acompanhar o envio de e-mail
+            \Log::info('E-mail enviado para: ' . auth()->user()->email);
+        }
+
 
         // Salvar a cotação realizada na tabela quotations
         Quotation::create([
