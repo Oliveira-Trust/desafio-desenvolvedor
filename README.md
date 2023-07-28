@@ -120,7 +120,7 @@ O projeto disponibiliza os seguintes endpoints da API:
 
 - `POST /api/send-email`: Endpoint para envio de e-mails. Recebe o e-mail do destinatário, o assunto e o conteúdo do e-mail, e envia a mensagem.
 
-- `GET /api/historical-quotes`: Endpoint para obter o histórico de cotações de moedas. Retorna uma lista de todas as cotações realizadas pelos usuários.
+- `GET /api/quotations`: Endpoint para obter o histórico de cotações de moedas de determinado usuario. Retorna uma lista de todas as cotações realizadas pelo usuário logado..
 
 ## Considerações Finais
 

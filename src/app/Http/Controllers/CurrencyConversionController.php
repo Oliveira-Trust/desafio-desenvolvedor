@@ -130,4 +130,18 @@ class CurrencyConversionController extends Controller
             'foreignAmount' => $foreignAmount,
         ]);
     }
+
+
+    // Method to display quotations for the authenticated user
+    public function viewQuotations()
+    {
+        // Fetch the quotations associated with the authenticated user
+        $quotations = Quotation::where('user_id', auth()->id())->get();
+
+        // Return the view with the quotations data
+        return view('currency_conversion.quotations', ['quotations' => $quotations]);
+    }
+
+
+
 }

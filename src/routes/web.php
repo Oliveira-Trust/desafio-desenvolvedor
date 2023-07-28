@@ -41,3 +41,11 @@ Auth::routes();
 
 // Duplicate route for the dashboard after login (previously defined above)
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route to view the user's quotations (protected by authentication middleware)
+Route::middleware('auth')->get('/quotations', [CurrencyConversionController::class, 'viewQuotations']);
+
+
+Route::middleware('auth')->get('/form-cotacoes-usuario', function () {
+    return view('form_cotacoes_usuario');
+});
