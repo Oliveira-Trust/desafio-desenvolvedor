@@ -18,6 +18,4 @@ class Quotation extends Model
         'conversion_rate',
         'foreign_amount',
     ];
-
-    // Se você quiser definir alguma relação ou outros métodos no modelo, pode fazer aqui
 }

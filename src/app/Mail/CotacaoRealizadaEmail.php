@@ -18,7 +18,7 @@ class CotacaoRealizadaEmail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param array $data Dados da cotação realizada
+     * @param array $data 
      * @return void
      */
     public function __construct(array $data)

@@ -11,85 +11,78 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\CotacaoRealizadaEmail; 
 use Log;
 
-
-
-
-
-
 class CurrencyConversionController extends Controller
 {
-    // Método para exibir o formulário para realizar a conversão
+    // Method to display the form for performing the conversion
     public function index()
     {
         return view('currency_conversion.index');
     }
 
-    // Método para processar o formulário e exibir o resultado da conversão
+    // Method to process the form and display the conversion result
     public function convert(Request $request)
     {
-        // Validação dos campos do formulário
+        // Form field validation
         $request->validate([
             'currency_destination' => 'required|string',
             'amount' => 'required|numeric|min:1000|max:100000',
             'payment_method' => 'required|in:Boleto,Cartão de Crédito',
         ]);
 
-        // Após a validação, você pode prosseguir com a lógica de conversão
+        // After validation, proceed with the conversion logic
         $currencyDestination = $request->input('currency_destination');
         $amount = $request->input('amount');
         $paymentMethod = $request->input('payment_method');
 
-        // Validação das regras de negócio
+        // Business rules validation
         if ($request->input('currency_destination') === 'BRL') {
-            return back()->withErrors('A moeda de destino deve ser diferente de BRL.');
+            return back()->withErrors('The destination currency must be different from BRL.');
         }
 
-        $availableCurrencies = ['USD', 'EUR', 'BTC']; // Exemplo de moedas disponíveis para conversão
+        $availableCurrencies = ['USD', 'EUR', 'BTC']; // Example of available currencies for conversion
 
         if (!in_array($currencyDestination, $availableCurrencies)) {
-            return back()->withErrors('Moeda de destino inválida.');
+            return back()->withErrors('Invalid destination currency.');
         }
 
-        // Verificar se o valor da compra está dentro do intervalo permitido
+        // Check if the purchase amount is within the allowed range
         if ($amount < 1000 || $amount > 100000) {
-            return back()->withErrors('O valor para conversão deve ser entre R$ 1.000,00 e R$ 100.000,00.');
+            return back()->withErrors('The conversion amount must be between R$ 1,000.00 and R$ 100,000.00.');
         }
 
-        // Verificar a forma de pagamento e aplicar a taxa correta
+        // Verify the payment method and apply the correct tax rate
         if ($paymentMethod === 'Boleto') {
             $paymentTax = 1.45;
         } elseif ($paymentMethod === 'Cartão de Crédito') {
             $paymentTax = 7.63;
         } else {
-            return back()->withErrors('Forma de pagamento inválida.');
+            return back()->withErrors('Invalid payment method.');
         }
 
-      // Aplicar a taxa de conversão baseada no valor da compra (sem incluir a taxa de forma de pagamento)
-      $conversionTax = $amount >= 3000 ? 0.01 : 0.02;
-      $amountWithConversionTax = $amount + ($amount * $conversionTax);
+        // Apply the conversion rate based on the purchase amount (excluding the payment method tax)
+        $conversionTax = $amount >= 3000 ? 0.01 : 0.02;
+        $amountWithConversionTax = $amount + ($amount * $conversionTax);
 
-        // Obter a cotação da moeda de destino através da API AwesomeAPI
+        // Obtain the exchange rate of the destination currency through the AwesomeAPI API
         $handlerStack = HandlerStack::create(new CurlHandler());
 
         $client = new Client([
             'handler' => $handlerStack,
-            'verify' => false, // Desabilitar a verificação do certificado SSL
+            'verify' => false, // Disable SSL certificate verification
         ]);
         $response = $client->get("https://economia.awesomeapi.com.br/last/{$currencyDestination}-BRL");
         $data = json_decode($response->getBody(), true);
 
-        // Verificar se a API retornou os dados corretamente
+        // Check if the API returned the data correctly
         if (!isset($data["{$currencyDestination}BRL"]["bid"])) {
-            return back()->withErrors('Não foi possível obter a cotação da moeda de destino.');
+            return back()->withErrors('Failed to obtain the destination currency exchange rate.');
         }
 
-        // Cálculo do valor em moeda estrangeira com base na cotação obtida da API
+        // Calculate the foreign currency value based on the API obtained exchange rate
         $conversionRate = $data["{$currencyDestination}BRL"]["bid"];
-        $foreignAmount = $amount / $conversionRate; // A taxa de conversão já foi aplicada no valor da compra
+        $foreignAmount = $amount / $conversionRate; // The conversion rate has already been applied to the purchase amount
 
-        // Implemente o restante da lógica de conversão aqui
-
-        // Cotação realizada com sucesso, enviar o email
+        // Successful quotation, send the email
         if (auth()->check()) {
             $data = [
                 'userName' => auth()->user()->name,
@@ -106,12 +99,11 @@ class CurrencyConversionController extends Controller
 
             Mail::to(auth()->user()->email)->send(new CotacaoRealizadaEmail($data));
 
-            // Adicionar log para acompanhar o envio de e-mail
-            \Log::info('E-mail enviado para: ' . auth()->user()->email);
+            // Add log to track email sending
+            Log::info('Email sent to: ' . auth()->user()->email);
         }
 
-
-        // Salvar a cotação realizada na tabela quotations
+        // Save the performed quotation in the quotations table
         Quotation::create([
             'user_id' => auth()->id(),
             'currency_origin' => 'BRL',
@@ -125,7 +117,7 @@ class CurrencyConversionController extends Controller
             'foreign_amount' => $foreignAmount,
         ]);
 
-        // Se chegou até aqui, os dados foram validados corretamente e a conversão pode ser realizada
+        // If it reached this point, the data has been validated correctly, and the conversion can be performed
         return view('currency_conversion.result', [
             'currencyOrigin' => 'BRL', 
             'currencyDestination' => $currencyDestination,
@@ -136,7 +128,6 @@ class CurrencyConversionController extends Controller
             'amountWithConversionTax' => $amountWithConversionTax,
             'conversionRate' => $conversionRate,
             'foreignAmount' => $foreignAmount,
-            // adicione aqui outros dados relevantes para exibição no resultado
         ]);
     }
 }

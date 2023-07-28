@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Resultado da Conversão</title>
+    <title>Conversion Result</title>
 </head>
 <body>
-    <h2>Resultado da Conversão</h2>
-    <p>Moeda de Origem: {{ $currencyOrigin }}</p>
-    <p>Moeda de Destino: {{ $currencyDestination }}</p>
-    <p>Valor para Conversão: R$ {{ $amount }}</p>
-    <p>Forma de Pagamento: {{ $paymentMethod }}</p>
-    <p>Taxa de Pagamento: {{ $paymentTax }}%</p>
-    <p>Taxa de Conversão: {{ $conversionTax }}%</p>
-    <p>Valor da Compra com Taxas: R$ {{ $amountWithConversionTax }}</p>
-    <p>Cotação da Moeda de Destino: {{ $conversionRate }}</p>
-    <p>Valor em Moeda Estrangeira: {{ $foreignAmount }}</p>
+    <h2>Conversion Result</h2>
+    <!-- Displaying the currency details -->
+    <p>Original Currency: {{ $currencyOrigin }}</p>
+    <p>Destination Currency: {{ $currencyDestination }}</p>
+    <p>Conversion Amount: R$ {{ $amount }}</p>
+    <p>Payment Method: {{ $paymentMethod }}</p>
+    <p>Payment Tax: {{ $paymentTax }}%</p>
+    <p>Conversion Tax: {{ $conversionTax }}%</p>
+    <p>Purchase Amount with Taxes: R$ {{ $amountWithConversionTax }}</p>
+    <p>Destination Currency Exchange Rate: {{ $conversionRate }}</p>
+    <p>Foreign Currency Amount: {{ $foreignAmount }}</p>
 </body>
 </html>

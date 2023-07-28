@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cotação Realizada</title>
+    <title>Performed Quotation</title>
 </head>
 <body>
-    <h1>Cotação Realizada</h1>
-    <p>Segue abaixo os detalhes da cotação realizada:</p>
+    <h1>Performed Quotation</h1>
+    <p>Below are the details of the performed quotation:</p>
     <ul>
-        <li>Moeda de Origem: {{ $currencyOrigin }}</li>
-        <li>Moeda de Destino: {{ $currencyDestination }}</li>
-        <li>Valor para Conversão: {{ $amount }}</li>
-        <li>Forma de Pagamento: {{ $paymentMethod }}</li>
-        <li>Taxa de Pagamento: {{ $paymentTax }}%</li>
-        <li>Taxa de Conversão: {{ $conversionTax }}%</li>
-        <li>Valor da Compra com Taxas: {{ $amountWithConversionTax }}</li>
-        <li>Cotação da Moeda de Destino: {{ $conversionRate }}</li>
-        <li>Valor em Moeda Estrangeira: {{ $foreignAmount }}</li>
+        <!-- Displaying the quotation details in a list format -->
+        <li>Original Currency: {{ $currencyOrigin }}</li>
+        <li>Destination Currency: {{ $currencyDestination }}</li>
+        <li>Conversion Amount: {{ $amount }}</li>
+        <li>Payment Method: {{ $paymentMethod }}</li>
+        <li>Payment Tax: {{ $paymentTax }}%</li>
+        <li>Conversion Tax: {{ $conversionTax }}%</li>
+        <li>Purchase Amount with Taxes: {{ $amountWithConversionTax }}</li>
+        <li>Destination Currency Exchange Rate: {{ $conversionRate }}</li>
+        <li>Foreign Currency Amount: {{ $foreignAmount }}</li>
     </ul>
 </body>
 </html>

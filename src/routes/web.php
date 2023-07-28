@@ -4,36 +4,40 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CurrencyConversionController;
 use App\Http\Controllers\HealthCheckController;
 
+// Welcome page route
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Rota para exibir o formulário de conversão
+// Route to display the currency conversion form
 Route::get('/currency-conversion', [CurrencyConversionController::class, 'index'])->name('currency.index');
 
-// Rota para processar o formulário de conversão (método POST)
+// Route to process the currency conversion form (POST method)
 Route::post('/currency-conversion', [CurrencyConversionController::class, 'convert'])->name('currency.convert');
 
-// Rota de exibição da página de login
+// Login page display route
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 
-// Rota de processamento do formulário de login
+// Login form processing route
 Route::post('/login', 'Auth\LoginController@login');
 
-// Rota de exibição da página de registro
+// Registration page display route
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
-// Rota de processamento do formulário de registro
+// Registration form processing route
 Route::post('/register', 'Auth\RegisterController@register');
 
+// Route for displaying quotations (protected by authentication middleware)
 Route::middleware('auth')->get('/quotations', 'QuotationController@index');
 
-// Rota para exibição do painel após o login (rota protegida por autenticação)
+// Route for displaying the dashboard after login (protected by authentication middleware)
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Rota para o health check (acessível por todos, não requer autenticação)
+// Health check route (accessible to all, does not require authentication)
 Route::get('/health', [HealthCheckController::class, 'index']);
 
+// Laravel default authentication routes
 Auth::routes();
 
+// Duplicate route for the dashboard after login (previously defined above)
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
