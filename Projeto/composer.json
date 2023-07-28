@@ -1,0 +1,15 @@
+{
+    "name": "luizb/projeto",
+    "autoload": {
+        "psr-4": {
+            "Luizb\\Projeto\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luiz Filipe",
+            "email": "luiz.brandao@luiz.brandao.com"
+        }
+    ],
+    "require": {}
+}
