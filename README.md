@@ -1,48 +1,91 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+## Money Conversion
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Para rodar o projeto primeiramente
+1- copie o arquivo .env.example para um arquivo chamado .env
+2- instale as dependencias
+```bash
+$ composer install
+```
+3- Rode as migrations e a seeder
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+```bash
+# garanta que crie o arquivo de banco de dados, ele vai perguntar ao rodar o comando
+$ php artisan migrate
+$ php artisan db:seed
+```
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+4 - Rode a aplicação
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+```bash
+$ php artisan serve
+```
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+## Informações importantes
+existem 3 rotas
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+POST /api/login - para realizar o login
+body:  este é o unico usuario existente
+```JSON
+{ "email":"test@example.com","password":"123"}
+```
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+POST api/conversion - para fazer as conversões necessita login use access_token como token para bearer authentication
+body
+```json
+# target_coin: moeda para conversao
+# value: valor para converter
+# payment_method: modo de pagamento válido apenas bill(boleto) e credit_card(cartão de crédito)
+#source_coin: moeda de origem sempre será BRL 
+{
+	"target_coin": "USD", 
+	"value": 1000,
+	"payment_method": "bill",
+	"source_coin": "BRL"
+}
+```
+RESPOSTA
+```json
+# target_coin: moeda para conversao
+# value: valor para converter
+# payment_method: modo de pagamento
+# source_coin: moeda de origem 
+# payment_tax: taxa de pagamento
+# actual_cotation: valor da cotacao na hora da pesquisa
+# converted_value: valor comprado ou seja valor na moeda destino já com as taxas retiradas
+# convertion_tax: taxa aplicada sobre a conversão
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+{
+	"target_coin": "PEN",
+	"source_coin": "BRL",
+	"conversion_tax": 20,
+	"payment_tax": 76.3,
+	"actual_cotation": 1.32,
+	"converted_value": 727.27,
+	"payment_method": "bill",
+	"value": 1000
+}
+```
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+GET api/conversion/history - historico de conversões do usuario  necessita login use access_token como token para bearer authentication
+RESPOSTA
+```json
+# target_coin: moeda para conversao
+# value: valor para converter
+# payment_method: modo de pagamento
+# source_coin: moeda de origem
+# payment_tax: taxa de pagamento
+# actual_cotation: valor da cotacao na hora da pesquisa
+# converted_value: valor comprado ou seja valor na moeda destino já com as taxas retiradas
+# convertion_tax: taxa aplicada sobre a conversão
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
-
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+{
+	"target_coin": "PEN",
+	"source_coin": "BRL",
+	"conversion_tax": 20,
+	"payment_tax": 76.3,
+	"actual_cotation": 1.32,
+	"converted_value": 727.27,
+	"payment_method": "bill",
+	"value": 1000
+}
+```
