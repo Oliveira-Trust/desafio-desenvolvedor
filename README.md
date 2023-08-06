@@ -1,5 +1,5 @@
 ## Money Conversion
-
+# Projeto feito e testado em PHP version 8.28
 Para rodar o projeto primeiramente
 1- copie o arquivo .env.example para um arquivo chamado .env
 2- instale as dependencias
