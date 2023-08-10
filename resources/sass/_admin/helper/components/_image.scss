@@ -1,0 +1,216 @@
+img.c-avatar-logo {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto!important;
+    height: auto!important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.c-avatar i {
+    color: #e3e3e3;
+}
+
+.c-avatar label {
+    margin-bottom: 0;
+}
+
+.c-avatar {
+    border-radius: 4px;
+    width: 108px;
+    height: 145px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid lightgrey/*#808080*/;
+}
+
+.c-avatar.avatar-b-1 {
+    border: 1px solid grey; /*border: 1px solid #636363 !*lightgray*!;*/
+}
+
+.c-avatar.avatar-b-0 {
+    border: none; /*border: 1px solid #636363 !*lightgray*!;*/
+}
+
+
+.c-avatar-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+
+    margin-left: auto;
+    margin-right: auto
+}
+
+.c-avatar.c-avatar-circle[data-model="1"] .avatar-container, .c-avatar.avatar-image.c-avatar-circle[data-model="2"] .avatar-container {
+    height: 25px !important;
+}
+
+.c-avatar.avatar-image.c-avatar-circle .avatar-container {
+    /*height: 25px !important;*/
+    line-height: 0;
+}
+
+.c-avatar.avatar-image.c-avatar-circle .avatar-container i {
+    font-size: 13px !important;
+}
+
+
+.c-avatar.avatar-image.c-avatar-circle .avatar-btn1 {
+    text-align: right !important;
+    padding-right: 7px;
+    padding-top: 5px;
+}
+
+.c-avatar.avatar-image.c-avatar-circle .avatar-btn2 {
+    text-align: left !important;
+    padding-left: 7px;
+    padding-top: 5px;
+}
+
+.c-avatar.avatar-noimage.c-avatar-circle .avatar-btn {
+    padding-top: 8px;
+}
+
+.c-avatar.avatar-noimage .avatar-btn span {
+    color: white;
+}
+
+.c-avatar:not(.c-avatar-circle) img {
+    /*vertical-align: middle;*/
+    width: 108px;
+    height: 145px;
+    border-radius: 4px;
+
+    /*border: 4px solid lightgray *//*#fff*/
+}
+
+.c-avatar.c-avatar-circle img {
+    vertical-align: middle;
+    width: 110px /*160px FACEBOOK*/;
+    height: 110px;
+    border-radius: 50%;
+    /*border: 4px solid #ecf0f5*/ /*black*/ /*#fff*/
+}
+
+
+.c-avatar[data-model="1"] .avatar-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex
+}
+
+.c-avatar.avatar-image[data-model="2"] .avatar-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex
+}
+
+.c-avatar.avatar-noimage[data-model="2"] .avatar-container {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.c-avatar.avatar-hide-container > .avatar-container {
+    display: none !important;
+    transition: all .2s ease-in-out;
+    /*background-color: rgba(0, 0, 0, 0.50) !important;*/
+}
+
+.c-avatar.avatar-hide-container:hover > .avatar-container {
+    display: flex !important;
+    transition: all .2s ease-in-out;
+}
+
+
+.c-avatar[data-model="1"] > .avatar-container > .avatar-btn {
+    display: none;
+}
+
+.c-avatar.avatar-noimage[data-model="1"] > .avatar-container > .avatar-btn1 {
+    display: none;
+}
+
+.c-avatar.avatar-image[data-model="1"] > .avatar-container > .avatar-btn1 {
+    display: block;
+}
+
+.c-avatar.avatar-noimage[data-model="2"] > .avatar-container > .avatar-btn {
+    display: flex;
+}
+
+.c-avatar.avatar-noimage[data-model="2"] > .avatar-container > .avatar-btn1, .c-avatar.avatar-noimage[data-model="2"] > .avatar-container > .avatar-btn2 {
+    display: none;
+}
+
+.c-avatar.avatar-image[data-model="2"] > .avatar-container > .avatar-btn1, .c-avatar.avatar-image[data-model="2"] > .avatar-container > .avatar-btn2 {
+    display: block;
+}
+
+.c-avatar.avatar-image[data-model="2"] > .avatar-container > .avatar-btn {
+    display: none;
+}
+
+.c-avatar.avatar-with-image .avatar-container .avatar-btn1 {
+    display: none;
+}
+
+
+.c-avatar[data-model="2"] > .avatar-container > .avatar-btn {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+
+.c-avatar > .avatar-container > .avatar-btn {
+    background-color: rgba(0, 0, 0, 0.50);
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.40);
+    color: #e3e3e3;
+    font-weight: normal;
+}
+
+.c-avatar > .avatar-container > .avatar-btn:hover {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.60);
+}
+
+.c-avatar > .avatar-container > .avatar-btn1 {
+    background-color: rgba(0, 0, 0, 0.50);
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.40);
+    color: #e3e3e3;
+}
+
+.c-avatar > .avatar-container > .avatar-btn2 {
+    background-color: rgba(0, 0, 0, 0.50);
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.30);
+    color: #e3e3e3;
+}
+
+.c-avatar > .avatar-container > .avatar-btn1:hover, .c-avatar > .avatar-container > .avatar-btn2:hover {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.60);
+}
+
+.c-avatar > .avatar-container > .avatar-btn1:hover i, .c-avatar > .avatar-container > .avatar-btn2:hover i {
+    color: #ffffff;
+}

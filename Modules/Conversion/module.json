@@ -1,0 +1,11 @@
+{
+    "name": "Conversion",
+    "alias": "conversion",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Conversion\\Providers\\ConversionServiceProvider"
+    ],
+    "files": []
+}

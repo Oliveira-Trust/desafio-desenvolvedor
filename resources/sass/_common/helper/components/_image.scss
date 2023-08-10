@@ -1,0 +1,25 @@
+img.c-avatar-logo {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/*IMAGE*/
+img.img-border-xs {
+    border: 1px solid #cccccc;
+    padding: 1px;
+    background-color: white
+}
+
+img.img-border-sm {
+    border: 1px solid #cccccc;
+    padding: 2px;
+    background-color: white
+}

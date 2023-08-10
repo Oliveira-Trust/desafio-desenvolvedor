@@ -1,0 +1,115 @@
+@import "../../../_common/variables";
+/*NAV-BAR*/
+
+
+
+.nav-bar {
+    flex: 0 0 200px;
+    //padding-right: 7.5px;
+    //padding-left: 7.5px;
+    //max-width: 100%;
+    //width: 160px;//
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-bar, .nav-bar.nav-bar-2, .nav-bar.nav-bar-3,.nav-bar.nav-bar-4,.nav-bar.nav-bar-5,.nav-bar.nav-bar-6 {
+        flex: 100%
+        //width: 100% !important;
+    }
+}
+
+
+.nav-bar.nav-bar-2 {
+    flex: 0 0 200px;
+    //width: 200px
+}
+
+.nav-bar.nav-bar-3 {
+    flex: 0 0 300px;
+   // width: 300px
+}
+
+.nav-bar.nav-bar-4 {
+    flex: 0 0 400px;
+    //width: 400px
+}
+
+.nav-bar.nav-bar-5 {
+    flex: 0 0 500px;
+    //width: 500px
+}
+.nav-bar.nav-bar-6 {
+    flex: 0 0 600px;
+    //width: 600px
+}
+
+
+.nav-bar.nav-bar-100 {
+    width: 100%
+}
+
+
+
+div.nav-bar-box a, a.nav-bar-box {
+    color: $color !important;
+    display: block !important;
+    background-color: white;
+    padding: 6px 8px;
+    //padding: 6px 5px;
+    //padding: 8px 10px;
+    margin-bottom: 6px;
+    border: 1px solid #ecf0f5; //#ecf0f5
+}
+
+div.nav-bar-box a>small, a.nav-bar-box>small{
+    margin-top: 2px
+}
+
+
+div.nav-bar-box a:hover, a:hover.nav-bar-box {
+    background-color: $color-primary-dark !important;
+    border: 1px solid $color-primary-dark!important;
+    color: white !important;
+}
+
+.nav-bar.nav-bar-m-1 div.nav-bar-box a, .nav-bar.nav-bar-m-1 a.nav-bar-box,.nav-bar div.nav-bar-box a, .nav-bar a.nav-bar-box  {
+    margin-bottom: 1px !important;
+}
+
+div.nav-bar-box.active a, a.nav-bar-box.active {
+    color: white !important;
+    background: $color-primary;
+    border: 1px solid $color-primary;
+}
+
+
+div.nav-bar-box.active a, a.nav-bar-box.active {
+    color: white !important;
+    background: $color-primary;
+    border: 1px solid $color-primary;
+}
+
+div.nav-bar-box.active a .badge.badge-warning, a.nav-bar-box.active .badge.badge-warning{
+    color: #f39c12 !important;
+    background: white!important;
+}
+
+
+
+.nav-bar-wizard .active ~ div > a {
+    color: #999999 !important;
+    background: #E8EAED;
+    border: 1px solid #b1b1b1 !important;
+    //border: 1px solid #9f9f9f !important;
+    pointer-events: none;
+    cursor: default;
+}
+
+a.not-active {
+    pointer-events: none;
+    cursor: default;
+}
+
+.nav-bar .nav-bar-count {
+    float: right;
+}

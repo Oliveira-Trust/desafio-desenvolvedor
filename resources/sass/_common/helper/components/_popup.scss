@@ -1,0 +1,34 @@
+/*MAGNIFIC POPUT*/
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 15px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+
+.white-popup-block {
+    position: relative;
+    background: #FFF;
+    padding: 10px 18px 18px 18px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.white-popup-block.white-popup-block-xs {
+    max-width: 200px;
+}
+
+.white-popup-block.white-popup-block-sm {
+    max-width: 400px;
+}
+
+.white-popup-block.white-popup-block-md {
+    max-width: 600px;
+}
+
+.white-popup-block.white-popup-block-lg {
+    max-width: 900px;
+}

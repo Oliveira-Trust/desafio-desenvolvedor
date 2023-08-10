@@ -1,0 +1,24 @@
+//minhas variaveis
+@import "../../../_common/variables";
+
+.datepicker table tr td span.active, .datepicker table tr td span.active.disabled, .datepicker table tr td span.active.disabled:hover, .datepicker table tr td span.active:hover {
+    background-color: $color-primary;
+    background-image: linear-gradient(to bottom,$color-primary,$color-primary);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#08c', endColorstr='#0044cc', GradientType=0);
+    border-color: $color-primary $color-primary $color-primary;
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+
+/*@media(min-width:576px){
+
+}*/
+.datepicker-inline {
+    width: 100%;
+}
+/*.datepicker table {
+    width: 100%;
+}*/

@@ -1,0 +1,16 @@
+.card-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: white;
+    /*border-top: 0 solid rgba(0, 0, 0, 0.125);*/
+}
+
+.card {
+    box-shadow: none;
+    /* box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 1px rgb(0 0 0 / 20%);*/
+    border-radius: 2px;
+}
+
+.card-header,.card-body,.card-footer {
+    padding: 14px;
+    padding: 0.875rem;
+}

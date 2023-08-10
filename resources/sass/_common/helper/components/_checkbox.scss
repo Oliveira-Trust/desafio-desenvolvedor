@@ -1,0 +1,111 @@
+@import "../../variables";
+
+.checkbox-custom {
+    position: relative;
+    //padding: 0 0 0 25px;
+    padding: 0;
+    margin-bottom: 7px;
+    margin-top: 0;
+}
+
+.checkbox-custom label {
+    font-weight: normal !important;
+    cursor: pointer;
+    margin-bottom: 0;
+    text-align: left;
+    line-height: 1.2;
+    padding-left: 25px; //none
+}
+
+.checkbox-custom.checkbox-inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.form-group .checkbox-custom.checkbox-inline {
+    margin-top: 7px;
+    padding-top: 0;
+}
+
+.checkbox-custom:last-child, .checkbox-custom:last-of-type {
+    margin-bottom: 0;
+}
+
+.checkbox-custom input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    margin: -6px 0 0 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.checkbox-custom input[type="checkbox"]:checked + label:after {
+    font-weight: bold !important;
+    position: absolute;
+    display: inline-block;
+    font-family: "Font Awesome 5 Free"; /*'FontAwesome4';*/
+    content: '\F00C';
+    top: 50%;
+    left: 4px;
+    margin-top: -6px;
+    font-size: 11px;
+    line-height: 1;
+    width: 16px;
+    height: 16px;
+    color: #333;
+}
+
+.checkbox-custom input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+}
+
+.checkbox-custom input[type="checkbox"]:disabled:checked + label:after {
+    color: #999;
+}
+
+.checkbox-custom input[type="checkbox"]:disabled + label {
+    cursor: not-allowed;
+}
+
+.checkbox-custom input[type="checkbox"]:disabled + label:before {
+    background-color: #eee;
+}
+
+
+
+.checkbox-custom label:before, .checkbox-custom label:after {
+    font-weight: bold;
+}
+
+.checkbox-custom label:before {
+    font-weight: bold !important;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -9px;
+    width: 19px;
+    height: 18px;
+    display: inline-block;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    background: #fff;
+}
+
+.checkbox-custom label + label.error {
+    display: block;
+}
+
+
+/*
+.checkbox-primary input[type="checkbox"]:checked + label:after {
+    color: #fff;
+}
+
+.checkbox-primary label:before {
+    background: $color-primary!*#CCC*!;
+    border-color: $color-primary-dark!*#bfbfbf*!;
+}
+*/

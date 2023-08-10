@@ -1,0 +1,74 @@
+/*BOOSTRAP ROW*/
+
+.row.row-m-0 {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.row.row-m-0 > div {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.row.row-m-1 {
+    margin-right: -2px;
+    margin-left: -2px;
+}
+
+.row.row-m-1 > div {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+
+.row.row-m-2 {
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.row.row-m-2 > div {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+
+.row.row-m-3 {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.row.row-m-3 > div {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+
+.row.row-sm {
+    margin-right: -5px !important;
+    margin-left: -5px !important;
+}
+
+.row.row-sm > .col-sm {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+
+.row.row-xs {
+    margin-right: -2px !important;
+    margin-left: -2px !important;
+}
+
+.row.row-xs > .col-xs {
+    padding-right: 2px !important;
+    padding-left: 2px !important;
+}
+
+.row.row-xsl {
+    margin-right: -1px !important;
+    margin-left: -1px !important;
+}
+
+.row.row-xsl > .row-xsl {
+    padding-right: 1px !important;
+    padding-left: 1px !important;
+}

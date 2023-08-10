@@ -1,0 +1,200 @@
+@import "../../variables";
+
+/*BOX*/
+.rbox {
+    background-color: white;
+    /*color: #333 !important;*/
+    padding: 14px;
+    margin-bottom: 10px;
+    position: relative;
+    clear: both !important;
+    min-height: 34px;
+    border-radius: 2px;
+}
+
+.rbox.rbox-p-0 {
+    padding: 0;
+}
+
+.rbox .rbox-header {
+    padding: 10px 14px;
+    border-bottom: 2px solid $background;
+}
+
+.rbox .rbox-title-primary {
+    color: $color-primary;
+}
+
+.rbox .rbox-title {
+    font-size: 1.1rem; //bootstrap card
+    font-weight: 400;
+    margin: 0;
+}
+
+.rbox .rbox-body {
+    padding: 14px;
+}
+
+.rbox .rbox-footer {
+    padding: 10px 14px;
+    border-top: 2px solid $background;
+}
+
+
+/*
+
+
+.rbox.rbox-shadow-1 {
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    !*box-shadow: 0px 3px 0px #d0d4d9;*!
+}
+
+!*HOVER PRIMARY*!
+.rbox.rbox-hover:hover {
+    background-color: #e74c3c;
+}
+
+.rbox.rbox-hover:hover .badge.badge-primary {
+    background-color: white !important;
+}
+
+.rbox.rbox-hover .btn.btn-outline {
+    background-color: white;
+}
+
+.rbox.rbox-hover:hover *:not(.btn) {
+    color: white !important;
+    text-decoration: none;
+}
+
+.rbox.rbox-hover:hover .badge {
+    color: #333 !important;
+}
+
+.rbox.rbox-hover .btn-outline.btn-primary:active, .rbox.rbox-hover .btn-outline.btn-primary.active {
+    background-color: #f1f1f1 !important;
+    color: black !important;
+}
+
+.rbox.rbox-hover .btn:hover {
+    background-color: white !important;
+    color: black !important;
+}
+
+!*HOVER DEFAULT*!
+.rbox.rbox-hover-default:hover {
+    background-color: #faf9f9;
+    !* border: 1px solid #f5f4f4;*!
+}
+
+.rbox.rbox-hover-default a {
+    color: #333 !*!important*!
+;
+}
+
+.rbox.rbox-border {
+    border: 1px solid #e7ebf0;
+}
+
+.rbox-container .rbox {
+    padding: 5px 10px;
+    border: none;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid #e7ebf0 !important;
+}
+
+.rbox:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.rbox header, .rbox .rbox-header {
+    font-size: 1.5em;
+}
+
+.rbox.box-text-m-none p {
+    margin: 0;
+}
+
+.rbox p {
+    margin: 0 0 10px;
+}
+
+.row-m-none {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.rbox .rbox-header.header-color {
+    font-size: 1.2em;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin: 0 0 10px 0;
+    display: block;
+    position: relative;
+}
+
+.rbox .rbox-header.header-color:after {
+    content: "";
+    height: 1px;
+    background: #e74c3c;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+}
+
+.rbox .dropdown {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    !*z-index: 1;*!
+
+}
+.rbox .dropdown-xs {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    !*z-index: 1;*!
+
+}
+
+.rbox.box-primary {
+    background-color: #e74c3c;
+    color: white !important;
+}
+
+.rbox.box-muted {
+    background-color: #CCC;
+    color: #777 !important;
+}
+
+.rbox.box-link {
+    cursor: pointer;
+    display: block;
+    border: 2px solid #E8EAED;
+}
+
+.rbox.box-link:hover {
+    border: 2px solid #e74c3c;
+    color: white !important;
+    background-color: #e74c3c;
+}
+
+.rbox.box-link:hover h2, .rbox.box-link:hover p {
+    color: white !important;
+}
+
+.rbox.box-link:hover .p-sub p:last-child, .rbox.box-link .button-link.dropdown-toggle:hover {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.rbox.box-inactive {
+    background-color: #E8EAED;
+    border: 1px solid #9f9f9f;
+    color: #9f9f9f !important;
+}*/

@@ -1,0 +1,21 @@
+.p-sub p:last-child {
+    /*color: #999;*/
+    /*margin-top: 4px;*/
+    color: #CCC;
+    font-size: 85%;
+}
+
+.p-sub.p-sub-bold .p-sub-value {
+    font-weight: bold;
+}
+
+.p-icon p {
+    margin-bottom: 0;
+    line-height: 1.1em;
+}
+
+.p-sub p {
+    margin-bottom: 0;
+    line-height: 1.1em;
+    color: #777;
+}

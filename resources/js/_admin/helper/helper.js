@@ -1,0 +1,12 @@
+//require('./vendor/selectize')
+//require('./vendor/magnific-popup')
+require('./vendor/selectize')
+require('./vendor/magnific-popup-init')
+require('./components/confirm')
+require('./components/search')
+
+require('./components/csrf-token')
+require('./components/form')
+require('./components/link')
+require('./components/table')
+require('./components/paginator')

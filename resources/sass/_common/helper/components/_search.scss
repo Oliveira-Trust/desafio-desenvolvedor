@@ -1,0 +1,43 @@
+@import "../../variables";
+
+/* SEARCH BEGIN */
+
+/*
+::-ms-clear {
+    display: none;
+}
+
+.form-control-clear {
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+}
+*/
+
+/* SEARCH END */
+
+/*SEARCH*/
+
+::-ms-clear {
+    display: none;
+}
+
+.has-clear {
+    position: relative;
+}
+
+.has-clear input {
+    padding-right: 21px;
+}
+
+.form-control-clear {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-control-clear:hover {
+    color: $color-primary !important;
+}

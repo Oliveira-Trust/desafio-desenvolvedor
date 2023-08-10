@@ -1,0 +1,13 @@
+{
+    "name": "BaseAdminLTE3",
+    "alias": "baseadminlte3",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\BaseAdminLTE3\\Providers\\BaseAdminLTE3ServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

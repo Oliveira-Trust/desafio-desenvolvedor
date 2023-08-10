@@ -1,0 +1,41 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "@pnotify/animate": "^5.2.0",
+        "@pnotify/bootstrap4": "^5.2.0",
+        "@pnotify/core": "^5.2.0",
+        "@pnotify/countdown": "^5.2.0",
+        "@pnotify/desktop": "^5.2.0",
+        "@pnotify/font-awesome5": "^5.2.0",
+        "@pnotify/font-awesome5-fix": "^5.2.0",
+        "@pnotify/mobile": "^5.2.0",
+        "admin-lte": "3.2.0-rc",
+        "axios": "^0.21",
+        "bootstrap": "^4.6.1",
+        "cross-env": "^7.0.3",
+        "jquery": "^3.6.0",
+        "jquery-mask-plugin": "^1.14.16",
+        "laravel-mix": "^6.0.25",
+        "lodash": "^4.17.21",
+        "magnific-popup": "^1.1.0",
+        "mark.js": "^8.11.1",
+        "pnotify": "^4.0.1",
+        "popper.js": "^1.12",
+        "postcss": "^8.3.5",
+        "resolve-url-loader": "^3.1.4",
+        "sass": "^1.35.1",
+        "sass-loader": "^8.0.0",
+        "selectize": "^0.12.6",
+        "waitme": "^1.19.0"
+    }
+}

@@ -1,0 +1,66 @@
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+@import '~bootstrap/scss/functions';
+
+@import "../_common/variables";
+$primary:  $color-primary;
+
+@import '~admin-lte/build/scss/bootstrap-variables';
+
+$custom-file-text: (
+    en: "Browse",
+    br: "Escolher"
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+@import '~admin-lte/build/scss/variables';
+@import '~admin-lte/build/scss/variables-alt';
+
+$colors: map-merge((
+    'primary': $color-primary,
+), $colors);
+$theme-colors: map-merge((
+    "primary":    $color-primary
+), $theme-colors);
+$theme-colors-alt: map-merge((
+    "primary":    $color-primary
+), $theme-colors-alt);
+
+
+@import '~admin-lte/build/scss/mixins';
+
+@import '~admin-lte/build/scss/parts/core';
+@import '~admin-lte/build/scss/parts/components';
+@import '~admin-lte/build/scss/parts/extra-components';
+@import '~admin-lte/build/scss/parts/pages';
+@import '~admin-lte/build/scss/parts/plugins';
+@import '~admin-lte/build/scss/parts/miscellaneous';
+
+//Pnotify
+@import "../../vendor/pnotify/pnotify.custom.css";
+
+//Selectize
+//Selectize
+@import "~selectize/dist/css/selectize.bootstrap3.css";
+@import "../../vendor/selectize/selectize.bootstrap3-custom.css";
+
+//Magnific Popup
+@import "~magnific-popup/src/css/main";
+
+//WaitMe
+@import "~waitme/waitMe.min.css";
+
+//FONT
+@import "font";
+
+//COMMON
+@import "../_common/helper";
+
+//ADMIN
+@import "helper";
+@import "custom";
+@import "theme";

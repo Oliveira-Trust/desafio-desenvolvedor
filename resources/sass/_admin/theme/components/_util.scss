@@ -1,0 +1,207 @@
+@import "../../../_common/variables";
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.content-wrapper {
+    background: $background; /*facebook*/
+}
+
+/*@media (min-width: 768px) {
+    body:not(.sidebar-mini-md) .content-wrapper, body:not(.sidebar-mini-md) .main-footer, body:not(.sidebar-mini-md) .main-header {
+        transition: margin-left .3s ease-in-out;
+        margin-left: $sidebar-width;
+    }
+}*/
+
+/*.main-sidebar, .main-sidebar::before {
+    transition: margin-left .3s ease-in-out,width .3s ease-in-out;
+    width: $sidebar-width;
+}*/
+
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/*FORM CONTROL*/
+.form-control {
+    border-color: rgba(0, 0, 0, 0.09);
+    color: #495057;
+}
+
+.form-control:not(.is-invalid):focus {
+    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 8%) inset;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 8%) inset;
+    border-color: #CCC;
+    color: #495057;
+}
+
+/*BOOTSTRAP VALIDATION*/
+.is-invalid > .invalid-feedback {
+    display: block;
+}
+
+.form-group.is-invalid .form-control {
+    border-color: #dc3545 !important;
+}
+
+.form-group.is-invalid .form-control:focus {
+    border-color: #b72c3a !important;
+    box-shadow: none;
+    /*box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, .25);*/
+}
+
+
+.accent-primary .form-control:focus:not(.is-invalid):not(.is-warning):not(.is-valid), .accent-primary .custom-select:focus, .accent-primary .custom-control-input:focus:not(:checked) ~ .custom-control-label::before, .accent-primary .custom-file-input:focus ~ .custom-file-label {
+    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 8%) inset;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 8%) inset;
+    border-color: #CCC;
+    color: #495057;
+}
+
+[class*=sidebar-dark-] .nav-sidebar > .nav-item.active > .nav-link, [class*=sidebar-dark-] .nav-sidebar > .nav-item.active:hover > .nav-link, [class*=sidebar-dark-] .nav-sidebar > .nav-item.active > .nav-link:focus {
+    /*background-color: rgba(255, 255, 255, 0.1);*/
+    background-color: $color-primary;
+    color: #ffffff;
+}
+
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: none;
+}
+
+.text-muted {
+    color: #999 !important;
+}
+
+small, .small {
+    font-size: 85%;
+}
+
+
+.datepicker table tr td.active.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled.disabled, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover.active, .datepicker table tr td.active.disabled:hover.disabled, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active.disabled:hover[disabled], .datepicker table tr td.active.disabled[disabled], .datepicker table tr td.active:active, .datepicker table tr td.active:hover, .datepicker table tr td.active:hover.active, .datepicker table tr td.active:hover.disabled, .datepicker table tr td.active:hover:active, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active:hover[disabled], .datepicker table tr td.active[disabled] {
+    background-color: $color-primary !important;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active:hover {
+    background-color: $color-primary !important;
+    background-image: none !important;
+}
+
+/*FONT AWESOME*/
+.fa-whatsapp::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f232";
+}
+
+
+/* Form - iOS Override */
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+textarea {
+    -webkit-appearance: none;
+}
+
+.form-control::-webkit-input-placeholder,
+input[type="text"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder,
+input[type="datetime"]::-webkit-input-placeholder,
+input[type="datetime-local"]::-webkit-input-placeholder,
+input[type="date"]::-webkit-input-placeholder,
+input[type="month"]::-webkit-input-placeholder,
+input[type="time"]::-webkit-input-placeholder,
+input[type="week"]::-webkit-input-placeholder,
+input[type="number"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+input[type="url"]::-webkit-input-placeholder,
+input[type="search"]::-webkit-input-placeholder,
+input[type="tel"]::-webkit-input-placeholder,
+input[type="color"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #bdbdbd;
+}
+
+.form-control::-moz-placeholder,
+input[type="text"]::-moz-placeholder,
+input[type="password"]::-moz-placeholder,
+input[type="datetime"]::-moz-placeholder,
+input[type="datetime-local"]::-moz-placeholder,
+input[type="date"]::-moz-placeholder,
+input[type="month"]::-moz-placeholder,
+input[type="time"]::-moz-placeholder,
+input[type="week"]::-moz-placeholder,
+input[type="number"]::-moz-placeholder,
+input[type="email"]::-moz-placeholder,
+input[type="url"]::-moz-placeholder,
+input[type="search"]::-moz-placeholder,
+input[type="tel"]::-moz-placeholder,
+input[type="color"]::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #dedede !important;
+}
+
+.form-control:-ms-input-placeholder,
+input[type="text"]:-ms-input-placeholder,
+input[type="password"]:-ms-input-placeholder,
+input[type="datetime"]:-ms-input-placeholder,
+input[type="datetime-local"]:-ms-input-placeholder,
+input[type="date"]:-ms-input-placeholder,
+input[type="month"]:-ms-input-placeholder,
+input[type="time"]:-ms-input-placeholder,
+input[type="week"]:-ms-input-placeholder,
+input[type="number"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder,
+input[type="url"]:-ms-input-placeholder,
+input[type="search"]:-ms-input-placeholder,
+input[type="tel"]:-ms-input-placeholder,
+input[type="color"]:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #bdbdbd;
+}
+
+
+.badge-default {
+    background-color: $default-background-color;
+    color: $default-color;
+}
+
+.bg-orange-active {
+    background-color: #ff7701 !important;
+}
+
+.bg-orange {
+    background-color: #ff851b !important;
+}
+
+.badge-warning {
+    color: #fff !important;
+    background-color: #f39c12 !important;
+    //color: #1f2d3d;
+    //background-color: #ffc107;
+}
+
+/*#f39c12!important; //warning*/
+
+
+

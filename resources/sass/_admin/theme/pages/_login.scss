@@ -1,0 +1,15 @@
+.form-group.is-invalid .input-group-text {
+    border-color: #dc3545 !important;
+}
+
+.input-group-text {
+    border: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.login-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text, .register-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text {
+    border-color: #CCC;;
+}
+
+.login-card-body .input-group .input-group-text, .register-card-body .input-group .input-group-text {
+    transition: none;
+}

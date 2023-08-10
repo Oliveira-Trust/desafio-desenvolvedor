@@ -1,0 +1,39 @@
+/*FILTER*/
+aside.sidebar-filter ul > li {
+    line-height: 1.2em !important;
+    margin-bottom: 5px;
+}
+
+aside.sidebar-filter ul > li:last-child {
+    margin-bottom: 0;
+}
+
+aside.sidebar-filter ul > li a {
+    text-decoration: none;
+}
+
+aside.sidebar-filter ul > li a:hover {
+    color: #c13f30;
+}
+
+aside.sidebar-filter h6 {
+    margin-bottom: 5px !important;
+}
+
+aside.sidebar-filter .alert .close {
+    text-decoration: none !important;
+    color: white !important;
+    opacity: .5;
+    position: relative;
+}
+
+aside.sidebar-filter .alert .close > span {
+    position: absolute;
+    top: -2px;
+    right: 0;
+}
+
+aside.sidebar-filter .alert .close:hover {
+    color: white !important;
+    opacity: 1;
+}

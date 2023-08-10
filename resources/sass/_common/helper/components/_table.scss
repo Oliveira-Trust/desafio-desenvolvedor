@@ -1,0 +1,89 @@
+table.table-horizontal > tbody > tr > th {
+    width: 1px;
+    white-space: nowrap;
+}
+
+.clickable-row {
+    cursor: pointer !important;
+}
+
+.table.table-info tr:first-child td, .table.table-info tr:first-child th {
+    border: 1px transparent;
+}
+
+.table.table-info tr td, .table.table-info trth {
+    border-top: 1px solid #f4f4f4 /*#e8e8e8*/;
+}
+
+table.table-default td {
+    vertical-align: middle !important;
+}
+
+table.table-default td:last-child {
+    white-space: nowrap;
+    text-align: center;
+    width: 1%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+tr[data-url], tr[data-mfp-src] {
+    cursor: pointer;
+}
+
+tr[data-url]:hover {
+    background-color: #FAE0DF;
+
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #FAE0DF;
+
+}
+
+.table.table-info tr:first-child td, .table.table-info tr:first-child th {
+    border: 1px transparent;
+}
+
+.table.table-info tr td, .table.table-info tr th {
+    border-top: 1px solid #f4f4f4 /*#e8e8e8*/;
+}
+
+table.table-default td {
+    vertical-align: middle !important;
+}
+
+/*TABLE*/
+.row-m-none {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.table.table-default td:last-child {
+    white-space: nowrap;
+    text-align: center;
+    width: 1%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+tr[data-url], tr[data-mfp-src] {
+    cursor: pointer;
+}
+
+tr[data-url]:hover {
+    background-color: #FAE0DF;
+
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #FAE0DF;
+}
+
+.table td, .table th {
+    padding: .55rem;
+}
+
+.table.table-sm td, .table.table-sm th {
+    padding: .30rem;
+}

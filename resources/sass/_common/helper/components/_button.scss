@@ -1,0 +1,34 @@
+.btn-link {
+    background: none;
+    border: none;
+    /*color: #0066ff;*/
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-link:hover {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+
+/*BTN ADD INPUT*/
+.rb-btn {
+    cursor: pointer;
+}
+
+.rb-btn.fa-plus {
+    color: #e74c3c;
+}
+
+.rb-btn.fa-plus:hover {
+    color: #b3291b;
+}
+
+.rb-btn.fa-times {
+    color: #e8bfbb;
+}
+
+.rb-btn.fa-times:hover {
+    color: #e7aca7;
+}
