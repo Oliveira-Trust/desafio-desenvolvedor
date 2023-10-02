@@ -41,8 +41,9 @@ services:
       MYSQL_DATABASE: cakephp
       MYSQL_USER: cakephp
       MYSQL_PASSWORD: cakephp
+      MYSQL_TCP_PORT: 3388
     ports:
-      - "3306:3306"
+      - "3388:3388"
     networks:
       - desafio-network
 
@@ -54,6 +55,15 @@ services:
     networks:
       - desafio-network
 
+  mailhog:
+      image: mailhog/mailhog
+      ports:
+        - "1025:1025"
+        - "8025:8025"
+
 networks:
   desafio-network:
     driver: bridge
+
+volumes:
+  dbdata:

@@ -13,43 +13,60 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  */
-
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
+    <head>
+        <?= $this->Html->charset() ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            <?= $cakeDescription ?>:
+            <?= $this->fetch('title') ?>
+        </title>
+        <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+        <?= $this->Html->css(['normalize.min', 'milligram.min', 'jquery.modal.min', 'fonts', 'cake']) ?>
+        <?= $this->Html->script(['jquery-3.7.1.min', 'jquery.modal.min']) ?>
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
-</head>
-<body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+        <?= $this->fetch('meta') ?>
+        <?= $this->fetch('css') ?>
+        <?= $this->fetch('script') ?>
+    </head>
+    <body>
+        <nav class="top-nav">
+            <div class="top-nav-title">
+                <a href="<?= $this->Url->build('/') ?>"><span>desafio</span>DEV</a> 
+            </div>
+            <div>
+                <?php
+                if ($this->Identity->isLoggedIn()) {
+                    ?>
+                    <div class="top-nav-links"> 
+                        <?= $this->Html->link("Home", ['controller' => 'Pages', 'action' => 'home']) ?> | 
+                        <?= $this->Html->link("Usuários", ['controller' => 'Users', 'action' => 'index']) ?> | 
+                        <?= $this->Html->link("Métodos de Pagamentos", ['controller' => 'PaymentMethods', 'action' => 'index']) ?> |
+                        <?= $this->Html->link("Histórico de Conversão", ['controller' => 'CurrencyConversions', 'action' => 'index']) ?> |
+                        <?= $this->Identity->get('email') ?> | <?= $this->Html->link("Logout", ['controller' => 'Users', 'action' => 'logout']) ?>
+                        <?php
+                    } else {
+                        ?>
+                        <?= $this->Html->link("Login", ['controller' => 'Users', 'action' => 'login'], ['class' => 'button']) ?>
+                        <?php
+                    }
+                    ?>
+                </div>
+        </nav>
+        <main class="main">
+            <div class="container">
+                <?= $this->Flash->render() ?>
+                <?= $this->fetch('content') ?>
+            </div>
+        </main>
+        <footer>
+        </footer>
+        <div id="loader">
+            <div id="spinner"></div>
         </div>
-        <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
-        </div>
-    </nav>
-    <main class="main">
-        <div class="container">
-            <?= $this->Flash->render() ?>
-            <?= $this->fetch('content') ?>
-        </div>
-    </main>
-    <footer>
-    </footer>
-</body>
+    </body>
 </html>

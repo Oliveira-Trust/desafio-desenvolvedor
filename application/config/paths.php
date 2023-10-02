@@ -92,3 +92,7 @@ define('CAKE_CORE_INCLUDE_PATH', ROOT . DS . 'vendor' . DS . 'cakephp' . DS . 'c
  */
 define('CORE_PATH', CAKE_CORE_INCLUDE_PATH . DS);
 define('CAKE', CORE_PATH . 'src' . DS);
+
+define('AWESOME_API_COINS', 'https://economia.awesomeapi.com.br/json/available/uniq');
+define('AWESOME_API_COTATION', 'https://economia.awesomeapi.com.br/json/last/');
+define('AWESOME_API_AVAILABLE_COMBINATIONS','https://economia.awesomeapi.com.br/json/available');

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -14,6 +15,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Core\Configure;
@@ -21,6 +23,8 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Http\Client;
+use Cake\Http\Client\Request as ClientRequest;
 
 /**
  * Static content controller
@@ -29,8 +33,8 @@ use Cake\View\Exception\MissingTemplateException;
  *
  * @link https://book.cakephp.org/4/en/controllers/pages-controller.html
  */
-class PagesController extends AppController
-{
+class PagesController extends AppController {
+
     /**
      * Displays a view
      *
@@ -43,8 +47,21 @@ class PagesController extends AppController
      *   be found and not in debug mode.
      * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
      */
-    public function display(string ...$path): ?Response
-    {
+    public function display(string ...$path): ?Response {
+
+        $http = new Client();
+        $response = $http->get(AWESOME_API_COINS);
+        $currencies = $response->getJson();
+        asort($currencies);
+        
+        foreach ($currencies as $key => $value) {
+            $currencies[$key] = $value . " (" . $key . ")";
+        }
+        
+        $paymentMethods = $this->fetchTable('PaymentMethods')
+                ->find('list')
+                ->where(['status' => true]);
+
         if (!$path) {
             return $this->redirect('/');
         }
@@ -59,7 +76,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page', 'subpage'));
+        $this->set(compact('page', 'subpage', 'currencies', 'paymentMethods'));
 
         try {
             return $this->render(implode('/', $path));
@@ -69,5 +86,11 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event) {
+        parent::beforeFilter($event);
+
+        $this->Authentication->addUnauthenticatedActions(['display']);
     }
 }
