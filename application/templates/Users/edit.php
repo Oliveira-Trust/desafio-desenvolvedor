@@ -23,6 +23,7 @@
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Salvar')) ?>
+            <?= $this->Html->link(__('Voltar'), $this->request->referer(), ['class' => 'button']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

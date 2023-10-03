@@ -7,6 +7,7 @@ namespace App\Controller;
 use Cake\Mailer\Mailer;
 use Cake\View\JsonView;
 use Cake\Http\Client;
+use Cake\I18n\Number;
 use Cake\Http\Client\Request as ClientRequest;
 
 /**
@@ -120,13 +121,13 @@ class ConversionsController extends AppController {
         $content = '<h3>Conversão de Moeda</h3>' .
                 '<p>Moeda de origem: ' . $data['origin_currency'] . '</p>' .
                 '<p>Moeda de destino: ' . $data['destination_currency'] . '</p>' .
-                '<p>Valor para conversão: ' . number_format((float) $data['value_to_convert'], 2, ',', '.') . '</p>' .
+                '<p>Valor para conversão: ' . Number::currency($data['value_to_convert'], $data['origin_currency']) . '</p>' .
                 '<p>Forma de pagamento: ' . $data['payment_method'] . '</p>' .
-                '<p>Valor da "Moeda de destino" usado para conversão: ' . number_format((float) $data['destination_currency_conversion_value'], 2, ',', '.') . '</p>' .
-                '<p>Valor comprado em "Moeda de destino": ' . number_format((float) $data['destination_currency_purchased_value'], 2, ',', '.') . '</p>' .
-                '<p>Taxa de pagamento: ' . number_format((float) $data['payment_tax'], 2, ',', '.') . '</p>' .
-                '<p>Taxa de conversão: ' . number_format((float) $data['conversion_tax'], 2, ',', '.') . '</p>' .
-                '<p>Valor utilizado para conversão descontando as taxas: ' . number_format((float) $data['conversion_value_without_tax'], 2, ',', '.') . '</p>';
+                '<p>Valor da "Moeda de destino" usado para conversão: ' . Number::currency($data['destination_currency_conversion_value'], $data['destination_currency']) . '</p>' .
+                '<p>Valor comprado em "Moeda de destino": ' . Number::currency($data['destination_currency_purchased_value'], $data['destination_currency']) . '</p>' .
+                '<p>Taxa de pagamento: ' . Number::currency($data['payment_tax'], $data['origin_currency']) . '</p>' .
+                '<p>Taxa de conversão: ' . Number::currency($data['conversion_tax'], $data['origin_currency']) . '</p>' .
+                '<p>Valor utilizado para conversão descontando as taxas: ' . Number::currency($data['conversion_value_without_tax'], $data['origin_currency']) . '</p>';
 
         $mailer->deliver($content);
     }

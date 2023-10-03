@@ -26,7 +26,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </title>
         <?= $this->Html->meta('icon') ?>
 
-        <?= $this->Html->css(['normalize.min', 'milligram.min', 'jquery.modal.min', 'fonts', 'cake']) ?>
+        <?= $this->Html->css(['normalize.min', 'milligram.min', 'jquery.modal.min', 'fonts', 'cake', 'fontawesome', 'solid']) ?>
         <?= $this->Html->script(['jquery-3.7.1.min', 'jquery.modal.min']) ?>
 
         <?= $this->fetch('meta') ?>

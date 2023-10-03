@@ -37,6 +37,7 @@
                     <td><?= $paymentMethod->status ? __('Sim') : __('Não'); ?></td>
                 </tr>
             </table>
+            <?= $this->Html->link(__('Voltar'), $this->request->referer(), ['class' => 'button']) ?>
         </div>
     </div>
 </div>

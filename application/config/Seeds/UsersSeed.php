@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractSeed;
 use Authentication\PasswordHasher\DefaultPasswordHasher;
+
 /**
  * Users seed.
  */

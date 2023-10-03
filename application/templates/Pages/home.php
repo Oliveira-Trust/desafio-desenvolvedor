@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="column">
-        <div class="content">
+    <div class="column column-50 column-offset-25">
+        <div class="users form content">
             <h1>Conversor de Moeda</h1>
             <?php
             echo $this->Form->create();
@@ -30,7 +30,7 @@
     $(document).ready(function () {
         $('#convert-coin').on('click', function () {
             $('#loader').show();
-            
+
             const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
             const elementEmail = document.querySelector("#email");
 
@@ -50,13 +50,13 @@
                     if (result.status === 200) {
                         content = 'Moeda de origem: ' + result.data.origin_currency + ' <br/>' +
                                 'Moeda de destino: ' + result.data.destination_currency + '<br/>' +
-                                'Valor para conversão: ' + result.data.value_to_convert + '<br/>' +
+                                'Valor para conversão: ' + result.data.value_to_convert.toLocaleString("pt-BR", {style: "currency", currency: result.data.origin_currency}) + '<br/>' +
                                 'Forma de pagamento: ' + result.data.payment_method + '<br/>' +
-                                'Valor da "Moeda de destino" usado para conversão: ' + result.data.destination_currency_conversion_value + '<br/>' +
-                                'Valor comprado em "Moeda de destino": ' + result.data.destination_currency_purchased_value + '<br/>' +
-                                'Taxa de pagamento: ' + result.data.payment_tax + '<br/>' +
-                                'Taxa de conversão: ' + result.data.conversion_tax + ' <br/>' +
-                                'Valor utilizado para conversão descontando as taxas: ' + result.data.conversion_value_without_tax;
+                                'Valor da "Moeda de destino" usado para conversão: ' + result.data.destination_currency_conversion_value.toLocaleString("pt-BR", {style: "currency", currency: result.data.destination_currency}) + '<br/>' +
+                                'Valor comprado em "Moeda de destino": ' + result.data.destination_currency_purchased_value.toLocaleString("pt-BR", {style: "currency", currency: result.data.destination_currency}) + '<br/>' +
+                                'Taxa de pagamento: ' + result.data.payment_tax.toLocaleString("pt-BR", {style: "currency", currency: result.data.origin_currency}) + '<br/>' +
+                                'Taxa de conversão: ' + result.data.conversion_tax.toLocaleString("pt-BR", {style: "currency", currency: result.data.origin_currency}) + ' <br/>' +
+                                'Valor utilizado para conversão descontando as taxas: ' + result.data.conversion_value_without_tax.toLocaleString("pt-BR", {style: "currency", currency: result.data.origin_currency});
                     } else {
                         content = result.message;
                     }

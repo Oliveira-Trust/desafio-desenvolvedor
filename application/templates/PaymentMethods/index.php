@@ -24,9 +24,9 @@
                         <td><?= h($paymentMethod->created) ?></td>
                         <td><?= h($paymentMethod->modified) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('Visualizar'), ['action' => 'view', $paymentMethod->id], ['class' => 'button']) ?>
-                            <?= $this->Html->link(__('Editar'), ['action' => 'edit', $paymentMethod->id], ['class' => 'button']) ?>
-                            <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $paymentMethod->id], ['class' => 'button', 'confirm' => __('Tem certeza de que deseja excluir # {0}?', $paymentMethod->id)]) ?>
+                            <?= $this->Html->link('<i class="fa-solid fa-eye"></i>', ['action' => 'view', $paymentMethod->id], ['class' => 'button', 'escape' => false, 'title' => 'Visualizar']) ?>
+                            <?= $this->Html->link('<i class="fa-solid fa-edit"></i>', ['action' => 'edit', $paymentMethod->id], ['class' => 'button', 'escape' => false, 'title' => 'Editar']) ?>
+                            <?= $this->Form->postLink('<i class="fa-solid fa-trash"></i>', ['action' => 'delete', $paymentMethod->id], ['class' => 'button', 'escape' => false, 'title' => 'Excluir', 'confirm' => __('Tem certeza de que deseja excluir # {0}?', $paymentMethod->id)]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

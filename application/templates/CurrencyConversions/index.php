@@ -21,19 +21,19 @@
             <tbody>
                 <?php foreach ($currencyConversions as $currencyConversion): ?>
                     <tr>
-                        <td><?= $currencyConversion->user->email ?></td>
+                        <td><?= $currencyConversion->user->name ?></td>
                         <td><?= h($currencyConversion->origin_currency) ?></td>
                         <td><?= h($currencyConversion->destination_currency) ?></td>
-                        <td><?= $this->Number->format($currencyConversion->value_to_convert, ['places' => 2]) ?></td>
+                        <td><?= $this->Number->currency($currencyConversion->value_to_convert, $currencyConversion->origin_currency) ?></td>
                         <td><?= h($currencyConversion->payment_method) ?></td>
-                        <td><?= $this->Number->format($currencyConversion->destination_currency_conversion_value, ['places' => 2]) ?></td>
-                        <td><?= $this->Number->format($currencyConversion->destination_currency_purchased_value, ['places' => 2]) ?></td>
-                        <td><?= $this->Number->format($currencyConversion->payment_tax, ['places' => 2]) ?></td>
-                        <td><?= $this->Number->format($currencyConversion->conversion_tax, ['places' => 2]) ?></td>
-                        <td><?= $this->Number->format($currencyConversion->conversion_value_without_tax, ['places' => 2]) ?></td>
+                        <td><?= $this->Number->currency($currencyConversion->destination_currency_conversion_value, $currencyConversion->destination_currency) ?></td>
+                        <td><?= $this->Number->currency($currencyConversion->destination_currency_purchased_value, $currencyConversion->destination_currency) ?></td>
+                        <td><?= $this->Number->currency($currencyConversion->payment_tax, $currencyConversion->origin_currency) ?></td>
+                        <td><?= $this->Number->currency($currencyConversion->conversion_tax, $currencyConversion->origin_currency) ?></td>
+                        <td><?= $this->Number->currency($currencyConversion->conversion_value_without_tax, $currencyConversion->origin_currency) ?></td>
                         <td><?= h($currencyConversion->created) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('Visualizar'), ['action' => 'view', $currencyConversion->id], ['class' => 'button']) ?>
+                            <?= $this->Html->link('<i class="fa-solid fa-eye"></i>', ['action' => 'view', $currencyConversion->id], ['class' => 'button', 'escape' => false, 'title' => 'Visualizar']) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

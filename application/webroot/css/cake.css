@@ -378,3 +378,14 @@ input[type='color'] {
     display: none;
     text-align: center;
 }
+
+.actions a {
+    min-width: 28px;
+    color: white;
+    font-size: 15px;
+}
+
+.actions a:hover,
+.actions a:focus {
+    color: white;
+}

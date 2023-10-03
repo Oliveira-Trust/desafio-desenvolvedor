@@ -24,9 +24,9 @@
                         <td><?= h($user->created) ?></td>
                         <td><?= h($user->modified) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('Visualizar'), ['action' => 'view', $user->id], ['class' => 'button']) ?>
-                            <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id], ['class' => 'button']) ?>
-                            <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $user->id], ['class' => 'button', 'confirm' => __('Tem certeza de que deseja excluir # {0}?', $user->id)]) ?>
+                            <?= $this->Html->link('<i class="fa-solid fa-eye"></i>', ['action' => 'view', $user->id], ['class' => 'button', 'escape' => false, 'title' => 'Visualizar']) ?>
+                            <?= $this->Html->link('<i class="fa-solid fa-edit"></i>', ['action' => 'edit', $user->id], ['class' => 'button', 'escape' => false, 'title' => 'Editar']) ?>
+                            <?= $this->Form->postLink('<i class="fa-solid fa-trash"></i>', ['action' => 'delete', $user->id], ['class' => 'button', 'escape' => false, 'title' => 'Excluir', 'confirm' => __('Tem certeza de que deseja excluir # {0}?', $user->id)]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
