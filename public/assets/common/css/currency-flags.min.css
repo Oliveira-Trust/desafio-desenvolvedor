@@ -1,0 +1,1159 @@
+.currency-flag {
+    display: inline-block;
+    width: 24px;
+    height: 16px;
+    background-size: cover;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle_fallback.png");
+}
+
+.np-theme-personal .currency-flag {
+    height: 24px;
+    background-image: url("https://wise.com/web-art/assets/flags/wise.svg");
+}
+
+.currency-flag-sm {
+    width: 16px;
+    height: 10px;
+}
+
+.np-theme-personal .currency-flag-sm {
+    height: 16px;
+}
+
+.currency-flag-lg {
+    width: 36px;
+    height: 24px;
+}
+
+.np-theme-personal .currency-flag-lg {
+    height: 36px;
+}
+
+.currency-flag-xl {
+    width: 48px;
+    height: 32px;
+}
+
+.np-theme-personal .currency-flag-xl {
+    height: 48px;
+}
+
+.currency-flag.currency-flag-aed {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/aed.png");
+}
+.currency-flag.currency-flag-afn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/afn.png");
+}
+.currency-flag.currency-flag-all {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/all.png");
+}
+.currency-flag.currency-flag-amd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/amd.png");
+}
+.currency-flag.currency-flag-ang {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ang.png");
+}
+.currency-flag.currency-flag-aoa {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/aoa.png");
+}
+.currency-flag.currency-flag-ars {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ars.png");
+}
+.currency-flag.currency-flag-aud {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/aud.png");
+}
+.currency-flag.currency-flag-awg {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/awg.png");
+}
+.currency-flag.currency-flag-azn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/azn.png");
+}
+.currency-flag.currency-flag-bam {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bam.png");
+}
+.currency-flag.currency-flag-bbd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bbd.png");
+}
+.currency-flag.currency-flag-bdt {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bdt.png");
+}
+.currency-flag.currency-flag-bgn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bgn.png");
+}
+.currency-flag.currency-flag-bhd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bhd.png");
+}
+.currency-flag.currency-flag-bif {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bif.png");
+}
+.currency-flag.currency-flag-bmd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bmd.png");
+}
+.currency-flag.currency-flag-bnd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bnd.png");
+}
+.currency-flag.currency-flag-bob {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bob.png");
+}
+.currency-flag.currency-flag-brl {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/brl.png");
+}
+.currency-flag.currency-flag-bsd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bsd.png");
+}
+.currency-flag.currency-flag-btn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/btn.png");
+}
+.currency-flag.currency-flag-bwp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bwp.png");
+}
+.currency-flag.currency-flag-byn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/byn.png");
+}
+.currency-flag.currency-flag-bzd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bzd.png");
+}
+.currency-flag.currency-flag-cad {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cad.png");
+}
+.currency-flag.currency-flag-cdf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cdf.png");
+}
+.currency-flag.currency-flag-chf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/chf.png");
+}
+.currency-flag.currency-flag-clp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/clp.png");
+}
+.currency-flag.currency-flag-cny {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cny.png");
+}
+.currency-flag.currency-flag-cop {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cop.png");
+}
+.currency-flag.currency-flag-crc {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/crc.png");
+}
+.currency-flag.currency-flag-cup {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cup.png");
+}
+.currency-flag.currency-flag-cve {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cve.png");
+}
+.currency-flag.currency-flag-czk {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/czk.png");
+}
+.currency-flag.currency-flag-djf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/djf.png");
+}
+.currency-flag.currency-flag-dkk {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/dkk.png");
+}
+.currency-flag.currency-flag-dop {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/dop.png");
+}
+.currency-flag.currency-flag-dzd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/dzd.png");
+}
+.currency-flag.currency-flag-egp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/egp.png");
+}
+.currency-flag.currency-flag-ern {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ern.png");
+}
+.currency-flag.currency-flag-etb {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/etb.png");
+}
+.currency-flag.currency-flag-eur {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/eur.png");
+}
+.currency-flag.currency-flag-fjd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/fjd.png");
+}
+.currency-flag.currency-flag-fkp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/fkp.png");
+}
+.currency-flag.currency-flag-gbp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gbp.png");
+}
+.currency-flag.currency-flag-gel {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gel.png");
+}
+.currency-flag.currency-flag-ggp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ggp.png");
+}
+.currency-flag.currency-flag-ghs {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ghs.png");
+}
+.currency-flag.currency-flag-gip {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gip.png");
+}
+.currency-flag.currency-flag-gmd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gmd.png");
+}
+.currency-flag.currency-flag-gnf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gnf.png");
+}
+.currency-flag.currency-flag-gtq {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gtq.png");
+}
+.currency-flag.currency-flag-gyd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gyd.png");
+}
+.currency-flag.currency-flag-hkd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/hkd.png");
+}
+.currency-flag.currency-flag-hnl {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/hnl.png");
+}
+.currency-flag.currency-flag-hrk {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/hrk.png");
+}
+.currency-flag.currency-flag-htg {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/htg.png");
+}
+.currency-flag.currency-flag-huf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/huf.png");
+}
+.currency-flag.currency-flag-idr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/idr.png");
+}
+.currency-flag.currency-flag-ils {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ils.png");
+}
+.currency-flag.currency-flag-imp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/imp.png");
+}
+.currency-flag.currency-flag-inr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/inr.png");
+}
+.currency-flag.currency-flag-iqd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/iqd.png");
+}
+.currency-flag.currency-flag-irr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/irr.png");
+}
+.currency-flag.currency-flag-isk {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/isk.png");
+}
+.currency-flag.currency-flag-jep {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/jep.png");
+}
+.currency-flag.currency-flag-jmd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/jmd.png");
+}
+.currency-flag.currency-flag-jod {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/jod.png");
+}
+.currency-flag.currency-flag-jpy {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/jpy.png");
+}
+.currency-flag.currency-flag-kes {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kes.png");
+}
+.currency-flag.currency-flag-kgs {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kgs.png");
+}
+.currency-flag.currency-flag-khr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/khr.png");
+}
+.currency-flag.currency-flag-kmf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kmf.png");
+}
+.currency-flag.currency-flag-kpw {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kpw.png");
+}
+.currency-flag.currency-flag-krw {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/krw.png");
+}
+.currency-flag.currency-flag-kwd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kwd.png");
+}
+.currency-flag.currency-flag-kyd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kyd.png");
+}
+.currency-flag.currency-flag-kzt {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kzt.png");
+}
+.currency-flag.currency-flag-lak {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lak.png");
+}
+.currency-flag.currency-flag-lbp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lbp.png");
+}
+.currency-flag.currency-flag-lkr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lkr.png");
+}
+.currency-flag.currency-flag-lrd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lrd.png");
+}
+.currency-flag.currency-flag-lsl {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lsl.png");
+}
+.currency-flag.currency-flag-ltl {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ltl.png");
+}
+.currency-flag.currency-flag-lyd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lyd.png");
+}
+.currency-flag.currency-flag-mad {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mad.png");
+}
+.currency-flag.currency-flag-mdl {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mdl.png");
+}
+.currency-flag.currency-flag-mga {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mga.png");
+}
+.currency-flag.currency-flag-mkd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mkd.png");
+}
+.currency-flag.currency-flag-mmk {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mmk.png");
+}
+.currency-flag.currency-flag-mnt {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mnt.png");
+}
+.currency-flag.currency-flag-mop {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mop.png");
+}
+.currency-flag.currency-flag-mro {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mro.png");
+}
+.currency-flag.currency-flag-mur {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mur.png");
+}
+.currency-flag.currency-flag-mvr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mvr.png");
+}
+.currency-flag.currency-flag-mwk {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mwk.png");
+}
+.currency-flag.currency-flag-mxn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mxn.png");
+}
+.currency-flag.currency-flag-myr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/myr.png");
+}
+.currency-flag.currency-flag-mzn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mzn.png");
+}
+.currency-flag.currency-flag-nad {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/nad.png");
+}
+.currency-flag.currency-flag-ngn {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ngn.png");
+}
+.currency-flag.currency-flag-nio {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/nio.png");
+}
+.currency-flag.currency-flag-nok {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/nok.png");
+}
+.currency-flag.currency-flag-npr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/npr.png");
+}
+.currency-flag.currency-flag-nzd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/nzd.png");
+}
+.currency-flag.currency-flag-omr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/omr.png");
+}
+.currency-flag.currency-flag-pab {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pab.png");
+}
+.currency-flag.currency-flag-pen {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pen.png");
+}
+.currency-flag.currency-flag-pgk {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pgk.png");
+}
+.currency-flag.currency-flag-php {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/php.png");
+}
+.currency-flag.currency-flag-pkr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pkr.png");
+}
+.currency-flag.currency-flag-pln {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pln.png");
+}
+.currency-flag.currency-flag-pyg {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pyg.png");
+}
+.currency-flag.currency-flag-qar {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/qar.png");
+}
+.currency-flag.currency-flag-ron {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ron.png");
+}
+.currency-flag.currency-flag-rsd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/rsd.png");
+}
+.currency-flag.currency-flag-rub {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/rub.png");
+}
+.currency-flag.currency-flag-rwf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/rwf.png");
+}
+.currency-flag.currency-flag-sar {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sar.png");
+}
+.currency-flag.currency-flag-sbd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sbd.png");
+}
+.currency-flag.currency-flag-scr {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/scr.png");
+}
+.currency-flag.currency-flag-sek {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sek.png");
+}
+.currency-flag.currency-flag-sgd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sgd.png");
+}
+.currency-flag.currency-flag-shp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/shp.png");
+}
+.currency-flag.currency-flag-sll {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sll.png");
+}
+.currency-flag.currency-flag-sle {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sll.png");
+}
+.currency-flag.currency-flag-sos {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sos.png");
+}
+.currency-flag.currency-flag-srd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/srd.png");
+}
+.currency-flag.currency-flag-std {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/std.png");
+}
+.currency-flag.currency-flag-svc {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/svc.png");
+}
+.currency-flag.currency-flag-syp {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/syp.png");
+}
+.currency-flag.currency-flag-szl {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/szl.png");
+}
+.currency-flag.currency-flag-thb {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/thb.png");
+}
+.currency-flag.currency-flag-tjs {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/tjs.png");
+}
+.currency-flag.currency-flag-tmt {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/tmt.png");
+}
+.currency-flag.currency-flag-tnd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/tnd.png");
+}
+.currency-flag.currency-flag-top {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/top.png");
+}
+.currency-flag.currency-flag-try {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/try.png");
+}
+.currency-flag.currency-flag-ttd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ttd.png");
+}
+.currency-flag.currency-flag-twd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/twd.png");
+}
+.currency-flag.currency-flag-tzs {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/tzs.png");
+}
+.currency-flag.currency-flag-uah {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/uah.png");
+}
+.currency-flag.currency-flag-ugx {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ugx.png");
+}
+.currency-flag.currency-flag-usd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/usd.png");
+}
+.currency-flag.currency-flag-uyu {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/uyu.png");
+}
+.currency-flag.currency-flag-uzs {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/uzs.png");
+}
+.currency-flag.currency-flag-vef {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/vef.png");
+}
+.currency-flag.currency-flag-vnd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/vnd.png");
+}
+.currency-flag.currency-flag-vuv {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/vuv.png");
+}
+.currency-flag.currency-flag-wst {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/wst.png");
+}
+.currency-flag.currency-flag-xaf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/xaf.png");
+}
+.currency-flag.currency-flag-xcd {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/xcd.png");
+}
+.currency-flag.currency-flag-xof {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/xof.png");
+}
+.currency-flag.currency-flag-xpf {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/xpf.png");
+}
+.currency-flag.currency-flag-yer {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/yer.png");
+}
+.currency-flag.currency-flag-zar {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/zar.png");
+}
+.currency-flag.currency-flag-zmw {
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/zmw.png");
+}
+
+.np-theme-personal .currency-flag.currency-flag-aed {
+    background-image: url("https://wise.com/web-art/assets/flags/aed.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-afn {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/afn.png");
+}
+.np-theme-personal .currency-flag.currency-flag-all {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/all.png");
+}
+.np-theme-personal .currency-flag.currency-flag-amd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/amd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-ang {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ang.png");
+}
+.np-theme-personal .currency-flag.currency-flag-aoa {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/aoa.png");
+}
+.np-theme-personal .currency-flag.currency-flag-ars {
+    background-image: url("https://wise.com/web-art/assets/flags/ars.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-aud {
+    background-image: url("https://wise.com/web-art/assets/flags/aud.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-awg {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/awg.png");
+}
+.np-theme-personal .currency-flag.currency-flag-azn {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/azn.png");
+}
+.np-theme-personal .currency-flag.currency-flag-bam {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bam.png");
+}
+.np-theme-personal .currency-flag.currency-flag-bbd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bbd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-bdt {
+    background-image: url("https://wise.com/web-art/assets/flags/bdt.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-bgn {
+    background-image: url("https://wise.com/web-art/assets/flags/bgn.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-bhd {
+    background-image: url("https://wise.com/web-art/assets/flags/bhd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-bif {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bif.png");
+}
+.np-theme-personal .currency-flag.currency-flag-bmd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bmd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-bnd {
+    background-image: url("https://wise.com/web-art/assets/flags/bnd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-bob {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bob.png");
+}
+.np-theme-personal .currency-flag.currency-flag-brl {
+    background-image: url("https://wise.com/web-art/assets/flags/brl.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-bsd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bsd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-btn {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/btn.png");
+}
+.np-theme-personal .currency-flag.currency-flag-bwp {
+    background-image: url("https://wise.com/web-art/assets/flags/bwp.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-byn {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/byn.png");
+}
+.np-theme-personal .currency-flag.currency-flag-bzd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/bzd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-cad {
+    background-image: url("https://wise.com/web-art/assets/flags/cad.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-cdf {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cdf.png");
+}
+.np-theme-personal .currency-flag.currency-flag-chf {
+    background-image: url("https://wise.com/web-art/assets/flags/chf.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-clp {
+    background-image: url("https://wise.com/web-art/assets/flags/clp.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-cny {
+    background-image: url("https://wise.com/web-art/assets/flags/cny.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-cop {
+    background-image: url("https://wise.com/web-art/assets/flags/cop.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-crc {
+    background-image: url("https://wise.com/web-art/assets/flags/crc.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-cup {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cup.png");
+}
+.np-theme-personal .currency-flag.currency-flag-cve {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/cve.png");
+}
+.np-theme-personal .currency-flag.currency-flag-czk {
+    background-image: url("https://wise.com/web-art/assets/flags/czk.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-djf {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/djf.png");
+}
+.np-theme-personal .currency-flag.currency-flag-dkk {
+    background-image: url("https://wise.com/web-art/assets/flags/dkk.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-dop {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/dop.png");
+}
+.np-theme-personal .currency-flag.currency-flag-dzd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/dzd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-egp {
+    background-image: url("https://wise.com/web-art/assets/flags/egp.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-ern {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ern.png");
+}
+.np-theme-personal .currency-flag.currency-flag-etb {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/etb.png");
+}
+.np-theme-personal .currency-flag.currency-flag-eur {
+    background-image: url("https://wise.com/web-art/assets/flags/eur.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-fjd {
+    background-image: url("https://wise.com/web-art/assets/flags/fjd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-fkp {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/fkp.png");
+}
+.np-theme-personal .currency-flag.currency-flag-gbp {
+    background-image: url("https://wise.com/web-art/assets/flags/gbp.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-gel {
+    background-image: url("https://wise.com/web-art/assets/flags/gel.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-ggp {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ggp.png");
+}
+.np-theme-personal .currency-flag.currency-flag-ghs {
+    background-image: url("https://wise.com/web-art/assets/flags/ghs.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-gip {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gip.png");
+}
+.np-theme-personal .currency-flag.currency-flag-gmd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gmd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-gnf {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gnf.png");
+}
+.np-theme-personal .currency-flag.currency-flag-gtq {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gtq.png");
+}
+.np-theme-personal .currency-flag.currency-flag-gyd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/gyd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-hkd {
+    background-image: url("https://wise.com/web-art/assets/flags/hkd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-hnl {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/hnl.png");
+}
+.np-theme-personal .currency-flag.currency-flag-hrk {
+    background-image: url("https://wise.com/web-art/assets/flags/hrk.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-htg {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/htg.png");
+}
+.np-theme-personal .currency-flag.currency-flag-huf {
+    background-image: url("https://wise.com/web-art/assets/flags/huf.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-idr {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/idr.png");
+}
+.np-theme-personal .currency-flag.currency-flag-ils {
+    background-image: url("https://wise.com/web-art/assets/flags/ils.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-imp {
+    background-image: url("https://wise.com/web-art/assets/flags/imp.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-inr {
+    background-image: url("https://wise.com/web-art/assets/flags/inr.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-iqd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/iqd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-irr {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/irr.png");
+}
+.np-theme-personal .currency-flag.currency-flag-isk {
+    background-image: url("https://wise.com/web-art/assets/flags/isk.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-jep {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/jep.png");
+}
+.np-theme-personal .currency-flag.currency-flag-jmd {
+    background-image: url("https://wise.com/web-art/assets/flags/jmd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-jod {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/jod.png");
+}
+.np-theme-personal .currency-flag.currency-flag-jpy {
+    background-image: url("https://wise.com/web-art/assets/flags/jpy.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-kes {
+    background-image: url("https://wise.com/web-art/assets/flags/kes.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-kgs {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kgs.png");
+}
+.np-theme-personal .currency-flag.currency-flag-khr {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/khr.png");
+}
+.np-theme-personal .currency-flag.currency-flag-kmf {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kmf.png");
+}
+.np-theme-personal .currency-flag.currency-flag-kpw {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kpw.png");
+}
+.np-theme-personal .currency-flag.currency-flag-krw {
+    background-image: url("https://wise.com/web-art/assets/flags/krw.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-kwd {
+    background-image: url("https://wise.com/web-art/assets/flags/kwd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-kyd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kyd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-kzt {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/kzt.png");
+}
+.np-theme-personal .currency-flag.currency-flag-lak {
+    background-image: url("https://wise.com/web-art/assets/flags/lak.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-lbp {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lbp.png");
+}
+.np-theme-personal .currency-flag.currency-flag-lkr {
+    background-image: url("https://wise.com/web-art/assets/flags/lkr.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-lrd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lrd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-lsl {
+    background-image: url("https://wise.com/web-art/assets/flags/lsl.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-ltl {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ltl.png");
+}
+.np-theme-personal .currency-flag.currency-flag-lyd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/lyd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mad {
+    background-image: url("https://wise.com/web-art/assets/flags/mad.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-mdl {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mdl.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mga {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mga.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mkd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mkd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mmk {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mmk.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mnt {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mnt.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mop {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mop.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mro {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mro.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mur {
+    background-image: url("https://wise.com/web-art/assets/flags/mur.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-mvr {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mvr.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mwk {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/mwk.png");
+}
+.np-theme-personal .currency-flag.currency-flag-mxn {
+    background-image: url("https://wise.com/web-art/assets/flags/mxn.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-myr {
+    background-image: url("https://wise.com/web-art/assets/flags/myr.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-mzn {
+    background-image: url("https://wise.com/web-art/assets/flags/mzn.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-nad {
+    background-image: url("https://wise.com/web-art/assets/flags/nad.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-ngn {
+    background-image: url("https://wise.com/web-art/assets/flags/ngn.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-nio {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/nio.png");
+}
+.np-theme-personal .currency-flag.currency-flag-nok {
+    background-image: url("https://wise.com/web-art/assets/flags/nok.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-npr {
+    background-image: url("https://wise.com/web-art/assets/flags/npr.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-nzd {
+    background-image: url("https://wise.com/web-art/assets/flags/nzd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-omr {
+    background-image: url("https://wise.com/web-art/assets/flags/omr.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-pab {
+    background-image: url("https://wise.com/web-art/assets/flags/pab.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-pen {
+    background-image: url("https://wise.com/web-art/assets/flags/pen.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-pgk {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pgk.png");
+}
+.np-theme-personal .currency-flag.currency-flag-php {
+    background-image: url("https://wise.com/web-art/assets/flags/php.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-pkr {
+    background-image: url("https://wise.com/web-art/assets/flags/pkr.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-pln {
+    background-image: url("https://wise.com/web-art/assets/flags/pln.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-pyg {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/pyg.png");
+}
+.np-theme-personal .currency-flag.currency-flag-qar {
+    background-image: url("https://wise.com/web-art/assets/flags/qar.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-ron {
+    background-image: url("https://wise.com/web-art/assets/flags/ron.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-rsd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/rsd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-rub {
+    background-image: url("https://wise.com/web-art/assets/flags/rub.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-rwf {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/rwf.png");
+}
+.np-theme-personal .currency-flag.currency-flag-sar {
+    background-image: url("https://wise.com/web-art/assets/flags/sar.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-sbd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sbd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-scr {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/scr.png");
+}
+.np-theme-personal .currency-flag.currency-flag-sek {
+    background-image: url("https://wise.com/web-art/assets/flags/sek.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-sgd {
+    background-image: url("https://wise.com/web-art/assets/flags/sgd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-shp {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/shp.png");
+}
+.np-theme-personal .currency-flag.currency-flag-sll {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sll.png");
+}
+.np-theme-personal .currency-flag.currency-flag-sle {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sll.png");
+}
+.np-theme-personal .currency-flag.currency-flag-sos {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/sos.png");
+}
+.np-theme-personal .currency-flag.currency-flag-srd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/srd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-std {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/std.png");
+}
+.np-theme-personal .currency-flag.currency-flag-svc {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/svc.png");
+}
+.np-theme-personal .currency-flag.currency-flag-syp {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/syp.png");
+}
+.np-theme-personal .currency-flag.currency-flag-szl {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/szl.png");
+}
+.np-theme-personal .currency-flag.currency-flag-thb {
+    background-image: url("https://wise.com/web-art/assets/flags/thb.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-tjs {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/tjs.png");
+}
+.np-theme-personal .currency-flag.currency-flag-tmt {
+    background-image: url("https://wise.com/web-art/assets/flags/tmt.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-tnd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/tnd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-top {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/top.png");
+}
+.np-theme-personal .currency-flag.currency-flag-try {
+    background-image: url("https://wise.com/web-art/assets/flags/try.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-ttd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/ttd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-twd {
+    background-image: url("https://wise.com/web-art/assets/flags/twd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-tzs {
+    background-image: url("https://wise.com/web-art/assets/flags/tzs.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-uah {
+    background-image: url("https://wise.com/web-art/assets/flags/uah.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-ugx {
+    background-image: url("https://wise.com/web-art/assets/flags/ugx.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-usd {
+    background-image: url("https://wise.com/web-art/assets/flags/usd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-uyu {
+    background-image: url("https://wise.com/web-art/assets/flags/uyu.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-uzs {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/uzs.png");
+}
+.np-theme-personal .currency-flag.currency-flag-vef {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/vef.png");
+}
+.np-theme-personal .currency-flag.currency-flag-vnd {
+    background-image: url("https://wise.com/web-art/assets/flags/vnd.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-vuv {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/vuv.png");
+}
+.np-theme-personal .currency-flag.currency-flag-wst {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/wst.png");
+}
+.np-theme-personal .currency-flag.currency-flag-xaf {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/xaf.png");
+}
+.np-theme-personal .currency-flag.currency-flag-xcd {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/xcd.png");
+}
+.np-theme-personal .currency-flag.currency-flag-xof {
+    background-image: url("https://wise.com/web-art/assets/flags/xof.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-xpf {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/xpf.png");
+}
+.np-theme-personal .currency-flag.currency-flag-yer {
+    border-radius: 50%;
+    background-size: 100% 100%;
+    background-image: url("https://wise.com/public-resources/assets/flags/rectangle/yer.png");
+}
+.np-theme-personal .currency-flag.currency-flag-zar {
+    background-image: url("https://wise.com/web-art/assets/flags/zar.svg");
+}
+.np-theme-personal .currency-flag.currency-flag-zmw {
+    background-image: url("https://wise.com/web-art/assets/flags/zmw.svg");
+}

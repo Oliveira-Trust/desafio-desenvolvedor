@@ -1,0 +1,26 @@
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+}
+
+.dashboard-text {
+    font: 24px Calibri !important;
+    color: gray !important;
+}
+
+#table_role_permissions tbody tr td {
+    vertical-align: middle !important;
+}
+
+#table_role_permissions tbody tr td:first-child {
+    color: black !important;
+}
+
+#table_role_permissions div.checkbox {
+    margin-bottom: 0 !important;
+}

@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  currency-exchange-app:
+    build:
+      context: .
+      dockerfile: ___docker/Dockerfile
+    container_name: currency-exchange-app
+    restart: unless-stopped
+    volumes:
+      - .:/var/www
+    depends_on:
+      - currency-exchange-web
+    networks:
+      - currency-exchange-network
+
+  currency-exchange-web:
+    image: nginx:latest
+    container_name: currency-exchange-web
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+      - ./___docker/nginx:/etc/nginx/conf.d
+    networks:
+      - currency-exchange-network
+
+networks:
+  currency-exchange-network:
+    driver: bridge
