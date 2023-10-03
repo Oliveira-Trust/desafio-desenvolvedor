@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "ext-pdo_sqlite": "*",
+        "ext-intl": "*",
         "codedge/laravel-fpdf": "*",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
