@@ -96,22 +96,22 @@ http://localhost:8888/conversions/convert/json
 ```
 
 ### Dados de configuração Envio de e-mail utilizando Mailhog
-> **host:** mailhog
-> **port:** 1025
-> **username:** null
-> **password:** null
-> **className:** Smtp
+> **host:** mailhog<br />
+> **port:** 1025<br />
+> **username:** null<br />
+> **password:** null<br />
+> **className:** Smtp<br />
 
 ### Dados de configuração acesso ao banco de dados
-> **DATABASE:** cakephp
-> **USER:** cakephp
-> **PASSWORD:** cakephp
-> **PORT:** 3306
+> **DATABASE:** cakephp<br />
+> **USER:** cakephp<br />
+> **PASSWORD:** cakephp<br />
+> **PORT:** 3306<br />
 
 ### Envio de e-mail
 > Para tratar os e-mails, o serviço mailhog pode ser acessado na porta 8025.
 
 ### URLs de acesso aos serviços configurados e disponíveis no ambiente de teste
-> **Acessar a Aplicação:** http://localhost:8888/
-> **Acessar o Adminer:** http://localhost:8080/
-> **Acessar o Mailhog:** http://localhost:8025/
+> **Acessar a Aplicação:** http://localhost:8888/<br />
+> **Acessar o Adminer:** http://localhost:8080/<br />
+> **Acessar o Mailhog:** http://localhost:8025/<br />
