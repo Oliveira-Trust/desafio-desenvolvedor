@@ -41,7 +41,7 @@
                         <div class="form-group @error('conversion_value') has-error @enderror">
                             <label for="valor" class="control-label">Valor</label>
                             <input type="text" id="conversion_value" name="conversion_value" class="form-control @error('conversion_value') field-error @enderror"
-                                maxlength="12" value="{{ old('conversion_value') ?? request('conversion_value', '') }}" placeholder="Informe o valor para conversão...">
+                                maxlength="12" value="{{ old('conversion_value') ?? formatCurrencyValue($currencyQuotation?->conversion_value) }}" placeholder="Informe o valor para conversão...">
                             <x-errors-field field="conversion_value" />
                         </div>
                         <div class="form-group @error('destination_currency') has-error @enderror">
@@ -49,7 +49,7 @@
                             <select id="destination_currency" name="destination_currency" class="form-control @error('destination_currency') field-error @enderror">
                                 <option value="">Selecione a moeda de destino...</option>
                                 @foreach($availableCurrencies as $currencyCode => $currencyName)
-                                    <option value="{{ $currencyCode }}" @selected(in_array($currencyCode, [old('destination_currency'), request('destination_currency', '')]))>
+                                    <option value="{{ $currencyCode }}" @selected(in_array($currencyCode, [old('destination_currency'), $currencyQuotation?->codein]))>
                                         {{ $currencyName }} ({{ $currencyCode }})
                                     </option>
                                 @endforeach
@@ -60,12 +60,12 @@
                             <label for="payment_type" class="control-label m-r-10">Forma de Pagamento</label>
                             <div class="radio radio-success radio-inline">
                                 <input type="radio" id="creditCardPaymentType" name="payment_type" value="CREDIT_CARD" class="form-control"
-                                    @checked( in_array(PaymentType::CreditCard->value, [ old('payment_type'), request('payment_type', '') ]) ) />
+                                    @checked( in_array(PaymentType::CreditCard->value, [ old('payment_type'), $currencyQuotation?->payment_type ]) ) />
                                 <label for="creditCardPaymentType" class="control-label"> Cartão de Crédito </label>
                             </div>
                             <div class="radio radio-info radio-inline">
                                 <input type="radio" id="boletoPaymentType" name="payment_type" value="BOLETO" class="form-control"
-                                    @checked( in_array(PaymentType::Boleto->value, [ old('payment_type'), request('payment_type', '') ]) )/>
+                                    @checked( in_array(PaymentType::Boleto->value, [ old('payment_type'), $currencyQuotation?->payment_type ]) )/>
                                 <label for="boletoPaymentType" class="control-label">Boleto</label>
                             </div>
                             <x-errors-field field="payment_type" />
