@@ -26,9 +26,19 @@ Para instalar o projeto, siga estas etapas:
 git clone git@github.com:rogermaciel/desafio-desenvolvedor.git
 ```
 
+### Copie o arquivo de configuração da aplicação
+```
+cp application/config/app_local.example.php application/config/app_local.php
+```
+
+### Execute o projeto
+```
+docker-compose up -d
+```
+
 ### Instale as dependências da aplicação (application/composer.json)
 ```
-cd application/ && compose install
+docker exec -it desafio-desenvolvedor-php composer install
 ```
 
 ### Criar a estrutura de banco
@@ -41,17 +51,12 @@ docker exec -it desafio-desenvolvedor-php bin/cake migrations migrate
 docker exec -it desafio-desenvolvedor-php bin/cake migrations seed
 ```
 
-### Execute o projeto
-```
-docker-compose up -d
-```
-
 > O usuário criado para acessar a área logada da aplicação:<br /><br />
 > **E-mail:** rogermaciel@gmail.com<br />
 > **Senha:** 1q2w3e4r<br /><br />
 > No entanto, é possível cadastrar um novo usuário para acessar o sistema
 
-### URL para testar endpoint de conversão de moeda utilizando postman ou insomnia
+### URL para testar endpoint utilizando postman ou insomnia
 ```
 http://localhost:8888/conversions/convert/json
 ```
@@ -108,10 +113,10 @@ http://localhost:8888/conversions/convert/json
 > **PASSWORD:** cakephp<br />
 > **PORT:** 3306<br />
 
-### Envio de e-mail
-> Para tratar os e-mails, o serviço mailhog pode ser acessado na porta 8025.
-
 ### URLs de acesso aos serviços configurados e disponíveis no ambiente de teste
 > **Acessar a Aplicação:** http://localhost:8888/<br />
 > **Acessar o Adminer:** http://localhost:8080/<br />
 > **Acessar o Mailhog:** http://localhost:8025/<br />
+
+### Envio de e-mail
+> Para tratar os e-mails, o serviço mailhog pode ser acessado na porta 8025.
