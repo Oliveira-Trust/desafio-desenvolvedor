@@ -112,6 +112,6 @@ http://localhost:8888/conversions/convert/json
 > Para tratar os e-mails, o serviço mailhog pode ser acessado na porta 8025.
 
 ### URLs de acesso aos serviços configurados e disponíveis no ambiente de teste
->> **Acessar a Aplicação:** http://localhost:8888/
->> **Acessar o Adminer:** http://localhost:8080/
->> **Acessar o Mailhog:** http://localhost:8025/
+> **Acessar a Aplicação:** http://localhost:8888/
+> **Acessar o Adminer:** http://localhost:8080/
+> **Acessar o Mailhog:** http://localhost:8025/
