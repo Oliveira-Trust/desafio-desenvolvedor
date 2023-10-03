@@ -50,11 +50,11 @@ class ConversionsController extends AppController {
                     'destination_currency' => $destinationCurrency,
                     'value_to_convert' => (float) $valueToConvert,
                     'payment_method' => $paymentMethod->name,
-                    'destination_currency_conversion_value' => $retCotation[$originCurrency . $destinationCurrency]['bid'],
+                    'destination_currency_conversion_value' => (float)$retCotation[$originCurrency . $destinationCurrency]['bid'],
                     'destination_currency_purchased_value' => $conversionValueWithoutTax * $retCotation[$originCurrency . $destinationCurrency]['bid'],
-                    'payment_tax' => $paymentTax,
-                    'conversion_tax' => $conversionTax,
-                    'conversion_value_without_tax' => $conversionValueWithoutTax
+                    'payment_tax' => (float)$paymentTax,
+                    'conversion_tax' => (float)$conversionTax,
+                    'conversion_value_without_tax' => (float)$conversionValueWithoutTax
                 ];
 
                 $this->_saveConversion($data);
@@ -111,7 +111,7 @@ class ConversionsController extends AppController {
 
     protected function _sendMailConversion($email, $data) {
         $mailer = new Mailer('default');
-        $mailer->setTransport('mailtrap');
+        $mailer->setTransport('default');
         $mailer->setEmailFormat('html');
         $mailer->viewBuilder()->setTemplate('conversion');
         $mailer->setFrom(['noreply@desafiodesenvolvedor.com.br' => 'Desafio Desenvolvedor OT'])
