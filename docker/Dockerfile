@@ -50,21 +50,6 @@ ADD ./docker/zzzz-config.ini /usr/local/etc/php/conf.d/zzzz-config.ini
 # Install some global packages
 RUN apk add --no-cache bash git jq moreutils openssh rsync yq
 
-# Install ca-certificates, required for the "release message" feature:
-RUN apk --no-cache add \
-    ca-certificates
-
-# Install MailHog:
-RUN apk --no-cache add --virtual build-dependencies \
-    go \
-    git \
-  && mkdir -p /root/gocode \
-  && export GOPATH=/root/gocode \
-  && go get github.com/mailhog/MailHog \
-  && mv /root/gocode/bin/MailHog /usr/local/bin \
-  && rm -rf /root/gocode \
-  && apk del --purge build-dependencies
-  
 # Install Blackfire PHP Probe
 RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && architecture=$(uname -m) \

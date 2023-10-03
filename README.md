@@ -1,48 +1,60 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Desafio Oliveira Trust
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+O desafio foi desenvolvido em PHP utilizando o framework CakePHP e banco de dados MySQL. Para execução do desafio foi configurado ambiente de desenvolvimento em containers utilizando Docker.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## 💻 Pré-requisitos
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+* Docker;
+* composer
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+## Tecnologias utilizadas
+* HTML
+* CSS
+* Javascript (jQuery)
+* CakePHP 5.0 Chiffon
+* Docker
+* MySQL 8.1
+* PHP 8.2
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+## 🚀 Instalação
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+Para instalar o projeto, siga estas etapas:
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+### Clone o repositório que contém o source do desafio
+```
+git clone git@github.com:rogermaciel/desafio-desenvolvedor.git
+```
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+### Instale as dependências da aplicação (application/composer.json)
+```
+compose install
+```
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+### Instale as dependências de package.json
+```
+npm install
+```
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+### Criar a estrutura de banco
+```
+docker exec -it desafio-desenvolvedor-php bin/cake migrations migrate
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+### Popule o banco de dados para configurar usuário de acesso e formas de pagamento
+```
+docker exec -it desafio-desenvolvedor-php bin/cake migrations seed
+```
+
+### Execute o projeto
+```
+docker-compose up -d
+```
+
+> O usuário criado para acessar a área logada da aplicação:<br /><br />
+> **E-mail:** rogermaciel@gmail.com<br />
+> **Senha:** 1q2w3e4r<br /><br />
+> No entanto, é possível cadastrar um novo usuário para acessar o sistema
+
+### Envio de e-mail
+> Para tratar os e-mails, o serviço mailhog pode ser acessado na porta 8025.
