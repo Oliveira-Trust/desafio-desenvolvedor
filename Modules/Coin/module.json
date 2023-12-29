@@ -1,0 +1,11 @@
+{
+    "name": "Coin",
+    "alias": "coin",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Coin\\app\\Providers\\CoinServiceProvider"
+    ],
+    "files": []
+}
