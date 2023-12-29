@@ -1,0 +1,12 @@
+{
+  "Modules/Coin/resources/assets/js/app.js": {
+    "file": "assets/app-T3u6GlP8.js",
+    "isEntry": true,
+    "src": "Modules/Coin/resources/assets/js/app.js"
+  },
+  "Modules/Coin/resources/assets/sass/app.css": {
+    "file": "assets/app-bcyhTUJ1.css",
+    "isEntry": true,
+    "src": "Modules/Coin/resources/assets/sass/app.css"
+  }
+}
