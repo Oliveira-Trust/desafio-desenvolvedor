@@ -8,6 +8,11 @@ php artisan serve
 npm install && npm run dev
 ````
 
+### Caso perca o css
+````
+sass --watch ./Modules/Coin/resources/assets/sass/app.scss:./Modules/Coin/resources/assets/sass/app.css
+````
+
 ### Requisitos
 
 - PHP 8.2+
