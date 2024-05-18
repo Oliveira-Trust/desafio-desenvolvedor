@@ -11,7 +11,8 @@
         "laravel/jetstream": "^5.1",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.0"
+        "livewire/livewire": "^3.0",
+        "php-open-source-saver/jwt-auth": "^2.3"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^1.0",
