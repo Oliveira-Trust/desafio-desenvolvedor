@@ -27,8 +27,10 @@ services:
     networks:
       - currency-exchange-network
     depends_on:
-      - currency-exchange-database
-      - currency-exchange-redis
+      currency-exchange-database:
+        condition: service_healthy
+      currency-exchange-redis:
+        condition: service_started
 
   currency-exchange-database:
     container_name: currency-exchange-database
@@ -36,10 +38,10 @@ services:
     restart: unless-stopped
     tty: true
     environment:
-        MYSQL_DATABASE: 'currency-exchange'
-        MYSQL_USER: 'currency-exchange'
-        MYSQL_PASSWORD: 'exch-dxx-fftz'
-        MYSQL_ROOT_PASSWORD: 'exch-dxx-fftz'
+        MYSQL_DATABASE: currency-exchange
+        MYSQL_USER: currency-exchange
+        MYSQL_PASSWORD: exch
+        MYSQL_ROOT_PASSWORD: exch
         SERVICE_TAGS: dev
         SERVICE_NAME: mysql
     ports:
