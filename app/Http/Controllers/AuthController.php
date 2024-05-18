@@ -53,6 +53,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
+        /** @noinspection PhpUndefinedMethodInspection */
         return $this->respondWithToken(auth()->refresh());
     }
 
@@ -65,6 +66,7 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        /** @noinspection PhpUndefinedMethodInspection */
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
