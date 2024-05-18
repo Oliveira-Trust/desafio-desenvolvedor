@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  currency-exchange-api:
+    container_name: currency-exchange-api
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    ports:
+      - '80:80'
+    networks:
+      - currency-exchange-network
+    depends_on:
+      currency-exchange-database:
+        condition: service_healthy
+      currency-exchange-redis:
+        condition: service_started
+
+  currency-exchange-database:
+    container_name: currency-exchange-database
+    image: 'mysql/mysql-server:8.0'
+    restart: unless-stopped
+    tty: true
+    environment:
+        MYSQL_DATABASE: currency-exchange
+        MYSQL_USER: currency-exchange
+        MYSQL_PASSWORD: exch
+        MYSQL_ROOT_PASSWORD: exch
+        SERVICE_TAGS: dev
+        SERVICE_NAME: mysql
+    ports:
+        - '3306:3306'
+    volumes:
+        - currency-exchange-data:/var/lib/mysql
+        - .docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh
+    networks:
+        - currency-exchange-network
+    healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-pexch"]
+        retries: 3
+        timeout: 5s
+
+  currency-exchange-redis:
+    container_name: currency-exchange-redis
+    image: redis:alpine
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    networks:
+      - currency-exchange-network
+
+networks:
+  currency-exchange-network:
+    driver: bridge
+
+volumes:
+  currency-exchange-data:

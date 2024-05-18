@@ -1,0 +1,13 @@
+{
+    "data": {
+        "origin": "BRL",
+        "target": "USD",
+        "payment_method": "CREDIT_CARD",
+        "payment_method_tax": 7630,
+        "conversion_value": 100000,
+        "conversion_tax": 2000,
+        "convertable_value": 90370,
+        "convertable_rate": 51072,
+        "converted_value": 17694
+    }
+}

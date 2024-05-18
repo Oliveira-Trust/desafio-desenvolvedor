@@ -1,0 +1,44 @@
+{
+    "name": "currency-exchange-ms",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "currency-exchange-api",
+    "remoteUser": "dev",
+    "workspaceFolder": "/var/www/html/app",
+    "runServices": [
+        "currency-exchange-server"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "xdebug.php-debug",
+                "mikestead.dotenv",
+                "felixfbecker.php-debug",
+                "onecentlin.laravel-blade",
+                "EditorConfig.EditorConfig",
+                "fterrag.vscode-php-cs-fixer",
+                "onecentlin.laravel5-snippets",
+                "bmewburn.vscode-intelephense-client",
+                "mehedidracula.php-namespace-resolver",
+                "amiralizadeh9480.laravel-extra-intellisense"
+            ],
+            "settings": {
+                "namespaceResolver.sortAlphabetically": true,
+                "namespaceResolver.autoSort": true,
+                "namespaceResolver.sortOnSave": true,
+                "namespaceResolver.showMessageOnStatusBar": false,
+                "namespaceResolver.exclude": "**/node_modules/**",
+                "[php]": {
+                    "editor.tabSize": 4,
+                    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+                    "editor.formatOnSave": true
+                },
+                "php.validate.executablePath": "/usr/local/bin/php"
+            }
+        }
+    },
+    "shutdownAction": "stopCompose",
+    "postCreateCommand": "uname -a"
+}
