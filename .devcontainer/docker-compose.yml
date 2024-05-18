@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  currency-exchange-server:
+    container_name: currency-exchange-server
+    image: nginx:alpine
+    volumes:
+      - ..:/var/www/html/app
+      - ./nginx/:/etc/nginx/conf.d/
+    ports:
+      - '80:80'
+    networks:
+      - currency-exchange-network
+    depends_on:
+      - currency-exchange-api
+
+  currency-exchange-api:
+    container_name: currency-exchange-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: client_host=localhost client_port=9000
+    volumes:
+      - ..:/var/www/html/app
+    networks:
+      - currency-exchange-network
+    depends_on:
+      - currency-exchange-database
+      - currency-exchange-redis
+
+  currency-exchange-database:
+    container_name: currency-exchange-database
+    image: 'mysql/mysql-server:8.0'
+    restart: unless-stopped
+    tty: true
+    environment:
+        MYSQL_DATABASE: 'currency-exchange'
+        MYSQL_USER: 'currency-exchange'
+        MYSQL_PASSWORD: 'exch-dxx-fftz'
+        MYSQL_ROOT_PASSWORD: 'exch-dxx-fftz'
+        SERVICE_TAGS: dev
+        SERVICE_NAME: mysql
+    ports:
+        - '3306:3306'
+    volumes:
+        - currency-exchange-data:/var/lib/mysql
+        - ../.docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh
+    networks:
+        - currency-exchange-network
+
+  currency-exchange-redis:
+    container_name: currency-exchange-redis
+    image: redis:alpine
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    networks:
+      - currency-exchange-network
+
+networks:
+  currency-exchange-network:
+    driver: bridge
+
+volumes:
+  currency-exchange-data:
