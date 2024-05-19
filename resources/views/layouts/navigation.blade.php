@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('quotes.index')" :active="request()->routeIs('quotes')">
-                        {{ __('Cotaçãoes') }}
+                        {{ __('Cotações') }}
                     </x-nav-link>
                 </div>
             </div>

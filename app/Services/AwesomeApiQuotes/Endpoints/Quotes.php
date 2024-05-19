@@ -10,9 +10,9 @@ class Quotes extends BaseEndpoint
 {
     private $path = '/json';
 
-    public function last($currencies)
+    public function currency($currencies)
     {
-        $jsonString = $this->service->api->get($this->path . "/last/{$currencies}");
+        $jsonString = $this->service->api->get($this->path . "/{$currencies}");
         return json_decode($jsonString, true);
     }
 

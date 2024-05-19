@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/quotes', QuoteController::class)->except(['edit', 'update', 'destroy']);
+    Route::post('/quotes/calc', [QuoteController::class, 'calc'])->name('quotes.calc');
 });
 
 require __DIR__ . '/auth.php';
