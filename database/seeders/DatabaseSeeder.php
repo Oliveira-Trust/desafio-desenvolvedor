@@ -44,8 +44,9 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Dolar Americano', 'code' => 'USD', 'symbol' => '$'],
             ['name' => 'Euro', 'code' => 'EUR', 'symbol' => '€'],
             ['name' => 'Libra Esterlina', 'code' => 'GBP', 'symbol' => '£'],
-            ['name' => 'Bitcoin', 'code' => 'BTC', 'symbol' => '₿'],
-            ['name' => 'Dólar Australiano', 'code' => 'AUD', 'symbol' => 'A$'],
+            ['name' => 'Yuan Chinês', 'code' => 'CNY', 'symbol' => '¥'],
+            ['name' => 'Rúpia Indiana', 'code' => 'INR', 'symbol' => '₹'],
+            ['name' => 'Novo Shekel Israelense', 'code' => 'ILS', 'symbol' => '₪'],
         ]);
     }
 }

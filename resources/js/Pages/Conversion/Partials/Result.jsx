@@ -2,7 +2,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm } from "@inertiajs/react";
 
 export default function Result({
-    auth,
+    user,
     currencies,
     currentConversion,
     className = "",
@@ -69,7 +69,7 @@ export default function Result({
                             </p>
                         </div>
                     </div>
-                    {auth?.user && (
+                    {user && (
                         <>
                             <hr className="my-4" />
                             <div className="flex items-center mt-2 flex-row-reverse">

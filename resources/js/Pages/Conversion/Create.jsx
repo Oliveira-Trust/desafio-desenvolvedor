@@ -3,7 +3,7 @@ import NotAuthenticatedLayout from "@/Layouts/NotAuthenticatedLayout";
 import Form from "./Partials/Form";
 import History from "./Partials/History";
 import Result from "./Partials/Result";
-import { Link, Head } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 
 export default function Create({
     auth,
@@ -38,6 +38,7 @@ export default function Create({
                         <Result
                             currencies={currencies}
                             currentConversion={currentConversion}
+                            user={auth.user}
                             className="max-w-xl"
                         />
                     </div>
@@ -70,6 +71,7 @@ export default function Create({
                         <Result
                             currencies={currencies}
                             currentConversion={currentConversion}
+                            user={auth.user}
                             className="max-w-xl"
                         />
                     </div>
