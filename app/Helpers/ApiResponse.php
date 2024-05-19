@@ -29,8 +29,10 @@ class ApiResponse
      * @return void
      */
     public static function throw($e, $message ="Something went wrong! Process not completed", $code = 500){
-        Log::info($e);
-        $code = $e->getCode() == 0 ? $code : $e->getCode();
+        if(isset($e)){
+            Log::info($e);
+            $code = $e->getCode() == 0 ? $code : $e->getCode();
+        }
         throw new HttpResponseException(response()->json(["message"=> $message], $code));
     }
 

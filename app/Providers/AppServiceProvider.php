@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\Quote\QuoteService;
+use App\Interface\Quote\QuoteServiceInterface;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -10,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        
+        $this->app->bind(QuoteServiceInterface::class, QuoteService::class);
     }
 
     /**

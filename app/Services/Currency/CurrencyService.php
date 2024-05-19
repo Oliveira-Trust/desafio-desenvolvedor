@@ -49,7 +49,8 @@ class CurrencyService implements CurrencyServiceInterface
             $currenciesString = implode(',', $currencies);
             $response = $this->client->request('GET', $this->baseUri . '/json/last/' . $currenciesString);
             if ($response->getStatusCode() !== 200) {
-                throw new \Exception('API request failed.', $response->getStatusCode());
+                $error_data = json_decode($response->getBody(), true, JSON_THROW_ON_ERROR);
+                throw new \Exception($error_data['message'] ?? "Api Error", $response->getStatusCode());
             }
             return json_decode($response->getBody(), true, JSON_THROW_ON_ERROR);
         } catch (RequestException $e) {
@@ -64,7 +65,8 @@ class CurrencyService implements CurrencyServiceInterface
         try {
             $response = $this->client->request('GET', $this->baseUri . '/json/available');
             if ($response->getStatusCode() !== 200) {
-                throw new \Exception('API request failed.', $response->getStatusCode());
+                $error_data = json_decode($response->getBody(), true, JSON_THROW_ON_ERROR);
+                throw new \Exception($error_data['message'] ?? "Api Error", $response->getStatusCode());
             }
             return json_decode($response->getBody(), true, JSON_THROW_ON_ERROR);
         } catch (RequestException $e) {

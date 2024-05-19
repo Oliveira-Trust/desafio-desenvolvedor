@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ExemploMail;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\QuoteController;
 
 /**
  * Authentication routes for the API
@@ -20,13 +21,13 @@ Route::prefix('auth')->group(function () {
     Route::get('me', [AuthController::class, 'me'])->middleware('auth:api')->name('me-api');
 });
 
-Route::get('/testar-email', function () {
-    $mailData = [
-        'title' => 'This is Test Mail'
-    ];
-
-    Mail::to('email@example.com')->send(new ExemploMail($mailData));
-    return 'E-mail enviado com sucesso!';
+Route::prefix('quote')
+    //->middleware('auth:api')
+    ->group(function () {
+    Route::get('currencies/{origin}', [QuoteController::class, 'getAvailableCurrencies']);
+    Route::get('generate/{origin}/{destination}', [QuoteController::class, 'generateCurrencyQuote']);
+    Route::post('change/{userId}', [QuoteController::class, 'changeQuoteRates']);
+    Route::post('send/{userId}', [QuoteController::class, 'sendQuoteByEmail']);
 });
 
 Route::get('/test', [TestController::class, 'test'])->name('test-api');

@@ -27,12 +27,12 @@ class CurrencyServiceRepository implements CurrencyServiceInterface
                 $key = preg_replace('/[^A-Za-z]/', '', $currency);
 
                 if ($this->cache->isDataCached($key)) {
-                    $data = $this->cache->getCachedData($key);
+                    $data[$key] = $this->cache->getCachedData($key)['data'];
                 } else {
                     $data = $this->currencyService->getLatestOccurrences([$currency]);
                     $this->cache->saveDataToCache($key, $data[$key]);
                 }
-                
+                                
                 $cachedData[$currency] = $data[$key];
             }
             
