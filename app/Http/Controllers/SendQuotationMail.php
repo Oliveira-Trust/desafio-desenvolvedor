@@ -15,7 +15,7 @@ class SendQuotationMail extends Controller
      */
     public function __invoke(Request $request, int $conversionId)
     {
-        $conversion = Conversion::findOrFail($conversionId);
+        $conversion = Conversion::with('paymentMethod')->findOrFail($conversionId);
 
         Mail::to($request->user())->send(new QuotationRequested($conversion));
 
