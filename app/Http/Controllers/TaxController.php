@@ -15,8 +15,19 @@ class TaxController extends Controller
         ]);
     }
 
-    public function update(UpdateTaxRequest $request, string $id)
+    public function update(UpdateTaxRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        foreach ($validated['taxes'] as $tax) {
+            Tax::find($tax['id'])->update([
+                'amount' => $tax['amount'],
+                'rate' => $tax['rate'],
+                'min_amount_rate' => $tax['min_amount_rate'],
+                'max_amount_rate' => $tax['max_amount_rate'],
+            ]);
+        }
+
+        return redirect()->back()->with('success-message', 'Taxas atualizadas com sucesso!');
     }
 }

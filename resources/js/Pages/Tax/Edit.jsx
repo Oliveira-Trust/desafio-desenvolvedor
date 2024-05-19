@@ -2,7 +2,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import Form from "./Partials/Form";
 import { Head } from "@inertiajs/react";
 
-export default function Create({ auth, flash }) {
+export default function Create({ auth, flash, taxes }) {
     const { errorMessage, successMessage } = flash;
 
     return (
@@ -22,6 +22,7 @@ export default function Create({ auth, flash }) {
                     )}
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <Form
+                            taxes={taxes}
                             className="max-w-xl"
                         />
                     </div>

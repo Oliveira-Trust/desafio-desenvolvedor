@@ -22,25 +22,12 @@ class UpdateTaxRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => 'sometimes|numeric|min:1000|max:100000',
-            'rate' => 'sometimes|numeric|min:0.01|max:99',
-            'min_amount_rate' => 'sometimes|numeric|min:0.01|max:99',
-            'max_amount_rate' => 'sometimes|numeric|min:0.01|max:99',
-        ];
-    }
-
-    public function messages(): array
-    {
-        //portuguese
-        return [
-            'amount.min' => 'A taxa deve ser pelo menos R$1000.00',
-            'amount.max' => 'A taxa deve ser pelo menos R$1000.00',
-            'rate.min' => 'A taxa deve ser pelo menos 0.01%',
-            'rate.max' => 'A taxa deve ser pelo menos 99%',
-            'min_amount_rate.min' => 'A taxa deve ser pelo menos 0.01%',
-            'max_amount_rate.max' => 'A taxa deve ser pelo menos 99%',
-            'max_amount_rate.min' => 'A taxa deve ser pelo menos 0.01%',
-            'min_amount_rate.max' => 'A taxa deve ser pelo menos 99%',
+            'taxes' => 'required|array',
+            'taxes.*.id' => 'required|numeric|max:255',
+            'taxes.*.amount' => 'nullable|numeric|min:1000|max:100000',
+            'taxes.*.rate' => 'nullable|numeric|min:0.01|max:99',
+            'taxes.*.min_amount_rate' => 'nullable|numeric|min:0.01|max:99',
+            'taxes.*.max_amount_rate' => 'nullable|numeric|min:0.01|max:99',
         ];
     }
 }
