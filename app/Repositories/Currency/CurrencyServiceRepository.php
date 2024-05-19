@@ -30,7 +30,7 @@ class CurrencyServiceRepository implements CurrencyServiceInterface
                     $data = $this->cache->getCachedData($key);
                 } else {
                     $data = $this->currencyService->getLatestOccurrences([$currency]);
-                    $this->cache->saveDataToCache($key, $data);
+                    $this->cache->saveDataToCache($key, $data[$key]);
                 }
                 
                 $cachedData[$currency] = $data[$key];
@@ -44,14 +44,29 @@ class CurrencyServiceRepository implements CurrencyServiceInterface
 
     public function getAvailableCurrencies(): array
     {
-        //TODO: implementar essa funcao
-        return [];
+        $key = 'currencies';
+        return $this->getDataFromCacheOrService($key, 'getAvailableCurrencies');
     }
 
     public function getCurrencyNames(): array
     {
-        //TODO: implementar essa funcao
-        return [];
+        $key = 'currencyNames';
+        return $this->getDataFromCacheOrService($key, 'getCurrencyNames');
+    }
+
+    private function getDataFromCacheOrService($key, $serviceMethod)
+    {
+        try {
+            if ($this->cache->isDataCached($key)) {
+                return $this->cache->getCachedData($key);
+            } else {
+                $data = $this->currencyService->$serviceMethod();
+                $this->cache->saveDataToCache($key, $data, 86400);
+                return $data;
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 
 }

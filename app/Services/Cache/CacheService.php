@@ -56,7 +56,7 @@ class CacheService
         $cacheTime = $time ?? $this->cacheTimeUp;
         
         cache()->put($cacheKey, [
-            'data' => $data[$cacheKey],
+            'data' => $data,
             'create_cache' => time()
         ], $cacheTime);
     }

@@ -61,13 +61,27 @@ class CurrencyService implements CurrencyServiceInterface
 
     public function getAvailableCurrencies(): array
     {
-        //TODO: implementar essa funcao
-        return [];
+        try {
+            $response = $this->client->request('GET', $this->baseUri . '/json/available');
+            if ($response->getStatusCode() !== 200) {
+                throw new \Exception('API request failed.', $response->getStatusCode());
+            }
+            return json_decode($response->getBody(), true, JSON_THROW_ON_ERROR);
+        } catch (RequestException $e) {
+            throw new \Exception($e->getMessage(), $e->getCode());
+        }
     }
 
     public function getCurrencyNames(): array
     {
-        //TODO: implementar essa funcao
-        return [];
+        try {
+            $response = $this->client->request('GET', $this->baseUri . '/json/available/uniq');
+            if ($response->getStatusCode() !== 200) {
+                throw new \Exception('API request failed.', $response->getStatusCode());
+            }
+            return json_decode($response->getBody(), true, JSON_THROW_ON_ERROR);
+        } catch (RequestException $e) {
+            throw new \Exception($e->getMessage(), $e->getCode());
+        }
     }
 }
