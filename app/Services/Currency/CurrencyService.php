@@ -39,14 +39,15 @@ class CurrencyService implements CurrencyServiceInterface
     /**
      * Get the latest occurrences for the specified currencies.
      *
-     * @param string $currencies The currencies to retrieve occurrences for.
+     * @param  array $currencies The currencies to retrieve occurrences for.
      * @return array An array containing the latest occurrences.
      * @throws \Exception If the API request fails.
      */
-    public function getLatestOccurrences(string $currencies): array
+    public function getLatestOccurrences(array $currencies): array
     {
         try {
-            $response = $this->client->request('GET', $this->baseUri . '/json/last/' . $currencies);
+            $currenciesString = implode(',', $currencies);
+            $response = $this->client->request('GET', $this->baseUri . '/json/last/' . $currenciesString);
             if ($response->getStatusCode() !== 200) {
                 throw new \Exception('API request failed.', $response->getStatusCode());
             }
@@ -55,6 +56,8 @@ class CurrencyService implements CurrencyServiceInterface
             throw new \Exception($e->getMessage(), $e->getCode());
         }
     }
+
+    
 
     public function getAvailableCurrencies(): array
     {

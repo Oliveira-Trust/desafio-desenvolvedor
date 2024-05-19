@@ -7,10 +7,10 @@ interface CurrencyServiceInterface
     /**
      * Returns the latest occurrences of the selected currencies.
      *
-     * @param string $currencies Currencies selected separated by commas (ex: USD-BRL,EUR-BRL)
+     * @param  array $currencies Currencies selected separated by commas (ex: USD-BRL,EUR-BRL)
      * @return array|null Array with the latest occurrences of the currencies or null in case of error
      */
-    public function getLatestOccurrences(string $currencies);
+    public function getLatestOccurrences(array $currencies);
 
     /**
      * Returns the list of available currency types together with their names.
