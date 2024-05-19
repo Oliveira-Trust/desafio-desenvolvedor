@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ExemploMail;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TestController;
 
 /**
  * Authentication routes for the API
@@ -27,3 +28,5 @@ Route::get('/testar-email', function () {
     Mail::to('email@example.com')->send(new ExemploMail($mailData));
     return 'E-mail enviado com sucesso!';
 });
+
+Route::get('/test', [TestController::class, 'test'])->name('test-api');

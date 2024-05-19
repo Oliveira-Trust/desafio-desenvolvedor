@@ -17,7 +17,7 @@ class BrowserSessionsTest extends TestCase
         $this->actingAs(User::factory()->create());
 
         Livewire::test(LogoutOtherBrowserSessionsForm::class)
-            ->set('password', 'password')
+            ->set('password', 'password!@#$123456')
             ->call('logoutOtherBrowserSessions')
             ->assertSuccessful();
     }

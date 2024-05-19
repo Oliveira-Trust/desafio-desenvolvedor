@@ -22,7 +22,7 @@ class DeleteAccountTest extends TestCase
         $this->actingAs($user = User::factory()->create());
 
         $component = Livewire::test(DeleteUserForm::class)
-            ->set('password', 'password')
+            ->set('password', 'password!@#$123456')
             ->call('deleteUser');
 
         $this->assertNull($user->fresh());
