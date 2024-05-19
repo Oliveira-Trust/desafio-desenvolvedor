@@ -6,6 +6,7 @@ use App\Interface\Currency\CurrencyServiceInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
+use App\Helpers\ApiResponse;
 
 class CurrencyService implements CurrencyServiceInterface
 {
@@ -35,10 +36,20 @@ class CurrencyService implements CurrencyServiceInterface
         ];
     }
 
+    /**
+     * Get the latest occurrences for the specified currencies.
+     *
+     * @param string $currencies The currencies to retrieve occurrences for.
+     * @return array An array containing the latest occurrences.
+     * @throws \Exception If the API request fails.
+     */
     public function getLatestOccurrences(string $currencies): array
     {
         try {
-            $response = $this->client->request('GET', $this->baseUri . '/last/' . $currencies);
+            $response = $this->client->request('GET', $this->baseUri . '/json/last/' . $currencies);
+            if ($response->getStatusCode() !== 200) {
+                throw new \Exception('API request failed.', $response->getStatusCode());
+            }
             return json_decode($response->getBody(), true, JSON_THROW_ON_ERROR);
         } catch (RequestException $e) {
             throw new \Exception($e->getMessage(), $e->getCode());

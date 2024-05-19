@@ -4,16 +4,18 @@ namespace App\Repositories\Currency;
 
 use App\Interface\Currency\CurrencyServiceInterface;
 use App\Services\Currency\CurrencyService;
+use App\Helpers\ApiResponse;
 Class CurrencyServiceRepository implements CurrencyServiceInterface
 {
     private $currencyService;
     public function __construct(CurrencyService $currencyService) {
         $this->currencyService = $currencyService;
     }
-    public function getLatestOccurrences(string $currencies): array
+
+    public function getLatestOccurrences(string $currencies)
     {
-        //TODO: implementar essa funcao
-        return [123];
+        $data = $this->currencyService->getLatestOccurrences($currencies);
+        return $data;
     }
 
     public function getAvailableCurrencies(): array

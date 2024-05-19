@@ -10,7 +10,7 @@ interface CurrencyServiceInterface
      * @param string $currencies Currencies selected separated by commas (ex: USD-BRL,EUR-BRL)
      * @return array|null Array with the latest occurrences of the currencies or null in case of error
      */
-    public function getLatestOccurrences(string $currencies): ?array;
+    public function getLatestOccurrences(string $currencies);
 
     /**
      * Returns the list of available currency types together with their names.
@@ -23,7 +23,7 @@ interface CurrencyServiceInterface
      *
      * @return array|null Associative array with the available currency types and their names or null in case of error
      */
-    public function getAvailableCurrencies(): ?array;
+    public function getAvailableCurrencies();
 
     /**
      * Returns the list of names of available currencies.
@@ -36,6 +36,6 @@ interface CurrencyServiceInterface
      *
      * @return array|null Associative array with the names of the available currencies or null in case of error
      */
-    public function getCurrencyNames(): ?array;
+    public function getCurrencyNames();
 }
 
