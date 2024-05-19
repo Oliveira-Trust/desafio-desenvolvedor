@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Conversion extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'user_id',
@@ -18,11 +19,14 @@ class Conversion extends Model
         'target_currency',
         'payment_method',
         'amount',
-        'conversion_fee',
         'payment_fee',
         'amount_fee',
-        'exchange_rate',
-        'converted_amount',
+        'bid',
+        'target_amount',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y H:i:s',
     ];
 
     public function user(): BelongsTo

@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\CurrencyFactory;
+use Database\Factories\PaymentMethodFactory;
+use Database\Factories\TaxFactory;
+use DB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +15,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $boleto = PaymentMethodFactory::new()->create(['name' => 'Boleto']);
+        $creditCard = PaymentMethodFactory::new()->create(['name' => 'Cartão de Crédito']);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        TaxFactory::new()->createMany([
+            [
+                'name' => 'Taxa sobre o valor',
+                'amount' => 3000,
+                'type' => 'amount_fee',
+                'min_amount_rate' => 2,
+                'max_amount_rate' => 1,
+            ],
+            [
+                'name' => 'Taxa de pagamento com cartão de Crédito',
+                'rate' => 7.63,
+                'type' => 'payment_fee',
+                'payment_method_id' => $creditCard->id
+            ],
+            [
+                'name' => 'Taxa de pagamento com boleto',
+                'rate' => 1.45,
+                'type' => 'payment_fee',
+                'payment_method_id' => $boleto->id
+            ],
+        ]);
+
+        CurrencyFactory::new()->createMany([
+            ['name' => 'Dolar Americano', 'code' => 'USD', 'symbol' => '$'],
+            ['name' => 'Euro', 'code' => 'EUR', 'symbol' => '€'],
+            ['name' => 'Libra Esterlina', 'code' => 'GBP', 'symbol' => '£'],
+            ['name' => 'Bitcoin', 'code' => 'BTC', 'symbol' => '₿'],
+            ['name' => 'Dólar Australiano', 'code' => 'AUD', 'symbol' => 'A$'],
+        ]);
     }
 }

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->boolean('is_enabled')->default(true);
-            $table->decimal('tax_rate')->default(0);
+            $table->string('symbol')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('currencies');
     }
 };

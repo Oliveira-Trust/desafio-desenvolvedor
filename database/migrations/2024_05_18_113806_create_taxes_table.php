@@ -11,15 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conversion_fees', function (Blueprint $table) {
+        Schema::create('taxes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->decimal('rate')->nullable();
             $table->boolean('is_enabled')->default(true);
+            $table->enum('type', ['amount_fee', 'payment_fee']);
             $table->decimal('amount')->nullable();
-            $table->decimal('min_tax_rate');
-            $table->decimal('max_tax_rate');
+            $table->decimal('min_amount_rate')->nullable();
+            $table->decimal('max_amount_rate')->nullable();
             $table->timestamps();
+
+            $table->foreignId('payment_method_id')->nullable()->constrained();
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conversion_fees');
+        Schema::dropIfExists('taxes');
     }
 };

@@ -16,15 +16,14 @@ return new class extends Migration
             $table->string('currency');
             $table->string('target_currency');
             $table->decimal('amount');
-            $table->decimal('conversion_fee');
             $table->decimal('payment_fee');
             $table->decimal('amount_fee');
-            $table->decimal('exchange_rate');
+            $table->decimal('bid');
             $table->decimal('target_amount');
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
             $table->softDeletes();
 
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('payment_method_id')->constrained();
         });
     }
