@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Services\Quote;
-
 /**
  * Class QuoteCalculationService
  * 
@@ -15,8 +14,78 @@ class QuoteCalculationService
      * @param array $data The data containing the origin, destination, and value.
      * @return array The conversion details including the origin currency, destination currency, original amount, converted amount, exchange rate, payment method, timestamp, create date, and conversion message.
      */
-    public function calculateQuote($data){
-        return $this->calculateConversion($data);
+    private function calculateQuote($data)
+    {
+        $valueOrignal = $data['value'];
+        $valueInCents = $this->toCents($data['value']);
+        $taxRate = $this->getTaxRate($data['payment_method']);
+        $taxRateValue = $this->calculateTax($valueInCents, $taxRate);
+        $taxConversion = $this->getTaxConversion($valueInCents);
+        $taxConversionValue = $this->calculateTax($valueInCents, $taxConversion);
+
+        $valueInCents = $valueInCents - ($taxRateValue + $taxConversionValue);
+
+        $data['value'] = $this->toCurrency($valueInCents);
+
+        return [
+            'original_value' => $valueOrignal,
+            'origin_currency' => $data['origin'],
+            'destination_currency' => $data['destination'],
+            'payment_method' => $data['payment_method'],
+            'tax' => $this->createTaxDetails($taxRate, $taxRateValue, $taxConversion, $taxConversionValue),
+            'conversion_details' => $this->calculateConversion($data),
+        ];
+    }
+
+    /**
+     * Creates tax details based on the given tax rates and values.
+     *
+     * @param float $taxRate The tax rate percentage.
+     * @param float $taxRateValue The tax rate value.
+     * @param float $taxConversion The tax conversion percentage.
+     * @param float $taxConversionValue The tax conversion value.
+     * @return array The tax details array.
+     */
+    private function createTaxDetails($taxRate, $taxRateValue, $taxConversion, $taxConversionValue)
+    {
+        return [
+            'tax_rate_percentage' => $taxRate,
+            'tax_rate_value' => $this->toCurrency($taxRateValue),
+            'tax_conversion_percentage' => $taxConversion,
+            'tax_conversion_value' => $this->toCurrency($taxConversionValue),
+            'total_tax' => $this->toCurrency($taxRateValue + $taxConversionValue),
+        ];
+    }
+
+    /**
+     * Calculate the tax based on the provided amount and tax rate.
+     * 
+     * @param int $amount The amount to be taxed.
+     * @param float $tax The tax rate.
+     * @return int The calculated tax amount.
+     */
+    private function calculateTax($amount, $tax)
+    {
+        return (int) ($amount * $tax / 100);
+    }
+
+    private function getTaxRate($paymentMethod)
+    {
+        if($paymentMethod == 'Boleto'){
+            return 1.45;
+        }
+        if($paymentMethod == 'CreditCard'){
+            return 7.63;
+        }
+        return 0;
+    }
+
+    private function getTaxConversion($valueInCents)
+    {
+        if($valueInCents <= $this->toCents(3000)){
+            return 2;
+        }
+        return 1;
     }
 
     /**
@@ -107,11 +176,9 @@ class QuoteCalculationService
     private function createConversionDetails($data, $amountInOrigin, $amountInDestination, $askRate)
     {
         return [
-                'origin_currency' => $data['origin'],
-                'destination_currency' => $data['destination'],
-                'original_amount' => $amountInOrigin,
-                'converted_amount' => $amountInDestination,
-                'exchange_rate' => $askRate,
+            'original_amount' => $amountInOrigin,
+            'converted_amount' => $amountInDestination,
+            'exchange_rate' => $askRate,
         ];
     }
 }
