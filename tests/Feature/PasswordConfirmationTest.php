@@ -14,7 +14,7 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->withPersonalTeam()->create();
 
-        $response = $this->actingAs($user)->get('/user/confirm-password');
+        $response = $this->actingAs($user,'web')->get('/user/confirm-password');
 
         $response->assertStatus(200);
     }
@@ -23,8 +23,8 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/user/confirm-password', [
-            'password' => 'password',
+        $response = $this->actingAs($user,'web')->post('/user/confirm-password', [
+            'password' => 'password!@#$123456',
         ]);
 
         $response->assertRedirect();
@@ -35,10 +35,17 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/user/confirm-password', [
-            'password' => 'wrong-password',
+        $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password!@#$123456',
         ]);
 
+        $this->assertAuthenticated('web');
+
+        $response = $this->actingAs($user,'web')->post('/user/confirm-password', [
+            'password' => 'wrong-password-test',
+        ]);
+        
         $response->assertSessionHasErrors();
     }
 }
