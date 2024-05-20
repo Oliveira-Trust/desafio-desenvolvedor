@@ -17,8 +17,12 @@ class QuoteEmail extends Mailable
      * Create a new message instance.
      */
     public $username;
+    public $data;
+    public $quote_id;
     public $origin_currency;
+    public $origin_currency_name;
     public $destination_currency;
+    public $destination_currency_name;
     public $original_value;
     public $payment_method;
     public $conversion_details;
@@ -26,8 +30,13 @@ class QuoteEmail extends Mailable
     public $original_value_minus_tax;
     public function __construct($quote)
     {
+        $this->username = $quote['username'];
+        $this->quote_id = $quote['quote_id'];
+        $this->data = $quote['created_at'];
         $this->origin_currency = $quote['origin_currency'];
+        $this->origin_currency_name = $quote['origin_currency_name'];
         $this->destination_currency = $quote['destination_currency'];
+        $this->destination_currency_name = $quote['destination_currency_name'];
         $this->original_value = $quote['original_value'];
         $this->payment_method = $quote['payment_method'];
         $this->conversion_details = $quote['conversion_details'];
@@ -41,7 +50,8 @@ class QuoteEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Quote Email',
+            subject: 'Quote Cassius Lc - #ID'.$this->quote_id.' - Cotação de Moeda '.$this->origin_currency.' para '.$this->destination_currency,
+            to: config('mail.to.address')
         );
     }
 

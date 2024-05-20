@@ -60,6 +60,12 @@ class QuoteService implements QuoteServiceInterface
         return $filteredCurrencies;
     }
 
+    private function getName(string $currency): string
+    {
+        $currencies = $this->currencyService->getCurrencyNames();
+        return $currencies['data'][$currency];
+    }
+
     /**
      * Generate a currency quote based on the specified currencies, value, and payment type.
      *
@@ -86,7 +92,7 @@ class QuoteService implements QuoteServiceInterface
 
         $quote = $this->quoteCalculationService->calculateQuote($data);
         $quote_history = $this->generateHistoricalQuote(Auth::id(), $quote['histoty']);
-        $result = $this->formatQuoteResult($quote['result'], $quote_history->id);
+        $result = $this->formatQuoteResult($quote['result'], $quote_history);
 
         return $result;
     }
@@ -98,14 +104,17 @@ class QuoteService implements QuoteServiceInterface
      * @param int $quote_id The quote ID
      * @return array The formatted currency quote result
      */
-    public function formatQuoteResult(array $quote, int $quote_id): array
+    public function formatQuoteResult(array $quote, $quote_history): array
     {
         $result = [];
         $origin = $quote['origin_currency'];
         $destination = $quote['destination_currency'];
-        $result['quote_id'] = $quote_id;
+        $result['quote_id'] = $quote_history->id;
+        $result['created_at'] = $quote_history->created_at->format('d/m/Y H:i:s');
         $result['origin_currency'] = "{$origin}";
+        $result['origin_currency_name'] = "{$this->getName($origin)}";
         $result['destination_currency'] = "{$destination}";
+        $result['destination_currency_name'] = "{$this->getName($destination)}";
         $result['original_value'] = Money::$origin($quote['original_value'], true)->format();
         $result['payment_method'] = "{$quote['payment_method']}";
         $result['conversion_details']['original_amount'] = Money::$origin($quote['conversion_details']['original_amount'], true)->format();
@@ -131,6 +140,7 @@ class QuoteService implements QuoteServiceInterface
     public function sendQuoteByEmail(int $userId, array $result): void
     {
         $user = $this->userInterface->getUserById($userId);
+        $result['username'] = $user->name;
         Mail::to($user)->send(new QuoteEmail($result));
         $this->historicalQuoteService->update($result['quote_id'], ['email_sent_at' => now()]);
     }
