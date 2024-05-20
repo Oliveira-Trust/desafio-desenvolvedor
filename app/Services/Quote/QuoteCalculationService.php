@@ -14,7 +14,7 @@ class QuoteCalculationService
      * @param array $data The data containing the origin, destination, and value.
      * @return array The conversion details including the origin currency, destination currency, original amount, converted amount, exchange rate, payment method, timestamp, create date, and conversion message.
      */
-    private function calculateQuote($data)
+    public function calculateQuote($data)
     {
         $valueOrignal = $data['value'];
         $valueInCents = $this->toCents($data['value']);

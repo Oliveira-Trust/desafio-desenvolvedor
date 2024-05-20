@@ -6,7 +6,7 @@ use App\Interface\Quote\QuoteServiceInterface;
 use App\Interface\Currency\CurrencyServiceInterface;
 use App\Services\Quote\QuoteCalculationService;
 use App\Helpers\ApiResponse;
-
+use Akaunting\Money\Money;
 class QuoteService implements QuoteServiceInterface
 {
     private $currencyService;
@@ -52,7 +52,25 @@ class QuoteService implements QuoteServiceInterface
 
         $result = $this->quoteCalculationService->calculateQuote($data);
 
-        dd($result);
+        return $this->formatQuoteResult($result);
+    }
+
+    public function formatQuoteResult(array $quote): array
+    {
+        $result = [];
+        $origin = $quote['origin_currency'];
+        $destination = $quote['destination_currency'];
+        $result['origin_currency'] = "{$origin}";
+        $result['destination_currency'] = "{$destination}";
+        $result['original_value'] = Money::$origin($quote['original_value'], true)->format();
+        $result['payment_method'] = "{$quote['payment_method']}";
+        $result['conversion_details']['original_amount'] = Money::$origin($quote['conversion_details']['original_amount'],true)->format();
+        $result['conversion_details']['converted_amount'] = Money::$destination($quote['conversion_details']['converted_amount'],true)->format();
+        $result['tax']['tax_rate_value'] = Money::$origin($quote['tax']['tax_rate_value'],true)->format();
+        $result['tax']['tax_conversion_value'] = Money::$origin($quote['tax']['tax_conversion_value'],true)->format();
+        $result['original_value_minus_tax'] = Money::$origin($quote['original_value'] - $quote['tax']['total_tax'],true)->format();
+
+        return $result;
     }
 
     public function changeQuoteRates(string $userId, array $rates): void
