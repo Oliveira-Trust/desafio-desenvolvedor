@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Builders\QuoteBuilder;
-use App\Helpers\Currency;
 use App\Http\Requests\CalcConversionQuoteRequest;
+use App\Models\ConversionAvailable;
+use App\Models\Currency;
 use App\Models\FeeRule;
 use App\Models\PaymentMethod;
 use App\Models\Quote;
@@ -19,12 +20,16 @@ class QuoteController extends Controller
     private AwesomeApiQuotesService $service;
     private PaymentMethod $paymentMethods;
     private FeeRule $feeRules;
+    private Currency $currency;
+    private ConversionAvailable $conversionAvailable;
 
     public function __construct()
     {
         $this->service = new AwesomeApiQuotesService();
         $this->paymentMethods = new PaymentMethod();
         $this->feeRules = new FeeRule();
+        $this->currency = new Currency();
+        $this->conversionAvailable = new ConversionAvailable();
     }
 
     /**
@@ -52,15 +57,8 @@ class QuoteController extends Controller
     public function create()
     {
         $paymentMethods = $this->paymentMethods->get();
-        $availables = $this->service->quotes()->available();
-        $currencies = [];
+        $currencies = $this->conversionAvailable->where('code', 'like', '%-BRL')->get()->pluck('name', 'code');
         $quote = new Quote();
-        $quote->bid = 5.1066;
-        foreach ($availables as $key => $value) {
-            if (Str::endsWith($key, "BRL")) {
-                $currencies += [$key => $value];
-            }
-        }
         return view('quotes.create', compact('quote', 'paymentMethods'), ['currencies' => $currencies]);
     }
 
@@ -116,7 +114,7 @@ class QuoteController extends Controller
     public function show(Quote $quote)
     {
         $quote = Quote::where('id', '=', $quote->id)->where('user_id', '=', Auth::user()->id)->firstOrFail();
-        $currencies = $this->service->currencies()->names();
+        $currencies = $this->currency->get()->pluck('name', 'code');
         $paymentMethods = $this->paymentMethods->select('label', 'type')->get()->pluck('label', 'type');
         $quote->conversion_amount = Currency::format($quote->conversion_amount, $quote->currency_origin);
         $quote->currency_value = Currency::format($quote->currency_value, $quote->currency_origin);
