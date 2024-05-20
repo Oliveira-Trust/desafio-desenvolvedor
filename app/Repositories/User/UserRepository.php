@@ -13,6 +13,14 @@ class UserRepository implements UserInterface
         return User::find($id);
     }
 
+    public function update(int $id, array $data)
+    {
+        $user = User::find($id);
+        $user->fill($data);
+        $user->save();
+        return $user;
+    }
+
     public function getUserConfigTax(int $id, string $method)
     {
         $user = User::with(['conversionRatesConfiguration' => function ($query) use ($method) {
@@ -22,11 +30,20 @@ class UserRepository implements UserInterface
         return $user;
     }
 
-    public function updateUserConfigTax(int $id, array $data)
+    public function getHistoricalQuotesByUserId(string $userId): array
+    {
+        $user = User::find($userId);
+        return $user->quotes;
+    }
+
+    public function updateUserConfigTax(int $id, array $configs)
     {
         $user = User::find($id);
-        $user->configTax = $data;
-        $user->save();
+        $user->conversionRatesConfiguration()->delete();
+        foreach ($configs as $config) {
+            $user->conversionRatesConfiguration()->create($config);
+        }
+
         return $user;
     }
 

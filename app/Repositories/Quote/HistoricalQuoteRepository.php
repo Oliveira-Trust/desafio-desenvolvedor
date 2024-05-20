@@ -22,23 +22,10 @@ class HistoricalQuoteRepository implements HistoricalQuoteInterface
         ]);
     }
 
-    public function update(int $user_id, array $data): QuoteHistory
+    public function update(int $id, array $data): QuoteHistory
     {
-        $quote = QuoteHistory::where('user_id', $user_id)->first();
-        $quote->origin_currency = $data['origin_currency'];
-        $quote->destination_currency = $data['destination_currency'];
-        $quote->payment_method = $data['payment_method'];
-        $quote->original_amount = $data['original_amount'];
-        $quote->converted_amount = $data['converted_amount'];
-        $quote->exchange_rate = $data['exchange_rate'];
-        $quote->tax_rate_value = $data['tax_rate_value'];
-        $quote->tax_rate_value_porcentages = $data['tax_rate_value_porcentages'];
-        $quote->tax_conversion_value = $data['tax_conversion_value'];
-        $quote->tax_conversion_percentage = $data['tax_conversion_percentage'];
-        $quote->tax_total = $data['tax_total'];
-        $quote->original_value_minus_tax = $data['original_value_minus_tax'];
-        $quote->email_sent_at = null;
-        $quote->save();
+        $quote = QuoteHistory::findOrFail($id);
+        $quote->update($data);
 
         return $quote;
     }

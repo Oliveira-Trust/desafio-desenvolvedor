@@ -20,12 +20,12 @@ interface HistoricalQuoteInterface
     /**
      * Store a new historical quote for a given user.
      *
-     * @param int $user The user.
+     * @param int $id The historical quote ID.
      * @param array $data The quote data.
      * @return QuoteHistory The stored quote.
      */
     public function store(int $user_id, array $data): QuoteHistory;
 
-    public function update(int $user_id, array $data): QuoteHistory;
+    public function update(int $id, array $data): QuoteHistory;
 
 }
