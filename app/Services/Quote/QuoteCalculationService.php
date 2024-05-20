@@ -3,7 +3,6 @@ namespace App\Services\Quote;
 
 use Illuminate\Support\Facades\Auth;
 use App\Interface\User\UserInterface;
-use App\Interface\Quote\HistoricalQuoteInterface;
 /**
  * Class QuoteCalculationService
  * 
@@ -11,18 +10,14 @@ use App\Interface\Quote\HistoricalQuoteInterface;
  */
 class QuoteCalculationService
 {
-    private $user;
-    private $historicalQuoteInterface;
-    
+    private $user;    
     /**
      * QuoteCalculationService constructor.
      * 
      * @param UserInterface $user The user interface.
-     * @param HistoricalQuoteInterface $historicalQuoteInterface The historical quote interface.
      */
-    public function __construct(UserInterface $user, HistoricalQuoteInterface $historicalQuoteInterface) {
+    public function __construct(UserInterface $user) {
         $this->user = $user;
-        $this->historicalQuoteInterface = $historicalQuoteInterface;
     }
     
     /**
@@ -52,13 +47,11 @@ class QuoteCalculationService
             'tax' => $this->createTaxDetails($taxRate, $taxRateValue, $taxConversion, $taxConversionValue),
             'conversion_details' => $this->calculateConversion($data),
         ];
-
-        if(Auth::check()){
-            $store = $this->historicalQuoteInterface->store(Auth::user()->id, $this->createHistoryDetails($result));
-            $result['quote_id'] = $store->id;
-        }
-
-        return $result;
+        
+        return [ 
+            'result'=> $result,
+            'histoty'=> $this->createHistoryDetails($result)
+        ];
     }
 
     /**

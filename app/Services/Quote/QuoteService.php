@@ -65,18 +65,19 @@ class QuoteService implements QuoteServiceInterface
         ];
 
         $quote = $this->quoteCalculationService->calculateQuote($data);
-        $result = $this->formatQuoteResult($quote);
+        $quote_history = $this->generateHistoricalQuote(Auth::id(), $quote['histoty']);
+        $result = $this->formatQuoteResult($quote['result'], $quote_history->id);
 
         return $result;
     }
     
 
-    public function formatQuoteResult(array $quote): array
+    public function formatQuoteResult(array $quote, int $quote_id): array
     {
         $result = [];
         $origin = $quote['origin_currency'];
         $destination = $quote['destination_currency'];
-        $result['quote_id'] = $quote['quote_id'];
+        $result['quote_id'] = $quote_id;
         $result['origin_currency'] = "{$origin}";
         $result['destination_currency'] = "{$destination}";
         $result['original_value'] = Money::$origin($quote['original_value'], true)->format();
@@ -99,6 +100,11 @@ class QuoteService implements QuoteServiceInterface
         $user = $this->userInterface->getUserById($userId);
         Mail::to($user)->send(new QuoteEmail($result));
         $this->historicalQuoteService->update($result['quote_id'], ['email_sent_at' => now()]);
+    }
+
+    public function generateHistoricalQuote(string $userId, array $data)
+    {
+        return $this->historicalQuoteService->store($userId, $data);
     }
 
     public function getHistoricalQuotesByUserId(string $userId): array
