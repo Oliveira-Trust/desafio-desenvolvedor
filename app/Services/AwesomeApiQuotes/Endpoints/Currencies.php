@@ -3,8 +3,6 @@
 namespace App\Services\AwesomeApiQuotes\Endpoints;
 
 use App\Services\AwesomeApiQuotes\Endpoints\BaseEndpoint;
-use App\Services\AwesomeApiQuotes\Entities\Quote as QuoteEntity;
-use Illuminate\Support\Collection;
 
 class Currencies extends BaseEndpoint
 {

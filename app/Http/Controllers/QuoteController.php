@@ -134,6 +134,7 @@ class QuoteController extends Controller
      */
     public function show(Quote $quote)
     {
+        $quote = Quote::where('id', '=', $quote->id)->where('user_id', '=', Auth::user()->id)->firstOrFail();
         $service = new AwesomeApiQuotesService();
         $currencies = $service->currencies()->names();
         $paymentMethods = PaymentMethod::all('label', 'type')->pluck('label', 'type');
