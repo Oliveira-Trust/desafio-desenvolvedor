@@ -29,11 +29,11 @@ interface QuoteServiceInterface
     /**
      * Send the currency quote by email to a specific user.
      *
-     * @param string $userId The user ID.
-     * @param string $email The email address.
+     * @param int $userId The user ID.
+     * @param array $quote The currency quote result.
      * @return void
      */
-    public function sendQuoteByEmail(string $userId, string $email): void;
+    public function sendQuoteByEmail(int $userId, array $quote): void;
 
     public function getHistoricalQuotesByUserId(string $userId): array;
 }

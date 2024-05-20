@@ -3,21 +3,34 @@
 namespace App\Services\Quote;
 
 use App\Interface\Quote\QuoteServiceInterface;
-use App\Interface\Currency\CurrencyServiceInterface;
+use App\Interface\Quote\HistoricalQuoteInterface;
 use App\Services\Quote\QuoteCalculationService;
+use App\Interface\Currency\CurrencyServiceInterface;
+use App\Interface\User\UserInterface;
 use App\Helpers\ApiResponse;
 use Akaunting\Money\Money;
+use App\Mail\QuoteEmail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 class QuoteService implements QuoteServiceInterface
 {
     private $currencyService;
     private $origem_default;
     private $quoteCalculationService;
-    private $HistoricalQuoteInterface;
-    public function __construct(CurrencyServiceInterface $currencyService, QuoteCalculationService $quoteCalculationService)
+    private $userInterface;
+    private $historicalQuoteService;
+    public function __construct(
+        CurrencyServiceInterface $currencyService, 
+        QuoteCalculationService $quoteCalculationService, 
+        UserInterface $userInterface, 
+        HistoricalQuoteInterface $historicalQuoteInterface
+    )
     {
         $this->currencyService = $currencyService;
         $this->origem_default = env('CURRENCY_ORIGIN', 'BRL');
         $this->quoteCalculationService = $quoteCalculationService;
+        $this->userInterface = $userInterface;
+        $this->historicalQuoteService = $historicalQuoteInterface;
     }
 
     public function getAvailableCurrencies(string $origin = null): array
@@ -51,15 +64,19 @@ class QuoteService implements QuoteServiceInterface
             'quotes' => $quotes,
         ];
 
-        $result = $this->quoteCalculationService->calculateQuote($data);
-        return $this->formatQuoteResult($result);
+        $quote = $this->quoteCalculationService->calculateQuote($data);
+        $result = $this->formatQuoteResult($quote);
+
+        return $result;
     }
+    
 
     public function formatQuoteResult(array $quote): array
     {
         $result = [];
         $origin = $quote['origin_currency'];
         $destination = $quote['destination_currency'];
+        $result['quote_id'] = $quote['quote_id'];
         $result['origin_currency'] = "{$origin}";
         $result['destination_currency'] = "{$destination}";
         $result['original_value'] = Money::$origin($quote['original_value'], true)->format();
@@ -77,14 +94,15 @@ class QuoteService implements QuoteServiceInterface
         return $result;
     }
 
-    public function sendQuoteByEmail(string $userId, string $email): void
+    public function sendQuoteByEmail(int $userId,array $result): void
     {
-        // Send the quote by email to the specified user
+        $user = $this->userInterface->getUserById($userId);
+        Mail::to($user)->send(new QuoteEmail($result));
+        $this->historicalQuoteService->update($result['quote_id'], ['email_sent_at' => now()]);
     }
 
     public function getHistoricalQuotesByUserId(string $userId): array
     {
-        // Get the historical quotes for the specified user
-        return [];
+        return $this->userInterface->getHistoricalQuotesByUserId($userId);
     }
 }
