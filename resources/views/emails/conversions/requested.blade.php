@@ -2,7 +2,7 @@
     Moeda de origem: {{ $conversion['currency'] }} <br>
     Moeda de destino: {{ $conversion['target_currency'] }} <br>
     Valor para conversão: {{ $conversion['amount'] }} <br>
-    Forma de pagamento: {{ $conversion['payment_method_id'] }} <br>
+    Forma de pagamento: {{ $conversion['paymentMethod']->name }} <br>
     Valor da "Moeda de destino" usado para conversão: {{ $conversion['bid'] }} <br>
     Taxa de pagamento: {{ $conversion['payment_fee'] }} <br>
     Taxa de conversão: {{ $conversion['amount_fee'] }} <br>
