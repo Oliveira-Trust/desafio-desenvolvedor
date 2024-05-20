@@ -66,6 +66,7 @@
                             <div class="sm:col-span-9">
                                 <input id="af-submit-application-desired-salary" type="number" name="amount" required
                                     value="{{ old('amount', $quote->amount) }}" min="1000" max="100000"
+                                    step="0.01"
                                     class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
 
                             </div>
@@ -79,15 +80,16 @@
                             <!-- End Col -->
                             <div class="sm:col-span-9">
                                 <div class="sm:flex">
-                                    @foreach ($fees as $fee)
-                                        <label for="payment-method-{{ $fee['type'] }}"
+                                    @foreach ($paymentMethods as $paymentMethod)
+                                        <label for="payment-method-{{ $paymentMethod->type }}"
                                             class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                            <input type="radio" name="paymentMethod" value="{{ $fee['type'] }}"
-                                                required data-fee="{{ $fee['value'] }}"
+                                            <input type="radio" name="paymentMethod"
+                                                value="{{ $paymentMethod->type }}" required
+                                                data-fee="{{ $paymentMethod->value }}"
                                                 class="shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                id="payment-method-{{ $fee['type'] }}">
+                                                id="payment-method-{{ $paymentMethod->type }}">
                                             <span
-                                                class="text-sm text-gray-500 ms-3 dark:text-neutral-400">{{ $fee['label'] }}</span>
+                                                class="text-sm text-gray-500 ms-3 dark:text-neutral-400">{{ $paymentMethod->label }}</span>
                                         </label>
                                     @endforeach
                                 </div>

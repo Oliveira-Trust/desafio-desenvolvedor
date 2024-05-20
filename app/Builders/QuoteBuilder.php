@@ -2,6 +2,7 @@
 
 namespace App\Builders;
 
+use App\Models\FeeRule;
 use App\Models\Quote;
 
 class QuoteBuilder
@@ -9,7 +10,7 @@ class QuoteBuilder
     protected $quote;
     protected $feeRules;
 
-    public function __construct(array $feeRules)
+    public function __construct(FeeRule $feeRules)
     {
         $this->quote = new Quote();
         $this->feeRules = $feeRules;
@@ -59,25 +60,12 @@ class QuoteBuilder
 
     public function calculateFees()
     {
-        $this->quote->conversion_fee = $this->getConversionFee($this->quote->conversion_amount);
+        $this->quote->conversion_fee = $this->feeRules->getConversionFee($this->quote->conversion_amount);
         $this->quote->payment_rate = $this->quote->conversion_amount * $this->quote->fee;
         $this->quote->conversion_rate = $this->quote->conversion_amount * $this->quote->conversion_fee;
         $this->quote->conversion_value = $this->quote->conversion_amount - $this->quote->payment_rate - $this->quote->conversion_rate;
         $this->quote->converted_amount = $this->quote->conversion_value / $this->quote->currency_value;
         return $this;
-    }
-
-    protected function getConversionFee($amount)
-    {
-        foreach ($this->feeRules as $rule) {
-            if (($rule['rule'] === '<' && $amount < $rule['value']) ||
-                ($rule['rule'] === '>=' && $amount >= $rule['value'])
-            ) {
-                return $rule['fee'];
-            }
-        }
-
-        return 0;
     }
 
     public function build()
