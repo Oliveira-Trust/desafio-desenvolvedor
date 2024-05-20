@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Builders\QuoteBuilder;
 use App\Http\Requests\CalcConversionQuoteRequest;
+use App\Models\PaymentMethod;
 use App\Models\Quote;
 use App\Services\AwesomeApiQuotes\AwesomeApiQuotesService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use App\Services\AwesomeApiQuotes\Entities\Quote as QuoteEntity;
+use Illuminate\Support\Facades\Auth;
 
 class QuoteController extends Controller
 {
@@ -69,7 +71,23 @@ class QuoteController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input());
+        $quote = Quote::create([
+            'conversion_amount' => $request->input('conversion_amount'),
+            'name' => $request->input('name'),
+            'currency_origin' => $request->input('currency_origin'),
+            'currency_name' => $request->input('currency_name'),
+            'payment_method' => $request->input('payment_method'),
+            'fee' => $request->input('fee'),
+            'currency_value' => $request->input('currency_value'),
+            'payment_rate' => $request->input('payment_rate'),
+            'conversion_rate' => $request->input('conversion_rate'),
+            'conversion_fee' => $request->input('conversion_fee'),
+            'conversion_value' => $request->input('conversion_value'),
+            'converted_amount' => $request->input('converted_amount'),
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect(route('quotes.show', ['quote' => $quote]));
     }
 
     /**
@@ -92,17 +110,18 @@ class QuoteController extends Controller
             ->setCurrencyValue($quoteData['bid'])
             ->calculateFees()
             ->build();
-
-        logger($quote);
         return $quote;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Quote $quote)
     {
-        return view('quotes.show');
+        $service = new AwesomeApiQuotesService();
+        $currencies = $service->currencies()->names();
+        $paymentMethods = PaymentMethod::all('label', 'type')->pluck('label', 'type');
+        return view('quotes.show', compact('quote', 'currencies', 'paymentMethods'));
     }
 
     /**

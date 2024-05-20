@@ -2,6 +2,7 @@
 
 namespace App\Services\AwesomeApiQuotes;
 
+use App\Services\AwesomeApiQuotes\Endpoints\HasCurrencies;
 use App\Services\AwesomeApiQuotes\Endpoints\HasQuotes;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Http;
  */
 class AwesomeApiQuotesService
 {
-    use HasQuotes;
+    use HasQuotes, HasCurrencies;
 
     public PendingRequest $api;
 

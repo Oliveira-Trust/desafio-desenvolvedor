@@ -1,9 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Quotes') }}
-        </h2>
-    </x-slot>
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -14,11 +10,11 @@
                     <div
                         class="mb-5 pb-5 flex justify-between items-center border-b border-gray-200 dark:border-neutral-700">
                         <div>
-                            <h2 class="text-2xl font-semibold text-gray-800 dark:text-neutral-200">Invoice</h2>
+                            <h2 class="text-2xl font-semibold text-gray-800 dark:text-neutral-200">Cotação</h2>
                         </div>
                         <!-- Col -->
 
-                        <div class="inline-flex gap-x-2">
+                        {{-- <div class="inline-flex gap-x-2">
                             <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                                 href="#">
                                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -42,7 +38,7 @@
                                 </svg>
                                 Print
                             </a>
-                        </div>
+                        </div> --}}
                         <!-- Col -->
                     </div>
                     <!-- End Grid -->
@@ -58,7 +54,7 @@
                                     <dd class="text-gray-800 dark:text-neutral-200">
                                         <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
                                             href="#">
-                                            sara@site.com
+                                            {{ Auth::user()->email }}
                                         </a>
                                     </dd>
                                 </dl>
@@ -68,28 +64,11 @@
                                         Billing details:
                                     </dt>
                                     <dd class="font-medium text-gray-800 dark:text-neutral-200">
-                                        <span class="block font-semibold">Sara Williams</span>
-                                        <address class="not-italic font-normal">
-                                            280 Suzanne Throughway,<br>
-                                            Breannabury, OR 45801,<br>
-                                            United States<br>
-                                        </address>
+                                        <span class="block font-semibold">{{ Auth::user()->name }}</span>
+
                                     </dd>
                                 </dl>
 
-                                <dl class="grid sm:flex gap-x-3 text-sm">
-                                    <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
-                                        Shipping details:
-                                    </dt>
-                                    <dd class="font-medium text-gray-800 dark:text-neutral-200">
-                                        <span class="block font-semibold">Sara Williams</span>
-                                        <address class="not-italic font-normal">
-                                            280 Suzanne Throughway,<br>
-                                            Breannabury, OR 45801,<br>
-                                            United States<br>
-                                        </address>
-                                    </dd>
-                                </dl>
                             </div>
                         </div>
                         <!-- Col -->
@@ -98,37 +77,46 @@
                             <div class="grid space-y-3">
                                 <dl class="grid sm:flex gap-x-3 text-sm">
                                     <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
-                                        Invoice number:
+                                        Cotação Nº:
                                     </dt>
                                     <dd class="font-medium text-gray-800 dark:text-neutral-200">
-                                        ADUQ2189H1-0038
+                                        {{ $quote->id }}
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:flex gap-x-3 text-sm">
                                     <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
-                                        Currency:
+                                        Moeda de Origen:
                                     </dt>
                                     <dd class="font-medium text-gray-800 dark:text-neutral-200">
-                                        USD - US Dollar
+                                        {{ $quote->currency_origin }} - {{ $currencies[$quote->currency_origin] }}
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:flex gap-x-3 text-sm">
                                     <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
-                                        Due date:
+                                        Moeda de destino:
                                     </dt>
                                     <dd class="font-medium text-gray-800 dark:text-neutral-200">
-                                        10 Jan 2023
+                                        {{ $quote->currency_name }} - {{ $currencies[$quote->currency_name] }}
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:flex gap-x-3 text-sm">
                                     <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
-                                        Billing method:
+                                        Data da Cotação:
                                     </dt>
                                     <dd class="font-medium text-gray-800 dark:text-neutral-200">
-                                        Send invoice
+                                        {{ Carbon\Carbon::parse($quote->created_at)->format('d/m/Y') }}
+                                    </dd>
+                                </dl>
+
+                                <dl class="grid sm:flex gap-x-3 text-sm">
+                                    <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
+                                        Método de Pagamento:
+                                    </dt>
+                                    <dd class="font-medium text-gray-800 dark:text-neutral-200">
+                                        {{ $paymentMethods[$quote->payment_method] }}
                                     </dd>
                                 </dl>
                             </div>
@@ -139,96 +127,27 @@
 
                     <!-- Table -->
                     <div class="mt-6 border border-gray-200 p-4 rounded-lg space-y-4 dark:border-neutral-700">
-                        <div class="hidden sm:grid sm:grid-cols-5">
-                            <div
-                                class="sm:col-span-2 text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                Item</div>
-                            <div class="text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                Qty</div>
-                            <div class="text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                Rate</div>
-                            <div class="text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                Amount</div>
-                        </div>
-
-                        <div class="hidden sm:block border-b border-gray-200 dark:border-neutral-700"></div>
 
                         <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
                             <div class="col-span-full sm:col-span-2">
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Item</h5>
-                                <p class="font-medium text-gray-800 dark:text-neutral-200">Design UX and UI</p>
+                                <p class="font-medium text-gray-800 dark:text-neutral-200">Valor para
+                                    {{ $currencies[$quote->currency_name] }}</p>
+                            </div>
+
+                            <div>
                             </div>
                             <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Qty</h5>
-                                <p class="text-gray-800 dark:text-neutral-200">1</p>
                             </div>
                             <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Rate</h5>
-                                <p class="text-gray-800 dark:text-neutral-200">5</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Amount</h5>
-                                <p class="sm:text-end text-gray-800 dark:text-neutral-200">$500</p>
+
+                                <p class="sm:text-end text-gray-800 dark:text-neutral-200">
+                                    BRL R$ {{ $quote->currency_value }}</p>
                             </div>
                         </div>
 
-                        <div class="sm:hidden border-b border-gray-200 dark:border-neutral-700"></div>
+                        {{-- <div class="sm:hidden border-b border-gray-200 dark:border-neutral-700"></div> --}}
 
-                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                            <div class="col-span-full sm:col-span-2">
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Item</h5>
-                                <p class="font-medium text-gray-800 dark:text-neutral-200">Web project</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Qty</h5>
-                                <p class="text-gray-800 dark:text-neutral-200">1</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Rate</h5>
-                                <p class="text-gray-800 dark:text-neutral-200">24</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Amount</h5>
-                                <p class="sm:text-end text-gray-800 dark:text-neutral-200">$1250</p>
-                            </div>
-                        </div>
 
-                        <div class="sm:hidden border-b border-gray-200 dark:border-neutral-700"></div>
-
-                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                            <div class="col-span-full sm:col-span-2">
-                                <h5
-                                    class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Item</h5>
-                                <p class="font-medium text-gray-800 dark:text-neutral-200">SEO</p>
-                            </div>
-                            <div>
-                                <h5
-                                    class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Qty</h5>
-                                <p class="text-gray-800 dark:text-neutral-200">1</p>
-                            </div>
-                            <div>
-                                <h5
-                                    class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Rate</h5>
-                                <p class="text-gray-800 dark:text-neutral-200">6</p>
-                            </div>
-                            <div>
-                                <h5
-                                    class="sm:hidden text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
-                                    Amount</h5>
-                                <p class="sm:text-end text-gray-800 dark:text-neutral-200">$2000</p>
-                            </div>
-                        </div>
                     </div>
                     <!-- End Table -->
 
@@ -238,31 +157,34 @@
                             <!-- Grid -->
                             <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
-                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Subotal:</dt>
+                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Valor para conversão:
+                                    </dt>
+                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">R$
+                                        {{ $quote->conversion_amount }}
+                                    </dd>
+                                </dl>
+
+                                <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
+                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Taxa de pagamento:</dt>
                                     <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$2750.00
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
-                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Total:</dt>
-                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$2750.00
-                                    </dd>
-                                </dl>
-
-                                <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
-                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Tax:</dt>
+                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Taxa de conversão:</dt>
                                     <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$39.00</dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
-                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Amount paid:</dt>
+                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Subtotal:</dt>
                                     <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$2789.00
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
-                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Due balance:</dt>
-                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$0.00</dd>
+                                    <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Valor comprado:</dt>
+                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
+                                        {{ formatCurrency($quote->converted_amount, $quote->currency_name) }}</dd>
                                 </dl>
                             </div>
                             <!-- End Grid -->
