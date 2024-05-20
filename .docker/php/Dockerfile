@@ -57,4 +57,5 @@ RUN git clone https://github.com/seebi/dircolors-solarized
 
 EXPOSE 5173
 EXPOSE 9000
+EXPOSE 3001
 WORKDIR /var/www
