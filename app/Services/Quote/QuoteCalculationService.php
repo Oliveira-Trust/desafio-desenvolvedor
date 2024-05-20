@@ -34,6 +34,7 @@ class QuoteCalculationService
     public function calculateQuote($data)
     {
         $valueInCents = $this->toCents($data['value']);
+        $originalValue = $data['value'];
         $taxRate = $this->getTaxRate($data['payment_method']);
         $taxRateValue = $this->calculateTax($valueInCents, $taxRate);
         $taxConversion = $this->getTaxConversion($valueInCents, $data['payment_method']);
@@ -44,7 +45,7 @@ class QuoteCalculationService
         $data['value'] = $this->toCurrency($valueInCents);
 
         $result = [
-            'original_value' =>  $data['value'],
+            'original_value' =>  $originalValue,
             'origin_currency' => $data['origin'],
             'destination_currency' => $data['destination'],
             'payment_method' => $data['payment_method'],
@@ -53,7 +54,8 @@ class QuoteCalculationService
         ];
 
         if(Auth::check()){
-            $this->historicalQuoteInterface->store(Auth::user()->id, $this->createHistoryDetails($result));
+            $store = $this->historicalQuoteInterface->store(Auth::user()->id, $this->createHistoryDetails($result));
+            $result['quote_id'] = $store->id;
         }
 
         return $result;

@@ -26,8 +26,7 @@ Route::prefix('quote')
     ->group(function () {
     Route::get('currencies/{origin}', [QuoteController::class, 'getAvailableCurrencies']);
     Route::get('generate/{origin}/{destination}', [QuoteController::class, 'generateCurrencyQuote']);
-    Route::post('change/{userId}', [QuoteController::class, 'changeQuoteRates']);
-    Route::post('send/{userId}', [QuoteController::class, 'sendQuoteByEmail']);
+    Route::post('change', [QuoteController::class, 'changeQuoteRates']);
 });
 
 Route::get('/test', [TestController::class, 'test'])->name('test-api');
