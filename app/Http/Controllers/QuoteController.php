@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Builders\QuoteBuilder;
+use App\Helpers\Currency;
 use App\Http\Requests\CalcConversionQuoteRequest;
 use App\Models\PaymentMethod;
 use App\Models\Quote;
 use App\Services\AwesomeApiQuotes\AwesomeApiQuotesService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use App\Services\AwesomeApiQuotes\Entities\Quote as QuoteEntity;
 use Illuminate\Support\Facades\Auth;
 
 class QuoteController extends Controller
@@ -32,7 +31,18 @@ class QuoteController extends Controller
      */
     public function index()
     {
-        return view('quotes.index');
+        $quotes = Quote::where('user_id', '=', Auth::user()->id)->get();
+        $quotes = $quotes->map(function ($quote) {
+            $quote->conversion_amount = Currency::format($quote->conversion_amount, $quote->currency_origin);
+            $quote->currency_value = Currency::format($quote->currency_value, $quote->currency_origin);
+            $quote->payment_rate = Currency::format($quote->payment_rate, $quote->currency_origin);
+            $quote->conversion_rate = Currency::format($quote->conversion_rate, $quote->currency_origin);
+            $quote->conversion_value = Currency::format($quote->conversion_value, $quote->currency_origin);
+            $quote->converted_amount = Currency::format($quote->converted_amount, $quote->currency_name);
+            return $quote;
+        });
+        $paymentMethods = PaymentMethod::all('label', 'type')->pluck('label', 'type');
+        return view('quotes.index', compact('quotes', 'paymentMethods'));
     }
 
     /**
@@ -110,6 +120,12 @@ class QuoteController extends Controller
             ->setCurrencyValue($quoteData['bid'])
             ->calculateFees()
             ->build();
+        $quote->conversion_amount = Currency::format($quote->conversion_amount, $quote->currency_origin);
+        $quote->currency_value = Currency::format($quote->currency_value, $quote->currency_origin);
+        $quote->payment_rate = Currency::format($quote->payment_rate, $quote->currency_origin);
+        $quote->conversion_rate = Currency::format($quote->conversion_rate, $quote->currency_origin);
+        $quote->conversion_value = Currency::format($quote->conversion_value, $quote->currency_origin);
+        $quote->converted_amount = Currency::format($quote->converted_amount, $quote->currency_name);
         return $quote;
     }
 
@@ -121,6 +137,12 @@ class QuoteController extends Controller
         $service = new AwesomeApiQuotesService();
         $currencies = $service->currencies()->names();
         $paymentMethods = PaymentMethod::all('label', 'type')->pluck('label', 'type');
+        $quote->conversion_amount = Currency::format($quote->conversion_amount, $quote->currency_origin);
+        $quote->currency_value = Currency::format($quote->currency_value, $quote->currency_origin);
+        $quote->payment_rate = Currency::format($quote->payment_rate, $quote->currency_origin);
+        $quote->conversion_rate = Currency::format($quote->conversion_rate, $quote->currency_origin);
+        $quote->conversion_value = Currency::format($quote->conversion_value, $quote->currency_origin);
+        $quote->converted_amount = Currency::format($quote->converted_amount, $quote->currency_name);
         return view('quotes.show', compact('quote', 'currencies', 'paymentMethods'));
     }
 

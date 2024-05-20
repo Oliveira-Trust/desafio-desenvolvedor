@@ -12,34 +12,6 @@
                         <div>
                             <h2 class="text-2xl font-semibold text-gray-800 dark:text-neutral-200">Cotação</h2>
                         </div>
-                        <!-- Col -->
-
-                        {{-- <div class="inline-flex gap-x-2">
-                            <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                href="#">
-                                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" x2="12" y1="15" y2="3" />
-                                </svg>
-                                Invoice PDF
-                            </a>
-                            <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                                href="#">
-                                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 6 2 18 2 18 9" />
-                                    <path
-                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-                                    <rect width="12" height="8" x="6" y="14" />
-                                </svg>
-                                Print
-                            </a>
-                        </div> --}}
-                        <!-- Col -->
                     </div>
                     <!-- End Grid -->
 
@@ -141,7 +113,7 @@
                             <div>
 
                                 <p class="sm:text-end text-gray-800 dark:text-neutral-200">
-                                    BRL R$ {{ $quote->currency_value }}</p>
+                                    BRL {{ $quote->currency_value }}</p>
                             </div>
                         </div>
 
@@ -159,7 +131,7 @@
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Valor para conversão:
                                     </dt>
-                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">R$
+                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
                                         {{ $quote->conversion_amount }}
                                     </dd>
                                 </dl>
@@ -167,20 +139,20 @@
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Taxa de pagamento:</dt>
                                     <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
-                                        R$ {{ $quote->payment_rate }}
+                                        {{ $quote->payment_rate }}
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Taxa de conversão:</dt>
                                     <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
-                                        R$ {{ $quote->conversion_rate }}</dd>
+                                        {{ $quote->conversion_rate }}</dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Subtotal:</dt>
                                     <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
-                                        R$ {{ $quote->conversion_value }}
+                                        {{ $quote->conversion_value }}
                                     </dd>
                                 </dl>
 
