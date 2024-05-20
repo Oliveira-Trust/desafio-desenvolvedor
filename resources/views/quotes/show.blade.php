@@ -49,7 +49,7 @@
                             <div class="grid space-y-3">
                                 <dl class="grid sm:flex gap-x-3 text-sm">
                                     <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
-                                        Billed to:
+                                        Cotado para:
                                     </dt>
                                     <dd class="text-gray-800 dark:text-neutral-200">
                                         <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
@@ -61,7 +61,7 @@
 
                                 <dl class="grid sm:flex gap-x-3 text-sm">
                                     <dt class="min-w-36 max-w-[200px] text-gray-500 dark:text-neutral-500">
-                                        Billing details:
+                                        Detalhes:
                                     </dt>
                                     <dd class="font-medium text-gray-800 dark:text-neutral-200">
                                         <span class="block font-semibold">{{ Auth::user()->name }}</span>
@@ -166,25 +166,28 @@
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Taxa de pagamento:</dt>
-                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$2750.00
+                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
+                                        R$ {{ $quote->payment_rate }}
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Taxa de conversão:</dt>
-                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$39.00</dd>
+                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
+                                        R$ {{ $quote->conversion_rate }}</dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Subtotal:</dt>
-                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">$2789.00
+                                    <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
+                                        R$ {{ $quote->conversion_value }}
                                     </dd>
                                 </dl>
 
                                 <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                                     <dt class="col-span-3 text-gray-500 dark:text-neutral-500">Valor comprado:</dt>
                                     <dd class="col-span-2 font-medium text-gray-800 dark:text-neutral-200">
-                                        {{ formatCurrency($quote->converted_amount, $quote->currency_name) }}</dd>
+                                        {{ $quote->converted_amount }}</dd>
                                 </dl>
                             </div>
                             <!-- End Grid -->
