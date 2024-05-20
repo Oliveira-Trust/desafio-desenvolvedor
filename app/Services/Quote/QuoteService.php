@@ -12,6 +12,7 @@ class QuoteService implements QuoteServiceInterface
     private $currencyService;
     private $origem_default;
     private $quoteCalculationService;
+    private $HistoricalQuoteInterface;
     public function __construct(CurrencyServiceInterface $currencyService, QuoteCalculationService $quoteCalculationService)
     {
         $this->currencyService = $currencyService;
@@ -51,7 +52,6 @@ class QuoteService implements QuoteServiceInterface
         ];
 
         $result = $this->quoteCalculationService->calculateQuote($data);
-
         return $this->formatQuoteResult($result);
     }
 
@@ -66,6 +66,7 @@ class QuoteService implements QuoteServiceInterface
         $result['payment_method'] = "{$quote['payment_method']}";
         $result['conversion_details']['original_amount'] = Money::$origin($quote['conversion_details']['original_amount'],true)->format();
         $result['conversion_details']['converted_amount'] = Money::$destination($quote['conversion_details']['converted_amount'],true)->format();
+        $result['conversion_details']['exchange_rate'] = Money::$destination($quote['conversion_details']['exchange_rate'],true)->format();
         $result['tax']['tax_rate_value'] = Money::$origin($quote['tax']['tax_rate_value'],true)->format();
         $result['tax']['tax_rate_value_porcentages'] = $quote['tax']['tax_rate_percentage'];
         $result['tax']['tax_conversion_value'] = Money::$origin($quote['tax']['tax_conversion_value'],true)->format();
@@ -74,11 +75,6 @@ class QuoteService implements QuoteServiceInterface
         $result['original_value_minus_tax'] = Money::$origin($quote['original_value'] - $quote['tax']['total_tax'],true)->format();
 
         return $result;
-    }
-
-    public function changeQuoteRates(string $userId, array $rates): void
-    {
-        // Update the quote rates for the specified user
     }
 
     public function sendQuoteByEmail(string $userId, string $email): void

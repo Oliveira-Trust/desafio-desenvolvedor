@@ -33,6 +33,9 @@ class ApiResponse
             Log::info($e);
             $code = $e->getCode() == 0 ? $code : $e->getCode();
         }
+        if(!in_array($code, [400,401,403,404,405,422,429,500,503])){
+            $code = 500;
+        }
         throw new HttpResponseException(response()->json(["message"=> $message], $code));
     }
 

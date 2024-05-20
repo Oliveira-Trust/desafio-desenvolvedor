@@ -3,20 +3,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class QuoteHistory extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'user_id',
-        'currency_from',
-        'currency_to',
-        'amount',
-        'converted_amount',
+        'origin_currency',
+        'destination_currency',
         'payment_method',
-        'payment_method_fee',
-        'conversion_fee',
+        'original_amount',
+        'converted_amount',
+        'exchange_rate',
+        'tax_rate_value',
+        'tax_rate_value_porcentages',
+        'tax_conversion_value',
+        'tax_conversion_percentage',
+        'tax_total',
+        'original_value_minus_tax',
+        'email_sent_at',
+    ];
+
+    protected $casts = [
+        'email_sent_at' => 'datetime',
     ];
 
     public function user()

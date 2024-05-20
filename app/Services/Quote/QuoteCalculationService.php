@@ -1,28 +1,38 @@
 <?php
-
 namespace App\Services\Quote;
+
 use Illuminate\Support\Facades\Auth;
 use App\Interface\User\UserInterface;
+use App\Interface\Quote\HistoricalQuoteInterface;
 /**
  * Class QuoteCalculationService
  * 
- * This class is responsible for calculating the quote for a given data.
+ * This class is responsible for calculating quotes based on given data.
  */
 class QuoteCalculationService
 {
     private $user;
-    public function __construct(UserInterface $user) {
-        $this->user = $user;
-    }
+    private $historicalQuoteInterface;
+    
     /**
-     * Calculate the quote based on the provided data.
+     * QuoteCalculationService constructor.
      * 
-     * @param array $data The data containing the origin, destination, and value.
-     * @return array The conversion details including the origin currency, destination currency, original amount, converted amount, exchange rate, payment method, timestamp, create date, and conversion message.
+     * @param UserInterface $user The user interface.
+     * @param HistoricalQuoteInterface $historicalQuoteInterface The historical quote interface.
+     */
+    public function __construct(UserInterface $user, HistoricalQuoteInterface $historicalQuoteInterface) {
+        $this->user = $user;
+        $this->historicalQuoteInterface = $historicalQuoteInterface;
+    }
+    
+    /**
+     * Calculate the quote based on the given data.
+     * 
+     * @param array $data The data for calculating the quote.
+     * @return array The calculated quote result.
      */
     public function calculateQuote($data)
     {
-        $valueOrignal = $data['value'];
         $valueInCents = $this->toCents($data['value']);
         $taxRate = $this->getTaxRate($data['payment_method']);
         $taxRateValue = $this->calculateTax($valueInCents, $taxRate);
@@ -33,24 +43,30 @@ class QuoteCalculationService
 
         $data['value'] = $this->toCurrency($valueInCents);
 
-        return [
-            'original_value' => $valueOrignal,
+        $result = [
+            'original_value' =>  $data['value'],
             'origin_currency' => $data['origin'],
             'destination_currency' => $data['destination'],
             'payment_method' => $data['payment_method'],
             'tax' => $this->createTaxDetails($taxRate, $taxRateValue, $taxConversion, $taxConversionValue),
             'conversion_details' => $this->calculateConversion($data),
         ];
+
+        if(Auth::check()){
+            $this->historicalQuoteInterface->store(Auth::user()->id, $this->createHistoryDetails($result));
+        }
+
+        return $result;
     }
 
     /**
-     * Creates tax details based on the given tax rates and values.
-     *
+     * Create the tax details based on the given tax rates and values.
+     * 
      * @param float $taxRate The tax rate percentage.
      * @param float $taxRateValue The tax rate value.
      * @param float $taxConversion The tax conversion percentage.
      * @param float $taxConversionValue The tax conversion value.
-     * @return array The tax details array.
+     * @return array The tax details.
      */
     private function createTaxDetails($taxRate, $taxRateValue, $taxConversion, $taxConversionValue)
     {
@@ -64,25 +80,59 @@ class QuoteCalculationService
     }
 
     /**
-     * Calculate the tax based on the provided amount and tax rate.
+     * Create the history details based on the given data.
      * 
-     * @param int $amount The amount to be taxed.
-     * @param float $tax The tax rate.
-     * @return int The calculated tax amount.
+     * @param array $data The data for creating history details.
+     * @return array The history details.
      */
-    private function calculateTax($amount, $tax)
+    private function createHistoryDetails($data)
     {
-        return (int) ($amount * $tax / 100);
+        return [
+            'origin_currency' => $data['origin_currency'],
+            'destination_currency' => $data['destination_currency'],
+            'payment_method' => $data['payment_method'],
+            'original_amount' => $this->toCents($data['original_value']),
+            'converted_amount' => $this->toCents($data['conversion_details']['converted_amount']),
+            'exchange_rate' => $this->toCents($data['conversion_details']['exchange_rate']),
+            'tax_rate_value' => $this->toCents($data['tax']['tax_rate_value']),
+            'tax_rate_value_porcentages' => $data['tax']['tax_rate_percentage'],
+            'tax_conversion_value' => $this->toCents($data['tax']['tax_conversion_value']),
+            'tax_conversion_percentage' => $data['tax']['tax_conversion_percentage'],
+            'tax_total' => $this->toCents($data['tax']['total_tax']),
+            'original_value_minus_tax' => $this->toCents($data['original_value'] - $data['tax']['total_tax']),
+            'email_sent_at' => null,
+        ];
     }
 
+    /**
+     * Create the conversion details based on the given amounts and exchange rate.
+     * 
+     * @param float $amountInOrigin The amount in the origin currency.
+     * @param float $amountInDestination The amount in the destination currency.
+     * @param float $askRate The exchange rate.
+     * @return array The conversion details.
+     */
+    private function createConversionDetails($amountInOrigin, $amountInDestination, $askRate)
+    {
+        return [
+            'original_amount' => $amountInOrigin,
+            'converted_amount' => $amountInDestination,
+            'exchange_rate' => $askRate,
+        ];
+    }
+
+    /**
+     * Get the tax rate based on the payment method.
+     * 
+     * @param string $paymentMethod The payment method.
+     * @return float The tax rate.
+     */
     private function getTaxRate($paymentMethod)
     {
-        //User Tax Rate
         $user = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
         if($user && isset($user->conversionRatesConfiguration) && $user->conversionRatesConfiguration->isNotEmpty()){
             return $user->conversionRatesConfiguration->first()->payment_method_fee;
         }
-        //Default Tax Rate
         if($paymentMethod == 'Boleto'){
             return 1.45;
         }
@@ -92,22 +142,27 @@ class QuoteCalculationService
         return 0;
     }
 
+    /**
+     * Get the tax conversion based on the value and payment method.
+     * 
+     * @param float $valueInCents The value in cents.
+     * @param string $paymentMethod The payment method.
+     * @return float The tax conversion.
+     */
     private function getTaxConversion($valueInCents, $paymentMethod)
     {
         $user = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
-        //User Tax Conversion
         if($user && isset($user->conversionRatesConfiguration) && $user->conversionRatesConfiguration->isNotEmpty()){
             $conversionFeeThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_threshold;
             $conversionFeeBelowThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_below_threshold;
             $conversionFeeAboveThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_above_threshold;
             
             if($valueInCents <= $this->toCents($conversionFeeThreshold)){
-            return $conversionFeeBelowThreshold;
+                return $conversionFeeBelowThreshold;
             }
             return $conversionFeeAboveThreshold;
         }
 
-        //Default Tax Conversion
         if($valueInCents <= $this->toCents(3000)){
             return 2;
         }
@@ -115,10 +170,10 @@ class QuoteCalculationService
     }
 
     /**
-     * Calculate the conversion based on the provided data.
+     * Calculate the conversion details based on the given data.
      * 
-     * @param array $data The data containing the origin, destination, and value.
-     * @return array The conversion details including the origin currency, destination currency, original amount, converted amount, exchange rate, payment method, timestamp, create date, and conversion message.
+     * @param array $data The data for calculating the conversion details.
+     * @return array The conversion details.
      */
     public function calculateConversion($data)
     {
@@ -134,16 +189,28 @@ class QuoteCalculationService
         $amountInDestination = $this->toCurrency($amountInDestinationCents);
 
         $conversionDetails = $this->createConversionDetails(
-            $data, $amountInOrigin, $amountInDestination, $askRate
+            $amountInOrigin, $amountInDestination, $askRate
         );
         
         return $conversionDetails;
+    }
+
+    /**
+     * Calculate the tax based on the given amount and tax rate.
+     * 
+     * @param float $amount The amount.
+     * @param float $tax The tax rate.
+     * @return int The calculated tax.
+     */
+    private function calculateTax($amount, $tax)
+    {
+        return (int) ($amount * $tax / 100);
     }
     
     /**
      * Convert the amount to cents.
      * 
-     * @param float $amount The amount to be converted.
+     * @param float $amount The amount.
      * @return int The amount in cents.
      */
     private function toCents($amount)
@@ -154,7 +221,7 @@ class QuoteCalculationService
     /**
      * Convert the amount in cents to currency.
      * 
-     * @param int $amountInCents The amount in cents to be converted.
+     * @param int $amountInCents The amount in cents.
      * @return float The amount in currency.
      */
     private function toCurrency($amountInCents)
@@ -163,14 +230,14 @@ class QuoteCalculationService
     }
     
     /**
-     * Get the ask rate for the given origin and destination.
+     * Get the ask rate based on the given data, origin, and destination.
      * 
-     * @param array $data The data containing the quotes.
+     * @param array $data The data.
      * @param string $origin The origin currency.
      * @param string $destination The destination currency.
      * @return float The ask rate.
      */
-    private function getAskRate($data, $origin, $destination)
+    private function getAskRate($data, $origin, $destination): float
     {
         return $data['quotes']["$origin-$destination"]['ask'];
     }
@@ -185,26 +252,5 @@ class QuoteCalculationService
     private function calculateAmountInDestinationCents($valueInCents, $askRateInCents)
     {
         return (int) round($valueInCents * $askRateInCents / 1000, 3);
-    }
-    
-    /**
-     * Create the conversion details array.
-     * 
-     * @param array $data The data containing the origin, destination, quotes, and payment method.
-     * @param int $valueInCents The value in cents.
-     * @param float $amountInOrigin The amount in origin currency.
-     * @param float $amountInDestination The amount in destination currency.
-     * @param int $amountInDestinationCents The amount in destination currency in cents.
-     * @param float $askRate The ask rate.
-     * @param int $askRateInCents The ask rate in cents.
-     * @return array The conversion details.
-     */
-    private function createConversionDetails($data, $amountInOrigin, $amountInDestination, $askRate)
-    {
-        return [
-            'original_amount' => $amountInOrigin,
-            'converted_amount' => $amountInDestination,
-            'exchange_rate' => $askRate,
-        ];
     }
 }

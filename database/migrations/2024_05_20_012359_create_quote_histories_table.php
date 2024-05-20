@@ -14,13 +14,19 @@ return new class extends Migration
         Schema::create('quote_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('currency_from', 10);
-            $table->string('currency_to', 10);
-            $table->decimal('amount', 15, 2);
-            $table->decimal('converted_amount', 15, 2);
-            $table->string('payment_method', 20);
-            $table->decimal('payment_method_fee', 5, 2);
-            $table->decimal('conversion_fee', 5, 2);
+            $table->string('origin_currency', 10);
+            $table->string('destination_currency', 10);
+            $table->string('payment_method', 10);
+            $table->bigInteger('original_amount');
+            $table->bigInteger('converted_amount');
+            $table->bigInteger('exchange_rate');
+            $table->bigInteger('tax_rate_value');
+            $table->decimal('tax_rate_value_porcentages', 4, 2);
+            $table->bigInteger('tax_conversion_value');
+            $table->decimal('tax_conversion_percentage', 4, 2);
+            $table->bigInteger('tax_total');
+            $table->bigInteger('original_value_minus_tax');
+            $table->dateTime('email_sent_at')->nullable();
             $table->timestamps();
         });
     }

@@ -27,15 +27,6 @@ interface QuoteServiceInterface
     public function generateCurrencyQuote(string $origin, string $destination, float $value, string $type): array;
 
     /**
-     * Change the quote rates for a specific user.
-     *
-     * @param string $userId The user ID.
-     * @param array $rates An array of new quote rates.
-     * @return void
-     */
-    public function changeQuoteRates(string $userId, array $rates): void;
-
-    /**
      * Send the currency quote by email to a specific user.
      *
      * @param string $userId The user ID.
