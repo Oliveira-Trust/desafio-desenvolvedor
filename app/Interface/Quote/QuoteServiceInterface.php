@@ -43,4 +43,6 @@ interface QuoteServiceInterface
      * @return void
      */
     public function sendQuoteByEmail(string $userId, string $email): void;
+
+    public function getHistoricalQuotesByUserId(string $userId): array;
 }

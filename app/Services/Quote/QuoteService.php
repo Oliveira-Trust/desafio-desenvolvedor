@@ -67,7 +67,10 @@ class QuoteService implements QuoteServiceInterface
         $result['conversion_details']['original_amount'] = Money::$origin($quote['conversion_details']['original_amount'],true)->format();
         $result['conversion_details']['converted_amount'] = Money::$destination($quote['conversion_details']['converted_amount'],true)->format();
         $result['tax']['tax_rate_value'] = Money::$origin($quote['tax']['tax_rate_value'],true)->format();
+        $result['tax']['tax_rate_value_porcentages'] = $quote['tax']['tax_rate_percentage'];
         $result['tax']['tax_conversion_value'] = Money::$origin($quote['tax']['tax_conversion_value'],true)->format();
+        $result['tax']['tax_conversion_percentage'] = $quote['tax']['tax_conversion_percentage'];
+        $result['tax']['tax_total'] = Money::$origin($quote['tax']['total_tax'],true)->format();
         $result['original_value_minus_tax'] = Money::$origin($quote['original_value'] - $quote['tax']['total_tax'],true)->format();
 
         return $result;
@@ -81,5 +84,11 @@ class QuoteService implements QuoteServiceInterface
     public function sendQuoteByEmail(string $userId, string $email): void
     {
         // Send the quote by email to the specified user
+    }
+
+    public function getHistoricalQuotesByUserId(string $userId): array
+    {
+        // Get the historical quotes for the specified user
+        return [];
     }
 }

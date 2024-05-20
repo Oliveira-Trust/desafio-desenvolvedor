@@ -22,7 +22,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('quote')
-    //->middleware('auth:api')
+    ->middleware('auth:api')
     ->group(function () {
     Route::get('currencies/{origin}', [QuoteController::class, 'getAvailableCurrencies']);
     Route::get('generate/{origin}/{destination}', [QuoteController::class, 'generateCurrencyQuote']);

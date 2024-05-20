@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services\Quote;
+use Illuminate\Support\Facades\Auth;
+use App\Interface\User\UserInterface;
 /**
  * Class QuoteCalculationService
  * 
@@ -8,6 +10,10 @@ namespace App\Services\Quote;
  */
 class QuoteCalculationService
 {
+    private $user;
+    public function __construct(UserInterface $user) {
+        $this->user = $user;
+    }
     /**
      * Calculate the quote based on the provided data.
      * 
@@ -20,7 +26,7 @@ class QuoteCalculationService
         $valueInCents = $this->toCents($data['value']);
         $taxRate = $this->getTaxRate($data['payment_method']);
         $taxRateValue = $this->calculateTax($valueInCents, $taxRate);
-        $taxConversion = $this->getTaxConversion($valueInCents);
+        $taxConversion = $this->getTaxConversion($valueInCents, $data['payment_method']);
         $taxConversionValue = $this->calculateTax($valueInCents, $taxConversion);
 
         $valueInCents = $valueInCents - ($taxRateValue + $taxConversionValue);
@@ -71,6 +77,12 @@ class QuoteCalculationService
 
     private function getTaxRate($paymentMethod)
     {
+        //User Tax Rate
+        $user = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
+        if($user && isset($user->conversionRatesConfiguration) && $user->conversionRatesConfiguration->isNotEmpty()){
+            return $user->conversionRatesConfiguration->first()->payment_method_fee;
+        }
+        //Default Tax Rate
         if($paymentMethod == 'Boleto'){
             return 1.45;
         }
@@ -80,8 +92,22 @@ class QuoteCalculationService
         return 0;
     }
 
-    private function getTaxConversion($valueInCents)
+    private function getTaxConversion($valueInCents, $paymentMethod)
     {
+        $user = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
+        //User Tax Conversion
+        if($user && isset($user->conversionRatesConfiguration) && $user->conversionRatesConfiguration->isNotEmpty()){
+            $conversionFeeThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_threshold;
+            $conversionFeeBelowThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_below_threshold;
+            $conversionFeeAboveThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_above_threshold;
+            
+            if($valueInCents <= $this->toCents($conversionFeeThreshold)){
+            return $conversionFeeBelowThreshold;
+            }
+            return $conversionFeeAboveThreshold;
+        }
+
+        //Default Tax Conversion
         if($valueInCents <= $this->toCents(3000)){
             return 2;
         }

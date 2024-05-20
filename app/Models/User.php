@@ -9,7 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject; 
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use App\Models\ConversionRatesConfiguration;
+use App\Models\QuoteHistory; 
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens;
@@ -81,5 +83,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function conversionRatesConfiguration()
+    {
+        return $this->hasMany(ConversionRatesConfiguration::class);
+    }
+
+    public function quotes()
+    {
+        return $this->hasMany(QuoteHistory::class);
     }
 }
