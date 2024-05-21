@@ -2,7 +2,7 @@
 
 namespace App\Services\AwesomeApiQuotes\Entities;
 
-class Quote
+class QuoteEntity
 
 {
     private string $code;

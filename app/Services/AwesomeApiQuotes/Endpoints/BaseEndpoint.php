@@ -3,6 +3,7 @@
 namespace App\Services\AwesomeApiQuotes\Endpoints;
 
 use App\Services\AwesomeApiQuotes\AwesomeApiQuotesService;
+use App\Services\AwesomeApiQuotes\Entities\QuoteEntity;
 use Illuminate\Support\Collection;
 
 class BaseEndpoint
@@ -17,6 +18,6 @@ class BaseEndpoint
     protected function transform(mixed $json, string $entity): Collection
     {
         return collect($json)
-            ->map(fn ($data) => new $entity($data));
+            ->map(fn ($data) => $entity::fromArray($data));
     }
 }
