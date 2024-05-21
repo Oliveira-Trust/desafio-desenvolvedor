@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeeRuleController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/quotes', QuoteController::class)->except(['edit', 'update', 'destroy']);
     Route::post('/quotes/calc', [QuoteController::class, 'calc'])->name('quotes.calc');
+    Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit');
+    Route::put('/feeRules', [FeeRuleController::class, 'updateFeeRule'])->name('feeRules.update');
+    Route::put('/payment-methods', [PaymentMethodController::class, 'updatePaymentMethod'])->name('paymentMethods.update');
 });
 
 require __DIR__ . '/auth.php';

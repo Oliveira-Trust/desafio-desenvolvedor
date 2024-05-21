@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ComparisonOperators;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,4 +22,9 @@ class FeeRule extends Model
 
         return 0;
     }
+
+    protected $casts = [
+        /* ... */
+        'rule' => ComparisonOperators::class,
+    ];
 }

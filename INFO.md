@@ -73,6 +73,12 @@ Segurança de acesso com autenticação de usuário.
 
 Armazenamento e exibição do histórico de cotações realizadas pelo usuário.
 
+#### Edição de taxas
+
+Em configurações ou Settings é possivel editar as taxas incidentes sobre as conversões de moedas.
+
+![Settings](https://imgur.com/gZJKCfH.jpeg)
+
 #### Instalação e Configuração
 
 A seguir, serão apresentadas as instruções para instalação e configuração da Currency Conversion Application, juntamente com exemplos de uso de suas principais funcionalidades. O projeto é construído utilizando o framework Laravel, aproveitando suas poderosas funcionalidades para uma experiência de usuário eficiente e segura.
@@ -154,7 +160,6 @@ Para importar a lista de nomes das moedas con seus respectivos códigos e a list
 
 1. No menu de navegação acesse ao item 'Cotações'.
    Será carregada a página com o hitórioco de cotações já realizadas pelo usuário.
-   ![Cotações](https://imgur.com/ncZZSVX.jpeg)
 2. No canto superior direito do painel do histórico, clique no botão 'Nova cotação'. O usuário será direcionado para a página de cotação.
    ![Cotações](https://imgur.com/oL3QbLo.jpeg)
 3. Na página de Criar cotação os campos de entrada ficam no painel de Conversão, onde o usuário pode selecinar qual moeda será convertida o Real Brasileiro, o valor para conversão e, por ultimo, a forma de pagamento.
@@ -167,7 +172,7 @@ Para importar a lista de nomes das moedas con seus respectivos códigos e a list
 
 ###### Implementações futuras
 
--   Tela de edição de taxas sobre a forma de pagamento e conversão.
+-   Cadastro dinâmico de taxas.
 
 ###### Contribuição
 
