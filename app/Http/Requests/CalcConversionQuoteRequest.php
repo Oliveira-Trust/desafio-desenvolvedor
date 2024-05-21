@@ -30,7 +30,7 @@ class CalcConversionQuoteRequest extends FormRequest
         return [
             'currency' => [
                 'required',
-                Rule::in(array_keys($service->quotes()->available()))
+                Rule::in(array_keys($service->currencies()->available()))
             ],
             'amount' => ['required', 'numeric', 'min:1000', 'max:100000'],
             'fee' => ['required', 'numeric'],
