@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Builders\QuoteBuilder;
 use App\Http\Requests\CalcConversionQuoteRequest;
+use App\Mail\QuoteCreated;
 use App\Models\ConversionAvailable;
 use App\Models\Currency;
 use App\Models\FeeRule;
@@ -11,8 +12,9 @@ use App\Models\PaymentMethod;
 use App\Models\Quote;
 use App\Services\AwesomeApiQuotes\AwesomeApiQuotesService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class QuoteController extends Controller
 {
@@ -82,7 +84,9 @@ class QuoteController extends Controller
             'converted_amount' => $request->input('converted_amount'),
             'user_id' => Auth::user()->id
         ]);
-
+        $currencies = $this->currency->get()->pluck('name', 'code');
+        $paymentMethods = $this->paymentMethods->select('label', 'type')->get()->pluck('label', 'type');
+        Mail::to($request->user())->queue(new QuoteCreated($quote, Auth::user(), $currencies, $paymentMethods));
         return redirect(route('quotes.show', ['quote' => $quote]));
     }
 
@@ -114,7 +118,7 @@ class QuoteController extends Controller
     public function show(Quote $quote)
     {
         $quote = Quote::where('id', '=', $quote->id)->where('user_id', '=', Auth::user()->id)->firstOrFail();
-        $currencies = $this->currency->get()->pluck('name', 'code');
+        $currencies = Currency::all()->pluck('name', 'code');
         $paymentMethods = $this->paymentMethods->select('label', 'type')->get()->pluck('label', 'type');
         $quote->conversion_amount = Currency::format($quote->conversion_amount, $quote->currency_origin);
         $quote->currency_value = Currency::format($quote->currency_value, $quote->currency_origin);

@@ -14,7 +14,7 @@ class CurrenceImport extends Command
      *
      * @var string
      */
-    protected $signature = 'currency:import';
+    protected $signature = 'currencies:import';
 
     /**
      * The console command description.
