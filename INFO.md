@@ -111,12 +111,17 @@ docker run --rm \
 
 4. Inicie os containers Docker:
 
-```
-./vendor/bin/sail up -d
+`./vendor/bin/sail up -d`
 
-```
+5. Crie o arquivo .env:
 
-5. Execute as migrações:
+`cp .env.example .env`
+
+6. Gere as chaves de segurança da aplicação:
+
+`sail artisan key:generate`
+
+7. Execute as migrações:
 
 `./vendor/bin/sail artisan migrate`
 
