@@ -10,11 +10,7 @@ https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git
 ```
 3. Acesse a pasta do projeto
 ```bash
-cd Users-Manager
-```
-4. Acesse a pasta da seção do laravel
-```bash
-cd api
+cd desafio-desenvolvedor-Cassius-Leon
 ```
 4. Construa o conteiner docker do laravel e banco de dados
 ```bash
@@ -27,7 +23,6 @@ composer setup
 chown -R www-data:www-data /var/www
 exit
 ```
-
 6. Retorne a raiz do projeto e acesse a pasta web
 ```bash
 cd ..
