@@ -6,7 +6,7 @@ Siga os passos abaixo para configurar e executar o projeto:
 
 2. Clone o projeto para uma pasta com o seguinte comando:
 ```bash
-[git clone https://github.com/cassiuslc/Users-Manager.git](https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git)
+https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git
 ```
 3. Acesse a pasta do projeto
 ```bash
