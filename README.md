@@ -1,3 +1,62 @@
+## Instalação
+
+Siga os passos abaixo para configurar e executar o projeto:
+
+1. Garanta que você possui um ambiente Docker Composer com WSL perfeitamente funcional.
+
+2. Clone o projeto para uma pasta com o seguinte comando:
+```bash
+git clone https://github.com/cassiuslc/Users-Manager.git
+```
+3. Crie a rede docker do projeto
+```bash
+docker network create app-network
+```
+3. Acesse a pasta do projeto
+```bash
+cd Users-Manager
+```
+4. Acesse a pasta da seção do laravel (API)
+```bash
+cd api
+```
+4. Construa o conteiner docker do laravel e banco de dados
+```bash
+docker-compose up -d --build
+```
+5. Acesse o console do Docker PHP e instale as dependências e permissões.
+```bash
+docker-compose exec php bash
+composer setup
+chown -R www-data:www-data /var/www
+exit
+```
+Neste momento você deve conseguir acessar o swagger da aplicação em http://localhost/api/documentation
+
+6. Retorne a raiz do projeto e acesse a pasta web
+```bash
+cd ..
+cd web
+```
+7. Inicie o conteiner docker da seção web do projeto
+```bash
+docker-compose up -d --build
+```
+Você deve ver o projeto na porta 8080 em http://localhost:8080/
+
+Caso o banco apresente algum problema de permissão com docker tente reiniciar ele
+```bash
+docker restart api-db-1
+```
+### Para Iniciar o projeto outras vezes
+Use o comando a baixo em cada pasta api e web
+```bash
+docker-compose up -d
+```
+## 🚀 Sobre mim
+
+- [@cassiuslc](https://www.github.com/cassiuslc)
+
 ### A Oliveira Trust:
 A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
 
