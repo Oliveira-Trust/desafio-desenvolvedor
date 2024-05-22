@@ -25,15 +25,6 @@ chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 exit
 ```
-6. Retorne a raiz do projeto e acesse a pasta web
-```bash
-cd ..
-cd web
-```
-7. Inicie o conteiner docker da seção web do projeto
-```bash
-docker-compose up -d --build
-```
 Você deve ver o projeto na porta 61 em http://localhost:61/
 
 ### Para Iniciar o projeto outras vezes
