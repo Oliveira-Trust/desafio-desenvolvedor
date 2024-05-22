@@ -6,17 +6,13 @@ Siga os passos abaixo para configurar e executar o projeto:
 
 2. Clone o projeto para uma pasta com o seguinte comando:
 ```bash
-git clone https://github.com/cassiuslc/Users-Manager.git
-```
-3. Crie a rede docker do projeto
-```bash
-docker network create app-network
+[git clone https://github.com/cassiuslc/Users-Manager.git](https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git)
 ```
 3. Acesse a pasta do projeto
 ```bash
 cd Users-Manager
 ```
-4. Acesse a pasta da seção do laravel (API)
+4. Acesse a pasta da seção do laravel
 ```bash
 cd api
 ```
@@ -31,7 +27,6 @@ composer setup
 chown -R www-data:www-data /var/www
 exit
 ```
-Neste momento você deve conseguir acessar o swagger da aplicação em http://localhost/api/documentation
 
 6. Retorne a raiz do projeto e acesse a pasta web
 ```bash
@@ -42,12 +37,8 @@ cd web
 ```bash
 docker-compose up -d --build
 ```
-Você deve ver o projeto na porta 8080 em http://localhost:8080/
+Você deve ver o projeto na porta 61 em http://localhost:61/
 
-Caso o banco apresente algum problema de permissão com docker tente reiniciar ele
-```bash
-docker restart api-db-1
-```
 ### Para Iniciar o projeto outras vezes
 Use o comando a baixo em cada pasta api e web
 ```bash
