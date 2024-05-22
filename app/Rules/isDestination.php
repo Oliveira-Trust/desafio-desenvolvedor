@@ -23,7 +23,7 @@ class isDestination implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $available = $this->quoteService->getAvailableCurrencies($this->origin) ?? [];
+        $available = $this->quoteService->getAvailableCurrenciesNormal($this->origin) ?? [];
         $availableCurrencies = collect($available)->map(function ($item) {
             return explode('-', $item);
         })->pluck(1);

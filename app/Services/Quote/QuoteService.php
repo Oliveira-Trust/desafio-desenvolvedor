@@ -51,6 +51,29 @@ class QuoteService implements QuoteServiceInterface
 
         $filteredCurrencies = collect($currencies['data'])->filter(function ($value, $key) use ($origin) {
             return strpos($key, $origin . '-') === 0;
+        })->keys()->map(function ($item) {
+            return explode('-', $item)[1];
+        })->toArray();
+
+        if (empty($filteredCurrencies)) {
+            ApiResponse::throw(null, 'No available currencies found.', 404);
+        }
+
+        // Mapeando os códigos de moeda para seus nomes completos
+        $currencyNames = collect($filteredCurrencies)->mapWithKeys(function ($currencyCode) {
+            return [$currencyCode => $this->getName($currencyCode)];
+        })->toArray();
+
+        return $currencyNames;
+    }
+
+    public function getAvailableCurrenciesNormal(string $origin = null): array
+    {
+        $origin = $origin ?? $this->origem_default;
+        $currencies = $this->currencyService->getAvailableCurrencies();
+
+        $filteredCurrencies = collect($currencies['data'])->filter(function ($value, $key) use ($origin) {
+            return strpos($key, $origin . '-') === 0;
         })->keys()->toArray();
 
         if (empty($filteredCurrencies)) {

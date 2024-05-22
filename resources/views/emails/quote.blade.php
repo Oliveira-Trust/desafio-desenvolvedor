@@ -168,7 +168,7 @@
         <div class="quote-section">
             <h3>Detalhes da Taxa</h3>
             <ul>
-                <li><strong>Taxa fixa:</strong> {{ $tax['tax_rate_value'] }}</li>
+                <li><strong>Taxa do metodo pagamento:</strong> {{ $tax['tax_rate_value'] }}</li>
                 <li><strong>Taxa de conversão:</strong> {{ $tax['tax_conversion_value'] }}</li>
                 <li><strong>Taxa total:</strong> {{ $tax['tax_total'] }}</li>
             </ul>

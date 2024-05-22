@@ -124,10 +124,11 @@ class QuoteCalculationService
      */
     private function getTaxRate($paymentMethod)
     {
-        $user = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
-        if($user && isset($user->conversionRatesConfiguration) && $user->conversionRatesConfiguration->isNotEmpty()){
-            return $user->conversionRatesConfiguration->first()->payment_method_fee;
+        $taxConfig = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
+        if($taxConfig && isset($taxConfig->payment_method_fee)){
+            return $taxConfig->payment_method_fee;
         }
+        
         if($paymentMethod == 'Boleto'){
             return 1.45;
         }
@@ -146,12 +147,14 @@ class QuoteCalculationService
      */
     private function getTaxConversion($valueInCents, $paymentMethod)
     {
-        $user = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
-        if($user && isset($user->conversionRatesConfiguration) && $user->conversionRatesConfiguration->isNotEmpty()){
-            $conversionFeeThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_threshold;
-            $conversionFeeBelowThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_below_threshold;
-            $conversionFeeAboveThreshold = $user->conversionRatesConfiguration->first()->conversion_fee_above_threshold;
-            
+        $taxConfig = $this->user->getUserConfigTax(Auth::user()->id, $paymentMethod);
+        if($taxConfig 
+            && isset($taxConfig->conversion_fee_threshold) 
+            && isset($taxConfig->conversion_fee_below_threshold) 
+            && isset($taxConfig->conversion_fee_above_threshold)){
+            $conversionFeeThreshold = $taxConfig->conversion_fee_threshold;
+            $conversionFeeBelowThreshold = $taxConfig->conversion_fee_below_threshold;
+            $conversionFeeAboveThreshold = $taxConfig->conversion_fee_above_threshold;
             if($valueInCents <= $this->toCents($conversionFeeThreshold)){
                 return $conversionFeeBelowThreshold;
             }

@@ -14,6 +14,7 @@ interface QuoteServiceInterface
      * @return array An array of available currencies.
      */
     public function getAvailableCurrencies(string $origin): array;
+    public function getAvailableCurrenciesNormal(string $origin): array;
 
     /**
      * Generate currency quotes for a single destination based on the origin currency.
