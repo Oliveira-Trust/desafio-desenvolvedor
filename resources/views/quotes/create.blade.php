@@ -273,6 +273,7 @@
                 })
                 .catch(function(error) {
                     console.log(error);
+                    window.alert("Falha ao realizar os calculos.");
                 }).finally(function() {
                     document.getElementById('spinner').style.display = 'none';
                 });

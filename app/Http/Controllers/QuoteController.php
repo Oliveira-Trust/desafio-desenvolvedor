@@ -95,21 +95,24 @@ class QuoteController extends Controller
      */
     public function calc(CalcConversionQuoteRequest $request)
     {
-
-        $conversion = $request->validated();
-        $quoteData = $this->service->quotes()->currency($conversion["currency"])[0];
-        $quoteBuilder = new QuoteBuilder($this->feeRules);
-        $quote = $quoteBuilder
-            ->setConversionAmount($conversion['amount'])
-            ->setName($quoteData['name'])
-            ->setCurrencyOrigin($quoteData['codein'])
-            ->setCurrencyName($quoteData['code'])
-            ->setPaymentMethod($conversion['payment_method'])
-            ->setFee($conversion['fee'])
-            ->setCurrencyValue($quoteData['bid'])
-            ->calculateFees()
-            ->build();
-        return $quote;
+        try {
+            $conversion = $request->validated();
+            $quoteData = $this->service->quotes()->currency($conversion["currency"])[0];
+            $quoteBuilder = new QuoteBuilder($this->feeRules);
+            $quote = $quoteBuilder
+                ->setConversionAmount($conversion['amount'])
+                ->setName($quoteData['name'])
+                ->setCurrencyOrigin($quoteData['codein'])
+                ->setCurrencyName($quoteData['code'])
+                ->setPaymentMethod($conversion['payment_method'])
+                ->setFee($conversion['fee'])
+                ->setCurrencyValue($quoteData['bid'])
+                ->calculateFees()
+                ->build();
+            return $quote;
+        } catch (\Throwable $th) {
+            return response("Error", 500);
+        }
     }
 
     /**
