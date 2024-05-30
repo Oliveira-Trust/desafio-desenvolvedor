@@ -10,8 +10,8 @@ class CacheService
     private $cacheTimeUp;
     public function __construct()
     {
-        $this->defaultTime = env('API_CONVERTER_CACHE_DEFAULT');
-        $this->cacheTimeUp = env('API_CONVERTER_TIME_UPDATE');
+        $this->defaultTime = config('services.converter.cache_default');
+        $this->cacheTimeUp = config('services.converter.cache_update');
     }
 
     /**

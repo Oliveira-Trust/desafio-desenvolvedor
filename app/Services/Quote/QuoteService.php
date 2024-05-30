@@ -32,7 +32,7 @@ class QuoteService implements QuoteServiceInterface
         HistoricalQuoteInterface $historicalQuoteInterface
     ) {
         $this->currencyService = $currencyService;
-        $this->origem_default = env('CURRENCY_ORIGIN', 'BRL');
+        $this->origem_default = config('services.converter.origin');
         $this->quoteCalculationService = $quoteCalculationService;
         $this->userInterface = $userInterface;
         $this->historicalQuoteService = $historicalQuoteInterface;

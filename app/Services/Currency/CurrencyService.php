@@ -15,7 +15,7 @@ class CurrencyService implements CurrencyServiceInterface
     public function __construct(Client $guzzleHttp)
     {
         $this->client = new $guzzleHttp(self::getHttpHeaders());
-        $this->baseUri = env('API_CONVERTER_URL');
+        $this->baseUri = config('services.converter.url');
     }
 
     /**
@@ -32,7 +32,7 @@ class CurrencyService implements CurrencyServiceInterface
                 'Content-Type' => 'application/json',
             ],
             'http_errors' => false,
-            'timeout' => env('API_CONVERTER_TIMEOUT', 10),
+            'timeout' => config('services.converter.timeout'),
         ];
     }
 
