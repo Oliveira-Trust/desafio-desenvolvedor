@@ -13,7 +13,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0",
-        "php-open-source-saver/jwt-auth": "^2.3"
+        "php-open-source-saver/jwt-auth": "^2.3",
+        "predis/predis": "^2.0"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^1.0",
