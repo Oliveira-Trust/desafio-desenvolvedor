@@ -35,14 +35,18 @@ class CacheService
     {
         if ($this->isDataCached($cacheKey)) {
             $cachedData = $this->getCachedData($cacheKey);
-            $createDate = Carbon::createFromTimestamp($cachedData['data']['create_date']);
-            $diffInSecondsAPI = Carbon::now()->diffInSeconds($createDate);
-            $diffInSecondsCache = Carbon::now()->diffInSeconds($cachedData['create_cache']);
 
-            if (($diffInSecondsCache <= $this->defaultTime || $diffInSecondsAPI <= $this->cacheTimeUp)) {
-                return true;
+            if (isset($cachedData['data'])) {
+                $createDate = Carbon::createFromTimestamp($cachedData['data']['create_date']);
+                $diffInSecondsAPI = Carbon::now()->diffInSeconds($createDate);
+                $diffInSecondsCache = Carbon::now()->diffInSeconds(Carbon::createFromTimestamp($cachedData['create_cache']));
+
+                if ($diffInSecondsCache <= $this->defaultTime || $diffInSecondsAPI <= $this->cacheTimeUp) {
+                    return true;
+                }
             }
         }
+        
         return false;
     }
 
