@@ -6,7 +6,9 @@ Siga os passos abaixo para configurar e executar o projeto:
 
 2. Clone o projeto para uma pasta com o seguinte comando:
 ```bash
-https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git
+git clone https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git
+cd desafio-desenvolvedor-Cassius-Leon
+git checkout develop
 ```
 3. Acesse a pasta do projeto
 ```bash
