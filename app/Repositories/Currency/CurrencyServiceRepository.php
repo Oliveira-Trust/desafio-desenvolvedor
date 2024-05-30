@@ -62,7 +62,7 @@ class CurrencyServiceRepository implements CurrencyServiceInterface
             } else {
                 $data = $this->currencyService->$serviceMethod();
                 $this->cache->saveDataToCache($key, $data, 86400);
-                return $data;
+                return ['data' => $data];
             }
         } catch (\Exception $e) {
             throw $e;

@@ -49,6 +49,10 @@ class QuoteService implements QuoteServiceInterface
         $origin = $origin ?? $this->origem_default;
         $currencies = $this->currencyService->getAvailableCurrencies();
 
+        if (empty($currencies) || empty($currencies['data'])) {
+            ApiResponse::throw(null, 'No available currencies found.', 404);
+        }
+
         $filteredCurrencies = collect($currencies['data'])->filter(function ($value, $key) use ($origin) {
             return strpos($key, $origin . '-') === 0;
         })->keys()->map(function ($item) {
