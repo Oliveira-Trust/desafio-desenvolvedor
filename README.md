@@ -6,11 +6,12 @@ Siga os passos abaixo para configurar e executar o projeto:
 
 2. Clone o projeto para uma pasta com o seguinte comando:
 ```bash
-https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git
+git clone https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git
 ```
 3. Acesse a pasta do projeto
 ```bash
 cd desafio-desenvolvedor-Cassius-Leon
+git checkout develop
 ```
 4. Construa o conteiner docker do laravel e banco de dados
 ```bash
@@ -28,7 +29,7 @@ exit
 Você deve ver o projeto na porta 61 em http://localhost:61/
 
 ### Para Iniciar o projeto outras vezes
-Use o comando a baixo em cada pasta api e web
+Use o comando a baixo
 ```bash
 docker-compose up -d
 ```
