@@ -1,0 +1,7 @@
+2024-05-31 00:47:53,116 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-31 00:47:53,136 INFO supervisord started with pid 15
+2024-05-31 00:47:54,155 INFO spawned: 'laravel-horizon_00' with pid 16
+2024-05-31 00:47:55,169 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:48:07,513 WARN received SIGINT indicating exit request
+2024-05-31 00:48:07,514 INFO waiting for laravel-horizon_00 to die
+2024-05-31 00:48:07,539 INFO stopped: laravel-horizon_00 (exit status 0)

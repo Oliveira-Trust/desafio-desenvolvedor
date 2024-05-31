@@ -1,0 +1,209 @@
+2024-05-31 00:33:29,459 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-31 00:33:29,465 INFO supervisord started with pid 1
+2024-05-31 00:33:30,469 INFO spawned: 'laravel-horizon_00' with pid 7
+2024-05-31 00:33:31,471 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:33:40,696 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:33:41,704 INFO spawned: 'laravel-horizon_00' with pid 10
+2024-05-31 00:33:42,708 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:33:48,323 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:33:49,328 INFO spawned: 'laravel-horizon_00' with pid 13
+2024-05-31 00:33:50,331 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:33:54,839 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:33:55,844 INFO spawned: 'laravel-horizon_00' with pid 16
+2024-05-31 00:33:56,853 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:01,082 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:02,086 INFO spawned: 'laravel-horizon_00' with pid 19
+2024-05-31 00:34:03,090 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:07,486 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:08,491 INFO spawned: 'laravel-horizon_00' with pid 29
+2024-05-31 00:34:09,498 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:13,478 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:13,481 INFO spawned: 'laravel-horizon_00' with pid 32
+2024-05-31 00:34:14,483 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:20,062 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:21,068 INFO spawned: 'laravel-horizon_00' with pid 35
+2024-05-31 00:34:22,071 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:28,035 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:29,043 INFO spawned: 'laravel-horizon_00' with pid 38
+2024-05-31 00:34:30,049 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:34,182 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:35,187 INFO spawned: 'laravel-horizon_00' with pid 41
+2024-05-31 00:34:36,191 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:40,271 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:41,275 INFO spawned: 'laravel-horizon_00' with pid 44
+2024-05-31 00:34:42,279 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:46,536 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:46,540 INFO spawned: 'laravel-horizon_00' with pid 47
+2024-05-31 00:34:47,545 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:51,644 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:52,648 INFO spawned: 'laravel-horizon_00' with pid 50
+2024-05-31 00:34:53,653 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:34:57,700 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:34:58,708 INFO spawned: 'laravel-horizon_00' with pid 53
+2024-05-31 00:34:59,714 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:04,446 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:35:05,452 INFO spawned: 'laravel-horizon_00' with pid 56
+2024-05-31 00:35:06,457 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:10,420 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:35:10,424 INFO spawned: 'laravel-horizon_00' with pid 59
+2024-05-31 00:35:11,426 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:15,704 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:35:16,713 INFO spawned: 'laravel-horizon_00' with pid 62
+2024-05-31 00:35:17,717 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:21,621 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:35:22,631 INFO spawned: 'laravel-horizon_00' with pid 65
+2024-05-31 00:35:23,639 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:27,952 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:35:28,958 INFO spawned: 'laravel-horizon_00' with pid 68
+2024-05-31 00:35:29,964 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:34,899 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:35:35,904 INFO spawned: 'laravel-horizon_00' with pid 71
+2024-05-31 00:35:36,906 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:42,882 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:35:43,886 INFO spawned: 'laravel-horizon_00' with pid 74
+2024-05-31 00:35:44,890 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:35:44,891 WARN received SIGQUIT indicating exit request
+2024-05-31 00:35:44,892 INFO waiting for laravel-horizon_00 to die
+2024-05-31 00:35:44,894 WARN stopped: laravel-horizon_00 (terminated by SIGTERM)
+2024-05-31 00:39:04,701 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-31 00:39:04,707 INFO supervisord started with pid 1
+2024-05-31 00:39:05,712 INFO spawned: 'laravel-horizon_00' with pid 7
+2024-05-31 00:39:06,715 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:39:19,474 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:39:19,476 INFO spawned: 'laravel-horizon_00' with pid 10
+2024-05-31 00:39:20,478 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:39:30,853 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:39:31,860 INFO spawned: 'laravel-horizon_00' with pid 13
+2024-05-31 00:39:32,866 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:39:38,281 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:39:39,288 INFO spawned: 'laravel-horizon_00' with pid 16
+2024-05-31 00:39:40,296 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:39:45,787 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:39:46,792 INFO spawned: 'laravel-horizon_00' with pid 25
+2024-05-31 00:39:47,794 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:39:52,832 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:39:53,838 INFO spawned: 'laravel-horizon_00' with pid 29
+2024-05-31 00:39:54,843 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:00,227 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:01,234 INFO spawned: 'laravel-horizon_00' with pid 32
+2024-05-31 00:40:02,238 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:06,141 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:07,148 INFO spawned: 'laravel-horizon_00' with pid 37
+2024-05-31 00:40:08,152 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:13,443 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:14,446 INFO spawned: 'laravel-horizon_00' with pid 41
+2024-05-31 00:40:15,450 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:18,835 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:19,844 INFO spawned: 'laravel-horizon_00' with pid 45
+2024-05-31 00:40:20,847 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:25,489 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:26,493 INFO spawned: 'laravel-horizon_00' with pid 48
+2024-05-31 00:40:27,496 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:32,115 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:33,121 INFO spawned: 'laravel-horizon_00' with pid 51
+2024-05-31 00:40:34,124 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:38,008 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:39,011 INFO spawned: 'laravel-horizon_00' with pid 55
+2024-05-31 00:40:40,014 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:43,561 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:44,567 INFO spawned: 'laravel-horizon_00' with pid 59
+2024-05-31 00:40:45,572 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:48,994 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:50,000 INFO spawned: 'laravel-horizon_00' with pid 62
+2024-05-31 00:40:51,004 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:40:54,667 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:40:55,674 INFO spawned: 'laravel-horizon_00' with pid 65
+2024-05-31 00:40:56,679 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:00,563 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:01,570 INFO spawned: 'laravel-horizon_00' with pid 68
+2024-05-31 00:41:02,574 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:07,116 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:08,123 INFO spawned: 'laravel-horizon_00' with pid 71
+2024-05-31 00:41:09,129 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:13,215 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:14,224 INFO spawned: 'laravel-horizon_00' with pid 74
+2024-05-31 00:41:15,230 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:19,184 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:20,188 INFO spawned: 'laravel-horizon_00' with pid 77
+2024-05-31 00:41:21,192 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:25,437 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:25,439 INFO spawned: 'laravel-horizon_00' with pid 80
+2024-05-31 00:41:26,455 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:30,499 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:30,502 INFO spawned: 'laravel-horizon_00' with pid 83
+2024-05-31 00:41:31,527 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:35,394 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:36,397 INFO spawned: 'laravel-horizon_00' with pid 86
+2024-05-31 00:41:37,403 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:41,351 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:41,353 INFO spawned: 'laravel-horizon_00' with pid 89
+2024-05-31 00:41:42,355 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:46,846 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:47,849 INFO spawned: 'laravel-horizon_00' with pid 92
+2024-05-31 00:41:48,853 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:52,830 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:53,835 INFO spawned: 'laravel-horizon_00' with pid 95
+2024-05-31 00:41:54,838 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:41:59,222 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:41:59,224 INFO spawned: 'laravel-horizon_00' with pid 98
+2024-05-31 00:42:00,234 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:04,416 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:42:05,420 INFO spawned: 'laravel-horizon_00' with pid 101
+2024-05-31 00:42:06,422 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:12,144 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:42:13,149 INFO spawned: 'laravel-horizon_00' with pid 104
+2024-05-31 00:42:14,153 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:18,727 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:42:19,730 INFO spawned: 'laravel-horizon_00' with pid 107
+2024-05-31 00:42:20,732 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:25,217 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:42:25,219 INFO spawned: 'laravel-horizon_00' with pid 110
+2024-05-31 00:42:26,222 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:29,850 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:42:30,853 INFO spawned: 'laravel-horizon_00' with pid 113
+2024-05-31 00:42:31,857 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:40,566 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:42:41,570 INFO spawned: 'laravel-horizon_00' with pid 116
+2024-05-31 00:42:42,574 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:51,836 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:42:52,838 INFO spawned: 'laravel-horizon_00' with pid 119
+2024-05-31 00:42:53,841 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:42:59,039 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:00,042 INFO spawned: 'laravel-horizon_00' with pid 124
+2024-05-31 00:43:01,053 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:05,494 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:06,501 INFO spawned: 'laravel-horizon_00' with pid 127
+2024-05-31 00:43:07,513 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:11,623 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:12,628 INFO spawned: 'laravel-horizon_00' with pid 130
+2024-05-31 00:43:13,631 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:18,607 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:19,612 INFO spawned: 'laravel-horizon_00' with pid 133
+2024-05-31 00:43:20,618 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:25,067 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:26,075 INFO spawned: 'laravel-horizon_00' with pid 136
+2024-05-31 00:43:27,079 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:32,006 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:32,010 INFO spawned: 'laravel-horizon_00' with pid 139
+2024-05-31 00:43:33,012 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:37,287 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:38,293 INFO spawned: 'laravel-horizon_00' with pid 142
+2024-05-31 00:43:39,300 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:43,574 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:44,580 INFO spawned: 'laravel-horizon_00' with pid 145
+2024-05-31 00:43:45,583 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:49,560 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:50,567 INFO spawned: 'laravel-horizon_00' with pid 148
+2024-05-31 00:43:51,571 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:43:55,790 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:43:56,798 INFO spawned: 'laravel-horizon_00' with pid 151
+2024-05-31 00:43:57,806 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:44:01,554 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:44:02,559 INFO spawned: 'laravel-horizon_00' with pid 154
+2024-05-31 00:44:03,562 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:44:08,696 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:44:09,700 INFO spawned: 'laravel-horizon_00' with pid 157
+2024-05-31 00:44:10,703 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-31 00:44:14,793 WARN exited: laravel-horizon_00 (exit status 1; not expected)
+2024-05-31 00:44:15,814 INFO spawned: 'laravel-horizon_00' with pid 160
+2024-05-31 00:44:16,818 INFO success: laravel-horizon_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
