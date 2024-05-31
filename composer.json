@@ -64,7 +64,8 @@
             "php artisan config:cache",
             "php artisan migrate",
             "npm install",
-            "npm run build"
+            "npm run build",
+            "php artisan currencies:update"
         ]
     },
     "extra": {
