@@ -168,7 +168,7 @@ class QuoteService implements QuoteServiceInterface
     {
         $user = $this->userInterface->getUserById($userId);
         $result['username'] = $user->name;
-        Mail::to($user)->send(new QuoteEmail($result));
+        Mail::to($user)->queue(new QuoteEmail($result));
         $this->historicalQuoteService->update($result['quote_id'], ['email_sent_at' => now()]);
     }
 
