@@ -5,16 +5,14 @@ namespace App\Services\Currency;
 use App\Interface\Currency\CurrencyServiceInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request;
-use App\Helpers\ApiResponse;
 
 class CurrencyService implements CurrencyServiceInterface
 {
     private $client;
     private $baseUri;
-    public function __construct(Client $guzzleHttp)
+    public function __construct(Client $guzzleHttp = null)
     {
-        $this->client = new $guzzleHttp(self::getHttpHeaders());
+        $this->client = $guzzleHttp ?: new $guzzleHttp(self::getHttpHeaders());
         $this->baseUri = config('services.converter.url');
     }
 

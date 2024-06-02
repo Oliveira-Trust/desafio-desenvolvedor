@@ -13,9 +13,8 @@ interface HistoricalQuoteInterface
      * Get the historical quotes for a given user.
      *
      * @param int $user The user.
-     * @return array An array of historical quotes.
      */
-    public function index(int $user_id): array;
+    public function index(int $user_id, int $page, $perPage);
 
     /**
      * Store a new historical quote for a given user.

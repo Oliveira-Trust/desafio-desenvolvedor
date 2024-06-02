@@ -10,6 +10,7 @@ use App\Helpers\ApiResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\generateCurrencyQuoteRequest;
 use App\Http\Requests\changeQuoteRatesRequest;
+use App\Http\Requests\getHistoricalQuotesRequest;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\isDestination;
 class QuoteController extends Controller
@@ -52,7 +53,7 @@ class QuoteController extends Controller
             $this->quoteService->sendQuoteByEmail(Auth::user()->id, $quote);
             return ApiResponse::sendResponse($quote, 'Currency quote generated successfully.',200);
         } catch (\Exception $e) {
-            return ApiResponse::throw($e,$e->getMessage());
+            return ApiResponse::throw($e);
         }
     }
 
@@ -66,10 +67,15 @@ class QuoteController extends Controller
         }
     }
 
-    public function getHistoricalQuotes()
+    public function getHistoricalQuotes(getHistoricalQuotesRequest $request)
     {
         try {
-            $quotes = $this->historicalQuoteInterface->index(Auth::user()->id);
+            $page = $request->input('page', 1);
+            $perPage = $request->input('perPage', 10);
+            $sortKey = $request->input('sortKey', 'id');
+            $sortOrder = $request->input('sortOrder', 'desc');
+            
+            $quotes = $this->historicalQuoteInterface->index(Auth::user()->id, $page, $perPage, $sortKey, $sortOrder);
             return ApiResponse::sendResponse($quotes, 'Historical quotes retrieved successfully.', 200);
         } catch (\Exception $e) {
             return ApiResponse::throw($e, $e->getMessage());
