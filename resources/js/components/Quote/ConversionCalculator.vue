@@ -123,7 +123,7 @@
           <div class="quote-section">
               <h3>Detalhes da Taxa</h3>
               <ul>
-                  <li><strong>Taxa do metodo pagamento:</strong> {{ result.tax.tax_rate_value }} ({{ result.tax.tax_rate_value_porcentages }}%)</li>
+                  <li><strong>Taxa do metodo pagamento:</strong> {{ result.tax.tax_rate_value }} ({{ result.tax.tax_rate_value_percentages }}%)</li>
                   <li><strong>Taxa de conversão:</strong> {{ result.tax.tax_conversion_value }} ({{ result.tax.tax_conversion_percentage }}%)</li>
                   <li><strong>Taxa total:</strong> {{ result.tax.tax_total }}</li>
               </ul>

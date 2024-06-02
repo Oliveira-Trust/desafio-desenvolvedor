@@ -38,16 +38,18 @@ class QuoteService {
         }
     }
 
-    static async getQuoteHistory(token) {
+    static async getQuoteHistory(token, currentPage, perPage, sortBy) {
         try {
+            const sortKey = (sortBy && sortBy.length > 0 && sortBy[0].key) || 'created_at';
+            const sortOrder = (sortBy && sortBy.length > 0 && sortBy[0].order) || 'desc';
             // Definir o cabeçalho de autorização
             axios.defaults.headers.common['Authorization'] = `Bearer ${token.replace(/['"]+/g, '')}`;
             // Fazer a chamada para a API
-            const response = await axios.get('/api/quote/history');
+            const response = await axios.get('/api/quote/history?page=' + currentPage + '&perPage=' + perPage + '&sortKey=' + sortKey + '&sortOrder=' + sortOrder);
             // Retornar os dados da resposta
             return response.data.data;
         } catch (error) {
-            let errorMessage = 'Erro desconhecido na busca pelo histórico de cotações.';
+            let errorMessage = error.message || 'Erro desconhecido na busca pelo histórico de cotações.';
             
             // Verificar o tipo de erro e definir a mensagem apropriada
             if (error.response) {
