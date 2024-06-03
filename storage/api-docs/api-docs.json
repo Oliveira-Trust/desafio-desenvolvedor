@@ -1,0 +1,1116 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Currency Quote API",
+        "description": "API for retrieving and generating currency quotes",
+        "contact": {
+            "name": "Support Cassius Lc",
+            "email": "cassiuslc.dev@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/",
+            "description": "Base URL da API"
+        }
+    ],
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logs in a user",
+                "description": "Get a JWT via given credentials.",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized login"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/me": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get current user",
+                "description": "Returns the details of the currently authenticated user",
+                "operationId": "me",
+                "responses": {
+                    "200": {
+                        "description": "User details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Log out",
+                "description": "Logs out the user by invalidating the token",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Logged out successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successfully logged out"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Refresh token",
+                "description": "Refreshes the JWT token",
+                "operationId": "refresh",
+                "responses": {
+                    "200": {
+                        "description": "New JWT token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quote/currencies/{origin}": {
+            "get": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Get available currencies",
+                "description": "Retrieve a list of available currencies based on the origin currency.",
+                "operationId": "0b186491ec1bcf7efd6f09f1e1d9b32c",
+                "parameters": [
+                    {
+                        "name": "origin",
+                        "in": "path",
+                        "description": "Origin currency code (e.g., 'BRL')",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AvailableCurrenciesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quote/generate/{origin}/{destination}": {
+            "post": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Generate a currency quote",
+                "description": "Generates a currency quote based on the origin and destination currencies, value, and payment type.",
+                "operationId": "3b780cf831b0d56ae64e4d40dee0b25a",
+                "parameters": [
+                    {
+                        "name": "origin",
+                        "in": "path",
+                        "description": "Origin currency code (e.g., 'BRL')",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "BRL"
+                        }
+                    },
+                    {
+                        "name": "destination",
+                        "in": "path",
+                        "description": "Destination currency code (e.g., 'USD')",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "USD"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "value": {
+                                        "description": "Amount to be converted",
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 1000
+                                    },
+                                    "type": {
+                                        "description": "Payment type (Boleto or CreditCard)",
+                                        "type": "string",
+                                        "example": "Boleto"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "quote_id": {
+                                                    "type": "integer",
+                                                    "example": 23
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "02/06/2024 23:33:19"
+                                                },
+                                                "origin_currency": {
+                                                    "type": "string",
+                                                    "example": "BRL"
+                                                },
+                                                "origin_currency_name": {
+                                                    "type": "string",
+                                                    "example": "Real Brasileiro"
+                                                },
+                                                "destination_currency": {
+                                                    "type": "string",
+                                                    "example": "USD"
+                                                },
+                                                "destination_currency_name": {
+                                                    "type": "string",
+                                                    "example": "Dólar Americano"
+                                                },
+                                                "original_value": {
+                                                    "type": "string",
+                                                    "example": "R$1.000,00"
+                                                },
+                                                "payment_method": {
+                                                    "type": "string",
+                                                    "example": "Boleto"
+                                                },
+                                                "conversion_details": {
+                                                    "properties": {
+                                                        "original_amount": {
+                                                            "type": "string",
+                                                            "example": "R$965,50"
+                                                        },
+                                                        "converted_amount": {
+                                                            "type": "string",
+                                                            "example": "$184.12"
+                                                        },
+                                                        "exchange_rate": {
+                                                            "type": "string",
+                                                            "example": "$0.19"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "tax": {
+                                                    "properties": {
+                                                        "tax_rate_value": {
+                                                            "type": "string",
+                                                            "example": "R$14,50"
+                                                        },
+                                                        "tax_rate_value_percentages": {
+                                                            "type": "number",
+                                                            "format": "float",
+                                                            "example": 1.45
+                                                        },
+                                                        "tax_conversion_value": {
+                                                            "type": "string",
+                                                            "example": "R$20,00"
+                                                        },
+                                                        "tax_conversion_percentage": {
+                                                            "type": "number",
+                                                            "format": "float",
+                                                            "example": 2
+                                                        },
+                                                        "tax_total": {
+                                                            "type": "string",
+                                                            "example": "R$34,50"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "original_value_minus_tax": {
+                                                    "type": "string",
+                                                    "example": "R$965,50"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Currency quote generated successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation errors"
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "additionalProperties": [
+                                                {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The origin field is required."
+                                                    },
+                                                    "property": null
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quote/taxes": {
+            "get": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Get user's quote taxes",
+                "description": "Retrieve the quote taxes configured for the authenticated user.",
+                "operationId": "76b2eb4befb46d2cfda0b89da6320e2d",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "properties": {
+                                                "success": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "payment_method": {
+                                                                "type": "string",
+                                                                "example": "Boleto"
+                                                            },
+                                                            "payment_method_fee": {
+                                                                "type": "string",
+                                                                "example": "1.45"
+                                                            },
+                                                            "conversion_fee_threshold": {
+                                                                "type": "string",
+                                                                "example": "3000.00"
+                                                            },
+                                                            "conversion_fee_below_threshold": {
+                                                                "type": "string",
+                                                                "example": "2.00"
+                                                            },
+                                                            "conversion_fee_above_threshold": {
+                                                                "type": "string",
+                                                                "example": "1.00"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Quote taxes retrieved successfully."
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "properties": {
+                                                "success": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {},
+                                                    "example": []
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Quote taxes retrieved successfully."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quote/history": {
+            "get": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Get historical currency quotes",
+                "description": "Retrieve historical currency quotes for the authenticated user.",
+                "operationId": "ccfbcb54419874d7d8da82e3decd803b",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "example": 10
+                        }
+                    },
+                    {
+                        "name": "sortKey",
+                        "in": "query",
+                        "description": "Key to sort by",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "id",
+                                "name",
+                                "created_at",
+                                "origin_currency",
+                                "destination_currency",
+                                "original_amount",
+                                "converted_amount",
+                                "payment_method",
+                                "email_sent"
+                            ],
+                            "example": "created_at"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sorting order",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ],
+                            "example": "desc"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 23
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 2
+                                                    },
+                                                    "origin_currency": {
+                                                        "type": "string",
+                                                        "example": "BRL"
+                                                    },
+                                                    "destination_currency": {
+                                                        "type": "string",
+                                                        "example": "USD"
+                                                    },
+                                                    "payment_method": {
+                                                        "type": "string",
+                                                        "example": "Boleto"
+                                                    },
+                                                    "original_amount": {
+                                                        "type": "number",
+                                                        "example": 1000
+                                                    },
+                                                    "converted_amount": {
+                                                        "type": "number",
+                                                        "example": 184.121
+                                                    },
+                                                    "exchange_rate": {
+                                                        "type": "number",
+                                                        "example": 0.191
+                                                    },
+                                                    "tax_rate_value": {
+                                                        "type": "number",
+                                                        "example": 14.5
+                                                    },
+                                                    "tax_rate_value_porcentages": {
+                                                        "type": "string",
+                                                        "example": "1.45"
+                                                    },
+                                                    "tax_conversion_value": {
+                                                        "type": "number",
+                                                        "example": 20
+                                                    },
+                                                    "tax_conversion_percentage": {
+                                                        "type": "string",
+                                                        "example": "2.00"
+                                                    },
+                                                    "tax_total": {
+                                                        "type": "number",
+                                                        "example": 34.5
+                                                    },
+                                                    "original_value_minus_tax": {
+                                                        "type": "number",
+                                                        "example": 965.5
+                                                    },
+                                                    "email_sent_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-06-02T23:33:21.000000Z"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-06-02T23:33:19.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-06-02T23:33:21.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "type": "string",
+                                            "example": "http://localhost:8080/api/quote/history?page=1"
+                                        },
+                                        "from": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "last_page_url": {
+                                            "type": "string",
+                                            "example": "http://localhost:8080/api/quote/history?page=1"
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "url": {
+                                                        "type": "string",
+                                                        "example": null,
+                                                        "nullable": true
+                                                    },
+                                                    "label": {
+                                                        "type": "string",
+                                                        "example": "« Previous"
+                                                    },
+                                                    "active": {
+                                                        "type": "boolean",
+                                                        "example": false
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "next_page_url": {
+                                            "type": "string",
+                                            "example": null,
+                                            "nullable": true
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "example": "http://localhost:8080/api/quote/history"
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "example": null,
+                                            "nullable": true
+                                        },
+                                        "to": {
+                                            "type": "integer",
+                                            "example": 4
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 4
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Historical quotes retrieved successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/quote/changeTax": {
+            "post": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Change quote rates",
+                "description": "Change the quote rates configuration for the authenticated user.",
+                "operationId": "f17096aea7fd8b1be271f1ea192add31",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "payment_method": {
+                                            "type": "string",
+                                            "example": "Boleto"
+                                        },
+                                        "payment_method_fee": {
+                                            "type": "string",
+                                            "example": "1.45"
+                                        },
+                                        "conversion_fee_threshold": {
+                                            "type": "string",
+                                            "example": "3000"
+                                        },
+                                        "conversion_fee_below_threshold": {
+                                            "type": "string",
+                                            "example": "2"
+                                        },
+                                        "conversion_fee_above_threshold": {
+                                            "type": "string",
+                                            "example": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Quote rates changed successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error: Payment methods must be unique."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "required": [
+                    "id",
+                    "name",
+                    "email"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "The user's id",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "The user's name",
+                        "type": "string"
+                    },
+                    "cpf": {
+                        "description": "The user's CPF",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The user's email",
+                        "type": "string"
+                    },
+                    "email_verified_at": {
+                        "description": "The timestamp when the user's email was verified",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "description": "The timestamp when the user was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "The timestamp when the user was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Login": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "description": "User's email address",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "description": "User's password",
+                        "type": "string",
+                        "format": "password"
+                    }
+                },
+                "type": "object"
+            },
+            "Token": {
+                "description": "The structure of the token response.",
+                "properties": {
+                    "access_token": {
+                        "description": "The access token value.",
+                        "type": "string"
+                    },
+                    "token_type": {
+                        "description": "The type of the token. Should be 'bearer' (JWT).",
+                        "type": "string",
+                        "example": "bearer"
+                    },
+                    "expires_in": {
+                        "description": "The number of seconds until the token expires.",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "AvailableCurrenciesResponse": {
+                "description": "Response schema for available currencies",
+                "properties": {
+                    "success": {
+                        "description": "Indicates if the request was successful",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "data": {
+                        "description": "Object with currency codes as keys and currency names as values",
+                        "type": "object",
+                        "example": {
+                            "USD": "Dólar Americano",
+                            "EUR": "Euro",
+                            "ARS": "Peso Argentino"
+                        },
+                        "additionalProperties": {
+                            "description": "Currency name",
+                            "type": "string",
+                            "example": "Dólar Americano"
+                        }
+                    },
+                    "message": {
+                        "description": "Response message",
+                        "type": "string",
+                        "example": "Available currencies retrieved successfully."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "Operações relacionadas à autenticação do usuário"
+        },
+        {
+            "name": "Quote",
+            "description": "Operações relacionadas à cotações de moedas"
+        }
+    ],
+    "externalDocs": {
+        "description": "GitHub Repository",
+        "url": "https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon"
+    }
+}

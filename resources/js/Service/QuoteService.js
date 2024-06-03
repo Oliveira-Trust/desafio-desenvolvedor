@@ -74,7 +74,7 @@ class QuoteService {
             // Definir o cabeçalho de autorização
             axios.defaults.headers.common['Authorization'] = `Bearer ${token.replace(/['"]+/g, '')}`;
             // Fazer a chamada para a API
-            const response = await axios.get(`/api/quote/tax`);
+            const response = await axios.get(`/api/quote/taxes`);
             // Retornar os dados da resposta
             return response.data.data;
         } catch (error) {
