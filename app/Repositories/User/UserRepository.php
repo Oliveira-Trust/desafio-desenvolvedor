@@ -5,6 +5,7 @@ namespace App\Repositories\User;
 use App\Models\User;
 use App\Models\ConversionRatesConfiguration;
 use App\Interface\User\UserInterface;
+use App\Http\Resources\UserConfigTaxResource;
 
 class UserRepository implements UserInterface
 {
@@ -25,13 +26,18 @@ class UserRepository implements UserInterface
     public function getUserConfigTax(int $id, string $method = null)
     {
         $query = ConversionRatesConfiguration::where('user_id', $id);
-        
+
         if (!empty($method)) {
             $query->where('payment_method', $method);
-            return $query->get()->first();
         }
-        
-        return $query->get();
+
+        $results = $query->get();
+
+        if ($results->isNotEmpty()) {
+            return UserConfigTaxResource::collection($results);
+        }
+
+        return null;
     }
 
     public function getHistoricalQuotesByUserId(string $userId): array

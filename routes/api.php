@@ -25,7 +25,7 @@ Route::prefix('quote')
     ->middleware('auth:api')
     ->group(function () {
     Route::get('currencies/{origin}', [QuoteController::class, 'getAvailableCurrencies']);
-    Route::get('tax', [QuoteController::class, 'getQuoteTaxes']);
+    Route::get('taxes', [QuoteController::class, 'getQuoteTaxes']);
     Route::get('history', [QuoteController::class,'getHistoricalQuotes'])->middleware('auth:api')->name('historical-quote');
     Route::post('generate/{origin}/{destination}', [QuoteController::class, 'generateCurrencyQuote']);
     Route::post('changeTax', [QuoteController::class, 'changeQuoteRates']);
