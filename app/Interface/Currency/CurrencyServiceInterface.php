@@ -5,6 +5,13 @@ namespace App\Interface\Currency;
 interface CurrencyServiceInterface
 {
     /**
+    * Check if the service is available.
+    *
+    * @return bool True if the service is available, false otherwise.
+    */
+    public function check(): bool;
+
+    /**
      * Returns the latest occurrences of the selected currencies.
      *
      * @param  array $currencies Currencies selected separated by commas (ex: USD-BRL,EUR-BRL)

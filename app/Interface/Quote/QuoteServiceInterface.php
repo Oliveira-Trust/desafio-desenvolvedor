@@ -8,6 +8,13 @@ namespace App\Interface\Quote;
 interface QuoteServiceInterface
 {
     /**
+    * Check if the service is available.
+    *
+    * @return bool True if the service is available, false otherwise.
+    */
+    public function check():bool;
+    
+    /**
      * Get the available currencies for a given origin.
      *
      * @param string $origin The origin currency.

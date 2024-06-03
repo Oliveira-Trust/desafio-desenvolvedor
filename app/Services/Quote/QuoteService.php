@@ -40,6 +40,16 @@ class QuoteService implements QuoteServiceInterface
     }
 
     /**
+    * Check if the service is available.
+    *
+    * @return bool True if the service is available, false otherwise.
+    */
+    public function check(): bool
+    {
+        return $this->currencyService->check();
+    }
+
+    /**
      * Get the available currencies based on the origin.
      *
      * @param string|null $origin The origin currency (optional)

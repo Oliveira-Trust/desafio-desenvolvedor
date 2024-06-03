@@ -151,6 +151,34 @@
                 ]
             }
         },
+        "/api/check": {
+            "get": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Check API status",
+                "description": "Check if the API is running.",
+                "operationId": "518d305254c16a4d8cef5550490d04d9",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "API is running"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/quote/currencies/{origin}": {
             "get": {
                 "tags": [

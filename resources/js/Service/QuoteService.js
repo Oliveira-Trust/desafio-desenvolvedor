@@ -18,7 +18,7 @@ class QuoteService {
             // Retornar os dados da resposta
             return convertedJson;
         } catch (error) {
-            let errorMessage = 'Erro desconhecido na busca pelas moedas autorizadas.';
+            let errorMessage = error.message || 'Erro desconhecido na busca pelas moedas autorizadas.';
             
             // Verificar o tipo de erro e definir a mensagem apropriada
             if (error.response) {
@@ -78,7 +78,7 @@ class QuoteService {
             // Retornar os dados da resposta
             return response.data.data;
         } catch (error) {
-            let errorMessage = 'Erro desconhecido na busca pelas taxas do usuario.';
+            let errorMessage = error.message || 'Erro desconhecido na busca pelas taxas do usuario.';
             // Verificar o tipo de erro e definir a mensagem apropriada
             if (error.response) {
                 if (error.response.status === 404) {
@@ -113,6 +113,34 @@ class QuoteService {
         }
     }
 
+    static async checkServiceStatus(token) {
+        try {
+            // Definir o cabeçalho de autorização
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token.replace(/['"]+/g, '')}`;
+            // Fazer a chamada para a API
+            const response = await axios.get(`/api/quote/check`);
+            // Retornar os dados da resposta
+            return response.data;
+        } catch (error) {
+            let errorMessage = error.message || 'Erro desconhecido ao verificar o status do serviço.';
+            if (error.response) {
+                if (error.response.status === 404) {
+                    errorMessage = error.response.data.message || "Desculpe, você não possui permissões.";
+                } else if (error.response.status === 403) {
+                    errorMessage = error.response.data.message || "Acesso proibido.";
+                } else if (error.response.status === 401) {
+                    errorMessage = "Autenticação expirada. Por favor, faça login novamente.";
+                } else if (error.response.status === 524) {
+                    errorMessage = "A API apresentou um erro ao realizar a busca. Entre em contato com a equipe técnica.";
+                }
+            }
+            
+            // Lançar o erro com a mensagem definida
+            throw new Error(errorMessage);
+        }
+    }
+
+
     static async generateQuote(token, originCurrency, destinationCurrency, amount, type) {
         try {
             // Definir o cabeçalho de autorização
@@ -125,7 +153,7 @@ class QuoteService {
                 });
             return response.data;
         } catch (error) {
-            let errorMessage = 'Erro desconhecido ao gerar a cotação.';
+            let errorMessage = error.message || 'Erro desconhecido ao gerar a cotação.';
             
             // Verificar o tipo de erro e definir a mensagem apropriada
             if (error.response) {

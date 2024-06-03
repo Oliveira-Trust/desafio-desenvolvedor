@@ -19,6 +19,23 @@ class CurrencyServiceRepository implements CurrencyServiceInterface
         $this->cache = $cache;
     }
 
+    public function check(): bool
+    {
+        $key = 'check';
+        try {
+            if ($this->cache->isDataCached($key)) {
+                $cache = $this->cache->getCachedData($key);
+                return $cache['data'];
+            } else {
+                $data = $this->currencyService->check();
+                $this->cache->saveDataToCache($key, $data, 10);
+                return $data;
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     public function getLatestOccurrences(array $currencies)
     {
         try {

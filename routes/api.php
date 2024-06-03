@@ -24,6 +24,7 @@ Route::prefix('auth')->group(function () {
 Route::prefix('quote')
     ->middleware('auth:api')
     ->group(function () {
+    Route::get('check', [QuoteController::class, 'check'])->name('check-quote-service');
     Route::get('currencies/{origin}', [QuoteController::class, 'getAvailableCurrencies']);
     Route::get('taxes', [QuoteController::class, 'getQuoteTaxes']);
     Route::get('history', [QuoteController::class,'getHistoricalQuotes'])->middleware('auth:api')->name('historical-quote');

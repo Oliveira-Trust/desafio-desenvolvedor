@@ -25,6 +25,16 @@ class QuoteController extends Controller
         $this->historicalQuoteInterface = $historicalQuoteInterface;
     }
 
+    public function check()
+    {
+        try {
+            $check = $this->quoteService->check() ?? false;
+            return response()->json($check, 200);
+        } catch (\Exception $e) {
+            return response()->json(false, 200);
+        }
+    }
+
     public function getAvailableCurrencies(string $origin)
     {
         try {

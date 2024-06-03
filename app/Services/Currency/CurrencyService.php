@@ -16,6 +16,16 @@ class CurrencyService implements CurrencyServiceInterface
         $this->baseUri = config('services.converter.url');
     }
 
+    public function check(): bool
+    {
+        try {
+            $response = $this->client->request('GET', $this->baseUri);
+            return $response->getStatusCode() === 200;
+        } catch (RequestException $e) {
+            return false;
+        }
+    }
+
     /**
      * Returns an array of HTTP headers for making API requests.
      *
