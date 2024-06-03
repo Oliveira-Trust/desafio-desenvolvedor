@@ -1,87 +1,86 @@
+# Desafio Técnico
+
+## Tecnologias Utilizadas
+
+### Backend
+
+- Laravel
+- Jetstream (para autenticação)
+- JWT-Auth (para autenticação JWT)
+- Redis (para cache)
+- MySQL (como banco de dados relacional)
+
+### Frontend
+
+- Vue.js (integrado via Vite)
+- Vuetify.js (componentes UI)
+- Tailwind CSS (utilizado em conjunto com Vuetify.js)
+- SCSS (para estilos customizados)
+- Blade (em algumas paginas principalmente do jetstream)
+- CSS
+
 ## Instalação
 
-Siga os passos abaixo para configurar e executar o projeto:
+Siga os passos abaixo para configurar e executar o projeto localmente:
 
-1. Garanta que você possui um ambiente Docker Composer com WSL perfeitamente funcional.
 
-2. Clone o projeto para uma pasta com o seguinte comando:
+### Pré-requisitos
+- Ambiente Docker Compose
+
+### Clone o repositório
 ```bash
 git clone https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon.git
-```
-3. Acesse a pasta do projeto
-```bash
 cd desafio-desenvolvedor-Cassius-Leon
+```
+
+### Troque para a branch develop
+```bash
 git checkout develop
 ```
-4. Construa o conteiner docker do laravel e banco de dados
+
+### Construa os containers Docker
 ```bash
 docker-compose up -d --build
 ```
-5. Acesse o console do Docker PHP e instale as dependências e permissões.
+
+### Acesse o console do Docker PHP e instale as dependências
 ```bash
 docker-compose exec php bash
 composer setup
+```
+### Algumas vezes o windows pode apresentar problemas de permissoes neste caso dentro do php bash
+```bash
 chown -R www-data:www-data /var/www
 chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 chmod -R 775 /var/www/storage /var/www/bootstrap/cache
-exit
 ```
-Você deve ver o projeto na porta 61 em http://localhost:61/
+## O Desafio:
+O usuário precisa informar 3 informações em tela, moeda de destino, valor para conversão e forma de pagamento. A nossa moeda nacional BRL será usada como moeda base na conversão.
 
-### Para Iniciar o projeto outras vezes
-Use o comando a baixo
-```bash
-docker-compose up -d
-```
-## 🚀 Sobre mim
+### As Regras de négocio:
+- Moeda de origem BRL;
+- Informar uma moeda de compra que não seja BRL (exibir no mínimo 2 opções);
+- Valor da Compra em BRL (deve ser maior que R$ 1.000,00 e menor que R$ 100.000,00)
+- Formas de pagamento (taxas aplicadas no valor da compra e aceitar apenas as opções abaixo)
+  - Para pagamentos em boleto, taxa de 1,45%
+  - Para pagamentos em cartão de crédito, taxa de 7,63%
+- Aplicar taxa de 2% pela conversão para valores abaixo de R$ 3.000,00 e 1% para valores maiores que R$ 3.000,00, 
+essa taxa deve ser aplicada apenas no valor da compra e não sobre o valor já com a taxa de forma de pagamento.
 
-- [@cassiuslc](https://www.github.com/cassiuslc)
+### Exemplos de entrada:
+- Moeda de origem: BRL (default)
+- Moeda de destino:
+  - Exemplo: USD, BTC, ...
+- Valor para conversão:
+  - Exemplo: 5.000,00, 1.000,00, 70.000,00, ...
+- Forma de pagamento:
+  - Boleto ou Cartão de Crédito
 
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+## Links Importantes
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
-
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
-
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
-
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
-
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
-
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
-
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
-
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
-
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
-
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
-
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+- [Mailpit](http://localhost:8025/)
+- [Login](http://localhost:8080/login)
+- [Registro](http://localhost:8080/register)
+- [Horizon](http://localhost:8080/horizon/dashboard)
+- [Swagger](http://localhost:8080/api/documentation#/)
+- [Repositório no GitHub](https://github.com/cassiuslc/desafio-desenvolvedor-Cassius-Leon)
