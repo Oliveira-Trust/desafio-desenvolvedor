@@ -1,7 +1,5 @@
 # Desafio Técnico
 
-Este projeto é parte de um desafio técnico para demonstrar habilidades de desenvolvimento full stack utilizando Laravel como backend e Vue.js como frontend.
-
 ## Tecnologias Utilizadas
 
 ### Backend
