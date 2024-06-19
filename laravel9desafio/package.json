@@ -1,0 +1,22 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "mix": "mix"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-mix": "^6.0.6",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.77.1",
+        "sass-loader": "^12.1.0",
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.3"
+    }
+}
