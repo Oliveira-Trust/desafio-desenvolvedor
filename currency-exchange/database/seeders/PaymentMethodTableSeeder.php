@@ -14,7 +14,6 @@ class PaymentMethodTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //alterar para usar repository ou model
         DB::table('payment_method')->insert([
             [
                 'name_reference' => 'boleto',

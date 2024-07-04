@@ -20,7 +20,8 @@ class UpdateFeeRequest extends FormRequest
             'application' => 'required|string',
             'value' => 'required|numeric',
             'name' => 'required|string',
-            'rate' => [new AboveAndBelow, 'required', 'numeric', 'max:100', 'min:0']
+            'rate' => ['required', 'numeric', 'max:100', 'min:0']
         ];
     }
 }
+

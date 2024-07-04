@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('conversion', function (Blueprint $table) {
-            //mudar nome de variáveis
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
