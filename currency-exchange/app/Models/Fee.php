@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Fee
+class Fee extends Model
 {
     use HasFactory;
 
-    protected $table = 'fee';
+    protected $table = 'fees';
 
     /**
      * The attributes that are mass assignable.
@@ -16,9 +17,9 @@ class Fee
      * @var string[]
      */
     protected $fillable = [
-        'value',
-        'percent',
-        'application'
+        'name',
+        'rate',
+        'threshold'
     ];
 
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('name_reference')->unique();
-            $table->decimal('tax'); //testar com double
+            $table->decimal('fee');
         });
     }
 

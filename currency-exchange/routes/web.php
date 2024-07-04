@@ -1,34 +1,11 @@
 <?php
 
+use App\Http\Controllers\ConversionController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ApiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CurrencyExchangeController;
-
-Route::get('/currency-exchange', [CurrencyExchangeController::class, 'index']);
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('test', function () {
-    return "test";
-});
-
-Route::get('/fetch-data', [ApiController::class, 'getData'])->name('fetch-data');
-Route::post('/exchange', [ApiController::class, 'exchangeCurrency'])->name('exchange');
-
-Route::get('test', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,23 +13,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::group(['prefix' => 'fee'], function () {
-    Route::get('/get', [FeeController::class, 'get'])->name('fee');
-    Route::get('/edit/{id}', [FeeController::class, 'edit'])->name('fee.edit');
-    Route::put('/update', [FeeController::class, 'update'])->name('fee.update');
+Route::group(['prefix' => 'fees'], function () {
+    Route::get('/', [FeeController::class, 'get'])->name('fees');
+    Route::get('/edit/{id}', [FeeController::class, 'edit'])->name('fees.edit');
+    Route::put('/update/{id}', [FeeController::class, 'update'])->name('fees.update');
+    Route::delete('/delete/{fee}', [FeeController::class, 'destroy'])->name('fees.destroy');
 });
 
 
-Route::get('/currency-exchanges', [CurrencyController::class, 'index']);
-
-Route::get('/currency-exchanges-drop-down', [CurrencyController::class, 'index_drop_down']);
-
-
-
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+
 Route::post('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
 
-Route::get('/currency-convert/{combination}', [CurrencyController::class, 'convert'])->name('currency.convert');
+Route::group(['prefix' => 'currency-exchanges'], function () {
+    Route::get('', [CurrencyController::class, 'index'])->name('currency-exchanges');
+    Route::post('/create', [CurrencyController::class, 'create'])->name('currency-exchanges.create');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 require __DIR__.'/auth.php';

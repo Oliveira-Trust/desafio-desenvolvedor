@@ -15,19 +15,17 @@ class FeeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('fee')->insert([
-            'name' => '1% above',
-            'percent' => 1,
-            'application' => 'above',
-            'value' => 3000,
+        DB::table('fees')->insert([
+            'name' => '2% low threshold',
+            'rate' => 2,
+            'threshold' => 0,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
-        DB::table('fee')->insert([
-            'name' => '2% below',
-            'percent' => 2,
-            'application' => 'below',
-            'value' => 3000,
+        DB::table('fees')->insert([
+            'name' => '1% high threshold',
+            'rate' => 1,
+            'threshold' => 3000,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }

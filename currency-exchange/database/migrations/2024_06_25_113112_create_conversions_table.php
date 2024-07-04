@@ -25,6 +25,7 @@ return new class extends Migration
             $table->decimal('purchased_value', 10,2);
             $table->decimal('payment_fee', 10,2);
             $table->decimal('conversion_fee', 10,2);
+            $table->string('effective_value');
             $table->timestamps();
         });
     }

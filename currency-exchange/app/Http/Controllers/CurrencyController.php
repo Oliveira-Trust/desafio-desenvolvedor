@@ -2,25 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Conversion\CreateUserConversion;
+use App\DTO\CreateExchangeDTO;
+use App\Http\Requests\CreateExchangeRequest;
+use App\Models\PaymentMethod;
+use App\Models\User;
+use App\Services\ExchangeApi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http; // Ensure this line is present
 
 class CurrencyController extends Controller
 {
-    public function index()
-    {
-        $apiUrl = 'https://economia.awesomeapi.com.br/json/last/BRL-USD,BRL-EUR,BRL-ARS,BRL-AUD,BRL-CAD,BRL-CHF,BRL-CLP,BRL-DKK,BRL-HKD,BRL-JPY,BRL-MXN,BRL-SGD,BRL-AED,BRL-BBD,BRL-BHD,BRL-CNY,BRL-CZK,BRL-EGP,BRL-GBP,BRL-HUF,BRL-IDR,BRL-ILS,BRL-INR,BRL-ISK,BRL-JMD,BRL-JOD,BRL-KES,BRL-KRW,BRL-LBP,BRL-LKR,BRL-MAD,BRL-MYR,BRL-NAD,BRL-NOK,BRL-NPR,BRL-NZD,BRL-OMR,BRL-PAB,BRL-PHP,BRL-PKR,BRL-PLN,BRL-QAR,BRL-RON,BRL-RUB';
-        $response = Http::get($apiUrl);
-        $currencyData = $response->json();
+    private ExchangeApi $exchangeApi;
+    private CreateUserConversion $createUserConversion;
 
-
-        return view('currency_exchange', ['currencyData' => $currencyData]);
+    public function __construct(ExchangeApi $exchangeApi, CreateUserConversion $createUserConversion) {
+        $this->createUserConversion = $createUserConversion;
+        $this->exchangeApi = $exchangeApi;
     }
 
-    public function convert($combination)
+    public function index()
     {
-        // Implement the logic to handle currency conversion
-        // For now, just display the selected combination
-        return view('currency_conversion', ['combination' => $combination]);
+        try {
+            $user = User::findOrFail(auth()->user()->id);
+            $conversionHistory = $user->conversion()->orderBy('created_at', 'desc')->paginate(5);
+            $currencyData = $this->exchangeApi->getExchanges();
+            $paymentMethod = PaymentMethod::all();
+
+            return view('currency_exchange', [
+                'currencyData' => $currencyData,
+                'paymentMethod' => $paymentMethod,
+                'conversion' => $conversionHistory
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json($e->getMessage());
+        }
+    }
+
+    public function create(CreateExchangeRequest $request) {
+        try {
+            $dto = new CreateExchangeDTO(
+                value: $request->input('value'),
+                paymentMethod: $request->input('payment_method'),
+                baseCurrency: $request->input('base_currency'),
+                targetCurrency: $request->input('target_currency')
+            );
+
+            $this->createUserConversion->execute($dto);
+
+            return redirect()->route('currency-exchanges')
+                ->with('message', 'Currency exchange request successful.');
+        } catch (\Throwable $e) {
+            return response()->json($e->getMessage());
+        }
     }
 }

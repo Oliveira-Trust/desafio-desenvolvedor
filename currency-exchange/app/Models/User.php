@@ -44,4 +44,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function conversion()
+    {
+        return $this->hasMany(Conversion::class)
+            ->select('conversion.*','payment_method.name AS payment_method_name')
+            ->join('payment_method', 'payment_method.id', '=', 'conversion.payment_method_id');
+    }
 }

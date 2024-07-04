@@ -2,34 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Fee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FeeController extends Controller
 {
     public function get()
     {
-        $fee = Fee::all();
-
-        return view('fee/index', ["fee" => $fee]);
+        $fees = Fee::all(); // Using the Fee model to get all fees
+        return view('fees.index', ['fees' => $fees]);
     }
 
     public function edit($id)
     {
-        $fee = Fee::findOrFail($id);
-
-        return view('fee/edit', ["fee" => $fee]);
+        $fee = Fee::findOrFail($id); // Find the fee or throw a 404 error
+        return view('fees.edit', ['fee' => $fee]);
     }
 
-    public function update(UpdateFeeRequest $request)
+    public function update(Request $request, $id)
     {
-        $id = $request->input()['id'];
-
         $fee = Fee::findOrFail($id);
-        $fee->update($request->all());
+        $fee->update([
+            'name' => $request->name,
+            'rate' => $request->rate,
+            'threshold' => $request->threshold,
+        ]);
 
-        return redirect()->route('fee')
-            ->with('message', 'fee updated successfully');
+        return redirect()->route('fees')->with('success', 'Fee updated successfully.');
     }
+
+    public function destroy(Fee $fee)
+    {
+        $fee->delete();
+        return redirect()->route('fees')->with('success', 'Fee deleted successfully.');
+    }
+
 }
