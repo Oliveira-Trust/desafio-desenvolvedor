@@ -1,48 +1,49 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Currency Exchange System
+Este é um sistema de exchange de moedas desenvolvido em Laravel. Ele permite que os usuários realizem conversões de moedas baseadas nas taxas de câmbio fornecidas pela API AwesomeAPI.
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+## Funcionalidades
+- Registro e autenticação de usuários.
+- Conversão de moedas com base nas taxas de câmbio em tempo real.
+- Visualização de transações anteriores.
+- Aplicação de taxas de conversão e métodos de pagamento. 
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## Requisitos
+- Docker
+- Docker Compose
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+### Instalação
+1. Clone o repositório para o seu ambiente local:
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+``` bash
+git clone https://github.com/PauloRicardoNeis/desafio-desenvolvedor.git
+```
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+2. Renomeie o arquivo .env-example para .env:
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+``` bash
+mv .env-example .env
+```
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+3. Configure as variáveis de ambiente no arquivo .env de acordo com o seu ambiente, especialmente as configurações do banco de dados.
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+4. Execute o Docker Compose para construir e iniciar os contêineres:
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+``` bash
+docker-compose up --build
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+5. Execute as migrações do banco de dados:
+
+``` bash
+docker-compose exec app php artisan migrate
+```
+6. Popule o banco de dados com dados fictícios:
+
+``` bash
+docker-compose exec app php artisan db:seed
+```
+7. Acesse o sistema em http://localhost:8080.
+
+8. Registre-se no sistema através da interface web.
+
