@@ -6,6 +6,7 @@ namespace App\Builders\Conversion;
 
 use App\Enumerators\Domain;
 use App\Exceptions\ConversionException;
+use App\Facades\Helpers;
 use App\Reads\ConversionValuesInterface;
 
 class Conversion
@@ -43,6 +44,7 @@ class Conversion
             'amount_currency_purchased' => $this->conversionValues->amount() * $bid,
             'conversion_rate' => $defaultRate,
             'amount_used_conversion' => $amountUsedConversion,
+            'user_id' => Helpers::authUser()->first()->id
         ];
     }
 }

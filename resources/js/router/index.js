@@ -3,6 +3,8 @@ import Home from "../view/Home.vue";
 import About from "../view/About.vue";
 import Show from "../view/Show.vue";
 import { useAuth } from "../stores/auth.js";
+import Settings from "../view/Settings.vue";
+import History from "../view/History.vue";
 
 const routes = [
     {
@@ -23,6 +25,22 @@ const routes = [
             auth: true,
         },
     },
+    {
+        path: "/settings",
+        name: "settings",
+        component: Settings,
+        meta: {
+            auth: true,
+        },
+    },
+    {
+        path: "/history",
+        name: "history",
+        component: History,
+        meta: {
+            auth: true,
+        },
+    },
 ];
 
 const router = createRouter({
@@ -33,13 +51,12 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
     const auth = useAuth();
     const isAuth = to.meta?.auth;
-    const hasUser = auth.email && auth.token;
 
-    if (isAuth && hasUser) {
+    if (isAuth && auth.hasUser) {
         await auth.checkToken();
     }
 
-    if (isAuth && !hasUser) {
+    if (isAuth && !auth.hasUser) {
         return next({ name: "home" });
     }
 

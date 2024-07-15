@@ -29,6 +29,7 @@ class PaymentBuilder
         $value = $this->conversionValues->amount() * ($payment->rate * 0.0100);
 
         return [
+            'payment_id' => $payment->id,
             'payment_type' => __("messages.{$this->conversionValues->payment()}", locale: 'pt_BR'),
             'payment_rate' => $value,
         ];

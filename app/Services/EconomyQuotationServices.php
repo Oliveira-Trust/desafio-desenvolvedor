@@ -10,6 +10,7 @@ use App\Facades\Helpers;
 use App\Mail\ConversionMail;
 use App\Reads\ConversionValues;
 use App\Repository\EconomyQuotationsRepository;
+use App\Repository\HistoryRepository;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -19,10 +20,14 @@ use Illuminate\Support\Facades\Storage;
 class EconomyQuotationServices
 {
     private EconomyQuotationsRepository $economyQuotationRepository;
+    private HistoryRepository $historyRepository;
 
-    public function __construct(EconomyQuotationsRepository $economyQuotationRepository)
-    {
+    public function __construct(
+        EconomyQuotationsRepository $economyQuotationRepository,
+        HistoryRepository $historyRepository
+    ) {
         $this->economyQuotationRepository = $economyQuotationRepository;
+        $this->historyRepository = $historyRepository;
     }
 
     /** @throws \Throwable */
@@ -52,6 +57,7 @@ class EconomyQuotationServices
             ->json();
 
         $conversion = (new Conversion($conversionValues, $quotation))->result();
+        $this->historyRepository->create(conversion: $conversion);
 
         $this->sendEmail($conversion);
 

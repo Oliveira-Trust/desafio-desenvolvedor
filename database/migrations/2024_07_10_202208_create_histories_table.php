@@ -20,13 +20,12 @@ return new class () extends Migration {
             $table->float('amount_used_conversion');
             $table->float('payment_rate');
             $table->float('conversion_rate');
-            $table->unsignedBigInteger('payment_id');
-            $table->unsignedBigInteger('user_id');
+
+            $table->foreignId('payment_id')->constrained('payments');
+            $table->foreignId('user_id')->constrained('users');
+
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('payment_id')->references('id')->on('payments');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

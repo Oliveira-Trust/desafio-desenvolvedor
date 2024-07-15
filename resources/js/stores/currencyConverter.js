@@ -9,6 +9,7 @@ export const useCurrencyConverter = defineStore("currencyConverter", {
         translations: {},
         combinations: {},
         payments: [],
+        histories: [],
         conversionResult: {},
         modal: useModal(),
     }),
@@ -50,6 +51,20 @@ export const useCurrencyConverter = defineStore("currencyConverter", {
                 })
                 .then(({ data }) => {
                     this.payments = data;
+                })
+                .catch(({ response }) => {
+                    this.modal.open(response?.data.message);
+                });
+        },
+        async findHistory() {
+            await http
+                .get("/history", {
+                    headers: {
+                        Authorization: "Bearer " + this.auth.token,
+                    },
+                })
+                .then(({ data }) => {
+                    this.histories = data;
                 })
                 .catch(({ response }) => {
                     this.modal.open(response?.data.message);

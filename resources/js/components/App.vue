@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Navbar from "./Navbar.vue";
+</script>
 
 <template>
     <header>
@@ -13,15 +15,7 @@
                         >Converter</span
                     >
                 </a>
-
-                <div class="flex w-1/2 justify-end content-center">
-                    <router-link
-                        class="inline-block text-trust-p5 no-underline hover:text-trust-p7 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
-                        :to="{ name: 'about' }"
-                    >
-                        About
-                    </router-link>
-                </div>
+                <Navbar />
             </div>
         </div>
     </header>

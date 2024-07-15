@@ -10,6 +10,11 @@ export const useAuth = defineStore("auth", {
         hasError: false,
         modal: useModal(),
     }),
+    getters: {
+        hasUser() {
+            return this.token && this.email;
+        },
+    },
     actions: {
         setToken(tokenValue) {
             localStorage.setItem("token", tokenValue);

@@ -39,10 +39,26 @@ async function create(event) {}
                 >
                     Log<span
                         class="bg-clip-text text-transparent bg-gradient-to-r from-trust-p3 via-trust-p7 to-trust-p7"
-                        >in</span
+                        >{{ auth.hasUser ? "ed" : "in" }}</span
                     >
                 </h3>
+                <div
+                    v-show="auth.hasUser"
+                    class="bg-trust-p3 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
+                >
+                    <h3
+                        class="my-4 text-1xl md:text-2xl text-trust-p7 font-bold leading-tight text-center md:text-left"
+                    >
+                        User:
+                        <span
+                            class="opacity-75 bg-clip-text text-transparent text-trust-p1 bg-gradient-to-r from-trust-p3 via-trust-p7 to-trust-p7"
+                        >
+                            {{ auth.email }}
+                        </span>
+                    </h3>
+                </div>
                 <form
+                    v-show="!auth.hasUser"
                     class="bg-trust-p9 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
                     onsubmit="return false"
                 >

@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EconomyQuotationsController;
 use App\Http\Controllers\PaymentsController;
@@ -23,4 +26,5 @@ Route::middleware('jwt.auth')->group(function () {
     Route::get('/combinations', [EconomyQuotationsController::class, 'combinations'])->name('economy.comb');
     Route::post('/conversion', [EconomyQuotationsController::class, 'conversion'])->name('economy.conv');
     Route::get('/payments', [PaymentsController::class, 'index'])->name('economy.payment');
+    Route::get('/history', [HistoryController::class, 'index'])->name('history.payment');
 });
