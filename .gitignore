@@ -5,7 +5,7 @@ desafio-desenvolvedor/public/hot
 desafio-desenvolvedor/public/storage
 desafio-desenvolvedor/storage/*.key
 desafio-desenvolvedor/vendor
-.env
+desafio-desenvolvedor/.env
 desafio-desenvolvedor/.env.backup
 desafio-desenvolvedor/.env.production
 desafio-desenvolvedor/.phpunit.result.cache
