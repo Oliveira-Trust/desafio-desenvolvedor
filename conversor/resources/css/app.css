@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+label {
+    @apply font-light text-sm flex mb-1;
+}
