@@ -29,7 +29,11 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Helpers/CurrencyHelper.php",
+            "app/Helpers/DateHelper.php"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [
