@@ -5,3 +5,7 @@
 label {
     @apply font-light text-sm flex mb-1;
 }
+
+input {
+    @apply outline-none;
+}
