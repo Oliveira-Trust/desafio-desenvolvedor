@@ -54,3 +54,15 @@ Os seeders criam os métodos de pagamento e também 2 usuários
 - admin@example.com
 
 Ambos com senha 123
+
+### Login
+O path incial "/" leva a tela padrão de login do framework, ao realizar o login o comportamento será:
+
+- user test@example.com - dashboard para cotações
+- user admin@example.com - dashboard adminitrativo de taxas
+
+### Register
+Para registrar um novo usuário:
+<pre>/register</pre>
+
+

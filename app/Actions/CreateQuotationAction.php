@@ -6,7 +6,6 @@ use App\Apis\AwesomeApi;
 use App\Models\PaymentMethod;
 use App\Models\Quotation;
 use App\Models\TaxConversion;
-use App\Models\User;
 use App\Services\QuotationResponseService;
 use App\Services\TaxCalculationService;
 use Illuminate\Http\Request;
