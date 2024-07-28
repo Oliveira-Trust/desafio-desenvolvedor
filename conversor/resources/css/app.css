@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 label {
-    @apply font-light text-sm flex mb-1;
+    @apply text-sm flex mb-1;
 }
 
 input {

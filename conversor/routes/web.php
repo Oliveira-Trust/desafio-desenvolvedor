@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ConversorController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Conversor;
 
-Route::get('/', [ConversorController::class, 'index']);
+Route::get('/', Conversor::class);
