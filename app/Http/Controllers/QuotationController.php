@@ -30,7 +30,6 @@ class QuotationController extends Controller
         $quotationHistory = Quotation::where('user_id', auth()->id())->get();
 
         $quotationResult = session('quotationResult') ?? session('quotationResult');
-//        dd($quotationResult);
 
         return view('dashboard')->with([
             'apiQuotation' => $apiQuotation,
