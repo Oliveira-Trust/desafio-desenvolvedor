@@ -71,6 +71,23 @@ class CurrencyConverter extends Component
             'tax_conversion' => $taxConversionAmount,
             'amount_after_taxes' => $amountAfterTaxes,
         ];
+
+        if (auth()->user()) {
+            \App\Models\CurrencyHistoric::create([
+                'user_id' => auth()->id(),
+                'source_currency' => 'BRL',
+                'destination_currency' => $this->destinationCurrency,
+                'amount' => $this->amount,
+                'payment_method' => $this->paymentMethod,
+                'rate' => $rate,
+                'converted_amount' => $convertedAmount,
+                'tax_payment' => $taxPaymentAmount,
+                'tax_conversion' => $taxConversionAmount,
+                'amount_after_taxes' => $amountAfterTaxes,
+            ]);
+
+            $this->dispatch('currency-created');
+        }
     }
 
     public function render(): View
