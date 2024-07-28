@@ -41,5 +41,16 @@ Para configurar este projeto localmente utilizando o Laravel Sail, siga os passo
     ```
 8. Execute as migrações:
     ```bash
-    ./vendor/bin/sail artisan migrate
+    ./vendor/bin/sail artisan migrate --seed
     ```
+9. Execute npm run:
+    ```bash
+   npm run dev
+   ```
+## Uso 
+Os seeders criam os métodos de pagamento e também 2 usuários
+
+- test@example.com
+- admin@example.com
+
+Ambos com senha 123
