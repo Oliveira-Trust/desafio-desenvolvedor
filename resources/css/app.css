@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input, select {
+    outline: none;
+    box-shadow: none;
+}
