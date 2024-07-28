@@ -45,4 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    function isAdmin() : bool {
+        return str_ends_with($this->email, '@oliveiratrust.com.br');
+    }
 }
