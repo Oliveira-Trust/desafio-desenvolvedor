@@ -19,6 +19,7 @@
                         wire:model="valor"
                         x-mask:dynamic="$money($input, ',')"
                         class="bg-white rounded w-full border border-gray-400 p-2"
+                        autofocus
                     />
                     <p class="text-xs text-red-500 mt-1">
                         @error('valor') {{ $message }} @enderror

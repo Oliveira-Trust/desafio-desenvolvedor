@@ -22,8 +22,8 @@ class Conversor extends Component
 
     public const TAXA_BOLETO = 0.0145;
     public const TAXA_CARTAO = 0.0763;
-    public const TAXA_VALOR_ABAIXO = 0.002;
-    public const TAXA_VALOR_ACIMA = 0.001;
+    public const TAXA_VALOR_ABAIXO = 0.02;
+    public const TAXA_VALOR_ACIMA = 0.01;
 
     public $taxaFormaPgto = 0;
     public $taxaValorConversao = 0;
@@ -34,10 +34,16 @@ class Conversor extends Component
     ];
 
     public $operacao = [];
+    protected $listeners = ['limparHistorico'];
+
+    public function limparHistorico() {
+        $this->operacao = [];
+    }
 
     function converter() {
 
-        $this->valor = floatval($this->limpaValor($this->valor));
+        $this->valor = $this->limpaValor($this->valor);
+
         $this->validate();
 
         $calculo = 0;
@@ -53,22 +59,20 @@ class Conversor extends Component
             $this->taxaValorConversao = self::TAXA_VALOR_ACIMA;
         }
 
-        $calculo = $this->formataValorToUS(($this->valor / $this->getBid($this->moeda)) - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao));
+        $valorMenosTaxas = $this->valor - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao);
+        $calculo = $this->formataValorToUS(($valorMenosTaxas / $this->getBid($this->moeda)));
 
-        $this->valor = $this->formataValorToBR($this->valor);
         $this->resultado = $this->getCifrao($this->moeda) . ' ' . $calculo;
 
-
-       
         $arr_operacoes = [
             'moeda' => $this->getCifrao($this->moeda),
-            'valor' => $this->valor,
+            'valor' => $this->formataValorToBR($this->valor),
             'pagamento' => $this->pagamento,
             'valor_conversao' => $this->getBid($this->moeda),
             'valor_comprado' => $this->resultado,
-            'taxa_pagamento' => $this->taxaFormaPgto * 100,
-            'taxa_conversao' => $this->taxaValorConversao * 100,
-            'valor_conversao_sem_taxa' => null
+            'taxa_pagamento' => $this->formataValorToBR($this->valor * $this->taxaFormaPgto),
+            'taxa_conversao' => $this->formataValorToBR($this->valor * $this->taxaValorConversao),
+            'valor_conversao_sem_taxa' => $this->formataValorToBR($this->valor - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao))
         ];
 
         array_push($this->operacao, $arr_operacoes);
@@ -106,7 +110,7 @@ class Conversor extends Component
     }
 
     function limpaValor($valor) {
-        return str_replace('.', '', $valor);
+        return floatval(str_replace('.', '', $valor));
     }
 
     function formataValorToBR($valor) {

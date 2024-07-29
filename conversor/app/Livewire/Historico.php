@@ -14,8 +14,12 @@ class Historico extends Component
         $this->operacao = $operacao;
     }
 
+    public function limpar() {
+        $this->dispatch('limparHistorico');
+    }
+
     public function render()
     {
-        return view('livewire.historico', ['operacao' => $this->operacao]);
+        return view('livewire.historico');
     }
 }
