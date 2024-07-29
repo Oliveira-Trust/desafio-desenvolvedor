@@ -66,4 +66,9 @@ class FeeResource extends Resource
             'edit' => Pages\EditFee::route('/{record}/edit'),
         ];
     }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->isAdmin();
+    }
 }
