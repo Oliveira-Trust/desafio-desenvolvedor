@@ -18,4 +18,4 @@
     - MAIL_PORT=2525
     - MAIL_USERNAME=//your username
     - MAIL_PASSWORD=// your password
-- É possivel usar outras provedores de email, como o Gmail, basta colocar nas váriaveis de ambiente o usuário, senha e o host.
+- É possivel usar outros provedores de email, como o Gmail, basta colocar nas váriaveis de ambiente o usuário, senha e o host.
