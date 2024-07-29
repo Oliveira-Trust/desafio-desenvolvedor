@@ -7,7 +7,6 @@
 - **Laravel Breeze**: Implementação simples e leve de autenticação para aplicações Laravel.
 - **Laravel Sail**: Ambiente de desenvolvimento local utilizando Docker.
 - **MySQL**: Banco de dados utilizado no projeto.
-- **PEST**: Framework de testes para PHP.
 - **Flowbite**: Biblioteca de componentes UI.
 
 ## Instalação
@@ -65,4 +64,10 @@ O path incial "/" leva a tela padrão de login do framework, ao realizar o login
 Para registrar um novo usuário:
 <pre>/register</pre>
 
+### Email de cotação
+Rodar o queue
+```bash
+./vendor/bin/sail php artisan queue:work
+```
+A mensagem será gravada no log do Laravel, o serviço de envio não foi implementado por ser um teste.
 
