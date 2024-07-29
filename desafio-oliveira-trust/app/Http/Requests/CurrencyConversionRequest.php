@@ -20,9 +20,9 @@ class CurrencyConversionRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
+    {  
         return [            
-            'currency' => 'required|in:USD,GBP,JPY,EUR',
+            'destination_currency' => 'required|in:USD,GBP,JPY,EUR',
             'amount' => 'required|numeric|min:1000|max:100000',
             'payment_method' => 'required|in:boleto,credit_card'        
         ];

@@ -1,35 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
-{  
-    public function showLogin()
+{
+    public function showViewLogin()
     {
         return view('auth.login');
     }
     public function login()
-    {
-        $credentials = request(['email', 'password']);
-
-        if (! $token = Auth::guard('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }        
+    {        
         return redirect()->route('conversion');
-    }
-    public function logout()
-    {
-        Auth::guard('api')->logout();
-        return response()->json(['message' => 'Successfully logged out']);
-    }
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => Auth::guard('api')->factory()->getTTL() * 60
-        ]);
-    }
+    }    
+    public function apiLogin(Request $request)
+    {   
+        $credentials = $request->only(['email', 'password']);       
+        try {
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 400);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+        return response()->json(["token" => $token]);
+    }    
+    
 }

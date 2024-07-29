@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->aliasMiddleware('auth.api', Authenticate::class);
+        $router->aliasMiddleware('auth', Authenticate::class);
+        
     }
 }
