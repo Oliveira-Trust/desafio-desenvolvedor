@@ -268,4 +268,20 @@
             });
         });
     </script>
+
+    @if (session('status') === 'email-sent')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const tooltip = document.createElement('div');
+                tooltip.setAttribute('x-data', '{ show: true }');
+                tooltip.setAttribute('x-show', 'show');
+                tooltip.setAttribute('x-transition', '');
+                tooltip.setAttribute('x-init', 'setTimeout(() => show = false, 2000)');
+                tooltip.className = 'fixed bottom-4 right-4 bg-blue-500 text-white py-2 px-4 rounded-lg shadow-lg';
+                tooltip.innerText = 'Email enviado com sucesso.';
+
+                document.body.appendChild(tooltip);
+            });
+        </script>
+    @endif
 </x-app-layout>

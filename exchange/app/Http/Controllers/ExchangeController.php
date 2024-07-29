@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PostMail;
 use App\Models\Exchange;
 use App\Services\ExchangeService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ExchangeController extends Controller
 {
@@ -47,7 +49,11 @@ class ExchangeController extends Controller
      */
     public function email(int $id)
     {
-        dd($id);
+        $exchange = Exchange::where('id', $id)->first();
+
+        Mail::to(auth()->user()->email)->send(new PostMail(['exchange' => $exchange]));
+
+        return redirect()->route('exchange')->with('status', 'email-sent');
     }
 
     /**
