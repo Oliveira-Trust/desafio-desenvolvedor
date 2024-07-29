@@ -18,7 +18,11 @@ class ExchangeController extends Controller
      */
     public function index()
     {
-        return view('exchange');
+        $exchanges = Exchange::where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('exchange', ['exchanges' => $exchanges]);
     }
 
 
@@ -31,26 +35,28 @@ class ExchangeController extends Controller
 
         $exchangeRateData = $this->exchangeService->fetchExchangeValues($destinationCurrency . '-' . $targetCurrency);
         $conversionResult = $this->exchangeService->calculateConversion($amount, $paymentMethod, $exchangeRateData);
+        $conversionResult['user_id'] = auth()->id();
 
-        dd($conversionResult);
+        Exchange::create($conversionResult);
 
-        return response()->json($conversionResult);
+        return redirect()->route('exchange')->with('status', 'exchange-added');
     }
-
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Exchange $exchange)
+    public function email(int $id)
     {
-        //
+        dd($id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Exchange $exchange)
+    public function destroy(int $id)
     {
-        //
+        Exchange::destroy($id);
+
+        return redirect()->route('exchange');
     }
 }
