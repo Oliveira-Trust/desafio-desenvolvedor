@@ -2,7 +2,7 @@
 
 Aplicacao para conversao de moeda
 
-Link para acessar o projeto: http://216.238.119.59/
+Link para acessar o projeto: http://216.238.119.59/ (Sem redis e sem mailpit para teste de recebimento de email)
 
 ## Como rodar o projeto
 
