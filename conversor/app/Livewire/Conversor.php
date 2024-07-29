@@ -22,12 +22,18 @@ class Conversor extends Component
 
     public const TAXA_BOLETO = 0.0145;
     public const TAXA_CARTAO = 0.0763;
+    public const TAXA_VALOR_ABAIXO = 0.002;
+    public const TAXA_VALOR_ACIMA = 0.001;
 
+    public $taxaFormaPgto = 0;
+    public $taxaValorConversao = 0;
 
     public $messages = [
-        'valor.min' => 'O valor mínimo deve ser de R$ 1000',
+        'valor.min' => 'O valor mínimo deve ser de R$ 1.000,00',
         'valor.max' => 'O valor máximo deve ser de R$ 100.000,00',
     ];
+
+    public $operacao = [];
 
     function converter() {
 
@@ -35,14 +41,37 @@ class Conversor extends Component
         $this->validate();
 
         $calculo = 0;
-        if ($this->pagamento == 'boleto') {
-            $calculo = $this->formataValorToUS(($this->valor / $this->getBid($this->moeda)) - ($this->valor * self::TAXA_BOLETO));
+        if ($this->pagamento == 'Boleto') {
+            $this->taxaFormaPgto = self::TAXA_BOLETO;
         } else {
-            $calculo = $this->formataValorToUS(($this->valor / $this->getBid($this->moeda)) - ($this->valor * self::TAXA_CARTAO));
+            $this->taxaFormaPgto = self::TAXA_CARTAO;            
         }
+        
+        if ($this->valor < 3000) {
+            $this->taxaValorConversao = self::TAXA_VALOR_ABAIXO;
+        } else {
+            $this->taxaValorConversao = self::TAXA_VALOR_ACIMA;
+        }
+
+        $calculo = $this->formataValorToUS(($this->valor / $this->getBid($this->moeda)) - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao));
 
         $this->valor = $this->formataValorToBR($this->valor);
         $this->resultado = $this->getCifrao($this->moeda) . ' ' . $calculo;
+
+
+       
+        $arr_operacoes = [
+            'moeda' => $this->getCifrao($this->moeda),
+            'valor' => $this->valor,
+            'pagamento' => $this->pagamento,
+            'valor_conversao' => $this->getBid($this->moeda),
+            'valor_comprado' => $this->resultado,
+            'taxa_pagamento' => $this->taxaFormaPgto * 100,
+            'taxa_conversao' => $this->taxaValorConversao * 100,
+            'valor_conversao_sem_taxa' => null
+        ];
+
+        array_push($this->operacao, $arr_operacoes);
 
     }
 
@@ -91,6 +120,6 @@ class Conversor extends Component
     public function render()
     {
         $this->listarMoedas();
-        return view('livewire.conversor');
+        return view('livewire.conversor', ['operacao' => $this->operacao]);
     }
 }

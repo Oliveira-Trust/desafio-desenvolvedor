@@ -57,8 +57,10 @@
                         class="bg-white rounded w-full border border-gray-400 p-2 h-[42px]"
                     >
                         <option value="">Selecione</option>
-                        <option value="boleto">Boleto</option>
-                        <option value="cartao">Cartão de Crédito</option>
+                        <option value="Boleto">Boleto</option>
+                        <option value="Cartao de Crédito">
+                            Cartão de Crédito
+                        </option>
                     </select>
                     <p class="text-xs text-red-500 mt-1">
                         @error('pagamento') {{ $message }} @enderror
@@ -88,7 +90,9 @@
                 </h2>
             </div>
         </div>
+    </div>
 
-        @livewire('historico')
+    <div class="px-5">
+        <livewire:historico :operacao="$operacao" />
     </div>
 </div>
