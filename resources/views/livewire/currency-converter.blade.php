@@ -30,13 +30,12 @@
                                 <label for="amount" class="@error('amount') text-red-400 @enderror">Valor
                                     para Conversão (BRL)</label>
                                 <input
-                                    placeholder="1000.00"
-                                    type="number"
+                                    placeholder="1000,00"
                                     id="amount"
-                                    wire:model.blur="amount"
-                                    step="0.01"
+                                    wire:model="amount"
                                     min="1000"
                                     max="100000"
+                                    x-mask:dynamic="$money($input, ',', '.', 2)"
                                     class="@error('amount') border-red-400 @enderror col-span-4 block w-full p-2.5 text-gray-900 border rounded-lg bg-gray-50 text-base focus:ring-base-red focus:border-base-red mt-2">
                             </div>
 

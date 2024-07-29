@@ -14,7 +14,7 @@ use Livewire\Component;
 class CurrencyConverter extends Component
 {
     public string $destinationCurrency;
-    public float $amount;
+    public string $amount;
     public string $paymentMethod;
     public array $paymentMethodTax = [0.0145, 0.0763];
     public array $taxConversion = [0.02, 0.01];
@@ -47,8 +47,19 @@ class CurrencyConverter extends Component
         $this->taxConversion = [$taxConversion1, $taxConversion2];
     }
 
+    private function convertToFloat($value)
+    {
+        // Remove pontos (separadores de milhar)
+        $normalizedValue = str_replace('.', '', $value);
+        // Substitui a vírgula por ponto (separador decimal)
+        $normalizedValue = str_replace(',', '.', $normalizedValue);
+        // Converte a string para float
+        return floatval($normalizedValue);
+    }
+
     public function convert(AwesomeApiService $awesomeApiService): void
     {
+        $this->amount = $this->convertToFloat($this->amount);
         $this->validate();
 
         $exchangeRate = $awesomeApiService->getExchangeRate($this->destinationCurrency);
