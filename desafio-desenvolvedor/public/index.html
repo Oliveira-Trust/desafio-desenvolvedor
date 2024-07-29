@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão de Moeda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversão de Moeda</h1>
+        <form id="conversionForm" action="convert.php" method="POST">
+            <div class="form-group">
+                <label for="moedaOrigem">Moeda de origem:</label>
+                <select id="moedaOrigem" name="moedaOrigem">
+                    <option value="BRL">BRL</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="moedaDestino">Moeda de destino:</label>
+                <select id="moedaDestino" name="moedaDestino">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor para conversão (R$):</label>
+                <input type="number" id="valor" name="valor" min="1000" max="100000" required>
+            </div>
+            <div class="form-group">
+                <label for="formaPagamento">Forma de pagamento:</label>
+                <select id="formaPagamento" name="formaPagamento">
+                    <option value="boleto">Boleto</option>
+                    <option value="cartao">Cartão de Crédito</option>
+                </select>
+            </div>
+            <button type="submit">Converter</button>
+        </form>
+
+        <div id="taxaAtualizada" class="taxa-atualizada"></div>
+    </div>
+
+    <script>
+        // Função para atualizar a taxa de câmbio
+        function atualizarTaxaCambio() {
+            const moedaOrigem = document.getElementById('moedaOrigem').value;
+            const moedaDestino = document.getElementById('moedaDestino').value;
+            const url = `https://economia.awesomeapi.com.br/json/last/${moedaOrigem}-${moedaDestino}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const taxa = data[`${moedaOrigem}${moedaDestino}`].bid;
+                    const taxaAtualizadaDiv = document.getElementById('taxaAtualizada');
+                    taxaAtualizadaDiv.textContent = `Taxa de câmbio atualizada: ${taxa}`;
+                })
+                .catch(error => console.error('Erro ao atualizar a taxa de câmbio:', error));
+        }
+
+        // Atualiza a taxa de câmbio a cada 30 segundos
+        setInterval(atualizarTaxaCambio, 30000);
+
+        // Atualiza a taxa de câmbio ao carregar a página
+        document.addEventListener('DOMContentLoaded', atualizarTaxaCambio);
+    </script>
+</body>
+</html>
+
