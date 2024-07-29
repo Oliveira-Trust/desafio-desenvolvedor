@@ -1,0 +1,44 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@inertiajs/vue3": "^1.0.15",
+        "@popperjs/core": "^2.11.0",
+        "@vitejs/plugin-vue": "^5.0.4",
+        "@vue/server-renderer": "^3.4.0",
+        "autoprefixer": "^10.4.19",
+        "eslint": "^8.4.1",
+        "eslint-plugin-vue": "^9.3.0",
+        "laravel-echo": "^1.16.1",
+        "laravel-vite-plugin": "^1.0.2",
+        "lodash": "^4.17.21",
+        "postcss": "^8.4.38",
+        "postcss-import": "^16.1.0",
+        "prettier": "^2.7.1",
+        "prettier-plugin-tailwind": "^2.2.12",
+        "pusher-js": "^8.4.0-rc2",
+        "tailwindcss": "^3.4.3",
+        "tw-elements": "^2.0.0",
+        "uuid": "^8.3.2",
+        "vite": "^5.2.7",
+        "vite-plugin-vuetify": "^2.0.3",
+        "vue": "^3.4.27",
+        "vuetify": "^3.6.3"
+    },
+    "dependencies": {
+        "@mdi/font": "^7.4.47",
+        "@vue/cli-plugin-pwa": "^5.0.8",
+        "axios": "^1.7.2",
+        "crypto-js": "^4.2.0",
+        "fuse.js": "^7.0.0",
+        "moment": "^2.30.1",
+        "v-money": "^0.8.1",
+        "vue-the-mask": "^0.11.1",
+        "vue-toastification": "^2.0.0-rc.5"
+    },
+    "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}
