@@ -96,12 +96,17 @@ class Exchange extends Page
 
     protected function getTableData(): array
     {
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . auth()->user()->createToken('auth_token')->plainTextToken
-        ])
-            ->get('laravel.test/api/v1/exchanges', []);
+        try {
+            $response = Http::withHeaders([
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . auth()->user()->createToken('auth_token')->plainTextToken
+            ])
+                ->get('laravel.test/api/v1/exchanges', []);
 
-        return $response->json();
+            return $response->json();
+        } catch (\Throwable) {
+        }
+
+        return [];
     }
 }
