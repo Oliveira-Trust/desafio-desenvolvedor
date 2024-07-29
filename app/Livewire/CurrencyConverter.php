@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Mail\SendCurrency;
 use App\Services\AwesomeApiService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
@@ -109,6 +111,17 @@ class CurrencyConverter extends Component
             $this->dispatch('currency-created');
         }
     }
+
+    public function sendMail(): void
+    {
+        $user = Auth::user();
+        $result = $this->result;
+
+        Mail::to($user->email)->send(new SendCurrency($result));
+
+        $this->dispatch('success-alert', status: 'success', message: 'O resultado da cotação foi enviado por e-mail.');
+    }
+
 
     #[On('userLoggedOut')]
     public function reload(): void

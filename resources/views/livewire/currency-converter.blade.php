@@ -11,14 +11,16 @@
         <div class="flex-1 flex flex-col gap-y-5">
             <div class="bg-white rounded-2xl p-4 shadow-sm">
                 <form class="mt-2" wire:submit="convert">
-                    <h1 class="text-2xl font-bold">Faça sua conversão agora mesmo</h1>
+                    <h1 class="text-2xl font-bold flex-1">Faça sua conversão agora mesmo</h1>
 
                     <div class="my-3 gap-y-2 flex flex-col">
                         <p class="text-zinc-400">
-                            Valores abaixo de 3000, a taxa será de {{$taxConversion[0]}} e, acima, {{$taxConversion[1]}}.
+                            Valores abaixo de 3000, a taxa será de {{$taxConversion[0]}} e, acima, {{$taxConversion[1]}}
+                            .
                         </p>
                         <p class="text-zinc-400">
-                            Para pagamentos em cartão, a taxa será de {{$paymentMethodTax[1]}} e, caso seja boleto, {{$paymentMethodTax[0]}}.
+                            Para pagamentos em cartão, a taxa será de {{$paymentMethodTax[1]}} e, caso seja
+                            boleto, {{$paymentMethodTax[0]}}.
                         </p>
                     </div>
 
@@ -78,8 +80,12 @@
 
             @if(!empty($result))
                 <div class="bg-white max-w-screen w-full rounded-2xl p-6">
-                    <h3 class="text-2xl font-bold mb-3">Resultado da Conversão</h3>
-
+                    <div class="flex flex-row justify-between">
+                        <h3 class="text-2xl font-bold mb-3 flex-1">Resultado da Conversão</h3>
+                        <div class="">
+                            <button type="button" wire:click="sendMail" class="base-button">Enviar por email</button>
+                        </div>
+                    </div>
                     <div class="flex flex-col w-full gap-y-1.5">
                         <p>Moeda de Origem: {{ $result['source_currency'] }}</p>
                         <p>Moeda de Destino: {{ $result['destination_currency'] }}</p>
