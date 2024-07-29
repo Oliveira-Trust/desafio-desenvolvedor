@@ -12,7 +12,7 @@ class CurrencyHistoric extends Component
     use WithPagination;
 
     #[On('currency-created')]
-    public function updateCurrencyList()
+    public function updateCurrencyList(): void
     {
         $this->render();
     }
@@ -20,7 +20,7 @@ class CurrencyHistoric extends Component
     public function render(): View
     {
         return view('livewire.currency-historic', [
-            'historic' => \App\Models\CurrencyHistoric::orderBy('created_at', 'desc')->paginate(4),
+            'historic' => \App\Models\CurrencyHistoric::where('user_id', auth()->id())->orderBy('created_at', 'desc')->paginate(4),
         ]);
     }
 }

@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'payment_method_tax',
+        'tax_conversion',
     ];
 
     /**
@@ -43,6 +45,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'payment_method_tax' => 'array',
+            'tax_conversion' => 'array',
         ];
     }
 

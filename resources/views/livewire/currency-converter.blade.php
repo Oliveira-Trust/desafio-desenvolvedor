@@ -10,21 +10,32 @@
     <div class="w-full flex gap-3.5 flex-col md:flex-row">
         <div class="flex-1 flex flex-col gap-y-5">
             <div class="bg-white rounded-2xl p-4 shadow-sm">
-                {{--        <div class="">--}}
-                {{--            <button class="text-base-red">< Voltar</button>--}}
-                {{--        </div>--}}
-
                 <form class="mt-2" wire:submit="convert">
                     <h1 class="text-2xl font-bold">Faça sua conversão agora mesmo</h1>
+
+                    <div class="my-3 gap-y-2 flex flex-col">
+                        <p class="text-zinc-400">
+                            Valores abaixo de 3000, a taxa será de {{$taxConversion[0]}} e, acima, {{$taxConversion[1]}}.
+                        </p>
+                        <p class="text-zinc-400">
+                            Para pagamentos em cartão, a taxa será de {{$paymentMethodTax[1]}} e, caso seja boleto, {{$paymentMethodTax[0]}}.
+                        </p>
+                    </div>
 
                     <div class="my-8">
                         <div class="gap-x-2 grid grid-cols-2 gap-y-4">
                             <div class="col-span-full">
-                                <label for="destinationCurrency" class="@error('amount') text-red-400 @enderror">Valor
+                                <label for="amount" class="@error('amount') text-red-400 @enderror">Valor
                                     para Conversão (BRL)</label>
-                                <input placeholder="1000,20" type="number" id="amount" wire:model.blur="amount"
-                                       min="1000" max="100000"
-                                       class="@error('amount') border-red-400 @enderror col-span-4 block w-full p-2.5 text-gray-900 border rounded-lg bg-gray-50 text-base focus:ring-base-red focus:border-base-red mt-2">
+                                <input
+                                    placeholder="1000.00"
+                                    type="number"
+                                    id="amount"
+                                    wire:model.blur="amount"
+                                    step="0.01"
+                                    min="1000"
+                                    max="100000"
+                                    class="@error('amount') border-red-400 @enderror col-span-4 block w-full p-2.5 text-gray-900 border rounded-lg bg-gray-50 text-base focus:ring-base-red focus:border-base-red mt-2">
                             </div>
 
                             <div class="">
@@ -52,7 +63,14 @@
                         </div>
                     </div>
 
-                    <div class="flex w-full justify-end">
+                    <div class="grid grid-cols-2 gap-x-2">
+                        <button
+                            type="button"
+                            wire:click="$dispatch('openModal', { component: 'components.config-tax'
+                            , arguments: { paymentMethodTax1: {{$this->paymentMethodTax[0]}}, paymentMethodTax2: {{$this->paymentMethodTax[1]}}, taxConversion1: {{$this->taxConversion[0]}}, taxConversion2: {{$this->taxConversion[1]}} }})"
+                            class="border-button">
+                            Configurações
+                        </button>
                         <button type="submit" class="base-button">Converter</button>
                     </div>
                 </form>

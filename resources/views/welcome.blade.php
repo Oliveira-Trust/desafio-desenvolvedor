@@ -29,5 +29,7 @@
 
     <livewire:currency-converter/>
 </main>
+
+@livewire('wire-elements-modal')
 </body>
 </html>
