@@ -20,7 +20,7 @@ class ExchangeController extends Controller
 
     public function index(): JsonResponse
     {
-        $exchange = Exchange::where('user_id', auth()->user()->id)->get();
+        $exchange = Exchange::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
         return response()->json(ExchangeResource::collection($exchange));
     }
 
