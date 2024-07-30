@@ -4,6 +4,9 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 
+/**
+ * @method static shouldReceive(string $string)
+ */
 class AwesomeApiService
 {
     const URL_BASE = 'https://economia.awesomeapi.com.br/json';

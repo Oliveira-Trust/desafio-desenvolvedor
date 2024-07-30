@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method static create(array $all)
+ * @method static find($id)
+ */
 class Quote extends Model
 {
     use SoftDeletes;
@@ -20,6 +24,8 @@ class Quote extends Model
         'conversion_fee',
         'converted_amount',
         'final_amount',
+        'payment_fee',
+        'value_target_currency',
     ];
 
     public function user(): BelongsTo

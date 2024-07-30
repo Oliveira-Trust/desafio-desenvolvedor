@@ -3,12 +3,6 @@ import { Link, router } from '@inertiajs/vue3'
 
 const menu = [
     {
-        title: 'Dashboard',
-        name: 'dashboard',
-        icon: 'mdi mdi-view-dashboard',
-        route_uri: '/',
-    },
-    {
         title: 'Cotação',
         name: 'quote.index',
         icon: 'mdi mdi-cash-sync',

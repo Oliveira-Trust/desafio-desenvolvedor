@@ -5,6 +5,7 @@ import { Head, Link, router, useForm } from '@inertiajs/vue3'
 import axios from 'axios'
 
 const props = defineProps({
+    quote: Object,
     sourceCurrencies: Object,
     targetCurrencies: Object,
     paymentMethods: Array
@@ -19,19 +20,19 @@ const currencyMask = {
 }
 
 const form = useForm({
-    source_currency: 'BRL',
-    target_currency: null,
-    original_amount: null,
-    payment_method: null,
-    payment_fee: null,
-    conversion_fee:null,
-    converted_amount: null,
-    final_amount: null,
-    value_target_currency: null,
+    source_currency: props.quote.source_currency,
+    target_currency: props.quote.target_currency,
+    original_amount: props.quote.original_amount,
+    payment_method: props.quote.payment_method,
+    payment_fee: props.quote.payment_fee,
+    conversion_fee: props.quote.conversion_fee,
+    converted_amount: props.quote.converted_amount,
+    final_amount: props.quote.final_amount,
+    value_target_currency: props.quote.value_target_currency,
 })
 
 const submit = () => {
-    form.post(route('quote.store'), {
+    form.put(route('quote.update', props.quote.id), {
         onSuccess: () => {
             router.visit(route('quote.index'))
         },

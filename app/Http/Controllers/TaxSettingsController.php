@@ -38,6 +38,6 @@ class TaxSettingsController extends Controller
         ]);
         $taxSettings = TaxSettings::find($id);
         $taxSettings->update($request->all());
-        return redirect()->route('tax-settings.index')->with('success', 'Taxas Atualizadas com sucesso!');
+        return redirect()->back()->with('success', 'Taxas Atualizadas com sucesso!');
     }
 }

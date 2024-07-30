@@ -6,7 +6,7 @@ import { Head, Link } from '@inertiajs/vue3'
 const props = defineProps({
     taxSettings: Array
 })
-console.log(props.taxSettings)
+
 const breadcrumbs = [
     { title: 'Dashboard', disabled: false, href: '/' },
     { title: 'Lista', disabled: true}
