@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
-            $table->string('id', 15)->primary();
-            $table->string('name', 25);
-            $table->decimal('fee', 5, 2);
+        Schema::create('conversion_fees', function (Blueprint $table) {
+            $table->id();
+            $table->decimal('lower_than_threshold', 5, 2);
+            $table->decimal('greater_than_threshold', 5, 2);
+            $table->decimal('amount_threshold', 10, 2);
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('conversion_fees');
     }
 };
