@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 use Illuminate\View\View;
 use Throwable;
 
-class ConverterCurrencyController extends Controller
+class ConversorMoedaController extends Controller
 {
     public function __construct(
         private readonly ConversorMoedaService $conversorMoedaService
@@ -33,6 +33,10 @@ class ConverterCurrencyController extends Controller
         ]);
     }
 
+    /**
+     * @param RequestConversaoMoeda $requestConversaoMoeda
+     * @return JsonResponse
+     */
     public function storeConversion(RequestConversaoMoeda $requestConversaoMoeda): JsonResponse
     {
         try {

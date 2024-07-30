@@ -54,18 +54,18 @@ class ConversorMoedaService
         return $this->buscadorTaxaCambio->obterTaxaCambio($moedaDestino);
     }
 
-    private function calcularTaxas()
+    private function calcularTaxas(): void
     {
         $this->taxaPagamento = $this->calcularTaxaPagamento();
         $this->taxaConversao = $this->calcularTaxaConversao();
     }
 
-    private function definirTaxaCambio(float $taxaCambio)
+    private function definirTaxaCambio(float $taxaCambio): void
     {
         $this->taxaCambio = $taxaCambio;
     }
 
-    private function realizarConversao()
+    private function realizarConversao(): void
     {
         $this->calcularTaxas();
         $valorFinal = $this->valor - $this->taxaPagamento - $this->taxaConversao;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ConverterCurrencyController;
+use App\Http\Controllers\ConversorMoedaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [ConverterCurrencyController::class, 'index'])
+Route::get('/dashboard', [ConversorMoedaController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -30,10 +30,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('moeda')->middleware(['auth'])->group(function () {
-    Route::get('/formulario', [ConverterCurrencyController::class, 'showForm'])
+    Route::get('/formulario', [ConversorMoedaController::class, 'showForm'])
         ->name('moeda.formulario');
 
-    Route::post('/converter', [ConverterCurrencyController::class, 'storeConversion'])
+    Route::post('/converter', [ConversorMoedaController::class, 'storeConversion'])
         ->name('moeda.converter');
 });
 
