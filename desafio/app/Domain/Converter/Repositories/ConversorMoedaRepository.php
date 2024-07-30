@@ -4,6 +4,8 @@ namespace App\Domain\Converter\Repositories;
 
 use App\Domain\Converter\Entities\Transacao;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class ConversorMoedaRepository
 {
@@ -20,7 +22,7 @@ class ConversorMoedaRepository
             );
     }
 
-    public function salvar(array $data)
+    public function salvar(array $data): Model|Builder
     {
         return $this->transacao->query()->create($data);
     }

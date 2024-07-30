@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class RequestConversaoMoeda extends FormRequest
 {
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         $this->merge([
             'valor' => preg_replace('/\D/', '', $this->valor),
