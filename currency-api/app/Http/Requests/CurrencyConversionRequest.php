@@ -24,7 +24,7 @@ class CurrencyConversionRequest extends FormRequest
         return [
             'target_coin' => 'required|string',
             'payment_method' => 'required|string|exists:payment_methods,id',
-            'value' => 'required|numeric|between:1000,100000'
+            'amount' => 'required|numeric|between:1000,100000'
         ];
     }
 }
