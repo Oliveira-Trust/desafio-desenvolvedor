@@ -1,11 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-label {
-    @apply text-sm flex mb-1;
-}
-
-input {
-    @apply outline-none;
-}

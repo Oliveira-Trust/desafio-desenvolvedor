@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class Conversor extends Component
 {
@@ -100,6 +101,10 @@ class Conversor extends Component
         }
     }
 
+    function getTaxas() {
+        return "";
+    }
+
     function getBid($string) {
         $bid = explode('|', $string)[1];
         return floatval($bid);
@@ -121,9 +126,17 @@ class Conversor extends Component
         return number_format($valor, 2, '.', ',');
     }
 
+    public function mount() {
+        $this->moedas;
+    }
+
     public function render()
     {
         $this->listarMoedas();
-        return view('livewire.conversor', ['operacao' => $this->operacao]);
+        return view('conversor', [
+            'moedas' => $this->moedas,
+            'resultado' => $this->resultado,
+            'message' => $this->messages
+        ])->layout('layouts.app');
     }
 }
