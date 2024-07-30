@@ -53,6 +53,13 @@ Para popular o banco de dados com dados iniciais, execute:
 php artisan db:seed
 ```
 
+### 2. Executar node
+
+Necessario execultar o node para build no node
+```bash
+npm run dev
+```
+
 ### 3. Iniciar o Servidor
 
 Para iniciar o servidor de desenvolvimento, execute:
