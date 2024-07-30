@@ -4,8 +4,10 @@ namespace App\Services;
 
 use App\Models\ConversionFee;
 use App\Models\PaymentMethod;
+use App\Models\UserConversion;
 use App\Services\AwesomeAPI\AwesomeAPIService;
 use App\Services\AwesomeAPI\Exceptions\CurrencyQuoteNotFoundException;
+use Illuminate\Support\Facades\DB;
 
 readonly class CurrencyConversionService
 {
@@ -14,15 +16,17 @@ readonly class CurrencyConversionService
     /**
      * Convert the given amount from BRL to the target currency applying the specified payment method fees and conversion fees.
      *
-     * @param string $currencyTo
+     * @param string $destinationCurrency
      * @param float $amount
      * @param string $paymentMethodCode
-     * @return array
+     * @param int $userId
+     * @return UserConversion
+     * @throws CurrencyQuoteNotFoundException
      * @throws \Exception
      */
-    public function convert(string $currencyTo, float $amount, string $paymentMethodCode): array
+    public function convert(string $destinationCurrency, float $amount, string $paymentMethodCode, int $userId): UserConversion
     {
-        if ($currencyTo === 'BRL') {
+        if ($destinationCurrency === 'BRL') {
             throw new \Exception("Destination currency cannot be BRL.");
         }
 
@@ -34,20 +38,44 @@ readonly class CurrencyConversionService
         $conversionFee = $this->getConversionFee($amount);
 
         try {
-            $quote = $this->awesomeAPIService->getCurrencyQuote('BRL', $currencyTo);
+            $quote = $this->awesomeAPIService->getCurrencyQuote('BRL', $destinationCurrency);
         } catch (CurrencyQuoteNotFoundException $e) {
-            throw new \Exception("Currency quote for {$currencyTo} not found.");
+            throw new \Exception("Currency quote for {$destinationCurrency} not found.");
         }
 
         $totalWithFees = $amount - $paymentFee - $conversionFee;
         $convertedAmount = $totalWithFees / $quote->buyRate;
 
-        return [
-            'converted_amount' => $convertedAmount,
-            'payment_fee' => $paymentFee,
-            'conversion_fee' => $conversionFee,
-            'total_with_fees' => $totalWithFees
-        ];
+        try {
+            DB::beginTransaction();
+
+            $userConversion = UserConversion::create([
+                'user_id' => $userId,
+                'source_currency' => 'BRL',
+                'destination_currency' => $destinationCurrency,
+                'original_amount' => $amount,
+                'payment_method' => $paymentMethodCode,
+                'amount_in_destination_currency' => $convertedAmount,
+                'payment_fee' => $paymentFee,
+                'conversion_fee' => $conversionFee,
+                'total_with_fees' => $totalWithFees,
+            ]);
+
+            DB::commit();
+
+            return $userConversion;
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            throw $e;
+        }
+    }
+
+    public function getConversionsHistoryByUserId(int $userId)
+    {
+        return UserConversion::where('user_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
 
     /**
