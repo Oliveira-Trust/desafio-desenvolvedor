@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'awesome_api' => [
+        'base_url' => env('AWESOME_API_BASE_URL', 'https://economia.awesomeapi.com.br/json/')
+    ]
 ];
