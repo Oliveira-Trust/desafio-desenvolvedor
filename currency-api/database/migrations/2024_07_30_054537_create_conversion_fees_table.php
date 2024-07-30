@@ -16,7 +16,7 @@ return new class extends Migration
             $table->decimal('lower_than_threshold', 5, 2);
             $table->decimal('greater_than_threshold', 5, 2);
             $table->decimal('amount_threshold', 10, 2);
-            $table->boolean('active');
+            $table->timestamp('effective_date')->nullable();
             $table->timestamps();
         });
     }

@@ -13,18 +13,32 @@ class ConversionFee extends Model
         'lower_than_threshold',
         'greater_than_threshold',
         'amount_threshold',
-        'active'
+        'effective_date'
     ];
 
     protected $casts = [
         'lower_than_threshold' => 'float',
         'greater_than_threshold' => 'float',
         'amount_threshold' => 'float',
-        'active' => 'boolean',
+        'effective_date' => 'datetime',
     ];
 
-    public function scopeActive($query)
+    protected static function boot(): void
     {
-        return $query->where('active', true);
+        parent::boot();
+
+        static::saving(function ($model) {
+            $model->effective_date = now();
+        });
+    }
+
+    /**
+     * Get the active conversion fee.
+     *
+     * @return ConversionFee|null
+     */
+    public static function getActive(): ?self
+    {
+        return self::orderBy('effective_date', 'desc')->first();
     }
 }

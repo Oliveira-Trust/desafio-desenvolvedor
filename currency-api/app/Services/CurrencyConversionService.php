@@ -76,7 +76,7 @@ readonly class CurrencyConversionService
      */
     private function getConversionFee(float $amount): float
     {
-        if (!$conversionFee = ConversionFee::active()->first()) {
+        if (!$conversionFee = ConversionFee::getActive()) {
             throw new \Exception('Conversion fee not found.');
         }
 
