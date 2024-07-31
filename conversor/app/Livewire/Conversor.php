@@ -101,10 +101,7 @@ class Conversor extends Component
         }
     }
 
-    function getTaxas() {
-        return "";
-    }
-
+    
     function getBid($string) {
         $bid = explode('|', $string)[1];
         return floatval($bid);
