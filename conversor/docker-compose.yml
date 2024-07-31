@@ -4,7 +4,7 @@ services:
         image: "postgres:15-alpine"
         working_dir: /application
         volumes:
-            - "./phpdocker/db:/var/lib/postgresql/data"
+            - "./phpdocker/data:/var/lib/postgresql/data"
 
         environment:
             - POSTGRES_USER=admin
