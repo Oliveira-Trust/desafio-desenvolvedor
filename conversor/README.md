@@ -14,7 +14,5 @@
     - Digitar no terminal: `docker exec -it conversor_php /bin/bash`
     - Digitar no terminal: `php artisan migrate`
     - Digitar no terminal: `php artisan db:seed`
-5. Dar permissão de acesso à pasta **/phpdocker/db**.
-    - Digitar no terminal: `sudo chmod -R 777 /phpdocker/db`
-6. Abrir o navegador e digitar o seguinte endereço para acessar a aplicação:
+5. Abrir o navegador e digitar o seguinte endereço para acessar a aplicação:
     - `http://localhost:8000`

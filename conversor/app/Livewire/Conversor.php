@@ -7,7 +7,7 @@ use App\Models\TaxaValorCompra;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Http;
+use App\Helpers\GlobalHelper;
 
 class Conversor extends Component
 {
@@ -29,9 +29,6 @@ class Conversor extends Component
     public $valorBaseCompra = 0;
     public $taxaValorMenor = 0;
     public $taxaValorMaior = 0;
-    // public const TAXA_VALOR_ABAIXO = 0.02;
-    // public const TAXA_VALOR_ACIMA = 0.01;
-
 
     public $taxaFormaPgto = 0;
     public $taxaValorConversao = 0;
@@ -50,7 +47,7 @@ class Conversor extends Component
 
     function converter() {
 
-        $this->valor = $this->limpaValor($this->valor);
+        $this->valor = GlobalHelper::limpaValor($this->valor);
 
         $this->validate();
 
@@ -68,19 +65,19 @@ class Conversor extends Component
         }
 
         $valorMenosTaxas = $this->valor - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao);
-        $calculo = $this->formataValorToUS(($valorMenosTaxas / $this->getBid($this->moeda)));
+        $calculo = GlobalHelper::formataValorToUS(($valorMenosTaxas / GlobalHelper::getBid($this->moeda)));
 
-        $this->resultado = $this->getCifrao($this->moeda) . ' ' . $calculo;
+        $this->resultado = GlobalHelper::getCifrao($this->moeda) . ' ' . $calculo;
 
         $arr_operacoes = [
-            'moeda' => $this->getCifrao($this->moeda),
-            'valor' => $this->formataValorToBR($this->valor),
+            'moeda' => GlobalHelper::getCifrao($this->moeda),
+            'valor' => GlobalHelper::formataValorToBR($this->valor),
             'pagamento' => $this->pagamento,
-            'valor_conversao' => $this->getBid($this->moeda),
+            'valor_conversao' => GlobalHelper::getBid($this->moeda),
             'valor_comprado' => $this->resultado,
-            'taxa_pagamento' => $this->formataValorToBR($this->valor * $this->taxaFormaPgto),
-            'taxa_conversao' => $this->formataValorToBR($this->valor * $this->taxaValorConversao),
-            'valor_conversao_sem_taxa' => $this->formataValorToBR($this->valor - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao))
+            'taxa_pagamento' => GlobalHelper::formataValorToBR($this->valor * $this->taxaFormaPgto),
+            'taxa_conversao' => GlobalHelper::formataValorToBR($this->valor * $this->taxaValorConversao),
+            'valor_conversao_sem_taxa' => GlobalHelper::formataValorToBR($this->valor - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao))
         ];
 
         array_push($this->operacao, $arr_operacoes);
@@ -128,37 +125,12 @@ class Conversor extends Component
         }
     }
 
-    
-    function getBid($string) {
-        $bid = explode('|', $string)[1];
-        return floatval($bid);
-    }
-
-    function getCifrao($string) {
-        return $string = explode('|', $string)[0];
-    }
-
-    function limpaValor($valor) {
-        return floatval(str_replace('.', '', $valor));
-    }
-
-    function formataValorToBR($valor) {
-        return number_format($valor, 2, ',', '.');
-    }
-
-    function formataValorToUS($valor) {
-        return number_format($valor, 2, '.', ',');
-    }
-
-    public function mount() {
-        $this->moedas;
-    }
-
     public function render()
     {
         $this->listarMoedas();
         $this->getTaxasPagamento();
         $this->getTaxasValor();
+        
         return view('conversor', [
             'moedas' => $this->moedas,
             'resultado' => $this->resultado,
