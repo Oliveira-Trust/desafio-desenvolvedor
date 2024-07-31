@@ -45,7 +45,7 @@
                     <td
                         class="text-center text-sm border border-slate-800 text-slate-200"
                     >
-                        Taxa de Pagamento
+                        Taxa de Pagamento <br> (Boleto/Cartão)
                     </td>
                     <td
                         class="text-center text-sm border border-slate-800 text-slate-200"
@@ -55,38 +55,38 @@
                     <td
                         class="text-center text-sm border border-slate-800 text-slate-200"
                     >
-                        Valor utilizado para conversão descontada a taxa
+                        Valor utilizado para conversão <br> descontadas as taxas
                     </td>
                 </tr>
                 @foreach ($operacao as $oper)
                 <tr>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm border bg-white border-slate-800 py-1">
                         BLR
                     </td>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm border bg-white border-slate-800 py-1">
                         {{ $oper["moeda"] }}
                     </td>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm border bg-white border-slate-800 py-1">
                         R$ {{ $oper["valor"] }}
                     </td>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm border bg-white border-slate-800 py-1">
                         {{ $oper["pagamento"] }}
                     </td>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm border bg-white border-slate-800 py-1">
                         {{ $oper["valor_conversao"] }}
                     </td>
                     <td
-                        class="text-center text-sm border bg-white border-slate-800 bg-emerald-200"
+                        class="text-center text-sm border bg-white border-slate-800 py-1 bg-emerald-300"
                     >
                         {{ $oper["valor_comprado"] }}
                     </td>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm text-red-500 border bg-white border-slate-800 py-1">
                         R$ {{ $oper["taxa_pagamento"] }}
                     </td>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm text-red-500 border bg-white border-slate-800 py-1">
                         R$ {{ $oper["taxa_conversao"] }}
                     </td>
-                    <td class="text-center text-sm border bg-white border-slate-800">
+                    <td class="text-center text-sm border bg-white border-slate-800 py-1">
                         R$ {{ $oper["valor_conversao_sem_taxa"] }}
                     </td>
                 </tr>

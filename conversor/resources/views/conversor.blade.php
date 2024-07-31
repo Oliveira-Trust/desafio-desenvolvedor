@@ -1,10 +1,10 @@
 
-<div class="py-12">
+<div class="py-8">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 
-                <div class="max-w-screen-lg mx-auto py-10">
+                <div class="max-w-screen-lg mx-auto">
                     <h1 class="text-center text-3xl font-medium">
                         Bem vindo ao Conversor de Moedas!
                     </h1>
@@ -14,7 +14,7 @@
                     </p>
             
                     <form wire:submit.prevent="converter">
-                        <div class="mt-20 gap-3 grid grid-cols-4 pb-4">
+                        <div class="mt-10 gap-3 grid grid-cols-4 pb-4">
                             <div class="form-control">
                                 <label for="valor">Valor em Reais (R$)</label>
                                 <input

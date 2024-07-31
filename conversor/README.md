@@ -14,7 +14,7 @@
 3. Acessar o container do PHP no docker e rodar as migrations e seeders:
     - Digitar no terminal: `docker exec -it conversor_php /bin/bash`
     - Digitar no terminal: `php artisan migrate`
-    - Digitar no terminal: `php artisan db:seed --class=TaxasParaFormasDePagamentoSeeder`
+    - Digitar no terminal: `php artisan db:seed`
 4. Dar permissão de acesso à pasta **/phpdocker/db**.
     - Digitar no terminal: `sudo chmod -R 777 /phpdocker/db`
 5. Abrir o navegador e digitar o seguinte endereço para acessar a aplicação:

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\TaxaPagamento;
+use App\Models\TaxaValorCompra;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use GuzzleHttp\Client;
@@ -24,10 +25,13 @@ class Conversor extends Component
 
     public $taxaBoleto = 0;
     public $taxaCartao = 0;
-    // public const TAXA_BOLETO = 0.0145;
-    // public const TAXA_CARTAO = 0.0763;
-    public const TAXA_VALOR_ABAIXO = 0.02;
-    public const TAXA_VALOR_ACIMA = 0.01;
+
+    public $valorBaseCompra = 0;
+    public $taxaValorMenor = 0;
+    public $taxaValorMaior = 0;
+    // public const TAXA_VALOR_ABAIXO = 0.02;
+    // public const TAXA_VALOR_ACIMA = 0.01;
+
 
     public $taxaFormaPgto = 0;
     public $taxaValorConversao = 0;
@@ -57,10 +61,10 @@ class Conversor extends Component
             $this->taxaFormaPgto = $this->taxaCartao;            
         }
         
-        if ($this->valor < 3000) {
-            $this->taxaValorConversao = self::TAXA_VALOR_ABAIXO;
+        if ($this->valor < $this->valorBaseCompra) {
+            $this->taxaValorConversao = $this->taxaValorMenor;
         } else {
-            $this->taxaValorConversao = self::TAXA_VALOR_ACIMA;
+            $this->taxaValorConversao = $this->taxaValorMaior;
         }
 
         $valorMenosTaxas = $this->valor - ($this->valor * $this->taxaFormaPgto) - ($this->valor * $this->taxaValorConversao);
@@ -93,7 +97,14 @@ class Conversor extends Component
                 $this->taxaCartao = $tx['taxa'];
             }
         }
-       
+    }
+
+    public function getTaxasValor() {
+        $taxasValor = TaxaValorCompra::first();
+
+        $this->valorBaseCompra = $taxasValor['valor_base'];
+        $this->taxaValorMenor = $taxasValor['taxa_menor_valor'];
+        $this->taxaValorMaior = $taxasValor['taxa_maior_valor'];
     }
 
     function listarMoedas() {
@@ -147,6 +158,7 @@ class Conversor extends Component
     {
         $this->listarMoedas();
         $this->getTaxasPagamento();
+        $this->getTaxasValor();
         return view('conversor', [
             'moedas' => $this->moedas,
             'resultado' => $this->resultado,
