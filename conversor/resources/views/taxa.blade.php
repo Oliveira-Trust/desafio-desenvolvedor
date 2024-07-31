@@ -9,6 +9,8 @@
                         </h2>
                         <p class="dark:text-slate-400 text-sm">{{ __('Informe o valor da taxa em percentual.')}}</p>
 
+                        <p class="text-white">{{ $isDisabled ? 'Desabilitado' : 'Habilitado' }}</p>
+
                         <form wire:submit.prevent="salvar">
                             <div class="mt-6">
                                 <div class="flex mb-4">
@@ -22,9 +24,9 @@
                                             id="tx_boleto"
                                             wire:model="taxaBoleto"
                                             x-mask="9,999"
-                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 p-2 disable:bg-slate-400 {{$isDisabled ? 'bg-slate-300' : ''}}"
-                                            required
+                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 p-2 {{$isDisabled ? 'bg-slate-400' : ''}}"
                                             :disabled="$isDisabled"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -40,14 +42,15 @@
                                             id="tx_cartao"
                                             wire:model="taxaCartao"
                                             x-mask="9,999"
-                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 p-2 {{$isDisabled ? 'bg-slate-300' : ''}}"
+                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 p-2 {{$isDisabled ? 'bg-slate-400' : ''}}"
+                                            :disabled="$isDisabled"
                                             required
                                         />
                                     </div>
                                 </div>
         
                                 <div class="flex gap-3 mt-5 justify-end">
-                                    <x-primary-button wire:click.prevent='toggleEdicao'>{{ __('Editar') }}</x-primary-button>
+                                    <x-primary-button wire:click.prevent='habilitaEdicao'>{{ __('Editar') }}</x-primary-button>
                                     <x-secondary-button type="submit">{{ __('Salvar') }}</x-secondary-button>
                                 </div>
                             </div>

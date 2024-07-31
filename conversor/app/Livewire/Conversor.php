@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\TaxaPagamento;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use GuzzleHttp\Client;
@@ -21,8 +22,10 @@ class Conversor extends Component
     public $resultado = "";
     public $moedas = [];
 
-    public const TAXA_BOLETO = 0.0145;
-    public const TAXA_CARTAO = 0.0763;
+    public $taxaBoleto = 0;
+    public $taxaCartao = 0;
+    // public const TAXA_BOLETO = 0.0145;
+    // public const TAXA_CARTAO = 0.0763;
     public const TAXA_VALOR_ABAIXO = 0.02;
     public const TAXA_VALOR_ACIMA = 0.01;
 
@@ -49,9 +52,9 @@ class Conversor extends Component
 
         $calculo = 0;
         if ($this->pagamento == 'Boleto') {
-            $this->taxaFormaPgto = self::TAXA_BOLETO;
+            $this->taxaFormaPgto = $this->taxaBoleto;
         } else {
-            $this->taxaFormaPgto = self::TAXA_CARTAO;            
+            $this->taxaFormaPgto = $this->taxaCartao;            
         }
         
         if ($this->valor < 3000) {
@@ -78,6 +81,19 @@ class Conversor extends Component
 
         array_push($this->operacao, $arr_operacoes);
 
+    }
+
+    public function getTaxasPagamento() {
+        $taxas = TaxaPagamento::all()->toArray();
+
+        foreach ($taxas as $tx) {
+            if ($tx['tipo_pagamento'] == 'Boleto') {
+                $this->taxaBoleto = $tx['taxa'];
+            } else {
+                $this->taxaCartao = $tx['taxa'];
+            }
+        }
+       
     }
 
     function listarMoedas() {
@@ -130,6 +146,7 @@ class Conversor extends Component
     public function render()
     {
         $this->listarMoedas();
+        $this->getTaxasPagamento();
         return view('conversor', [
             'moedas' => $this->moedas,
             'resultado' => $this->resultado,

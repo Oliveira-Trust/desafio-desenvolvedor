@@ -31,8 +31,8 @@ class Taxa extends Component
        
     }
 
-    public function toggleEdicao() {
-        $this->isDisabled = !$this->isDisabled;
+    public function habilitaEdicao() {
+        $this->isDisabled = false;
     }
 
     public function salvar() {
@@ -45,7 +45,7 @@ class Taxa extends Component
             $cartao->taxa = $this->formataValorToUS($this->taxaCartao) / 100;
             $cartao->save();
 
-            $this->toggleEdicao();
+            $this->isDisabled = true;
         } catch (Exception $e) {
             dd($e);
             return response("Ocorreu um erro ao atualizar as taxas de formas de pagamento", 500);
