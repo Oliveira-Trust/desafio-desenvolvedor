@@ -22,6 +22,7 @@ class GlobalHelper
     }
 
     public static function formataValorToUS($valor) {
+        $valor = str_replace(',', '.', $valor);
         return number_format($valor, 2, '.', ',');
     }
 }

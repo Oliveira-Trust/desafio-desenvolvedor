@@ -9,7 +9,7 @@
                 Limpar
             </button>
         </div>
-        <div class="mt-6 w-full">
+        <div class="mt-6 w-full bg-white dark:bg-gray-800 p-3 rounded-lg">
             <table class="w-full table-auto border border-collapse">
                 <tr class="bg-slate-500">
                     <td
@@ -76,7 +76,7 @@
                         {{ $oper["valor_conversao"] }}
                     </td>
                     <td
-                        class="text-center text-sm border bg-white border-slate-800 py-1 bg-emerald-300"
+                        class="text-center text-sm border border-slate-800 py-1 bg-emerald-300"
                     >
                         {{ $oper["valor_comprado"] }}
                     </td>

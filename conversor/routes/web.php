@@ -9,11 +9,6 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::get('/', Conversor::class)
-    ->middleware(['auth'])
-    ->name('conversor');
-
-Route::get('conversor', Conversor::class)
-    ->middleware(['auth'])
     ->name('conversor');
 
 

@@ -6,6 +6,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\TaxaPagamento;
 use App\Models\TaxaValorCompra;
+use App\Helpers\GlobalHelper;
 use Exception;
 
 class Taxa extends Component
@@ -33,20 +34,19 @@ class Taxa extends Component
 
         foreach ($taxas as $tx) {
             if ($tx['tipo_pagamento'] == 'Boleto') {
-                $this->taxaBoleto = $this->formataValorToBR($tx['taxa'] * 100);
+                $this->taxaBoleto = GlobalHelper::formataValorToBR($tx['taxa'] * 100);
             } else {
-                $this->taxaCartao = $this->formataValorToBR($tx['taxa'] * 100);
+                $this->taxaCartao = GlobalHelper::formataValorToBR($tx['taxa'] * 100);
             }
         }
-       
     }
 
     public function getTaxasValor() {
         $taxasValor = TaxaValorCompra::first();
 
         $this->valorBase = $taxasValor['valor_base'];
-        $this->taxaMenorValor = $this->formataValorToBR($taxasValor['taxa_menor_valor'] * 100);
-        $this->taxaMaiorValor = $this->formataValorToBR($taxasValor['taxa_maior_valor'] * 100);
+        $this->taxaMenorValor = GlobalHelper::formataValorToBR($taxasValor['taxa_menor_valor'] * 100);
+        $this->taxaMaiorValor = GlobalHelper::formataValorToBR($taxasValor['taxa_maior_valor'] * 100);
     }
 
     public function habilitaEdicaoPgto() {
@@ -60,11 +60,11 @@ class Taxa extends Component
     public function salvarTaxaPgto() {
         try {
             $boleto = TaxaPagamento::where('tipo_pagamento', '=', 'Boleto')->first();
-            $boleto->taxa = $this->formataValorToUS($this->taxaBoleto) / 100;
+            $boleto->taxa = GlobalHelper::formataValorToUS($this->taxaBoleto) / 100;
             $boleto->save();
     
             $cartao = TaxaPagamento::where('tipo_pagamento', '=', 'Cartão de Crédito')->first();
-            $cartao->taxa = $this->formataValorToUS($this->taxaCartao) / 100;
+            $cartao->taxa = GlobalHelper::formataValorToUS($this->taxaCartao) / 100;
             $cartao->save();
 
             $this->pgtoIsDisabled = true;
@@ -76,26 +76,15 @@ class Taxa extends Component
     public function salvarTaxaValor() {
         try {
             $valorCompra = TaxaValorCompra::first();
-            $valorCompra->valor_base = $this->formataValorToUS($this->valorBase) / 100;
-            $valorCompra->taxa_menor_valor = $this->formataValorToUS($this->taxaMenorValor) / 100;
-            $valorCompra->taxa_maior_valor = $this->formataValorToUS($this->taxaMaiorValor) / 100;
+            $valorCompra->valor_base = GlobalHelper::limpaValor($this->valorBase);
+            $valorCompra->taxa_menor_valor = GlobalHelper::formataValorToUS($this->taxaMenorValor) / 100;
+            $valorCompra->taxa_maior_valor = GlobalHelper::formataValorToUS($this->taxaMaiorValor) / 100;
             $valorCompra->save();
-
 
             $this->valorIsDisabled = true;
         } catch (Exception $e) {
             return response("Ocorreu um erro ao atualizar as taxas de formas de pagamento", 500);
         }
-        
-
-    }
-
-    function formataValorToUS($valor) {
-        return floatval(str_replace(',', '.', $valor));
-    }
-
-    function formataValorToBR($valor) {
-        return number_format($valor, 2, ',', '.');
     }
 
     public function mount() {

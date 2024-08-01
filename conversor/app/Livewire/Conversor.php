@@ -135,6 +135,6 @@ class Conversor extends Component
             'moedas' => $this->moedas,
             'resultado' => $this->resultado,
             'message' => $this->messages
-        ])->layout('layouts.app');
+        ])->layout('layouts.guest');
     }
 }

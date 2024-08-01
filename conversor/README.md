@@ -1,18 +1,61 @@
-### Ações que devem ser executadas antes de rodar o projeto:
+# Projeto: CONVERSOR DE MOEDAS
 
-1. Acessar o diretório da aplicação chamado: `coversor`
+### A aplicação está configurada para rodar via docker e utiliza npm:
 
-### A aplicação está configurada para rodar via docker:
+## Pré-requisitos:
 
-1. Abrir o terminal certificando-se de estar na pasta `conversor` que é a pasta da aplicação.
-2. Dar permissão de acesso aos diretórios `storage` contido na raiz da aplicação.
-    - Digitar no terminal: `sudo chmod -R 777 /storage`
+```markdown
+# Docker
+
+# NodeJs
+```
+
+## Instruções:
+
+1. Abrir o terminal certificando-se de estar no diretório **`conversor`** que é o diretório da aplicação.
+
+-   Digitar no terminal:
+
+```markdown
+# sudo chmod -R 777 /storage
+```
+
 3. Subir a aplicação executando os comandos abaixo no terminal:
-    - `docker compose up -d`
-    - `npm run dev` (_É necessário ter instalado em sua máquina o node e o npm_).
+
+-   Digitar no terminal:
+
+```markdown
+# docker compose up -d
+
+# npm run dev (É necessário ter instalado em sua máquina o node e o npm).
+```
+
 4. Acessar o container do PHP no docker e rodar as migrations e seeders:
-    - Digitar no terminal: `docker exec -it conversor_php /bin/bash`
-    - Digitar no terminal: `php artisan migrate`
-    - Digitar no terminal: `php artisan db:seed`
+
+-   Digitar no terminal:
+
+```markdown
+# docker exec -it conversor_php /bin/bash
+
+# php artisan migrate
+
+# php artisan db:seed
+```
+
 5. Abrir o navegador e digitar o seguinte endereço para acessar a aplicação:
-    - `http://localhost:8000`
+
+```markdown
+# http://localhost:8000
+```
+
+# Para uso do sistema:
+
+> O sistema possui uma área administrativa para a atualização das taxas que serão utilizadas no cálculo da conversão da moeda.
+
+1. Para fazer login utilize os dados abaixo:
+
+```markdown
+# E-mail: admin@teste.com
+
+# Senha: teste123
+```
