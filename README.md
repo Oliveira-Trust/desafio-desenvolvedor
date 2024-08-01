@@ -8,6 +8,7 @@
 - **Laravel Sail**: Ambiente de desenvolvimento local utilizando Docker.
 - **MySQL**: Banco de dados utilizado no projeto.
 - **Flowbite**: Biblioteca de componentes UI.
+- **JavaScript**: Linguagem de programação utilizada para desenvolvimento de funcionalidades no frontend.
 
 ## Instalação
 
