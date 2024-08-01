@@ -28,6 +28,11 @@ class Taxa extends Component
     public $pgtoIsDisabled = true;
     public $valorIsDisabled = true;
 
+    public $messages = [
+        'sucesso_pgto' => '',
+        'sucesso_valor' => ''
+    ];
+
 
     public function getTaxasPagamento() {
         $taxas = TaxaPagamento::all()->toArray();
@@ -51,10 +56,20 @@ class Taxa extends Component
 
     public function habilitaEdicaoPgto() {
         $this->pgtoIsDisabled = false;
+        $this->removeMensagemPgto();
     }
 
     public function habilitaEdicaoValor() {
         $this->valorIsDisabled = false;
+        $this->removeMensagemValor();
+    }
+
+    public function removeMensagemPgto() {
+        $this->messages['sucesso_pgto'] = '';
+    }
+
+    public function removeMensagemValor() {
+        $this->messages['sucesso_valor'] = '';
     }
 
     public function salvarTaxaPgto() {
@@ -67,9 +82,10 @@ class Taxa extends Component
             $cartao->taxa = GlobalHelper::formataValorToUS($this->taxaCartao) / 100;
             $cartao->save();
 
+            $this->messages['sucesso_pgto'] = "As Taxas de modalidades de pagamento foram atualizadas com sucesso!";
             $this->pgtoIsDisabled = true;
         } catch (Exception $e) {
-            return response("Ocorreu um erro ao atualizar as taxas de formas de pagamento", 500);
+            return response("Ocorreu um erro ao atualizar as taxas de modalidades de pagamento", 500);
         }
     }
 
@@ -81,6 +97,7 @@ class Taxa extends Component
             $valorCompra->taxa_maior_valor = GlobalHelper::formataValorToUS($this->taxaMaiorValor) / 100;
             $valorCompra->save();
 
+            $this->messages['sucesso_valor'] = "As Taxas de valores de pagamento foram atualizadas com sucesso!";
             $this->valorIsDisabled = true;
         } catch (Exception $e) {
             return response("Ocorreu um erro ao atualizar as taxas de formas de pagamento", 500);

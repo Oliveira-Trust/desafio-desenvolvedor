@@ -22,8 +22,8 @@
                                             id="tx_boleto"
                                             wire:model="taxaBoleto"
                                             x-mask="9,999"
-                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-400' : ''}}"
-                                            :disabled="$pgtoIsDisabled"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            {{ $pgtoIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
                                     </div>
@@ -40,8 +40,8 @@
                                             id="tx_cartao"
                                             wire:model="taxaCartao"
                                             x-mask="9,999"
-                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-400' : ''}}"
-                                            :disabled="$pgtoIsDisabled"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            {{ $pgtoIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
                                     </div>
@@ -51,6 +51,10 @@
                                     <x-primary-button wire:click.prevent='habilitaEdicaoPgto'>{{ __('Editar') }}</x-primary-button>
                                     <x-secondary-button type="submit">{{ __('Salvar') }}</x-secondary-button>
                                 </div>
+
+                                @if ($messages['sucesso_pgto'])
+                                    <p class="bg-emerald-400 text-emerald-950 text-center text-sm rounded-lg mt-4 px-3 py-2">{{ $messages['sucesso_pgto'] }}</p>
+                                @endif
                             </div>
                         </form>
                     </div>
@@ -80,8 +84,8 @@
                                             id="valor"
                                             wire:model="valorBase"
                                             x-mask:dynamic="$money($input, ',')"
-                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : ''}}"
-                                            :disabled="$valorIsDisabled"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            {{ $valorIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
                                     </div>
@@ -98,8 +102,8 @@
                                             id="taxa_valor_menor"
                                             wire:model="taxaMenorValor"
                                             x-mask="9,999"
-                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : ''}}"
-                                            :disabled="$valorIsDisabled"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            {{ $valorIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
                                     </div>
@@ -116,8 +120,8 @@
                                             id="taxa_valor_maior"
                                             wire:model="taxaMaiorValor"
                                             x-mask="9,999"
-                                            class="bg-white text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : ''}}"
-                                            :disabled="$valorIsDisabled"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            {{ $valorIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
                                     </div>
@@ -127,6 +131,10 @@
                                     <x-primary-button wire:click.prevent='habilitaEdicaoValor'>{{ __('Editar') }}</x-primary-button>
                                     <x-secondary-button type="submit">{{ __('Salvar') }}</x-secondary-button>
                                 </div>
+
+                                @if ($messages['sucesso_valor'])
+                                    <p class="bg-emerald-400 text-emerald-950 text-center text-sm rounded-lg mt-4 px-3 py-2">{{ $messages['sucesso_valor'] }}</p>
+                                @endif
                             </div>
                         </form>
                     </div>
