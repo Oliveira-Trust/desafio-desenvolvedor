@@ -13,7 +13,7 @@
                     </p>
             
                     <form wire:submit.prevent="converter">
-                        <div class="mt-10 gap-3 grid grid-cols-4 pb-4">
+                        <div class="mt-10 gap-3 grid grid-cols-1 lg:grid-cols-4 pb-4">
                             <div class="form-control">
                                 <label for="valor">Valor em Reais (R$)</label>
                                 <input

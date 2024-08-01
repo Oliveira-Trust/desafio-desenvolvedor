@@ -1,8 +1,8 @@
-<div class="py-12 max-w-7xl mx-auto">
-    <div class="flex">
-        <div class="mx-auto sm:px-6 lg:px-8 w-full">
+<div class="py-12 max-w-7xl mx-auto px-4 md:px-0">
+    <div class="flex flex-col md:flex-row">
+        <div class="sm:px-6 lg:px-8 w-full">
             <div class="mx-auto w-full">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                             {{ __('Taxas por Modalidade de Pagamento:') }}
@@ -22,7 +22,7 @@
                                             id="tx_boleto"
                                             wire:model="taxaBoleto"
                                             x-mask="9,999"
-                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-200 text-slate-400 dark:bg-slate-400 dark:text-black' : 'bg-white'}}"
                                             {{ $pgtoIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
@@ -40,7 +40,7 @@
                                             id="tx_cartao"
                                             wire:model="taxaCartao"
                                             x-mask="9,999"
-                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$pgtoIsDisabled ? 'bg-slate-200 text-slate-400 dark:bg-slate-400  dark:text-black' : 'bg-white'}}"
                                             {{ $pgtoIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
@@ -62,9 +62,9 @@
             </div>
         </div>
 
-        <div class="mx-auto sm:px-6 lg:px-8 w-full">
+        <div class="sm:px-6 lg:px-8 w-full mt-4 md:mt-0">
             <div class="mx-auto w-full">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                             {{ __('Taxas por Valor da Compra:') }}
@@ -84,7 +84,7 @@
                                             id="valor"
                                             wire:model="valorBase"
                                             x-mask:dynamic="$money($input, ',')"
-                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-200 text-slate-400 dark:bg-slate-400  dark:text-black' : 'bg-white'}}"
                                             {{ $valorIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
@@ -102,7 +102,7 @@
                                             id="taxa_valor_menor"
                                             wire:model="taxaMenorValor"
                                             x-mask="9,999"
-                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-200 text-slate-400 dark:bg-slate-400  dark:text-black' : 'bg-white'}}"
                                             {{ $valorIsDisabled ? 'disabled' : '' }}
                                             required
                                         />
@@ -120,7 +120,7 @@
                                             id="taxa_valor_maior"
                                             wire:model="taxaMaiorValor"
                                             x-mask="9,999"
-                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-400' : 'bg-white'}}"
+                                            class="text-slate-700 rounded w-full border border-gray-400 px-2 py-1 {{$valorIsDisabled ? 'bg-slate-200 text-slate-400 dark:bg-slate-400  dark:text-black' : 'bg-white'}}"
                                             {{ $valorIsDisabled ? 'disabled' : '' }}
                                             required
                                         />

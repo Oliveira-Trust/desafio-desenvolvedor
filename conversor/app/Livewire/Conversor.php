@@ -8,6 +8,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use GuzzleHttp\Client;
 use App\Helpers\GlobalHelper;
+use App\Services\Moedas;
 
 class Conversor extends Component
 {
@@ -105,24 +106,10 @@ class Conversor extends Component
     }
 
     function listarMoedas() {
-        $client = new Client();
+        $moedasSelecionadas = "USD-BRL,EUR-BRL,GBP-BRL,JPY-BRL,ARS-BRL";
 
-        try {
-            $response = $client->request('GET', 'https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,GBP-BRL,JPY-BRL,ARS-BRL');
-    
-            if ($response->getStatusCode() === 200) {
-                $this->moedas = json_decode($response->getBody(), true);
-            }
-    
-            $arr_moedas = collect(json_decode($response->getBody(), true));
-            $this->moedas = $arr_moedas->map(function($arr) {
-                $temp = explode('/', $arr['name']);
-                return ['code' => $arr['code'], 'name' => $temp[0], 'bid' => $arr['bid']];
-            });
-
-        } catch (\Exception $e) {
-            return response("Ocorreu um erro ao listar as moedas", 500);
-        }
+        $service = new Moedas;
+        $this->moedas = $service->getMoedas($moedasSelecionadas);
     }
 
     public function render()

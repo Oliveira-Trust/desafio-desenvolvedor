@@ -9,8 +9,8 @@
                 Limpar
             </button>
         </div>
-        <div class="mt-6 w-full bg-white dark:bg-gray-800 p-3 rounded-lg">
-            <table class="w-full table-auto border border-collapse">
+        <div class="mt-6 w-full bg-white dark:bg-gray-800 p-3 rounded-lg overflow-auto">
+            <table class="w-full min-w-[1382px] table-auto border border-collapse">
                 <tr class="bg-slate-500">
                     <td
                         class="text-center text-sm border border-slate-800 text-slate-200"

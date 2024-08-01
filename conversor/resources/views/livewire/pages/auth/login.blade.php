@@ -23,10 +23,10 @@ $login = function () {
 ?>
 
 <div class="py-8">
-    <div class="max-w-md mx-auto">
+    <div class="max-w-md mx-auto px-4 md:px-0">
         <h1 class="dark:text-white text-center text-xl mt-10">Efetue o login para Entrar</h1>
 
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-6 px-8 mt-8">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg py-6 px-8 mt-8">
 
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
