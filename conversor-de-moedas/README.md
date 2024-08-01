@@ -16,13 +16,13 @@ Abra o terminal
 1. Clone este repositório usando o comando:
 
     ```bash
-    git clone https://github.com/izadora-toledo/lista-de-usuarios.git
+    git clone https://github.com/izadora-toledo/desafio-desenvolvedor.git
     ```
 
 2. Acesse a pasta do projeto:
 
     ```bash
-    cd lista-de-usuarios
+    cd conversor-de-moedas
     ```
 
 3. Instale as dependências do projeto:
