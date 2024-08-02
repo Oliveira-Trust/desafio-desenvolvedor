@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\JobSendEmail;
 use App\Models\Conversion;
 use App\Services\CurrencyConverterService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CurrencyConverterController extends Controller
 {
@@ -38,6 +41,10 @@ class CurrencyConverterController extends Controller
 
         $response = Conversion::create($conversionData);
         $conversionId = $response->id;
+
+        $userEmail = Auth::user()->email;
+        JobSendEmail::dispatch($response, $userEmail);
+        DB::commit();
 
         return redirect()->route('conversion.show', ['id' => $conversionId])
             ->with('success', 'Conversão realizada com sucesso!');

@@ -51,7 +51,7 @@
         <p>Abaixo estão os detalhes da conversão realizada:</p>
         @php
             $symbol = 'R$ ';
-            switch ($mailMessage->to) {
+            switch ($conversion->to) {
                 case 'USD':
                     $symbol = '$ ';
                     break;
@@ -68,39 +68,39 @@
         <table>
             <tr>
                 <th>Moeda Origem</th>
-                <td>{{ $mailMessage->from }}</td>
+                <td>{{ $conversion->from }}</td>
             </tr>
             <tr>
                 <th>Moeda Destino</th>
-                <td>{{ $mailMessage->to }}</td>
+                <td>{{ $conversion->to }}</td>
             </tr>
             <tr>
                 <th>Valor para Conversão</th>
-                <td>R$ {{ number_format($mailMessage->amount, 2, ',', '.') }}</td>
+                <td>R$ {{ number_format($conversion->amount, 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <th>Método de Pagamento</th>
-                <td>{{ $mailMessage->payment_method == 'boleto' ? 'Boleto' : 'Cartão de Crédito' }}</td>
+                <td>{{ $conversion->payment_method == 'boleto' ? 'Boleto' : 'Cartão de Crédito' }}</td>
             </tr>
             <tr>
                 <th>Valor da Moeda de Conversão</th>
-                <td>{{ $symbol . number_format($mailMessage->currency_value, 2, ',', '.') }}</td>
+                <td>{{ $symbol . number_format($conversion->currency_value, 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <th>Valor Comprado em Moeda de Conversão</th>
-                <td>{{ $symbol . number_format($mailMessage->purchase_amount, 2, ',', '.') }}</td>
+                <td>{{ $symbol . number_format($conversion->purchase_amount, 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <th>Taxa de Pagamento</th>
-                <td>R$ {{ number_format($mailMessage->payment_rate, 2, ',', '.') }}</td>
+                <td>R$ {{ number_format($conversion->payment_rate, 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <th>Taxa de Conversão</th>
-                <td>R$ {{ number_format($mailMessage->conversion_rate, 2, ',', '.') }}</td>
+                <td>R$ {{ number_format($conversion->conversion_rate, 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <th>Valor Utilizado para Conversão sem as Taxas</th>
-                <td>R$ {{ number_format($mailMessage->purchase_price_excluding_taxes, 2, ',', '.') }}</td>
+                <td>R$ {{ number_format($conversion->purchase_price_excluding_taxes, 2, ',', '.') }}</td>
             </tr>
         </table>
         
