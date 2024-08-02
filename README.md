@@ -1,48 +1,50 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Conversor de Moeda
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+## Tecnologias
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+1. <a href="https://laravel.com/docs/10.x">Laravel (10.x)</a>
+2. <a href="https://vuejs.org/">Vue 3</a>
+3. <a href="https://redis.io/">Redis</a>
+4. <a href="https://www.postgresql.org/">PostgreSQL</a>
+5. <a href="https://www.docker.com">Docker</a>
+6. <a href="https://tailwindcss.com">Tailwind CSS</a>
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+## Requisitos
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+1. <a href="https://www.docker.com">Docker</a>
+2. <a href="https://docs.docker.com/compose/"> Docker Compose </a>
+3. <a href="https://nodejs.org/en"> Node </a>
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+
+
+## Instalação
+
+
+1. Clone o repositório
+2. Copie o conteúdo de `.env.example` para `.env` e configure as varíaveis de ambiente do banco de dados.
+3. Na pasta raiz do projeto execute o comando `docker-compose up -d` e espere ser construída os containers
+4. Após a construção **entre** no container **app** com o comando `docker-compose exec app bash`.
+5. Os comandos a seguir são executados **dentro** do container **app:**
+    1. Execute o comando `composer install`
+    2. Execute o comando `php artisan key:generate`
+    3. Execute as migração com `php artisan migrate`
+    4. Execute o comando `php artisan db:seed`
+
+6. Em seguida a aplicação vai rodar em `http://localhost:8000`
+7. (opcional) Caso tenha um erro de acesso ao diretório storage, execute o comando `chmod -Rf 0777 storage` na raíz do projeto.
+8. Obs: Eu já fiz o build do javascript, mas caso você deseja alterar o código JS terá que fazer o build em tempo de execução  então instale o node e execute o comando `npm install` e `npm run dev` no projeto.
+
+### Sobre o desafio
+
+Foram feitos **todos** os requisitos do desafio proposto
+
+
+
+
+

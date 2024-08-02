@@ -1,0 +1,63 @@
+version: "3.8"
+#
+# Services definitions
+#
+services:
+  app:
+    image: kooldev/php:8.1-nginx
+    ports:
+      - "8000:80"
+    environment:
+      ASUSER: "${KOOL_ASUSER:-0}"
+      UID: "${UID:-0}"
+    volumes:
+      - .:/app:delegated
+    networks:
+      - kool_local
+      - kool_global
+  database:
+    image: postgres:13-alpine
+    ports:
+      - "${KOOL_DATABASE_PORT:-5432}:5432"
+    environment:
+      POSTGRES_DB: "${DB_DATABASE-database}"
+      POSTGRES_USER: "${DB_USERNAME-user}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD-pass}"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+      - database:/var/lib/postgresql/data:delegated
+    networks:
+      - kool_local
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "$DB_DATABASE", "-U", "$DB_USERNAME"]
+  cache:
+    image: redis:7-alpine
+    volumes:
+      - cache:/data:delegated
+    networks:
+      - kool_local
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+
+  queue:
+    image: kooldev/php:8.1-nginx
+    restart: unless-stopped
+    command: php artisan queue:work
+    depends_on:
+      - app
+      - cache
+    volumes:
+      - .:/app:delegated
+    networks:
+      - kool_local
+# 
+# Networks definitions
+#
+networks:
+  kool_local:
+  kool_global:
+    external: true
+    name: "${KOOL_GLOBAL_NETWORK:-kool_global}"
+volumes:
+  database:
+  cache:
