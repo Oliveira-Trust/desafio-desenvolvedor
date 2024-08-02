@@ -8,7 +8,9 @@ RUN apk add --no-cache \
     libzip-dev \
     libpq-dev \
     zlib-dev \
-    oniguruma-dev
+    oniguruma-dev \
+    nodejs \
+    npm
 
 # Install PHP extensions
 RUN docker-php-ext-install gd
