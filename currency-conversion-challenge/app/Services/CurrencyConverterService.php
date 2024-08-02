@@ -37,13 +37,13 @@ class CurrencyConverterService
         ];
     }
 
-    private function convertionRate($amount)
+    public function convertionRate($amount)
     {
         $taxRate = $amount < 3000 ? 0.02 : 0.01;
         return $amount * $taxRate;
     }
 
-    private function paymentConditionsRates($amount, $paymentMethod)
+    public function paymentConditionsRates($amount, $paymentMethod)
     {
         $paymentTaxRate = 0;
 
@@ -60,19 +60,34 @@ class CurrencyConverterService
         return $amount * $paymentTaxRate;
     }
 
-    private function getConversionRate($from, $to)
+    public function getConversionRate($from, $to)
     {
-        $response = $this->client->get("https://economia.awesomeapi.com.br/json/last/{$from}-{$to}");
-        $conversionData = json_decode($response->getBody(), true);
-        $conversionRate = $conversionData["{$from}{$to}"]['bid'];
-        return $conversionRate;
+        
+        try {
+            $response = $this->client->get("https://economia.awesomeapi.com.br/json/last/{$from}-{$to}");
+            $conversionData = json_decode($response->getBody(), true);
+            $conversionRate = $conversionData["{$from}{$to}"]['bid'];
+
+            return $conversionRate;
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Conversão indisponível. Tente novamente mais tarde.'
+            ], 400);
+        }
     }
 
-    private function getCurrencyValue($from, $to){
-        $response = $this->client->get("https://economia.awesomeapi.com.br/json/last/{$from}-{$to}");
-        $conversionData = json_decode($response->getBody(), true);
-        $conversionRate = $conversionData["{$from}{$to}"]['bid'];
+    public function getCurrencyValue($from, $to){
 
-        return (float) $conversionRate;
+        try {
+            $response = $this->client->get("https://economia.awesomeapi.com.br/json/last/{$from}-{$to}");
+            $conversionData = json_decode($response->getBody(), true);
+            $conversionRate = $conversionData["{$from}{$to}"]['bid'];
+
+            return (float) $conversionRate;
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Conversão indisponível. Tente novamente mais tarde.'
+            ], 400);
+        }
     }
 }

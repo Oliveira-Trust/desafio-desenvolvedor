@@ -12,6 +12,8 @@ services:
       - .:/var/www
     networks:
       - internal
+    environment:
+      - PHP_EXTENSION_MBSTRING=1
 
   postgres:
     image: postgres:16.0-alpine

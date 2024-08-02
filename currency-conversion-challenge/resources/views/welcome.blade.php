@@ -38,7 +38,7 @@
                                 href="{{ route('register') }}"
                                 class="text-gray-800 hover:text-gray-600 transition duration-300"
                             >
-                                Register
+                                Registre-se
                             </a>
                         @endif
                     @endauth
