@@ -28,7 +28,7 @@
 
                         <div class="mb-4">
                             <label for="amount" class="block text-sm font-medium text-gray-700">Valor para conversão</label>
-                            <input type="number" id="amount" name="amount" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                            <input type="number" id="amount" name="amount" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" min="1000" max="100000" required>
                         </div>
 
                         <div class="mb-4">

@@ -32,6 +32,13 @@ class CurrencyConverterController extends Controller
 
     public function convert(Request $request)
     {
+        $request->validate([
+            'from' => 'required|string',
+            'to' => 'required|string',
+            'amount' => 'required|numeric|min:1000|max:100000',
+            'payment_method' => 'required|string|in:boleto,credit_card',
+        ]);
+
         $from = $request->input('from');
         $to = $request->input('to');
         $amountNoTaxes = (float) $request->input('amount');
