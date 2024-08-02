@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Nunito:ital,wght@0,900;0,1000;1,800;1,900;1,1000&display=swap');
+
+:root {
+    /**
+     * ----------------------------------------------------
+     * SCROLLBAR
+     * ----------------------------------------------------
+     */
+    --v-scrollbar-width: 8px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+*::-webkit-scrollbar {
+    height: var(--v-scrollbar-width);
+    width: var(--v-scrollbar-width);
+}
+*::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background-color: rgb(var(--v-scrollbar-track-color));
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: rgb(var(--v-scrollbar-thumb-color));
+}
+
+html {
+    overflow: auto;
+}
