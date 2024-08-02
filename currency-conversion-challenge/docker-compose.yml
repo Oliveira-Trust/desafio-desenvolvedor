@@ -1,0 +1,43 @@
+services:
+  application:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: application
+    container_name: application
+    tty: true
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www
+    networks:
+      - internal
+
+  postgres:
+    image: postgres:16.0-alpine
+    container_name: postgres
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - internal
+  
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - internal
+networks:
+  internal:
