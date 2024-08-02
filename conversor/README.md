@@ -1,6 +1,8 @@
 # Projeto: CONVERSOR DE MOEDAS
 
-### A aplicação está configurada para rodar via docker e utiliza npm:
+### A aplicação está configurada para rodar via docker e utiliza npm.
+
+### A aplicação foi desenvolvida utilizando o framework `Laravel` e `Livewire`.
 
 ## Pré-requisitos:
 
