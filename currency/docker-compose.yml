@@ -1,0 +1,65 @@
+services:
+    app:
+        build:
+            context: ./.docker/php
+            dockerfile: Dockerfile
+        container_name: app-php
+        volumes:
+            - ./.:/var/www
+        networks:
+            - app-network
+        depends_on:
+            - db
+            - redis
+
+    nginx:
+        build:
+            context: ./.docker/nginx
+            dockerfile: Dockerfile
+        container_name: app-nginx
+        restart: always
+        tty: true
+        volumes:
+            - ./.:/var/www
+        ports:
+            - 80:80
+        depends_on:
+            - app
+        networks:
+            - app-network
+
+    db:
+        image: mysql:5.7
+        platform: linux/amd64
+        container_name: app-mysql
+        restart: always
+        tty: true
+        ports:
+            - 3306:3306
+        volumes:
+            - ./.docker/mysql/data:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: oli_trust
+            MYSQL_ROOT_PASSWORD: password
+        command:
+          [ 'mysqld', '--character-set-server=utf8', '--collation-server=utf8_general_ci' ]
+        networks:
+            - app-network
+
+    redis:
+        image: redis:latest
+        container_name: redis
+        networks:
+            - app-network
+
+    mailpit:
+        image: axllent/mailpit:latest
+        container_name: mailpit
+        ports:
+            - '1025:1025'
+            - '8025:8025'
+        networks:
+            - app-network
+
+networks:
+    app-network:
