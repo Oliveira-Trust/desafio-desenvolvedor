@@ -1,0 +1,21 @@
+# Here you can define shortcuts and aliases to common tasks (commands)
+# you will run in your local environment or CI or deploy.
+#  Use the scripts defined below with:
+#    $ kool run <script>
+# Learn more at: https://kool.dev/docs/getting-started/how-it-works#koolyml
+scripts:
+  composer: kool exec app composer
+  artisan: kool exec app php artisan
+  phpunit: kool exec app php ./vendor/bin/phpunit
+  setup:
+    - kool run before-start
+    - kool start
+    - kool run composer install
+    - kool run artisan key:generate
+  reset:
+    - kool run composer install
+    - kool run artisan migrate:fresh --seed
+  before-start:
+    - cp .env.example .env
+  # CLI access to PostgreSQL
+  psql: kool exec -e PGPASSWORD=$DB_PASSWORD database psql -U $DB_USERNAME $DB_DATABASE
