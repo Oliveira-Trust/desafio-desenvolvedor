@@ -1,6 +1,6 @@
 # Desafio Oliveira Trust
 
-Este projeto é uma aplicação de conversão de moeda desenvolvida utilizando Laravel para o back-end e Vue.js com Vite para o front-end. A aplicação permite que os usuários convertam BRL para outras moedas, aplicando regras de negócios específicas, incluindo métodos de pagamento e taxas de conversão.
+Este projeto é uma aplicação de conversão de moeda desenvolvida utilizando Laravel para o back-end e Vue.js com Vite para o front-end. A aplicação permite que os usuários convertam BRL para outras moedas, aplicando regras de negócios específicas, incluindo métodos de pagamento e taxas de conversão, além de todos os bônus sugeridos no desafio.
 
 ## 💻 Pré-requisitos
 
