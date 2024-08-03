@@ -23,6 +23,6 @@ class SendEmailExchangeCreated
      */
     public function handle(ExchangeCreated $event): void
     {
-        Mail::to(auth()->user()->email)->send(new ExchangeCreatedMail($event->getUserConversion()));
+        Mail::to(auth()->user()->email)->send(new ExchangeCreatedMail($event->getExchange()));
     }
 }

@@ -30,7 +30,7 @@ class ExchangeCreated
         return new PrivateChannel('channel-name');
     }
 
-    public function getUserConversion(): Exchange
+    public function getExchange(): Exchange
     {
         return $this->exchange;
     }

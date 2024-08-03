@@ -50,7 +50,7 @@ readonly class ExchangeService
         try {
             DB::beginTransaction();
 
-            $userConversion = Exchange::create([
+            $exchange = Exchange::create([
                 'user_id' => $userId,
                 'source_currency' => 'BRL',
                 'destination_currency' => $destinationCurrency,
@@ -64,9 +64,9 @@ readonly class ExchangeService
 
             DB::commit();
 
-            event(new ExchangeCreated($userConversion));
+            event(new ExchangeCreated($exchange));
 
-            return $userConversion;
+            return $exchange->withoutRelations();
         } catch (\Exception $e) {
             DB::rollBack();
 
