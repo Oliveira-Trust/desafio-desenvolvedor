@@ -62,7 +62,6 @@ class CurrencyConverterService
 
     public function getConversionRate($from, $to)
     {
-        
         try {
             $response = $this->client->get("https://economia.awesomeapi.com.br/json/last/{$from}-{$to}");
             $conversionData = json_decode($response->getBody(), true);
@@ -76,8 +75,8 @@ class CurrencyConverterService
         }
     }
 
-    public function getCurrencyValue($from, $to){
-
+    public function getCurrencyValue($from, $to)
+    {
         try {
             $response = $this->client->get("https://economia.awesomeapi.com.br/json/last/{$from}-{$to}");
             $conversionData = json_decode($response->getBody(), true);
