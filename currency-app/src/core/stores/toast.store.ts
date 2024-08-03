@@ -1,7 +1,7 @@
-import type { Toast } from '@/domain/entities/toast.interface';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { EToastType } from '../enums/toast-type.enum';
+import type { Toast } from '../types/toast.interface';
 
 export const useToastStore = defineStore('toast', () => {
     const toasts = ref<Toast[]>([]);
