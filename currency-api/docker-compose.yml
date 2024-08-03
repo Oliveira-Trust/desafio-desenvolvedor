@@ -1,0 +1,69 @@
+version: "3.7"
+services:
+  api:
+    build:
+      args:
+        user: david
+        uid: 1000
+      context: .
+      dockerfile: Dockerfile
+    image: ot-challenge-api
+    container_name: ot-challenge-api
+    restart: unless-stopped
+    working_dir: /var/www/api/
+    volumes:
+      - ./:/var/www/api
+    networks:
+      - ot-challenge
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: ot-challenge-mysql
+    ports:
+      - "${FORWARD_DB_PORT:-3306}:3306"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - ot-challenge
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
+      retries: 3
+      timeout: 5s
+
+  nginx:
+    image: nginx:alpine
+    container_name: ot-challenge-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www/api
+      - ./docker/nginx:/etc/nginx/conf.d/
+    networks:
+      - ot-challenge
+
+  mailhog:
+    image: "mailhog/mailhog:latest"
+    container_name: mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - ot-challenge
+
+networks:
+  ot-challenge:
+    driver: bridge
+
+volumes:
+  ot-mysql:
+    driver: local

@@ -1,48 +1,66 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Desafio Oliveira Trust
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Este projeto é uma aplicação de conversão de moeda desenvolvida utilizando Laravel para o back-end e Vue.js com Vite para o front-end. A aplicação permite que os usuários convertam BRL para outras moedas, aplicando regras de negócios específicas, incluindo métodos de pagamento e taxas de conversão.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## 💻 Pré-requisitos
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+* Composer;
+* Docker;
+* Npm;
+* Git.
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+## 🚀 Instalação
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+Para instalar o projeto, siga estas etapas:
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+### Navegue até a aplicação backend
+```sh
+cd currency-api
+```
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+### Copie o arquivo exemplo de variáveis de ambiente
+```
+cp .env.example .env
+```
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+### Execute o projeto
+```sh
+docker-compose up -d
+```
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+### Gerar key
+```sh
+docker exec ot-challenge-api php artisan key:generate
+```
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+### Alimentar banco de dados
+```
+docker exec ot-challenge-api php artisan migrate:fresh --seed
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+### Navegue até a aplicação frontend
+```sh
+cd ../currency-app
+```
+
+### Instale as dependências de package.json
+```sh
+npm install
+```
+
+### Execute a aplicação
+```sh
+npm run dev
+```
+
+## Utilizar aplicação
+
+
+## 🧑‍💻 Usuário de Teste
+> O usuário criado para utilizar o sistema é:<br /><br />
+> **E-mail:** david@example.com<br />
+> **Senha:** password
+
+### Envio de e-mail
+> Para tratar os e-mails, o serviço mailhog pode ser acessado na porta 8025.

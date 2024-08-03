@@ -6,12 +6,12 @@ Este é o projeto da aplicação Backoffice do Banco do Brasil, desenvolvido com
 
 ## Índice
 
-- [Backoffice Banco do Brasil (v0.1.2)](#backoffice-banco-do-brasil-v012)
-  - [Índice](#índice)
-  - [Descrição](#descrição)
-  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-  - [Instalação](#instalação)
-  - [Publicação](#publicação)
+-   [Backoffice Banco do Brasil (v0.1.2)](#backoffice-banco-do-brasil-v012)
+    -   [Índice](#índice)
+    -   [Descrição](#descrição)
+    -   [Tecnologias Utilizadas](#tecnologias-utilizadas)
+    -   [Instalação](#instalação)
+    -   [Publicação](#publicação)
 
 ## Descrição
 
@@ -19,31 +19,35 @@ A aplicação Backoffice do Banco do Brasil é uma ferramenta interna para gest�
 
 ## Tecnologias Utilizadas
 
-- [Vue 3](https://vuejs.org/)
-- [Vuetify](https://vuetifyjs.com/)
-- [Pinia](https://pinia.vuejs.org/)
-- [Vue Router](https://router.vuejs.org/)
+-   [Vue 3](https://vuejs.org/)
+-   [Vuetify](https://vuetifyjs.com/)
+-   [Pinia](https://pinia.vuejs.org/)
+-   [Vue Router](https://router.vuejs.org/)
 
 ## Instalação
 
 Para instalar e executar a aplicação localmente, siga os passos abaixo:
 
 1. Clone o repositório:
+
     ```bash
     git clone git@gitlab.nelogica.com.br:projetos-institucionais/bb-backoffice.git
     ```
 
 2. Navegue até o local do projeto:
+
     ```bash
     cd bb-backoffice
     ```
 
 3. Instale as dependências:
+
     ```bash
     npm install
     ```
 
 4. Execute a aplicação:
+
     ```bash
     npm run dev
     ```
@@ -61,4 +65,4 @@ npm run build:development # Ambiente de desenvolvimento
 npm run build # Alias para npm run build:development
 ```
 
-O pacote será gerado no diretório ```./src/public/```.
+O pacote será gerado no diretório `./src/public/`.
