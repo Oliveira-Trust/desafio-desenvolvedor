@@ -7,6 +7,7 @@ interface AuthState {
     isLoggedIn: boolean;
     name: string;
     email: string;
+    checkingAuthentication: boolean;
 }
 
 export const useAuthStore = defineStore('auth', {
@@ -14,7 +15,8 @@ export const useAuthStore = defineStore('auth', {
         ({
             name: '',
             email: '',
-            isLoggedIn: document.cookie.includes('XSRF-TOKEN'),
+            isLoggedIn: false,
+            checkingAuthentication: false,
         }) as AuthState,
     getters: {},
     actions: {
@@ -27,7 +29,22 @@ export const useAuthStore = defineStore('auth', {
             window.document.location.reload();
         },
         async checkUserAuthenticated() {
-            const user = await getUserAuthenticatedUsecase.execute();
+            try {
+                this.checkingAuthentication = true;
+                
+                if (document.cookie.includes('XSRF-TOKEN')) {
+                    const user = await getUserAuthenticatedUsecase.execute();
+                    this.name = user.name
+                    this.email = user.email
+                    this.isLoggedIn = true;
+                }
+            } catch (error: unknown) {
+                //
+            } finally {
+                this.checkingAuthentication = false;
+            }
+            
+            return false;
         },
     },
 });

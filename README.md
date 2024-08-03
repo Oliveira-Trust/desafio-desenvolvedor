@@ -15,7 +15,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 Para instalar o projeto, siga estas etapas:
 
 ### Navegue até a aplicação backend
-```sh
+```bash
 cd currency-api
 ```
 
@@ -24,33 +24,38 @@ cd currency-api
 cp .env.example .env
 ```
 
+### Instale as dependêcnais
+```bash
+docker exec ot-challenge-api composer install
+```
+
 ### Execute o projeto
-```sh
+```bash
 docker-compose up -d
 ```
 
 ### Gerar key
-```sh
+```bash
 docker exec ot-challenge-api php artisan key:generate
 ```
 
 ### Alimentar banco de dados
-```
+```bash
 docker exec ot-challenge-api php artisan migrate:fresh --seed
 ```
 
 ### Navegue até a aplicação frontend
-```sh
+```bash
 cd ../currency-app
 ```
 
 ### Instale as dependências de package.json
-```sh
+```bash
 npm install
 ```
 
 ### Execute a aplicação
-```sh
+```bash
 npm run dev
 ```
 

@@ -10,10 +10,13 @@ import router from '@/router';
 async function bootstrap() {
     const app = createApp(App);
     registerPlugins(app);
-
+    
+    app.mount('#app');
+    
     try {
         document.title = `${configuration.applicationName} (v${configuration.applicationVersion})`;
-
+        
+        console.log(hasAuthenticationCookie());
         if (hasAuthenticationCookie()) {
             await useAuthStore().checkUserAuthenticated();
             await router.push({ name: 'home' });
@@ -21,8 +24,6 @@ async function bootstrap() {
     } catch (err: unknown) {
         //
     }
-
-    app.mount('#app');
 }
 
 bootstrap().then(() => {
