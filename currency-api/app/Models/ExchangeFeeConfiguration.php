@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ConversionFee extends Model
+class ExchangeFeeConfiguration extends Model
 {
     use HasFactory;
 
@@ -26,7 +26,6 @@ class ConversionFee extends Model
     protected static function boot(): void
     {
         parent::boot();
-
         static::saving(function ($model) {
             $model->effective_date = now();
         });
@@ -35,7 +34,7 @@ class ConversionFee extends Model
     /**
      * Get the active conversion fee.
      *
-     * @return ConversionFee|null
+     * @return ExchangeFeeConfiguration|null
      */
     public static function getActive(): ?self
     {

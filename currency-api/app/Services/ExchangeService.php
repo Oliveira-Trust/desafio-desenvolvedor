@@ -2,14 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\ConversionFee;
+use App\Events\ExchangeCreated;
+use App\Models\ExchangeFeeConfiguration;
 use App\Models\PaymentMethod;
-use App\Models\UserConversion;
+use App\Models\Exchange;
 use App\Services\AwesomeAPI\AwesomeAPIService;
 use App\Services\AwesomeAPI\Exceptions\CurrencyQuoteNotFoundException;
 use Illuminate\Support\Facades\DB;
 
-readonly class CurrencyConversionService
+readonly class ExchangeService
 {
     function __construct(private AwesomeAPIService $awesomeAPIService) { }
 
@@ -20,11 +21,11 @@ readonly class CurrencyConversionService
      * @param float $amount
      * @param string $paymentMethodCode
      * @param int $userId
-     * @return UserConversion
+     * @return Exchange
      * @throws CurrencyQuoteNotFoundException
      * @throws \Exception
      */
-    public function convert(string $destinationCurrency, float $amount, string $paymentMethodCode, int $userId): UserConversion
+    public function convert(string $destinationCurrency, float $amount, string $paymentMethodCode, int $userId): Exchange
     {
         if ($destinationCurrency === 'BRL') {
             throw new \Exception("Destination currency cannot be BRL.");
@@ -49,19 +50,21 @@ readonly class CurrencyConversionService
         try {
             DB::beginTransaction();
 
-            $userConversion = UserConversion::create([
+            $userConversion = Exchange::create([
                 'user_id' => $userId,
                 'source_currency' => 'BRL',
                 'destination_currency' => $destinationCurrency,
                 'original_amount' => $amount,
                 'payment_method' => $paymentMethodCode,
                 'amount_in_destination_currency' => $convertedAmount,
-                'payment_fee' => $paymentFee,
+                'payment_method_fee' => $paymentFee,
                 'conversion_fee' => $conversionFee,
                 'total_with_fees' => $totalWithFees,
             ]);
 
             DB::commit();
+
+            event(new ExchangeCreated($userConversion));
 
             return $userConversion;
         } catch (\Exception $e) {
@@ -73,7 +76,7 @@ readonly class CurrencyConversionService
 
     public function getConversionsHistoryByUserId(int $userId)
     {
-        return UserConversion::where('user_id', $userId)
+        return Exchange::where('user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->get();
     }
@@ -104,7 +107,7 @@ readonly class CurrencyConversionService
      */
     private function getConversionFee(float $amount): float
     {
-        if (!$conversionFee = ConversionFee::getActive()) {
+        if (!$conversionFee = ExchangeFeeConfiguration::getActive()) {
             throw new \Exception('Conversion fee not found.');
         }
 

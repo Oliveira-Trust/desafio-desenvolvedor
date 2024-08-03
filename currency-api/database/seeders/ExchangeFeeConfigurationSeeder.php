@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\ConversionFee;
+use App\Models\ExchangeFeeConfiguration;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ConversionFeeSeeder extends Seeder
+class ExchangeFeeConfigurationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        ConversionFee::updateOrCreate(
+        ExchangeFeeConfiguration::updateOrCreate(
             ['id' => 1],
             [
                 'lower_than_threshold' => 2.00,

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Services\AwesomeAPI\AwesomeAPIService;
-use App\Services\CurrencyConversionService;
+use App\Services\ExchangeService;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,8 +18,8 @@ class AppServiceProvider extends ServiceProvider
             return new AwesomeAPIService();
         });
 
-        $this->app->singleton(CurrencyConversionService::class, function ($app) {
-            return new CurrencyConversionService($app->make(AwesomeAPIService::class));
+        $this->app->singleton(ExchangeService::class, function ($app) {
+            return new ExchangeService($app->make(AwesomeAPIService::class));
         });
     }
 

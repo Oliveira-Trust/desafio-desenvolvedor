@@ -45,8 +45,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function conversions()
+    public function exchanges()
     {
-        return $this->hasMany(UserConversion::class);
+        return $this->hasMany(Exchange::class);
     }
 }

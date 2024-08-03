@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_conversions', function (Blueprint $table) {
+        Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('source_currency');
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('original_amount', 15, 2);
             $table->string('payment_method');
             $table->decimal('amount_in_destination_currency', 15, 2);
-            $table->decimal('payment_fee', 15, 2);
+            $table->decimal('payment_method_fee', 15, 2);
             $table->decimal('conversion_fee', 15, 2);
             $table->decimal('total_with_fees', 15, 2);
             $table->timestamps();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_conversions');
+        Schema::dropIfExists('exchanges');
     }
 };

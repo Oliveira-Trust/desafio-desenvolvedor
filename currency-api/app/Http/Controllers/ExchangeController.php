@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CurrencyConversionRequest;
+use App\Http\Requests\ExchangeRequest;
 use App\Services\AwesomeAPI\AwesomeAPIService;
-use App\Services\CurrencyConversionService;
+use App\Services\ExchangeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CurrencyConversionController extends Controller
+class ExchangeController extends Controller
 {
     function __construct(
         private readonly AwesomeAPIService $awesomeAPIService,
-        private readonly CurrencyConversionService $currencyConversionService
+        private readonly ExchangeService $currencyConversionService
     ) { }
 
     /**
@@ -49,12 +49,12 @@ class CurrencyConversionController extends Controller
         }
     }
 
-    public function convert(CurrencyConversionRequest $request): JsonResponse
+    public function convert(ExchangeRequest $request): JsonResponse
     {
         try {
             $result = $this->currencyConversionService->convert(
-                $request->input('target_coin'),
-                $request->input('amount'),
+                $request->input('destination_currency'),
+                $request->input('original_amount'),
                 $request->input('payment_method'),
                 $request->user()->id
             );

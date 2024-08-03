@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExchangeController;
+use App\Http\Controllers\ExchangeFeeConfigurationController;
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -9,7 +11,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return $request->user();
     });
 
-    Route::middleware(['auth:sanctum'])->get('/available-coins', [\App\Http\Controllers\CurrencyConversionController::class, 'getAvailableCoins']);
-    Route::middleware(['auth:sanctum'])->get('/history', [\App\Http\Controllers\CurrencyConversionController::class, 'getHistory']);
-    Route::middleware(['auth:sanctum'])->post('/convert', [\App\Http\Controllers\CurrencyConversionController::class, 'convert']);
+    Route::middleware(['auth:sanctum'])->get('/available-coins', [ExchangeController::class, 'getAvailableCoins']);
+    Route::middleware(['auth:sanctum'])->get('/history', [ExchangeController::class, 'getHistory']);
+    Route::middleware(['auth:sanctum'])->post('/convert', [ExchangeController::class, 'convert']);
+    Route::middleware(['auth:sanctum'])->get('/configuration', [ExchangeFeeConfigurationController::class, 'getConfig']);
+    Route::middleware(['auth:sanctum'])->post('/configuration', [ExchangeFeeConfigurationController::class, 'setConfig']);
 });

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conversion_fees', function (Blueprint $table) {
+        Schema::create('exchange_fee_configurations', function (Blueprint $table) {
             $table->id();
             $table->decimal('lower_than_threshold', 5, 2);
             $table->decimal('greater_than_threshold', 5, 2);
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conversion_fees');
+        Schema::dropIfExists('exchange_fee_configurations');
     }
 };

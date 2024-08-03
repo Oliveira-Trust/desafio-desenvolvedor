@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CurrencyConversionRequest extends FormRequest
+class ExchangeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,10 @@ class CurrencyConversionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'target_coin' => 'required|string',
+            'source_currency' => 'required|string',
+            'destination_currency' => 'required|string',
             'payment_method' => 'required|string|exists:payment_methods,id',
-            'amount' => 'required|numeric|between:1000,100000'
+            'original_amount' => 'required|numeric|between:1000,100000'
         ];
     }
 }
