@@ -1,0 +1,17 @@
+.login_label {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.profile_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile_row a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #FFF;
+}

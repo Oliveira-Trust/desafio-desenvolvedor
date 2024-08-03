@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5%;
+}
+
+.main h1, span {
+  margin-bottom: 1%;
+}
+
+@media only screen and (max-width: 600px) {
+  .main h1, span {
+    margin-bottom: 5%;
+  }
+}

@@ -1,48 +1,83 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+# Exchangify
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+O exchangify foi criado para fazer a compra de moedas, após a feito a compra um recibo é enviado para o email do usuário com todas as informações da transação, como o valor bruto, valor após as taxas, o valor que foi comprado, entre outros, também é possível checar dados de compras anteriores na tela de perfil, configurar parâmetros do sistema como por exemplo a taxa de tipo de pagamento.
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+As tecnologias utilizadas foram react com material ui para construir o frontend e laravel para construir o backend, a autênticação foi feita com jwt, armazenando os dados de usuário no local storage.
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+Foi utilizado DDD(Domain Driven Design para) principalmente no backend, os domínios foram separados em:
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+- Auth
+- Config
+- Currency
+- Exchange
+- Marketing
+- Payment
+- User
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+Também foi utilizado no backend o pattern *action pattern*.
+### Referência
+- [Laravel Actions](https://medium.com/@remi_collin/keeping-your-laravel-applications-dry-with-single-action-classes-6a950ec54d1d)
+## Instalando o projeto
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+Para fazer o projeto funcionar, será preciso ter instalado:
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+- php
+- node
+- npm(ou yarn)
+- composer
+- Xampp(Ou qualquer programa que execute PHP e MySql)
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+Após fazer o clone do projeto, entre na pasta do projeto e em seguida em frontend através do terminal.
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+```cd desafio-desenvolvedor/frontend```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+Em seguida, use o seguinte comando para instalar todos os pacotes necessários do frontend.
+
+```npm install``` ou ```yarn install```
+
+Em uma outra aba do terminal, entre na pasta do projeto e em seguida em backend.
+
+```cd desafio-desenvolvedor/api```
+
+E execute o comando abaixo para instalar todas os pacotes do backend.
+
+```composer install```
+
+Quando todos os pacotes tiverem sido instalados e o seu ambiente de virtualização esteja rodando, execute os comandos para iniciar o host do projeto.
+
+Em ```desafio-desenvolvedor/frontend``` execute ```npm start``` ou ```yarn start```
+
+Em ```desafio-desenvolvedor/api``` execute ```php artisan migrate``` e então ```php artisan serve```
+
+Caso laravel seja hosteado em uma porta diferente de 8000, é importante alterar a constante ROOT no arquivo ```frontend/src/library/HttpClient.js``` para a porta utilizada para o host.
+
+Acessando o endereço disponibilizado pelo frontend, você terá acesso ao App.
+
+## Autenticação
+
+Por padrão o é criado um usuário Admin, ele tem o poder de alterar as variáveis do sistema.
+
+email: admin@gmail.com
+
+senha: 123456
+
+Caso não esteja autenticado, ainda é possível utilizar a aplicação na forma mais básica que é a de buscar o valor de câmbio de algumas moedas. ex:
+
+BRL -> USD ou EUR -> USD.
+
+Quando está autenticado e é feito uma compra, o sistema registra a compra e envia um email de recibo para o email vinculado ao usuário, por isso é importante que utilize um email válido caso queira testar a feature de envio de recibo.
+
+Também é possível reenviar o recibo por email através do modal de informações de compra que pode ser acessado, através do icone de "i" ao lado do valor após a compra.
+
+Ao acessar a tela de perfil clicando no ícone do usuário no canto superior direito é possível ter acesso à dados de compras realizados anteriormente.
+
+Como dito anteriormente, o Admin tem poder de fazer alterações nas configurações do app, alterando as variáveis do sistema, as variáveis são:
+
+- % da taxa de pagamento por boleto
+- % da taxa de pagamento por cartão
+- Valor mínimo para taxa de compra
+- % da taxa de valor mínimo
+- Email da empresa
+
+Apesar da última opção ser um possibilidade, não é recomendado por agora pois o email registrado por padrão(diegoleandro2002@gmail.com) é o email registrado no provedor de email e se alterado irá quebrar a feature de recibo por email.
