@@ -1,33 +1,28 @@
+import type {AxiosInstance} from "axios";
+import axiosInstance from "@/infrastructure/http/axios-config";
+import type { IUserDTO } from "@/domain/dtos/user.dto";
+
 interface IAuthRepository {
     login(username: string, password: string): Promise<void>;
     logout(): Promise<void>;
+    getUserAuthenticated(): Promise<IUserDTO>;
 }
 
-/**
- * Classe responsável por transformar dados e se comunicar com o serviço de websocket.
- */
 class AuthRepository implements IAuthRepository {
-    public async login(username: string, password: string): Promise<void> {
-        return new Promise((resolve, reject) => {
-            if (!(username === 'david' && password === '123456')) {
-                reject(
-                    // new Error(
-                    //     `[AuthRepository.login()]: Method not implemented yet - username: '${username}' password: '${password}'.`,
-                    // ),
-                    new Error('Houve um erro ao realizar login'),
-                );
-            }
+    constructor(private axios: AxiosInstance) { }
 
-            resolve();
-        });
+    public async login(email: string, password: string): Promise<void> {
+        await this.axios.post('/login', { email, password });
     }
 
     public async logout(): Promise<void> {
-        return new Promise<void>((resolve, reject) => {
-            reject(new Error(`[AuthRepository.logout()]: Method not implemented yet.`));
-        });
+        await this.axios.post('/logout');
+    }
+
+    public async getUserAuthenticated(): Promise<IUserDTO> {
+        return (await this.axios.get<IUserDTO>('/api/user')).data;
     }
 }
 
-const authRepository = new AuthRepository();
+const authRepository = new AuthRepository(axiosInstance);
 export { authRepository, type IAuthRepository };

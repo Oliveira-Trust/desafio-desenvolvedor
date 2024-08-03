@@ -1,15 +1,23 @@
+import type { IUserDTO } from "../dtos/user.dto";
+
 interface IUser {
-    id: string;
+    id: number;
     name: string;
     email: string;
-    password?: string;
 }
 
 export class User implements IUser {
     constructor(
-        public id: string,
+        public id: number,
         public name: string,
         public email: string,
-        public password?: string,
     ) {}
+
+    public static fromDTO(dto: IUserDTO): User {
+        return new User(
+            dto.id,
+            dto.name,
+            dto.email,
+        )
+    }
 }

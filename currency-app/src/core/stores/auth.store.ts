@@ -1,16 +1,20 @@
 import { loginUseCase } from '@/domain/usecases/login.usecase';
 import { logoutUseCase } from '@/domain/usecases/logout.usecase';
 import { defineStore } from 'pinia';
+import {getUserAuthenticatedUsecase} from "@/domain/usecases/get-user-authenticated.usecase";
 
 interface AuthState {
     isLoggedIn: boolean;
-    username: string;
+    name: string;
+    email: string;
 }
 
 export const useAuthStore = defineStore('auth', {
     state: () =>
         ({
-            isLoggedIn: false,
+            name: '',
+            email: '',
+            isLoggedIn: document.cookie.includes('XSRF-TOKEN'),
         }) as AuthState,
     getters: {},
     actions: {
@@ -21,6 +25,9 @@ export const useAuthStore = defineStore('auth', {
         async logout() {
             await logoutUseCase.execute();
             window.document.location.reload();
+        },
+        async checkUserAuthenticated() {
+            const user = await getUserAuthenticatedUsecase.execute();
         },
     },
 });

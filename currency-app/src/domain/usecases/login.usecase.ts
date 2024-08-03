@@ -10,7 +10,7 @@ class LoginUseCase implements IUseCase<LoginParams, Promise<void>> {
     constructor(private repository: IAuthRepository) {}
 
     public async execute(params: LoginParams): Promise<void> {
-        return await this.repository.login(params.username, params.password);
+        await this.repository.login(params.username, params.password);
     }
 }
 
