@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots, type PropType } from 'vue';
+import { mdiClose } from "@mdi/js";
 
 const slots = useSlots();
 
@@ -53,7 +54,7 @@ defineProps({
             <VCard :loading="loading ? 'primary' : false" :disabled="loading">
                 <VCardTitle v-if="title" class="dialog__header" :class="`dialog__header--${titleAlign}`">
                     {{ title }}
-                    <VBtn v-if="showCloseButton" icon="$vuetify" variant="text" @click="isActive.value = false"></VBtn>
+                    <VBtn v-if="showCloseButton" :icon="mdiClose" variant="text" @click="isActive.value = false"></VBtn>
                 </VCardTitle>
 
                 <VDivider />

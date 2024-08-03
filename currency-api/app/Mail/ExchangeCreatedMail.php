@@ -27,7 +27,7 @@ class ExchangeCreatedMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.exchange_created', [
-            'user_conversion' => $this->exchange
+            'exchange' => $this->exchange
         ]);
     }
 }
