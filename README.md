@@ -48,7 +48,11 @@ Quando todos os pacotes tiverem sido instalados e o seu ambiente de virtualizaç
 
 Em ```desafio-desenvolvedor/frontend``` execute ```npm start``` ou ```yarn start```
 
-Em ```desafio-desenvolvedor/api``` execute ```php artisan migrate``` e então ```php artisan serve```
+Em ```desafio-desenvolvedor/api``` execute ```php artisan serve```
+
+Acesse o PhpMyAdmin my admin em ```localhost:8080```(Pode ser outra porta, depende de onde o PhpMyAdmin foi hosteado) e crie a database 'exchangify'
+
+De volta no backend, execute o comando ```php artisan migrate``` para criar as tabelas do sistema e criar o usuário admin.
 
 Caso laravel seja hosteado em uma porta diferente de 8000, é importante alterar a constante ROOT no arquivo ```frontend/src/library/HttpClient.js``` para a porta utilizada para o host.
 
