@@ -3,17 +3,23 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { configuration } from './core/configuration';
 import { registerPlugins } from './core/plugins';
+import {useAuthStore} from "@/core/stores/auth.store";
+import {hasAuthenticationCookie} from "@/infrastructure/http/axios-config";
+import router from "@/router";
 
 async function bootstrap() {
-    await configuration.initialize();
-
     const app = createApp(App);
     registerPlugins(app);
 
     try {
         document.title = `${configuration.applicationName} (v${configuration.applicationVersion})`;
+
+        if (hasAuthenticationCookie()) {
+            await useAuthStore().checkUserAuthenticated();
+            await router.push({ name: 'home' });
+        }
     } catch (err: unknown) {
-        console.error('err');
+        //
     }
 
     app.mount('#app');
