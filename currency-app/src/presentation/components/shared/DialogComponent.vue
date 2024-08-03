@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots, type PropType } from 'vue';
-import { mdiClose } from "@mdi/js";
+import { mdiClose } from '@mdi/js';
 
 const slots = useSlots();
 

@@ -7,7 +7,7 @@ class GetExchangesUseCase implements IUseCase<void, Promise<Exchange[]>> {
 
     public async execute(): Promise<Exchange[]> {
         const data = await this.repository.getExchanges();
-        return data.map(dto => Exchange.fromDTO(dto));
+        return data.map((dto) => Exchange.fromDTO(dto));
     }
 }
 

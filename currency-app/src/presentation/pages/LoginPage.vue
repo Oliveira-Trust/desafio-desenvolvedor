@@ -4,9 +4,9 @@ import router from '@/router';
 import { mdiEmailOutline, mdiEye, mdiEyeOff, mdiLockOutline } from '@mdi/js';
 import { ref } from 'vue';
 import InputField from '../components/shared/form/InputField.vue';
-import UnprocessableEntityException from "@/infrastructure/http/exceptions/unprocessable-entity-exception";
+import UnprocessableEntityException from '@/infrastructure/http/exceptions/unprocessable-entity-exception';
 import logoOt from '@/assets/logo.svg';
-import {useToastStore} from "@/core/stores/toast.store";
+import { useToastStore } from '@/core/stores/toast.store';
 
 const authStore = useAuthStore();
 
@@ -15,7 +15,7 @@ const visible = ref(false);
 const email = ref('');
 const password = ref('');
 const loading = ref(false);
-const errors = ref({} as {email: string[], password: string[]});
+const errors = ref({} as { email: string[]; password: string[] });
 
 const requiredRule = (value: string) => !!value || 'Campo obrigatório';
 const usernameRules = ref([requiredRule]);
@@ -27,7 +27,7 @@ async function onLoginHandler() {
 
         try {
             await authStore.login(email.value, password.value);
-            await router.push({name: 'home'})
+            await router.push({ name: 'home' });
         } catch (error: unknown) {
             if (error instanceof UnprocessableEntityException) {
                 // TODO: Aplicar highlight nos inputs de erro
@@ -45,11 +45,7 @@ async function onLoginHandler() {
 <template>
     <div class="page">
         <VCard class="card" elevation="2" rounded="lg">
-          <VImg
-              class="logo"
-              max-width="240"
-              :src="logoOt"
-          />
+            <VImg class="logo" max-width="240" :src="logoOt" />
             <VForm v-model="form" @submit.prevent="onLoginHandler">
                 <VRow>
                     <VCol cols="12">
@@ -95,10 +91,10 @@ async function onLoginHandler() {
         width: 448px;
         padding: 48px;
 
-      .logo {
-        margin-inline: auto;
-        margin-bottom: 36px;
-      }
+        .logo {
+            margin-inline: auto;
+            margin-bottom: 36px;
+        }
     }
 }
 </style>

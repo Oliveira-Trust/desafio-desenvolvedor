@@ -1,4 +1,4 @@
-import type { IExchangeDTO } from "../dtos/exchange.dto";
+import type { IExchangeDTO } from '../dtos/exchange.dto';
 
 export interface IExchange {
     sourceCurrency: string;
@@ -27,8 +27,7 @@ export class Exchange implements IExchange {
         public conversionFee: number,
         public totalWithFees: number,
         public createdAt: Date,
-    ) {
-    }
+    ) {}
 
     public static fromDTO(dto: IExchangeDTO): Exchange {
         return new Exchange(
@@ -41,22 +40,22 @@ export class Exchange implements IExchange {
             dto.payment_method_fee,
             dto.conversion_fee,
             dto.total_with_fees,
-            new Date(dto.created_at)
-        )
+            new Date(dto.created_at),
+        );
     }
 
     public static fromRaw(c: IExchange): Exchange {
         return new Exchange(
             c.id as number,
             c.sourceCurrency as string,
-            c.destinationCurrency  as string,
-            c.originalAmount  as number,
-            c.paymentMethod  as string,
+            c.destinationCurrency as string,
+            c.originalAmount as number,
+            c.paymentMethod as string,
             c.amountInDestinationCurrency as number,
             c.paymentFee as number,
             c.conversionFee as number,
             c.totalWithFees as number,
-            new Date(c.createdAt as Date)
-        )
+            new Date(c.createdAt as Date),
+        );
     }
 }

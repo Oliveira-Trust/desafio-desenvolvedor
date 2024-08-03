@@ -1,6 +1,6 @@
 import type { IUseCase } from '@/core/types/usecase.interface';
 import { authRepository, type IAuthRepository } from '@/repositories/auth.repository';
-import {User} from "@/domain/entities/user.model";
+import { User } from '@/domain/entities/user.model';
 
 class GetUserAuthenticatedUsecase implements IUseCase<void, Promise<User>> {
     constructor(private repository: IAuthRepository) {}

@@ -1,6 +1,6 @@
-import {defineStore} from 'pinia';
-import {getAvailableCoinsUsecase} from "@/domain/usecases/get-available-currencies.usecase";
-import type {Currency} from "@/domain/entities/currency.model";
+import { defineStore } from 'pinia';
+import { getAvailableCoinsUsecase } from '@/domain/usecases/get-available-currencies.usecase';
+import type { Currency } from '@/domain/entities/currency.model';
 import type { Exchange, ICreateExchange } from '@/domain/entities/exchange.model';
 import { getExchangesUseCase } from '@/domain/usecases/get-exchanges.usecase';
 import { createExchangeUseCase } from '@/domain/usecases/create-exchange.usecase';
@@ -8,10 +8,11 @@ import { createExchangeUseCase } from '@/domain/usecases/create-exchange.usecase
 export const useExchangeStore = defineStore('exchanges', {
     state: () => ({
         exchangesMap: new Map<number, Exchange>(),
-        currencies: [] as Currency[]
+        currencies: [] as Currency[],
     }),
     getters: {
-        exchanges: (state) => Array.from(state.exchangesMap.values()).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()),
+        exchanges: (state) =>
+            Array.from(state.exchangesMap.values()).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()),
     },
     actions: {
         async fetchExchanges() {

@@ -3,9 +3,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { configuration } from './core/configuration';
 import { registerPlugins } from './core/plugins';
-import {useAuthStore} from "@/core/stores/auth.store";
-import {hasAuthenticationCookie} from "@/infrastructure/http/axios-config";
-import router from "@/router";
+import { useAuthStore } from '@/core/stores/auth.store';
+import { hasAuthenticationCookie } from '@/infrastructure/http/axios-config';
+import router from '@/router';
 
 async function bootstrap() {
     const app = createApp(App);

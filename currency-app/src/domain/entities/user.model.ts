@@ -1,4 +1,4 @@
-import type { IUserDTO } from "../dtos/user.dto";
+import type { IUserDTO } from '../dtos/user.dto';
 
 interface IUser {
     id: number;
@@ -14,10 +14,6 @@ export class User implements IUser {
     ) {}
 
     public static fromDTO(dto: IUserDTO): User {
-        return new User(
-            dto.id,
-            dto.name,
-            dto.email,
-        )
+        return new User(dto.id, dto.name, dto.email);
     }
 }

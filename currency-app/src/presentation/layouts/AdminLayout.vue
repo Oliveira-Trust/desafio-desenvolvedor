@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {mdiCog, mdiLogout, mdiPlus} from '@mdi/js';
+import { mdiCog, mdiLogout, mdiPlus } from '@mdi/js';
 import logoOt from '@/assets/logo.svg';
-import router from "@/router";
-import {ref} from "vue";
-import {useAuthStore} from "@/core/stores/auth.store";
-import ExchangeFeeConfiguration from "@/presentation/components/ExchangeFeeConfiguration.vue";
+import router from '@/router';
+import { ref } from 'vue';
+import { useAuthStore } from '@/core/stores/auth.store';
+import ExchangeFeeConfiguration from '@/presentation/components/ExchangeFeeConfiguration.vue';
 
 const loading = ref(false);
 async function onLogoutHandler() {
@@ -12,7 +12,7 @@ async function onLogoutHandler() {
 
     try {
         await useAuthStore().logout();
-        await router.push({name: 'home'})
+        await router.push({ name: 'home' });
     } catch (error: unknown) {
         if (error instanceof Error) {
             //

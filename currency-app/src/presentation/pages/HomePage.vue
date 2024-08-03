@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {mdiPlus} from "@mdi/js";
-import CreateExchange from "../components/CreateExchange.vue";
-import ExchangesTable from "../components/ExchangesTable.vue";
+import { mdiPlus } from '@mdi/js';
+import CreateExchange from '../components/CreateExchange.vue';
+import ExchangesTable from '../components/ExchangesTable.vue';
 </script>
 
 <template>
@@ -10,7 +10,14 @@ import ExchangesTable from "../components/ExchangesTable.vue";
             <div class="header__title">Conversões</div>
             <CreateExchange>
                 <template #activator="{ props }">
-                    <VBtn v-bind="props" :prepend-icon="mdiPlus" text="Nova conversão" variant="flat" color="primary" rounded="lg"/>
+                    <VBtn
+                        v-bind="props"
+                        :prepend-icon="mdiPlus"
+                        text="Nova conversão"
+                        variant="flat"
+                        color="primary"
+                        rounded="lg"
+                    />
                 </template>
             </CreateExchange>
         </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {computed, ref} from 'vue';
-import type {DataTableHeaders} from "@/core/types/data-table-headers.type";
+import { computed, ref } from 'vue';
+import type { DataTableHeaders } from '@/core/types/data-table-headers.type';
 import { useExchangeStore } from '@/core/stores/exchange.store';
 
 const store = useExchangeStore();
@@ -12,7 +12,7 @@ const headers = ref<DataTableHeaders>([
         sortable: false,
         key: 'createdAt',
         minWidth: '50px',
-        width: '175px'
+        width: '175px',
     },
     {
         title: 'Origem',
@@ -92,15 +92,11 @@ async function loadItems() {
             density="compact"
             @update:options="loadItems"
         >
-            <template #[`item.originalAmount`]="{ value }">
-                R$ {{ value.toFixed(2).toString().replace('.', ',') }}
-            </template>
+            <template #[`item.originalAmount`]="{ value }"> R$ {{ value.toFixed(2).toString().replace('.', ',') }} </template>
             <template #[`item.paymentMethod`]="{ value }">
                 {{ value === 'billet' ? 'Boleto' : 'Cartão de crédito' }}
             </template>
-            <template #[`item.totalWithFees`]="{ value }">
-                R$ {{ value.toFixed(2).toString().replace('.', ',') }}
-            </template>
+            <template #[`item.totalWithFees`]="{ value }"> R$ {{ value.toFixed(2).toString().replace('.', ',') }} </template>
             <template #[`item.paymentFee`]="{ item }">
                 R$ {{ item.paymentFee.toFixed(2).toString().replace('.', ',') }}
             </template>
@@ -115,5 +111,4 @@ async function loadItems() {
     </VCard>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

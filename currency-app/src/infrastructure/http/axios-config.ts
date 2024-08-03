@@ -1,14 +1,14 @@
-import axios, {AxiosError, type AxiosInstance} from 'axios';
-import { configuration } from "@/infrastructure/configuration";
-import UnprocessableEntityException from "@/infrastructure/http/exceptions/unprocessable-entity-exception";
+import axios, { AxiosError, type AxiosInstance } from 'axios';
+import { configuration } from '@/infrastructure/configuration';
+import UnprocessableEntityException from '@/infrastructure/http/exceptions/unprocessable-entity-exception';
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: configuration.apiUrl,
-  withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-  },
+    baseURL: configuration.apiUrl,
+    withCredentials: true,
+    headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+    },
 });
 
 async function getCsrfToken() {
@@ -16,7 +16,10 @@ async function getCsrfToken() {
 }
 
 export function hasAuthenticationCookie() {
-    return !!document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))?.split('=')[1]
+    return !!document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('XSRF-TOKEN='))
+        ?.split('=')[1];
 }
 
 axiosInstance.interceptors.request.use(
@@ -24,7 +27,10 @@ axiosInstance.interceptors.request.use(
         const method = config.method?.toUpperCase();
         if (['POST', 'PUT', 'DELETE'].includes(method || '')) {
             await getCsrfToken();
-            const xsrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))?.split('=')[1];
+            const xsrfToken = document.cookie
+                .split('; ')
+                .find((row) => row.startsWith('XSRF-TOKEN='))
+                ?.split('=')[1];
 
             if (xsrfToken) {
                 config.headers['X-XSRF-TOKEN'] = decodeURIComponent(xsrfToken);
@@ -34,14 +40,14 @@ axiosInstance.interceptors.request.use(
         return config;
     },
     (error) => {
-      return Promise.reject(error);
-    }
+        return Promise.reject(error);
+    },
 );
 
 // Interceptor de resposta (opcional)
 axiosInstance.interceptors.response.use(
     (response) => {
-      return response;
+        return response;
     },
     (error: AxiosError<any>) => {
         if (error.response?.status === 422) {
@@ -49,7 +55,7 @@ axiosInstance.interceptors.response.use(
         }
 
         return Promise.reject(error);
-    }
+    },
 );
 
 export default axiosInstance;

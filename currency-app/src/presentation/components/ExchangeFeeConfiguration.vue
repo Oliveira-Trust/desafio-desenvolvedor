@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {useToastStore} from '@/core/stores/toast.store';
+import { useToastStore } from '@/core/stores/toast.store';
 import DialogComponent from '@/presentation/components/shared/DialogComponent.vue';
 import InputField from '@/presentation/components/shared/form/InputField.vue';
-import {ref, onMounted, reactive} from 'vue';
-import type {VForm} from 'vuetify/components';
-import DatePickerField from "@/presentation/components/shared/form/DatePickerField.vue";
-import type {IExchangeFeeConfiguration} from "@/domain/entities/exchange-fee-configuration.model";
-import {useExchangeFeeConfigurationStore} from "@/core/stores/exchange-fee-configuration.store";
+import { ref, onMounted, reactive } from 'vue';
+import type { VForm } from 'vuetify/components';
+import DatePickerField from '@/presentation/components/shared/form/DatePickerField.vue';
+import type { IExchangeFeeConfiguration } from '@/domain/entities/exchange-fee-configuration.model';
+import { useExchangeFeeConfigurationStore } from '@/core/stores/exchange-fee-configuration.store';
 
 /**
  * DEFINIÇÕES DO COMPONENTE
@@ -59,23 +59,18 @@ function onCancelHandler() {
 }
 
 onMounted(async () => {
-    await store.fetchConfiguration()
+    await store.fetchConfiguration();
     if (store.feeConfiguration) {
-        localFeeConfiguration.ltThreshold = store.feeConfiguration.ltThreshold
-        localFeeConfiguration.gtThreshold = store.feeConfiguration.gtThreshold
-        localFeeConfiguration.amount = store.feeConfiguration.amount
-        localFeeConfiguration.effectiveDate = store.feeConfiguration.effectiveDate
+        localFeeConfiguration.ltThreshold = store.feeConfiguration.ltThreshold;
+        localFeeConfiguration.gtThreshold = store.feeConfiguration.gtThreshold;
+        localFeeConfiguration.amount = store.feeConfiguration.amount;
+        localFeeConfiguration.effectiveDate = store.feeConfiguration.effectiveDate;
     }
-})
+});
 </script>
 
 <template>
-    <DialogComponent
-        v-model="showing"
-        title="Configuração de conversão"
-        :loading="loading"
-        show-close-button
-    >
+    <DialogComponent v-model="showing" title="Configuração de conversão" :loading="loading" show-close-button>
         <template v-slot:activator="scope">
             <slot name="activator" v-bind="scope"></slot>
         </template>
@@ -168,5 +163,4 @@ onMounted(async () => {
     </DialogComponent>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

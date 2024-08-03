@@ -1,7 +1,7 @@
 import { loginUseCase } from '@/domain/usecases/login.usecase';
 import { logoutUseCase } from '@/domain/usecases/logout.usecase';
 import { defineStore } from 'pinia';
-import {getUserAuthenticatedUsecase} from "@/domain/usecases/get-user-authenticated.usecase";
+import { getUserAuthenticatedUsecase } from '@/domain/usecases/get-user-authenticated.usecase';
 
 interface AuthState {
     isLoggedIn: boolean;

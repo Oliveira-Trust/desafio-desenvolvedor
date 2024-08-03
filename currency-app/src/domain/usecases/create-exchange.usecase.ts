@@ -7,18 +7,18 @@ class CreateExchangeUseCase implements IUseCase<ICreateExchange, Promise<Exchang
 
     public async execute(form: ICreateExchange): Promise<Exchange> {
         if (form.sourceCurrency === form.destinationCurrency) {
-            throw new Error('A moeda de destino deve ser diferente da moeda de origem.')
+            throw new Error('A moeda de destino deve ser diferente da moeda de origem.');
         }
 
         if (form.originalAmount < 1000 || form.originalAmount > 100000) {
-            throw new Error('O valor para conversão deve estar entre R$ 1.000,00 e R$ 100.000,00.')
+            throw new Error('O valor para conversão deve estar entre R$ 1.000,00 e R$ 100.000,00.');
         }
 
         const data = await this.repository.createExchange({
             source_currency: form.sourceCurrency,
             destination_currency: form.destinationCurrency,
             payment_method: form.paymentMethod,
-            original_amount: form.originalAmount
+            original_amount: form.originalAmount,
         });
 
         return Exchange.fromDTO(data);

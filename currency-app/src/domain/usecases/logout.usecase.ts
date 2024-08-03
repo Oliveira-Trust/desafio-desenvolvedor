@@ -10,8 +10,8 @@ class LogoutUseCase implements IUseCase<void, Promise<void>> {
 
     public async execute() {
         await this.repository.logout();
-        this.deleteCookie('XSRF-TOKEN')
-        this.deleteCookie('laravel_session')
+        this.deleteCookie('XSRF-TOKEN');
+        this.deleteCookie('laravel_session');
     }
 }
 

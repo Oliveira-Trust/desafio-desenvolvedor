@@ -1,6 +1,6 @@
-import type {AxiosInstance} from "axios";
-import axiosInstance from "@/infrastructure/http/axios-config";
-import type { IUserDTO } from "@/domain/dtos/user.dto";
+import type { AxiosInstance } from 'axios';
+import axiosInstance from '@/infrastructure/http/axios-config';
+import type { IUserDTO } from '@/domain/dtos/user.dto';
 
 interface IAuthRepository {
     login(username: string, password: string): Promise<void>;
@@ -9,7 +9,7 @@ interface IAuthRepository {
 }
 
 class AuthRepository implements IAuthRepository {
-    constructor(private axios: AxiosInstance) { }
+    constructor(private axios: AxiosInstance) {}
 
     public async login(email: string, password: string): Promise<void> {
         await this.axios.post('/login', { email, password });

@@ -1,16 +1,17 @@
-import {defineStore} from 'pinia';
-import {ExchangeFeeConfiguration, type IExchangeFeeConfiguration} from "@/domain/entities/exchange-fee-configuration.model";
+import { defineStore } from 'pinia';
+import { ExchangeFeeConfiguration, type IExchangeFeeConfiguration } from '@/domain/entities/exchange-fee-configuration.model';
 import { getExchangeFeeConfigurationUseCase } from '@/domain/usecases/get-exchange-fee-configuration.usecase';
 import { saveExchangeFeeConfigurationUseCase } from '@/domain/usecases/save-exchange-fee-configuration.usecase';
 
 interface IExchangeFeeConfigurationStore {
-    feeConfiguration: ExchangeFeeConfiguration | null
+    feeConfiguration: ExchangeFeeConfiguration | null;
 }
 
 export const useExchangeFeeConfigurationStore = defineStore('exchange-fee-configuration', {
-    state: () => ({
-        feeConfiguration: null
-    } as IExchangeFeeConfigurationStore),
+    state: () =>
+        ({
+            feeConfiguration: null,
+        }) as IExchangeFeeConfigurationStore,
     getters: {},
     actions: {
         async fetchConfiguration() {

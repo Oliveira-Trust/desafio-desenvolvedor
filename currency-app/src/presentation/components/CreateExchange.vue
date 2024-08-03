@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {useToastStore} from '@/core/stores/toast.store';
+import { useToastStore } from '@/core/stores/toast.store';
 import DialogComponent from '@/presentation/components/shared/DialogComponent.vue';
 import InputField from '@/presentation/components/shared/form/InputField.vue';
-import {ref, onMounted, computed, reactive} from 'vue';
-import type {VForm} from 'vuetify/components';
-import SelectField from "@/presentation/components/shared/form/SelectField.vue";
-import type { ICreateExchange} from "@/domain/entities/exchange.model";
-import {AxiosError} from "axios";
+import { ref, onMounted, computed, reactive } from 'vue';
+import type { VForm } from 'vuetify/components';
+import SelectField from '@/presentation/components/shared/form/SelectField.vue';
+import type { ICreateExchange } from '@/domain/entities/exchange.model';
+import { AxiosError } from 'axios';
 import { useExchangeStore } from '@/core/stores/exchange.store';
 
 /**
@@ -31,9 +31,9 @@ const exchangeStore = useExchangeStore();
 
 const currencies = computed(() => useExchangeStore().currencies);
 const paymentMethods = [
-    {title: 'Boleto', value: 'billet'},
-    {title: 'Cartão de crédito', value: 'credit_card'}
-]
+    { title: 'Boleto', value: 'billet' },
+    { title: 'Cartão de crédito', value: 'credit_card' },
+];
 
 /**
  * VARIÁVEIS DE CONTROLE
@@ -59,7 +59,9 @@ async function onSubmitHandler() {
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
             if (error.response?.status === 400) {
-                useToastStore().error(`Não foi possível converter a moeda de ${localExchange.sourceCurrency} para ${localExchange.destinationCurrency}`);
+                useToastStore().error(
+                    `Não foi possível converter a moeda de ${localExchange.sourceCurrency} para ${localExchange.destinationCurrency}`,
+                );
             }
         } else if (error instanceof Error) {
             useToastStore().error(error.message);
@@ -74,17 +76,12 @@ function onCancelHandler() {
 }
 
 onMounted(() => {
-    exchangeStore.fetchCoins()
-})
+    exchangeStore.fetchCoins();
+});
 </script>
 
 <template>
-    <DialogComponent
-        v-model="showing"
-        title="Nova conversão"
-        :loading="loading"
-        show-close-button
-    >
+    <DialogComponent v-model="showing" title="Nova conversão" :loading="loading" show-close-button>
         <template v-slot:activator="scope">
             <slot name="activator" v-bind="scope"></slot>
         </template>
@@ -179,5 +176,4 @@ onMounted(() => {
     </DialogComponent>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

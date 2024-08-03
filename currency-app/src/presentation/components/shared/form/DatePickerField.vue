@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiCalendarOutline } from "@mdi/js";
+import { mdiCalendarOutline } from '@mdi/js';
 import { ref } from 'vue';
 import { VDatePicker, VIcon, VMenu } from 'vuetify/components';
 import InputField from './InputField.vue';
