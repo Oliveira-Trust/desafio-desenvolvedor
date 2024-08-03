@@ -11,7 +11,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return $request->user();
     });
 
-    Route::middleware(['auth:sanctum'])->get('/available-coins', [ExchangeController::class, 'getAvailableCoins']);
+    Route::middleware(['auth:sanctum'])->get('/available-currencies', [ExchangeController::class, 'getAvailableCurrencies']);
     Route::middleware(['auth:sanctum'])->get('/history', [ExchangeController::class, 'getHistory']);
     Route::middleware(['auth:sanctum'])->post('/convert', [ExchangeController::class, 'convert']);
     Route::middleware(['auth:sanctum'])->get('/configuration', [ExchangeFeeConfigurationController::class, 'getConfig']);

@@ -24,14 +24,14 @@ cd currency-api
 cp .env.example .env
 ```
 
-### Instale as dependêcnais
-```bash
-docker exec ot-challenge-api composer install
-```
-
 ### Execute o projeto
 ```bash
 docker-compose up -d
+```
+
+### Instale as dependêcnais
+```bash
+docker exec ot-challenge-api composer install
 ```
 
 ### Gerar key

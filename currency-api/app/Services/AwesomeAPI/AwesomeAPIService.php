@@ -38,7 +38,7 @@ class AwesomeAPIService
 
             $data = $response->json();
 
-            return array_map(fn($code, $coin) => new Currency($code, $coin), array_keys($data), $data);
+            return array_map(fn($code, $currency) => new Currency($code, $currency), array_keys($data), $data);
         });
     }
 

@@ -21,7 +21,7 @@ class ExchangeController extends Controller
      *
      * @return JsonResponse
      */
-    public function getAvailableCoins(): JsonResponse
+    public function getAvailableCurrencies(): JsonResponse
     {
         try {
             return response()->json($this->awesomeAPIService->getAvailableCurrencies());

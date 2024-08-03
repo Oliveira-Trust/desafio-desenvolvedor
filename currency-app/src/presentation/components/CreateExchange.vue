@@ -76,7 +76,7 @@ function onCancelHandler() {
 }
 
 onMounted(() => {
-    exchangeStore.fetchCoins();
+    exchangeStore.fetchCurrencies();
 });
 </script>
 

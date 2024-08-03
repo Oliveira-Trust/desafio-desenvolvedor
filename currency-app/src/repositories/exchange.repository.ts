@@ -5,7 +5,7 @@ import type { ICreateExchangeRequestDTO, IExchangeDTO } from '@/domain/dtos/exch
 
 interface IExchangeRepository {
     getExchanges(): Promise<IExchangeDTO[]>;
-    getAvailableCoins(): Promise<ICurrencyDTO[]>;
+    getAvailableCurrencies(): Promise<ICurrencyDTO[]>;
     createExchange(exchange: ICreateExchangeRequestDTO): Promise<IExchangeDTO>;
 }
 
@@ -16,8 +16,8 @@ class ExchangeRepository implements IExchangeRepository {
         return (await this.axios.get('/api/history')).data.data;
     }
 
-    public async getAvailableCoins(): Promise<ICurrencyDTO[]> {
-        return (await this.axios.get('/api/available-coins')).data;
+    public async getAvailableCurrencies(): Promise<ICurrencyDTO[]> {
+        return (await this.axios.get('/api/available-currencies')).data;
     }
 
     public async createExchange(exchange: ICreateExchangeRequestDTO): Promise<IExchangeDTO> {
