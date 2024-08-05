@@ -32,15 +32,15 @@ class ConversaoController extends Controller
         $moedaDestino = $request->input('moeda_destino');
         $valor = $request->input('valor');
         $formaPagamento = $request->input('forma_pagamento');
-
+          if($moedaDestino =='BRL'){
         $response = Http::get("https://economia.awesomeapi.com.br/last/{$moedaDestino}-BRL");
         $cotacao = $response->json()["{$moedaDestino}BRL"]['bid'];
-
+          }else{
         // Fetch conversion rate
         $response = Http::get("https://economia.awesomeapi.com.br/json/last/BRL-{$moedaDestino}");
         $data = $response->json();
         $cotacao = $data["BRL{$moedaDestino}"]['bid'];
-
+          }
         // Calculate payment fee
         $taxaPagamento = ($formaPagamento == 'boleto') ? 1.45 : 7.63;
         $valorComTaxaPagamento = $valor - ($valor * ($taxaPagamento / 100));
@@ -57,8 +57,13 @@ class ConversaoController extends Controller
 
     public function obterCotacao($moeda)
     {
+        if($moedaDestino =='BRL'){
         $response = Http::get("https://economia.awesomeapi.com.br/last/BRL-{$moeda}");
         return response()->json($response->json()["BRL{$moeda}"]['bid']);
+        }else{
+            $response = Http::get("https://economia.awesomeapi.com.br/last/{$moeda}");
+        return response()->json($response->json()["BRL{$moeda}"]['bid']);
+        }
     }
 }
 
