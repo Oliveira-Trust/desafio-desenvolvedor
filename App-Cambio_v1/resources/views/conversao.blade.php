@@ -16,10 +16,7 @@
                             value: key,
                             text: key
                         }));
-                        $('#moeda_origem').append($('<option>', {
-                            value: key,
-                            text: key
-                        }));
+                      
                     });
                 }
             });
