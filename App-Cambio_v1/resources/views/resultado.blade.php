@@ -5,6 +5,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
     <div class="container mt-5">
     <div class="mx-auto p-2" style="width: 500px;">
     <div class="shadow-none p-3 mb-5  rounded w-100 p-3">
@@ -21,9 +28,24 @@
             <li class="list-group-item"><strong>Valor Utilizado para Conversão:</strong> R$ {{ number_format($valorComTaxaConversao, 2, ',', '.') }}</li>
             <li class="list-group-item"><strong>Valor Convertido:</strong> {{ $moedaDestino }} {{ number_format($valorConvertido, 2, ',', '.') }}</li>
         </ul>
-        <a href="{{ route('conversao') }}" class="btn btn-primary mt-3">Nova Conversão</a>
+        <a href="{{ route('home') }}" class="btn btn-primary mt-3">Nova Conversão</a>
     </div>
     </div>
     </div>
 </body>
+
+<div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
 </html>

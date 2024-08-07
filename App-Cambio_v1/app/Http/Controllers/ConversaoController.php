@@ -34,9 +34,9 @@ class ConversaoController extends Controller
         $formaPagamento = $request->input('forma_pagamento');
           
         // Fetch conversion rate
-        $response = Http::get("https://economia.awesomeapi.com.br/json/last/BRL-{$moedaDestino}");
+        $response = Http::get("https://economia.awesomeapi.com.br/json/last/{$moedaDestino}-BRL");
         $data = $response->json();
-        $cotacao = $data["BRL{$moedaDestino}"]['bid'];
+        $cotacao = $data["{$moedaDestino}BRL"]['bid'];
           
         // Calculate payment fee
         $taxaPagamento = ($formaPagamento == 'boleto') ? 1.45 : 7.63;
