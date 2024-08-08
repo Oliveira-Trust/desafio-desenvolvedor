@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Conversão de Moedas - Oliveira Trust</title>
+</head>
+<body>
+
+    <h1>Conversão de Moedas - Oliveira Trust</h1>
+    <div class="d-flex justify-content-center flex-column align-items-center">
+        <form class="convertForm col-lg-6 col-md-8 col-sm-12" id="convertForm">
+            <div class="mb-3 col col-lg-6 col-md-6 col-sm-6">
+                <label for="destinyCoin" class="form-label">Moeda de Destino</label>
+                <select id="destinyCoin" name="destinyCoin" class="form-select" required>
+                    <option value="">-- Selecione uma opção</option>
+                    <option value="USD">Dólar (USD)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                </select>
+            </div>
+            <div class="mb-3 col col-lg-6 col-md-6 col-sm-6">
+                <label for="valueForConversion" class="form-label">Valor para Conversão (BRL)</label>
+                <input id="valueForConversion" name="valueForConversion" type="text" class="form-control" required title="Por favor, insira um valor válido">
+            </div>
+            <div class="mb-3 col col-lg-6 col-md-6 col-sm-6">
+                <label for="paymentMethod" class="form-label">Método de Pagamento</label>
+                <select id="paymentMethod" name="paymentMethod" class="form-select" required>
+                    <option value="">-- Selecione uma opção</option>
+                    <option value="bankSlip">Boleto</option>
+                    <option value="creditCard">Cartão de Crédito</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <button type="reset" class="btn btn-secondary btn-sm" id="clearForm">Limpar Campos</button>
+                <button type="submit" class="btn btn-success btn-sm">Realizar Cotação</button>
+            </div>
+        </form>
+
+        <div class="resultDataConvert col col-lg-4 col-md-4 col-sm-4 hide" id="resultDataConvert">
+            <h2>Resultado da Cotação</h2>
+            <div class="mb-3">
+                <span>Moeda de origem:</span>
+                <span id="originalCoinValue"></span>
+            </div>
+            <div class="mb-3">
+                <span>Moeda de destino:</span>
+                <span class="destinyCoinValue"></span>
+            </div>
+            <div class="mb-3">
+                <span>Valor para conversão:</span>
+                <span id="amountValue"></span>
+            </div>
+            <div class="mb-3">
+                <span>Forma de pagamento:</span>
+                <span id="paymentMethodSelected"></span>
+            </div>
+            <div class="mb-3">
+                <span>Valor de <b class="destinyCoinValue"></b> usado para conversão:</span>
+                <span id="bid"></span>
+            </div>
+            <div class="mb-3">
+                <span>Valor comprado em <b class="destinyCoinValue"></b>:</span>
+                <span id="purchasedValue"></span>
+            </div>
+            <div class="mb-3">
+                <span>Taxa de pagamento:</span>
+                <span id="paymentTax"></span>
+            </div>
+            <div class="mb-3">
+                <span>Taxa de conversão:</span>
+                <span id="convertTax"></span>
+            </div>
+            <div class="mb-3">
+                <span>Valor utilizado para conversão descontando as taxas:</span>
+                <span id="liquidValueBRL"></span>
+            </div>
+        </div>
+    </div>
+    <div id="loadingOverlay">
+        <div class="d-flex align-items-center flex-column">
+            <strong>Carregando cotação...</strong>
+            <div class="spinner-border text-success ml-auto" role="status" aria-hidden="true"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
