@@ -31,7 +31,7 @@ Faça o máximo de commits possíveis para ajudar na evolução da entrega, assi
 
 Não se esqueça de criar a branch com o seu nome completo e enviar um email, nesse email fique a vontade para enviar Informações complementares como linkedin, página do github ou qualquer informação complementar.
 
-Você vai encontrar um arquivo de exemplo em: .....
+Você vai encontrar um arquivo de exemplo em: [Baixar arquivo](https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/InstrumentsConsolidatedFile_20240823.csv)
 
 ## O Desafio:
 A API precisa ter no mínimo 3 endpoints, com as seguintes funcionalidades:
