@@ -2,7 +2,7 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
  </p>
  
-## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
+## Desafio para candidatos à vaga de Desenvolvedor (Jr/Pleno/Sênior).
 Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀 
 
 Não deixe de enviar o seu teste mesmo que incompleto!
@@ -84,8 +84,9 @@ A API precisa ter no mínimo 3 endpoints, com as seguintes funcionalidades:
 
 ### Bônus:
 * Utilizar banco de dados NOSQL para armazenar os dados do upload
-* Utilização de cache
+* Utilização de Cache
 * Utilização de autenticação para consumir os endpoints
+* Utilização de Filas
 
 ## Informações úteis para o desenvolviment da api:
 Você pode encontrar os arquivos para testar em:
