@@ -49,7 +49,7 @@ A API precisa ter no mínimo 3 endpoints, com as seguintes funcionalidades:
 - Histórico de upload de arquivo:
   - Deve ser possível buscar um envio especifico por nome do arquivo ou data referência
 - Buscar conteúdo do arquivo:
-  - Neste endpoint é opcional o envio parâmetros mas deve ser possível enviar no mínimo 2 informações, que seriam os campos TckrSymb e RptDt.
+  - Neste endpoint é opcional o envio de parâmetros mas deve ser possível enviar no mínimo 2 informações para busca, que seriam os campos TckrSymb e RptDt.
   - Se não enviar nenhum parâmetro o resultado deve ser apresentado páginado.
   - O retorno esperado deve conter no mínimo essas informações:
   ``` 
