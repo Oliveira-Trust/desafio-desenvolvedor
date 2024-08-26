@@ -40,7 +40,7 @@ Você vai encontrar um arquivo de exemplo em: [Baixar arquivo](https://github.co
 A API precisa ter no mínimo 3 endpoints, com as seguintes funcionalidades:
 - Upload de arquivo
 - Histórico de upload de arquivo
-- Visualizar conteúdo do arquivo
+- Buscar conteúdo do arquivo
 
 ### As Regras de négocio:
 - Upload de arquivo:
@@ -49,7 +49,8 @@ A API precisa ter no mínimo 3 endpoints, com as seguintes funcionalidades:
 - Histórico de upload de arquivo:
   - Deve ser possível buscar um envio especifico por nome do arquivo ou data referência
 - Buscar conteúdo do arquivo:
-  - Neste endpoint deve ser obrigatório o envio de no minimo 2 informações os campos TckrSymb e RptDt.
+  - Neste endpoint é opcional o envio de 2 informações os campos TckrSymb e RptDt.
+  - Se não enviar nenhum parâmetro o resultado deve ser apresentado páginado.
   - O retorno esperado deve conter no mínimo essas informações:
   ``` 
   {
