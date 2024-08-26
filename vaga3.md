@@ -9,6 +9,7 @@ Não deixe de enviar o seu teste mesmo que incompleto!
 
 ## Tecnologias a serem utilizadas
 * PHP (Framework Laravel preferencialmente)
+* Python
 
 ## Entrega:
 Para iniciar o teste, faça um fork deste repositório, **crie uma branch com o seu nome completo** e depois envie-nos o pull request. Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
