@@ -94,7 +94,7 @@ A API precisa ter no mínimo 3 endpoints, com as seguintes funcionalidades:
 Obs.: Nenhum dos pontos citados é obrigatório na entrega, embora ele possa ser positivo, se mal implementado pode ser pior do que entregar uma solução mais simples e de maior qualidade.
 
 ## Informações úteis para o desenvolvimento da api:
-Você pode encontrar os arquivos para testar em, nessa URL você vai encontrar um arquivo com a quantidade de apenas 75.000 linhas.
+Você pode encontrar os arquivos para testar na URL abaixo, nela você vai encontrar um arquivo com uma quantidade aproximada de 75.000 linhas.
 
 URL: https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/dados-publicos-de-produtos-listados-e-de-balcao/
 
