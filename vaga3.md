@@ -35,7 +35,7 @@ Faça o máximo de commits possíveis para ajudar na evolução da entrega, assi
 
 Não se esqueça de criar a branch com o seu nome completo e enviar um email, nesse email fique a vontade para enviar Informações complementares como linkedin, página do github ou qualquer informação complementar.
 
-Para o primeiro upload preparamos um arquivo de aproximadamente 400.000 linhas: [Baixar arquivo](https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/InstrumentsConsolidatedFile_20240822_20240827.csv), neste arquivo temos informações de várias datas unificadas em um mesmo arquivo.
+Para o primeiro upload preparamos um arquivo de aproximadamente 400.000 linhas: [Baixar arquivo](https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/InstrumentsConsolidatedFile_20240822_20240827.zip), neste arquivo temos informações de várias datas unificadas em um mesmo arquivo.
 
 Para realizar o seu desafio imagine que diariamente receberemos um arquivo de aproximadamenteo 75.000 linhas isso pode influenciar na sua lógica.
 
