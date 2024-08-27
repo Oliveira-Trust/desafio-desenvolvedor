@@ -26,9 +26,9 @@ Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa,
 
 #### Benefícios 🚀
 - Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
+- Vale Refeição (CAJU);
+- Vale Alimentação (CAJU);
+- Vale Transporte ou Vale Combustível (CAJU);
 - Plano de Saúde e Odontológico;
 - Seguro de vida;
 - PLR Semestral;
@@ -45,4 +45,4 @@ Barra da Tijuca, Rio de Janeiro, RJ
 A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
 
 ## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga.md
+https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga3.md
