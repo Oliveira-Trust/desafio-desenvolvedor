@@ -98,7 +98,7 @@ Você pode encontrar os arquivos para testar na URL abaixo, nela você vai encon
 
 URL: https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/dados-publicos-de-produtos-listados-e-de-balcao/
 
-Descrição: Clique em uma data, cliquei em "Cadastro de Instrumentos (Listado)" e clique em "Baixar arquivo"
+Descrição: Clique em uma data, clique em "Cadastro de Instrumentos (Listado)" e clique em "Baixar arquivo"
 
 ### Boa sorte! 🚀
 
