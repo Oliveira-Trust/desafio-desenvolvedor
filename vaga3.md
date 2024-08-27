@@ -14,7 +14,7 @@ Não deixe de enviar o seu teste mesmo que incompleto!
 ## Entrega:
 Para iniciar o teste, faça um fork deste repositório, **crie uma branch com o seu nome completo** e depois envie-nos o pull request. Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
 
-Fique a vontade para enviar o seu LinkedIn ou currículo para vagas@oliveiratrust.com.br. 
+Fique a vontade para enviar o seu LinkedIn e o link do seu pull request para vagas@oliveiratrust.com.br.
 
 ## O que vamos avaliar:
 - Legibilidade do código
@@ -87,6 +87,7 @@ A API precisa ter no mínimo 3 endpoints, com as seguintes funcionalidades:
 * Utilização de Cache
 * Utilização de autenticação para consumir os endpoints
 * Utilização de Filas
+* Utilização de Container
 
 ## Informações úteis para o desenvolviment da api:
 Você pode encontrar os arquivos para testar em:
@@ -94,7 +95,6 @@ Você pode encontrar os arquivos para testar em:
 URL: https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/dados-publicos-de-produtos-listados-e-de-balcao/
 
 Descrição: Clique em uma data, cliquei em "Cadastro de Instrumentos (Listado)" e clique em "Baixar arquivo"
-
 
 ### Boa sorte! 🚀
 
