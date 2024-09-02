@@ -1,3 +1,4 @@
 django
 python-dotenv
 psycopg2-binary
+pandas
