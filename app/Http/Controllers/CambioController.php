@@ -16,6 +16,11 @@ class CambioController extends Controller
         return view('cambio.index', compact('retornoString'));
     }
 
+    public function resumo()
+    {
+        return view('cambio.resumo');
+    }
+
     public function consultaAPI(Request $request)
     {
 
@@ -29,12 +34,12 @@ class CambioController extends Controller
 
         $valorCompra < 3000 ? $valorCompra = $valorCompra * 0.98 : $valorCompra = $valorCompra * 0.99;
 
-        dd($valorCompra);
-
         $bid = $response[$moedaOrigem . $moedaDestino]['bid'];
 
 
 
-        return response()->json($response);
+         $retorno = response()->json($response);
+
+        return view('cambio.resumo', compact('retorno', 'valorCompra'));
     }
 }

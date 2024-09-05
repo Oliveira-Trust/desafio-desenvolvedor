@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <h1>Câmbio Online:</h1>
+                    <h2 class="mb-5 mt-3">Cotação de câmbio online:</h2>
                     <form action="{{ route('cambio.consultaAPI') }}" method="post">
                         @csrf
                         @method('post')
@@ -23,7 +23,8 @@
 
                         <div class="mb-2">
                             <label class="form-label" for="moeda_destino">Moeda de destino</label>
-                            <select class="form-select" id="moeda_destino" name="moeda_destino" >
+                            <select class="form-select" id="moeda_destino" name="moeda_destino">
+                                <option selected value="">Selecione</option>
                                 <option value="USD">USD - Dolar Americano</option>
                                 <option value="EUR">EUR - Euro</option>
                                 <option value="GBP">GBP - Libra Esterlina</option>
@@ -33,20 +34,26 @@
                         <div class="mb-2">
                             <label class="form-label" id="valor_label" for="valor">Valor de compra em </label>
                             <input class="form-control money" id="valor" name="valor" />
-                            <input class="w-100"  id="range" type="range" min="1000" max="100000" step="0.01" />
+                            <input class="w-100"  id="range" type="range" min="1000" max="100000" value="1000" step="0.01" />
                         </div>
 
                         <div class="mb-2">
                             <label class="form-label" for="pagamento">Forma de pagamento</label>
                             <select class="form-select" id="pagamento" name="pagamento" >
+                                <option selected value="">Selecione</option>
                                 <option value="BB">Boleto bancário</option>
                                 <option value="CC">Cartão de crédito</option>
                             </select>
                         </div>
 
                         <div class="pt-5 d-flex justify-content-between">
-                            <a class="btn btn-danger" href="{{ route('home') }}">Voltar</a>
-                            <button class="btn btn-dark" type="submit">Submit</button>
+                            <div>
+                                <a class="btn btn-danger" href="{{ route('home') }}">Voltar</a>
+                            </div>
+                            <div>
+                                <a id="limpar_campos" class="btn btn-warning">Limpar</a>
+                                <button class="btn btn-dark" type="submit">Cotar</button>
+                            </div>
                         </div>
                     </form>
                 </div>
