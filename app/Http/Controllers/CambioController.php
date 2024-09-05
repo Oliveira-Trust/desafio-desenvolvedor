@@ -18,11 +18,15 @@ class CambioController extends Controller
 
     public function consultaAPI(Request $request)
     {
+
+        dd($request->all());
+
         $urlBase = 'https://economia.awesomeapi.com.br/json/last/';
 
         $retorno = Http::get($url)->json();
 
         $retornoString = json_encode($retorno);
+
 
         return $retornoString;
     }
