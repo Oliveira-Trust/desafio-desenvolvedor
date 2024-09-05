@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'fileupload.apps.FileuploadConfig',
-    
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -90,9 +90,9 @@ DATABASES = {
     
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'uploads',
-        'USER': 'postgres',
-        'PASSWORD':'',
+        'NAME': 'databasename',
+        'USER': 'username',
+        'PASSWORD':'userpassword',
         'PORT':'5432'
         
     }
@@ -134,9 +134,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+
+   'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]   
+
+}

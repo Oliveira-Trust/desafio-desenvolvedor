@@ -20,5 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', include('fileupload.urls')),
+    path('upload-auth/', include('rest_framework.urls')),
     
 ]

@@ -3,14 +3,15 @@ from rest_framework.generics import ListAPIView
 from rest_framework import status
 from django.shortcuts import render
 from rest_framework.response import Response
-from .serializers import FileUploadSerializer, FileUploadListSerializer
+from .serializers import FileUploadSerializer, FileUploadListSerializer, FileUploadContentListSerializer
 from fileupload.models import File
 import pandas as pd
 from datetime import datetime
-from django.db import transaction
-from django.db.models import Count
-
-class FileUploadView(generics.CreateAPIView):
+from rest_framework import filters
+from django.utils.decorators import method_decorator
+from django.views.decorators.vary import vary_on_cookie, vary_on_headers
+from rest_framework.permissions import IsAuthenticated
+class FileUploadView(generics.ListAPIView):
    
    serializer_class = FileUploadSerializer
    
@@ -69,16 +70,25 @@ class FileUploadView(generics.CreateAPIView):
 
 
 
-class UploadList(generics.ListCreateAPIView):
-    queryset = File.objects.all().distinct('name', 'upload_date')    
+class UploadList(ListAPIView):
+   
+    queryset = File.objects.all().distinct('name', 'upload_date')   
     serializer_class = FileUploadListSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'upload_date']
+    
    
 
-    def list(self, request):
-       queryset = self.get_queryset()       
-       serializer = FileUploadListSerializer(queryset, many=True)
-       return Response(serializer.data)
 
+class UploadContentList(ListAPIView):
+      
+   queryset = File.objects.all().order_by('RptDt','TckrSymb','MktNm', 'SctyCtgyNm', 'ISIN','CrpnNm').distinct('RptDt','TckrSymb','MktNm', 'SctyCtgyNm', 'ISIN','CrpnNm')
+   serializer_class = FileUploadContentListSerializer
+   permission_classes = [IsAuthenticated]
+   filter_backends = [filters.SearchFilter]   
+   search_fields = ['=RptDt','=TckrSymb']
+  
+   
  
 
       

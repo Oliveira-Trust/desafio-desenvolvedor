@@ -14,4 +14,12 @@ class FileUploadListSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = File
-        fields = ["name", "upload_date"]
+        fields = ['name', 'upload_date']
+
+
+class FileUploadContentListSerializer(serializers.ModelSerializer):
+       
+    
+    class Meta:
+        model = File
+        fields = "__all__"     
