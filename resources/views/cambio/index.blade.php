@@ -16,7 +16,9 @@
 
                         <div class="mb-2">
                             <label class="form-label" for="moeda_origem">Moeda de origem</label>
-                            <input class="form-control" id="moeda_origem" name="moeda_origem" value="BRL" readonly="true" />
+                            <select class="form-control" id="moeda_origem" name="moeda_origem">
+                                <option selected value="BRL">BRL - Real Brasileiro</option>
+                            </select>
                         </div>
 
                         <div class="mb-2">
@@ -29,7 +31,7 @@
                         </div>
 
                         <div class="mb-2">
-                            <label class="form-label" for="valor">Valor de compra</label>
+                            <label class="form-label" id="valor_label" for="valor">Valor de compra em </label>
                             <input class="form-control money" id="valor" name="valor" />
                             <input class="w-100"  id="range" type="range" min="1000" max="100000" step="0.01" />
                         </div>
