@@ -30,7 +30,7 @@ def upload_arquivo():
     if file.filename.endswith('.xlsx'):
         df = pd.read_excel(io.BytesIO(conteudo))
     else:
-        df = pd.read_csv(io.BytesIO(conteudo), encoding=encoding)
+        df = pd.read_csv(io.BytesIO(conteudo), encoding=encoding, delimiter=';')
     
     dados = df.to_dict('records')
     
