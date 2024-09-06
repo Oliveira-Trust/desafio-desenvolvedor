@@ -1,18 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
-                    Hello logs
+                    <div class="card-header">{{ __('Logs') }}</div>
 
+                    <div class="card-body">
+                        <table id="logsTable" class="display table table-bordered" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User ID</th>
+                                <th>Moeda de Origem</th>
+                                <th>Valor Entrada</th>
+                                <th>Moeda de Destino</th>
+                                <th>Valor Saída</th>
+                                <th>Forma de Pagamento</th>
+                                <th>Criado em</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($logs as $log)
+                                <tr>
+                                    <td class="text-center">{{ $log->id }}</td>
+                                    <td class="text-center">{{ $log->user_id }}</td>
+                                    <td>{{ $log->moeda_origem }}</td>
+                                    <td>{{ $log->valor_entrada }}</td>
+                                    <td>{{ $log->moeda_destino }}</td>
+                                    <td>{{ $log->valor_saida }}</td>
+                                    <td>{{ $log->forma_pagamento }}</td>
+                                    <td>{{ $log->created_at }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <div>
+                            <a class="btn btn-secondary" href="{{ route('cambio.index') }}">Voltar</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script src="{{asset('assets/js/cambio.js')}}"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+    <!-- jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#logsTable').DataTable();
+        });
+    </script>
 @endsection

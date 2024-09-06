@@ -30,9 +30,14 @@
                         <h5>Prazer, sou o João Vitor Santos!</h5>
                         <p>Tenho 20 anos, atuo como Desenvolvedor Full-Stack para uma consultoria de softwares. Comecei meus estudos na área de TI no começo de 2020, quando passei no processo seletivo para realizar o ensino médio integrado ao ensino técnico de Informática para Internet pela ETEC. Hoje estou cursando Análise e Desenvolvimento de Sistemas pela FIAP (Av. Paulista). Pretendo evoluir muito na área e me especializar ainda mais nos próximos anos.</p>
                     </div>
-                    <div>
-                        <a class="btn btn-info border border-black" href="https://www.linkedin.com/in/jo%C3%A3o-santos-3b02a5220/" target="_blank">LinkedIn</a>
-                        <a class="btn btn-dark border border-black" href="https://github.com/jvs4nt" target="_blank">Github</a>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <a class="btn btn-info border border-black" href="https://www.linkedin.com/in/jo%C3%A3o-santos-3b02a5220/" target="_blank">LinkedIn</a>
+                            <a class="btn btn-dark border border-black" href="https://github.com/jvs4nt" target="_blank">Github</a>
+                        </div>
+                        <div>
+                            <a class="btn btn-secondary" href="{{ asset('files/JoaoVitorSantos.pdf') }}" download="Curriculo_Joao_Santos.pdf" target="_blank">Download CV</a>
+                        </div>
                     </div>
                 </div>
             </div>

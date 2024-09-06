@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ResumoCambio;
+use App\Models\Logs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -73,6 +74,17 @@ class CambioController extends Controller
     {
         $user = Auth::user()->email;
         Mail::to($user)->send(new ResumoCambio($user));
+
+        //Inserindo registro na tabela de logs
+        Logs::create([
+            'user_id' => Auth::id(),
+            'moeda_origem' => $request->moeda_origem,
+            'valor_entrada' => $request->valor_conversao,
+            'moeda_destino' => $request->moeda_destino,
+            'valor_saida' => $request->valor_comprado,
+            'forma_pagamento' => $request->forma_pagamento
+        ]);
+
         return redirect()->route('cambio.index')->with('status', 'Operação realizada com sucesso! Verifique o seu e-mail');
     }
 }

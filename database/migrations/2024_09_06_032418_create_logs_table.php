@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //os valores estão como string para armazenar o nome da moeda ao lado do valor
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('moeda_origem');
-            $table->decimal('valor_entrada', 2);
+            $table->string('valor_entrada');
             $table->string('moeda_destino');
-            $table->decimal('valor_saida', 2);
+            $table->string('valor_saida');
             $table->string('forma_pagamento');
             $table->timestamps();
         });
