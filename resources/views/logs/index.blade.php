@@ -12,7 +12,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>User ID</th>
+                                <th>Usuário</th>
                                 <th>Moeda de Origem</th>
                                 <th>Valor Entrada</th>
                                 <th>Moeda de Destino</th>
@@ -25,7 +25,7 @@
                             @foreach ($logs as $log)
                                 <tr>
                                     <td class="text-center">{{ $log->id }}</td>
-                                    <td class="text-center">{{ $log->user_id }}</td>
+                                    <td>{{ $log->user->name }}</td>
                                     <td>{{ $log->moeda_origem }}</td>
                                     <td>{{ $log->valor_entrada }}</td>
                                     <td>{{ $log->moeda_destino }}</td>

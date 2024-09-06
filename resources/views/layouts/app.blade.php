@@ -21,9 +21,12 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img class="mx-4" src="{{ asset('assets/img/brand.svg') }}" />
                 </a>
+                @if(\Illuminate\Support\Facades\Auth::user())
+                <a class="btn btn-light mx-1" href="{{ route('logs.index') }}">Painel ADM</a>
                 <a class="btn btn-light " href="{{ route('logs.index') }}">Registro de logs</a>
+                @endif
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

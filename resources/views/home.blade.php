@@ -15,7 +15,7 @@
                     @endif
                     <div class="mb-4">
                         <h2>Seja bem-vindo(a), {{ \Illuminate\Support\Facades\Auth::user()->name }}!</h2>
-                        <p>Este desafio foi desenvolvido para a vaga Desenvolvedor PHP Júnior da empresa <a href="https://www.oliveiratrust.com.br" target="_blank" class="text-bg-danger px-1 rounded-2">Oliveira Trust</a></p>
+                        <p>Este desafio foi desenvolvido para a vaga Desenvolvedor PHP Júnior da empresa <a href="https://www.oliveiratrust.com.br" target="_blank" class="px-1 rounded-2"><img src="{{ asset('assets/img/brand.svg') }}" /></a></p>
                     </div>
                     <div>
                         <a class="btn btn-dark" href="{{ route('cambio.index') }}">Iniciar Sistema</a>
