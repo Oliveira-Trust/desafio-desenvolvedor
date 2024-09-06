@@ -17,4 +17,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/cambio/enviaEmail', [App\Http\Controllers\CambioController::class, 'enviaEmail'])->name('cambio.enviaEmail');
 
     Route::get('/logs/index', [App\Http\Controllers\LogsController::class, 'index'])->name('logs.index');
+    Route::get('/painel', [App\Http\Controllers\PainelController::class, 'index'])->name('painel.index');
 });

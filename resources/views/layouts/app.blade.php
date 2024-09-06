@@ -13,6 +13,9 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -24,7 +27,7 @@
                     <img class="mx-4" src="{{ asset('assets/img/brand.svg') }}" />
                 </a>
                 @if(\Illuminate\Support\Facades\Auth::user())
-                <a class="btn btn-light mx-1" href="{{ route('logs.index') }}">Painel ADM</a>
+                <a class="btn btn-light mx-1" href="{{ route('painel.index') }}">Painel ADM</a>
                 <a class="btn btn-light " href="{{ route('logs.index') }}">Registro de logs</a>
                 @endif
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -80,5 +83,15 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#logsTable').DataTable();
+        });
+    </script>
 </body>
 </html>
