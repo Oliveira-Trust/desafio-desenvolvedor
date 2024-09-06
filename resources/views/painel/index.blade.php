@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     <h3>Taxas de conversão:</h3>
-                    <form action="{{ route('painel.upsert') }}" method="post">
+                    <form action="{{ route('painel.update') }}" method="post">
                         @csrf
                         @method('post')
 

@@ -19,6 +19,15 @@ return new class extends Migration
             $table->string('taxa_cartao');
             $table->timestamps();
         });
+
+        DB::table('configs')->insert([
+            'taxa_conv_acima' => '2,50',
+            'taxa_conv_abaixo' => '7,52',
+            'taxa_boleto' => '8,50',
+            'taxa_cartao' => '1,50',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 
     /**

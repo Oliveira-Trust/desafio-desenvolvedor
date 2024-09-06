@@ -14,7 +14,7 @@ class PainelController extends Controller
         return view('painel.index', compact('config'));
     }
 
-    public function upsert(Request $request)
+    public function update(Request $request)
     {
         // Removendo os símbolos de porcentagem
         $data = $request->all();

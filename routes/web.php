@@ -18,5 +18,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logs/index', [App\Http\Controllers\LogsController::class, 'index'])->name('logs.index');
     Route::get('/painel', [App\Http\Controllers\PainelController::class, 'index'])->name('painel.index');
-    Route::post('/painel/upsert', [App\Http\Controllers\PainelController::class, 'upsert'])->name('painel.upsert');
+    Route::post('/painel/update', [App\Http\Controllers\PainelController::class, 'update'])->name('painel.update');
 });
