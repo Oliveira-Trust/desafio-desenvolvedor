@@ -25,7 +25,7 @@ class FileRequest extends FormRequest
             'file' => [
                 'required',
                 'file',
-                'mimes:xlsx,csv',
+                'mimes:xlsx,csv,txt',
                 'max:204800',
             ]
         ];
@@ -37,7 +37,7 @@ class FileRequest extends FormRequest
             'required' => 'O arquivo é obrigatório.',
             'file' => 'O campo deve ser um arquivo xlsx ou csv.',
             'mimes' => 'O arquivo deve ser do tipo xlsx ou csv.',
-            'max' => 'O arquivo não deve exceder 200 MB.',
+            'max' => 'O arquivo não deve exceder :max KB.',
         ];
     }
 }
