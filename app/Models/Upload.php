@@ -11,6 +11,8 @@ class Upload extends Model
 
     protected $fillable = ['file_name', 'uploaded_at'];
 
+    public $timestamps = false;
+
     public function fileContents()
     {
         return $this->hasMany(FileContent::class);
