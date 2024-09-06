@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ResumoCambio;
+use App\Models\Config;
 use App\Models\Logs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,8 @@ class CambioController extends Controller
 
     public function consultaAPI(Request $request)
     {
+        $configs = Config::findOrFail(1);
+
         //Parametros para acesso a API e outros dados do formulário
         $urlBase = 'https://economia.awesomeapi.com.br/json/last/';
         $moedaOrigem = $request->moeda_origem;
@@ -40,8 +43,14 @@ class CambioController extends Controller
         $valor = $request->valor;
         $valorCompra = (float) str_replace(['.', ','], ['','.'], $valor);
 
+
+        $taxaAcima = $configs->taxa_conv_acima != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_conv_acima) / 100 : 0.01;
+        $taxaAbaixo = $configs->taxa_conv_abaixo != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_conv_abaixo) / 100 : 0.02;
+
+
         //taxa de conversao
-        $valorCompra < 3000 ? $taxaConversao = $valorCompra * 0.02 : $taxaConversao = $valorCompra * 0.01;
+        $valorCompra < 3000 ? $taxaConversao = $valorCompra * $taxaAbaixo : $taxaConversao = $valorCompra * $taxaAcima;
+
         //taxa de pagamento
         $request->pagamento == 'BB' ? $taxaPagamento = $valorCompra * 0.0145 : $taxaPagamento = $valorCompra * 0.0763;
 

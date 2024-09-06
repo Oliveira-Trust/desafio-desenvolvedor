@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Logs') }}</div>
 
                     <div class="card-body">
-                        <table id="logsTable" class="display table table-bordered" style="width:100%">
+                        <table id="logsTable" class="table table-bordered" style="width:100%">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -45,3 +45,4 @@
         </div>
     </div>
 @endsection
+

@@ -22,19 +22,19 @@
                             </div>
                             <div class="mb-2">
                                 <label class="">Valor para conversão:</label>
-                                <input class="form-control" name="valor_conversao" value="{{ $valor . $moedaOrigem}}" readonly />
+                                <input class="form-control" name="valor_conversao" value="{{'R$ ' . $valor}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Taxa de pagamento:</label>
-                                <input class="form-control" name="taxa_pagamento" value="{{ $taxaPagamento . $moedaOrigem}}" readonly />
+                                <input class="form-control" name="taxa_pagamento" value="{{'R$ ' . $taxaPagamento}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Taxa de conversão:</label>
-                                <input class="form-control" name="taxa_conversao" value="{{ $taxaConversao . $moedaOrigem}}" readonly />
+                                <input class="form-control" name="taxa_conversao" value="{{'R$ ' . $taxaConversao}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Valor para conversão - taxas:</label>
-                                <input class="form-control" name="valor_conversao" value="{{ $valorCompra . $moedaOrigem}}" readonly />
+                                <input class="form-control" name="valor_conversao" value="{{'R$ ' . $valorCompra}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Forma de pagamento:</label>
@@ -42,11 +42,11 @@
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Valor da moeda de destino:</label>
-                                <input class="form-control" name="valor_moeda_destino" value="{{ $bid . $moedaDestino}}" readonly />
+                                <input class="form-control" name="valor_moeda_destino" value="{{ $bid . ' ' . $moedaDestino}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Valor comprado:</label>
-                                <input class="form-control" name="valor_comprado" value="{{ $valorConvertido . $moedaDestino }}" readonly />
+                                <input class="form-control" name="valor_comprado" value="{{ $valorConvertido . ' ' . $moedaDestino }}" readonly />
                             </div>
 
                             <div class="d-flex align-items-center gap-2 mt-4">

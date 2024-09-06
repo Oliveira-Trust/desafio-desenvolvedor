@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->id();
-            $table->decimal('taxa_conv_acima', 2);
-            $table->decimal('taxa_conv_abaixo', 2);
-            $table->decimal('taxa_boleto', 2);
-            $table->decimal('taxa_cartao', 2);
+            $table->string('taxa_conv_acima');
+            $table->string('taxa_conv_abaixo');
+            $table->string('taxa_boleto');
+            $table->string('taxa_cartao');
+            $table->timestamps();
         });
     }
 
