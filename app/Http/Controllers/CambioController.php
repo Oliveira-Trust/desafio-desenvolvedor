@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResumoCambio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class CambioController extends Controller
 {
@@ -32,17 +35,21 @@ class CambioController extends Controller
         //Consulta
         $response = Http::get($urlBase.$moedaOrigem.'-'.$moedaDestino)->json();
 
-        //Manipulacao do valor de compra com as taxas
+        //Manipulacao do valor de compra com as taxas (conversão e pagamento)
         $valor = $request->valor;
         $valorCompra = (float) str_replace(['.', ','], ['','.'], $valor);
-        $valorCompra < 3000 ? $taxa = $valorCompra * 0.02 : $taxa = $valorCompra * 0.01;
-        $valorCompra = $valorCompra - $taxa;
+
+        //taxa de conversao
+        $valorCompra < 3000 ? $taxaConversao = $valorCompra * 0.02 : $taxaConversao = $valorCompra * 0.01;
+        //taxa de pagamento
+        $request->pagamento == 'BB' ? $taxaPagamento = $valorCompra * 0.0145 : $taxaPagamento = $valorCompra * 0.0763;
 
         //Recebendo retorno da API
         $bid = $response[$moedaOrigem . $moedaDestino]['bid'];
 
+        //Definido o valor final
+        $valorCompra = $valorCompra - $taxaConversao - $taxaPagamento;
         $valorConvertido = $valorCompra * $bid;
-
 
 
          $retorno = response()->json($response);
@@ -53,11 +60,19 @@ class CambioController extends Controller
                 'valorCompra',
                 'moedaDestino',
                 'moedaOrigem',
-                'taxa',
+                'taxaConversao',
+                'taxaPagamento',
                 'valorConvertido',
                 'valor',
                 'formaPagamento',
                 'bid'
             ));
+    }
+
+    public function enviaEmail(Request $request)
+    {
+        $user = Auth::user()->email;
+        Mail::to($user)->send(new ResumoCambio($user));
+        return redirect()->route('cambio.index')->with('status', 'Operação realizada com sucesso! Verifique o seu e-mail');
     }
 }

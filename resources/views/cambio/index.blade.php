@@ -6,10 +6,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header p-3"><h5>{{ __('Cotação de câmbio online') }}</h5></div>
 
                 <div class="card-body">
-                    <h2 class="mb-5 mt-3">Cotação de câmbio online:</h2>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <form action="{{ route('cambio.consultaAPI') }}" method="post">
                         @csrf
                         @method('post')
@@ -51,7 +55,7 @@
                                 <a class="btn btn-danger" href="{{ route('home') }}">Voltar</a>
                             </div>
                             <div>
-                                <a id="limpar_campos" class="btn btn-warning">Limpar</a>
+                                <a id="limpar_campos" class="btn btn-secondary">Limpar</a>
                                 <button class="btn btn-dark" type="submit">Cotar</button>
                             </div>
                         </div>
