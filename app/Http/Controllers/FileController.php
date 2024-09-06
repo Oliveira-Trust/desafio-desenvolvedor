@@ -7,6 +7,7 @@ use App\Imports\FileImport;
 use App\Models\FileContent;
 use App\Models\Upload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Excel;
 
 class FileController extends Controller
@@ -14,6 +15,12 @@ class FileController extends Controller
     public function upload(FileRequest $request)
     {
         $file = $request->file('file');
+        Log ::info('File MIME Type: ' . $file->getMimeType());
+        Log::info('File Extension: ' . $file->getClientOriginalExtension());
+
+        dump($request);
+        dump($request->all());
+        dd($file);
         $fileName = $file->getClientOriginalName();
 
         // Verificar se o arquivo já foi enviado
