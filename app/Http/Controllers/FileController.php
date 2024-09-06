@@ -10,17 +10,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Excel;
 
+
 class FileController extends Controller
 {
+    protected $excel;
+
+    public function __construct(Excel $excel)
+    {
+        $this->excel = $excel;
+    }
+
     public function upload(FileRequest $request)
     {
         $file = $request->file('file');
         $fileName = $file->getClientOriginalName();
 
         // Verificar se o arquivo já foi enviado
-        if (Upload::where('file_name', $fileName)->exists()) {
+        if (Upload::where('file_name', $fileName)->exists())
             return response()->json(['message' => 'Arquivo enviado anteriormente.'], 400);
-        }
 
         // Salvar o arquivo
         $filePath = $file->store('files');
@@ -32,7 +39,7 @@ class FileController extends Controller
         ]);
 
         // Importar e salvar o conteúdo do arquivo
-        Excel::import(new FileImport($upload->id), $file);
+        $this->excel->import(new FileImport($upload->id), $filePath);
 
         return response()->json(['message' => 'Arquivo carregado com sucesso.']);
     }
