@@ -101,7 +101,7 @@ class CambioController extends Controller
     public function enviaEmail(Request $request)
     {
         $user = Auth::user()->email;
-        Mail::to($user)->send(new ResumoCambio($user));
+        Mail::to($user)->send(new ResumoCambio($user, $request->all()));
 
         //Inserindo registro na tabela de logs
         Logs::create([

@@ -26,27 +26,27 @@
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Taxa de pagamento:</label>
-                                <input class="form-control" name="taxa_pagamento" value="{{'R$ ' . $taxaPagamento}}" readonly />
+                                <input class="form-control" name="taxa_pagamento" value="{{'R$ ' . number_format($taxaPagamento, 2)}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Taxa de conversão:</label>
-                                <input class="form-control" name="taxa_conversao" value="{{'R$ ' . $taxaConversao}}" readonly />
+                                <input class="form-control" name="taxa_conversao" value="{{'R$ ' . number_format($taxaConversao, 2)}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Valor para conversão - taxas:</label>
-                                <input class="form-control" name="valor_conversao" value="{{'R$ ' . $valorCompra}}" readonly />
+                                <input class="form-control" name="valor_compra" value="{{'R$ ' . number_format($valorCompra, 2)}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Forma de pagamento:</label>
-                                <input class="form-control" name="forma_pagamento" value="{{ $formaPagamento = 'CC' ? 'Cartão de Crédito' : 'Boleto Bancário' }}" readonly />
+                                <input class="form-control" name="forma_pagamento" value="{{ $formaPagamento == 'CC' ? 'Cartão de Crédito' : 'Boleto Bancário' }}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Valor da moeda de destino:</label>
-                                <input class="form-control" name="valor_moeda_destino" value="{{ $bid . ' ' . $moedaDestino}}" readonly />
+                                <input class="form-control" name="valor_moeda_destino" value="{{ number_format($bid, 2) . ' ' . $moedaDestino}}" readonly />
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Valor comprado:</label>
-                                <input class="form-control" name="valor_comprado" value="{{ $valorConvertido . ' ' . $moedaDestino }}" readonly />
+                                <input class="form-control" name="valor_comprado" value="{{ number_format($valorConvertido, 2) . ' ' . $moedaDestino }}" readonly />
                             </div>
 
                             <div class="d-flex align-items-center gap-2 mt-4">

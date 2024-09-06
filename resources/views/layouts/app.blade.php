@@ -27,6 +27,7 @@
                     <img class="mx-4" src="{{ asset('assets/img/brand.svg') }}" />
                 </a>
                 @if(\Illuminate\Support\Facades\Auth::user())
+                <a class="btn btn-light mx-1" href="{{ route('cambio.index') }}">Cotação</a>
                 <a class="btn btn-light mx-1" href="{{ route('painel.index') }}">Painel ADM</a>
                 <a class="btn btn-light " href="{{ route('logs.index') }}">Registro de logs</a>
                 @endif

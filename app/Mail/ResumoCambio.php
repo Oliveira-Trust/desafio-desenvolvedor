@@ -14,18 +14,22 @@ class ResumoCambio extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
+    public $data;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user)
+    public function __construct($user, $data)
     {
         $this->user = $user;
+        $this->data = $data;
+
     }
 
     public function build()
     {
-        return $this->view('emails.resumo-cambio')->with(['user' => $this->user])->subject('Resumo da operação');
+        $data = $this->data;
+        return $this->view('emails.resumo-cambio', compact('data'))->with(['user' => $this->user])->subject('Resumo da operação');
     }
 
 }
