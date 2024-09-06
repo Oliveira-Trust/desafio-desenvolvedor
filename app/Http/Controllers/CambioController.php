@@ -12,10 +12,26 @@ use Illuminate\Support\Facades\Mail;
 
 class CambioController extends Controller
 {
+
+    private String $baseUrl;
+    private String $moedaOrigem;
+
+    public function __construct()
+    {
+        $this->baseUrl = "https://economia.awesomeapi.com.br/json/last/";
+        $this->moedaOrigem = "USD-BRL";
+    }
+
+    public function stringToFloat($n)
+    {
+        $conversao = (float) str_replace(['.', ','], ['','.'], $n);
+
+        return $conversao;
+    }
+
     public function index()
     {
-        $url = 'https://economia.awesomeapi.com.br/json/last/USD-BRL';
-        $retorno = Http::get($url)->json();
+        $retorno = Http::get($this->baseUrl . $this->moedaOrigem)->json();
         $retornoString = json_encode($retorno);
 
         return view('cambio.index', compact('retornoString'));
@@ -36,27 +52,26 @@ class CambioController extends Controller
         $configs = Config::findOrFail(1);
 
         //Parametros para acesso a API e outros dados do formulário
-        $urlBase = 'https://economia.awesomeapi.com.br/json/last/';
         $moedaOrigem = $request->moeda_origem;
         $moedaDestino = $request->moeda_destino;
         $formaPagamento = $request->pagamento;
 
         //Consulta
-        $response = Http::get($urlBase.$moedaOrigem.'-'.$moedaDestino)->json();
+        $response = Http::get($this->baseUrl.$moedaOrigem.'-'.$moedaDestino)->json();
 
         //Manipulacao do valor de compra com as taxas (conversão e pagamento)
         $valor = $request->valor;
         $valorCompra = (float) str_replace(['.', ','], ['','.'], $valor);
 
         //taxa de conversao
-        $taxaAcima = $configs->taxa_conv_acima != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_conv_acima) / 100 : 0.01;
-        $taxaAbaixo = $configs->taxa_conv_abaixo != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_conv_abaixo) / 100 : 0.02;
+        $taxaAcima = $configs->taxa_conv_acima != null ? $this->stringToFloat($configs->taxa_conv_acima) / 100 : 0.01;
+        $taxaAbaixo = $configs->taxa_conv_abaixo != null ? $this->stringToFloat($configs->taxa_conv_abaixo) / 100 : 0.02;
         $valorCompra < 3000 ? $taxaConversao = $valorCompra * $taxaAbaixo : $taxaConversao = $valorCompra * $taxaAcima;
 
         //taxa de pagamento
-        $taxaBoleto = $configs->taxa_boleto != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_boleto) / 100 : 0.0145;
-        $taxaCartao = $configs->taxa_cartao != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_cartao) / 100 : 0.0763;
-        $request->pagamento == 'BB' ? $taxaPagamento = $valorCompra * $taxaBoleto : $taxaPagamento = $valorCompra * $taxaCartao;
+        $taxaBoleto = $configs->taxa_boleto != null ? $this->stringToFloat($configs->taxa_boleto) / 100 : 0.0145;
+        $taxaCartao = $configs->taxa_cartao != null ? $this->stringToFloat($configs->taxa_cartao) / 100 : 0.0763;
+        $taxaPagamento = $request->pagamento == 'BB' ? $valorCompra * $taxaBoleto : $valorCompra * $taxaCartao;
 
         //Recebendo retorno da API
         $bid = $response[$moedaOrigem . $moedaDestino]['bid'];
