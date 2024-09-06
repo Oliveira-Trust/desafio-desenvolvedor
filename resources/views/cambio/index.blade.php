@@ -6,6 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <div class="card-header p-3"><h5>{{ __('Cotação de câmbio online') }}</h5></div>
 
                 <div class="card-body">
@@ -33,6 +36,9 @@
                                 <option value="EUR">EUR - Euro</option>
                                 <option value="GBP">GBP - Libra Esterlina</option>
                             </select>
+                            @error('moeda_destino')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-2">
@@ -48,6 +54,9 @@
                                 <option value="BB">Boleto bancário</option>
                                 <option value="CC">Cartão de crédito</option>
                             </select>
+                            @error('pagamento')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="pt-5 d-flex justify-content-between">

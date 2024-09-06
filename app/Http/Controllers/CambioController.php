@@ -28,6 +28,11 @@ class CambioController extends Controller
 
     public function consultaAPI(Request $request)
     {
+        $request->validate([
+            'moeda_destino' => 'required',
+            'pagamento' => 'required',
+        ]);
+
         $configs = Config::findOrFail(1);
 
         //Parametros para acesso a API e outros dados do formulário
@@ -43,16 +48,15 @@ class CambioController extends Controller
         $valor = $request->valor;
         $valorCompra = (float) str_replace(['.', ','], ['','.'], $valor);
 
-
+        //taxa de conversao
         $taxaAcima = $configs->taxa_conv_acima != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_conv_acima) / 100 : 0.01;
         $taxaAbaixo = $configs->taxa_conv_abaixo != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_conv_abaixo) / 100 : 0.02;
-
-
-        //taxa de conversao
         $valorCompra < 3000 ? $taxaConversao = $valorCompra * $taxaAbaixo : $taxaConversao = $valorCompra * $taxaAcima;
 
         //taxa de pagamento
-        $request->pagamento == 'BB' ? $taxaPagamento = $valorCompra * 0.0145 : $taxaPagamento = $valorCompra * 0.0763;
+        $taxaBoleto = $configs->taxa_boleto != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_boleto) / 100 : 0.0145;
+        $taxaCartao = $configs->taxa_cartao != null ? (float) str_replace(['.', ','], ['','.'], $configs->taxa_cartao) / 100 : 0.0763;
+        $request->pagamento == 'BB' ? $taxaPagamento = $valorCompra * $taxaBoleto : $taxaPagamento = $valorCompra * $taxaCartao;
 
         //Recebendo retorno da API
         $bid = $response[$moedaOrigem . $moedaDestino]['bid'];
