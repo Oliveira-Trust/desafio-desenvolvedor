@@ -6,7 +6,7 @@ import chardet
 import io
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/arquivo_db"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/oliveira_trust"
 mongo = PyMongo(app)
 
 @app.route('/upload', methods=['POST'])
@@ -41,6 +41,21 @@ def upload_arquivo():
     })
     
     return jsonify({"message": "Arquivo enviado com sucesso", "id": str(resultado.inserted_id)}), 201
+
+
+@app.route('/historico', methods=['GET'])
+def historico_upload():
+    nome = request.args.get('nome')
+    data = request.args.get('data')
+    
+    filtro = {}
+    if nome:
+        filtro["nome"] = nome
+    if data:
+        filtro["data_upload"] = {"$gte": datetime.strptime(data, "%Y-%m-%d")}
+    
+    resultados = mongo.db.arquivos.find(filtro, {"nome": 1, "data_upload": 1})
+    return jsonify([{"id": str(r["_id"]), "nome": r["nome"], "data_upload": r["data_upload"]} for r in resultados])
 
 
 if __name__ == "__main__":
