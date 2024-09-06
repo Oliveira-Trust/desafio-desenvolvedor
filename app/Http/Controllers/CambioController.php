@@ -23,23 +23,41 @@ class CambioController extends Controller
 
     public function consultaAPI(Request $request)
     {
-
+        //Parametros para acesso a API e outros dados do formulário
         $urlBase = 'https://economia.awesomeapi.com.br/json/last/';
         $moedaOrigem = $request->moeda_origem;
         $moedaDestino = $request->moeda_destino;
+        $formaPagamento = $request->pagamento;
+
+        //Consulta
         $response = Http::get($urlBase.$moedaOrigem.'-'.$moedaDestino)->json();
 
-        $valorCompra = $request->valor;
-        $valorCompra = (float) str_replace(['.', ','], ['','.'], $valorCompra);
+        //Manipulacao do valor de compra com as taxas
+        $valor = $request->valor;
+        $valorCompra = (float) str_replace(['.', ','], ['','.'], $valor);
+        $valorCompra < 3000 ? $taxa = $valorCompra * 0.02 : $taxa = $valorCompra * 0.01;
+        $valorCompra = $valorCompra - $taxa;
 
-        $valorCompra < 3000 ? $valorCompra = $valorCompra * 0.98 : $valorCompra = $valorCompra * 0.99;
-
+        //Recebendo retorno da API
         $bid = $response[$moedaOrigem . $moedaDestino]['bid'];
+
+        $valorConvertido = $valorCompra * $bid;
 
 
 
          $retorno = response()->json($response);
 
-        return view('cambio.resumo', compact('retorno', 'valorCompra'));
+        return view('cambio.resumo',
+            compact(
+                'retorno',
+                'valorCompra',
+                'moedaDestino',
+                'moedaOrigem',
+                'taxa',
+                'valorConvertido',
+                'valor',
+                'formaPagamento',
+                'bid'
+            ));
     }
 }
