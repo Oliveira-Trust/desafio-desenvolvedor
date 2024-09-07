@@ -29,6 +29,10 @@ class FileController extends Controller
         if (Upload::where('file_name', $fileName)->exists())
             return response()->json(['message' => 'Arquivo enviado anteriormente.'], 400);
 
+
+        // Importar e salvar o conteúdo do arquivo
+        $this->excel->import(new FileImport('998'), $file);
+
         // Salvar o arquivo
         $filePath = $file->store('files');
 
@@ -37,9 +41,6 @@ class FileController extends Controller
             'file_name' => $fileName,
             'uploaded_at' => now()
         ]);
-
-        // Importar e salvar o conteúdo do arquivo
-        $this->excel->import(new FileImport($upload->id), $filePath);
 
         return response()->json(['message' => 'Arquivo carregado com sucesso.']);
     }
