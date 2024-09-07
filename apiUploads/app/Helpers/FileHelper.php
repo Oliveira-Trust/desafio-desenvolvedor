@@ -3,6 +3,8 @@
 namespace App\Helpers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class FileHelper
 {
@@ -11,5 +13,17 @@ class FileHelper
         $request->validate([
             'file' => 'required|file|mimes:xls,xlsx,csv|max:10240',
         ]);
+    }
+
+    public static function validateHistory(Request $request) 
+    {
+        $validator = Validator::make($request->all(), [
+            'file_name' => 'nullable|string',
+            'date' => 'nullable|date',
+        ]);
+
+        if ($validator->fails()) {
+            throw new \Illuminate\Validation\ValidationException($validator);
+        }
     }
 }

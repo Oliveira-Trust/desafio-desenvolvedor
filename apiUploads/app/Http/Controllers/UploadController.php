@@ -20,7 +20,7 @@ class UploadController extends Controller
         $fileExists = $this->verifyFileExists($fileHash);
 
         if (!$fileExists) {
-            
+
             $path = $file->storeAs('uploads', $fileName);
 
             $upload = new Upload();
@@ -39,5 +39,11 @@ class UploadController extends Controller
         if (Upload::where('file_hash', $fileHash)->exists()) {
             return response()->json(['message' => 'Arquivo já foi enviado.'], 409);
         }
+    }
+
+    public function history(Request $request) 
+    {
+        FileHelper::validateHistory($request);
+        
     }
 }
