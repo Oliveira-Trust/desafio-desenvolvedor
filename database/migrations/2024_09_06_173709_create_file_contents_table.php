@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('file_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('tckr_symb');
-            $table->date('rpt_dt');
-            $table->string('mkt_nm');
-            $table->string('scty_ctgy_nm');
-            $table->string('isin');
-            $table->string('crpn_nm');
+            $table->string('tckr_symb')->nullable();
+            $table->date('rpt_dt')->nullable();
+            $table->string('mkt_nm')->nullable();
+            $table->string('scty_ctgy_nm')->nullable();
+            $table->string('isin')->nullable();
+            $table->string('crpn_nm')->nullable();
             $table->foreignId('upload_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
