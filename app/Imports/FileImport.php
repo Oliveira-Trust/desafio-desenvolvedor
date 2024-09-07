@@ -19,9 +19,9 @@ class FileImport implements ToModel, WithChunkReading, WithBatchInserts, WithHea
 
     public function model(array $row)
     {
-        dd($row);
+//        dd($row);
         return new FileContent([
-            'rpt_dt' => $row['rptdt'],
+            'rpt_dt' => $this->convertDateFormat($row['rptdt']),
             'tckr_symb' => $row['tckrsymb'],
             'mkt_nm' => $row['mktnm'],
             'scty_ctgy_nm' => $row['sctyctgynm'],
@@ -49,5 +49,21 @@ class FileImport implements ToModel, WithChunkReading, WithBatchInserts, WithHea
     public function batchSize(): int
     {
         return 1000;
+    }
+
+    // Converte de DD/MM/YYYY para YYYY-MM-DD
+    public function convertDateFormat($date)
+    {
+        if (empty($date)) {
+            return null;
+        }
+
+        // Converte a data de DD/MM/YYYY para YYYY-MM-DD
+        $dateObject = \DateTime::createFromFormat('d/m/Y', $date);
+        if ($dateObject) {
+            return $dateObject->format('Y-m-d');
+        }
+
+        return null;
     }
 }
