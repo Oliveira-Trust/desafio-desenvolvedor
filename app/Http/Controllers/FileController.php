@@ -31,8 +31,8 @@ class FileController extends Controller
             return response()->json(['message' => 'Arquivo enviado anteriormente.'], 400);
 
         // Converte o arquivo para UTF-8
-//        $path = $file->getRealPath();
-//        $utf8FilePath = $this->convertToUtf8($file);
+        $path = $file->getRealPath();
+        $utf8FilePath = $this->convertToUtf8($file);
 
         // Salvar o arquivo
         $filePath = $file->store('files');
@@ -44,7 +44,7 @@ class FileController extends Controller
         ]);
 
         // Importar e salvar o conteúdo do arquivo
-        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
+        $this->excel->import(new FileImport($upload->id), $utf8FilePath); // uso total memória.
 
         // Disparar o job para processar o arquivo
 //        ProcessFileImport::dispatch($file, $upload->id);
