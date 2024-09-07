@@ -6,108 +6,103 @@ use Illuminate\Http\Request;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\FileHelper;
+use App\Imports\UploadsContentsImport;
+use App\Models\UploadsContents;
+use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 
 class UploadController extends Controller
 {
     public function upload(Request $request)
     {
-        FileHelper::validateUpload($request);
+        // FileHelper::validateUpload($request);
         $file = $request->file("file");
         $fileName = $file->getClientOriginalName();
-        $fileHash = hash_file('md5', $file->getRealPath());
+        $fileType = $file->getClientOriginalExtension();
 
-        $fileExists = $this->verifyFileExists($fileHash);
-
-        if (!$fileExists) {
-
-            $path = $file->storeAs('uploads', $fileName);
-
-            $data = $this->processUploadData($request, $fileName, $path, $file);
-
-            $this->saveUpload($data);
-
-            return response()->json(['message' => 'Arquivo carregado com sucesso!'], 201);
+        if ($this->verifyFileExists($fileName)) {
+            return response()->json(['message' => 'Arquivo cadastrado anteriormente.'], 409);
         }
-        return response()->json(['message' => 'Arquivo já foi carregado.'], 400);
+
+        $path = $file->storeAs('uploads', $fileName);
+
+
+
+        $upload = $this->saveUpload($fileName, $fileType, $path);
+
+        $this->readAndProcessCsv($fileName, $path, $upload);
+
+
+        return response()->json(['message' => 'Arquivo carregado com sucesso!'], 201);
     }
 
-    public function verifyFileExists($fileHash)
+    public function verifyFileExists($fileName)
     {
-        if (Upload::where('file_hash', $fileHash)->exists()) {
-            return response()->json(['message' => 'Arquivo já foi enviado.'], 409);
+        return Upload::where('file_name', $fileName)->exists();
+    }
+
+    protected function readAndProcessCsv($fileName, $path, $upload)
+    {
+        $filePath = storage_path('app/' . $path);
+        $dataFile = array_map('str_getcsv', file($filePath));
+
+        $header = array_shift($dataFile); // remove primeira linha
+        array_shift($dataFile); //remove cabecalho das colunas
+
+        foreach ($dataFile as $row) {
+            UploadsContents::create([
+                'upload_id' => $upload->id,
+                'rptDt' => $row[0] ?? null,
+                'tckrSymb' => $row[1] ?? null,
+                'mktNm' => $row[2] ?? null,
+                'sctyCtgyNm' => $row[3] ?? null,
+                'iSIN' => $row[4] ?? null,
+                'crpnNm' => $row[5] ?? null,
+            ]);
         }
     }
 
-    protected function processUploadData(Request $request, $fileName, $path, $file)
-    {
-        $fields = [
-            'rptDt' => $request->input('rptDt', ''),
-            'tckrSymb' => $request->input('tckrSymb', ''),
-            'mktNm' => $request->input('mktNm', ''),
-            'sctyCtgyNm' => $request->input('sctyCtgyNm', ''),
-            'iSIN' => $request->input('iSIN', ''),
-            'crpnNm' => $request->input('crpnNm', ''),
-        ];
-
-        $formattedFields = $this->formatFields($fields);
-
-        return [
-            'file_name' => $fileName,
-            'file_path' => $path,
-            'file_type' => $file->getClientOriginalExtension(),
-            'rptDt' => $formattedFields['rptDt'],
-            'tckrSymb' => $formattedFields['tckrSymb'],
-            'mktNm' => $formattedFields['mktNm'],
-            'sctyCtgyNm' => $formattedFields['sctyCtgyNm'],
-            'iSIN' => $formattedFields['iSIN'],
-            'crpnNm' => $formattedFields['crpnNm'],
-        ];
-    }
-
-    protected function saveUpload(array $data)
+    protected function saveUpload($fileName, $fileType, $path)
     {
         $upload = new Upload();
-        $upload->fill($data);
+        $upload->file_name = $fileName;
+        $upload->file_type = $fileType;
+        $upload->file_path = $path;
+
         $upload->save();
+
+        return $upload;
     }
-    protected function formatFields(array $fields)
-    {
-        return [
-            'rptDt' => strtolower($fields['rptDt'] ?? ''),
-            'tckrSymb' => strtolower($fields['tckrSymb'] ?? ''),
-            'mktNm' => strtolower($fields['mktNm'] ?? ''),
-            'sctyCtgyNm' => strtolower($fields['sctyCtgyNm'] ?? ''),
-            'iSIN' => strtolower($fields['iSIN'] ?? ''),
-            'crpnNm' => strtolower($fields['crpnNm'] ?? ''),
-        ];
-    }
-    
+
     public function history(Request $request)
     {
         FileHelper::validateHistory($request);
 
-        $fileSearch =  Upload::query();
+        $fileSearch = Upload::query();
 
         if ($request->has('file_name')) {
-            $fileName = md5($request->input('file_name'));
+            $fileName = $request->input('file_name');
             $fileSearch->where('file_name', $fileName);
         }
 
-        if ($request->has('date')) {
-            $fileSearch->whereDate('created_at', $request->input('date'));
+        if ($request->has('date') && $request->input('date')) {
+            $fileSearch->whereDate('created_at', Carbon::createFromFormat('d-m-Y', $request->input('date'))->format('Y-m-d'));
         }
 
         $results = $fileSearch->get();
+
+        if ($results->isEmpty()) {
+            return response()->json(['message' => 'Arquivo não encontrado.'], 404);
+        }
 
         return response()->json($results);
     }
 
     public function searchContentFile(Request $request)
     {
-        FileHelper::validateSearchContent($request->all());
 
-        $contentFile = Upload::query();
+        $contentFile = UploadsContents::query();
 
         if ($request->has('TckrSymb') && $request->has('RptDt')) {
             $contentFile->where('tckrSymb', $request->input('TckrSymb'))

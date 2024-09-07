@@ -13,13 +13,7 @@ class Upload extends Model
     protected $fillable = [
         'file_name',
         'file_path',
-        'file_type',
-        'rptDt',
-        'tckrSymb',
-        'mktNm',
-        'sctyCtgyNm',
-        'iSIN',
-        'crpnNm'
+        'file_type'
     ];
 
     public $timestamps = true;

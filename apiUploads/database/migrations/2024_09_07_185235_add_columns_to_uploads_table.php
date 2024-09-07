@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('uploads', function (Blueprint $table) {
-            $table->string('rptDt')->nullable()->after('file_type');
-            $table->string('tckrSymb')->nullable()->after('rptDt');
-            $table->string('mktNm')->nullable()->after('tckrSymb');
-            $table->string('sctyCtgyNm')->nullable()->after('mktNm');
-            $table->string('iSIN')->nullable()->after('sctyCtgyNm');
-            $table->string('crpnNm')->nullable()->after('iSIN');
+            $table->dropColumn([
+                'rptDt',
+                'tckrSymb',
+                'mktNm',
+                'sctyCtgyNm',
+                'iSIN',
+                'crpnNm'
+            ]);
         });
     }
 
@@ -27,14 +29,12 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('uploads', function (Blueprint $table) {
-            $table->dropColumn([
-                'rptDt',
-                'tckrSymb',
-                'mktNm',
-                'sctyCtgyNm',
-                'iSIN',
-                'crpnNm'
-            ]);
+            $table->string('rptDt')->nullable()->after('rptDt');
+            $table->string('tckrSymb')->nullable()->after('tckrSymb');
+            $table->string('mktNm')->nullable()->after('mktNm');
+            $table->string('sctyCtgyNm')->nullable()->after('sctyCtgyNm');
+            $table->string('iSIN')->nullable()->after('iSIN');
+            $table->string('crpnNm')->nullable()->after('crpnNm');
         });
     }
 };
