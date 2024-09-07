@@ -35,7 +35,7 @@ class FileController extends Controller
 //        $utf8FilePath = $this->convertToUtf8($file);
 
         // Salvar o arquivo
-        $filePath = $utf8FilePath->store('files');
+        $filePath = $file->store('files');
 
         // Criar registro de upload
         $upload = Upload::create([
