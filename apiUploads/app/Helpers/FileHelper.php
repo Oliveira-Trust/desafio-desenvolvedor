@@ -26,4 +26,12 @@ class FileHelper
             throw new \Illuminate\Validation\ValidationException($validator);
         }
     }
+    
+    public static function validateSearchContent(array $data)
+    {
+        return Validator::make($data, [
+            'TckrSymb' => 'nullable|string',
+            'RptDt' => 'nullable|date',
+        ]);
+    }
 }
