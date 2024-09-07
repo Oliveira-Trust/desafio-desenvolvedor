@@ -44,6 +44,25 @@ class UploadController extends Controller
     public function history(Request $request) 
     {
         FileHelper::validateHistory($request);
-        
+
+        $fileSearch =  Upload::query();
+
+        if ($request->has('file_name')) {
+            $fileName = md5($request->input('file_name')); 
+            $fileSearch->where('file_name', $fileName);
+        }
+
+        if ($request->has('date')) {
+            $fileSearch->whereDate('created_at', $request->input('date'));
+        }
+
+        $results = $fileSearch->get();
+
+        return response()->json($results);
+    }
+
+    public function searchContentFile(Request $request)
+    {
+
     }
 }
