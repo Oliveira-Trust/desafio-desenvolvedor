@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FileRequest;
 use App\Imports\FileImport;
+use App\Jobs\ProcessFileImport;
 use App\Models\FileContent;
 use App\Models\Upload;
 use Illuminate\Http\Request;
@@ -29,20 +30,27 @@ class FileController extends Controller
         if (Upload::where('file_name', $fileName)->exists())
             return response()->json(['message' => 'Arquivo enviado anteriormente.'], 400);
 
+        // Converte o arquivo para UTF-8
+        $path = $file->getRealPath();
+        $utf8FilePath = $this->convertToUtf8($file);
 
-        // Importar e salvar o conteúdo do arquivo
-        $this->excel->import(new FileImport('998'), $file);
-
-        // Salvar o arquivo
-        $filePath = $file->store('files');
+//         Salvar o arquivo
+//        $filePath = $utf8FilePath->store('files');
 
         // Criar registro de upload
-        $upload = Upload::create([
-            'file_name' => $fileName,
-            'uploaded_at' => now()
-        ]);
+//        $upload = Upload::create([
+//            'file_name' => $fileName,
+//            'uploaded_at' => now()
+//        ]);
 
-        return response()->json(['message' => 'Arquivo carregado com sucesso.']);
+        // Importar e salvar o conteúdo do arquivo
+        $this->excel->import(new FileImport(1), $utf8FilePath); // uso total memória.
+
+        // Disparar o job para processar o arquivo
+//        ProcessFileImport::dispatch($file, $upload->id);
+
+        return response()
+            ->json(['message' => 'Arquivo carregado. Será processado em fila. Acompanhe o resultado no logs.']);
     }
 
     public function uploadHistory(Request $request)
@@ -75,5 +83,26 @@ class FileController extends Controller
 
         $contents = $query->paginate(15);
         return response()->json($contents);
+    }
+
+    private function convertToUtf8($filePath)
+    {
+        $utf8FilePath = $filePath . '.utf8.csv';
+
+        // Abre o arquivo original
+        $originalFile = fopen($filePath, 'r');
+        // Abre o novo arquivo para escrita em UTF-8
+        $utf8File = fopen($utf8FilePath, 'w');
+
+        while (($line = fgets($originalFile)) !== false) {
+            // Converte a linha para UTF-8
+            $utf8Line = mb_convert_encoding($line, 'UTF-8', 'auto');
+            fwrite($utf8File, $utf8Line);
+        }
+
+        fclose($originalFile);
+        fclose($utf8File);
+
+        return $utf8FilePath;
     }
 }

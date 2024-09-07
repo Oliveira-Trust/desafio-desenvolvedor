@@ -6,8 +6,9 @@ use App\Models\FileContent;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class FileImport implements ToModel, WithChunkReading, WithBatchInserts
+class FileImport implements ToModel, WithChunkReading, WithBatchInserts, WithHeadingRow
 {
     protected $uploadId;
 
@@ -18,14 +19,14 @@ class FileImport implements ToModel, WithChunkReading, WithBatchInserts
 
     public function model(array $row)
     {
-        dd($row); // Undefined array key \"TckrSymb\"" ??
+        dd($row);
         return new FileContent([
-            'tckr_symb' => $row['TckrSymb'],
-            'rpt_dt' => $row['RptDt'],
-            'mkt_nm' => $row['MktNm'],
-            'scty_ctgy_nm' => $row['SctyCtgyNm'],
-            'isin' => $row['ISIN'],
-            'crpn_nm' => $row['CrpnNm'],
+            'rpt_dt' => $row['rptdt'],
+            'tckr_symb' => $row['tckrsymb'],
+            'mkt_nm' => $row['mktnm'],
+            'scty_ctgy_nm' => $row['sctyctgynm'],
+            'isin' => $row['isin'],
+            'crpn_nm' => $row['crpnnm'],
             'upload_id' => $this->uploadId,
         ]);
     }
