@@ -24,6 +24,7 @@ class FileController extends Controller
     public function upload(FileRequest $request)
     {
         $file = $request->file('file');
+        $this->_detectFileEncoding($file);
         $fileName = $file->getClientOriginalName();
 
         // Verificar se o arquivo já foi enviado
@@ -104,5 +105,16 @@ class FileController extends Controller
         fclose($utf8File);
 
         return $utf8FilePath;
+    }
+
+    function _detectFileEncoding($filepath) {
+        // VALIDATE $filepath !!!
+        $output = array();
+        exec('file -i ' . $filepath, $output);
+        if (isset($output[0])){
+            $ex = explode('charset=', $output[0]);
+            dd(isset($ex[1]) ? $ex[1] : null);
+        }
+        return null;
     }
 }
