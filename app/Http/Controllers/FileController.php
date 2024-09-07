@@ -109,12 +109,11 @@ class FileController extends Controller
 
     function _detectFileEncoding($filepath) {
         // VALIDATE $filepath !!!
-        $output = array();
-        exec('file -i ' . $filepath, $output);
-        if (isset($output[0])){
-            $ex = explode('charset=', $output[0]);
-            dd(isset($ex[1]) ? $ex[1] : null);
-        }
-        return null;
+        $content = file_get_contents($filepath);
+
+        // Detect encoding
+        $encoding = mb_detect_encoding($content, mb_list_encodings(), true);
+
+        dd($encoding); // Shows the detected encoding
     }
 }
