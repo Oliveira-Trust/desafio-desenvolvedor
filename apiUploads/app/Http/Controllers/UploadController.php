@@ -10,6 +10,6 @@ class UploadController extends Controller
 {
     public function upload(Request $request)
     {
-        
+        return response()->json(['message' => 'Método GET funcionou!']);
     }
 }
