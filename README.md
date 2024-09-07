@@ -7,60 +7,52 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Desafio - Desenvolvedor PHP Junior
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Neste desafio foi desenvolvido um sistema para cotação de câmbio online, com PHP, Laravel, MySQL, HTML, CSS, JSS e Consumo de API.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Durante a experiência, você poderá utilizar:
+- Autenticação de usuário
+- Insersão de dados para gerar a cotação
+- Formatação dos valores exibidos
+- Registro das operações de câmbio realizadas
+- Envio de e-mail (Requer uma configuração de SMTP no .ENV)
+- Design Bootstrap 5
+- Painel de administração para alterar as taxas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Como acessar?
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Clone este repositório na sua máquina e acesse a branch 'joao-vitor-santos'.
+- Certifique-se de ter PHP, MySQL, Node e Composer instalados na sua máquina.
+- Faça instalação das dependências do Composer (composer install).
+- Inicie um banco de dados local com MySQL ou outro provedor de sua preferência.
+- Configure o .env para apontar o seu banco.
+- Instale as dependências do Node (npm install).
+- Rode as migrations para preparar o seu banco (php artisan migrate).
+- Gere a chave encriptada do Laravel (php artisan key:generate).
+- Inicie dois terminais, um com o Node e um com o Artisan (npm run dev & php artisan serve).
+- Acesse a URL do Artisan e faça um cadastro para testar.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Caso tenha dificuldades durante a instalação, entre em contato com o desenvolvedor (contatos no final do README.md)
 
-## Laravel Sponsors
+## Prévias do sistema:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+![image](https://github.com/user-attachments/assets/65d3202f-a243-4b2f-8c35-e4be0bc5d4e2)
+-
+![image](https://github.com/user-attachments/assets/33bede0f-c58b-4711-b088-3f5ab6f2e16d)
+-
+![image](https://github.com/user-attachments/assets/b0ea5b3a-23b8-44f1-83cc-d3a871b487da)
+-
+![image](https://github.com/user-attachments/assets/d1b768aa-e4af-47ad-8773-f759e52b74d5)
+-
+![image](https://github.com/user-attachments/assets/6cd75da4-3985-44da-bea5-bcc7352f29c7)
 
-### Premium Partners
+## Contato
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- <a href="https://www.linkedin.com/in/jo%C3%A3o-santos-3b02a5220/">LinkedIn</a>
+- Email: joaovit342@gmail.com
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
