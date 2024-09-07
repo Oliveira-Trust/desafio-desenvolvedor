@@ -2,19 +2,33 @@
 
 namespace App\Imports;
 
+namespace App\Imports;
+
 use App\Models\FileContent;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\Importable;
 
-class FileImport implements ToModel, WithChunkReading, WithBatchInserts, WithHeadingRow
+class FileImport implements ToModel, WithHeadingRow, WithChunkReading, WithBatchInserts
 {
+    use Importable;
     protected $uploadId;
 
     public function __construct($uploadId)
     {
         $this->uploadId = $uploadId;
+    }
+
+    /**
+     * Row que será definida como cabeçalho.
+     *
+     * @return int
+     */
+    public function headingRow(): int
+    {
+        return 2;
     }
 
     public function model(array $row)
