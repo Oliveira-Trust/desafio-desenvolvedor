@@ -13,7 +13,7 @@ class UploadController extends Controller
     {
         // Validação do arquivo
         $request->validate([
-            'file' => 'required|file|mimes:csv,txt|max:2048', // Limita o tamanho e o tipo do arquivo
+            'file' => 'required|file|mimes:csv,txt|max:700048', // Limita o tamanho e o tipo do arquivo
         ]);
 
         // Obtém o arquivo
