@@ -10,33 +10,39 @@ use App\Imports\UploadsContentsImport;
 use App\Models\UploadsContents;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
+
 
 
 class UploadController extends Controller
 {
     public function upload(Request $request)
     {
-        // FileHelper::validateUpload($request);
-        $file = $request->file("file");
-        $fileName = $file->getClientOriginalName();
-        $fileType = $file->getClientOriginalExtension();
+        try {
 
-        if ($this->verifyFileExists($fileName)) {
-            return response()->json(['message' => 'Arquivo cadastrado anteriormente.'], 409);
+
+            FileHelper::validateUpload($request);
+            $file = $request->file("file");
+            $fileName = $file->getClientOriginalName();
+            $fileType = $file->getClientOriginalExtension();
+
+            if ($this->verifyFileExists($fileName)) {
+                return response()->json(['message' => 'Arquivo cadastrado anteriormente.'], 409);
+            }
+
+            $path = $file->storeAs('uploads', $fileName);
+
+
+
+            $upload = $this->saveUpload($fileName, $fileType, $path);
+
+            $this->readAndProcessCsv($fileName, $path, $upload);
+
+            return response()->json(['message' => 'Arquivo carregado com sucesso!'], 201);
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
         }
-
-        $path = $file->storeAs('uploads', $fileName);
-
-
-
-        $upload = $this->saveUpload($fileName, $fileType, $path);
-
-        $this->readAndProcessCsv($fileName, $path, $upload);
-
-
-        return response()->json(['message' => 'Arquivo carregado com sucesso!'], 201);
     }
-
     public function verifyFileExists($fileName)
     {
         return Upload::where('file_name', $fileName)->exists();
@@ -77,26 +83,31 @@ class UploadController extends Controller
 
     public function history(Request $request)
     {
-        FileHelper::validateHistory($request);
+        try {
+            FileHelper::validateHistory($request);
 
-        $fileSearch = Upload::query();
+            $fileSearch = Upload::query();
 
-        if ($request->has('file_name')) {
-            $fileName = $request->input('file_name');
-            $fileSearch->where('file_name', $fileName);
+            if ($request->has('file_name')) {
+                $fileName = $request->input('file_name');
+                $fileSearch->where('file_name', $fileName);
+            }
+
+            if ($request->has('date') && $request->input('date')) {
+                $fileSearch->whereDate('created_at', Carbon::createFromFormat('d-m-Y', $request->input('date'))->format('Y-m-d'));
+            }
+
+            $results = $fileSearch->get();
+
+            if ($results->isEmpty()) {
+                return response()->json(['message' => 'Arquivo não encontrado.'], 404);
+            }
+
+            return response()->json($results);
+        } catch (ValidationException  $e) {
+
+            return response()->json(['errors' => $e->errors()], 422);
         }
-
-        if ($request->has('date') && $request->input('date')) {
-            $fileSearch->whereDate('created_at', Carbon::createFromFormat('d-m-Y', $request->input('date'))->format('Y-m-d'));
-        }
-
-        $results = $fileSearch->get();
-
-        if ($results->isEmpty()) {
-            return response()->json(['message' => 'Arquivo não encontrado.'], 404);
-        }
-
-        return response()->json($results);
     }
 
     public function searchContentFile(Request $request)

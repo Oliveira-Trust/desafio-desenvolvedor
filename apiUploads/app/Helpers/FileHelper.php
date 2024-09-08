@@ -22,16 +22,17 @@ class FileHelper
         ], $messages);
     }
 
-    public static function validateHistory(Request $request) 
+    public static function validateHistory(Request $request)
     {
-            $validator = Validator::make($request->all(), [
-                'file_name' => 'sometimes|string',
-                'date' => 'sometimes|date_format:d-m-Y'
-            ]);
+        $messages = [
+            'date.date_format' => 'O formato da data é inválido. Use o formato d-m-Y.',
+        ];
     
-            if ($validator->fails()) {
-                return response()->json(['message' => 'Parâmetros inválidos.'], 400);
-            }
+        $request->validate([
+            'file_name' => 'sometimes|string',
+            'date' => 'sometimes|date_format:d-m-Y'
+        ], $messages);
     }
+    
 
 }
