@@ -60,7 +60,7 @@ class ProcessFileImport implements ShouldQueue
             }
 
             // Aguardar antes de verificar novamente
-            sleep($this->verifyMinutes * 60); // Aguarda o intervalo definido
+            sleep($this->verifyMinutes * 60);
         }
     }
 
@@ -68,7 +68,7 @@ class ProcessFileImport implements ShouldQueue
     {
         $spreadsheet = Excel::toCollection(null, $this->filePath);
         // Ignorar a linha do cabeçalho
-        return $spreadsheet->first()->count() - 1;
+        return $spreadsheet->first()->count() - 2;
     }
 
     protected function countProcessedRows()
