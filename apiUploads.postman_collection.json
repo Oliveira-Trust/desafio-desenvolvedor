@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "65e2cf5d-22f9-4362-a451-e3923b764c78",
+		"name": "apiUploads",
+		"description": "API composta por 3 endPoints voltados para o upload do arquivo e 1 endPoint para gerar o token de autenticação.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5722637"
+	},
+	"item": [
+		{
+			"name": "uploadFile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/eduar/OneDrive/Área de Trabalho/InstrumentsConsolidatedFile_20240906_1.csv",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/upload",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"upload"
+					]
+				},
+				"description": "uploadFile - Responsavel por fazer o upload do arquivo e validar se o arquivo enviado corresponde ao tipo de arquivo esperado (xlsx, csv e xls). Tabém valida tamanho do arquivo e se ele já foi enviado anteriormente."
+			},
+			"response": []
+		},
+		{
+			"name": "history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "history - Busca pelo arquivo enviado pelo nome ou pela data de envio.\n\nParâmetros que podem ser enviados: file_name e date.\n\nFormato do campo date: d-m-yyyy"
+			},
+			"response": []
+		},
+		{
+			"name": "searchContentFile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "searchContentFile - Busca pelo conteúdo dos arquivos que foram enviados.\n\nParâmetros que podem ser enviados para consultar um conteúdo: RptDt e TckrSymb."
+			},
+			"response": []
+		},
+		{
+			"name": "generateToken",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "**generateToken** - EndPoint responsavel por retornar o token de acesso para consumir os demais endPoints.\n\nPara usar nos demais endPoints: No headers usar o parametro (Key) Authorization e no value Bearer {token}"
+			},
+			"response": []
+		}
+	]
+}
