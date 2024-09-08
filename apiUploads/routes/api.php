@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController;
 use App\Http\Middleware\EnsureTokenIsValid;
 
-Route::post('/upload', [UploadController::class, 'upload'])->middleware([EnsureTokenIsValid::class]);
-Route::get('/history', [UploadController::class, 'history'])->middleware([EnsureTokenIsValid::class]);
-Route::get('/searchContentFile', [UploadController::class, 'searchContentFile'])->middleware([EnsureTokenIsValid::class]);
+Route::middleware([EnsureTokenIsValid::class])->group(function () {
+    Route::post('/upload', [UploadController::class, 'upload']);
+    Route::get('/history', [UploadController::class, 'history']);
+    Route::get('/searchContentFile', [UploadController::class, 'searchContentFile']);
+});
+
+Route::get('/generate-token', [AuthController::class, 'generateToken']);
 
