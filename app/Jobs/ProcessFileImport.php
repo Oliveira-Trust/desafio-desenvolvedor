@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Concerns\ToCollection;
 
 class ProcessFileImport implements ShouldQueue
 {
@@ -32,40 +33,42 @@ class ProcessFileImport implements ShouldQueue
 
     public function handle()
     {
-        $this->createReportFile('Iniciando a importação de ' . $this->fileName . ' com ' . $this->countTotalRows() . ' linhas');
+        $totalRows = $this->countTotalRows();
+        $this->createReportFile('Iniciando a importação de ' . $this->fileName . ' com ' . $totalRows . ' linhas');
 
-        $rowsProcessed = 0;
-        $startTime = Carbon::now();
-        $endTime = $startTime->copy()->addMinutes($this->verifyMinutes);
-
-        while (true) {
-            try {
-                Excel::import(new FileImport($this->uploadId), $this->filePath);
-
-
-                $rowsProcessed = $this->countProcessedRows();
-                $this->updateReportFile('Processado ' . $rowsProcessed . ' de ' . $this->countTotalRows() . ' linhas');
-
-                
-                if (Carbon::now()->greaterThanOrEqualTo($endTime)) {
-                    $endTime = Carbon::now()->addMinutes($this->verifyMinutes);
-                    $rowsProcessed = $this->countProcessedRows();
-                    $this->updateReportFile('Processado ' . $rowsProcessed . ' de ' . $this->countTotalRows() . ' linhas');
-                }
-            } catch (\Exception $e) {
-                Log::error('Erro ao importar o arquivo: ' . $e->getMessage());
-                $this->createReportFile('Erro ao importar o arquivo: ' . $e->getMessage());
-                throw $e;
-            }
+        // Processar o arquivo
+        try {
+            Excel::import(new FileImport($this->uploadId), $this->filePath);
+        } catch (\Exception $e) {
+            Log::error('Erro ao importar o arquivo: ' . $e->getMessage());
+            $this->createReportFile('Erro ao importar o arquivo: ' . $e->getMessage());
+            throw $e;
         }
 
-        $this->updateReportFile('Arquivo ' . $this->fileName . ' com ' . $this->countTotalRows() . ' registros processados com sucesso');
+        // Loop para verificar o progresso
+        while (true) {
+            $rowsProcessed = $this->countProcessedRows();
+
+            // Atualizar o progresso do arquivo
+            $this->updateReportFile('Processado ' . $rowsProcessed . ' de ' . $totalRows . ' linhas');
+
+            // Verificar se todos os registros foram processados
+            if ($rowsProcessed >= $totalRows) {
+                // Adicionar a linha final ao relatório HTML
+                $this->updateReportFile('Arquivo ' . $this->fileName . ' com ' . $totalRows . ' registros processados com sucesso');
+                break;
+            }
+
+            // Aguardar antes de verificar novamente
+            sleep($this->verifyMinutes * 60); // Aguarda o intervalo definido
+        }
     }
 
     protected function countTotalRows()
     {
         $spreadsheet = Excel::toCollection(null, $this->filePath);
-        return $spreadsheet->first()->count();
+        // Ignorar a linha do cabeçalho
+        return $spreadsheet->first()->count() - 1;
     }
 
     protected function countProcessedRows()
