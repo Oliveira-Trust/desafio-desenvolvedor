@@ -11,5 +11,5 @@ Route::middleware([EnsureTokenIsValid::class])->group(function () {
     Route::get('/searchContentFile', [UploadController::class, 'searchContentFile']);
 });
 
-Route::get('/generate-token', [AuthController::class, 'generateToken']);
+Route::get('/generateToken', [AuthController::class, 'generateToken']);
 

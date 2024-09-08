@@ -13,9 +13,14 @@ use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 
 
-
 class UploadController extends Controller
 {
+    /**
+     * upload
+     *
+     * Metodo responsavel por fazer o upload do arquivo enviado
+     * e validar o tipo do arquivo.
+     */
     public function upload(Request $request)
     {
         try {
@@ -32,22 +37,33 @@ class UploadController extends Controller
 
             $path = $file->storeAs('uploads', $fileName);
 
-
-
             $upload = $this->saveUpload($fileName, $fileType, $path);
 
             $this->readAndProcessCsv($fileName, $path, $upload);
 
             return response()->json(['message' => 'Arquivo carregado com sucesso!'], 201);
         } catch (ValidationException $e) {
+
             return response()->json(['errors' => $e->errors()], 422);
         }
     }
+
+    /**
+     * verifyFileExists
+     *
+     * Metodo responsavel verificar se o arquivo ja foi enviado anteriormente.
+     */
     public function verifyFileExists($fileName)
     {
         return Upload::where('file_name', $fileName)->exists();
     }
 
+
+    /**
+     * readAndProcessCsv
+     *
+     * Metodo responsavel ler e processar o csv e xlsx.
+     */
     protected function readAndProcessCsv($fileName, $path, $upload)
     {
         $filePath = storage_path('app/' . $path);
@@ -69,6 +85,13 @@ class UploadController extends Controller
         }
     }
 
+
+    /**
+     * saveUpload
+     *
+     * Metodo salvar informacoes sobre o arquivo
+     */
+
     protected function saveUpload($fileName, $fileType, $path)
     {
         $upload = new Upload();
@@ -80,6 +103,12 @@ class UploadController extends Controller
 
         return $upload;
     }
+
+    /**
+     * history
+     *
+     * Metodo que busca os arquivos enviados, por nome ou data.
+     */
 
     public function history(Request $request)
     {
@@ -109,6 +138,13 @@ class UploadController extends Controller
             return response()->json(['errors' => $e->errors()], 422);
         }
     }
+
+    /**
+     * searchContentFile
+     *
+     * Metodo que busca conteúdos dos arquivos enviados.
+     */
+
 
     public function searchContentFile(Request $request)
     {
