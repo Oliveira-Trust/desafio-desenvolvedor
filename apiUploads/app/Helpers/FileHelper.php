@@ -25,8 +25,8 @@ class FileHelper
     public static function validateHistory(Request $request) 
     {
             $validator = Validator::make($request->all(), [
-                'file_name' => 'sometimes|required|string',
-                'date' => 'sometimes|required|date_format:d-m-Y'
+                'file_name' => 'sometimes|string',
+                'date' => 'sometimes|date_format:d-m-Y'
             ]);
     
             if ($validator->fails()) {
