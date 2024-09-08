@@ -162,9 +162,22 @@ class FileUploadController
                 return response()->json(['message' => 'Nenhum arquivo encontrado.'], 404);
             }
 
-            return response()->json(['files' => $documents], 200);
+            $simplifiedDocuments = array_map(function($document) {
+                return [
+                    'id' => (string) $document['_id'],
+                    'file_name' => $document['file_name'],
+                    'file_hash' => $document['file_hash'],
+                    'path' => $document['path'],
+                    'uploaded_at' => $document['uploaded_at']
+                ];
+            }, $documents);
+
+            return response()->json($simplifiedDocuments, 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao buscar dados do arquivo.', 'message' => $e->getMessage()], 500);
+            return response()->json([
+                'error' => 'Erro ao buscar dados do arquivo.',
+                'message' => $e->getMessage()
+            ], 500);
         }
     }
 
@@ -196,9 +209,22 @@ class FileUploadController
                 return response()->json(['message' => 'Nenhum arquivo encontrado.'], 404);
             }
 
-            return response()->json(['files' => $documents], 200);
+            $simplifiedDocuments = array_map(function($document) {
+                return [
+                    'id' => (string) $document['_id'],
+                    'file_name' => $document['file_name'],
+                    'file_hash' => $document['file_hash'],
+                    'path' => $document['path'],
+                    'uploaded_at' => $document['uploaded_at']
+                ];
+            }, $documents);
+
+            return response()->json($simplifiedDocuments, 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao buscar arquivo.', 'message' => $e->getMessage()], 500);
+            return response()->json([
+                'error' => 'Erro ao buscar arquivo.',
+                'message' => $e->getMessage()
+            ], 500);
         }
     }
 
@@ -232,8 +258,19 @@ class FileUploadController
                 ], 404);
             }
 
+            $formattedDocuments = array_map(function($doc) {
+                return [
+                    'RptDt' => $doc['RptDt'] ?? null,
+                    'TckrSymb' => $doc['TckrSymb'] ?? null,
+                    'MktNm' => $doc['MktNm'] ?? null,
+                    'SctyCtgyNm' => $doc['SctyCtgyNm'] ?? null,
+                    'ISIN' => $doc['ISIN'] ?? null,
+                    'CrpnNm' => $doc['CrpnNm'] ?? null,
+                ];
+            }, $searchResults['documents']);
+
             return response()->json([
-                'files' => $searchResults['documents'],
+                'files' => $formattedDocuments,
                 'total' => $searchResults['total'],
                 'page' => $page,
                 'per_page' => $perPage,
