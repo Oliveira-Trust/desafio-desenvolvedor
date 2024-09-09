@@ -52,9 +52,9 @@ class FileController extends Controller
 //        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
 
         // Cria job para processar o arquivo
-        ProcessFileImport::dispatch($upload->id, $filePath, $fileName );
+        ProcessFileImport::dispatch($upload->id, $filePath, $fileName )->onQueue('import');
 
-        MonitorFileImportProgress::dispatch($upload->id, $fileName, 3);
+        MonitorFileImportProgress::dispatch($upload->id, $fileName, 3)->onQueue('monitor');
         $baseUrl=env('APP_URL');
         return response()
             ->json(['message' => "Arquivo carregado. Será processado em fila. Acompanhe em
