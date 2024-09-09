@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/snippets/fastcgi-php.conf:/etc/nginx/snippets/fastcgi-php.conf  # Incluindo o arquivo necessário
+    depends_on:
+      - php-fpm
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
