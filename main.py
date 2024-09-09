@@ -1,18 +1,33 @@
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from flask_caching import Cache
+from flask_httpauth import HTTPBasicAuth
 import pandas as pd
 from datetime import datetime
 import chardet
 import io
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
 app.config["MONGO_URI"] = "mongodb://localhost:27017/oliveira_trust"
 mongo = PyMongo(app)
 app.config['CACHE_TYPE'] = 'simple'
 cache = Cache(app)
 
+users = {
+    "pablo": "123",
+    "teste": "012"
+}
+
+@auth.verify_password
+def verify_password(username, password):
+    """Verifica o nome de usuário e a senha."""
+    if username in users and users[username] == password:
+        return username
+    return jsonify("Pendente Uusername e password.")
+
 @app.route('/upload', methods=['POST'])
+@auth.login_required
 def upload_arquivo():
     """Leitura do arquivo CSV ou xlsx. Função salvo no banco apenas informções necessárias, reduzindo o tamanho do banco."""
     if 'file' not in request.files:
@@ -30,8 +45,7 @@ def upload_arquivo():
     
     conteudo = file.read()
     encoding = chardet.detect(conteudo)['encoding']
-    #print("CONSULTAR" + encoding)
-    
+
     if file.filename.endswith('.xlsx'):
         data = pd.read_excel(io.BytesIO(conteudo))
     else:
@@ -82,6 +96,7 @@ def generate_cache_key():
     return None
 
 @app.route('/historico', methods=['GET'])
+@auth.login_required
 @cache.cached(timeout=300, key_prefix=generate_cache_key)
 def historico_info():
     """Consulta o arquivo no banco com nome ou data, ou os dois."""
@@ -102,6 +117,7 @@ def historico_info():
     
 
 @app.route('/buscar', methods=['GET'])
+@auth.login_required
 @cache.cached(timeout=300, key_prefix=generate_cache_key)
 def buscar_conteudo():
     """Informar o nome do arquivo e os valores especificos para filtrar a busca."""
