@@ -78,8 +78,7 @@ class MonitorFileImportProgress implements ShouldQueue
 
     protected function countProcessedRows()
     {
-        $content = FileContent::where('upload_id', $this->uploadId)->get();
-        return $content->count();
+        return FileContent::where('upload_id', $this->uploadId)->count();
     }
 
     protected function createReportFile($reportPath, $description)
