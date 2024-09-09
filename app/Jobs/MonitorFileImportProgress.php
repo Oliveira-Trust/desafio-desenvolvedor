@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\FileContent;
+use App\Models\Upload;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
@@ -41,21 +42,26 @@ class MonitorFileImportProgress implements ShouldQueue
         dump('ini');
         $reportPath = 'public/report_jobs/' . pathinfo($this->fileName, PATHINFO_FILENAME) . '.html';
 
-        $totalRows = $this->countTotalRows();
-        dump('total: '.$totalRows);
+//        $totalRows = $this->countTotalRows();
+//        dump('total: '.$totalRows);
 
         // Create the initial report file
-        $this->createReportFile($reportPath, 'Iniciando a importação de ' . $this->fileName . ' com ' . $totalRows . ' registros');
+        $this->createReportFile($reportPath, 'Iniciando a importação de ' . $this->fileName . '.');
 
         while (true) {
             $rowsProcessed = $this->countProcessedRows();
-            dump('processado: '.$rowsProcessed);
+//            dump('processado: '.$rowsProcessed);
 
-            if ($rowsProcessed < $totalRows) {
-                $this->updateReportFile($reportPath, 'Processado ' . $rowsProcessed . ' de ' . $totalRows . ' registros');
-            } else {
-                $this->updateReportFile($reportPath, 'Arquivo ' . $this->fileName . ' com ' . $totalRows . ' registros processados com sucesso');
+            $upload = Upload::find($this->uploadId);
+//            dump($upload);
+            dump('while');
+
+            if ($upload->finished) {
+                $this->updateReportFile($reportPath, 'Finalizado  com sucesso. ' . $rowsProcessed . ' registros processados');
                 break;
+
+            } else {
+                $this->updateReportFile($reportPath, 'Processado ' . $rowsProcessed . ' registros');
             }
 
 //            sleep($this->verifyMinutes * 60);
@@ -72,7 +78,10 @@ class MonitorFileImportProgress implements ShouldQueue
 
     protected function countProcessedRows()
     {
-        return FileContent::where('upload_id', $this->uploadId)->count() || 0;
+        dump('id= '.$this->uploadId);
+        $return = FileContent::where('upload_id', $this->uploadId)->get();
+        dump($return);
+        return $return->count();
     }
 
     protected function createReportFile($reportPath, $description)

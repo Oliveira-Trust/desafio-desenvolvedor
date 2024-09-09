@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Imports\FileImport;
+use App\Models\Upload;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -32,7 +33,16 @@ class ProcessFileImport implements ShouldQueue
     public function handle()
     {
         try {
-            Excel::import(new FileImport($this->uploadId), $this->filePath);
+            $import = Excel::import(new FileImport($this->uploadId), $this->filePath);
+//            dd($import);  // exibiu  -inputEncoding: "UTF-8"  fallbackEncoding: "CP1252"
+//            $import = Excel::toCollection(true, $this->filePath);
+//            dd($import);
+             $upl = Upload::find($this->uploadId);
+             $upl->finished = true;
+             $upl->save();
+
+
+
         } catch (\Exception $e) {
             Log::error('Erro ao importar o arquivo: ' . $e->getMessage());
         }

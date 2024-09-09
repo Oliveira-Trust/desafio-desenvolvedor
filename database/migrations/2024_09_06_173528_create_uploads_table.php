@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string('file_name');
+            $table->boolean('finished')->default(false);
             $table->timestamp('uploaded_at');
             // $table->timestamps();
         });
