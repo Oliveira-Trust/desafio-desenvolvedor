@@ -2,11 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Models\FileContent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class MonitorFileImportProgress implements ShouldQueue
 {
@@ -22,11 +24,12 @@ class MonitorFileImportProgress implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct($uploadId, $fileName, $verifyMinutes = 1)
+    public function __construct($uploadId, $fileName, $totalRows, $verifyMinutes = 1)
     {
         $this->uploadId = $uploadId;
         $this->fileName = $fileName;
         $this->verifyMinutes = $verifyMinutes;
+        $this->totalRows = $totalRows;
     }
 
     /**
@@ -34,32 +37,24 @@ class MonitorFileImportProgress implements ShouldQueue
      */
     public function handle(): void
     {
-        $totalRows = $this->countTotalRows();
         $reportPath = 'public/report_jobs/' . pathinfo($this->fileName, PATHINFO_FILENAME) . '.html';
 
         // Create the initial report file
-        $this->createReportFile($reportPath, 'Iniciando a importação de ' . $this->fileName . ' com ' . $totalRows . ' registros');
+        $this->createReportFile($reportPath, 'Iniciando a importação de ' . $this->fileName . ' com ' . $this->totalRows . ' registros');
 
         while (true) {
             $rowsProcessed = $this->countProcessedRows();
 
-            if ($rowsProcessed < $totalRows) {
-                $this->updateReportFile($reportPath, 'Processado ' . $rowsProcessed . ' de ' . $totalRows . ' registros');
+            if ($rowsProcessed < $this->totalRows) {
+                $this->updateReportFile($reportPath, 'Processado ' . $rowsProcessed . ' de ' . $this->totalRows . ' registros');
             } else {
-                $this->updateReportFile($reportPath, 'Arquivo ' . $this->fileName . ' com ' . $totalRows . ' registros processados com sucesso');
+                $this->updateReportFile($reportPath, 'Arquivo ' . $this->fileName . ' com ' . $this->totalRows . ' registros processados com sucesso');
                 break;
             }
 
 //            sleep($this->verifyMinutes * 60);
-            sleep(20);
+            sleep(5);
         }
-    }
-
-    protected function countTotalRows()
-    {
-        // This function should get the total rows from the file or a data source
-        // For simplicity, let's assume it returns the total rows excluding headers
-        return \App\Models\Upload::find($this->uploadId)->total_rows; // You need to have total rows stored somewhere
     }
 
     protected function countProcessedRows()
