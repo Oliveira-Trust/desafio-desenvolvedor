@@ -68,12 +68,15 @@ class FileImport implements ToModel, WithHeadingRow, WithChunkReading, WithBatch
     // Converte de DD/MM/YYYY para YYYY-MM-DD
     public function convertDateFormat($date)
     {
+        dump($date);
         if (empty($date)) {
             return null;
         }
 
         // Converte a data de DD/MM/YYYY para YYYY-MM-DD
         $dateObject = \DateTime::createFromFormat('d/m/Y', $date);
+        dump($dateObject);
+        dd($dateObject->format('Y-m-d'));
         if ($dateObject) {
             return $dateObject->format('Y-m-d');
         }
