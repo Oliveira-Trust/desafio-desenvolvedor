@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
+from flask_caching import Cache
 import pandas as pd
 from datetime import datetime
 import chardet
@@ -8,6 +9,8 @@ import io
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/oliveira_trust"
 mongo = PyMongo(app)
+app.config['CACHE_TYPE'] = 'simple'
+cache = Cache(app)
 
 @app.route('/upload', methods=['POST'])
 def upload_arquivo():
@@ -59,13 +62,35 @@ def upload_arquivo():
     
     return jsonify({"message": "Arquivo enviado com sucesso", "id": str(resultado.inserted_id)}), 201
 
+def generate_cache_key():
+    """Gera uma chave única baseada na função."""
+    endpoint = request.endpoint
+
+    if endpoint == 'historico_info':
+        nome = request.args.get('nome', '')
+        data = request.args.get('data', '')
+        return f"historico_{nome}_{data}"
+
+    elif endpoint == 'buscar_conteudo':
+        nome = request.args.get('nome', '')
+        TckrSymb = request.args.get('TckrSymb', '')
+        RptDt = request.args.get('RptDt', '')
+        page = request.args.get('page', '1')
+        per_page = request.args.get('per_page', '10')
+        return f"buscar_{nome}_{TckrSymb}_{RptDt}_{page}_{per_page}"
+    
+    return None
 
 @app.route('/historico', methods=['GET'])
-def historico_upload():
+@cache.cached(timeout=300, key_prefix=generate_cache_key)
+def historico_info():
     """Consulta o arquivo no banco com nome ou data, ou os dois."""
     nome = request.args.get('nome')
     data = request.args.get('data')
-    
+
+    if not nome and not data:
+        return jsonify({"error": "Informe o nome do arquivo ou a data."}), 400
+
     filtro = {}
     if nome:
         filtro["nome"] = nome
@@ -74,16 +99,21 @@ def historico_upload():
     
     resultados = mongo.db.arquivos.find(filtro, {"nome": 1, "data_upload": 1})
     return jsonify([{"id": str(r["_id"]), "nome": r["nome"], "data_upload": r["data_upload"]} for r in resultados])
-
+    
 
 @app.route('/buscar', methods=['GET'])
+@cache.cached(timeout=300, key_prefix=generate_cache_key)
 def buscar_conteudo():
     """Informar o nome do arquivo e os valores especificos para filtrar a busca."""
+    nome_arquivo = request.args.get('nome')
     TckrSymb = request.args.get('TckrSymb')
     RptDt = request.args.get('RptDt')
     page = int(request.args.get('page', 1))
     per_page = int(request.args.get('per_page', 10))
-    
+
+    if not nome_arquivo:
+        return jsonify({"error": "Informe o nome do arquivo."}), 400
+        
     filtro = {}
     if TckrSymb:
         filtro["dados.TckrSymb"] = TckrSymb
@@ -91,6 +121,7 @@ def buscar_conteudo():
         filtro["dados.RptDt"] = RptDt
     
     pipeline = [
+        {"$match": {"nome": nome_arquivo}},
         {"$unwind": "$dados"},
         {"$match": filtro},
         {"$skip": (page - 1) * per_page},
@@ -105,10 +136,10 @@ def buscar_conteudo():
             "CrpnNm": "$dados.CrpnNm"
         }}
     ]
-    
-    resultados = list(mongo.db.arquivos.aggregate(pipeline))
-    
+        
+    resultados = list(mongo.db.arquivos.aggregate(pipeline)) 
     return jsonify(resultados)
+
 
 
 if __name__ == "__main__":
