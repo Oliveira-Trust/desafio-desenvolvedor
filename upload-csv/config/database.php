@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,17 +41,19 @@ return [
             'journal_mode' => null,
             'synchronous' => null,
         ],
+
         'mongodb' => [
             'driver'   => 'mongodb',
-            'host'     => env('DB_HOST', 'localhost'),
-            'port'     => env('DB_PORT', 27017),
-            'database' => env('DB_DATABASE', 'fileupload'),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
+            'host'     => env('MONGODB_HOST', 'localhost'),
+            'port'     => env('MONGODB_PORT', 27017),
+            'database' => env('MONGODB_DATABASE', 'fileupload'),
+            'username' => env('MONGODB_USERNAME'),
+            'password' => env('MONGODB_PASSWORD'),
             'options'  => [
-                'database' => env('DB_AUTH_DATABASE', 'admin'), // required with mongodb auth
+                'database' => env('MONGODB_AUTH_DATABASE', 'admin'), // required for MongoDB authentication
             ],
         ],
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),

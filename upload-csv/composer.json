@@ -6,7 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "jenssegers/mongodb": "^4.8",
+        "darkaonline/l5-swagger": "^8.6",
+        "jenssegers/mongodb": "*",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
