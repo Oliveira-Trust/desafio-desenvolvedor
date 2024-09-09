@@ -16,6 +16,8 @@ class ProcessFileImport implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    // radar na fila import
+    public $queue = 'import';
     protected $uploadId;
     protected $filePath;
     protected $fileName;

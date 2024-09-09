@@ -12,6 +12,9 @@ class MonitorFileImportProgress implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    // rodar na fila monitor
+    public $queue = 'monitor';
+
     protected $uploadId;
     protected $fileName;
     protected $verifyMinutes;
