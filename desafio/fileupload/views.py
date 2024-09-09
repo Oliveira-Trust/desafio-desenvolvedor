@@ -16,27 +16,16 @@ class FileUploadView(generics.CreateAPIView):
    serializer_class = FileUploadSerializer
 
    """
-   Post Upload Endpoint Description
-   """
-   @swagger_auto_schema(
-        operation_description="Upload do arquivo",
-        responses={
-            200: "Success",
-            409: "Conflict",
-            415: "Unsupported Media Type",
-        },
-        request_body=openapi.Schema(
-            type=openapi.TYPE_OBJECT,
-            properties={
-                'csv': openapi.Schema(
-                    type=openapi.TYPE_STRING, description="Arquivo em formato csv"),
-                'xlsx': openapi.Schema(
-                    type=openapi.TYPE_STRING, description="Arquivo em formato excel"),
-            },
-            
-        )
-    )       
+   POST Endpoint para o Upload
    
+   request body = csv ou xlsx
+
+   responses:
+   200: "success",
+   409: "conflict",
+   415: "Unsupported Media Type"   
+   
+   """
   
    
    def post(self, request, *args, **kwargs):
@@ -95,6 +84,15 @@ class FileUploadView(generics.CreateAPIView):
 
 
 class UploadList(ListAPIView):
+
+   """
+   Endpoint para o histórico de uploads   
+   busca por nome ou data de upload
+   response:
+   200: "success",
+  
+   """
+   
  
    queryset = File.objects.all().distinct('name', 'upload_date')   
    serializer_class = FileUploadListSerializer
@@ -105,6 +103,14 @@ class UploadList(ListAPIView):
 
 
 class UploadContentList(ListAPIView):
+
+   """
+   Endpoint para a busca de conteúdo   
+   busca por RptDt e TckrSymb
+   response:
+   200: "success",
+  
+   """
    
   
       
