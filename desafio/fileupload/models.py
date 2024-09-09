@@ -16,7 +16,7 @@ class File(models.Model):
     class Meta:
         ordering = ('-upload_date',) 
         indexes = [
-            models.Index(fields=['-name'])]
+            models.Index(fields=['-name','-RptDt'])]
         
 
     def __str__(self):

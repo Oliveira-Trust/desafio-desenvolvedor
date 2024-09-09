@@ -8,12 +8,36 @@ from fileupload.models import File
 import pandas as pd
 from datetime import datetime
 from rest_framework import filters
-from django.utils.decorators import method_decorator
-from django.views.decorators.vary import vary_on_cookie, vary_on_headers
 from rest_framework.permissions import IsAuthenticated
-class FileUploadView(generics.ListAPIView):
-   
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
+
+class FileUploadView(generics.CreateAPIView):
    serializer_class = FileUploadSerializer
+
+   """
+   Post Upload Endpoint Description
+   """
+   @swagger_auto_schema(
+        operation_description="Upload do arquivo",
+        responses={
+            200: "Success",
+            409: "Conflict",
+            415: "Unsupported Media Type",
+        },
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'csv': openapi.Schema(
+                    type=openapi.TYPE_STRING, description="Arquivo em formato csv"),
+                'xlsx': openapi.Schema(
+                    type=openapi.TYPE_STRING, description="Arquivo em formato excel"),
+            },
+            
+        )
+    )       
+   
+  
    
    def post(self, request, *args, **kwargs):
       serializer = self.get_serializer(data=request.data)
@@ -47,7 +71,7 @@ class FileUploadView(generics.ListAPIView):
          else:
                         
             return Response({'status':'Arquivo com formato não permitido'},
-                            status.HTTP_403_FORBIDDEN)
+                            status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 
          
                  
@@ -71,16 +95,18 @@ class FileUploadView(generics.ListAPIView):
 
 
 class UploadList(ListAPIView):
-   
-    queryset = File.objects.all().distinct('name', 'upload_date')   
-    serializer_class = FileUploadListSerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['name', 'upload_date']
+ 
+   queryset = File.objects.all().distinct('name', 'upload_date')   
+   serializer_class = FileUploadListSerializer
+   filter_backends = [filters.SearchFilter]
+   search_fields = ['name', 'upload_date']
     
    
 
 
 class UploadContentList(ListAPIView):
+   
+  
       
    queryset = File.objects.all().order_by('RptDt','TckrSymb','MktNm', 'SctyCtgyNm', 'ISIN','CrpnNm').distinct('RptDt','TckrSymb','MktNm', 'SctyCtgyNm', 'ISIN','CrpnNm')
    serializer_class = FileUploadContentListSerializer

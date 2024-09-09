@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'fileupload.apps.FileuploadConfig',
-    'django_filters',
+    'django_filters',   
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -90,9 +91,9 @@ DATABASES = {
     
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'databasename',
-        'USER': 'username',
-        'PASSWORD':'userpassword',
+        'NAME': 'uploads',
+        'USER': 'postgres',
+        'PASSWORD':'mktj',
         'PORT':'5432'
         
     }
