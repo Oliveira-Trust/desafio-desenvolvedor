@@ -47,6 +47,8 @@ class FileController extends Controller
             'uploaded_at' => now()
         ]);
 
+        $totalRows = $this->countTotalRows($filePath);
+
         // Importar e salvar o conteúdo do arquivo
 //        dd(mb_detect_encoding($filePath, mb_list_encodings(), true));
 //        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
@@ -54,11 +56,12 @@ class FileController extends Controller
         // Cria job para processar o arquivo
         ProcessFileImport::dispatch($upload->id, $filePath, $fileName )->onQueue('import');
 
-        MonitorFileImportProgress::dispatch($upload->id, $fileName, 3)->onQueue('monitor');
+        MonitorFileImportProgress::dispatch($upload->id, $fileName, $totalRows, 3)->onQueue('monitor');
+
         $baseUrl=env('APP_URL');
         return response()
             ->json(['message' => "Arquivo carregado. Será processado em fila. Acompanhe em
-            $baseUrl/storage/report_jobs/".pathinfo($fileName, PATHINFO_FILENAME) . '.html']);
+            $baseUrl\/storage\/report_jobs\/".pathinfo($fileName, PATHINFO_FILENAME) . '.html']);
     }
 
     public function uploadHistory(Request $request)
@@ -91,6 +94,18 @@ class FileController extends Controller
 
         $contents = $query->paginate(15);
         return response()->json($contents);
+    }
+
+    protected function countTotalRows($filePath)
+    {
+        $spreadsheet = \Maatwebsite\Excel\Facades\Excel::toCollection(null, $filePath);
+        // Ignorar a linha do cabeçalho
+        return $spreadsheet->first()->count() - 2;
+    }
+
+    protected function countProcessedRows()
+    {
+        return \App\Models\FileContent::where('upload_id', $this->uploadId)->count();
     }
 
     private function convertToUtf8($filePath)
