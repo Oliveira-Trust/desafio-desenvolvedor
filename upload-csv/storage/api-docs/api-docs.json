@@ -1,0 +1,370 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Upload de Arquivos",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/file-upload": {
+            "post": {
+                "tags": [
+                    "File Upload"
+                ],
+                "summary": "Upload de Arquivo",
+                "description": "Permite o envio de arquivos Excel (.xlsx, .xls) ou CSV (.csv).",
+                "operationId": "1f1096b88da1971c468b534b17bde127",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "Arquivo a ser enviado",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Arquivo enviado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Arquivo enviado, processado e salvo com sucesso."
+                                        },
+                                        "file_hash": {
+                                            "type": "string",
+                                            "example": "d41d8cd98f00b204e9800998ecf8427e"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Erro ao fazer upload do arquivo."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno no servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Erro ao processar o arquivo."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/file-upload-data": {
+            "get": {
+                "tags": [
+                    "File Upload"
+                ],
+                "summary": "Buscar Todos os Arquivos",
+                "description": "Retorna a lista de arquivos já enviados para o sistema.",
+                "operationId": "7e43afb3521c605faefbdde426c19e48",
+                "responses": {
+                    "200": {
+                        "description": "Lista de arquivos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "60f5a6f8e1234b3a2c8a5"
+                                        },
+                                        "file_name": {
+                                            "type": "string",
+                                            "example": "arquivo.csv"
+                                        },
+                                        "file_hash": {
+                                            "type": "string",
+                                            "example": "d41d8cd98f00b204e9800998ecf8427e"
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "example": "uploads/arquivo.csv"
+                                        },
+                                        "uploaded_at": {
+                                            "type": "string",
+                                            "example": "2024-09-08T12:34:56+00:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Nenhum arquivo encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Nenhum arquivo encontrado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/find-file": {
+            "get": {
+                "tags": [
+                    "File Upload"
+                ],
+                "summary": "Histórico de Upload de Arquivo",
+                "description": "Permite buscar um arquivo pelo nome ou pela data de upload.",
+                "operationId": "3d9b698bdb453b2a14efb2ab03f81a7b",
+                "parameters": [
+                    {
+                        "name": "file_name",
+                        "in": "query",
+                        "description": "Nome do arquivo",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "InstrumentsConsolidatedFile_20240823.csv"
+                        }
+                    },
+                    {
+                        "name": "uploaded_at",
+                        "in": "query",
+                        "description": "Data de upload",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2024-09-08"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Arquivo encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "60f5a6f8e1234b3a2c8a5"
+                                        },
+                                        "file_name": {
+                                            "type": "string",
+                                            "example": "arquivo.csv"
+                                        },
+                                        "file_hash": {
+                                            "type": "string",
+                                            "example": "d41d8cd98f00b204e9800998ecf8427e"
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "example": "uploads/arquivo.csv"
+                                        },
+                                        "uploaded_at": {
+                                            "type": "string",
+                                            "example": "2024-09-08T12:34:56+00:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Nenhum arquivo encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Nenhum arquivo encontrado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/search-files": {
+            "get": {
+                "tags": [
+                    "File Upload"
+                ],
+                "summary": "Buscar Conteúdo do Arquivo",
+                "description": "Permite buscar arquivos com filtros baseados em 'TckrSymb' e 'RptDt'.",
+                "operationId": "f4f6aae73a6e13523176c82b4cb042bf",
+                "parameters": [
+                    {
+                        "name": "TckrSymb",
+                        "in": "query",
+                        "description": "Símbolo do Ticker",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "AAPL"
+                        }
+                    },
+                    {
+                        "name": "RptDt",
+                        "in": "query",
+                        "description": "Data do Relatório",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2024-09-08"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Número da página",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Número de itens por página",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 20
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dados encontrados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "files": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "RptDt": {
+                                                        "type": "string",
+                                                        "example": "2024-09-08"
+                                                    },
+                                                    "TckrSymb": {
+                                                        "type": "string",
+                                                        "example": "AAPL"
+                                                    },
+                                                    "MktNm": {
+                                                        "type": "string",
+                                                        "example": "NASDAQ"
+                                                    },
+                                                    "SctyCtgyNm": {
+                                                        "type": "string",
+                                                        "example": "Stock"
+                                                    },
+                                                    "ISIN": {
+                                                        "type": "string",
+                                                        "example": "US0378331005"
+                                                    },
+                                                    "CrpnNm": {
+                                                        "type": "string",
+                                                        "example": "Apple Inc."
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 100
+                                        },
+                                        "page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 20
+                                        },
+                                        "total_pages": {
+                                            "type": "integer",
+                                            "example": 5
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Não foram encontrados dados com os filtros passados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Nenhum dado encontrado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "File Upload",
+            "description": "File Upload"
+        }
+    ]
+}
