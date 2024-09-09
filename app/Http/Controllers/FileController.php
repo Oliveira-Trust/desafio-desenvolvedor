@@ -47,8 +47,6 @@ class FileController extends Controller
             'uploaded_at' => now()
         ]);
 
-        $totalRows = $this->countTotalRows($filePath);
-
         // Importar e salvar o conteúdo do arquivo
 //        dd(mb_detect_encoding($filePath, mb_list_encodings(), true));
 //        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
@@ -56,7 +54,7 @@ class FileController extends Controller
         // Cria job para processar o arquivo
         ProcessFileImport::dispatch($upload->id, $filePath, $fileName )->onQueue('import');
 
-        MonitorFileImportProgress::dispatch($upload->id, $fileName, $totalRows, 3)->onQueue('monitor');
+        MonitorFileImportProgress::dispatch($upload->id, $filePath, $fileName, 3)->onQueue('monitor');
 
         $baseUrl=env('APP_URL');
         return response()
@@ -96,12 +94,6 @@ class FileController extends Controller
         return response()->json($contents);
     }
 
-    protected function countTotalRows($filePath)
-    {
-        $spreadsheet = \Maatwebsite\Excel\Facades\Excel::toCollection(null, $filePath);
-        // Ignorar a linha do cabeçalho
-        return $spreadsheet->first()->count() - 2;
-    }
 
     protected function countProcessedRows()
     {
