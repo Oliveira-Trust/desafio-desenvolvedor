@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "696ce86a-0de4-4675-b381-2311b1a72e1a",
+		"name": "oliveira_trust",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38177122"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:5000/upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "teste1.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/upload",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/historico",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/historico?nome=teste1.csv",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"historico"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "teste1.csv"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/buscar?nome=teste1.csv&RptDt=2024-08-23&TckrSymb=AMZO34",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/buscar?nome=teste1.csv&RptDt=2024-08-23&TckrSymb=AMZO34",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "teste1.csv"
+						},
+						{
+							"key": "RptDt",
+							"value": "2024-08-23"
+						},
+						{
+							"key": "TckrSymb",
+							"value": "AMZO34"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
