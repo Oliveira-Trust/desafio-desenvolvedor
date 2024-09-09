@@ -26,7 +26,7 @@ class MonitorFileImportProgress implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct($uploadId, $filePath, $fileName, $verifyMinutes = 1)
+    public function __construct($uploadId, $filePath, $fileName, $verifyMinutes = 5)
     {
         $this->uploadId = $uploadId;
         $this->fileName = $fileName;
@@ -39,7 +39,7 @@ class MonitorFileImportProgress implements ShouldQueue
      */
     public function handle(): void
     {
-        dump('ini');
+//        dump('ini');
         $reportPath = 'public/report_jobs/' . pathinfo($this->fileName, PATHINFO_FILENAME) . '.html';
 
 //        $totalRows = $this->countTotalRows();
@@ -54,7 +54,7 @@ class MonitorFileImportProgress implements ShouldQueue
 
             $upload = Upload::find($this->uploadId);
 //            dump($upload);
-            dump('while');
+//            dump('while');
 
             if ($upload->finished) {
                 $this->updateReportFile($reportPath, 'Finalizado  com sucesso. ' . $rowsProcessed . ' registros processados');
@@ -64,8 +64,8 @@ class MonitorFileImportProgress implements ShouldQueue
                 $this->updateReportFile($reportPath, 'Processado ' . $rowsProcessed . ' registros');
             }
 
-//            sleep($this->verifyMinutes * 60);
-            sleep(5);
+            sleep($this->verifyMinutes * 60);
+//            sleep(30);
         }
     }
 
@@ -78,10 +78,8 @@ class MonitorFileImportProgress implements ShouldQueue
 
     protected function countProcessedRows()
     {
-        dump('id= '.$this->uploadId);
-        $return = FileContent::where('upload_id', $this->uploadId)->get();
-        dump($return);
-        return $return->count();
+        $content = FileContent::where('upload_id', $this->uploadId)->get();
+        return $content->count();
     }
 
     protected function createReportFile($reportPath, $description)
