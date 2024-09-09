@@ -53,13 +53,17 @@ class FileController extends Controller
 
         // Cria job para processar o arquivo
         ProcessFileImport::dispatch($upload->id, $filePath, $fileName )->onQueue('import');
-
         MonitorFileImportProgress::dispatch($upload->id, $filePath, $fileName, 3)->onQueue('monitor');
+
+        // rodar:
+        // php artisan queue:work --queue=import
+        // php artisan queue:work --queue=monitor
 
         $baseUrl=env('APP_URL');
         return response()
-            ->json(['message' => "Arquivo carregado. Será processado em fila. Acompanhe em
-            $baseUrl\/storage\/report_jobs\/".pathinfo($fileName, PATHINFO_FILENAME) . '.html']);
+            ->json([
+                'message' => "Arquivo carregado. Será processado em fila. Acompanhe em $baseUrl/storage/report_jobs/" . pathinfo($fileName, PATHINFO_FILENAME) . '.html'
+            ]);
     }
 
     public function uploadHistory(Request $request)
