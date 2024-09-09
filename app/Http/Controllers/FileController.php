@@ -49,7 +49,7 @@ class FileController extends Controller
 
         // Importar e salvar o conteúdo do arquivo
 //        dd(mb_detect_encoding($filePath, mb_list_encodings(), true));
-        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
+//        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
 
         // Cria job para processar o arquivo
         ProcessFileImport::dispatch($upload->id, $filePath, $fileName )->onQueue('import');

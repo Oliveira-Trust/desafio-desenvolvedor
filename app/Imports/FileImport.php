@@ -78,7 +78,7 @@ class FileImport implements ToModel, WithHeadingRow, WithChunkReading, WithBatch
             $dateObject = \DateTime::createFromFormat($format, $date);
 
             if ($dateObject && $dateObject->format($format) === $date) {
-                dd($dateObject->format('Y-m-d'));
+                return $dateObject->format('Y-m-d');
             }
         }
 
