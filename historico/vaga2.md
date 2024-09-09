@@ -2,6 +2,8 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
  </p>
  
+## DESAFIO FORA DA VALIDADE, CONSULTE A VERSÃO ATUALIZADA NA RAIZ DO PROJETO.
+ 
 ## Desafio para candidatos à vaga de Desenvolvedor PHP (Jr/Pleno/Sênior).
 Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀 
 
