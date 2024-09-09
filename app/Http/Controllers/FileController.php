@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FileRequest;
 use App\Imports\FileImport;
+use App\Jobs\MonitorFileImportProgress;
 use App\Jobs\ProcessFileImport;
 use App\Models\FileContent;
 use App\Models\Upload;
@@ -50,11 +51,14 @@ class FileController extends Controller
 //        dd(mb_detect_encoding($filePath, mb_list_encodings(), true));
 //        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
 
-        // Disparar o job para processar o arquivo
+        // Cria job para processar o arquivo
         ProcessFileImport::dispatch($upload->id, $filePath, $fileName );
 
+        MonitorFileImportProgress::dispatch($upload->id, $fileName, 3);
+        $baseUrl=env('APP_URL');
         return response()
-            ->json(['message' => 'Arquivo carregado. Será processado em fila. Acompanhe o resultado no logs.']);
+            ->json(['message' => "Arquivo carregado. Será processado em fila. Acompanhe em
+            $baseUrl/storage/report_jobs/".pathinfo($fileName, PATHINFO_FILENAME) . '.html']);
     }
 
     public function uploadHistory(Request $request)
