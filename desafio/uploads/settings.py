@@ -91,9 +91,9 @@ DATABASES = {
     
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'uploads',
-        'USER': 'postgres',
-        'PASSWORD':'mktj',
+        'NAME': 'nomedobanco',
+        'USER': 'nomedousuario',
+        'PASSWORD':'senha',
         'PORT':'5432'
         
     }
