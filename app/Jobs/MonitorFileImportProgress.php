@@ -20,16 +20,17 @@ class MonitorFileImportProgress implements ShouldQueue
     protected $uploadId;
     protected $fileName;
     protected $verifyMinutes;
+    protected $filePath;
 
     /**
      * Create a new job instance.
      */
-    public function __construct($uploadId, $fileName, $totalRows, $verifyMinutes = 1)
+    public function __construct($uploadId, $filePath, $fileName, $verifyMinutes = 1)
     {
         $this->uploadId = $uploadId;
         $this->fileName = $fileName;
+        $this->filePath = $filePath;
         $this->verifyMinutes = $verifyMinutes;
-        $this->totalRows = $totalRows;
     }
 
     /**
@@ -37,18 +38,23 @@ class MonitorFileImportProgress implements ShouldQueue
      */
     public function handle(): void
     {
+        dump('ini');
         $reportPath = 'public/report_jobs/' . pathinfo($this->fileName, PATHINFO_FILENAME) . '.html';
 
+        $totalRows = $this->countTotalRows();
+        dump('total: '.$totalRows);
+
         // Create the initial report file
-        $this->createReportFile($reportPath, 'Iniciando a importação de ' . $this->fileName . ' com ' . $this->totalRows . ' registros');
+        $this->createReportFile($reportPath, 'Iniciando a importação de ' . $this->fileName . ' com ' . $totalRows . ' registros');
 
         while (true) {
             $rowsProcessed = $this->countProcessedRows();
+            dump('processado: '.$rowsProcessed);
 
-            if ($rowsProcessed < $this->totalRows) {
-                $this->updateReportFile($reportPath, 'Processado ' . $rowsProcessed . ' de ' . $this->totalRows . ' registros');
+            if ($rowsProcessed < $totalRows) {
+                $this->updateReportFile($reportPath, 'Processado ' . $rowsProcessed . ' de ' . $totalRows . ' registros');
             } else {
-                $this->updateReportFile($reportPath, 'Arquivo ' . $this->fileName . ' com ' . $this->totalRows . ' registros processados com sucesso');
+                $this->updateReportFile($reportPath, 'Arquivo ' . $this->fileName . ' com ' . $totalRows . ' registros processados com sucesso');
                 break;
             }
 
@@ -57,9 +63,16 @@ class MonitorFileImportProgress implements ShouldQueue
         }
     }
 
+    protected function countTotalRows()
+    {
+        $spreadsheet = \Maatwebsite\Excel\Facades\Excel::toCollection(null, $this->filePath);
+        // Ignorar a linha do cabeçalho
+        return $spreadsheet->first()->count() - 2;
+    }
+
     protected function countProcessedRows()
     {
-        return FileContent::where('upload_id', $this->uploadId)->count();
+        return FileContent::where('upload_id', $this->uploadId)->count() || 0;
     }
 
     protected function createReportFile($reportPath, $description)
