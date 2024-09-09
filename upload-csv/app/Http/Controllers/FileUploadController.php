@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-
+/**
+ * @OA\Info(
+ *     title="API de Upload de Arquivos",
+ *     version="1.0.0"
+ * )
+ */
 class FileUploadController
 {
     protected $fileUploadModel;
@@ -14,7 +19,50 @@ class FileUploadController
     {
         $this->fileUploadModel = $fileUploadModel;
     }
-
+  /**
+     * @OA\Post(
+     *     path="/api/file-upload",
+     *     summary="Upload de Arquivo",
+     *     description="Permite o envio de arquivos Excel (.xlsx, .xls) ou CSV (.csv).",
+     *     tags={"File Upload"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="file",
+     *                     description="Arquivo a ser enviado",
+     *                     type="string",
+     *                     format="binary"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Arquivo enviado com sucesso",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Arquivo enviado, processado e salvo com sucesso."),
+     *             @OA\Property(property="file_hash", type="string", example="d41d8cd98f00b204e9800998ecf8427e")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Erro de validação",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="Erro ao fazer upload do arquivo.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erro interno no servidor",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="Erro ao processar o arquivo.")
+     *         )
+     *     )
+     * )
+     */
     public function fileUpload(Request $request)
     {
         try {
@@ -60,6 +108,7 @@ class FileUploadController
             return response()->json(['error' => 'Erro ao fazer upload do arquivo.', 'message' => $e->getMessage()], 500);
         }
     }
+
     public function processTxtToCsvAndSave($fileId)
     {
         try {
@@ -134,6 +183,7 @@ class FileUploadController
         }
     }
 
+
     private function prepareBatchData($batchData)
     {
         $preparedBatchData = [];
@@ -152,7 +202,32 @@ class FileUploadController
 
         return $preparedBatchData;
     }
-
+ /**
+     * @OA\Get(
+     *     path="/api/file-upload-data",
+     *     summary="Buscar Todos os Arquivos",
+     *     description="Retorna a lista de arquivos já enviados para o sistema.",
+     *     tags={"File Upload"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de arquivos",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="string", example="60f5a6f8e1234b3a2c8a5"),
+     *             @OA\Property(property="file_name", type="string", example="arquivo.csv"),
+     *             @OA\Property(property="file_hash", type="string", example="d41d8cd98f00b204e9800998ecf8427e"),
+     *             @OA\Property(property="path", type="string", example="uploads/arquivo.csv"),
+     *             @OA\Property(property="uploaded_at", type="string", example="2024-09-08T12:34:56+00:00")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Nenhum arquivo encontrado",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Nenhum arquivo encontrado.")
+     *         )
+     *     )
+     * )
+     */
     public function fileUploadData()
     {
         try {
@@ -180,7 +255,46 @@ class FileUploadController
             ], 500);
         }
     }
-
+     /**
+     * @OA\Get(
+     *     path="/api/find-file",
+     *     summary="Histórico de Upload de Arquivo",
+     *     description="Permite buscar um arquivo pelo nome ou pela data de upload.",
+     *     tags={"File Upload"},
+     *     @OA\Parameter(
+     *         name="file_name",
+     *         in="query",
+     *         description="Nome do arquivo",
+     *         required=false,
+     *         @OA\Schema(type="string", example="InstrumentsConsolidatedFile_20240823.csv")
+     *     ),
+     *     @OA\Parameter(
+     *         name="uploaded_at",
+     *         in="query",
+     *         description="Data de upload",
+     *         required=false,
+     *         @OA\Schema(type="string", format="date", example="2024-09-08")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Arquivo encontrado",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="string", example="60f5a6f8e1234b3a2c8a5"),
+     *             @OA\Property(property="file_name", type="string", example="arquivo.csv"),
+     *             @OA\Property(property="file_hash", type="string", example="d41d8cd98f00b204e9800998ecf8427e"),
+     *             @OA\Property(property="path", type="string", example="uploads/arquivo.csv"),
+     *             @OA\Property(property="uploaded_at", type="string", example="2024-09-08T12:34:56+00:00")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Nenhum arquivo encontrado",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Nenhum arquivo encontrado.")
+     *         )
+     *     )
+     * )
+     */
     public function findFile(Request $request)
     {
         try {
@@ -227,7 +341,69 @@ class FileUploadController
             ], 500);
         }
     }
-
+     /**
+     * @OA\Get(
+     *     path="/api/search-files",
+     *     summary="Buscar Conteúdo do Arquivo",
+     *     description="Permite buscar arquivos com filtros baseados em 'TckrSymb' e 'RptDt'.",
+     *     tags={"File Upload"},
+     *     @OA\Parameter(
+     *         name="TckrSymb",
+     *         in="query",
+     *         description="Símbolo do Ticker",
+     *         required=false,
+     *         @OA\Schema(type="string", example="AAPL")
+     *     ),
+     *     @OA\Parameter(
+     *         name="RptDt",
+     *         in="query",
+     *         description="Data do Relatório",
+     *         required=false,
+     *         @OA\Schema(type="string", format="date", example="2024-09-08")
+     *     ),
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Número da página",
+     *         required=false,
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Parameter(
+     *         name="per_page",
+     *         in="query",
+     *         description="Número de itens por página",
+     *         required=false,
+     *         @OA\Schema(type="integer", example=20)
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Dados encontrados",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="files", type="array",
+     *                 @OA\Items(
+     *                     @OA\Property(property="RptDt", type="string", example="2024-09-08"),
+     *                     @OA\Property(property="TckrSymb", type="string", example="AAPL"),
+     *                     @OA\Property(property="MktNm", type="string", example="NASDAQ"),
+     *                     @OA\Property(property="SctyCtgyNm", type="string", example="Stock"),
+     *                     @OA\Property(property="ISIN", type="string", example="US0378331005"),
+     *                     @OA\Property(property="CrpnNm", type="string", example="Apple Inc.")
+     *                 )
+     *             ),
+     *             @OA\Property(property="total", type="integer", example=100),
+     *             @OA\Property(property="page", type="integer", example=1),
+     *             @OA\Property(property="per_page", type="integer", example=20),
+     *             @OA\Property(property="total_pages", type="integer", example=5)
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Não foram encontrados dados com os filtros passados",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Nenhum dado encontrado.")
+     *         )
+     *     )
+     * )
+     */
     public function searchFiles(Request $request)
     {
         try {
@@ -251,7 +427,7 @@ class FileUploadController
 
             if (empty($searchResults['documents'])) {
                 return response()->json([
-                    'message' => 'Nenhum arquivo encontrado.',
+                    'message' => 'Nenhum dado encontrado.',
                     'total' => $searchResults['total'],
                     'page' => $page,
                     'per_page' => $perPage
