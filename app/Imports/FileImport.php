@@ -28,12 +28,12 @@ class FileImport implements ToModel, WithHeadingRow, WithChunkReading, WithBatch
      */
     public function headingRow(): int
     {
-        return 2;
+        return 1;
     }
 
     public function model(array $row)
     {
-//        dd($row);
+        // dd($row);
         return new FileContent([
             'rpt_dt' => $this->convertDateFormat($row['rptdt']),
             'tckr_symb' => $row['tckrsymb'],
