@@ -39,6 +39,8 @@ class FileController extends Controller
         // Salvar o arquivo
 //        $filePath = $file->store('files');
         $filePath = $file->storeAs('files', $fileName);
+        $r = $this->preprocessCsv($filePath);
+        dd($r);
 
 
         // Criar registro de upload
@@ -49,11 +51,11 @@ class FileController extends Controller
 
         // Importar e salvar o conteúdo do arquivo
 //        dd(mb_detect_encoding($filePath, mb_list_encodings(), true));
-//        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
+        $this->excel->import(new FileImport($upload->id), $filePath); // uso total memória.
 
         // Cria job para processar o arquivo
-        ProcessFileImport::dispatch($upload->id, $filePath, $fileName )->onQueue('import');
-        MonitorFileImportProgress::dispatch($upload->id, $filePath, $fileName, 3)->onQueue('monitor');
+//        ProcessFileImport::dispatch($upload->id, $filePath, $fileName )->onQueue('import');
+//        MonitorFileImportProgress::dispatch($upload->id, $filePath, $fileName, 3)->onQueue('monitor');
 
         // rodar:
         // php artisan queue:work --queue=import
@@ -65,6 +67,22 @@ class FileController extends Controller
                 'message' => "Arquivo carregado. Será processado em fila. Acompanhe em $baseUrl/storage/report_jobs/" . pathinfo($fileName, PATHINFO_FILENAME) . '.html'
             ]);
     }
+
+    function preprocessCsv($filePath) {
+        $filePath = storage_path('app/' . $filePath);
+
+        $lines = file($filePath, FILE_IGNORE_NEW_LINES);
+        dd($lines);
+
+        // Remove a primeira linha se ela não contiver o cabeçalho
+        if (strpos($lines[0], ';') !== false) {
+            unset($lines[0]);
+        }
+
+        // Recria o arquivo com a linha de cabeçalho correta
+        file_put_contents($filePath, implode(PHP_EOL, $lines));
+    }
+
 
     public function uploadHistory(Request $request)
     {

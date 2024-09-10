@@ -32,6 +32,7 @@ class ProcessFileImport implements ShouldQueue
 
     public function handle()
     {
+//        $this->removeFirstLine($this->filePath);
         try {
             $import = Excel::import(new FileImport($this->uploadId), $this->filePath);
 //            dd($import);  // exibiu  -inputEncoding: "UTF-8"  fallbackEncoding: "CP1252"
@@ -47,4 +48,19 @@ class ProcessFileImport implements ShouldQueue
             Log::error('Erro ao importar o arquivo: ' . $e->getMessage());
         }
     }
+
+    function removeFirstLine($filePath)
+    {
+        // Ler o arquivo CSV
+        $lines = file($filePath, FILE_IGNORE_NEW_LINES);
+
+        // Verifica se o arquivo não está vazio e remove a primeira linha
+        if (!empty($lines)) {
+            array_shift($lines);
+
+            // Salva as linhas restantes de volta ao arquivo
+            file_put_contents($filePath, implode(PHP_EOL, $lines));
+        }
+    }
+
 }
