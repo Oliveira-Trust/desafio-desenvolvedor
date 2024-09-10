@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('upload', [UploadController::class, 'upload']);
+Route::get('upload-history', [UploadController::class, 'history']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

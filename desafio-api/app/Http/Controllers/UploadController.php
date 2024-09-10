@@ -28,4 +28,19 @@ class UploadController extends Controller
         return response()->json(['message' => 'Upload realizado com sucesso'], 200);
     }
 
+    public function history(Request $request)
+    {
+        $uploads = Upload::query();
+
+        if ($request->has('filename')) {
+            $uploads->where('filename', $request->filename);
+        }
+
+        if ($request->has('date')) {
+            $uploads->whereDate('uploaded_at', $request->date);
+        }
+
+        return response()->json($uploads->get());
+    }
+
 }
