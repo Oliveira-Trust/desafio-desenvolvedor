@@ -86,11 +86,11 @@ class FileController extends Controller
         $query = FileContent::query();
 
         if ($request->has('tckr_symb')) {
-            $query->where('tckr_symb', $request->input('tckr_symb'));
+            $query->where('tckr_symb', $request->input('TckrSymb'));
         }
 
         if ($request->has('rpt_dt')) {
-            $query->whereDate('rpt_dt', $request->input('rpt_dt'));
+            $query->whereDate('rpt_dt', $request->input('RptDt'));
         }
 
         $contents = $query->paginate(15);
