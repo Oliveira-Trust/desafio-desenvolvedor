@@ -1,0 +1,17 @@
+{
+    "name": "gabriel/proj",
+    "description": "Teste Oliveira Trust",
+    "autoload": {
+        "psr-4": {
+            "Gabriel\\Proj\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gabriel Pimentel"
+        }
+    ],
+    "require": {
+        "laravel/laravel": "^10.3"
+    }
+}
