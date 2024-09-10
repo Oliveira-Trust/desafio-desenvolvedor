@@ -1,0 +1,6 @@
+django
+python-dotenv
+psycopg2-binary
+pandas
+django-filter
+drf-yasg
