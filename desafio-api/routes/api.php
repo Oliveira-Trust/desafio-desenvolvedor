@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UploadController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('upload', [UploadController::class, 'index']);
 Route::post('upload', [UploadController::class, 'upload']);
 Route::get('upload-history', [UploadController::class, 'history']);
+Route::get('search-file', [UploadController::class, 'search']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
