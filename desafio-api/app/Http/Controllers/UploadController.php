@@ -16,15 +16,10 @@ class UploadController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,xlsx|max:20480',
+            'file' => 'required|mimes:csv,xlsx|max:100000',
         ]);
 
         $file = $request->file('file');
-        $maxSize = 17200; // Bloqueio para envios para arquivos com mais de 17 mil linhas
-
-        if ($file->getSize() > $maxSize * 1024) {
-            return response()->json(['error' => 'O arquivo excede o tamanho maximo permitido de 17,2MB'], 400);
-        }
 
         $filename = $file->getClientOriginalName();
 
@@ -45,28 +40,41 @@ class UploadController extends Controller
             'uploaded_at' => now(),
         ]);
 
+        \Log::info('Recebendo arquivo', ['file' => $file->getClientOriginalName()]);
+
         return response()->json(['message' => 'Upload realizado com sucesso'], 200);
     }
 
     protected function processFile($file)
     {
         $filePath = $file->getRealPath();
-        $chunkSize = 1000;
+        $chunkSize = 500;
 
         if (($handle = fopen($filePath, 'r')) !== FALSE) {
             $header = fgetcsv($handle);
+
+            $secondLine = fgetcsv($handle);
+            if (count($header) != count($secondLine)) {
+                $header = $secondLine;
+                $secondLine = fgetcsv($handle);
+            } else {
+                fseek($handle, -strlen(implode(',', $secondLine)) - 2, SEEK_CUR);
+            }
 
             $row = 0;
             $chunk = [];
 
             while (($data = fgetcsv($handle)) !== FALSE) {
-                $chunk[] = $data;
-                $row++;
+                if (count($data) == count($header)) {
+                    $chunk[] = $data;
+                    $row++;
 
-                if ($row % $chunkSize == 0) {
-                    // Processa o chunk
-                    $this->processChunk($chunk, $header);
-                    $chunk = [];
+                    if ($row % $chunkSize == 0) {
+
+                        $this->processChunk($chunk, $header);
+                        $chunk = [];
+                    }
+                } else {
                 }
             }
 
@@ -79,6 +87,7 @@ class UploadController extends Controller
             throw new \Exception('Erro ao abrir o arquivo.');
         }
     }
+
 
     protected function processChunk($chunk, $header)
     {
@@ -104,11 +113,12 @@ class UploadController extends Controller
             }
         }
 
-        $results = $uploads->get();
+        $perPage = 10;
+        $page = $request->input('page', 1);
+        $results = $uploads->paginate($perPage, ['*'], 'page', $page);
 
         return response()->json($results);
     }
-
 
 
     public function search(Request $request)
@@ -121,57 +131,61 @@ class UploadController extends Controller
             return response()->json(['error' => 'Nenhum arquivo encontrado'], 404);
         }
 
-        $latestFile = collect($files)->sortByDesc(function ($file) {
-            return Storage::lastModified($file);
-        })->first();
+        $results = [];
+        foreach ($files as $file) {
+            $filePath = Storage::path($file);
 
-        $filePath = Storage::path($latestFile);
+            if (!file_exists($filePath)) {
+                continue; // Pule para o próximo arquivo se este não existir
+            }
 
-        if (!file_exists($filePath)) {
-            return response()->json(['error' => 'Arquivo nao encontrado'], 404);
+            if (($handle = fopen($filePath, 'r')) !== FALSE) {
+                fgetcsv($handle);
+
+                $header = fgetcsv($handle);
+                if ($header === FALSE) {
+                    fclose($handle);
+                    continue;
+                }
+
+                $columnIndices = array_flip($header);
+                if (!isset($columnIndices['TckrSymb']) || !isset($columnIndices['RptDt'])) {
+                    fclose($handle);
+                    continue;
+                }
+
+                while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+                    $matches = true;
+
+                    if (!empty($tckrSymb) && !isset($data[$columnIndices['TckrSymb']]) || stripos($data[$columnIndices['TckrSymb']], $tckrSymb) === false) {
+                        $matches = false;
+                    }
+
+                    if (!empty($rptDt) && !isset($data[$columnIndices['RptDt']]) || stripos($data[$columnIndices['RptDt']], $rptDt) === false) {
+                        $matches = false;
+                    }
+
+                    if ($matches) {
+                        $results[] = [
+                            'RptDt' => $data[$columnIndices['RptDt']] ?? null,
+                            'TckrSymb' => $data[$columnIndices['TckrSymb']] ?? null,
+                            'MktNm' => $data[$columnIndices['MktNm']] ?? null,
+                            'SctyCtgyNm' => $data[$columnIndices['SctyCtgyNm']] ?? null,
+                            'ISIN' => $data[$columnIndices['ISIN']] ?? null,
+                            'CrpnNm' => $data[$columnIndices['CrpnNm']] ?? null,
+                        ];
+                    }
+                }
+                fclose($handle);
+            }
         }
 
-
-        $results = [];
-        if (($handle = fopen($filePath, 'r')) !== FALSE) {
-            $firstLine = fgetcsv($handle);
-            $header = fgetcsv($handle);
-            $columnIndices = array_flip($header);
-
-            if (!isset($columnIndices['TckrSymb']) || !isset($columnIndices['RptDt'])) {
-                fclose($handle);
-                return response()->json(['error' => 'Colunas TckrSymb,RptDt nao encontradas no arquivo'], 400);
-            }
-
-            while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
-                $matches = true;
-
-                if (!empty($tckrSymb) && stripos($data[$columnIndices['TckrSymb']], $tckrSymb) === false) {
-                    $matches = false;
-                }
-
-                if (!empty($rptDt) && stripos($data[$columnIndices['RptDt']], $rptDt) === false) {
-                    $matches = false;
-                }
-
-                if ($matches) {
-                    $results[] = [
-                        'RptDt' => $data[$columnIndices['RptDt']],
-                        'TckrSymb' => $data[$columnIndices['TckrSymb']],
-                        'MktNm' => $data[$columnIndices['MktNm']] ?? null,
-                        'SctyCtgyNm' => $data[$columnIndices['SctyCtgyNm']] ?? null,
-                        'ISIN' => $data[$columnIndices['ISIN']] ?? null,
-                        'CrpnNm' => $data[$columnIndices['CrpnNm']] ?? null,
-                    ];
-                }
-            }
-            fclose($handle);
-        } else {
-            return response()->json(['error' => 'Erro ao abrir o arquivo'], 500);
+        if (empty($results)) {
+            return response()->json(['message' => 'Nenhum resultado encontrado'], 404);
         }
 
         if (empty($tckrSymb) && empty($rptDt)) {
-            $perPage = 10;
+            $perPage = 100;
             $page = $request->input('page', 1);
             $paginatedResults = array_slice($results, ($page - 1) * $perPage, $perPage);
             return response()->json([
@@ -182,13 +196,8 @@ class UploadController extends Controller
             ]);
         }
 
-        if (empty($results)) {
-            return response()->json(['message' => 'Nenhum resultado encontrado'], 404);
-        }
-
         return response()->json($results);
     }
-
 
 
 }
