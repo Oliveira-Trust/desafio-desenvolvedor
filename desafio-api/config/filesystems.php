@@ -15,6 +15,7 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -72,5 +73,8 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
+
+    'upload_max_size' => env('UPLOAD_MAX_SIZE', '200M'),
+    'post_max_size' => env('POST_MAX_SIZE', '200M'),
 
 ];

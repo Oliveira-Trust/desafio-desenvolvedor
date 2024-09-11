@@ -16,7 +16,7 @@ class UploadController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,xlsx|max:100000',
+            'file' => 'required|mimes:csv,xlsx|max:204800',
         ]);
 
         $file = $request->file('file');
