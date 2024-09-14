@@ -8,7 +8,7 @@ Route::post('/tokens/create', [UploadController::class, 'createToken']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/upload', [UploadController::class, 'uploadFile']);
-    Route::get('/upload-history', [UploadController::class, 'getUploadHistory']);
-    Route::get('/search-content', [UploadController::class, 'searchFileContent']);
+    Route::get('/upload', [UploadController::class, 'uploadHistory']);
+    Route::get('/search-content', [UploadController::class, 'searchContent']);
 });
 

@@ -9,7 +9,6 @@
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "maatwebsite/excel": "^3.1",
         "mongodb/laravel-mongodb": "^5.0",
         "predis/predis": "^2.0"
     },

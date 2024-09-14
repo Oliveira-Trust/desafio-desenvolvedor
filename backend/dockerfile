@@ -16,17 +16,22 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libcurl4-openssl-dev \
     pkg-config \
-    libzip-dev
-
-# Limpa o Cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+    libzip-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpng-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Instala as extensões do PHP que são utilizadas pelo Laravel
-RUN docker-php-ext-install mbstring exif pcntl bcmath gd sockets pdo_mysql pdo_mysql zip
+RUN docker-php-ext-install mbstring exif pcntl bcmath gd sockets pdo_mysql zip
 
 # Instala a extensão do MongoDB para PHP
 RUN pecl install mongodb \
     && docker-php-ext-enable mongodb
+
+# Instala a extensão do Redis para PHP via PECL
+RUN pecl install redis \
+    && docker-php-ext-enable redis
 
 # Baixa o Composer na versão mais recente para o container
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -35,11 +40,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN useradd -G www-data,root -u $uid -d /home/$user $user \
     && mkdir -p /home/$user/.composer \
     && chown -R $user:$user /home/$user
-
-# Instala o Redis
-RUN pecl install -o -f redis \
-    && rm -rf /tmp/pear \
-    && docker-php-ext-enable redis
 
 # Define o diretório de trabalho
 WORKDIR /var/www

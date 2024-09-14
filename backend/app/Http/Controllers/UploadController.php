@@ -29,7 +29,7 @@ class UploadController extends Controller
     }
 
     // Endpoint para histórico de uploads
-    public function getUploadHistory(UploadRequest $request): \Illuminate\Http\JsonResponse
+    public function uploadHistory(UploadRequest $request): \Illuminate\Http\JsonResponse
     {
         //Nome do arquivo é obrigatorio e data é opicional
 
@@ -40,7 +40,7 @@ class UploadController extends Controller
     }
 
     // Endpoint para busca de conteúdo do arquivo
-    public function searchFileContent(Request $request): \Illuminate\Http\JsonResponse
+    public function searchContent(Request $request): \Illuminate\Http\JsonResponse
     {
         $filters = $request->only(['TckrSymb', 'RptDt']);
         $results = $this->uploadService->searchFileContent($filters);
