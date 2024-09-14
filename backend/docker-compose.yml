@@ -55,6 +55,23 @@ services:
     networks:
       - laravel
 
+  # db mysql
+  mysql:
+      image: mysql:8.0
+      platform: linux/x86_64
+      restart: unless-stopped
+      environment:
+          MYSQL_DATABASE: ${DB_DATABASE2:-laravel}
+          MYSQL_ROOT_PASSWORD: ${DB_PASSWORD2:-root}
+          MYSQL_PASSWORD: ${DB_PASSWORD2:-userpass}
+          MYSQL_USER: ${DB_USERNAME2:-username}
+      volumes:
+          - ./.docker/mysql/dbdata:/var/lib/mysql
+      container_name: mysql
+      ports:
+          - "3306:3306"
+      networks:
+          - laravel
   # redis
   redis:
       image: redis:latest
