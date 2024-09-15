@@ -1,52 +1,138 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
- 
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Título do projeto
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Teste para Desenvolvedor Backend
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## ⚙️ Um pouco sobre a organização do Teste
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+O projeto esta divido em camadas. 
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+Controllers, Validações com FormRequest, Services, Models, Job e Por ultimo a base de dados princimpal com mongoDB.
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+![alt text](image-1.png)
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+## 🚀 Começando
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição (CAJU);
-- Vale Alimentação (CAJU);
-- Vale Transporte ou Vale Combustível (CAJU);
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+Essas instruções permitirão que você obtenha uma cópia do teste feito por mim.
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+### 📋 Pré-requisitos
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+O que vai precisar para instalá-lo?
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+Docker, Mysql, MongoDB, Redis e Laravel
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga3.md
+Esse teste ultiliza docker, então todos os serviços estão no docker-compose.
+
+```
+https://www.docker.com/
+```
+
+### 🔧 Instalação
+
+Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento para a execução do teste.
+
+Baixar o Docker.
+
+```
+Link para dowload: https://www.docker.com/
+```
+Clonar o repositorio do github
+
+```
+https://github.com/guilherf13/desafio-desenvolvedor.git
+```
+Entre dentro da pasta backend
+
+```
+cd backend
+```
+Execute o comando para subir os containers do docker.
+
+```
+docker compose up -d
+```
+Crie o arquivo.env
+
+```
+cp .env.example .env
+```
+Subistitua essa configuração pela que esta no seu .env
+
+```
+DB_CONNECTION=mongodb
+DB_HOST=mongo
+DB_PORT=27017
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=1234Senha
+
+DB_CONNECTION2=mysql
+DB_HOST2=mysql
+DB_PORT2=3306
+DB_DATABASE2=laravel_auth
+DB_USERNAME2=auth_user
+DB_PASSWORD2=auth_password
+
+SESSION_DRIVER=database
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=false
+SESSION_PATH=/
+SESSION_DOMAIN=null
+
+BROADCAST_CONNECTION=log
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=redis
+
+CACHE_STORE=redis
+CACHE_PREFIX=
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_CLIENT=phpredis
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+```
+
+Acesse o container backend
+
+```
+docker compose exec backend bash
+```
+
+Instale as dependencia do projeto
+```
+composer install
+```
+
+Gere a key do projeto Laravel
+```
+php artisan key:generate
+```
+
+Rodar as migrations
+
+```
+php artisan migrate
+```
+
+Rodando o seed de usuario teste
+```
+php artisan db:seed
+```
+
+O endpoint (post) api/v1/upload, requer o servidor de job rodando durante a execução.
+
+para testar o endpoint antes execute o seguinte comando.
+
+```
+php artisan queue:work
+```
+Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
+
+## 🛠️ Construído com
+
+* [Docker](https://www.docker.com/) - Gerenciador de serviços via containers
+* [Mysql](https://www.mysql.com/) - Banco de dados para autenticação das apis
+* [MongoDB](https://rometools.github.io/rome/) - Banco de dados principal 
+* [Redis](https://rometools.github.io/rome/) - Usado para cache
+* [Laravel](https://rometools.github.io/rome/) - Framework para web

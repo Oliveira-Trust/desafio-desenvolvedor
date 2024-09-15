@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Upload;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -24,7 +25,20 @@ class UploadFileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|mimes:csv,txt,xlsx',
+            'file' => [
+                'required',
+                'file',
+                'mimes:csv,txt,xlsx',
+                function ($attribute, $value, $fail) {
+                    // Obtém o nome do arquivo
+                    $fileName = $value->getClientOriginalName();
+
+                    // Verifica se o arquivo já existe no banco de dados
+                    if (Upload::where('name', $fileName)->exists()) {
+                        $fail('O arquivo já foi enviado anteriormente.');;
+                    }
+                },
+            ],
         ];
     }
 
@@ -45,6 +59,5 @@ class UploadFileRequest extends FormRequest
             'data'      => $validator->errors()
         ],400));
     }
-
 
 }

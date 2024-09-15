@@ -24,7 +24,7 @@ class UploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|max:255',
+            'name' => 'required|string|max:255',
             'uploaded_at' => 'nullable|date'
         ];
     }
@@ -35,6 +35,7 @@ class UploadRequest extends FormRequest
             'name.string' => 'O campo nome deve ser uma string.',
             'name.max' => 'O campo nome não pode ter mais de 255 caracteres.',
             'uploaded_at.date' => 'O campo data de upload deve ser uma data válida.',
+            'name.required' => 'O campo nome é obrigatorio',
         ];
     }
 

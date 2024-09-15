@@ -6,24 +6,21 @@ use App\Models\FileContent;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 
 class UploadService
 {
     public function uploadFile($file): array
     {
+        Log::info("Upload started");
         try {
             $fileName = $file->getClientOriginalName();
             $fileHash = hash_file('sha256', $file->getRealPath());
 
-            // Verificar se o arquivo já foi enviado
-            if (Upload::where('hash', $fileHash)->exists()) {
-                return ['success' => false, 'message' => 'O arquivo já foi enviado.'];
-            }
-
             $path = $file->storeAs('uploads', $fileName, 'public');
             $fullPath = storage_path('app/public/' . $path);
-
 
             // Ler o arquivo CSV usando a função readCsv
             $items = self::readCsv($fullPath);
@@ -31,19 +28,29 @@ class UploadService
             // Formatar os valores das colunas do CSV
             $formattedItems = self::formatarValores($items);
 
+
             // Iniciar uma transação
             DB::beginTransaction();
 
+            $array_itens = [];
+
             foreach ($formattedItems as $item) {
               //Inserir cada linha no banco de dados mapeando os campos do modelo FileContent
-                FileContent::create([
-                    'RptDt' => $item['RptDt'],
-                    'TckrSymb' => $item['TckrSymb'],
-                    'MktNm' => $item['MktNm'],
-                    'SctyCtgyNm' => $item['SctyCtgyNm'],
-                    'ISIN' => $item['ISIN'],
-                   'CrpnNm' => $item['CrpnNm'],
-               ]);
+                $array_itens[] = [
+                    'RptDt' => $item['RptDt'] ?? null,
+                    'TckrSymb' => $item['TckrSymb'] ?? null,
+                    'MktNm' => $item['MktNm'] ?? null,
+                    'SctyCtgyNm' => $item['SctyCtgyNm'] ?? null,
+                    'ISIN' => $item['ISIN'] ?? null,
+                    'CrpnNm' => $item['CrpnNm']?? null,
+               ];
+            }
+
+            $batchSize = 500;
+            $chunks = array_chunk($array_itens, $batchSize);
+
+            foreach ($chunks as $chunk) {
+                FileContent::query()->insert($chunk);
             }
 
           //Salvar detalhes do upload no MongoDB
@@ -69,6 +76,7 @@ class UploadService
      */
     public function getUploadHistory($filters)
     {
+
         $query = Upload::query();
 
         if (isset($filters['name'])) {
@@ -85,18 +93,33 @@ class UploadService
         });
     }
 
-    public function searchFileContent($filters): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function searchFileContent(array $filters): \Illuminate\Contracts\Pagination\LengthAwarePaginator|array
     {
-        $query = Upload::query();
+        $query = FileContent::query();
 
+        // Verificar se algum filtro válido foi passado
+        $hasValidFilter = false;
+
+        // Aplicar filtros se existirem
         if (isset($filters['TckrSymb'])) {
             $query->where('TckrSymb', $filters['TckrSymb']);
+            $hasValidFilter = true;
         }
 
         if (isset($filters['RptDt'])) {
             $query->where('RptDt', $filters['RptDt']);
+            $hasValidFilter = true;
         }
 
+        // Se nenhum filtro válido for encontrado, retornar mensagem de erro
+        if (!$hasValidFilter) {
+            return [
+                'success' => false,
+                'message' => 'Nenhum filtro válido fornecido. Por favor, forneça pelo menos um dos filtros: TckrSymb ou RptDt.'
+            ];
+        }
+
+        // Retornar resultados paginados
         return $query->paginate(10);
     }
 
@@ -131,7 +154,7 @@ class UploadService
         while (($row = fgetcsv($file, null, $separator, '"')) !== false) {
             $rowData = [];
 
-            // Adicionar os valores ao array $rowData com base nos cabeçalhos disponíveis
+            // Adiciona os valores ao array $rowData com base nos cabeçalhos disponíveis
             foreach ($header as $index => $headerItem) {
                 if (isset($row[$index])) {
                     $rowData[$headerItem] = $row[$index];
@@ -140,7 +163,6 @@ class UploadService
                 }
             }
 
-            // Adiciona o array associativo ao array de resultados
             $rows[] = $rowData;
         }
 
@@ -149,7 +171,6 @@ class UploadService
 
         return $rows;
     }
-
 
     public static function formatarValores($items): array
     {

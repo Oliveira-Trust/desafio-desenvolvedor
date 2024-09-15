@@ -3,8 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\UploadRequest;
+use App\Jobs\UploadJob;
 use Illuminate\Http\Request;
 use App\Services\UploadService;
+
 
 class UploadController extends Controller
 {
@@ -18,14 +20,14 @@ class UploadController extends Controller
     // Endpoint para upload de arquivo
     public function uploadFile(UploadFileRequest $request): \Illuminate\Http\JsonResponse
     {
+        $fileName = $request->file('file')->getClientOriginalName();
+        $filePath = $request->file('file')->storeAs('temp', $fileName);
 
-        $result = $this->uploadService->uploadFile($request->file('file'));
+        // Caminho do arquivo para o Job
+        UploadJob::dispatch($filePath);
 
-        if (!$result['success']) {
-            return response()->json(['message' => $result['message']], 400);
-        }
+        return response()->json(["message" => "Arquivo Enviado"]);
 
-        return response()->json(['message' => 'Upload bem-sucedido!', 'data' => $result['upload']], 201);
     }
 
     // Endpoint para histórico de uploads
@@ -36,7 +38,7 @@ class UploadController extends Controller
         $filters = $request->only(['name', 'uploaded_at']);
         $uploads = $this->uploadService->getUploadHistory($filters);
 
-        return response()->json($uploads);
+        return response()->json($uploads->toArray());
     }
 
     // Endpoint para busca de conteúdo do arquivo

@@ -23,6 +23,15 @@ class FileContent extends Model
         'CrpnNm',
     ];
 
+    protected $casts = [
+        'RptDt' => 'string',
+        'TckrSymb' => 'string',
+        'MktNm' => 'string',
+        'SctyCtgyNm' => 'string',
+        'ISIN' => 'string',
+        'CrpnNm' => 'string',
+    ];
+
     public function upload(): \Illuminate\Database\Eloquent\Relations\BelongsTo|\MongoDB\Laravel\Relations\BelongsTo
     {
         return $this->belongsTo(Upload::class);

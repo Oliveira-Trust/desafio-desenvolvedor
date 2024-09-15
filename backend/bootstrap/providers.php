@@ -3,5 +3,5 @@
 return [
     App\Providers\AppServiceProvider::class,
     MongoDB\Laravel\MongoDBServiceProvider::class,
-    Maatwebsite\Excel\ExcelServiceProvider::class,
+    L5Swagger\L5SwaggerServiceProvider::class,
 ];
