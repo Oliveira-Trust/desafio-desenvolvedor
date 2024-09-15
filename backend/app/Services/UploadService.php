@@ -97,30 +97,16 @@ class UploadService
     {
         $query = FileContent::query();
 
-        // Verificar se algum filtro válido foi passado
-        $hasValidFilter = false;
-
-        // Aplicar filtros se existirem
         if (isset($filters['TckrSymb'])) {
             $query->where('TckrSymb', $filters['TckrSymb']);
-            $hasValidFilter = true;
         }
 
         if (isset($filters['RptDt'])) {
-            $query->where('RptDt', $filters['RptDt']);
-            $hasValidFilter = true;
+            $query->whereDate('RptDt', $filters['RptDt']);
         }
 
-        // Se nenhum filtro válido for encontrado, retornar mensagem de erro
-        if (!$hasValidFilter) {
-            return [
-                'success' => false,
-                'message' => 'Nenhum filtro válido fornecido. Por favor, forneça pelo menos um dos filtros: TckrSymb ou RptDt.'
-            ];
-        }
-
-        // Retornar resultados paginados
         return $query->paginate(10);
+
     }
 
     public static function readCsv($path): array

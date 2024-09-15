@@ -46,7 +46,7 @@ APIs são acessadas na url http://localhost:80/
 ## 3. Upload History
 
 **Endpoint:** GET /api/v1/upload
-**Request:** Parâmetros de consulta são opcional, filtre os resultados usando "name" e "uploaded_at". Requer autenticação bearer token
+**Request:** O Parâmetro de consulta name é orbigatorio, Parãmetro uploaded_at é opcional. Filtre os resultados usando "name" e "uploaded_at". Requer autenticação bearer token
 Exemplo do body:
 {
 
