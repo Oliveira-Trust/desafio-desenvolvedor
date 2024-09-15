@@ -42,7 +42,7 @@ class FileContentImport implements ToModel, WithHeadingRow, WithCustomCsvSetting
         Log::info('Conteúdo da linha do CSV:', $row);
         Log::info('Chaves disponíveis:', array_keys($row));
 
-        // Verifique se o conteúdo é um array associativo com chaves esperadas
+        // Verifica se o conteúdo é um array associativo com chaves esperadas
         if (!is_array($row) || empty($row)) {
             Log::error('Linha do CSV está vazia ou não é um array.');
             return null;
@@ -50,30 +50,109 @@ class FileContentImport implements ToModel, WithHeadingRow, WithCustomCsvSetting
 
         // Mapeamento de chaves do CSV para as chaves esperadas
         $keyMapping = [
-            'rptdt'        => 'RptDt',
-            'tckrsymb'     => 'TckrSymb',
-            'mktnm'        => 'MktNm',
-            'sctyctgynm'   => 'SctyCtgyNm',
-            'isin'         => 'ISIN',
-            'crpnnm'       => 'CrpnNm',
+            'rptdt'              => 'RptDt',
+            'tckrsymb'           => 'TckrSymb',
+            'mktnm'              => 'MktNm',
+            'sctyctgynm'         => 'SctyCtgyNm',
+            'isin'               => 'ISIN',
+            'crpnnm'             => 'CrpnNm',
+            'asst'               => 'Asst',
+            'asstdesc'           => 'AsstDesc',
+            'sgmtnm'             => 'SgmtNm',
+            'xprtndt'            => 'XprtnDt',
+            'exrcpric'           => 'ExrcPric',
+            'xprtncd'            => 'XprtnCd',
+            'tradgstartdt'       => 'TradgStartDt',
+            'tradgenddt'         => 'TradgEndDt',
+            'basecd'             => 'BaseCd',
+            'convscritnm'        => 'ConvsCritNm',
+            'mtrtydttrgtpt'      => 'MtrtyDtTrgtPt',
+            'reqrdconvsind'      => 'ReqrdConvsInd',
+            'cficd'              => 'CFICd',
+            'dlvryntcestartdt'   => 'DlvryNtceStartDt',
+            'dlvryntceenddt'     => 'DlvryNtceEndDt',
+            'optntp'             => 'OptnTp',
+            'ctrctmltplr'        => 'CtrctMltplr',
+            'asstqtnqty'         => 'AsstQtnQty',
+            'allcnrndlot'        => 'AllcnRndLot',
+            'tradgccy'           => 'TradgCcy',
+            'dlvrytpnm'          => 'DlvryTpNm',
+            'wdrwldays'          => 'WdrwlDays',
+            'wrkdays'            => 'WrkgDays',
+            'clnrdays'           => 'ClnrDays',
+            'rlvrbasepricnm'     => 'RlvrBase',
         ];
 
-        // Verifica se todas as chaves esperadas estão presentes e define valores padrão se necessário
+        // Verificar e ajustar valores nulos e decimais em todas as chaves mapeadas
         foreach ($keyMapping as $csvKey => $expectedKey) {
-            if (!array_key_exists($csvKey, $row) || empty($row[$csvKey])) {
-                Log::warning("Chave ausente ou valor vazio no array \$row: $csvKey. Definindo valor padrão.");
-                $row[$csvKey] = 'N/A'; // Define um valor padrão
+            // Verifica se o valor está definido; caso contrário, define como null
+            $row[$csvKey] = $row[$csvKey] ?? null;
+
+            // Se o valor não for nulo, verifica se é um número decimal e ajusta
+            if (!is_null($row[$csvKey])) {
+                // Substituir vírgula por ponto nos campos que contêm números decimais
+                if (is_numeric(str_replace(',', '.', $row[$csvKey]))) {
+                    $row[$csvKey] = str_replace(',', '.', $row[$csvKey]);
+                }
             }
         }
 
+
+        // Cria a instância do modelo FileContent com os valores ajustados
         $fileContent = new FileContent([
-            'upload_id'     => $this->uploadId,
-            'RptDt'         => $row['rptdt'],
-            'TckrSymb'      => $row['tckrsymb'],
-            'MktNm'         => $row['mktnm'],
-            'SctyCtgyNm'    => $row['sctyctgynm'],
-            'ISIN'          => $row['isin'],
-            'CrpnNm'        => $row['crpnnm'],
+            'upload_id'         => $this->uploadId,
+            'RptDt'             => $row['rptdt'],
+            'TckrSymb'          => $row['tckrsymb'],
+            'Asst'              => $row['asst'],
+            'AsstDesc'          => $row['asstdesc'],
+            'SgmtNm'            => $row['sgmtnm'],
+            'MktNm'             => $row['mktnm'],
+            'SctyCtgyNm'        => $row['sctyctgynm'],
+            'XprtnDt'           => $row['xprtndt'],
+            'XprtnCd'           => $row['xprtncd'],
+            'TradgStartDt'      => $row['tradgstartdt'],
+            'TradgEndDt'        => $row['tradgenddt'],
+            'BaseCd'            => $row['basecd'],
+            'ConvsCritNm'       => $row['convscritnm'],
+            'MtrtyDtTrgtPt'     => $row['mtrtydttrgtpt'],
+            'ReqrdConvsInd'     => $row['reqrdconvsind'],
+            'ISIN'              => $row['isin'],
+            'CFICd'             => $row['cficd'],
+            'DlvryNtceStartDt'  => $row['dlvryntcestartdt'],
+            'DlvryNtceEndDt'    => $row['dlvryntceenddt'],
+            'OptnTp'            => $row['optntp'],
+            'CtrctMltplr'       => $row['ctrctmltplr'],
+            'AsstQtnQty'        => $row['asstqtnqty'],
+            'AllcnRndLot'       => $row['allcnrndlot'],
+            'TradgCcy'          => $row['tradgccy'],
+            'DlvryTpNm'         => $row['dlvrytpnm'],
+            'WdrwlDays'         => $row['wdrwldays'],
+            'WrkgDays'          => $row['wrkdays'],
+            'ClnrDays'          => $row['clnrdays'],
+            'RlvrBasePricNm'    => $row['rlvrbasepricnm'],
+            'OpngFutrPosDay'    => $row['opngfutrposday'],
+            'SdTpCd1'           => $row['sdtpcd1'],
+            'UndrlygTckrSymb1'  => $row['undrlygtckrsymb1'],
+            'SdTpCd2'           => $row['sdtpcd2'],
+            'UndrlygTckrSymb2'  => $row['undrlygtckrsymb2'],
+            'PureGoldWght'      => $row['puregoldwght'],
+            'ExrcPric'          => $row['exrcpric'],
+            'OptnStyle'         => $row['optnstyle'],
+            'ValTpNm'           => $row['valtpnm'],
+            'PrmUpfrntInd'      => $row['prmupfrntind'],
+            'OpngPosLmtDt'      => $row['opngposlmtdt'],
+            'DstrbtnId'         => $row['dstrbtnid'],
+            'PricFctr'          => $row['pricfctr'],
+            'DaysToSttlm'       => $row['daystosttlm'],
+            'SrsTpNm'           => $row['srstpnm'],
+            'PrtcnFlg'          => $row['prtcnflg'],
+            'AutomtcExrcInd'    => $row['automtcexrcind'],
+            'SpcfctnCd'         => $row['spcfctncd'],
+            'CrpnNm'            => $row['crpnnm'],
+            'CorpActnStartDt'   => $row['corpactnstartdt'],
+            'CtdyTrtmntTpNm'    => $row['ctdytrtmnttpnm'],
+            'MktCptlstn'        => $row['mktcptlstn'],
+            'CorpGovnLvlNm'     => $row['corpgovnlvlnm'],
         ]);
 
         Log::info('Salvando FileContent:', $fileContent->toArray());
@@ -81,9 +160,11 @@ class FileContentImport implements ToModel, WithHeadingRow, WithCustomCsvSetting
         return $fileContent;
     }
 
+
+
     public function chunkSize(): int
     {
-        return 1000; // Processa 1000 linhas por vez
+        return 1000;
     }
 
     public function registerEvents(): array

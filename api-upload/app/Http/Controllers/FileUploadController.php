@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\FileContentImport;
 use App\Services\CacheService;
+use League\Csv\Reader;
+use League\Csv\Statement;
 
 class FileUploadController extends Controller
 {
@@ -68,7 +70,7 @@ class FileUploadController extends Controller
     {
         // Validação do arquivo
         // $request->validate([
-        //     'file' => 'required|mimes:csv,txt|max:2048',
+        //     'file' => 'required|mimes:csv,txt',
         // ]);
 
         // Obter o arquivo enviado
@@ -106,11 +108,11 @@ class FileUploadController extends Controller
         $history = $this->cacheService->remember($cacheKey, function () use ($request) {
             $query = Upload::query();
 
-            if ($request->has('file_name')) {
+            if ($request->has('file_name') && $request->input('file_name') !== 'all') {
                 $query->where('file_name', $request->input('file_name'));
             }
 
-            if ($request->has('date')) {
+            if ($request->has('date') && $request->input('date') !== 'all') {
                 $query->whereDate('created_at', $request->input('date'));
             }
 
@@ -119,32 +121,71 @@ class FileUploadController extends Controller
 
         return response()->json($history);
     }
-
     public function search(Request $request)
     {
-        $params = [
-            'TckrSymb' => $request->input('TckrSymb', 'all'),
-            'RptDt' => $request->input('RptDt', 'all')
-        ];
-        $cacheKey = $this->cacheService->generateCacheKey('search', $params);
+        $filePath = 'uploads/tesd.csv'; // Caminho do arquivo CSV
+        Log::info('Caminho do arquivo CSV: ' . Storage::path($filePath));
 
-        $searchResults = $this->cacheService->remember($cacheKey, function () use ($request) {
-            $query = FileContent::query();
+        $cacheKey = $this->cacheService->generateCacheKey('search', $request->all());
 
-            if ($request->has('TckrSymb')) {
-                $query->where('TckrSymb', $request->input('TckrSymb'));
+        return $this->cacheService->remember($cacheKey, function () use ($request, $filePath) {
+            $csv = Reader::createFromPath(Storage::path($filePath), 'r');
+            $csv->setDelimiter(';'); // Configura o delimitador do CSV
+            $csv->setHeaderOffset(1); // Define a linha de cabeçalho (segunda linha)
+
+            $stmt = (new Statement());
+
+            // Filtra os dados com base nos parâmetros fornecidos
+            if ($request->has('TckrSymb') && $request->has('RptDt')) {
+                $stmt = $stmt->where(function ($record) use ($request) {
+                    return isset($record['TckrSymb'], $record['RptDt']) &&
+                           $record['TckrSymb'] === $request->input('TckrSymb') &&
+                           $record['RptDt'] === $request->input('RptDt');
+                });
             }
 
-            if ($request->has('RptDt')) {
-                $query->where('RptDt', $request->input('RptDt'));
+            $records = $stmt->process($csv);
+
+            // Filtra registros válidos (ignora a linha "Status do Arquivo: Parcial")
+            $filteredRecords = array_filter(iterator_to_array($records), function ($record) {
+                return $record['RptDt'] !== 'Status do Arquivo: Parcial';
+            });
+
+            // Log dos registros lidos
+            foreach ($filteredRecords as $record) {
+                Log::info('Registro lido: ', $record);
             }
 
-            // Seleciona apenas os campos necessários
-            $query->select('RptDt', 'TckrSymb', 'MktNm', 'SctyCtgyNm', 'ISIN', 'CrpnNm');
+            // Paginação manual
+            $perPage = 10;
+            $page = $request->input('page', 1);
+            $totalRecords = count($filteredRecords);
+            $totalPages = ceil($totalRecords / $perPage);
+            $offset = ($page - 1) * $perPage;
+            $paginatedRecords = array_slice($filteredRecords, $offset, $perPage);
 
-            return $query->paginate(10);
+            // Construir URL da próxima página
+            $nextPageUrl = $page < $totalPages ? $request->fullUrlWithQuery(['page' => $page + 1]) : null;
+
+            return [
+                'data' => array_map(function ($record) {
+                    return [
+                        'RptDt' => $record['RptDt'] ?? null,
+                        'TckrSymb' => $record['TckrSymb'] ?? null,
+                        'MktNm' => $record['MktNm'] ?? null,
+                        'SctyCtgyNm' => $record['SctyCtgyNm'] ?? null,
+                        'ISIN' => $record['ISIN'] ?? null,
+                        'CrpnNm' => $record['CrpnNm'] ?? null,
+                    ];
+                }, $paginatedRecords),
+                'pagination' => [
+                    'total' => $totalRecords,
+                    'per_page' => $perPage,
+                    'current_page' => $page,
+                    'total_pages' => $totalPages,
+                    'next_page_url' => $nextPageUrl,
+                ],
+            ];
         });
-
-        return response()->json($searchResults);
     }
 }

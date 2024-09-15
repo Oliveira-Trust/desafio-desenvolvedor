@@ -16,13 +16,13 @@ class CreateFileContentsTable extends Migration
         Schema::create('file_contents', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('upload_id');
-            $table->date('RptDt');
-            $table->string('TckrSymb');
+            $table->date('RptDt')->nullable();
+            $table->string('TckrSymb')->nullable();
             $table->string('Asst')->nullable();
             $table->string('AsstDesc')->nullable();
             $table->string('SgmtNm')->nullable();
-            $table->string('MktNm');
-            $table->string('SctyCtgyNm');
+            $table->string('MktNm')->nullable();
+            $table->string('SctyCtgyNm')->nullable();
             $table->date('XprtnDt')->nullable();
             $table->string('XprtnCd')->nullable();
             $table->date('TradgStartDt')->nullable();
@@ -31,7 +31,7 @@ class CreateFileContentsTable extends Migration
             $table->string('ConvsCritNm')->nullable();
             $table->string('MtrtyDtTrgtPt')->nullable();
             $table->boolean('ReqrdConvsInd')->nullable();
-            $table->string('ISIN');
+            $table->string('ISIN')->nullable();
             $table->string('CFICd')->nullable();
             $table->date('DlvryNtceStartDt')->nullable();
             $table->date('DlvryNtceEndDt')->nullable();
@@ -63,7 +63,7 @@ class CreateFileContentsTable extends Migration
             $table->boolean('PrtcnFlg')->nullable();
             $table->boolean('AutomtcExrcInd')->nullable();
             $table->string('SpcfctnCd')->nullable();
-            $table->string('CrpnNm');
+            $table->string('CrpnNm')->nullable();
             $table->date('CorpActnStartDt')->nullable();
             $table->string('CtdyTrtmntTpNm')->nullable();
             $table->decimal('MktCptlstn', 15, 2)->nullable();

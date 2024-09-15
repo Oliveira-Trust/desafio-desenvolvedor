@@ -10,7 +10,7 @@ class CacheService
 
     public function __construct()
     {
-        $this->cacheTime = 60; // Cache por 60 minutos
+        $this->cacheTime = 6000;
     }
 
     public function remember($key, $callback)
