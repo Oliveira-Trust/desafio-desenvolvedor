@@ -119,6 +119,7 @@ Rodando o seed de usuario teste
 ```
 php artisan db:seed
 ```
+### OBS: A Documentação para os endpoints, estão no arquivo Documentation.md, na raiz do projeto. 
 
 O endpoint (post) api/v1/upload, requer o servidor de job rodando durante a execução.
 
