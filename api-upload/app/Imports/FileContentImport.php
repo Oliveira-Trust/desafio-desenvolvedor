@@ -9,7 +9,6 @@ use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeImport;
-use Illuminate\Support\Facades\Log;
 
 class FileContentImport implements ToModel, WithHeadingRow, WithCustomCsvSettings, WithChunkReading, WithEvents
 {
@@ -38,13 +37,8 @@ class FileContentImport implements ToModel, WithHeadingRow, WithCustomCsvSetting
         // Converte todas as chaves do array $row para minúsculas
         $row = array_change_key_case($row, CASE_LOWER);
 
-        // Adicione logs para verificar o conteúdo do array
-        Log::info('Conteúdo da linha do CSV:', $row);
-        Log::info('Chaves disponíveis:', array_keys($row));
-
         // Verifica se o conteúdo é um array associativo com chaves esperadas
         if (!is_array($row) || empty($row)) {
-            Log::error('Linha do CSV está vazia ou não é um array.');
             return null;
         }
 
@@ -155,7 +149,6 @@ class FileContentImport implements ToModel, WithHeadingRow, WithCustomCsvSetting
             'CorpGovnLvlNm'     => $row['corpgovnlvlnm'],
         ]);
 
-        Log::info('Salvando FileContent:', $fileContent->toArray());
 
         return $fileContent;
     }

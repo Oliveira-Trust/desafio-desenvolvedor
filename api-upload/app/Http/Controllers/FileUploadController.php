@@ -1,34 +1,33 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Upload;
-use App\Models\FileContent;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\FileContentImport;
+use App\Services\FileService;
+use App\Services\CsvService;
+use App\Services\UploadService;
 use App\Services\CacheService;
-use League\Csv\Reader;
-use League\Csv\Statement;
+use Illuminate\Http\Request;
+use App\Models\Upload;
 
 class FileUploadController extends Controller
 {
+    protected $fileService;
+    protected $csvService;
+    protected $uploadService;
     protected $cacheService;
 
-    public function __construct(CacheService $cacheService)
+    public function __construct(FileService $fileService, CsvService $csvService, UploadService $uploadService, CacheService $cacheService)
     {
+        $this->fileService = $fileService;
+        $this->csvService = $csvService;
+        $this->uploadService = $uploadService;
         $this->cacheService = $cacheService;
     }
 
     public function upload(Request $request)
     {
-        // Aumentar o limite de memória e o tempo máximo de execução
-        ini_set('memory_limit', '1024M'); // Aumentado para 1GB
-        set_time_limit(600); // Aumentado para 10 minutos
+        ini_set('memory_limit', '1024M');
+        set_time_limit(600);
 
-        // Validação do arquivo
         $request->validate([
             'file' => 'required|mimes:csv,txt',
         ]);
@@ -36,26 +35,15 @@ class FileUploadController extends Controller
         $file = $request->file('file');
         $fileName = $file->getClientOriginalName();
 
-        // Log do tipo MIME do arquivo
-        Log::info('Tipo MIME do arquivo: ' . $file->getMimeType());
-
-        // Verifica se o arquivo já foi enviado
         if (Upload::where('file_name', $fileName)->exists()) {
             return response()->json(['error' => 'Este arquivo já foi enviado.'], 400);
         }
 
-        // Armazena o arquivo
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $filePath = $this->fileService->storeFile($file);
+        $upload = $this->uploadService->storeUpload($fileName, $filePath);
 
-        // Salva no banco de dados
-        $upload = Upload::create([
-            'file_name' => $fileName,
-            'file_path' => '/storage/' . $filePath,
-        ]);
-
-        // Processa e salva o conteúdo do arquivo
         try {
-            Excel::import(new FileContentImport($upload->id), $file);
+            $this->uploadService->processFile($file, $upload->id);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -66,39 +54,9 @@ class FileUploadController extends Controller
         return response()->json(['message' => 'Upload realizado com sucesso.'], 201);
     }
 
-    public function store(Request $request)
-    {
-        // Validação do arquivo
-        // $request->validate([
-        //     'file' => 'required|mimes:csv,txt',
-        // ]);
-
-        // Obter o arquivo enviado
-        $file = $request->file('file');
-
-        // Gerar um nome único para o arquivo
-        $fileName = time() . '_' . $file->getClientOriginalName();
-
-        // Salvar o arquivo no diretório 'uploads'
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-        // Salvar informações do upload no banco de dados
-        $upload = Upload::create([
-            'file_name' => $fileName,
-            'file_path' => '/storage/' . $filePath,
-        ]);
-
-        // Importar os dados do arquivo CSV para a tabela 'file_contents'
-        Excel::import(new FileContentImport($upload->id), $file);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Arquivo processado e dados salvos com sucesso.',
-        ]);
-    }
-
     public function history(Request $request)
     {
+
         $params = [
             'file_name' => $request->input('file_name', 'all'),
             'date' => $request->input('date', 'all')
@@ -121,71 +79,56 @@ class FileUploadController extends Controller
 
         return response()->json($history);
     }
+
     public function search(Request $request)
     {
-        $filePath = 'uploads/tesd.csv'; // Caminho do arquivo CSV
-        Log::info('Caminho do arquivo CSV: ' . Storage::path($filePath));
+        // Aumentar o tempo máximo de execução e a memória disponível
+        ini_set('max_execution_time', 300);
+        ini_set('memory_limit', '1024M');
 
-        $cacheKey = $this->cacheService->generateCacheKey('search', $request->all());
+        // Caminho da pasta de uploads
+        $directoryPath = storage_path('app/public/uploads/');
 
-        return $this->cacheService->remember($cacheKey, function () use ($request, $filePath) {
-            $csv = Reader::createFromPath(Storage::path($filePath), 'r');
-            $csv->setDelimiter(';'); // Configura o delimitador do CSV
-            $csv->setHeaderOffset(1); // Define a linha de cabeçalho (segunda linha)
+        $allRecords = [];
 
-            $stmt = (new Statement());
+        try {
+            // Listar todos os arquivos CSV na pasta
+            $files = glob($directoryPath . '*.csv');
 
-            // Filtra os dados com base nos parâmetros fornecidos
-            if ($request->has('TckrSymb') && $request->has('RptDt')) {
-                $stmt = $stmt->where(function ($record) use ($request) {
-                    return isset($record['TckrSymb'], $record['RptDt']) &&
-                           $record['TckrSymb'] === $request->input('TckrSymb') &&
-                           $record['RptDt'] === $request->input('RptDt');
-                });
+            foreach ($files as $filePath) {
+                $csvContent = $this->csvService->readCsv($filePath);
+                $filteredRecords = $this->csvService->filterRecords($csvContent, $request->all());
+
+                $allRecords = array_merge($allRecords, $filteredRecords);
             }
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erro ao buscar os registros: ' . $e->getMessage(),
+            ], 500);
+        }
 
-            $records = $stmt->process($csv);
+        $paginatedResponse = $this->paginate($allRecords, $request->input('page', 1), 10);
 
-            // Filtra registros válidos (ignora a linha "Status do Arquivo: Parcial")
-            $filteredRecords = array_filter(iterator_to_array($records), function ($record) {
-                return $record['RptDt'] !== 'Status do Arquivo: Parcial';
-            });
+        return response()->json($paginatedResponse);
+    }
 
-            // Log dos registros lidos
-            foreach ($filteredRecords as $record) {
-                Log::info('Registro lido: ', $record);
-            }
+    private function paginate($items, $page = 1, $perPage = 10)
+    {
+        $total = count($items);
+        $totalPages = ceil($total / $perPage);
+        $offset = ($page - 1) * $perPage;
+        $paginatedItems = array_slice($items, $offset, $perPage);
 
-            // Paginação manual
-            $perPage = 10;
-            $page = $request->input('page', 1);
-            $totalRecords = count($filteredRecords);
-            $totalPages = ceil($totalRecords / $perPage);
-            $offset = ($page - 1) * $perPage;
-            $paginatedRecords = array_slice($filteredRecords, $offset, $perPage);
-
-            // Construir URL da próxima página
-            $nextPageUrl = $page < $totalPages ? $request->fullUrlWithQuery(['page' => $page + 1]) : null;
-
-            return [
-                'data' => array_map(function ($record) {
-                    return [
-                        'RptDt' => $record['RptDt'] ?? null,
-                        'TckrSymb' => $record['TckrSymb'] ?? null,
-                        'MktNm' => $record['MktNm'] ?? null,
-                        'SctyCtgyNm' => $record['SctyCtgyNm'] ?? null,
-                        'ISIN' => $record['ISIN'] ?? null,
-                        'CrpnNm' => $record['CrpnNm'] ?? null,
-                    ];
-                }, $paginatedRecords),
-                'pagination' => [
-                    'total' => $totalRecords,
-                    'per_page' => $perPage,
-                    'current_page' => $page,
-                    'total_pages' => $totalPages,
-                    'next_page_url' => $nextPageUrl,
-                ],
-            ];
-        });
+        return [
+            'data' => $paginatedItems,
+            'pagination' => [
+                'total' => $total,
+                'per_page' => $perPage,
+                'current_page' => $page,
+                'total_pages' => $totalPages,
+                'next_page_url' => $page < $totalPages ? request()->fullUrlWithQuery(['page' => $page + 1]) : null,
+            ],
+        ];
     }
 }
