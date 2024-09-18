@@ -1,4 +1,5 @@
-# Para rodar o projeto basta usar o camando vendo/bin/sail up na raiz do projeto php após baixar as dependecias ou utilizar o docker compose do projeto
+#  Instruções
+Para rodar o projeto basta usar o camando vendo/bin/sail up na raiz do projeto php após baixar as dependecias ou utilizar o docker compose do projeto
 
 # O projeto tem 3 rotas 
  * /upload para subir o arquivo que será processado
