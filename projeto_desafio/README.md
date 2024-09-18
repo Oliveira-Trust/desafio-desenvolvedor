@@ -79,10 +79,19 @@ Authorization: Bearer token
 
 
 ## _Busca registros_
-**Request**
+**Request - Sem Filtro**
 
 ```
 POST /api/search
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer token
+```
+
+**Request - Com Filtro**
+
+```
+POST /api/search?page=1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer token
@@ -95,6 +104,10 @@ Authorization: Bearer token
     "TckrSymb": "003H11"
 }
 ```
+
+**Request Param**
+* page
+  * Opcional (Utilizado somente quando os parâmetros de filtro não são informados)
 
 **Validation**
 * RptDt
