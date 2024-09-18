@@ -16,15 +16,3 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/history', [FileController::class, 'history']);
     Route::get('/search', [FileController::class, 'search']);
 });
-
-Route::get('/teste', function() {
-        \App\Models\User::query()->create(
-        [
-            'name' => 'teste',
-            'email' => 'contato@valcirlei.com.br',
-            'password' => \Illuminate\Support\Facades\Hash::make('123456'),
-        ]
-    );
-
-    return response()->json(['Usuário adicionado!']);
-});
