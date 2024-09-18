@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h1>Dados</h1>
+    <h1>Historico de uploads</h1>
     <table border="1">
         <thead>
             <tr>

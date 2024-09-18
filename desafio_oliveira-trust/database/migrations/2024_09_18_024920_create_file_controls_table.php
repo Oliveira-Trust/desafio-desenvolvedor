@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('file_controls', function (Blueprint $table) {
             $table->id();
-            $table->string('fileName');
+            $table->string('fileName')->unique();
             $table->string('status');
             $table->integer('size')->nullable();
             $table->timestamps();
