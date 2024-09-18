@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_consolidations', function (Blueprint $table) {
+        Schema::create('file_controls', function (Blueprint $table) {
             $table->id();
             $table->string('fileName');
-            $table->json('data');
+            $table->string('status');
+            $table->integer('size')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_consolidations');
+        Schema::dropIfExists('file_controls');
     }
 };

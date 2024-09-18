@@ -13,9 +13,7 @@ Route::get('/upload', function () {
 
 Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
 
-Route::get('/history', function () {
-    return view('upload');
-});
+Route::get('/history', [UploadController::class, 'history'])->name('history');
 
 Route::get('/query', function () {
     return view('upload');
