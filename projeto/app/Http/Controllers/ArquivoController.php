@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Arquivo;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ArquivoController extends Controller

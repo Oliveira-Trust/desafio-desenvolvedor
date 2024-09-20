@@ -9,57 +9,45 @@
             <li>
                 <span class="text-gray-500">/</span>
             </li>
-            <li aria-current="page" class="text-gray-500">Histórico Arquivo</li>
+            <li aria-current="page" class="text-gray-500">Histórico de Envio</li>
         </ol>
     </nav>
 
     <section id="historico-arquivo" class="mt-8">
-        <h2 class="text-2xl font-semibold mb-4">Histórico de Arquivo</h2>
-        <p class="text-gray-700">Veja o histórico dos arquivos importados.</p>
-        <ul class="list-disc list-inside">
-            <li class="text-gray-600">Arquivo 1 - 12/09/2024</li>
-            <li class="text-gray-600">Arquivo 2 - 11/09/2024</li>
-        </ul>
+        <h2 class="text-2xl font-semibold mb-4">Histórico de Envio</h2>
+
+        <form action="" id="searchForm" method="GET" class="flex flex-wrap space-x-2">
+            <input type="text" name="termo" value="{{ request()->input('termo') }}" placeholder="digite aqui sua busca" class="flex-grow p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-500">
+
+            <select name="tipo" class="p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-500">
+                <option value="">Tipo de busca</option>
+                <option value="data" {{ request()->input('tipo') === 'TckrSymb' ? 'selected' : '' }}>Buscar por data de envio</option>
+                <option value="nome" {{ request()->input('tipo') === 'RptDt' ? 'selected' : '' }}>Buscar por nome arquivo</option>
+            </select>
+
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">Buscar</button>
+        </form>
+
+
+        <table class="min-w-full bg-white border border-gray-300 mt-4">
+            <thead>
+            <tr>
+                <th class="border text-left px-4 py-2">Nome do arquivo</th>
+                <th class="border text-left px-4 py-2">Data de envio</th>
+                <th class="border px-4 py-2">Ação</th>
+            </tr>
+            </thead>
+            <tbody id="fileList"></tbody>
+        </table>
+
+        <div id="pagination" class="mt-4"></div>
+
     </section>
 
-    <form action="{{ url('/consolidated') }}" method="GET">
-        <div class="form-group">
-            <input type="text" name="search" value="{{ request()->input('search') }}" placeholder="Buscar" class="form-control">
-            <select name="search_by" class="form-control mt-2">
-                <option value="TckrSymb" {{ request()->input('search_by') === 'TckrSymb' ? 'selected' : '' }}>Buscar por TckrSymb</option>
-                <option value="RptDt" {{ request()->input('search_by') === 'RptDt' ? 'selected' : '' }}>Buscar por RptDt</option>
-            </select>
-            <button type="submit" class="btn btn-primary mt-2">Buscar</button>
-
-            <select name="per_page" class="form-control mt-2">
-                <option value="10" {{ request()->input('per_page') == 10 ? 'selected' : '' }}>10 por página</option>
-                <option value="50" {{ request()->input('per_page') == 50 ? 'selected' : '' }}>50 por página</option>
-                <option value="100" {{ request()->input('per_page') == 100 ? 'selected' : '' }}>100 por página</option>
-                <option value="500" {{ request()->input('per_page') == 500 ? 'selected' : '' }}>500 por página</option>
-                <option value="1000" {{ request()->input('per_page') == 500 ? 'selected' : '' }}>1000 por página</option>
-            </select>
-        </div>
-    </form>
-    @if($data)
-        {{ $data->appends(['search' => $searchTerm, 'search_by' => $searchBy, 'per_page' => $perPage])->links() }}
-    @endif
-    <table border="1">
-        <thead>
-        <tr>
-            @foreach($header as $column)
-                <th>{{ $column }}</th>
-            @endforeach
-        </tr>
-        </thead>
-        <tbody>
-
-        @foreach($data as $row)
-            <tr>
-                @foreach($row as $cell)
-                    <td>{{ $cell }}</td>
-                @endforeach
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
 @endsection
+
+@once
+    @push('scripts')
+        <script src="{{asset('js/historico.js')}}"></script>
+    @endpush
+@endonce

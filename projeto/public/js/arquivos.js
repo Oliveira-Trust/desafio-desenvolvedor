@@ -18,22 +18,20 @@ async function loadFiles(page) {
         const files = result.data;
         const fileList = document.getElementById('fileList');
         const pagination = document.getElementById('pagination');
-        fileList.innerHTML = ''; // Limpa resultados anteriores
-        pagination.innerHTML = ''; // Limpa links de paginação anteriores
+        fileList.innerHTML = '';
+        pagination.innerHTML = '';
 
-        // Preenche a tabela com os arquivos
         files.forEach(file => {
             console.log(file)
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td class="border px-4 py-2">${file.nome}</td>
                 <td class="border px-4 py-2">${new Date(file.created_at).toLocaleDateString()}</td>
-                <td class="border px-4 py-2"><a href="/conteudo-arquivo/${file.id}">Clique aqui</a></td>
+                <td class="border text-center px-4 py-2"><a href="/conteudo-arquivo/${file.id}"><strong>Ver Conteúdo</strong></a></td>
             `;
             fileList.appendChild(row);
         });
 
-        // Cria os links de paginação
         createPagination(result);
     } catch (error) {
         console.error('Erro ao carregar arquivos:', error);
@@ -43,7 +41,6 @@ async function loadFiles(page) {
 function createPagination(result) {
     const pagination = document.getElementById('pagination');
 
-    // Link para a página anterior
     if (result.prev_page_url) {
         const prevButton = document.createElement('a');
         prevButton.href = "#";
@@ -56,7 +53,6 @@ function createPagination(result) {
         pagination.appendChild(prevButton);
     }
 
-    // Links para as páginas
     result.links.forEach(link => {
         if (link.url) {
             const pageButton = document.createElement('a');

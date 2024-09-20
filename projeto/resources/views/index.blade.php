@@ -9,9 +9,9 @@
             <table class="min-w-full bg-white border border-gray-300 mt-4">
                 <thead>
                 <tr>
-                    <th class="border px-4 py-2">Nome do Arquivo</th>
-                    <th class="border px-4 py-2">Data de Criação</th>
-                    <th class="border px-4 py-2">Ver Conteúdo</th>
+                    <th class="border text-left px-4 py-2">Nome do Arquivo</th>
+                    <th class="border text-left px-4 py-2">Data de Criação</th>
+                    <th class="border px-4 py-2">Ação</th>
                 </tr>
                 </thead>
                 <tbody id="fileList"></tbody>

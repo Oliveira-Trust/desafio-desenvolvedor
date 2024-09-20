@@ -20,7 +20,7 @@
             <input type="text" name="termo" value="{{ request()->input('termo') }}" placeholder="digite aqui sua busca" class="flex-grow p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-500">
 
             <select name="tipo" class="p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-500">
-                <option value="">Selecione um parametro</option>
+                <option value="">Tipo de busca</option>
                 <option value="TckrSymb" {{ request()->input('tipo') === 'TckrSymb' ? 'selected' : '' }}>Buscar por Ativo Objeto</option>
                 <option value="RptDt" {{ request()->input('tipo') === 'RptDt' ? 'selected' : '' }}>Buscar por Data</option>
             </select>
@@ -32,12 +32,12 @@
         <table class="min-w-full bg-white border border-gray-300 mt-4">
             <thead>
             <tr>
-                <th class="border px-4 py-2">Data</th>
-                <th class="border px-4 py-2">Ativo Objeto</th>
-                <th class="border px-4 py-2">Nome do Segmento</th>
-                <th class="border px-4 py-2">Papel</th>
-                <th class="border px-4 py-2">ISIN</th>
-                <th class="border px-4 py-2">Nome da Instituição</th>
+                <th class="border text-left px-4 py-2">Data</th>
+                <th class="border text-left px-4 py-2">Ativo Objeto</th>
+                <th class="border text-left px-4 py-2">Nome do Segmento</th>
+                <th class="border text-left px-4 py-2">Papel</th>
+                <th class="border text-left px-4 py-2">ISIN</th>
+                <th class="border text-left px-4 py-2">Nome da Instituição</th>
             </tr>
             </thead>
             <tbody id="fileList"></tbody>
