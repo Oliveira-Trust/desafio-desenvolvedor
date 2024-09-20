@@ -6,18 +6,20 @@
         <p class="text-gray-700">Aqui você pode ver dados consolidados.</p>
 
         <div class="mt-5">
-            @forelse($arquivos as $arquivo)
-                <li>
-                    <a href="{{ asset('storage/'. $arquivo->path) }}" target="_blank">
-                        {{ $arquivo->original_name }} ({{ number_format($arquivo->size / 1024, 2) }} KB)
-                    </a>
-                </li>
-            @empty
-                <div class="bg-gray-200 border border-gray-400 text-gray-700 px-4 py-3 rounded relative mb-3" role="alert">
-{{--                    <strong class="font-bold">Erro!</strong>--}}
-                    <span class="block sm:inline">Você não possui arquivos enviados.</span>
-                </div>
-            @endforelse
+            <table class="min-w-full bg-white border border-gray-300 mt-4">
+                <thead>
+                <tr>
+                    <th class="border px-4 py-2">Nome do Arquivo</th>
+                    <th class="border px-4 py-2">Data de Criação</th>
+                    <th class="border px-4 py-2">Ver Conteúdo</th>
+                </tr>
+                </thead>
+                <tbody id="fileList"></tbody>
+            </table>
+
+            <div id="pagination" class="mt-4">
+
+            </div>
         </div>
     </section>
 
@@ -63,3 +65,9 @@
 {{--        </tbody>--}}
 {{--    </table>--}}
 @endsection
+
+@once
+    @push('scripts')
+        <script src="{{asset('js/arquivos.js')}}"></script>
+    @endpush
+@endonce

@@ -6,6 +6,8 @@ use App\Http\Requests\AuthRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -27,7 +29,8 @@ class AuthController extends Controller
 
     public function logout(): RedirectResponse
     {
+        Session::flush();
         Auth::logout();
-        return redirect()->route('login')->with('success', 'Sessão encerrada com sucesso.');
+        return Redirect::route('login')->with('success', 'Sessão encerrada com sucesso.');
     }
 }

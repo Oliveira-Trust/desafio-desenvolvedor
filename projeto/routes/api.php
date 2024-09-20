@@ -4,6 +4,8 @@ use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::controller(ApiController::class)->group(function () {
-    Route::post('arquivo', 'upload')->name('api.upload');
+Route::prefix('arquivo')->controller(ApiController::class)->group(function () {
+    Route::post('', 'upload')->name('api.upload');
+    Route::get('lista', 'arquivos')->name('api.arquivos');
+    Route::get('conteudo/{id}', 'conteudo')->name('api.conteudo');
 })->middleware('api');

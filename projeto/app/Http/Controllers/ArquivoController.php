@@ -10,13 +10,17 @@ class ArquivoController extends Controller
 {
     public function arquivos(): View
     {
-        $arquivos = Arquivo::query()->paginate();
-        return view('index', compact('arquivos'));
+        return view('index');
     }
 
     public function importar(): View
     {
         return view('importar');
+    }
+
+    public function conteudo(): View
+    {
+        return view('conteudo');
     }
 
     public function historico(): View
