@@ -4,11 +4,8 @@ namespace App\Services;
 use App\Http\Requests\Login;
 use App\Http\Requests\Registro;
 use App\Models\User;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use Symfony\Contracts\Service\ServiceProviderInterface;
 
 class UsuarioService  {   
 
@@ -21,20 +18,25 @@ class UsuarioService  {
                 'nome' => $registro->nome,
                 'password' => $registro->password
             ]);
-
+            
+            $token = $usuario->createToken('auth_token')->plainTextToken;
             return [
-                'token' => $usuario->createToken([ 'app-laravel-id', ['*'], now()->addWeek()  ])->plainTextToken
+                'user' => $usuario,
+                'token' => $token
             ];
         }
 
         public function token(Login $login)
         {
                 $usuario  = $this->usuario::where('email',  $login->email)->first();
+
                 if (!$usuario || !Hash::check($login->password,  $usuario->password)) {
                     throw ValidationException::withMessages([
-                        'email' => ['As credenciais informadas estão incorretas!']
+                        'message' => ['As credenciais informadas estão incorretas!']
                     ]);
                 }
+
+                return $usuario->createToken('auth_token')->plainTextToken;
         }
 
 }

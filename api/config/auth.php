@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'mongodb',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*
