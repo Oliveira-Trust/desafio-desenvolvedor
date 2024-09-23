@@ -22,7 +22,7 @@ class ArquivoService
                throw new Exception('Este arquivo já foi enviado anteriormente.');
           }
 
-          $diretorio = $arquivo->store('uploads',  'public');
+          $diretorio = $arquivo->storeAs('uploads', $arquivo->getClientOriginalName(),  'public');
 
           $dados = [
                     'nome' => $arquivo->getClientOriginalName(),
