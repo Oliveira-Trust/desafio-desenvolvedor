@@ -11,5 +11,5 @@ class PersonalAccessToken extends SanctumToken
     protected $connection = 'mongodb';
     protected $table = 'personal_access_tokens';
     protected $keyType = 'string';
-
+    protected $primaryKey = '_id';
 }

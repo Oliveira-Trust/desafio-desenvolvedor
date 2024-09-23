@@ -10,4 +10,5 @@ class Arquivo extends Model
     use HasFactory;
     protected $connection = 'mongodb';
     protected $collection = 'arquivos';
+    protected $primaryKey = '_id';
 }

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Login;
 use App\Http\Requests\Registro;
 use App\Services\UsuarioService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,19 +17,14 @@ class AutenticacaoController extends Controller
     {
         
     }
-     public function registro(Registro $request)
+     public function registro(Registro $request): JsonResponse
      {
             return response()->json($this->usuarioService->registrar($request));
      }
 
-     public function login(Login $login) {
-          return response()->json($this->usuarioService->token($login));
+     public function login(Login $login): JsonResponse
+     {
+          $token = $this->usuarioService->token($login); 
+          return response()->json(['token' => $token]);
      }
-
-     public function logout(Request $login) {
-          Auth::logout();
-          $login->user()->currentAccessToken()->delete();
-           return response()->json(['message' => 'Sessão foi finalizada']);
-     }
-
 }

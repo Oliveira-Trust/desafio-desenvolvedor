@@ -26,17 +26,23 @@ class UsuarioService  {
             ];
         }
 
+        private function checkUsuario(Login $login)  {
+            $usuario  = $this->usuario::where('email',  $login->email)->first();
+            if (!$usuario || !Hash::check($login->password,  $usuario->password)) {
+                throw ValidationException::withMessages([
+                    'message' => ['As credenciais informadas estão incorretas!']
+                ]);
+            }
+
+            return $usuario;
+        }
         public function token(Login $login)
         {
-                $usuario  = $this->usuario::where('email',  $login->email)->first();
-
-                if (!$usuario || !Hash::check($login->password,  $usuario->password)) {
-                    throw ValidationException::withMessages([
-                        'message' => ['As credenciais informadas estão incorretas!']
-                    ]);
-                }
-
-                return $usuario->createToken('auth_token')->plainTextToken;
+               $usuario = $this->checkUsuario($login);
+               $token = $usuario->createToken('auth_token')->plainTextToken;
+               return [
+                   'user' => $usuario,
+                   'token' => $token
+               ];
         }
-
 }
