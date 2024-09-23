@@ -42,7 +42,7 @@ Authorization: Bearer token
 **Request**
 
 ```
-POST /api/history
+GET /api/history
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer token
@@ -82,7 +82,7 @@ Authorization: Bearer token
 **Request - Sem Filtro**
 
 ```
-POST /api/search
+GET /api/search
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer token
@@ -91,7 +91,7 @@ Authorization: Bearer token
 **Request - Com Filtro**
 
 ```
-POST /api/search?page=1
+GET /api/search?page=1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer token
