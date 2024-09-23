@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AutenticacaoController;
 use App\Http\Controllers\Documento\ArquivosController;
+use App\Http\Controllers\Documento\DocumentoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,3 +15,4 @@ Route::middleware('auth:sanctum')->get('/usuario', function (Request $request) {
 
 Route::middleware('auth:sanctum')->post('/arquivo/upload', [ArquivosController::class, 'upload']);
 Route::middleware('auth:sanctum')->get('/arquivo/historico', [ArquivosController::class, 'historico']);
+Route::middleware('auth:sanctum')->get('/documento/conteudo', [DocumentoController::class, 'filtro']);

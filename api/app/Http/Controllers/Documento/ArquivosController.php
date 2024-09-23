@@ -14,15 +14,21 @@ use Illuminate\Support\Facades\Storage;
 
 class ArquivosController extends Controller
 {            
-        public function __construct(private ArquivoService $arquivoService, private  HistoricoArquivoService $historicoArquivoService)
+        public function __construct(
+                private ArquivoService $arquivoService, 
+                private  HistoricoArquivoService $historicoArquivoService)
         {
                 
         }
         public function upload(RequestsArquivo $request)
-        {                   
-                $dados = $this->arquivoService->processar($request->file('file'));
-                ProcessaArquivoCsv::dispatch(Storage::disk('public')->path($dados['diretorio']));
-                return response()->json(['message' => 'Arquivo processado corretamente'], 200);
+        {      
+                try {
+                        $dados = $this->arquivoService->processar($request->file('file'));
+                        ProcessaArquivoCsv::dispatch(Storage::disk('public')->path($dados['diretorio']));
+                        return response()->json(['message' => 'Arquivo processado corretamente'], 200);
+                } catch (\Exception $e) {
+                        return response()->json(['message' => $e->getMessage()], 400);
+                }
         }
 
         public function historico(Request $request)

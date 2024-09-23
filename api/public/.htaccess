@@ -1,7 +1,9 @@
 <IfModule mod_rewrite.c>
+    LimitRequestBody 104857600  # 100 MB
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
+
 
     RewriteEngine On
 

@@ -3,7 +3,7 @@
 namespace App\Services\Documento;
 
 use App\Models\Arquivo;
-use Illuminate\Database\Eloquent\Builder;
+use DateTime;
 use Illuminate\Http\Request;
 
 class HistoricoArquivoService 
@@ -29,7 +29,7 @@ class HistoricoArquivoService
                         return response()->json(['error' => 'Data inválida.'], 400);
                 }
         }
-        $arquivos = $consulta->paginate($porPagina, ['*'], 'página', $pagina);
+        $arquivos = $consulta->paginate($porPagina, ['*'], 'pagina', $pagina);
 
         return $arquivos;
     }

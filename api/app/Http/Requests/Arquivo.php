@@ -22,7 +22,7 @@ class Arquivo extends FormRequest
     public function rules(): array
     {
         return [
-            'file' =>  'required|file|mimes:zip,xlsx,xls,csv,txt|max:204800', // Limite Máximo 200MB 
+            'file' =>  'required|file|mimes:zip,xlsx,xls,csv,txt|max:102400', // Limite Máximo100MB 
         ];
     }
     // Mensagens de erro personalizadas (opcional)

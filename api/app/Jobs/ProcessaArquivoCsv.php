@@ -35,6 +35,8 @@ class ProcessaArquivoCsv implements ShouldQueue
             $cabecalho = [];
            
             $dados = [];
+            
+            //$chunk = array_chunk($sheet->getRowIterator( ), 1000);
 
             foreach($sheet->getRowIterator( ) as $indiceLinha => $linha) {
 
