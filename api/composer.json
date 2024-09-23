@@ -10,8 +10,9 @@
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "maatwebsite/excel": "^1.1",
-        "mongodb/laravel-mongodb": "^5.0"
+        "mongodb/laravel-mongodb": "^5.0",
+        "phpoffice/phpspreadsheet": "^2.2",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "^14.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

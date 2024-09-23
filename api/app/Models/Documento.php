@@ -13,4 +13,27 @@ class Documento extends Model
     protected $table = 'documentos';
     protected $keyType = 'string';
     protected $primaryKey = '_id';
+
+    protected $fillable = [
+        "RptDt",
+        "TckrSymb" ,
+        "ISIN" ,
+        "SgmtNm" ,
+        "MinPric" ,
+        "MaxPric" ,
+        "TradAvrgPric" ,
+        "LastPric" ,
+        "OscnPctg" ,
+        "AdjstdQt" ,
+        "AdjstdQtTax" ,
+        "RefPric" ,
+        "TradQty" ,
+        "FinInstrmQty" ,
+        "NtlFinVol" ,
+    ];
+
+    protected $casts = [
+        'RptDt' => 'datetime', // Se você estiver usando um tipo de data
+    ];
+
 }

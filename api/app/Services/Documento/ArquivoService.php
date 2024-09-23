@@ -4,7 +4,6 @@ namespace App\Services\Documento;
 
 use App\Models\Arquivo;
 use Exception;
-use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Storage;
@@ -13,8 +12,6 @@ class ArquivoService
 {
      static function processar(UploadedFile $arquivo)
      {
-          $nomeArquivo = $arquivo->getClientOriginalName();
-
           // Calcula o hash do arquivo
         $hash = md5_file($arquivo->getRealPath());
 
@@ -25,10 +22,10 @@ class ArquivoService
                throw new Exception('Este arquivo já foi enviado anteriormente.');
           }
 
-          $diretorio = $arquivo->storeAs('uploads',$nomeArquivo,  'public');
+          $diretorio = $arquivo->store('uploads',  'public');
 
           $dados = [
-                    'nome' => $diretorio,
+                    'nome' => $arquivo->getClientOriginalName(),
                     'diretorio' => $diretorio,
                     'url' => Storage::url($diretorio), // public para download
                     'data_processamento' => Date::now()->format('Y-m-d H:i:s'),
