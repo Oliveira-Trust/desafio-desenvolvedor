@@ -22,7 +22,17 @@ class Arquivo extends FormRequest
     public function rules(): array
     {
         return [
-            'file' =>  'required|file|mime:zip, xlsx, xls, csv, txt| max: 204800', // Limite Máximo 200MB 
+            'file' =>  'required|file|mimes:zip,xlsx,xls,csv,txt|max:204800', // Limite Máximo 200MB 
+        ];
+    }
+    // Mensagens de erro personalizadas (opcional)
+    public function messages(): array
+    {
+        return [
+            'file.required' => 'O arquivo é obrigatório.',
+            'file.file' => 'Por favor, envie um arquivo válido.',
+            'file.mimes' => 'O arquivo deve ser do tipo CSV, TXT, XLS ou XLSX.',
+            'file.max' => 'O arquivo não pode ter mais de 200MB.',
         ];
     }
 }

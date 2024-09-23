@@ -10,20 +10,14 @@ class DocumentoController extends Controller
 {
             public function upload(RequestsArquivo $request)
             {   
-                        if ($request->hasFile('file')) {     
-                                $arquivo = $request->file();
+                                $arquivo = $request->file('file');
                                 $nomeArquivo = $arquivo->getClientOriginalName();
-                                $diretorio = $arquivo->storeAs('uploads', $nomeArquivo, 'public');
+                                $diretorio = $arquivo->storeAs('uploads',$nomeArquivo,  'public');
 
                                 return response()->json([
-                                        'nome_arquivo' => $nomeArquivo,
+                                        'nome_arquivo' => $diretorio,
                                         'diretorio' => $diretorio,
-                                        'url' => Storage::url($diretorio)
-                                ]);
-                        }
-
-                        return response()->json([
-                                'erro' => 'Arquivo não encontrado' 
-                        ], 400);
+                                        'url' => Storage::url($diretorio) // public para download
+                               ]);
          }
 }
