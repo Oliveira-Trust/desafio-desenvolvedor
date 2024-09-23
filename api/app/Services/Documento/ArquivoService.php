@@ -39,4 +39,5 @@ class ArquivoService
           return $dados;
 
      }
+
 }

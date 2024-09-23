@@ -13,3 +13,4 @@ Route::middleware('auth:sanctum')->get('/usuario', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->post('/arquivo/upload', [ArquivosController::class, 'upload']);
+Route::middleware('auth:sanctum')->get('/arquivo/historico', [ArquivosController::class, 'historico']);

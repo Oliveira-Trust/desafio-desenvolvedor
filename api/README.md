@@ -77,6 +77,14 @@ curl --request POST \
   --header 'User-Agent: insomnia/10.0.0' \
   --form file=@/home/ivini/Downloads/TradeInformationConsolidatedAfterHoursFile_20240920_1.csv
 
+  #Histórico com filtro por data ou nome do arquivo
+
+  curl --request GET \
+  --url 'http://localhost:8000/api/arquivo/historico?data=2024-08-23&nome=Consolidate' \
+  --header 'Authorization: Bearer 66f181cece148f6eb40d1852|qESsLo3vxg83Pwgg3MD3D4jkYlxksmjBzDLVXj258709778c' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --header 'User-Agent: insomnia/10.0.0'
+
   ```
 
 
