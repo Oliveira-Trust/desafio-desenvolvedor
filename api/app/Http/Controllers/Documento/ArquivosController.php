@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Documento;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Arquivo as RequestsArquivo;
 use App\Jobs\ProcessaArquivoCsv;
-use App\Models\Arquivo;
 use App\Services\Documento\ArquivoService;
 use App\Services\Documento\HistoricoArquivoService;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

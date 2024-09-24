@@ -7,8 +7,6 @@ use App\Http\Requests\Login;
 use App\Http\Requests\Registro;
 use App\Services\UsuarioService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AutenticacaoController extends Controller
 {
@@ -17,7 +15,8 @@ class AutenticacaoController extends Controller
     {
         
     }
-     public function registro(Registro $request): JsonResponse
+
+    public function registro(Registro $request): JsonResponse
      {
             return response()->json($this->usuarioService->registrar($request));
      }

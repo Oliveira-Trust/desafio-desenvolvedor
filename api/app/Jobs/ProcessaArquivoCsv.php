@@ -3,18 +3,15 @@
 namespace App\Jobs;
 
 use App\Models\Documento;
-use App\Services\Documento\ImportarDocumento;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use PHPExcel_IOFactory;
 
 class ProcessaArquivoCsv implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
 
     /**
      * Create a new job instance.
@@ -36,8 +33,6 @@ class ProcessaArquivoCsv implements ShouldQueue
            
             $dados = [];
             
-            //$chunk = array_chunk($sheet->getRowIterator( ), 1000);
-
             foreach($sheet->getRowIterator( ) as $indiceLinha => $linha) {
 
                     $dadosLinha = [];

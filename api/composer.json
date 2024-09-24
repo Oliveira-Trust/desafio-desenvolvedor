@@ -12,7 +12,8 @@
         "laravel/tinker": "^2.9",
         "mongodb/laravel-mongodb": "^5.0",
         "phpoffice/phpspreadsheet": "^2.2",
-        "vladimir-yuldashev/laravel-queue-rabbitmq": "^14.1"
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "^14.1",
+        "zircote/swagger-php": "^4.10"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
