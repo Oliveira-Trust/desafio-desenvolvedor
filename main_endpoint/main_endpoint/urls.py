@@ -23,6 +23,7 @@ from api_endpoints import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'upload', views.UploadViewSet, basename="upload")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
