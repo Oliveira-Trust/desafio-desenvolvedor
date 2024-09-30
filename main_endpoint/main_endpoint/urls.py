@@ -33,4 +33,5 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('get_by_name/', views.get_by_name, name='get_by_name'),
     path('get_by_date/', views.get_by_date, name='get_by_date'),
+    path('get_file_content/', views.get_file_content, name='get_file_content'),
 ]

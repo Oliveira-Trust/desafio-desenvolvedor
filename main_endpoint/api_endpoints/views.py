@@ -104,7 +104,7 @@ def get_by_name(request):
     try:        
         filename = request.data['filename']        
     except:
-        return Response({'error': 'Please provide correct username and password - - '},
+        return Response({'error': 'Please provide correct filename!'},
                         status=status.HTTP_400_BAD_REQUEST)
     mongo = mongoDBClient()
     db, client = mongo.get_db_client()
@@ -122,7 +122,7 @@ def get_by_date(request):
     try:        
         date = request.data['date']        
     except:
-        return Response({'error': 'Please provide correct username and password - - '},
+        return Response({'error': 'Please provide correct date!'},
                         status=status.HTTP_400_BAD_REQUEST)
     mongo = mongoDBClient()
     db, client = mongo.get_db_client()
@@ -140,11 +140,17 @@ def get_by_date(request):
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def get_file_content(request):
-    try:        
-        TckrSymb = request.data['TckrSymb']        
-        RptDt = request.data['RptDt'] 
-    except:
-        return Response({'error': 'Please provide correct username and password - - '},
-                        status=status.HTTP_400_BAD_REQUEST)
+    params_find = dict()
+    for d in request.data:
+        try:        
+            params_find[d] = request.data[d]        
+        except:
+            pass            
     mongo = mongoDBClient()
     db, client = mongo.get_db_client()    
+    for collections in db.list_collection_names():
+        doc = db[collections].find_one(params_find)
+        if doc != None:
+            return Response(json.dumps(str(doc)), status=status.HTTP_200_OK)        
+    response = "No result found!"
+    return Response(response, status=status.HTTP_404_NOT_FOUND)
