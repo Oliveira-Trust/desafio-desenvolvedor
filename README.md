@@ -6,6 +6,7 @@
 
 O projeto https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga3.md foi executado em cerca de 5 horas de desenvolvimento utilizando Django, Django Rest API e MongoDB, na linguagem Python. 
 Os itens foram cobertos, em sua maioria, com excecao do listado abaixo, devido ao dificuldades tecnicas de lidar com a api e desconhecimento tecnico para o realizar de forma satisfatoria. 
+   
     ------Se não enviar nenhum parâmetro o resultado deve ser apresentado páginado.
 
 
@@ -21,7 +22,13 @@ source venv.bin.activate
 python manage.py runserver
 
 O endpoint de upload pode ser testado pelo navegador http://127.0.0.1:8000/ conforme imagem abaixo:
+<p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
+ </p>
 
+ <p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
+ </p>
 
 Os outros endpoints podem ser testados pelos comandos abaixo ou via postman (folder postman_collection):
 curl --location 'http://127.0.0.1:8000/get_by_name/' \
