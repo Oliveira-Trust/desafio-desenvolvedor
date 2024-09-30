@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "1d44de5d-169c-43c5-bf9f-b0f19f52029c",
+		"name": "ProjectTestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12403288"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/get_by_name/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "filename",
+						"value": "teste",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"filename\":\"InstrumentsConsolidatedFile_20240927_3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get_by_name/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get_by_name",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/get_by_name/ Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "filename",
+						"value": "teste",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\":\"InstrumentsConsolidatedFile_20240927_3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get_by_date/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get_by_date",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/get_by_name/ Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "filename",
+						"value": "teste",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"RptDt\": \"2024-09-27\",\n  \"TckrSymb\": \"003H11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get_file_content/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get_file_content",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

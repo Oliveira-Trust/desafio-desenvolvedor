@@ -40,6 +40,8 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
+@authentication_classes((SessionAuthentication, BasicAuthentication, TokenAuthentication))
+@permission_classes((IsAuthenticated,))
 class UploadViewSet(ViewSet):
     serializer_class = UploadSerializer
     #permission_classes = [permissions.IsAuthenticated]
@@ -79,10 +81,13 @@ class UploadViewSet(ViewSet):
 
 
 #URL /signin/
+#Please create a user for signup on this example, use the admin panel.
 @define_usage(params={'username': 'String', 'password': 'String'},
               returns={'authenticated': 'Bool', 'token': 'Token String'})
 @api_view(['POST'])
-@permission_classes((AllowAny,))
+@authentication_classes((SessionAuthentication, BasicAuthentication, TokenAuthentication))
+@permission_classes((IsAuthenticated,))
+#@permission_classes((AllowAny,))
 def signin(request):
     try:
         username = request.data['username']
@@ -99,7 +104,9 @@ def signin(request):
 
 #URL /get_by_name/
 @api_view(['POST'])
-@permission_classes((AllowAny,))
+@authentication_classes((SessionAuthentication, BasicAuthentication, TokenAuthentication))
+@permission_classes((IsAuthenticated,))
+#@permission_classes((AllowAny,))
 def get_by_name(request):
     try:        
         filename = request.data['filename']        
@@ -117,7 +124,9 @@ def get_by_name(request):
     
 #URL /get_by_date/
 @api_view(['POST'])
-@permission_classes((AllowAny,))
+@authentication_classes((SessionAuthentication, BasicAuthentication, TokenAuthentication))
+@permission_classes((IsAuthenticated,))
+#@permission_classes((AllowAny,))
 def get_by_date(request):
     try:        
         date = request.data['date']        
@@ -138,7 +147,9 @@ def get_by_date(request):
     
 #URL /get_by_date/
 @api_view(['POST'])
-@permission_classes((AllowAny,))
+@authentication_classes((SessionAuthentication, BasicAuthentication, TokenAuthentication))
+@permission_classes((IsAuthenticated,))
+#@permission_classes((AllowAny,))
 def get_file_content(request):
     params_find = dict()
     for d in request.data:
