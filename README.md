@@ -23,12 +23,13 @@ python manage.py runserver
 
 O endpoint de upload pode ser testado pelo navegador http://127.0.0.1:8000/ conforme imagem abaixo:
 <p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
+    <img src="https://github.com/rubensolv/desafio-desenvolvedor/blob/18e3938c0af0d3cb6c0c80f45a4c38b7b803fa15/images/upload_endpoint.png" width="600">
+ </p>
+<p>
+    <img src="https://github.com/rubensolv/desafio-desenvolvedor/blob/e7e7f6e6f83638fe59c923ec47c63c226eefb804/images/upload_checking.png" width="600">
  </p>
 
- <p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
+ 
 
 Os outros endpoints podem ser testados pelos comandos abaixo ou via postman (folder postman_collection):
 curl --location 'http://127.0.0.1:8000/get_by_name/' \
