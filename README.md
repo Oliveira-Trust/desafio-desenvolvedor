@@ -15,12 +15,13 @@ Apos clonar o repositorio, sera necessario verificar a url do banco.
 O banco esta apontado para um server local aleatoio MongoClient("mongodb://192.168.1.29:27017/"), no arquivo mongo_utils, o que necessitara acerto para a realizacao dos testes. 
 
 Apos essa configuracao: 
-
+```
 cd main_endpoint
 python -m venv venv
 source venv.bin.activate
+pip install -r requirements.txt
 python manage.py runserver
-
+```
 O endpoint de upload pode ser testado pelo navegador http://127.0.0.1:8000/ conforme imagem abaixo:
 <p>
     <img src="https://github.com/rubensolv/desafio-desenvolvedor/blob/18e3938c0af0d3cb6c0c80f45a4c38b7b803fa15/images/upload_endpoint.png" width="600">
@@ -33,26 +34,28 @@ O endpoint de upload pode ser testado pelo navegador http://127.0.0.1:8000/ conf
 
 Os outros endpoints podem ser testados pelos comandos abaixo ou via postman (folder postman_collection):
 
-
+```
 curl --location 'http://127.0.0.1:8000/get_by_name/' \
 --header 'Content-Type: application/json' \
 --data '{
     "filename":"InstrumentsConsolidatedFile_20240927_3"
 }'
-
+```
+```
 curl --location 'http://127.0.0.1:8000/get_file_content/' \
 --header 'Content-Type: application/json' \
 --data '{
   "RptDt": "2024-09-27",
   "TckrSymb": "003H11"
 }'
-
+```
+```
 curl --location 'http://127.0.0.1:8000/get_by_name/' \
 --header 'Content-Type: application/json' \
 --data '{
     "filename":"InstrumentsConsolidatedFile_20240927_3"
 }'
-
+```
 
 #### Sobre Autenticacao
 O sistema esta utilizando a seguranca de autenticacao por secao, basica (user e senha enviada no request), ou token. 
@@ -62,11 +65,14 @@ python manage.py createsuperuser
 
 
 Comentar as linhas abaixo para facilitar a verificacao e testes, se julgar necessario:
+```
 @authentication_classes((SessionAuthentication, BasicAuthentication, TokenAuthentication))
 @permission_classes((IsAuthenticated,))
-
+```
 Ou substituir por:
+```
 @permission_classes((AllowAny,))
+```
 
 
 ### A Oliveira Trust:
