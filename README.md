@@ -32,6 +32,8 @@ O endpoint de upload pode ser testado pelo navegador http://127.0.0.1:8000/ conf
  
 
 Os outros endpoints podem ser testados pelos comandos abaixo ou via postman (folder postman_collection):
+
+
 curl --location 'http://127.0.0.1:8000/get_by_name/' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -54,10 +56,12 @@ curl --location 'http://127.0.0.1:8000/get_by_name/' \
 
 #### Sobre Autenticacao
 O sistema esta utilizando a seguranca de autenticacao por secao, basica (user e senha enviada no request), ou token. 
+Para realizar a authenticacao e necessario cadastrar um usuario utilizando o django atraves do comando:
+
+python manage.py createsuperuser
 
 
-
-Comentar os comandos:
+Comentar as linhas abaixo para facilitar a verificacao e testes, se julgar necessario:
 @authentication_classes((SessionAuthentication, BasicAuthentication, TokenAuthentication))
 @permission_classes((IsAuthenticated,))
 
