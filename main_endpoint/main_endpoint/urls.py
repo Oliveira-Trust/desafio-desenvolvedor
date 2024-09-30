@@ -24,9 +24,13 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'upload', views.UploadViewSet, basename="upload")
+#router.register(r'token', views.UploadViewSet, basename="token")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('signin/', views.signin, name='signin'),
+    path('get_by_name/', views.get_by_name, name='get_by_name'),
+    path('get_by_date/', views.get_by_date, name='get_by_date'),
 ]
