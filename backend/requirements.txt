@@ -1,0 +1,11 @@
+asgiref==3.8.1
+click==8.1.7
+Django==4.2
+django-cors-headers==4.4.0
+django-environ==0.11.2
+django-rq==2.10.2
+djangorestframework==3.15.2
+psycopg2-binary==2.9.9
+redis==5.1.0
+rq==1.16.2
+sqlparse==0.5.1

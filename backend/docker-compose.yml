@@ -1,0 +1,50 @@
+version: "3.3"
+
+services:
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - rq
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  rq:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/code
+    command: python manage.py rqworker --with-scheduler
+    depends_on:
+      - db
+      - redis
+    env_file: .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - APP_SERVICE=rq
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  db:
+    image: postgres:13
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - "54321:5432"
+
+volumes:
+  mongo_data:
