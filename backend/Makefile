@@ -98,9 +98,9 @@ up_debug: show_env
 build: show_env stopall
 	docker-compose ${DOCKER_COMPOSE_FILE} up -d --remove-orphans --build
 
-restart_celery: show_env
-	docker-compose ${DOCKER_COMPOSE_FILE} stop celery
-	docker-compose ${DOCKER_COMPOSE_FILE} start celery
+restart_rq: show_env
+	docker-compose ${DOCKER_COMPOSE_FILE} stop rq
+	docker-compose ${DOCKER_COMPOSE_FILE} start rq
 
 stopall: show_env
 	docker-compose ${DOCKER_COMPOSE_FILE} stop
