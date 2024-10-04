@@ -70,6 +70,10 @@ class Instrument(models.Model):
     MktCptlstn = models.FloatField(null=True)
     CorpGovnLvlNm = models.CharField(max_length=255, blank=True)
 
+    class Meta:
+        verbose_name = "Instrumento"
+        verbose_name_plural = "Instrumentos"
+
     def __str__(self):
         return f"{self.RptDt}-{self.TckrSymb}"
 
@@ -77,8 +81,12 @@ class Instrument(models.Model):
 class InstrumentFile(BaseModel):
     file = models.FileField(upload_to=get_file_path, unique=True)
 
+    class Meta:
+        verbose_name = "Arquivo de Instrumentos"
+        verbose_name_plural = "Arquivos de Instrumentos"
+
     def __str__(self):
-        return self.file.name
+        return f"{self.file.name} - {self.created_at.date()}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
