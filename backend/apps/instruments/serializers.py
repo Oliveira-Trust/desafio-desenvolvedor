@@ -1,10 +1,13 @@
 from rest_framework import serializers
+
 from apps.instruments.models import Instrument, InstrumentFile
+
 
 class InstrumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Instrument
         fields = '__all__'
+
 
 class InstrumentFileSerializer(serializers.ModelSerializer):
     class Meta:

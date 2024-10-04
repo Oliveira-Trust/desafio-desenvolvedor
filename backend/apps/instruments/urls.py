@@ -1,6 +1,7 @@
 from django.urls import path
-from apps.instruments.views import InstrumentList, InstrumentFileViewSet
 from rest_framework.routers import DefaultRouter
+
+from apps.instruments.views import InstrumentList, InstrumentFileViewSet
 
 router = DefaultRouter()
 

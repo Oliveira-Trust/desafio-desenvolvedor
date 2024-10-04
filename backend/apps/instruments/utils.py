@@ -1,8 +1,10 @@
 
-from apps.instruments.models import Instrument, InstrumentFile
-from apps.common.utils import replace_nan_based_on_field_type
-import pandas as pd
 import io
+
+import pandas as pd
+
+from apps.common.utils import replace_nan_based_on_field_type
+from apps.instruments.models import Instrument, InstrumentFile
 
 
 def clean_instrument_spreadsheet(instrument_file: InstrumentFile) -> pd.DataFrame:

@@ -1,15 +1,18 @@
-from sqlalchemy import create_engine
-from io import StringIO
 import csv
 import logging
-from apps.instruments.models import Instrument, InstrumentFile
-from apps.instruments.utils import clean_instrument_spreadsheet
-from core import settings
+from io import StringIO
+
 from django_rq import job
+from sqlalchemy import create_engine
+
+from core import settings
+from apps.instruments.utils import clean_instrument_spreadsheet
+from apps.instruments.models import Instrument, InstrumentFile
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 @job
 def consumer_instrument_spreadsheet(instrument_file_pk: int):
@@ -22,7 +25,7 @@ def consumer_instrument_spreadsheet(instrument_file_pk: int):
         df = clean_instrument_spreadsheet(instrument_file)
 
         # Configurar a conexão com o banco de dados PostgreSQL
-        db_url = f"postgresql+psycopg2://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.POSTGRES_DB}"
+        db_url = f"postgresql+psycopg2://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.POSTGRES_DB}" # noqa
         engine = create_engine(db_url)
 
         # Estabelecer a conexão

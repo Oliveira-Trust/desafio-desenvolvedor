@@ -1,16 +1,17 @@
-from django.shortcuts import render
-from rest_framework import filters
+import django_rq
 from django_filters import rest_framework as django_filters
+from rest_framework import filters
 from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
-import django_rq
-from apps.instruments.filters import InstrumentFilter
-from apps.instruments.models import Instrument, InstrumentFile
-from apps.instruments.serializers import InstrumentFileSerializer, InstrumentSerializer
+
 from apps.instruments.tasks import consumer_instrument_spreadsheet
+from apps.instruments.models import Instrument, InstrumentFile
+from apps.instruments.filters import InstrumentFilter
+from apps.instruments.serializers import InstrumentSerializer, InstrumentFileSerializer
 
 # Fila django_rq
 rq_default = django_rq.get_queue("default")
+
 
 class InstrumentList(ListAPIView):
     queryset = Instrument.objects.all()
@@ -32,4 +33,3 @@ class InstrumentFileViewSet(ModelViewSet):
             consumer_instrument_spreadsheet,
             serializer.instance.pk
         )
-

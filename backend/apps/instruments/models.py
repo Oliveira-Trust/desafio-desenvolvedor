@@ -1,8 +1,11 @@
-from django.db import models
 import os
+
+from django.db import models
+
 
 def get_file_path(instance, filename):
     return os.path.join('instrument_files', filename)
+
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(verbose_name="Data de criação", auto_now_add=True)
@@ -10,6 +13,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
 
 class Instrument(models.Model):
     instrument_file = models.ForeignKey('InstrumentFile', on_delete=models.CASCADE)
@@ -69,12 +73,12 @@ class Instrument(models.Model):
     def __str__(self):
         return f"{self.RptDt}-{self.TckrSymb}"
 
+
 class InstrumentFile(BaseModel):
     file = models.FileField(upload_to=get_file_path, unique=True)
 
     def __str__(self):
         return self.file.name
-
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
