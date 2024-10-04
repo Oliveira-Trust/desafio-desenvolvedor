@@ -1,7 +1,12 @@
 from django.urls import path
-from apps.instruments.views import TestTask, InstrumentViewset
+from apps.instruments.views import InstrumentList, InstrumentFileViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+router.register(r'upload', InstrumentFileViewSet, basename='instruments-file-upload')
 
 urlpatterns = [
-    path('test-task/', TestTask.as_view()),
-    path('instruments/', InstrumentViewset.as_view()),
+    path('instruments/', InstrumentList.as_view(), name='instruments'),
 ]
+urlpatterns += router.urls
