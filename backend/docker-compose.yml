@@ -39,8 +39,6 @@ services:
 
   db:
     image: postgres:13
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
