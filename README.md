@@ -13,7 +13,7 @@
 | `TckrSymb` | `string` |
 | `RptDt` | `string` |
 
-#### Envia arquivo
+#### Enviar arquivo
 
 ```
   POST /upload
@@ -25,6 +25,12 @@
 
 ```
 curl -X POST http://localhost:8000/upload/ -F "file=@InstrumentsConsolidatedFile_20240823.csv"
+```
+
+#### Historico de Instrumentos e arquivos
+
+```
+  GET /admin
 ```
 ## Setup ambiente (Ubuntu ou WSL)
 `$ sudo apt install make -y`
