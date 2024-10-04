@@ -1,52 +1,167 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
- 
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# Instruções para configuração e uso do consumer de planilhas - Oliveira Trust
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+## Documentação da API - Django
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+#### Retorna lista de instrumentos ou um instrumento específico
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+```
+  GET /instruments/?TckrSymb={var}&RptDt={var}
+```
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+| Parâmetro   | Tipo       |
+| :---------- | :--------- |
+| `TckrSymb` | `string` |
+| `RptDt` | `string` |
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+#### Enviar arquivo
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+```
+  POST /upload
+```
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição (CAJU);
-- Vale Alimentação (CAJU);
-- Vale Transporte ou Vale Combustível (CAJU);
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+| Parâmetro   | Tipo       |
+| :---------- | :--------- |
+| `file`      | `file` |
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+```
+curl -X POST http://localhost:8000/upload/ -F "file=@InstrumentsConsolidatedFile_20240823.csv"
+```
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+#### Obtenção de token JWT
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+```
+  POST /api/token
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga3.md
+| Parâmetro   | Tipo       |
+| :---------- | :--------- |
+| `username`      | `string` |
+| `password`      | `string` |
+
+### Historico de Instrumentos e arquivos
+#### Buscar arquivo
+
+```
+  GET /upload/?file={nome}
+```
+
+| Parâmetro   | Tipo       |
+| :---------- | :--------- |
+| `file`      | `string` |
+
+#### Arquivos/Instrumentos no admin
+
+```
+  GET /admin
+```
+
+### Exemplo de uso das apis
+
+```
+  POST /api/token
+```
+```
+curl -s -X POST http://localhost:8000/api/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "OliveiraTrust", "password": "123"}'
+```
+
+```
+  POST /upload
+```
+```
+curl -X POST http://localhost:8000/upload/ \
+  -H "Authorization: Bearer (COLE O TOKEN AQUI)" \
+  -F "file=@InstrumentsConsolidatedFile_20240823.csv"
+```
+
+## Setup ambiente (Ubuntu ou WSL)
+`$ sudo apt install make -y`
+#### Backend
+`cd backend`
+
+`$ sudo apt update -y`
+
+`$ sudo apt install software-properties-common -y`
+
+`$ sudo apt install -y build-essential git curl python3 python3-pip python`
+
+`$ make init`
+
+Usuário de testes: N: OliveiraTrust P: 123
+
+URL: localhost:8000
+
+### Comandos Makefile
+#### Backend
+Apresenta os logs do container selecionado, web, db, rq, redis...
+
+`$ make logs {ARGS}`
+___
+Inicia todos os serviços:
+
+`$ make up`
+___
+Para todos os serviços:
+
+`$ make stopall`
+___
+Cria o super user:
+
+
+`$ make createsu`
+___
+Roda o comando flake8 para verificar a PEP8 do código:
+
+`$ make flake8`
+___
+
+Para executar qualquer comando do Django (Django management commmands):
+
+`$ make dj "<comando> e opções entre aspas"`
+___
+
+Para instalar um novo pacote python:
+
+`$ make install "<pacote> [pacote]"`
+
+* Isso instala o pacote no container e atualiza os arquivos Pipfile
+* Caso o pacote instalado seja usado apenas para o desenvolvimento, user a flag `--dev`
+
+___
+
+Para iniciar, parar ou reiniciar um serviço/container, respectivamente, use:
+
+`$ make start [nome do servico]`
+
+`$ make stop [nome do servico]`
+
+`$ make restart [nome do servico]`
+
+Os serviços disponíveis são:
+
+- db: postgres
+- rq: worker do rq
+- web: a aplicação django
+- redis: redis sendo usado como fila consumida pelo Celery
+___
+
+Para executar os tests:
+
+`$ make test`
+
+___
+Para reiniciar o worker do rq:
+
+`$ make restart_rq`
+___
+Mais comandos make:
+- `up_debug`: inicia o container django em modo debug
+- `recreate_db`: dropa o banco de dados, cria um novo e realiza as migrações do django
+- `restore_database`: restaura um dump de banco de dados e aplica as migrações
+- `restore_dblocal`: restaura um dump e cria o super usuário
+- `migrate`: aplica as migrações do django no container
+- `makemigrations`: cria as migrações do django
+- `makemigrations_merge`: realiza o merge das migrations do django
+- `docker_prune`: para e remove todos os containers/imagens
+- `_rebuild`: rebuilda todos os containers sem cache
