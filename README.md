@@ -32,6 +32,39 @@ curl -X POST http://localhost:8000/upload/ -F "file=@InstrumentsConsolidatedFile
 ```
   GET /admin
 ```
+
+#### Obtenção de token JWT
+
+```
+  POST /api/token
+```
+
+| Parâmetro   | Tipo       |
+| :---------- | :--------- |
+| `username`      | `string` |
+| `password`      | `string` |
+
+
+### Exemplo de uso das apis
+
+```
+  POST /api/token
+```
+```
+curl -s -X POST http://localhost:8000/api/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "OliveiraTrust", "password": "123"}'
+```
+
+```
+  POST /upload
+```
+```
+curl -X POST http://localhost:8000/upload/ \
+  -H "Authorization: Bearer (COLE O TOKEN AQUI)" \
+  -F "file=@InstrumentsConsolidatedFile_20240823.csv"
+```
+
 ## Setup ambiente (Ubuntu ou WSL)
 `$ sudo apt install make -y`
 #### Backend
