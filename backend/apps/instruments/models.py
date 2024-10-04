@@ -87,6 +87,3 @@ class InstrumentFile(BaseModel):
 
     def __str__(self):
         return f"{self.file.name} - {self.created_at.date()}"
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
