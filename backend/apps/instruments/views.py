@@ -6,7 +6,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from apps.instruments.tasks import consumer_instrument_spreadsheet
 from apps.instruments.models import Instrument, InstrumentFile
-from apps.instruments.filters import InstrumentFilter
+from apps.instruments.filters import InstrumentFilter, InstrumentFileFilter
 from apps.instruments.serializers import InstrumentSerializer, InstrumentFileSerializer
 
 # Fila django_rq
@@ -26,6 +26,9 @@ class InstrumentList(ListAPIView):
 class InstrumentFileViewSet(ModelViewSet):
     queryset = InstrumentFile.objects.all()
     serializer_class = InstrumentFileSerializer
+    filterset_class = InstrumentFileFilter
+    filter_backends = [filters.SearchFilter, django_filters.DjangoFilterBackend]
+    search_fields = ['file']
 
     def perform_create(self, serializer: InstrumentFileSerializer):
         super().perform_create(serializer)

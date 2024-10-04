@@ -27,12 +27,6 @@
 curl -X POST http://localhost:8000/upload/ -F "file=@InstrumentsConsolidatedFile_20240823.csv"
 ```
 
-#### Historico de Instrumentos e arquivos
-
-```
-  GET /admin
-```
-
 #### Obtenção de token JWT
 
 ```
@@ -44,6 +38,22 @@ curl -X POST http://localhost:8000/upload/ -F "file=@InstrumentsConsolidatedFile
 | `username`      | `string` |
 | `password`      | `string` |
 
+### Historico de Instrumentos e arquivos
+#### Buscar arquivo
+
+```
+  GET /upload/?file={nome}
+```
+
+| Parâmetro   | Tipo       |
+| :---------- | :--------- |
+| `file`      | `string` |
+
+#### Arquivos/Instrumentos no admin
+
+```
+  GET /admin
+```
 
 ### Exemplo de uso das apis
 
