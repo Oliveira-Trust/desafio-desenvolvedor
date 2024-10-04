@@ -1,8 +1,9 @@
-import pandas as pd
-from sqlalchemy import create_engine, MetaData, Table, text
+from sqlalchemy import create_engine
 from io import StringIO
 import csv
 import logging
+from apps.instruments.models import Instrument, InstrumentFile
+from apps.instruments.utils import clean_instrument_spreadsheet
 from core import settings
 from django_rq import job
 
@@ -11,65 +12,46 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 @job
-def consumer_spreadsheet():
+def consumer_instrument_spreadsheet(instrument_file_pk: int):
     try:
-        logger.info("Lendo o arquivo CSV")
-        df = pd.read_csv('/code/apps/instruments/instruments_test.csv', encoding='latin1', sep=';', skiprows=1)
-        logger.info("Arquivo CSV lido com sucesso")
+        # Define tabela do banco
+        table_name = Instrument._meta.db_table
+
+        # Sanitiza arquivo e gera dataframe
+        instrument_file = InstrumentFile.objects.filter(pk=instrument_file_pk).first()
+        df = clean_instrument_spreadsheet(instrument_file)
 
         # Configurar a conexão com o banco de dados PostgreSQL
-        database_url = f"postgresql+psycopg2://{settings.DATABASES['default']['USER']}:{settings.DATABASES['default']['PASSWORD']}@{settings.DATABASES['default']['HOST']}:{settings.DATABASES['default']['PORT']}/{settings.DATABASES['default']['NAME']}"
-        engine = create_engine(database_url)
-        conn = engine.connect()
-        logger.info("Conexão com o banco de dados estabelecida")
+        db_url = f"postgresql+psycopg2://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.POSTGRES_DB}"
+        engine = create_engine(db_url)
 
-        # Definir a tabela usando SQLAlchemy
-        metadata = MetaData()
-        table = Table('instruments_instrument', metadata, autoload_with=engine)
+        # Estabelecer a conexão
+        with engine.begin() as conn:
+            # Preparar os dados para o COPY
+            keys = df.columns.tolist()
+            data_iter = df.itertuples(index=False, name=None)
 
-        # Preparar os dados
-        keys = df.columns.tolist()
-        data_iter = df.itertuples(index=False, name=None)
-        logger.info("Dados preparados para inserção")
-
-        # Gets a DBAPI connection that provides a cursor
-        dbapi_conn = conn.connection
-        with dbapi_conn.cursor() as cur:
+            # Cria um buffer em memória (StringIO) para armazenar o CSV
             string_buffer = StringIO()
             writer = csv.writer(string_buffer)
             writer.writerows(data_iter)
-            string_buffer.seek(0)
+            string_buffer.seek(0)  # Volta para o início do buffer
 
-            columns = ', '.join(['"{}"'.format(k) for k in keys])
-            if table.schema:
-                table_name = '{}.{}'.format(table.schema, table.name)
-            else:
-                table_name = table.name
+            # Gera o comando COPY
+            columns = ', '.join([f'"{k}"' for k in keys])
+            copy_sql = f'COPY {table_name} ({columns}) FROM STDIN WITH CSV'
 
-            sql = 'COPY {} ({}) FROM STDIN WITH CSV'.format(
-                table_name, columns)
-            logger.info(f"Executando comando COPY: {sql}")
-            cur.copy_expert(sql=sql, file=string_buffer)
-            logger.info("Dados inseridos com sucesso")
+            # Executar o comando COPY usando o cursor
+            dbapi_conn = conn.connection
+            with dbapi_conn.cursor() as cur:
+                cur.copy_expert(sql=copy_sql, file=string_buffer)
 
-        # Confirmar a transação
-        conn.execute("COMMIT")
-        logger.info("Transação confirmada")
+        logger.info("Dados inseridos com sucesso.")
 
     except Exception as e:
-        logger.error(f"Erro ao inserir dados no banco: {e}")
-    finally:
-        try:
-            # Verificar se os dados foram inseridos
-            result = conn.execute(text("SELECT COUNT(*) FROM instruments_instrument;"))
-            count = result.fetchone()[0]
-            logger.info(f"Número de registros na tabela: {count}")
-        except Exception as e:
-            logger.error(f"Erro ao verificar os dados no banco: {e}")
-        finally:
-            # Fechar a conexão
-            conn.close()
-            engine.dispose()
-            logger.info("Conexão fechada")
+        logger.info(f"Erro ao inserir dados no banco: {e}")
+        raise e
 
-        logger.info("Tarefa concluída")
+    finally:
+        # Fechar a conexão
+        engine.dispose()
