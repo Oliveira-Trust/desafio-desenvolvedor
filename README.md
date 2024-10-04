@@ -4,7 +4,7 @@
 
 #### Retorna lista de instrumentos ou um instrumento específico
 
-```http
+```
   GET /instruments/?TckrSymb={var}&RptDt={var}
 ```
 
@@ -15,7 +15,7 @@
 
 #### Envia arquivo
 
-```http
+```
   POST /upload
 ```
 
