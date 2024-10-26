@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "desafio-desenvolvedor"
+version = "0.1.0"
+description = ""
+authors = ["fspjonny <fabiosilvapedro@yahoo.com.br>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.115.3"}
+uvicorn = "^0.32.0"
+motor = "^3.6.0"
+pandas = "^2.2.3"
+python-jose = "^3.3.0"
+python-multipart = "^0.0.12"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.14.0"
+ruff = "^0.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79 # manter limite de linhas em até 80 colunas
+# extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+lint = 'ruff check . && ruff check . --diff'
+format = 'ruff check . --fix && ruff format .'
+run = 'uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload'

@@ -1,0 +1,4 @@
+.venv
+.ruff_cache
+estrutura.md
+__pycache__
