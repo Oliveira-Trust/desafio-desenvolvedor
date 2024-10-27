@@ -148,3 +148,52 @@ async def upload_file(file: UploadFile = File(...)):
     }
 
 
+# Endpoint de Histórico de Uploads
+@router.get('/upload/history/', response_model=List[dict])
+async def upload_history(
+    filename: Optional[str] = None,  # Nome do arquivo.
+    date: Optional[str] = None,  # Data do upload.
+    page: int = Query(1, ge=1),  # Página inicial.
+    limit: int = Query(10, ge=1, le=100),  # Qtde de registros por página.
+):
+    query = {}
+
+    if filename:
+        query['filename'] = filename
+
+    if date:
+        try:
+            # Transforma a data em datetime para
+            # compatibilidade com o MongoDB.
+            query_date = datetime.strptime(date, '%Y-%m-%d')
+            next_day = query_date + timedelta(days=1)
+            query['upload_date'] = {'$gte': query_date, '$lt': next_day}
+
+        except ValueError:
+            raise HTTPException(
+                status_code=400,
+                detail='Formato de data inválido. Use o formato ISO (YYYY-MM-DD).',  # noqa
+            )
+
+    # Consulta feita com paginação.
+    skip = (page - 1) * limit
+    uploads = (
+        await historico_collection.find(query)
+        .skip(skip)
+        .limit(limit)
+        .to_list(length=limit)
+    )
+
+    # Serializa cada documento antes de retorná-lo.
+    uploads_serialized = [serialize_document(upload) for upload in uploads]
+
+    # Se não houver uploads, retornará uma mensagem.
+    if not uploads_serialized:
+        raise HTTPException(
+            status_code=404,
+            detail='Nenhum upload encontrado com os critérios especificados.',
+        )
+    # Retornando apenas a lista de uploads.
+    return uploads_serialized
+
+
