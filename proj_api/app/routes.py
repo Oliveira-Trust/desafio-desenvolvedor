@@ -1,12 +1,16 @@
-from datetime import datetime, timezone
+import re
+from datetime import datetime, timedelta, timezone
+from typing import List, Optional
+
 import pandas as pd
-from fastapi import APIRouter, File, HTTPException, UploadFile
+from fastapi import APIRouter, File, HTTPException, Query, UploadFile
 
 from app.database import datalake_collection, historico_collection
 
 router = APIRouter()
 
 
+# Função para serializar o ObjectId do MongoDB
 def serialize_document(doc):
     """
     serialize_document(doc)
@@ -40,7 +44,7 @@ async def upload_file(file: UploadFile = File(...)):
     Lê o conteúdo do arquivo ignorando a primeira linha que não tem informação
     relevante e definindo a partir da segunda linha como cabeçalho que contém
     os nomes das colunas.
-    """
+    """  # noqa
     try:
         if file.filename.endswith('.csv'):
             df = pd.read_csv(
@@ -48,13 +52,43 @@ async def upload_file(file: UploadFile = File(...)):
                 encoding='ISO-8859-1',  # Define a codificação do arquivo.
                 on_bad_lines='skip',  # Ignora linhas com problemas.
                 skiprows=1,  # Ignora a primeira linha do arquivo.
-                dtype=str,  # Defini o tipo de dado de cada coluna como string.
+                dtype=str,  # Definindo os dados como string.
                 delimiter=';',  # Define o delimitador de colunas para ';'.
             )
-        else:
-            df = pd.read_excel(file.file, skiprows=1, dtype=str)
 
-        # Substitui NaN por None quando não há valor.
+        elif file.filename.endswith('.xlsx'):
+            # Define a engine 'openpyxl' para o Pandas ler arquivos '.xlsx'.
+            df = pd.read_excel(
+                file.file,
+                engine='openpyxl',  # Define a engine para o Pandas.
+                skiprows=1,
+                dtype=str,
+            )
+
+        elif file.filename.endswith('.xls'):
+            # Define a engine 'xlrd' para o Pandas ler arquivos '.xls'.
+            df = pd.read_excel(
+                file.file,
+                engine='xlrd',  # Define a engine para o Pandas.
+                skiprows=1,
+                dtype=str,
+            )
+
+        else:
+            raise HTTPException(
+                status_code=400, detail='Formato de arquivo não suportado.'
+            )
+
+        """ 
+        Força a coluna 'RptDt' a ser tratada pelo Pandas como string nos 
+        casos de importação vinda de arquivos xls e xlsx e remove a parte 
+        que o Pandas preenche a data com horário 00:00:00
+        Isso não acontece nos casos de arquivos csv.
+        """  # noqa
+        if 'RptDt' in df.columns:
+            df['RptDt'] = df['RptDt'].astype(str).str.split().str[0]
+
+        # Substitui 'NaN' do arquivo por 'None' quando não há valor.
         df = df.where(pd.notnull(df), None)
 
         # Conto o total de registros importados (linhas) no DataFrame.
@@ -86,8 +120,8 @@ async def upload_file(file: UploadFile = File(...)):
     if colunas_faltando:
         raise HTTPException(
             status_code=400,
-            detail=f'O arquivo pode estar faltando algumas\
-                  colunas obrigatórias: {colunas_faltando}',
+            detail=f"""O arquivo pode estar faltando algumas
+                  colunas obrigatórias: {colunas_faltando}""",
         )
 
     # Seleciono no Dataframe apenas as colunas obrigatórias.
@@ -114,11 +148,3 @@ async def upload_file(file: UploadFile = File(...)):
     }
 
 
-@router.get("/upload/history/")
-async def upload_history(filename: str = None, date: str = None):
-    pass
-
-
-@router.get("/upload/search/")
-async def search_content(TckrSymb: str = None, RptDt: str = None):
-    pass
