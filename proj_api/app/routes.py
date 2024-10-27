@@ -197,3 +197,52 @@ async def upload_history(
     return uploads_serialized
 
 
+# Endpoint de Busca de Conteúdo
+@router.get('/upload/search/')
+async def search_content(
+    TckrSymb: Optional[str] = None,  # Código do Ativo.
+    RptDt: Optional[str] = None,  # Data do Relatório no formato YYYY-MM-DD.
+    skip: int = Query(0, ge=0),  # Página inicial.
+    limit: int = Query(10, ge=1, le=100),  # Qtde de registros por página.
+):
+    query = {}
+
+    # Adiciona os filtros apenas se os parâmetros forem fornecidos.
+    if TckrSymb:
+        query['TckrSymb'] = TckrSymb
+
+    if RptDt:
+        # Verifica se a data está no formato YYYY-MM-DD usando regex.
+        if not re.match(r'\d{4}-\d{2}-\d{2}', RptDt):
+            raise HTTPException(
+                status_code=400,
+                detail='Formato de data inválido. Use o formato YYYY-MM-DD.',
+            )
+        query['RptDt'] = RptDt
+
+    # Consulta feita com paginação.
+    results = (
+        await datalake_collection.find(query)
+        .skip(skip)
+        .limit(limit)
+        .to_list(length=limit)
+    )
+
+    # Formata os resultados para o retorno.
+    formatted_results = [
+        {
+            'RptDt': item.get('RptDt'),
+            'TckrSymb': item.get('TckrSymb'),
+            'MktNm': item.get('MktNm'),
+            'SctyCtgyNm': item.get('SctyCtgyNm'),
+            'ISIN': item.get('ISIN'),
+            'CrpnNm': item.get('CrpnNm'),
+        }
+        for item in results
+    ]
+
+    # Verifica se encontrou resultados.
+    if not formatted_results:
+        return {'message': 'Nenhum resultado encontrado com estes parâmetros!'}
+
+    return {'results': formatted_results}
