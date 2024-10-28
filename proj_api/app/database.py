@@ -4,13 +4,15 @@ from motor.motor_asyncio import AsyncIOMotorClient
 MONGODB_URL = 'mongodb://mongodb_container:27017'
 client = AsyncIOMotorClient(MONGODB_URL)
 
-# Bancos e coleções
+# Bancos
 historico_db = client['historico']
 datalake_db = client['datalake']
+accounts_db = client['accounts']
 
-# Coleções específicas
+# Coleções
 historico_collection = historico_db['uploads']
 datalake_collection = datalake_db['dados']
+accounts_collection = accounts_db['users']
 
 
 # Função para inicializar bancos e coleções
