@@ -1,13 +1,19 @@
-from datetime import datetime, timezone
-
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
-class Upload(BaseModel):
-    filename: str = Field(...)
-    upload_date: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc)
-    )
+# Modelo para JWT criar um novo usuário
+class UserCreate(BaseModel):
+    username: str
+    password: str
 
-    # JSON com o conteúdo do arquivo
-    content: dict
+
+# Modelo para a resposta do token
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+# Modelo para login
+class UserLogin(BaseModel):
+    username: str
+    password: str
