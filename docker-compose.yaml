@@ -16,6 +16,9 @@ services:
       - "8000:8000"
     environment:
       - MONGO_URL=mongodb://mongodb:27017  # Conexão do MongoDB interna
+      - SECRET_KEY=90a3e5hBoep3A1SdTwJZDy7HD3Z1rtKVGgxVBDVUZ24
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 volumes:
   mongo_data:
