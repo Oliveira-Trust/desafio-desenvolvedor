@@ -1,13 +1,13 @@
-# auth_router.py
 from app.auth import create_access_token, hash_password, verify_password
 from app.database import accounts_collection
-from app.models import Token, UserCreate, UserLogin
-from fastapi import APIRouter, HTTPException
+from app.models import Token, UserCreate
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import OAuth2PasswordRequestForm
 
-router = APIRouter(tags=['Authentication'])
+router = APIRouter(prefix='/auth', tags=['Authentication'])
 
 
-@router.post('/register/', response_model=Token)
+@router.post('/register', response_model=Token)
 async def register(user: UserCreate):
     user_exist = await accounts_collection.find_one({
         'username': user.username
@@ -27,42 +27,21 @@ async def register(user: UserCreate):
     return {'access_token': access_token, 'token_type': 'bearer'}
 
 
-@router.post('/token/', response_model=Token)
-async def login(user: UserLogin):
-    db_user = await accounts_collection.find_one({'username': user.username})
+@router.post('/token', response_model=Token)
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    db_user = await accounts_collection.find_one({
+        'username': form_data.username
+    })
 
-    if not db_user or not verify_password(user.password, db_user['password']):
+    if not db_user or not verify_password(
+        form_data.password, db_user['password']
+    ):
         raise HTTPException(
-            status_code=400, detail='Usuário ou senha incorretos'
+            status_code=400,
+            detail='Usuário ou senha incorretos',
+            headers={'WWW-Authenticate': 'Bearer'},
         )
 
-    access_token = create_access_token(data={'sub': str(db_user['_id'])})
+    access_token = create_access_token(data={'sub': str(db_user['username'])})
 
     return {'access_token': access_token, 'token_type': 'bearer'}
-
-
-"""
-Não implementei a autenticação de usuário com JWT, no endpoint de uploads,
-pois ainda não entendi porque a rota /token na aplicação não está funcionando
-corretamente, a mesma rota está retornando o token autorizado ao usar Postman, 
-mas não está autorizando na aplicação dentro do container docker.
-Farei essa verificação com mais calma depois.
-
-Rota no postman: http://localhost:8000/token/
-JSON:
-{
-    "username": "admin",
-    "password": "admin123"
-}
-
-Retorno:
-{
-    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
-    eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.
-    SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-    "token_type": "bearer"
-}
-
-Na aplicação informa Entity not processesable
-mas a rota /token está funcionando corretamente.
-"""  # noqa

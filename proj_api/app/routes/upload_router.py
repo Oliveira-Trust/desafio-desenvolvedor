@@ -3,17 +3,16 @@ from datetime import datetime, timedelta, timezone
 from typing import List, Optional
 
 import pandas as pd
+from app.auth import get_current_user
 from app.database import datalake_collection, historico_collection
-from fastapi import (  # Depends
+from fastapi import (
     APIRouter,
+    Depends,
     File,
     HTTPException,
     Query,
     UploadFile,
 )
-
-# from app.auth import get_current_user
-
 
 router = APIRouter(tags=['Upload Files'])
 
@@ -34,7 +33,7 @@ def serialize_document(doc):
 @router.post('/upload/')
 async def upload_file(
     file: UploadFile = File(...),  # Arquivo a ser enviado.
-    # current_user: dict = Depends(get_current_user) # Usuário autenticado.
+    current_user: dict = Depends(get_current_user),  # Usuário autenticado.
 ):
     if not file.filename.endswith(('.csv', '.xls', '.xlsx')):
         raise HTTPException(
@@ -166,7 +165,7 @@ async def upload_history(
     date: Optional[str] = None,  # Data do upload.
     page: int = Query(1, ge=1),  # Página inicial.
     limit: int = Query(10, ge=1, le=100),  # Qtde de registros por página.
-    # current_user: dict = Depends(get_current_user) # Usuário autenticado.
+    current_user: dict = Depends(get_current_user),  # Usuário autenticado.
 ):
     query = {}
 
@@ -216,7 +215,7 @@ async def search_content(
     RptDt: Optional[str] = None,  # Data do Relatório no formato YYYY-MM-DD.
     skip: int = Query(0, ge=0),  # Página inicial.
     limit: int = Query(10, ge=1, le=100),  # Qtde de registros por página.
-    # current_user: dict = Depends(get_current_user) # Usuário autenticado.
+    current_user: dict = Depends(get_current_user),  # Usuário autenticado.
 ):
     query = {}
 
