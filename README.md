@@ -7,12 +7,15 @@ Criar uma API com no mínimo 3 endpoints, com as seguintes funcionalidades:
 - Upload de arquivo ✅
 - Histórico de upload de arquivo ✅
 - Buscar conteúdo do arquivo ✅
+- Banco de dados NOSQL para armazenar os dados do upload ✅
+- Autenticação para consumir Endpoints ✅
+- Execução dentro de Container Docker ✅
 
 ## 🛠️ Os requisitos do projeto:
 
 Para executar este projeto, você precisará ter instalado:
 
-- Docker Desktop
+- Docker Desktop (executar os containers)
 - Python ^3.12
 - Poetry ^1.8.3 (Gerenciador de pacotes do Python)
 
@@ -28,8 +31,8 @@ Para executar este projeto, você precisará ter instalado:
 - passlib ^1.7.4
 
 #### Dependências de desenvolvimento:
-- Ruff 0.5.5
-- Taskipy 1.13.0
+- Ruff 0.5.5 (Linter)
+- Taskipy 1.13.0 (Executor de tarefas)
 
 ## 🖥️ Instalação:
 
@@ -61,11 +64,11 @@ Após instalar as dependências, de dentro da pasta do projeto, execute o comand
 ```
 docker-compose up --build
 ```
-A aplicação vai ser executada dentro de um container Docker contendo este projeto e um banco de dados MongoDB 4.2.
+A aplicação vai ser executada dentro de um container Docker contendo este projeto e mais um banco de dados MongoDB 4.2.
 
 ```
 Observação:
-- O Docker Compose vai criar automaticamente o banco de dados MongoDB e iniciar o servidor FastAPI.
+- O Docker Compose vai criar automaticamente os containers de banco de dados MongoDB da aplicação e iniciar o servidor FastAPI com uvicorn.
 
 - Se você quiser parar o servidor, pressione `Ctrl + C`.
 
