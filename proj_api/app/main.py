@@ -2,17 +2,20 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.database import initialize_databases
+from app.database import client, initialize_databases
 from app.routes import auth_router, upload_router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Inicializa os bancos e coleções antes de iniciar a aplicação
-    # para ter certeza que os bancos estão prontos para serem usados.
+    # Armazena a instância do client MongoDB.
+    app.state.db = client
+    # Inicializa as coleções do MongoDB.
     await initialize_databases()
+    yield
 
-    yield  # Mantém a aplicação ativa enquanto o servidor está rodando
+    # Fecha a conexão com o MongoDB.
+    app.state.db.close()
 
 
 app = FastAPI(
