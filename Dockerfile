@@ -10,7 +10,7 @@ WORKDIR /app
 # Copiando arquivos para o container
 COPY pyproject.toml /app
 COPY poetry.lock /app
-COPY proj_api /app
+COPY . /app
 
 # Instala as dependências necessárias
 RUN pip install poetry
