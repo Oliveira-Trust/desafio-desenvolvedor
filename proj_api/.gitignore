@@ -1,0 +1,6 @@
+.venv
+.vscode
+.ruff_cache
+estrutura.md
+__pycache__
+.TODO
