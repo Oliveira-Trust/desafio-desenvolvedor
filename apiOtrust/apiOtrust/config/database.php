@@ -112,17 +112,18 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
-        'mongodb' => [
-            'driver'   => 'mongodb',
-            'host'     => env('DB_HOST', 'mongodb://localhost:27017/'),
-            'port'     => env('DB_PORT', 27017),
-            'database' => env('DB_DATABASE', 'apiOtrust'),
-            'username' => env('DB_USERNAME', ''),
-            'password' => env('DB_PASSWORD', ''),
-            'options'  => [
-            'database' => env('DB_AUTH_DATABASE', 'admin'), // banco de dados de autenticação
-            ],
-        ],
+'mongodb' => [
+    'driver' => 'mongodb',
+    'host' => env('DB_HOST', 'localhost'),
+    'port' => env('DB_PORT', 27017),
+    'database' => env('DB_DATABASE', 'admin'),
+    'username' => env('DB_USERNAME', ''),
+    'password' => env('DB_PASSWORD', ''),
+    'options' => [
+        'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // banco para autenticação, se necessário
+    ],
+],
+
 
 
     ],
