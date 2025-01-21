@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Upload extends Model
 {
+    use HasFactory;
     protected $connection = 'mongodb';
     protected $collection = 'uploaded_files';
 
