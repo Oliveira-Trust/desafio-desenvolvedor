@@ -56,4 +56,38 @@ class UploadController extends Controller
 
         return response()->json($resultado);
     }
+
+    public function searchFileContent(Request $request, $id)
+    {
+        $arquivo = Upload::find($id);
+        if (!$arquivo) {
+            return response()->json(['error' => 'Arquivo não encontrado no sistema.'], 404);
+        }
+
+        $filePath = storage_path('app/private/' . $arquivo->file_path);
+
+        // paginação
+        $page = $request->query('page', 1);
+        $perPage = $request->query('perPage', 10);
+
+        // Filtros
+        $filtros = [];
+        if ($request->has('RptDt')) {
+            $filtros['RptDt'] = $request->query('RptDt');
+        }
+        if ($request->has('TckrSymb')) {
+            $filtros['TckrSymb'] = $request->query('TckrSymb');
+        }
+
+        // Ler o arquivo e paginar os resultados
+        $resultado = Upload::lerArquivoPaginado($filePath, $page, $perPage, $filtros);
+
+        if ($resultado->isEmpty()) {
+            return response()->json([
+                'message' => 'Nenhum registro encontrado com os critérios especificados.'
+            ], 404);
+        }
+
+        return response()->json($resultado);
+    }
 }

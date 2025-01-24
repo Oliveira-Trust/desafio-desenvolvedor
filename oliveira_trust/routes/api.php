@@ -6,3 +6,4 @@ use App\Http\Controllers\UploadController;
 
 Route::post('/upload', [UploadController::class, 'uploadFile']);
 Route::get('/upload/history', [UploadController::class, 'getUploadHistory']);
+Route::get('/search/{id}', [UploadController::class, 'searchFileContent']);
