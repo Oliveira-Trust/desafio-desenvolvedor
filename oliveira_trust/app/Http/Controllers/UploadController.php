@@ -30,4 +30,30 @@ class UploadController extends Controller
         ], 201);
 
     }
+
+    public function getUploadHistory(Request $request)
+    {
+        // parâmetros de busca
+        $fileName = $request->query('file_name');
+        $referenceDate = $request->query('referenceDate');
+
+        
+        $uploads = Upload::query();
+        if (!empty($fileName)) {// Filtro por nome do arquivo
+            $uploads->where('file_name', 'like', '%' . $fileName . '%');
+        }
+        if (!empty($referenceDate)) {// Filtro pela data
+            $uploads->whereDate('created_at', $referenceDate);
+        }
+        $resultado = $uploads->orderBy('updated_at', 'desc')->get();
+
+        
+        if ($resultado->isEmpty()) {
+            return response()->json([
+                'message' => 'Nenhum arquivo encontrado com os critérios especificados.'
+            ], 404);
+        }
+
+        return response()->json($resultado);
+    }
 }
