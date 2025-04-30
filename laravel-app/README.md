@@ -20,13 +20,6 @@ A Laravel-based REST API for uploading, processing, and querying financial instr
   - Upload history with filtering and pagination
   - Data search with filtering and pagination
 
-- **Web Interface:**
-  - User authentication with simple interface
-  - Dashboard with statistics and recent uploads
-  - Upload management (listing, creation, viewing)
-  - Data query with multiple filters
-  - Data export to Excel
-
 - **Performance Optimizations:**
   - Redis caching for data search queries
   - Cache invalidation when new files are processed
@@ -36,7 +29,6 @@ A Laravel-based REST API for uploading, processing, and querying financial instr
 ## Tech Stack
 
 - **Backend:** Laravel 9.x / PHP 8.2
-- **Frontend:** Blade templates with Tailwind CSS and Alpine.js
 - **Databases:**
   - MySQL (for user and upload metadata)
   - MongoDB (for financial data)
@@ -89,26 +81,6 @@ A Laravel-based REST API for uploading, processing, and querying financial instr
    ```
 
 ## Usage
-
-### Web Interface
-
-The web interface is available and can be accessed at:
-```
-http://localhost
-```
-
-#### Web Interface Features
-
-- **Authentication:** Login screen for system access
-- **Dashboard:** Overview with statistics and quick actions
-- **Uploads:** 
-  - List of all uploads performed
-  - Form for submitting new files
-  - Detailed view of each upload
-- **Data Query:** 
-  - Search with multiple filters (date, symbol, market, etc.)
-  - Results displayed in table format
-  - Data export to Excel
 
 ### API Documentation
 

@@ -1,0 +1,14 @@
+parameters:
+    level: 5
+    paths:
+        - app
+    excludePaths:
+        - app/Http/Middleware/Authenticate.php
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        - '#PHPDoc tag @var#'
+        - '#Dynamic call to static method#'
+        - '#Access to an undefined property#'
+        - '#Call to an undefined method#'
+    reportUnmatchedIgnoredErrors: false 
