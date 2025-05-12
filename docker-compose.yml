@@ -21,7 +21,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - .:/var/www
+      - ./laravel:/var/www
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - app
