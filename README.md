@@ -1,52 +1,155 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
- 
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# 📂 Laravel File Upload & Python Worker Integration
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+Este projeto integra uma API backend em **Laravel** para upload de arquivos (`.csv`, `.xlsx`) com um **worker Python** que monitora os arquivos enviados, extrai informações específicas e as insere em um banco de dados **MongoDB**.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+## 🚀 Tecnologias utilizadas
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+- PHP 8 + Laravel
+- Python 3.10+
+- MongoDB
+- Docker + Docker Compose
+- Watchdog (Python)
+- Pandas (Python)
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+---
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+## 📁 Estrutura do Projeto
+```
+.
+├── laravel/ # Projeto Laravel (upload e API de histórico)
+├── python/
+│ └── worker/
+│ └── main.py # Script principal do workerx
+├── docker/ # Dockerfiles e configs
+├── docker-compose.yml
+└── README.md
+.
+```
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+## 📦 Como executar o projeto
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição (CAJU);
-- Vale Alimentação (CAJU);
-- Vale Transporte ou Vale Combustível (CAJU);
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+### 1. Suba os containers
+```
+docker-compose up --build
+```
+### Este comando irá subir:
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+Laravel (PHP)<br>
+MongoDB<br>
+Worker Python
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+## 📝 Endpoints da API Laravel
+### Upload de arquivos
+```
+POST /api/upload
+Content-Type: multipart/form-data
+```
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga3.md
+| Campo | Tipo       | Obrigatório |
+| ----- | ---------- | ----------- |
+| file  | .csv/.xlsx | ✅ Sim       |
+
+Exemplo de cURL:
+```
+curl -X POST http://localhost:8080/api/upload \
+  -F 'file=@/caminho/do/seu/arquivo.csv'
+```
+💡 Nota: O Worker Python precisa estar em execução para processar os arquivos após o upload.
+
+### History API
+```
+GET /api/history
+```
+Query Params opcionais:
+- original_name
+- reference_date
+
+#### Exemplo de Saída:
+```json
+[
+  {
+    "original_name": "InstrumentsConsolidatedFile_20250509_1.csv",
+    "stored_name": "1747110609_InstrumentsConsolidatedFile_20250509_1.csv",
+    "hash": "0933269574ee3700c7d11de814869ce8",
+    "reference_date": "2025-05-09",
+    "updated_at": "2025-05-13T04:30:09.864000Z",
+    "created_at": "2025-05-13T04:30:09.864000Z",
+    "id": "6822cad123e3705f810bddb2"
+  }
+]
+```
+
+Exemplo de cURL:
+- 🔍 Todos os Uploads
+```
+curl -X GET http://localhost:8080/api/history
+```
+
+- 🔍 Buscar uploads filtrando por original_name
+```
+curl -G http://localhost:8080/api/history \
+  --data-urlencode "original_name=InstrumentsConsolidatedFile_20250509_1.csv"
+```
+
+- 🔍 Buscar uploads filtrando por reference_date
+```
+curl -G http://localhost:8080/api/history \
+  --data-urlencode "reference_date=2025-05-09"
+```
+
+#### Search API
+Exemplo de saída:
+```json
+        {
+            "RptDt": "2025-05-07",
+            "TckrSymb": "003H11",
+            "MktNm": "EQUITY-CASH",
+            "SctyCtgyNm": "FUNDS",
+            "ISIN": "BR003HCTF006",
+            "CrpnNm": "KINEA CO-INVESTIMENTO FDO INV IMOB",
+            "id": "6822cc133f4a5beefec742bd"
+        },
+        {
+            "RptDt": "2025-05-07",
+            "TckrSymb": "A1AP34R",
+            "MktNm": "EQUITY-CASH",
+            "SctyCtgyNm": "BDR",
+            "ISIN": "BRA1APBDR001",
+            "CrpnNm": "ADVANCE AUTO PARTS INC",
+            "id": "6822cc133f4a5beefec742c3"
+        },
+```
+
+### 🧠 Sobre o Worker Python
+O worker é responsável por:
+1. Observar a pasta laravel/public/uploads
+2. Detectar novos arquivos
+3. Ler os arquivos .csv ou .xlsx
+4. Extrair os campos:
+- RptDt
+- TckrSymb
+- MktNm
+- SctyCtgyNm
+- ISIN
+- CrpnNm
+5. Inserir os dados na coleção Record do MongoDB
+
+#### 🧪 Executar o Worker Manualmente
+1. Crie e ative um ambiente virtual
+```
+python3 -m venv venv
+source venv/bin/activate  # Linux/macOS
+# ou
+venv\Scripts\activate     # Windows
+```
+
+2. Instale as dependências:
+```
+pip install -r python/worker/requirements
+```
+
+3. Execute o worker:
+```
+python python/worker/main.py
+```
