@@ -1,5 +1,5 @@
 pandas
 pymongo
 watchdog
-numpy
 openpyxl
+chardet
