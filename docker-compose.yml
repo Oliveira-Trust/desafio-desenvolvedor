@@ -38,6 +38,19 @@ services:
     networks:
       - laravel
 
+  worker:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    container_name: python_worker
+    volumes:
+      - ./laravel/public/uploads:/var/www/public/uploads
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - laravel
+
 networks:
   laravel:
 
