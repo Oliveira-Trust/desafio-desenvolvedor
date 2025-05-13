@@ -47,7 +47,6 @@ services:
       - ./laravel/public/uploads:/var/www/public/uploads
     depends_on:
       - mongodb
-      - redis
     networks:
       - laravel
 
