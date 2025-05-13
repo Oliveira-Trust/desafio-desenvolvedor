@@ -20,6 +20,12 @@ class UploadController
             return response()->json(['message' => 'No file provided.'], 400);
         }
 
+        $extension = $file->getClientOriginalExtension();
+
+        if (!in_array($extension, ['csv', 'xls', 'xlsx'])) {
+            return response()->json(['message' => 'Invalid file type. Only CSV and Excel files are allowed.'], 400);
+        }
+
         $hash = $this->generateFileHash($file->getRealPath());
 
         if ($this->isDuplicate($hash)) {
