@@ -1,3 +1,4 @@
 .env
 /vendor/
 /laravel/public/uploads
+venv
