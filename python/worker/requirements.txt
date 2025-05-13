@@ -1,0 +1,5 @@
+pandas
+pymongo
+watchdog
+numpy
+openpyxl
