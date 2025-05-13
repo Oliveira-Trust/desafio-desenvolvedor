@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
 # Install dependencies
-RUN pip install --no-cache-dir pymongo pandas watchdog
+RUN pip install --no-cache-dir pymongo pandas watchdog openpyxl chardet
 
 WORKDIR /app
 
