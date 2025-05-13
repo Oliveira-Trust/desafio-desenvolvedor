@@ -84,4 +84,21 @@ class UploadController
 
         return null;
     }
+
+    public function history(Request $request)
+    {
+        Log::debug("Fetching upload history.");
+
+        $query = Upload::query();
+
+        if ($request->filled('original_name')) {
+            $query->where('original_name', 'like', '%' . $request->original_name . '%');
+        }
+
+        if ($request->filled('reference_date')) {
+            $query->where('reference_date', $request->reference_date);
+        }
+
+        return response()->json($query->get());
+    }
 }
