@@ -25,6 +25,10 @@ client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 collection = db[COLLECTION_NAME]
 
+# Create the uploads directory if it doesn't exist
+if not os.path.exists(UPLOADS_DIR):
+    print(f"Directory {UPLOADS_DIR} does not exist. Creating it...")
+    os.makedirs(UPLOADS_DIR, exist_ok=True)
 
 def detect_encoding(file_path):
     """
