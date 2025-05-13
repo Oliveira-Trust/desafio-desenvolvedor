@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Upload;
+use App\Models\Record;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 
@@ -100,5 +101,20 @@ class UploadController
         }
 
         return response()->json($query->get());
+    }
+
+    public function search(Request $request)
+    {
+        $query = Record::query();
+
+        if ($request->has('TckrSymb')) {
+            $query->where('TckrSymb', $request->TckrSymb);
+        }
+
+        if ($request->has('RptDt')) {
+            $query->where('RptDt', $request->RptDt);
+        }
+
+        return response()->json($query->paginate(30));
     }
 }
