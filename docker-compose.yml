@@ -1,0 +1,20 @@
+services:
+    localstack:
+        image: localstack/localstack
+        ports:
+        - "127.0.0.1:4566:4566"
+        - "127.0.0.1:4510-4559:4510-4559"
+        environment:
+        - DEBUG=${DEBUG:-0}
+        volumes:
+        - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+        - "/var/run/docker.sock:/var/run/docker.sock"
+
+    database:
+        image: postgres:17.5-alpine3.21
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_DB=${DB_NAME}
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
