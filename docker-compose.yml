@@ -2,13 +2,37 @@ services:
     localstack:
         image: localstack/localstack
         ports:
-        - "127.0.0.1:4566:4566"
-        - "127.0.0.1:4510-4559:4510-4559"
+            - "127.0.0.1:4566:4566"
+            - "127.0.0.1:4510-4559:4510-4559"
         environment:
-        - DEBUG=${DEBUG:-0}
+         - DEBUG=${DEBUG:-0}
         volumes:
-        - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
-        - "/var/run/docker.sock:/var/run/docker.sock"
+            - "./.docker/localstack:/var/lib/localstack"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        networks:
+            - file-manager
+
+    setup-resources:
+        image: amazon/aws-cli:latest
+        depends_on:
+            localstack:
+                condition: service_healthy
+        volumes:
+            - ./scripts:/scripts
+        entrypoint: /scripts/init-aws.sh
+        environment:
+            - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+            - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+            - AWS_DEFAULT_REGION=us-east-1
+            - AWS_ENDPOINT_URL=http://localstack:4566
+            - AWS_BUCKET=${AWS_BUCKET}
+        networks:
+            - file-manager
 
     database:
         image: postgres:17.5-alpine3.21
@@ -18,3 +42,9 @@ services:
             - POSTGRES_DB=${DB_DATABASE}
             - POSTGRES_USER=${DB_USERNAME}
             - POSTGRES_PASSWORD=${DB_PASSWORD}
+        networks:
+            - file-manager
+
+networks:
+  file-manager:
+    driver: bridge
