@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function () {
-            $routesFile = base_path('routes/v1.php');
+            $routesFile = base_path('routes/api/v1.php');
 
             Route::middleware('api')
                 ->prefix('v1')

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Presentation\Api\Controllers\FileController;
+use Presentation\Api\V1\Controllers\FileController;
 
 Route::get('/', function () {
     return response()->json(['message' => 'welcome to file manager api']);
