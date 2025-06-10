@@ -29,6 +29,7 @@
         "psr-4": {
             "Application\\": "Application",
             "Domain\\": "Domain/",
+            "Infrastructure\\": "Infrastructure/",
             "Presentation\\": "Presentation/",
             "Shared\\": "Shared/",
             "Database\\Factories\\": "database/factories/",
