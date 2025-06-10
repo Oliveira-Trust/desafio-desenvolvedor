@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.29",
         "mongodb/laravel-mongodb": "^5.4",
+        "predis/predis": "^3.0",
         "spatie/laravel-data": "^4.15"
     },
     "require-dev": {
