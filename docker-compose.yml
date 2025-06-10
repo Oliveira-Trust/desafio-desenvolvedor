@@ -13,6 +13,23 @@ services:
         networks:
             - file-manager
 
+    worker:
+        build:
+            context: .
+        restart: unless-stopped
+        command: php artisan queue:work redis --verbose --tries=3 --timeout=90
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+            - /var/www/vendor
+        depends_on:
+            - application
+            - database
+            - redis
+            - mongodb
+        networks:
+            - file-manager
+
     nginx:
         image: nginx:alpine
         restart: unless-stopped
@@ -77,7 +94,6 @@ services:
         ports:
           - "27017:27017"
         environment:
-            -
             - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
             - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
         networks:
