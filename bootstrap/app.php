@@ -25,5 +25,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api(append: [ForceJsonResponse::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->renderable(function (FileAlreadyExistsException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ], $e->getStatusCode());
+        });
     })->create();
