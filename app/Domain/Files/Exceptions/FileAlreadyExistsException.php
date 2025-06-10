@@ -8,13 +8,13 @@ use Shared\Enums\HttpStatus;
 class FileAlreadyExistsException extends Exception {
     public function __construct(
         private string $filename,
-        private int $statusCode = HttpStatus::BadRequest
+        private HttpStatus $statusCode = HttpStatus::BadRequest,
     )
     {
-        $this->message = 'The file '.$this->filename.' already exists';
+        parent::__construct('The file '.$this->filename.' already exists');
     }
 
-    public function getStatusCode(): int {
-        return $this->statusCode;
+    public function getStatusCode() {
+        return $this->statusCode->value;
     }
 }
