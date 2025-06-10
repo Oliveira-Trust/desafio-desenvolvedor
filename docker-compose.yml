@@ -5,6 +5,7 @@ services:
         restart: unless-stopped
         depends_on:
             - database
+            - mongodb
         working_dir: /var/www/
         volumes:
           - ./:/var/www
@@ -68,6 +69,17 @@ services:
             - POSTGRES_DB=${DB_DATABASE}
             - POSTGRES_USER=${DB_USERNAME}
             - POSTGRES_PASSWORD=${DB_PASSWORD}
+        networks:
+            - file-manager
+
+    mongodb:
+        image: mongo:8.0.10-noble
+        ports:
+          - "27027:27017"
+        environment:
+            - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+            - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
         networks:
             - file-manager
 
