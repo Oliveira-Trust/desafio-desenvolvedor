@@ -14,7 +14,7 @@ class CreateFileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'files' => ['required', 'file', 'min:1', 'max:3', 'extensions:csv,xls,xlsx'],
+            'file' => ['required', 'file', 'extensions:csv,xls,xlsx'],
         ];
     }
 }
