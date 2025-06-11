@@ -29,6 +29,10 @@ class FileService {
         $this->storage->put($path, $file);
     }
 
+    public function get($path): string {
+        return $this->storage->get($path);
+    }
+
     public function sendToQueue($path) {
         ProcessConsolidatedFile::dispatch($path);
     }
