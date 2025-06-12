@@ -30,6 +30,23 @@ services:
         networks:
             - file-manager
 
+    migration:
+        build:
+            context: .
+        restart: unless-stopped
+        command: php artisan migrate
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+            - /var/www/vendor
+        depends_on:
+            - application
+            - database
+            - redis
+            - mongodb
+        networks:
+            - file-manager
+
     nginx:
         image: nginx:alpine
         restart: unless-stopped
