@@ -25,7 +25,7 @@ final class CreateFileUseCase implements UseCase {
             throw new FileAlreadyExistsException($filename);
         }
 
-        $path = $this->service->store($filename, $data->file);
+        $this->service->store($filename, $data->file);
 
         $consolidatedFile = ConsolidatedFile::create(
             $filename,
