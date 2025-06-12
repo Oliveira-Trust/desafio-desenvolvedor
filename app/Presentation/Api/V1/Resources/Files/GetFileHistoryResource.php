@@ -9,7 +9,7 @@ class GetFileHistoryResource extends JsonResource {
     public function toArray(Request $request)
     {
         return [
-            '_id' => $this->_id,
+            'id' => $this->id,
             'filename' => $this->filename,
             'status' => $this->status,
             'createdAt' => $this->createdAt,
