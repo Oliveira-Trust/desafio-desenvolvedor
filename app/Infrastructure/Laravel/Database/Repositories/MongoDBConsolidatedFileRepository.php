@@ -6,6 +6,7 @@ use Exception;
 use Domain\Files\Entities\ConsolidatedFile;
 use Domain\Files\Repositories\ConsolidatedFileRepository;
 use Illuminate\Database\Connection;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
@@ -16,12 +17,14 @@ class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
         $this->conn = DB::connection('mongodb');
     }
 
-    public function createNew(ConsolidatedFile $data)
+    public function createNew(ConsolidatedFile $data): string
     {
-        return $this->conn->table('consolidated_files')->insert([
+        $data->createdAt = Date::now();
+        $data->updatedAt = null;
+
+        return $this->conn->table('consolidated_files')->insertGetId([
             'filename' => $data->filename,
             'status' => $data->status,
-            'registers' => $data->registers,
             'createdAt' => $data->createdAt,
             'updatedAt' => $data->updatedAt,
         ]);
