@@ -3,7 +3,6 @@
 namespace Application\Files\Strategies;
 
 use Exception;
-use Illuminate\Support\Facades\Storage;
 use Infrastructure\Laravel\Database\Repositories\MongoDBConsolidatedFileRepository;
 use React\EventLoop\Loop;
 use React\Stream\ReadableResourceStream;

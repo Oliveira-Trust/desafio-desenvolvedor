@@ -37,7 +37,7 @@ class ProcessConsolidatedFile implements ShouldQueue
 
         $strategy = match (strtolower($ext)) {
             'csv' => \Application\Files\Strategies\CSVProcessingStrategy::class,
-            'xlsx', 'xls' => \Application\Files\Strategies\ExcelProcessingStrategy::class,
+            'xlsx' => \Application\Files\Strategies\ExcelProcessingStrategy::class,
             default => throw new Exception('Strategy not implemented to file'),
         };
 
