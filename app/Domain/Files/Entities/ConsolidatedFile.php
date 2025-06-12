@@ -3,18 +3,16 @@
 namespace Domain\Files\Entities;
 
 use Domain\Files\Enums\ConsolidatedFileStatus;
-use Illuminate\Support\Facades\Date;
 
 class ConsolidatedFile {
-    public string $createdAt;
+    public string|null $createdAt = null;
 
-    public string|null $updatedAt;
+    public string|null $updatedAt = null;
 
     public function __construct(
         public string $filename,
         public string $path,
         public ConsolidatedFileStatus $status,
-        public array $registers,
     )
     {}
 
@@ -22,17 +20,12 @@ class ConsolidatedFile {
         string $filename,
         string $path,
         ConsolidatedFileStatus $status,
-        array $registers = [],
     ) {
         $consolidatedFile = new ConsolidatedFile(
             $filename,
             $path,
             $status,
-            $registers
         );
-
-        $consolidatedFile->createdAt = Date::now();
-        $consolidatedFile->updatedAt = null;
 
         return $consolidatedFile;
     }
