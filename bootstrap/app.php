@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Domain\Files\Exceptions\FileAlreadyExistsException;
 use Presentation\Api\V1\Middlewares\ForceJsonResponse;
+use Shared\Exceptions\HttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -26,6 +27,13 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->renderable(function (FileAlreadyExistsException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ], $e->getStatusCode());
+        });
+
+        $exceptions->renderable(function (HttpException $e) {
             return response()->json([
                 'status' => 'error',
                 'message' => $e->getMessage(),
