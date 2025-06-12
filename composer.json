@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.29",
         "mongodb/laravel-mongodb": "^5.4",
+        "openspout/openspout": "^4.30",
         "predis/predis": "^3.0",
         "react/event-loop": "^1.5",
         "react/stream": "^1.4",
