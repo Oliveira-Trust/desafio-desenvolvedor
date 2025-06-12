@@ -33,13 +33,13 @@ class FileController {
 
     public function searchContent(
         SearchFileContentRequest $request,
-        string $filenameOrId,
+        string $filename,
         SearchFileUseCase $usecase,
     ) {
         $attr = $request->query('s');
         $data = SearchFileContentData::from([
             's' => $attr,
-            'filenameOrId' => $filenameOrId
+            'filename' => $filename
         ]);
         $result = $usecase->execute($data);
 
