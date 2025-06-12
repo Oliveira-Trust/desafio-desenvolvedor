@@ -13,7 +13,7 @@ class SearchFileContentRequest extends FormRequest {
     public function rules(): array
     {
         return [
-            'attr' => ['required', 'string', 'min:3', 'max:30'],
+            's' => ['required', 'string', 'min:3', 'max:30'],
         ];
     }
 }

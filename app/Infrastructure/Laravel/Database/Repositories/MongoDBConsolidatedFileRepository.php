@@ -61,7 +61,7 @@ class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
         }
 
         $lines = array_map(function ($line) use ($filename) {
-            return ['source_file' => $filename, '$data' => $line];
+            return ['source_file' => $filename, 'data' => $line];
         }, $chunk);
 
         $this->conn->table('consolidated_files')

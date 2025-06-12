@@ -10,4 +10,5 @@ Route::get('/', function () {
 Route::prefix('files')->group(function () {
     Route::post('/', [FileController::class, 'storeFile']);
     Route::get('/', [FileController::class, 'getHistory']);
+    Route::get('/{fileNameOrId}', [FileController::class, 'searchContent']);
 });
