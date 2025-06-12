@@ -18,6 +18,16 @@ class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
         $this->conn = DB::connection('mongodb');
     }
 
+    public function getHistory(string|null $filename, string|null $date)
+    {
+        $query = $this->conn->table('consolidated_files');
+
+        if ($filename) $query->where('filename', '=', $filename);
+        if ($date) $query->whereDate('createdAt', '=', $date);
+
+        return $query->select()->get();
+    }
+
     public function createNew(ConsolidatedFile $data): string
     {
         $data->createdAt = Date::now();
@@ -50,13 +60,15 @@ class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
             throw new Exception('Consolidated file registry not found');
         }
 
+        $lines = array_map(function ($line) use ($filename) {
+            return ['source_file' => $filename, '$data' => $line];
+        }, $chunk);
+
         $this->conn->table('consolidated_files')
             ->select('_id')
             ->where('filename', '=', $filename)
             ->update(['updatedAt' => Date::now()]);
 
-        $this->conn->table('imported_data')->insert(
-            $chunk
-        );
+        $this->conn->table('imported_data')->insert($lines);
     }
 }
