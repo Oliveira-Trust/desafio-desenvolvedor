@@ -33,7 +33,6 @@ services:
     migration:
         build:
             context: .
-        restart: unless-stopped
         command: php artisan migrate
         working_dir: /var/www/
         volumes:
