@@ -37,9 +37,7 @@ final class ExcelProcessingStrategy implements ProcessingStrategy {
                 foreach ($sheet->getRowIterator() as $row) {
                     $cells = $row->toArray();
 
-                    if (empty($cells)) continue;
-
-                    if (empty($header)) {
+                    if (empty($this->header)) {
                         $this->header = $cells;
                         continue;
                     }

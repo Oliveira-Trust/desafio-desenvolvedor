@@ -4,6 +4,7 @@ namespace Infrastructure\Laravel\Database\Repositories;
 
 use Exception;
 use Domain\Files\Entities\ConsolidatedFile;
+use Domain\Files\Enums\ConsolidatedFileStatus;
 use Domain\Files\Repositories\ConsolidatedFileRepository;
 use Illuminate\Database\Connection;
 use Illuminate\Support\Facades\Date;
@@ -30,6 +31,15 @@ class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
         ]);
     }
 
+    public function updateStatus(string $filename,ConsolidatedFileStatus $status) {
+        return $this->conn->table('consolidated_files')->select('_id')
+            ->where('filename', '=', $filename)
+            ->update([
+                'status' => $status->value,
+                'updatedAt' => Date::now(),
+            ]);
+    }
+
     public function registerLine(string $filename, array $chunk)
     {
         $fileExists = $this->conn->table('consolidated_files')->select('_id')
@@ -39,6 +49,11 @@ class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
         if (!$fileExists) {
             throw new Exception('Consolidated file registry not found');
         }
+
+        $this->conn->table('consolidated_files')
+            ->select('_id')
+            ->where('filename', '=', $filename)
+            ->update(['updatedAt' => Date::now()]);
 
         $this->conn->table('imported_data')->insert(
             $chunk
