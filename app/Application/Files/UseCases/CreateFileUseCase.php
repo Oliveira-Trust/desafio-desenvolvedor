@@ -33,6 +33,7 @@ final class CreateFileUseCase implements UseCase {
             ConsolidatedFileStatus::PROCESSING,
         );
 
+        $this->repository->createNew($consolidatedFile);
         $this->service->sendToQueue($filename);
 
         return new CreateFileResource($consolidatedFile);

@@ -7,6 +7,7 @@ use Infrastructure\Laravel\Database\Repositories\MongoDBConsolidatedFileReposito
 use React\EventLoop\Loop;
 use React\Stream\ReadableResourceStream;
 use Clue\React\Csv\Decoder;
+use Domain\Files\Enums\ConsolidatedFileStatus;
 use Illuminate\Support\Facades\Log;
 
 final class CSVProcessingStrategy implements ProcessingStrategy {
@@ -68,11 +69,15 @@ final class CSVProcessingStrategy implements ProcessingStrategy {
                 Log::info("Insert rest chunk {$chunkSize}");
                 $this->repository->registerLine($filename, $chunk);
             }
+
+            $this->repository->updateStatus($filename, ConsolidatedFileStatus::COMPLETED);
+
             $this->clear();
             $loop->stop();
         });
 
-        $csv->on('error', function (Exception $e) use ($loop) {
+        $csv->on('error', function (Exception $e) use ($loop, $filename) {
+            $this->repository->updateStatus($filename, ConsolidatedFileStatus::COMPLETED_WITH_ERROR);
             Log::error('Erro on decoder CSV file.', ['error' => $e->getMessage()]);
             $this->clear();
             $loop->stop();

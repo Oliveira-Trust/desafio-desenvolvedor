@@ -2,6 +2,8 @@
 
 namespace Application\Files\Strategies;
 
+use Exception;
+use Domain\Files\Enums\ConsolidatedFileStatus;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Infrastructure\Laravel\Database\Repositories\MongoDBConsolidatedFileRepository;
@@ -22,50 +24,61 @@ final class ExcelProcessingStrategy implements ProcessingStrategy {
 
     public function run(string $filename, $resource): void
     {
-        $localPath = storage_path('app/private/temp/'.$filename);
-        $reader = new Reader();
+        try {
+            $localPath = storage_path('app/private/temp/'.$filename);
+            $reader = new Reader();
+            $storagePath = 'temp/'.$filename;
 
-        Storage::disk('local')->put('temp/'.$filename, $resource);
+            Storage::disk('local')->put($storagePath, $resource);
 
-        $reader->open($localPath);
+            $reader->open($localPath);
 
-        foreach($reader->getSheetIterator() as $sheet) {
-            foreach ($sheet->getRowIterator() as $row) {
-                $cells = $row->toArray();
+            foreach($reader->getSheetIterator() as $sheet) {
+                foreach ($sheet->getRowIterator() as $row) {
+                    $cells = $row->toArray();
 
-                if (empty($cells)) continue;
+                    if (empty($cells)) continue;
 
-                if (empty($header)) {
-                    $this->header = $cells;
-                    continue;
-                }
+                    if (empty($header)) {
+                        $this->header = $cells;
+                        continue;
+                    }
 
-                if (count($this->header) !== count($cells)) {
-                    Log::warning("Skipping line {$this->totalLines} due to column count mismatch.", [
-                        'filename' => $filename
-                    ]);
-                }
+                    if (count($this->header) !== count($cells)) {
+                        Log::warning("Skipping line {$this->totalLines} due to column count mismatch.", [
+                            'filename' => $filename
+                        ]);
+                    }
 
-                $rowData = array_combine($this->header, $cells);
-                $this->chunk[] = $rowData;
-                $this->totalLines++;
+                    $rowData = array_combine($this->header, $cells);
+                    $this->chunk[] = $rowData;
+                    $this->totalLines++;
 
-                if (count($this->chunk) >= $this->chunkSize) {
-                    $this->repository->registerLine($filename, $this->chunk);
-                    $this->chunk = [];
+                    if (count($this->chunk) >= $this->chunkSize) {
+                        $this->repository->registerLine($filename, $this->chunk);
+                        $this->chunk = [];
+                    }
                 }
             }
+
+            if (!empty($this->chunk)) {
+                $this->repository->registerLine($filename, $this->chunk);
+                $this->chunk = [];
+            }
+
+            $this->repository->updateStatus($filename, ConsolidatedFileStatus::COMPLETED);
+
+            Log::info("File process finished for {$filename}. Total data lines: {$this->totalLines}");
+            Storage::disk('local')->delete($storagePath);
+
+            $reader->close();
+        } catch (Exception $e) {
+            $this->repository->updateStatus(
+                $filename,
+                ConsolidatedFileStatus::COMPLETED_WITH_ERROR,
+            );
+            Log::error("Error on process file: {$e->getMessage()}");
         }
-
-        if (!empty($this->chunk)) {
-            $this->repository->registerLine($filename, $this->chunk);
-            $this->chunk = [];
-        }
-
-        Log::info("File process finished for {$filename}. Total data lines: {$this->totalLines}");
-
-        Storage::disk('local')->delete($localPath);
-        $reader->close();
     }
 
 }
