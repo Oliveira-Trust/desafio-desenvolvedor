@@ -18,6 +18,22 @@ class MongoDBConsolidatedFileRepository implements ConsolidatedFileRepository {
         $this->conn = DB::connection('mongodb');
     }
 
+    public function searchData(string $filename, string $attrValue)
+    {
+        $fileExists = $this->conn->table('consolidated_files')
+            ->where('filename', '=', $filename)
+            ->first();
+
+        if (!$fileExists) return null;
+
+        return $this->conn->table('imported_data')
+            ->where('source_file', '=', $fileExists->filename)
+            ->where(function ($query) use ($attrValue) {
+                $query->where('data.TckrSymb', '=', $attrValue)
+                    ->orWhere('data.RptDt', '=', $attrValue);
+            })->first();
+    }
+
     public function getHistory(string|null $filename, string|null $date)
     {
         $query = $this->conn->table('consolidated_files');
