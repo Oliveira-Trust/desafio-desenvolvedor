@@ -2,12 +2,13 @@
 
 namespace Domain\Files\Entities;
 
+use Carbon\Carbon;
 use Domain\Files\Enums\ConsolidatedFileStatus;
 
 class ConsolidatedFile {
-    public string|null $createdAt = null;
+    public Carbon|null $createdAt = null;
 
-    public string|null $updatedAt = null;
+    public Carbon|null $updatedAt = null;
 
     public function __construct(
         public string $filename,
