@@ -2,11 +2,10 @@
 
 namespace Presentation\Api\V1\Controllers;
 
-use Application\Files\Data\CreateFileData;
-use Application\Files\UseCases\CreateFileUseCase;
-use Application\Files\UseCases\GetHistoryUseCase;
-use Illuminate\Http\Request;
+use Application\Files\Data\{CreateFileData, GetHistoryData};
+use Application\Files\UseCases\{CreateFileUseCase ,GetHistoryUseCase};
 use Presentation\Api\V1\Requests\Files\CreateFileRequest;
+use Presentation\Api\V1\Requests\Files\GetFileHistoryRequest;
 
 class FileController {
     public function storeFile(
@@ -20,7 +19,14 @@ class FileController {
         return $result;
     }
 
-    public function getHistory(Request $request, GetHistoryUseCase $usecase) {
-        // TODO
+    public function getHistory(
+        GetFileHistoryRequest $request,
+        GetHistoryUseCase $usecase,
+    ) {
+        $requestData = $request->only(['filename', 'date']);
+        $data = GetHistoryData::from($requestData );
+        $result = $usecase->execute($data);
+
+        return $result;
     }
 }
