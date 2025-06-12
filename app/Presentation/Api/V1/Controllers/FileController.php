@@ -4,6 +4,8 @@ namespace Presentation\Api\V1\Controllers;
 
 use Application\Files\Data\CreateFileData;
 use Application\Files\UseCases\CreateFileUseCase;
+use Application\Files\UseCases\GetHistoryUseCase;
+use Illuminate\Http\Request;
 use Presentation\Api\V1\Requests\Files\CreateFileRequest;
 
 class FileController {
@@ -16,5 +18,9 @@ class FileController {
         $result = $usecase->execute($data);
 
         return $result;
+    }
+
+    public function getHistory(Request $request, GetHistoryUseCase $usecase) {
+        // TODO
     }
 }
