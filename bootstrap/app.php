@@ -5,6 +5,7 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Support\Facades\Route;
 use Domain\Files\Exceptions\FileAlreadyExistsException;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use Presentation\Api\V1\Middlewares\ForceJsonResponse;
 use Shared\Exceptions\HttpException;
 
@@ -22,7 +23,10 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->api(append: [ForceJsonResponse::class]);
+        $middleware->api(append: [
+            ForceJsonResponse::class,
+            EnsureFrontendRequestsAreStateful::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->renderable(function (FileAlreadyExistsException $e) {
