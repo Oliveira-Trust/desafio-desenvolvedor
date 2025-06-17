@@ -1,52 +1,97 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
- 
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+````markdown
+# Desafio Desenvolvedor - API de Instrumentos Financeiros
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+![Python](https://img.shields.io/badge/Python-3.12%2B-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-green.svg)
+![Docker](https://img.shields.io/badge/Docker-25%2B-blue.svg)
+![Redis](https://img.shields.io/badge/Redis-7%2B-red.svg)
+![Pytest](https://img.shields.io/badge/Pytest-8%2B-brightgreen.svg)
+![Status](https://img.shields.io/badge/status-concluído-brightgreen)
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+Este repositório contém a solução para o **Desafio de Desenvolvedor da Oliveira Trust**. O projeto consiste em uma API RESTful para processar, armazenar e consultar dados de instrumentos financeiros.
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+A aplicação foi desenvolvida em Python, utilizando o framework FastAPI, e estruturada com foco em **Clean Code** e **Clean Architecture**. O ambiente é totalmente containerizado com Docker, inclui um sistema de cache com Redis para otimização de performance e uma suíte de testes automatizados com Pytest para garantir a qualidade do código.
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+## ✨ Principais Funcionalidades
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+- **Upload de Arquivos:** Endpoint para receber arquivos (`.csv`, `.xlsx`) com prevenção de duplicatas.
+- **Histórico de Uploads:** Endpoint para consultar os arquivos processados, com filtros por nome e data.
+- **Busca de Instrumentos:** Endpoint robusto para consultar os dados, com filtros e paginação.
+- **Cache de Consultas:** As buscas de instrumentos são cacheadas com Redis para respostas mais rápidas em requisições repetidas.
+- **Testes Automatizados:** Suíte de testes unitários com `pytest` para garantir a confiabilidade da lógica de negócio.
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+## 🏛️ Arquitetura do Projeto
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição (CAJU);
-- Vale Alimentação (CAJU);
-- Vale Transporte ou Vale Combustível (CAJU);
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+A aplicação segue os princípios da **Arquitetura Limpa (Clean Architecture)**, com responsabilidades divididas em camadas (`domain`, `application`, `infrastructure`) para garantir um código desacoplado, testável e de fácil manutenção.
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+## 🚀 Tecnologias Utilizadas
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+- **Linguagem:** Python 3.12+
+- **Framework da API:** FastAPI
+- **Processamento de Dados:** Pandas & OpenPyXL
+- **Banco de Dados:** SQLite (via SQLAlchemy Core)
+- **Cache:** Redis
+- **Testes:** Pytest, Pytest-Mock, HTTPX
+- **Containerização:** Docker & Docker Compose
+- **Servidor ASGI:** Uvicorn
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+## 🚀 Como Executar
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga3.md
+### Executando a Aplicação
+
+A maneira mais recomendada de executar o projeto é com Docker, pois ele gerencia a aplicação e o serviço de Redis automaticamente.
+
+**Pré-requisitos:**
+
+- Docker
+- Docker Compose
+
+**Execução:**
+Na raiz do projeto, execute o seguinte comando:
+
+```bash
+docker compose up --build
+```
+````
+
+Isso irá construir as imagens e iniciar os contêineres da API e do Redis. A aplicação estará disponível em `http://127.0.0.1:8000`.
+
+Para parar a aplicação, pressione `Ctrl + C` no terminal e depois execute `docker compose down`.
+
+### Executando os Testes
+
+**Opção 1: Com Docker (Recomendado)**
+Com a aplicação rodando (`docker compose up`), abra um **segundo terminal** e execute:
+
+```bash
+docker compose exec api pytest
+```
+
+Este comando executa o `pytest` dentro do contêiner da `api` que já está em execução.
+
+**Opção 2: Localmente**
+Se você instalou as dependências localmente, basta ativar seu ambiente virtual e rodar:
+
+```bash
+# Ativar ambiente virtual (se não estiver ativo)
+source venv/bin/activate
+
+# Rodar os testes
+pytest
+```
+
+## 📚 Documentação e Uso da API
+
+A documentação interativa da API (Swagger UI) é gerada automaticamente e pode ser acessada em:
+
+- **Swagger UI:** [http://127.0.0.1:8000/docs](https://www.google.com/search?q=http://127.0.0.1:8000/docs)
+
+Nesta página, é possível visualizar todos os endpoints e testá-los diretamente pelo navegador.
+
+Feito por **[Gabriell Maia do Amaral Duarte]**
+
+- **LinkedIn:** [https://www.linkedin.com/in/biellmaaia/]
+- **GitHub:** [https://github.com/maia2a]
+
+<!-- end list -->
+

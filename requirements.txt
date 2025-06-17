@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+pandas
+sqlalchemy
+python-multipart
+openpyxl
+pytest 
+pytest-mock 
+httpx
+redis
