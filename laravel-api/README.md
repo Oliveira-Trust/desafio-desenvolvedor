@@ -2,12 +2,27 @@
 
 ## Visão geral
 
-Este projeto é um sistema Laravel desenvolvido para o processamento eficiente de arquivos CSV e Excel contendo dados de instrumentos financeiros. O sistema utiliza filas assíncronas e processamento em lote para garantir alta performance e escalabilidade.
+Este projeto é um sistema Laravel desenvolvido para o processamento eficiente de arquivos CSV e Excel contendo dados de instrumentos financeiros. O sistema utiliza filas assíncronas, processamento em lote e **autenticação por token** para garantir alta performance, escalabilidade e segurança.
+
+## ⚠️ **AUTENTICAÇÃO OBRIGATÓRIA**
+
+**IMPORTANTE**: Todas as 3 funcionalidades principais do sistema (**Upload de Arquivos**, **Histórico de Upload** e **Busca de Conteúdo**) requerem autenticação via token Bearer. É necessário realizar login ou registro antes de consumir esses endpoints.
+
+### Como Autenticar:
+1. **Registre um novo usuário** ou **faça login** com credenciais existentes
+2. **Obtenha o token** retornado na resposta
+3. **Inclua o token** no header `Authorization: Bearer {token}` em todas as requisições
 
 ## Funcionalidades Principais
 
-### 1. Upload de Arquivos
-- **Endpoint**: `POST /api/upload`
+### 🔐 **Autenticação e Registro**
+- **Registro**: `POST /api/register` - Criar nova conta de usuário
+- **Login**: `POST /api/login` - Autenticar e obter token de acesso
+- **Logout**: `POST /api/logout` - Invalidar token atual (requer auth)
+- **Dados do Usuário**: `GET /api/user` - Obter informações do usuário logado (requer auth)
+
+### 1. Upload de Arquivos 🔒
+- **Endpoint**: `POST /api/upload` **(REQUER AUTENTICAÇÃO)**
 - **Formatos Suportados**: CSV (.csv), Excel (.xlsx, .xls)
 - **Validação Avançada**: Verifica MIME types e extensões para evitar uploads maliciosos
 - **Detecção de Duplicatas**: Previne reprocessamento usando hash SHA256 do arquivo
@@ -21,16 +36,16 @@ Este projeto é um sistema Laravel desenvolvido para o processamento eficiente d
 - **Rastreabilidade**: Cada registro vinculado ao hash do arquivo de origem
 - **Limpeza de Cache**: Após uma nova entrada, o cache geral é limpo para garantir que as informações mais recentes sejam retornadas.
 
-### 2. Histórico de upload de arquivo
-- **Endpoint**: `GET /api/history`
+### 2. Histórico de upload de arquivo 🔒
+- **Endpoint**: `GET /api/history` **(REQUER AUTENTICAÇÃO)**
 - **Parâmetros de busca**: 
 filename → InstrumentsConsolidatedFile_20240823.csv
 date → 2025-08-23 (yyyy-mm-dd)
 - **Obrigatoridade dos parâmetros**: É necessário ao menos 1 dos parâmetros para que possa ser realizada a consulta
 - **Lógica de Cache**: Para evitar consultas em excesso para a mesma requisição, foi estabelecido cache de 10min
 
-### 3. Buscar conteúdo do arquivo
-- **Endpoint**: `GET /api/file-contents`
+### 3. Buscar conteúdo do arquivo 🔒
+- **Endpoint**: `GET /api/file-contents` **(REQUER AUTENTICAÇÃO)**
 - **Parâmetros de busca:**: 
 TckrSymb → AMZO34
 RptDt → 2024-08-22
@@ -165,13 +180,193 @@ QUEUE_CONNECTION=redis
 
 ## API Reference
 
-### POST /api/upload
+### 🔐 **AUTENTICAÇÃO**
+
+#### POST /api/register
+
+**Descrição**: Registra um novo usuário no sistema
+
+**Headers**:
+```
+Content-Type: application/json
+```
+
+**Body**:
+```json
+{
+    "name": "João Silva",
+    "email": "joao@exemplo.com",
+    "password": "123456",
+    "password_confirmation": "123456"
+}
+```
+
+**Responses**:
+
+**Sucesso (201)**:
+```json
+{
+    "success": true,
+    "message": "Usuário registrado com sucesso",
+    "data": {
+        "user": {
+            "id": 1,
+            "name": "João Silva",
+            "email": "joao@exemplo.com",
+            "email_verified_at": null,
+            "created_at": "2025-08-24T14:30:00.000000Z",
+            "updated_at": "2025-08-24T14:30:00.000000Z"
+        },
+        "token": "1|abcdef123456789...",
+        "token_type": "Bearer"
+    }
+}
+```
+
+**Erro de Validação (422)**:
+```json
+{
+    "success": false,
+    "message": "Dados de validação inválidos",
+    "errors": {
+        "email": ["Este email já está sendo utilizado."],
+        "password": ["A confirmação da senha não confere."]
+    }
+}
+```
+
+#### POST /api/login
+
+**Descrição**: Autentica um usuário e retorna token de acesso
+
+**Headers**:
+```
+Content-Type: application/json
+```
+
+**Body**:
+```json
+{
+    "email": "joao@exemplo.com",
+    "password": "123456"
+}
+```
+
+**Responses**:
+
+**Sucesso (200)**:
+```json
+{
+    "success": true,
+    "message": "Login realizado com sucesso",
+    "data": {
+        "user": {
+            "id": 1,
+            "name": "João Silva",
+            "email": "joao@exemplo.com",
+            "email_verified_at": null,
+            "created_at": "2025-08-24T14:30:00.000000Z",
+            "updated_at": "2025-08-24T14:30:00.000000Z"
+        },
+        "token": "2|xyz789123456...",
+        "token_type": "Bearer"
+    }
+}
+```
+
+**Credenciais Inválidas (401)**:
+```json
+{
+    "success": false,
+    "message": "Credenciais inválidas"
+}
+```
+
+**Erro de Validação (422)**:
+```json
+{
+    "success": false,
+    "message": "Dados de validação inválidos",
+    "errors": {
+        "email": ["O campo email é obrigatório."],
+        "password": ["O campo senha deve ter pelo menos 6 caracteres."]
+    }
+}
+```
+
+#### POST /api/logout 🔒
+
+**Descrição**: Faz logout e invalida o token atual
+
+**Headers**:
+```
+Content-Type: application/json
+Authorization: Bearer {token}
+```
+
+**Responses**:
+
+**Sucesso (200)**:
+```json
+{
+    "success": true,
+    "message": "Logout realizado com sucesso"
+}
+```
+
+**Não autorizado (401)**:
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+#### GET /api/user 🔒
+
+**Descrição**: Retorna os dados do usuário autenticado
+
+**Headers**:
+```
+Content-Type: application/json
+Authorization: Bearer {token}
+```
+
+**Responses**:
+
+**Sucesso (200)**:
+```json
+{
+    "success": true,
+    "data": {
+        "id": 1,
+        "name": "João Silva",
+        "email": "joao@exemplo.com",
+        "email_verified_at": null,
+        "created_at": "2025-08-24T14:30:00.000000Z",
+        "updated_at": "2025-08-24T14:30:00.000000Z"
+    }
+}
+```
+
+**Não autorizado (401)**:
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+---
+
+### 📁 **ENDPOINTS PRINCIPAIS** (Todos requerem autenticação)
+
+#### POST /api/upload 🔒
 
 **Descrição**: Upload e processamento de arquivo de instrumentos financeiros
 
 **Headers**:
 ```
 Content-Type: multipart/form-data
+Authorization: Bearer {token}
 ```
 
 **Body**:
@@ -197,6 +392,13 @@ file: [arquivo CSV ou Excel]
 }
 ```
 
+**Não autorizado (401)**:
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
 **Arquivo Duplicado (409)**:
 ```json
 {
@@ -204,13 +406,14 @@ file: [arquivo CSV ou Excel]
 }
 ```
 
-### GET /api/history
+### GET /api/history 🔒
 
 **Descrição**: Busca por uploads de arquivos realizados
 
 **Headers**:
 ```
 Content-Type: application/json
+Authorization: Bearer {token}
 ```
 
 **Params**:
@@ -255,13 +458,21 @@ date: [data no formato yyyy-mm-dd]
 }
 ```
 
-### GET /api/file-contents
+**Não autorizado (401)**:
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### GET /api/file-contents 🔒
 
 **Descrição**: Busca o conteúdo de arquivos, direto do MongoDB, utilizando paginação em caso de falta de parâmetros.
 
 **Headers**:
 ```
 Content-Type: application/json
+Authorization: Bearer {token}
 ```
 
 **Params**:
@@ -414,6 +625,13 @@ RptDt: [data do relatório, ex: 2025-08-20]
 }
 ```
 
+**Não autorizado (401)**:
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
 ## Estrutura de Dados
 
 ### Campos do Arquivo de Entrada
@@ -461,8 +679,15 @@ php artisan config:clear
 
 ## Segurança
 
+### Sistema de Autenticação
+- **Laravel Sanctum**: Tokens de API seguros
+- **Autenticação Obrigatória**: Todas as funcionalidades principais protegidas
+- **Tokens Personalizados**: Cada usuário pode ter múltiplos tokens ativos
+- **Logout Seguro**: Invalidação individual de tokens
+
 ### Validações Implementadas
 - Verificação de MIME types
 - Validação de extensões de arquivo
 - Proteção contra uploads maliciosos
 - Hash SHA256 para integridade
+- Autenticação via Bearer Token
