@@ -23,6 +23,7 @@ class FileUploadController extends Controller
         }
 
         $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
         $mime = $file->getMimeType();
         $extension = strtolower($file->getClientOriginalExtension());
         
@@ -35,15 +36,18 @@ class FileUploadController extends Controller
         if (UploadedFile::where('file_hash', $hash)->exists()) {
             return response()->json(['error' => 'Arquivo já enviado'], 409);
         }
-        
-        $filePath = $file->storeAs('uploads', $file->getClientOriginalName());
+
+        $filePath = $file->storeAs('uploads', $filename);
 
         UploadedFile::create([
-            'file_name'   => $file->getClientOriginalName(),
+            'file_name'   => $filename,
             'file_hash'   => $hash,
         ]);
         
         ProcessUploadedFile::dispatch(storage_path('app/private/'.$filePath), $extension, $hash);
+
+        // Limpa cache por conta de novas entradas
+        Cache::flush();
 
         return response()->json(['message' => 'Upload realizado e enviado para processamento']);
     }
@@ -57,18 +61,17 @@ class FileUploadController extends Controller
             return response()->json(['error' => 'É necessário informar pelo menos um dos parâmetros: filename ou date'], 422);
         }
 
-        $query = UploadedFile::query();
+        $cacheKey = 'history:' . ($filename ?? 'any') . ':' . ($date ?? 'any');
 
-        if ($filename) {
-            // "buscar um envio especifico", logo, vamos buscar pelo nome exato do arquivo
-            $query->where('file_name', '=', $filename);
-        }   
-
-        if ($date) {
-            $query->whereDate('created_at', $date);
-        }
-
-        $files = $query->orderBy('created_at', 'desc')->get();
+        // 600 = 10 minutos
+        $files = Cache::remember($cacheKey, 600, function () use ($filename, $date) {
+            return UploadedFile::query()
+                // "buscar um envio especifico", logo, vamos buscar pelo nome exato do arquivo
+                ->when($filename, fn($query) => $query->where('file_name', $filename))
+                ->when($date, fn($query) => $query->whereDate('created_at', $date))
+                ->latest('created_at')
+                ->get();
+        });
 
         if ($files->isEmpty()) {
             return response()->json(['message' => 'Nenhum histórico de uploads encontrado'], 404);
@@ -89,11 +92,16 @@ class FileUploadController extends Controller
         $TckrSymb = $request->query('TckrSymb');
         $RptDt = $request->query('RptDt');
 
+        $cacheKey = 'fileContents:' . ($TckrSymb ?? 'any') . ':' . ($RptDt ?? 'any');
+
         if($TckrSymb && $RptDt) {
             // Não será paginado
-            $produtos = ProductsList::where('TckrSymb', $TckrSymb)
-                        ->where('RptDt', $RptDt)
-                        ->get();
+            // 600 = 10 minutos
+            $produtos = Cache::remember($cacheKey, 600, function () use ($TckrSymb, $RptDt) {
+                return ProductsList::where('TckrSymb', $TckrSymb)
+                            ->where('RptDt', $RptDt)
+                            ->get();
+            });
 
             if($produtos->isEmpty()) {
                 return response()->json(['message' => 'Nenhum conteúdo encontrado'], 404);
@@ -104,7 +112,10 @@ class FileUploadController extends Controller
         } else {
             if(empty($TckrSymb) && empty($RptDt)) {
                 // Paginação implementada
-                $produtos = ProductsList::paginate(20);
+                // 600 = 10 minutos
+                $produtos = Cache::remember($cacheKey, 600, function () {
+                    return ProductsList::paginate(20);
+                });
     
                 if($produtos->isEmpty()) {
                     return response()->json(['message' => 'Nenhum conteúdo encontrado'], 404);
@@ -116,7 +127,7 @@ class FileUploadController extends Controller
                 );
     
                 return response()->json($response, 200);
-                
+
             } else {
                 return response()->json(['error' => 'É necessário informar os 2 parâmetros: TckrSymb e RptDt; Para busca precisa'], 422);
             }
