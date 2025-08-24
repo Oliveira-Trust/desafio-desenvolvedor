@@ -28,7 +28,7 @@ date → 2025-08-23 (yyyy-mm-dd)
 - **Obrigatoridade dos parâmetros**: É necessário ao menos 1 dos parâmetros para que possa ser realizada a consulta
 
 ### 3. Buscar conteúdo do arquivo
-- **Endpoint**: `GET /api/conteudo`
+- **Endpoint**: `GET /api/file-contents`
 - **Parâmetros de busca:**: 
 TckrSymb → AMZO34
 RptDt → 2024-08-22
@@ -250,6 +250,165 @@ date: [data no formato yyyy-mm-dd]
 ```json
 {
     "error": "É necessário informar pelo menos um dos parâmetros: filename ou date"
+}
+```
+
+### GET /api/file-contents
+
+**Descrição**: Busca o conteúdo de arquivos, direto do MongoDB, utilizando paginação em caso de falta de parâmetros.
+
+**Headers**:
+```
+Content-Type: application/json
+```
+
+**Params**:
+```
+TckrSymb: [símbolo do ticker, ex: 003H11]
+RptDt: [data do relatório, ex: 2025-08-20]
+```
+
+**Responses**:
+
+**Sucesso (200)**: (Busca específica)
+```json
+{
+    "message": "Listagem de conteúdos específicos",
+    "data": [
+        {
+            "RptDt": "2025-08-20",
+            "TckrSymb": "003H11",
+            "Asst": "003H",
+            "AsstDesc": "003H",
+            "SgmtNm": "CASH",
+            "MktNm": "EQUITY-CASH",
+            "SctyCtgyNm": "FUNDS",
+            "XprtnDt": "",
+            "XprtnCd": "",
+            "TradgStartDt": "9999-12-31",
+            "TradgEndDt": "9999-12-31",
+            "BaseCd": "",
+            "ConvsCritNm": "",
+            "MtrtyDtTrgtPt": "",
+            "ReqrdConvsInd": "",
+            "ISIN": "BR003HCTF006",
+            "CFICd": "CICGRY",
+            ...
+            "DstrbtnId": "100",
+            "PricFctr": "1",
+            "DaysToSttlm": "2",
+            "SrsTpNm": "",
+            "PrtcnFlg": "",
+            "AutomtcExrcInd": "",
+            "SpcfctnCd": "CI",
+            "CrpnNm": "KINEA CO-INVESTIMENTO FDO INV IMOB",
+            "CorpActnStartDt": "9999-12-31",
+            "CtdyTrtmntTpNm": "FUNGIBLE",
+            "MktCptlstn": "15000",
+            "CorpGovnLvlNm": "",
+            "file_hash": "d18cf977c76bee456a8b49bca2a3920c0a41c52c0c4079d93c41c4c79365c742",
+            "id": "68ab1aa4837380df2b01bf02"
+        }
+    ]
+}
+```
+
+**Sucesso (200)**: (Listagem sem parâmetros)
+```json
+{
+    "message": "Listagem de conteúdos paginada",
+    "current_page": 1,
+    "data": [
+        {
+            "RptDt": "2025-08-20",
+            "TckrSymb": "003H11",
+            "Asst": "003H",
+            "AsstDesc": "003H",
+            "SgmtNm": "CASH",
+            "MktNm": "EQUITY-CASH",
+            "SctyCtgyNm": "FUNDS",
+            "XprtnDt": "",
+            "XprtnCd": "",
+            "TradgStartDt": "9999-12-31",
+            "TradgEndDt": "9999-12-31",
+            "BaseCd": "",
+            "ConvsCritNm": "",
+            "MtrtyDtTrgtPt": "",
+            "ReqrdConvsInd": "",
+            "ISIN": "BR003HCTF006",
+            "CFICd": "CICGRY",
+            ...
+            "DstrbtnId": "100",
+            "PricFctr": "1",
+            "DaysToSttlm": "2",
+            "SrsTpNm": "",
+            "PrtcnFlg": "",
+            "AutomtcExrcInd": "",
+            "SpcfctnCd": "CI",
+            "CrpnNm": "KINEA CO-INVESTIMENTO FDO INV IMOB",
+            "CorpActnStartDt": "9999-12-31",
+            "CtdyTrtmntTpNm": "FUNGIBLE",
+            "MktCptlstn": "15000",
+            "CorpGovnLvlNm": "",
+            "file_hash": "d18cf977c76bee456a8b49bca2a3920c0a41c52c0c4079d93c41c4c79365c742",
+            "id": "68ab1aa4837380df2b01bf02"
+        },
+        {
+            "RptDt": "2025-08-20",
+            "TckrSymb": "0FEA11",
+            "Asst": "0FEA",
+            "AsstDesc": "0FEA",
+            "SgmtNm": "CASH",
+            "MktNm": "EQUITY-CASH",
+            "SctyCtgyNm": "FUNDS",
+            "XprtnDt": "",
+            "XprtnCd": "",
+            "TradgStartDt": "9999-12-31",
+            "TradgEndDt": "9999-12-31",
+            "BaseCd": "",
+            "ConvsCritNm": "",
+            "MtrtyDtTrgtPt": "",
+            "ReqrdConvsInd": "",
+            "ISIN": "BR0FEACTF006",
+            "CFICd": "CICGRY",
+            ...
+            "DstrbtnId": "100",
+            "PricFctr": "1",
+            "DaysToSttlm": "2",
+            "SrsTpNm": "",
+            "PrtcnFlg": "",
+            "AutomtcExrcInd": "",
+            "SpcfctnCd": "CI",
+            "CrpnNm": "SPIM FUNDO DE INVESTIMENTO IMOBILI?RIO",
+            "CorpActnStartDt": "9999-12-31",
+            "CtdyTrtmntTpNm": "FUNGIBLE",
+            "MktCptlstn": "1631616",
+            "CorpGovnLvlNm": "",
+            "file_hash": "d18cf977c76bee456a8b49bca2a3920c0a41c52c0c4079d93c41c4c79365c742",
+            "id": "68ab1aa4837380df2b01bf03"
+        },
+        ...
+    ],
+    "next_page_url": "http://127.0.0.1:8000/api/file-contents?page=2",
+    "path": "http://127.0.0.1:8000/api/file-contents",
+    "per_page": 20,
+    "prev_page_url": null,
+    "to": 20,
+    "total": 100874
+}
+```
+
+**Arquivo Duplicado (404)**:
+```json
+{
+    "message": "Nenhum conteúdo encontrado"
+}
+```
+
+**Erro de Validação (422)**:
+```json
+{
+    "error": "É necessário informar os 2 parâmetros: TckrSymb e RptDt; Para busca precisa"
 }
 ```
 
