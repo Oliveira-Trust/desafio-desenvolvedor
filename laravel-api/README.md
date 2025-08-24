@@ -24,7 +24,7 @@ Este projeto é um sistema Laravel desenvolvido para o processamento eficiente d
 - **Endpoint**: `GET /api/history`
 - **Parâmetros de busca**: 
 filename → InstrumentsConsolidatedFile_20240823.csv
-date → 2025-08-23
+date → 2025-08-23 (yyyy-mm-dd)
 - **Obrigatoridade dos parâmetros**: É necessário ao menos 1 dos parâmetros para que possa ser realizada a consulta
 
 ### 3. Buscar conteúdo do arquivo
@@ -199,6 +199,57 @@ file: [arquivo CSV ou Excel]
 ```json
 {
     "error": "Arquivo já enviado"
+}
+```
+
+### GET /api/history
+
+**Descrição**: Busca por uploads de arquivos realizados
+
+**Headers**:
+```
+Content-Type: application/json
+```
+
+**Params**:
+```
+filename: [nome exato do arquivo com extensão]
+date: [data no formato yyyy-mm-dd]
+```
+
+**Responses**:
+
+**Sucesso (200)**:
+```json
+{
+    "message": "Histórico de uploads",
+    "filters": {
+        "filename": "InstrumentsConsolidatedFile_20250820_1.csv",
+        "date": "2025-08-24"
+    },
+    "data": [
+        {
+            "id": 5,
+            "file_name": "InstrumentsConsolidatedFile_20250820_1.csv",
+            "file_hash": "d18cf977c76bee456a8b49bca2a3920c0a41c52c0c4079d93c41c4c79365c742",
+            "created_at": "2025-08-24T13:58:53.000000Z",
+            "updated_at": "2025-08-24T13:58:53.000000Z"
+        }
+    ]
+}
+```
+
+**Arquivo Duplicado (404)**:
+```json
+{
+    "message": "Nenhum histórico de uploads encontrado"
+}
+```
+
+**Erro de Validação (422)**:
+```json
+{
+    "error": "É necessário informar pelo menos um dos parâmetros: filename ou date"
 }
 ```
 
