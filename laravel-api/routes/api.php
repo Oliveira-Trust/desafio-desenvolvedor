@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/upload', [FileUploadController::class, 'upload']);
+Route::get('/history', [FileUploadController::class, 'history']);

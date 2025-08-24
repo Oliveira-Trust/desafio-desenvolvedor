@@ -47,4 +47,40 @@ class FileUploadController extends Controller
         return response()->json(['message' => 'Upload realizado e enviado para processamento']);
     }
 
+    public function history(Request $request)
+    {
+        $filename = $request->query('filename');
+        $date = $request->query('date'); // yyyy-mm-dd
+
+        if (!$filename && !$date) {
+            return response()->json(['error' => 'É necessário informar pelo menos um dos parâmetros: filename ou date'], 422);
+        }
+
+        $query = UploadedFile::query();
+
+        if ($filename) {
+            // "buscar um envio especifico", logo, vamos buscar pelo nome exato do arquivo
+            $query->where('file_name', '=', $filename);
+        }   
+
+        if ($date) {
+            $query->whereDate('created_at', $date);
+        }
+
+        $files = $query->orderBy('created_at', 'desc')->get();
+
+        if ($files->isEmpty()) {
+            return response()->json(['message' => 'Nenhum histórico de uploads encontrado'], 404);
+        }
+
+        return response()->json([
+            'message' => 'Histórico de uploads',
+            'filters' => [
+                'filename' => $filename,
+                'date' => $date,
+            ],
+            'data' => $files
+        ]);
+    }
+
 }
