@@ -19,6 +19,7 @@ Este projeto é um sistema Laravel desenvolvido para o processamento eficiente d
 - **Modelo**: `ProductsList` com 47 campos específicos para instrumentos financeiros
 - **Insert em Lote**: Otimização de performance com inserções bulk
 - **Rastreabilidade**: Cada registro vinculado ao hash do arquivo de origem
+- **Limpeza de Cache**: Após uma nova entrada, o cache geral é limpo para garantir que as informações mais recentes sejam retornadas.
 
 ### 2. Histórico de upload de arquivo
 - **Endpoint**: `GET /api/history`
@@ -26,6 +27,7 @@ Este projeto é um sistema Laravel desenvolvido para o processamento eficiente d
 filename → InstrumentsConsolidatedFile_20240823.csv
 date → 2025-08-23 (yyyy-mm-dd)
 - **Obrigatoridade dos parâmetros**: É necessário ao menos 1 dos parâmetros para que possa ser realizada a consulta
+- **Lógica de Cache**: Para evitar consultas em excesso para a mesma requisição, foi estabelecido cache de 10min
 
 ### 3. Buscar conteúdo do arquivo
 - **Endpoint**: `GET /api/file-contents`
@@ -34,7 +36,7 @@ TckrSymb → AMZO34
 RptDt → 2024-08-22
 - **Obrigatoridade dos parâmetros**: É opcional enviar parâmetros
 - **Paginação**: Em caso de falta de parâmetro, paginação será implementada para evitar timeout
-- **Lógica de Cache**: Para evitar consultas em excesso para a mesma requisição
+- **Lógica de Cache**: Para evitar consultas em excesso para a mesma requisição foi estabelecido cache de 10min
 - **O retorno esperado deve conter no mínimo essas informações**:
 ```
 {
