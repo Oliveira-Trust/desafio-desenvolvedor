@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/upload', [FileUploadController::class, 'upload']);
 Route::get('/history', [FileUploadController::class, 'history']);
+Route::get('/file-contents', [FileUploadController::class, 'fileContents']);

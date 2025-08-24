@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cache;
 use App\Models\UploadedFile;
+use App\Models\ProductsList;
 use App\Jobs\ProcessUploadedFile;
 
 class FileUploadController extends Controller
@@ -83,4 +84,42 @@ class FileUploadController extends Controller
         ]);
     }
 
+    public function fileContents(Request $request) 
+    {
+        $TckrSymb = $request->query('TckrSymb');
+        $RptDt = $request->query('RptDt');
+
+        if($TckrSymb && $RptDt) {
+            // Não será paginado
+            $produtos = ProductsList::where('TckrSymb', $TckrSymb)
+                        ->where('RptDt', $RptDt)
+                        ->get();
+
+            if($produtos->isEmpty()) {
+                return response()->json(['message' => 'Nenhum conteúdo encontrado'], 404);
+            }
+
+            return response()->json(['message' => 'Listagem de conteúdos específicos', 'data' => $produtos], 200);
+
+        } else {
+            if(empty($TckrSymb) && empty($RptDt)) {
+                // Paginação implementada
+                $produtos = ProductsList::paginate(20);
+    
+                if($produtos->isEmpty()) {
+                    return response()->json(['message' => 'Nenhum conteúdo encontrado'], 404);
+                }
+    
+                $response = array_merge(
+                    ['message' => 'Listagem de conteúdos paginada'],
+                    $produtos->toArray(),
+                );
+    
+                return response()->json($response, 200);
+                
+            } else {
+                return response()->json(['error' => 'É necessário informar os 2 parâmetros: TckrSymb e RptDt; Para busca precisa'], 422);
+            }
+        }
+    }
 }
