@@ -13,6 +13,7 @@
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
+        "mongodb/laravel-mongodb": "^5.4",
         "predis/predis": "^3.2",
         "prettus/l5-repository": "^2.10"
     },

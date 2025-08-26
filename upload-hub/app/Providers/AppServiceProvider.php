@@ -16,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\FileUploadRepository::class,
             \App\Repositories\FileUploadRepositoryEloquent::class
         );
+
+        App::bind(
+            \App\Repositories\ImportFileRepository::class,
+            \App\Repositories\ImportFileRepositoryEloquent::class
+        );
     }
 
     /**
