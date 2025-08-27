@@ -6,7 +6,7 @@ use App\Entities\ImportFile;
 use Illuminate\Http\Request;
 use App\Repositories\ImportFileRepository;
 
-class ImportFileService
+class ImportDataFileService
 {
     public function __construct(
         private ImportFileRepository $importFileRepository
@@ -14,13 +14,8 @@ class ImportFileService
     {
     }
 
-    public function teste()
+    public function processFile()
     {
-        $data = [
-            'name' => 'John Doe',
-            'email' => 'john@gmail.com'
-        ];
-
-        $this->importFileRepository->create($data);
+        $idUploadedFile = session('id_uploaded_file');
     }
 }

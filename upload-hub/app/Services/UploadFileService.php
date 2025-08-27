@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\FileUploadRepository;
 use Illuminate\Http\Request;
 
-class FileUploadService
+class UploadFileService
 {
     public function __construct(
         private FileUploadRepository $fielUploadRepository
