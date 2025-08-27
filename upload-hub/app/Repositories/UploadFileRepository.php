@@ -5,11 +5,11 @@ namespace App\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface ImportFileRepository.
+ * Interface FileUploadRepositoryRepository.
  *
  * @package namespace App\Repositories;
  */
-interface ImportFileRepository extends RepositoryInterface
+interface UploadFileRepository extends RepositoryInterface
 {
     //
 }

@@ -5,13 +5,13 @@ namespace App\Models;
 use MongoDB\Laravel\Eloquent\Model;
 
 
-class ImportFile extends Model
+class ImportDataFile extends Model
 {
     protected $connection = 'mongodb';
-    protected $collection = 'import_files';
 
     protected $fillable = [
-        'nome',
-        'email',
+        'upload_file_id',
+        'line_number',
+        'content',
     ];
 }

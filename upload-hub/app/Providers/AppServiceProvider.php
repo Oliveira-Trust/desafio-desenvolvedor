@@ -13,13 +13,13 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         App::bind(
-            \App\Repositories\FileUploadRepository::class,
-            \App\Repositories\FileUploadRepositoryEloquent::class
+            \App\Repositories\UploadFileRepository::class,
+            \App\Repositories\UploadFileRepositoryEloquent::class
         );
 
         App::bind(
-            \App\Repositories\ImportFileRepository::class,
-            \App\Repositories\ImportFileRepositoryEloquent::class
+            \App\Repositories\ImportDataFileRepository::class,
+            \App\Repositories\ImportDataFileRepositoryEloquent::class
         );
     }
 

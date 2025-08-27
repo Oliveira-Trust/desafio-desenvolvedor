@@ -4,16 +4,14 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\FileUploadRepository;
-use App\Validators\FileUploadRepositoryValidator;
-use App\Models\FileUpload;
+use App\Models\ImportDataFile;
 
 /**
- * Class FileUploadRepositoryRepositoryEloquent.
+ * Class ImportFileRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class FileUploadRepositoryEloquent extends BaseRepository implements FileUploadRepository
+class ImportDataFileRepositoryEloquent extends BaseRepository implements ImportDataFileRepository
 {
     /**
      * Specify Model class name
@@ -22,7 +20,7 @@ class FileUploadRepositoryEloquent extends BaseRepository implements FileUploadR
      */
     public function model()
     {
-        return FileUpload::class;
+        return ImportDataFile::class;
     }
 
     

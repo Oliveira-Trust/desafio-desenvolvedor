@@ -2,13 +2,15 @@
 
 namespace App\Services;
 
-use App\Repositories\FileUploadRepository;
+use App\Jobs\ProcessImportDataJob;
 use Illuminate\Http\Request;
+use App\Repositories\UploadFileRepository;
+use Illuminate\Support\Facades\Log;
 
 class UploadFileService
 {
     public function __construct(
-        private FileUploadRepository $fielUploadRepository
+        private UploadFileRepository $uploadFileRepository
     )
     {
     }
@@ -19,7 +21,7 @@ class UploadFileService
         $file = $data->file('file');
         $original_name = $file->getClientOriginalName();
 
-        $exists = $this->fielUploadRepository->findWhere([
+        $exists = $this->uploadFileRepository->findWhere([
             'original_name' => $original_name
         ]);
 
@@ -42,9 +44,13 @@ class UploadFileService
                 'rows_processed' => 0,
             ];
 
-            $this->fielUploadRepository->create($data);
+            $uploadFile = $this->uploadFileRepository->create($data);
+            
+            Log::info('Dispatching job');
 
-            //todo:: job pra processar o arquivo
+            ProcessImportDataJob::dispatch($uploadFile->id, $path);
+
+            Log::info('Valta job');
 
             return response()->json([
                 'message' => 'File uploaded successfully.'
