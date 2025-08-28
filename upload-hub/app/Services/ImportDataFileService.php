@@ -6,6 +6,7 @@ use App\Repositories\ImportDataFileRepository;
 use App\Repositories\UploadFileRepository;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\FileProcessor;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 
 class ImportDataFileService
@@ -20,25 +21,24 @@ class ImportDataFileService
 
     public function processFile($updateFileId, $filePath)
     {
-        $extension = pathinfo($filePath, PATHINFO_EXTENSION);       
+        $excelCachePath = storage_path('framework/cache/laravel-excel');
+
+        if (!File::exists($excelCachePath)) {
+            File::makeDirectory($excelCachePath, 0755, true); // cria recursivamente
+        }       
 
         $this->fileUploadRepository->update(
             ['status' => 1], 
             $updateFileId
         );
 
-        $processed = new FileProcessor($this->importDataFileRepository, $updateFileId);
-        if ($extension === 'csv') {
-            Excel::import($processed, $filePath, null, \Maatwebsite\Excel\Excel::CSV);
-        } elseif ($extension === 'xlsx') {
-            Excel::import( $processed, $filePath, null, \Maatwebsite\Excel\Excel::XLSX);
-        }
+        Excel::import(new FileProcessor($this->importDataFileRepository, $updateFileId), $filePath);
 
+        
         $this->fileUploadRepository->update([
-            'status' => 2,
-            'linhas_total' => $processed->getTotalLines(),
-            'linhas_processadas' => $processed->getProcessedLines()
+            'status' => 2,            
         ], $updateFileId);
+
     
     }
 }

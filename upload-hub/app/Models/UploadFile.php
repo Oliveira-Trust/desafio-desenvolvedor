@@ -10,8 +10,6 @@ class UploadFile extends Model
         'path',
         'original_name',
         'user_id',
-        'rows_expected',
-        'rows_processed',
         'status',
     ];
 

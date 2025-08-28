@@ -2,54 +2,55 @@
 
 namespace App\Imports;
 
-use Maatwebsite\Excel\Row;
-use Maatwebsite\Excel\Concerns\OnEachRow;
-use App\Repositories\ImportDataFileRepository;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class FileProcessor implements OnEachRow, WithHeadingRow
+use App\Models\ImportDataFile;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithStartRow;
+
+class FileProcessor implements ToCollection, WithHeadingRow, WithChunkReading,
+    WithStartRow
 {
-    private int $totalLines = 0;
-    private int $processedLines = 0;
 
     public function __construct(
-        private ImportDataFileRepository $importDataFileRepository,
         private $uploadFileId
     )
     {        
-    }    
+    }
     
-    public function onRow(Row $row)
-    { 
-        $this->totalLines++;
+    
+     public function startRow(): int
+    {
+        return 2;
+    }
+    
+    public function collection(Collection $rows)
+    {
 
-        $line = $row->getIndex(); 
-        $data = $row->toArray();
+        $batch = [];
+
+        foreach ($rows as $row) {
+            $batch[] = [
+                'upload_file_id' => $this->uploadFileId,
+                'RptDt'         => isset($row['RptDt']) ? date('Y-m-d', strtotime($row['RptDt'])) : null,
+                'TckrSymb'      => $row['TckrSymb'] ?? null,
+                'MktNm'         => $row['MktNm'] ?? null,
+                'SctyCtgyNm'    => $row['SctyCtgyNm'] ?? null,
+                'ISIN'          => $row['ISIN'] ?? null,
+                'CrpnNm'        => $row['CrpnNm'] ?? null,                
+            ];
+        }
+
+        ImportDataFile::insert($batch);
         
-        $this->importDataFileRepository->create([
-            'upload_file_id' => $this->uploadFileId,
-            'line_number' => $line,
-            'content' => $data
-        ]);
-
-        $this->processedLines++;       
-        
     }
 
-    public function headingRow(): int
+    public function chunkSize(): int
     {
-        return 2; // segunda linha como cabeçalho
+        return 1000;
     }
 
-    public function getTotalLines(): int
-    {
-        return $this->totalLines;
-    }
-
-    public function getProcessedLines(): int
-    {
-        return $this->processedLines;
-    }
     
 }  
