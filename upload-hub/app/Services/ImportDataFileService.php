@@ -20,40 +20,25 @@ class ImportDataFileService
 
     public function processFile($updateFileId, $filePath)
     {
-        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);       
 
-        try {
+        $this->fileUploadRepository->update(
+            ['status' => 1], 
+            $updateFileId
+        );
 
-            $this->fileUploadRepository->update(
-                ['status' => 1], 
-                $updateFileId
-            );
+        $processed = new FileProcessor($this->importDataFileRepository, $updateFileId);
+        if ($extension === 'csv') {
+            Excel::import($processed, $filePath, null, \Maatwebsite\Excel\Excel::CSV);
+        } elseif ($extension === 'xlsx') {
+            Excel::import( $processed, $filePath, null, \Maatwebsite\Excel\Excel::XLSX);
+        }
 
-            $processed = new FileProcessor($this->importDataFileRepository, $updateFileId);
-            if ($extension === 'csv') {
-                Excel::import($processed, $filePath, null, \Maatwebsite\Excel\Excel::CSV);
-            } elseif ($extension === 'xlsx') {
-                Excel::import( $processed, $filePath, null, \Maatwebsite\Excel\Excel::XLSX);
-            }
-
-            $this->fileUploadRepository->update([
-                'status' => 2,
-                'linhas_total' => $processed->getTotalLines(),
-                'linhas_processadas' => $processed->getProcessedLines()
-            ], $updateFileId);
-
-       } catch (\Exception $e) {
-
-            $this->fileUploadRepository->update([
-                'status' => 3,
-            ], $updateFileId);
-            
-            Log::error("Erro ao processar file", [
-                'error' => $e->getMessage(),
-                
-            ]);
-
-            throw $e;
-       }
+        $this->fileUploadRepository->update([
+            'status' => 2,
+            'linhas_total' => $processed->getTotalLines(),
+            'linhas_processadas' => $processed->getProcessedLines()
+        ], $updateFileId);
+    
     }
 }

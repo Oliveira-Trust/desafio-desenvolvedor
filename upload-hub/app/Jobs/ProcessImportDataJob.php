@@ -29,12 +29,7 @@ class ProcessImportDataJob implements ShouldQueue
      */
     public function handle(ImportDataFileService $importDataFileService): void
     {
-        try {
-            $importDataFileService->processFile($this->updateFileId, $this->filePath);
-        } catch (\Exception $e) {
-            Log::error('Erro no job: ' . $e->getMessage());
-            throw $e;
-        }
+        $importDataFileService->processFile($this->updateFileId, $this->filePath);        
         
     }
 }

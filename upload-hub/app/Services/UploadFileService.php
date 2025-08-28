@@ -36,7 +36,7 @@ class UploadFileService
 
         try{
 
-            $path = $file->store('uploads');
+            $path = $file->storeAs('uploads', $original_name);
 
             $data = [
                 'path' => $path,
