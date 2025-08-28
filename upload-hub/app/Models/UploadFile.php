@@ -20,4 +20,15 @@ class UploadFile extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getStatusTextAttribute()
+    {
+        return match ($this->status) {
+            0 => 'Pending',
+            1 => 'Processing',
+            2 => 'Completed',
+            3 => 'Failed',
+            default => 'Pending',
+        };
+    }
 }

@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Criteria\UploadFileHistorySelectCriteria;
+use App\Http\Resources\UploadFileResource;
 use App\Jobs\ProcessImportDataJob;
+use App\Models\UploadFile;
 use Illuminate\Http\Request;
 use App\Repositories\UploadFileRepository;
-use Illuminate\Support\Facades\Log;
 
 class UploadFileService
 {
@@ -15,7 +17,7 @@ class UploadFileService
     {
     }
 
-    public function store(Request $data)
+    public function upload(Request $data)
     {
        
         $file = $data->file('file');
@@ -46,15 +48,15 @@ class UploadFileService
 
             $uploadFile = $this->uploadFileRepository->create($data);
             
-            Log::info('Dispatching job');
 
             ProcessImportDataJob::dispatch($uploadFile->id, $path);
 
-            Log::info('Valta job');
-
-            return response()->json([
-                'message' => 'File uploaded successfully.'
-            ], 202);
+            return UploadFileResource::make($uploadFile)
+                ->additional(
+                    ['message' => 'File uploaded successfully']
+                )
+                ->response()
+                ->setStatusCode(202);
         }
         catch(\Exception $e){
             return response()->json([
@@ -62,5 +64,22 @@ class UploadFileService
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+    public function history($request)
+    {
+        $data = $request->all();
+
+        if (empty($data)) {
+            return response()->json([
+                'message' => 'At least one filter (original_name or date) must be provided.'
+            ], 400);
+        }
+
+
+        $uploadFiles = $this->uploadFileRepository->pushCriteria(new UploadFileHistorySelectCriteria())->all();
+        
+
+        return UploadFileResource::collection($uploadFiles);
     }
 }
