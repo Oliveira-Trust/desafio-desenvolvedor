@@ -11,8 +11,9 @@ class ImportDataFile extends Model
     protected $collection = 'import_data_files';
 
     protected $fillable = [
-        'upload_file_id',
-        'line_number',
-        'content',
+        'RptDt', 
+        'TckrSymb', 
+        'MktNm', 
+        'SctyCtgyNm'
     ];
 }
