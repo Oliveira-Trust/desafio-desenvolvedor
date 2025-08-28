@@ -8,6 +8,7 @@ class UploadFile extends Model
 {
     protected $fillable = [
         'path',
+        'hash',
         'original_name',
         'user_id',
         'status',

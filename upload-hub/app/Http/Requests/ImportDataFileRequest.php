@@ -22,12 +22,12 @@ class ImportDataFileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'original_name' => [
-                'TckrSymb',
+            'TckrSymb' => [
+                'string',
                 'nullable',               
             ] ,
-            'date' => [
-                'RptDt',
+            'RptDt' => [
+                'string',
                 'nullable',               
             ],
         ];

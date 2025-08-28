@@ -17,24 +17,25 @@ class UploadFileService
     {
     }
 
-    public function upload(Request $data)
+    public function upload(Request $request)
     {
-       
-        $file = $data->file('file');
-        $original_name = $file->getClientOriginalName();
+        try{
+            $file = $request->file('file');
+            $original_name = $file->getClientOriginalName();
+            $hash = md5_file($file->getRealPath());
 
-        $exists = $this->uploadFileRepository->findWhere([
-            'original_name' => $original_name
-        ]);
+            $exists = $this->uploadFileRepository->findWhere([
+                'hash' => $hash
+            ]);
+
+            
+            if ($exists->count()) {
+                return response()->json([
+                    'message' => 'File with the same name already exists.'
+                ], 409);
+            }
 
         
-        if ($exists->count()) {
-            return response()->json([
-                'message' => 'File with the same name already exists.'
-            ], 409);
-        }
-
-        try{
 
             $path = $file->storeAs('uploads', $original_name);
 
@@ -42,12 +43,10 @@ class UploadFileService
                 'path' => $path,
                 'original_name' => $original_name,
                 'user_id' => auth()->id() ?? null,
-                'rows_expected' => 0,
-                'rows_processed' => 0,
+                'hash' => $hash,
             ];
 
-            $uploadFile = $this->uploadFileRepository->create($data);
-            
+            $uploadFile = $this->uploadFileRepository->create($data);            
 
             ProcessImportDataJob::dispatch($uploadFile->id, $path);
 

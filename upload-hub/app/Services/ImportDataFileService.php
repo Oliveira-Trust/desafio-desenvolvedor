@@ -32,7 +32,7 @@ class ImportDataFileService
             $updateFileId
         );
 
-        Excel::import(new FileProcessor($this->importDataFileRepository, $updateFileId), $filePath);
+        Excel::import(new FileProcessor($updateFileId), $filePath);
 
         
         $this->fileUploadRepository->update([
