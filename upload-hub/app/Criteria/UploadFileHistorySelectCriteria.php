@@ -27,8 +27,7 @@ class UploadFileHistorySelectCriteria implements CriteriaInterface
      * @return mixed
      */
     public function apply($model, RepositoryInterface $repository)
-    {
-       
+    {       
 
         $original_name = $this->data['original_name'] ?? '';
 

@@ -25,7 +25,7 @@ class ImportDataFileRequest extends FormRequest
             'TckrSymb' => [
                 'string',
                 'nullable',               
-            ] ,
+            ],
             'RptDt' => [
                 'string',
                 'nullable',               

@@ -45,7 +45,7 @@ class FileProcessor implements
         foreach ($rows as $row) {
             $batch[] = [
                 'upload_file_id' => $this->uploadFileId,
-                'RptDt'  => (!empty($row['RptDt']) && $d = DateTime::createFromFormat('d/m/Y', str_replace(["\n","\r"], '', trim($row['RptDt'])))) ? $d->format('Y-m-d') : null,
+                'RptDt'  => isset($row['RptDt']) ? Carbon::createFromFormat('d/m/Y', trim($row['RptDt']))->format('Y-m-d') : null,
                 'TckrSymb' => $row['TckrSymb'] ?? null,
                 'MktNm' => $row['MktNm'] ?? null,
                 'SctyCtgyNm' => $row['SctyCtgyNm'] ?? null,
@@ -65,7 +65,7 @@ class FileProcessor implements
 
     public function startRow(): int
     {
-        return 2;
+        return 3;
     }    
 
     public function chunkSize(): int

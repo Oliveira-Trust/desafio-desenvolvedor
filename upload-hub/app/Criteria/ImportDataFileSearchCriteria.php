@@ -24,8 +24,7 @@ class ImportDataFileSearchCriteria implements CriteriaInterface
      * @return mixed
      */
     public function apply($model, RepositoryInterface $repository)
-    {
-        $model = $model->select('*');
+    {        
 
         $tckrSymb = $this->request->get('TckrSymb');
         if(isset($tckrSymb) && !empty($tckrSymb)){
@@ -34,7 +33,7 @@ class ImportDataFileSearchCriteria implements CriteriaInterface
 
         $rptDt = $this->request->get('RptDt');
         if(isset($rptDt) && !empty($rptDt)){
-            $model = $model->where('TckrSymb', $rptDt);
+            $model = $model->where('RptDt', $rptDt);
         }
         
         return $model;

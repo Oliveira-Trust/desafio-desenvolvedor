@@ -26,7 +26,7 @@ class ImporteDataFileSearchService
 
 
         $search = $this->importDataFileRepository->pushCriteria(new ImportDataFileSearchCriteria($request))->paginate(10);
-
+        
         $response = ImportDataFileResource::collection($search)
             ->additional(
                 ['message' => 'Success']
