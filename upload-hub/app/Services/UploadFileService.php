@@ -33,9 +33,7 @@ class UploadFileService
                 return response()->json([
                     'message' => 'File with the same name already exists.'
                 ], 409);
-            }
-
-        
+            }        
 
             $path = $file->storeAs('uploads', $original_name);
 
@@ -75,10 +73,17 @@ class UploadFileService
             ], 400);
         }
 
+        try{
+            $uploadFiles = $this->uploadFileRepository->pushCriteria(new UploadFileHistorySelectCriteria($data))->all();
 
-        $uploadFiles = $this->uploadFileRepository->pushCriteria(new UploadFileHistorySelectCriteria())->all();
+            return UploadFileResource::collection($uploadFiles);
+        }catch(\Exception $e){
+            return response()->json([
+                'message' => 'An error occurred while fetching upload history.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
         
 
-        return UploadFileResource::collection($uploadFiles);
     }
 }

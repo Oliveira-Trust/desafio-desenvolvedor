@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Request;
  */
 class UploadFileHistorySelectCriteria implements CriteriaInterface
 {
+
+    public function __construct(private array $data = [])
+    {
+    }
     /**
      * Apply criteria in query repository
      *
@@ -26,13 +30,13 @@ class UploadFileHistorySelectCriteria implements CriteriaInterface
     {
        
 
-        $original_name = Request::input('original_name');
+        $original_name = $this->data['original_name'] ?? '';
 
         if (isset($original_name) && !empty($original_name)) {
             $model = $model->where('original_name', $original_name);            
         }
 
-        $date = Request::input('date');
+        $date =  $this->data['date'] ?? '';
 
         if (isset($date) && !empty($date)) {
             $model = $model->whereDate('created_at', $date);            
