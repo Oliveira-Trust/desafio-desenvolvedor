@@ -18,27 +18,19 @@ class ImporteDataFileSearchService
         $page = $request->get('page', 1);
         $queryKey = md5(json_encode($request->all()) . '_page_' . $page); //Garante que cada combinação de filtros + página tenha cache separado.
 
-        // Tentar pegar do cache
-        $cached = Cache::get($queryKey);
-        if ($cached) {
-            return $cached;
-        }
+        // Pega dados do cache ou executa a query
+        $data = Cache::remember($queryKey, 600, function () use ($request) {
+            $search = $this->importDataFileRepository
+                ->pushCriteria(new ImportDataFileSearchCriteria($request))
+                ->paginate(10);
 
+            return ImportDataFileResource::collection($search)
+                ->additional(['message' => 'Success'])
+                ->response()
+                ->getData(true); // <- retorna como array/json puro
+        });
 
-        $search = $this->importDataFileRepository->pushCriteria(new ImportDataFileSearchCriteria($request))->paginate(10);
-        
-        $response = ImportDataFileResource::collection($search)
-            ->additional(
-                ['message' => 'Success']
-            )
-            ->response()
-            ->setStatusCode(200);
-
-        // Armazenar no cache por 10 minutos
-        Cache::put($queryKey, $response, 600);
-
-        return $response;
-
+       return response()->json($data);
         
     }
 }
