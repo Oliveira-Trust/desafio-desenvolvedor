@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('upload_files', function (Blueprint $table) {
             $table->id();
             $table->string('path');
+            $table->string('hash', 32)->unique();
             $table->string('original_name');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->integer('status')->default(0)->comment('0: pending, 1: processing, 2: completed, 3: failed');

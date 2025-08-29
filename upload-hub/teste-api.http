@@ -1,0 +1,75 @@
+POST http://localhost:8000/api/login HTTP/1.1
+content-type: application/json
+Accept: application/json
+
+{
+    "email": "astoltenberg@example.com",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:8000/api/v1/uploads HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Accept: application/json
+Authorization: Bearer 4|ztAmmL9hGylTnrlnzX3vgIY2zFYYvJDGBHJu5exE505fc6fd
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="InstrumentsConsolidatedFile_20240822_20240827.csv"
+Content-Type: text/csv
+
+< ./InstrumentsConsolidatedFile_20240822_20240827.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+//Retorna erro de validação tipo de arquivo inválido
+POST http://localhost:8000/api/v1/uploads HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Accept: application/json
+Authorization: Bearer 4|ztAmmL9hGylTnrlnzX3vgIY2zFYYvJDGBHJu5exE505fc6fd
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="C:\Users\Cintia\Pictures\Screenshots\Captura de tela 2024-07-27 202025.png"
+Content-Type: image/png
+
+< ./InstrumentsConsolidatedFile_20240822_20240827.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+GET http://localhost:8000/api/v1/uploads/history HTTP/1.1
+content-type: application/json
+Accept: application/json
+
+###
+GET http://localhost:8000/api/v1/uploads/history HTTP/1.1
+content-type: application/json
+Accept: application/json
+Authorization: Bearer 4|ztAmmL9hGylTnrlnzX3vgIY2zFYYvJDGBHJu5exE505fc6fd
+
+{
+    "date": "2025-08-29"
+}
+
+###
+GET http://localhost:8000/api/v1/search HTTP/1.1
+content-type: application/json
+Accept: application/json
+Authorization: Bearer 4|ztAmmL9hGylTnrlnzX3vgIY2zFYYvJDGBHJu5exE505fc6fd
+
+###
+GET http://localhost:8000/api/v1/search HTTP/1.1
+content-type: application/json
+Accept: application/json
+Authorization: Bearer 4|ztAmmL9hGylTnrlnzX3vgIY2zFYYvJDGBHJu5exE505fc6fd
+
+{
+    "TckrSymb": "A1AP34M"
+}
