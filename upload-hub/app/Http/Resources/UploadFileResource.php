@@ -19,8 +19,6 @@ class UploadFileResource extends JsonResource
             'original_name' => $this->original_name,
             'path' => $this->path,
             'user_id' => $this->user->name ?? null,
-            'rows_expected' => $this->rows_expected,
-            'rows_processed' => $this->rows_processed,
             'status' => $this->getStatusTextAttribute(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
