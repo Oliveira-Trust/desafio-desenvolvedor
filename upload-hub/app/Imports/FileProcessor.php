@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 
-use DateTime;
 use Carbon\Carbon;
 use App\Models\ImportDataFile;
 use Illuminate\Support\Collection;
@@ -45,7 +44,7 @@ class FileProcessor implements
         foreach ($rows as $row) {
             $batch[] = [
                 'upload_file_id' => $this->uploadFileId,
-                'RptDt'  => isset($row['RptDt']) ? Carbon::createFromFormat('d/m/Y', trim($row['RptDt']))->format('Y-m-d') : null,
+                'RptDt'  => isset($row['RptDt']) ? date('Y-m-d', strtotime($row['RptDt'])) : null,
                 'TckrSymb' => $row['TckrSymb'] ?? null,
                 'MktNm' => $row['MktNm'] ?? null,
                 'SctyCtgyNm' => $row['SctyCtgyNm'] ?? null,
