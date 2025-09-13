@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ../../upload-php
+      dockerfile: docker/Dockerfile
+    container_name: desafio-app
+    volumes:
+      - ../../upload-php:/var/www
+    environment:
+      - QUEUE_CONNECTION=redis
+      - DB_CONNECTION=mongodb
+      - REDIS_HOST=redis
+      - DB_HOST=mongo
+      - DB_PORT=27017
+      - DB_DATABASE=teste
+      - DB_USERNAME=root
+      - DB_PASSWORD=teste
+      - DB_AUTH_SOURCE=admin
+    depends_on:
+      - redis
+      - mongo
+    ports:
+      - "9000:9000"
+      - "8000:80"
+    command: ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+  redis:
+    image: redis:7
+    container_name: desafio-redis
+    ports:
+      - "6379:6379"
+
+  mongo:
+    image: mongo:7
+    container_name: desafio-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: teste
+      MONGO_INITDB_DATABASE: teste
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
