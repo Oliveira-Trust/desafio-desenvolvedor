@@ -1,0 +1,158 @@
+type: collection.insomnia.rest/5.0
+name: desafio
+meta:
+  id: wrk_34e2439d34394672b7dd422803ccdabe
+  created: 1757699820322
+  modified: 1757699820322
+  description: ""
+collection:
+  - url: http://127.0.0.1:8000/api/v1/auth
+    name: Login
+    meta:
+      id: req_7eb5fa7753f847d7969f45b425f7a3b9
+      created: 1757699825584
+      modified: 1757769970610
+      isPrivate: false
+      description: ""
+      sortKey: -1757699825584
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email":"moura@admin.com",
+        	"password":"mouradev1"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.5.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/up
+    name: helth app
+    meta:
+      id: req_e6861b5bddac41efb243b6be7a7d60e8
+      created: 1757700663809
+      modified: 1757770027754
+      isPrivate: false
+      description: ""
+      sortKey: -1757700663809
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.5.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/v1/uploads
+    name: Upload
+    meta:
+      id: req_bcbaa185ce334400822a7df26cb51da2
+      created: 1757701171010
+      modified: 1757770049938
+      isPrivate: false
+      description: ""
+      sortKey: -1757701171010
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: file
+          fileName: /Users/dev/Downloads/InstrumentsConsolidatedFile_20240822_20240827.csv
+          type: file
+          id: pair_5b8ea7f309e9420ea62d74211bb9820f
+          disabled: false
+    headers:
+      - name: Authorization
+        value: Bearer TY5NgAikF38bqgkOuoYikNjaUQBonoMA2uttKd3SQ7JDm2gfRkqzwi1Umzug
+        id: pair_76373dcf37fc49a69575924a19e2368f
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/v1/uploads/history
+    name: Historico Upload
+    meta:
+      id: req_bf9d2dd5e692433a8d6dca16dbb063a4
+      created: 1757702558661
+      modified: 1757769995080
+      isPrivate: false
+      description: ""
+      sortKey: -1757700244696.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.5.0
+        id: pair_5420b91a94e64c998a7ef410a4e5cbb7
+      - id: pair_7fb0dca619b74fedb55afcf5d9c7225e
+        name: Authorization
+        value: Bearer TY5NgAikF38bqgkOuoYikNjaUQBonoMA2uttKd3SQ7JDm2gfRkqzwi1Umzug
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/v1/search
+    name: Busca conteudo
+    meta:
+      id: req_3f46ceddf339463a9405ae4d62287cb9
+      created: 1757702641040
+      modified: 1757770067166
+      isPrivate: false
+      description: ""
+      sortKey: -1757702641040
+    method: GET
+    parameters:
+      - name: TckrSymb
+        value: AMZO34
+        disabled: false
+      - name: RptDt
+        value: 2024-08-22
+        disabled: false
+    headers:
+      - name: Authorization
+        value: Bearer TY5NgAikF38bqgkOuoYikNjaUQBonoMA2uttKd3SQ7JDm2gfRkqzwi1Umzug
+        id: pair_348785b5a52b428d82d6786bbf3bdf54
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_19a7042b848987022a5d0f7fe29f0e13794277c4
+    created: 1757699820394
+    modified: 1757699820394
+environments:
+  name: Base Environment
+  meta:
+    id: env_19a7042b848987022a5d0f7fe29f0e13794277c4
+    created: 1757699820365
+    modified: 1757699820365
+    isPrivate: false
