@@ -12,7 +12,12 @@ RUN pecl install mongodb redis \
 COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
+
 COPY . .
+
+COPY .env.example .env
+
+RUN php artisan key:generate
 
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
