@@ -13,18 +13,31 @@ use App\Jobs\ProcessInstrumentFile;
 
 class InstrumentController extends Controller
 {
-    private const SEARCH_CACHE_TTL = 300;
+    private const SEARCH_CACHE_TTL = 5;
 
     public function upload(UploadFileRequest $request)
     {
         $file = $request->file('file');
+        if (!$file || !$file->isValid()) {
+            return response()->json(['error' => 'Arquivo inválido.'], 400);
+        }
+
+        $allowedExtensions = ['csv', 'xlsx', 'xls'];
+        $originalExtension = strtolower($file->getClientOriginalExtension());
+        
+        if (!in_array($originalExtension, $allowedExtensions)) {
+            return response()->json(['error' => 'Tipo não suportado.'], 400);
+        }
+
         $hash = md5_file($file->getRealPath());
 
         if (Upload::where('hash', $hash)->exists()) {
-            return response()->json(['error' => 'Arquivo já enviado anteriormente.'], 409);
+            return response()->json(['error' => 'Arquivo já enviado.'], 409);
         }
 
-        $path = $file->store('uploads');
+        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $storedFilename = $originalName . '_' . time() . '.' . $originalExtension;
+        $path = $file->storeAs('uploads', $storedFilename);
 
         $upload = Upload::create([
             'filename' => $file->getClientOriginalName(),
@@ -37,7 +50,10 @@ class InstrumentController extends Controller
 
         ProcessInstrumentFile::dispatch($upload->id);
 
-        return response()->json(['message' => 'Upload realizado com sucesso! Processamento em background.', 'upload_id' => $upload->id]);
+        return response()->json([
+            'message' => 'Upload realizado com sucesso!',
+            'upload_id' => $upload->id
+        ]);
     }
 
     public function history(Request $request)
