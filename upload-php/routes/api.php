@@ -6,10 +6,10 @@ use App\Http\Controllers\Api\InstrumentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+})->middleware('auth.api_token');
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth.api_token')->group(function () {
     Route::prefix('v1')->group(function () {
         Route::get('/uploads/history', [InstrumentController::class, 'history']);
         Route::post('/uploads', [InstrumentController::class, 'upload']);
