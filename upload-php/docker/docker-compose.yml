@@ -24,7 +24,6 @@ services:
     ports:
       - "9000:9000"
       - "8000:80"
-    command: ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
   redis:
     image: redis:7

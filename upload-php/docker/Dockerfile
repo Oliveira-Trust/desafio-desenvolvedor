@@ -15,12 +15,6 @@ WORKDIR /var/www
 
 COPY . .
 
-COPY .env.example .env
-
-RUN php artisan key:generate
-
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
 RUN chown -R www-data:www-data /var/www
 
 RUN sed -i 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/000-default.conf
@@ -29,8 +23,14 @@ RUN a2enmod rewrite
 
 COPY docker/upload.ini /usr/local/etc/php/conf.d/upload.ini
 
+COPY .env.example .env
+
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+COPY docker/entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
