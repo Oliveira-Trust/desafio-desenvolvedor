@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\SearchInstrumentRequest;
 use Illuminate\Http\Request;
 use App\Models\Upload;
@@ -15,7 +14,7 @@ class InstrumentController extends Controller
 {
     private const SEARCH_CACHE_TTL = 5;
 
-    public function upload(UploadFileRequest $request)
+    public function upload(Request $request)
     {
         $file = $request->file('file');
         if (!$file || !$file->isValid()) {
