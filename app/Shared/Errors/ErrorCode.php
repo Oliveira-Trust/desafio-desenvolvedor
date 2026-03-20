@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Shared\Errors;
+
+final class ErrorCode
+{
+    public const AUTH_INVALID_CREDENTIALS = 'AUTH_INVALID_CREDENTIALS';
+    public const AUTH_UNAUTHENTICATED = 'AUTH_UNAUTHENTICATED';
+    public const AUTH_FORBIDDEN = 'AUTH_FORBIDDEN';
+    public const VALIDATION_ERROR = 'VALIDATION_ERROR';
+    public const RESOURCE_NOT_FOUND = 'RESOURCE_NOT_FOUND';
+    public const INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR';
+}
