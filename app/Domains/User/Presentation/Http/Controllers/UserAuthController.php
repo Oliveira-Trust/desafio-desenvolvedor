@@ -4,6 +4,7 @@ namespace App\Domains\User\Presentation\Http\Controllers;
 
 use App\Domains\User\Application\Services\AuthenticateUserService;
 use App\Http\Controllers\Controller;
+use App\Shared\Responses\ApiSuccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,12 +21,13 @@ class UserAuthController extends Controller
         $user = $authService->handle($credentials['email'], $credentials['password']);
         $token = $user->createToken('api-token')->plainTextToken;
 
-        return response()->json([
-            'data' => [
+        return ApiSuccess::make(
+            data: [
                 'token' => $token,
                 'user' => $user,
             ],
-        ], 200);
+            message: 'Login realizado com sucesso.'
+        );
     }
 
     public function logout(Request $request): JsonResponse
@@ -38,8 +40,8 @@ class UserAuthController extends Controller
             $request->session()->regenerateToken();
         }
 
-        return response()->json([
-            'message' => 'Logout realizado com sucesso.',
-        ], 200);
+        return ApiSuccess::make(
+            message: 'Logout realizado com sucesso.'
+        );
     }
 }
