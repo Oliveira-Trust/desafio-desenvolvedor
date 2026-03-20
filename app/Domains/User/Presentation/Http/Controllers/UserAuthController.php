@@ -2,29 +2,22 @@
 
 namespace App\Domains\User\Presentation\Http\Controllers;
 
+use App\Domains\User\Application\Services\AuthenticateUserService;
 use App\Http\Controllers\Controller;
-use App\Domains\User\Infrastructure\Persistence\Eloquent\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class UserAuthController extends Controller
 {
-    public function login(Request $request)
+    public function login(Request $request, AuthenticateUserService $authService): JsonResponse
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],
         ]);
 
-        $user = User::where('email', $credentials['email'])->first();
-
-        if (! $user || ! Hash::check($credentials['password'], $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['Credenciais inválidas.'],
-            ]);
-        }
-
+        $user = $authService->handle($credentials['email'], $credentials['password']);
         $token = $user->createToken('api-token')->plainTextToken;
 
         return response()->json([
@@ -35,9 +28,15 @@ class UserAuthController extends Controller
         ], 200);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): JsonResponse
     {
         $request->user()?->currentAccessToken()?->delete();
+
+        if ($request->hasSession()) {
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
 
         return response()->json([
             'message' => 'Logout realizado com sucesso.',
