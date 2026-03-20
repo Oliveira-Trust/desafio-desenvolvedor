@@ -6,10 +6,10 @@ use App\Domains\Upload\Presentation\Http\Controllers\UploadController;
 
 Route::prefix('auth')->group(function () {
     Route::post('/login', [UserAuthController::class, 'login']);
+    Route::post('/logout', [UserAuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/auth/logout', [UserAuthController::class, 'logout']);
     Route::post('/uploads', [UploadController::class, 'store']);
     Route::get('/uploads', [UploadController::class, 'index']);
 });
