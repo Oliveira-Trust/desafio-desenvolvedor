@@ -2,20 +2,41 @@
 
 namespace App\Domains\User\Application\Services;
 
+use App\Domains\User\Application\DTOs\AuthenticateUserInput;
+use App\Domains\User\Application\DTOs\AuthenticateUserOutput;
+use App\Domains\User\Application\Ports\PasswordHasher;
+use App\Domains\User\Application\Ports\TokenIssuer;
+use App\Domains\User\Application\Ports\UserRepository;
 use App\Domains\User\Exceptions\InvalidCredentialsException;
-use App\Domains\User\Infrastructure\Persistence\Eloquent\User;
-use Illuminate\Support\Facades\Hash;
 
-class AuthenticateUserService
+final class AuthenticateUserService
 {
-    public function handle(string $email, string $password): User
-    {
-        $user = User::query()->where('email', $email)->first();
+    public function __construct(
+        private readonly UserRepository $users,
+        private readonly PasswordHasher $hasher,
+        private readonly TokenIssuer $tokens,
+    ) {}
 
-        if (! $user || ! Hash::check($password, $user->password)) {
+    public function handle(AuthenticateUserInput $input): AuthenticateUserOutput
+    {
+        $email = mb_strtolower(trim($input->email));
+        $user = $this->users->findByEmail($email);
+
+        if (! $user) {
             throw new InvalidCredentialsException();
         }
 
-        return $user;
+        if (! $this->hasher->verify($input->password, $user->passwordHash)) {
+            throw new InvalidCredentialsException();
+        }
+
+        $accessToken = $this->tokens->issueForUserId($user->id, 'api-token');
+
+        return new AuthenticateUserOutput(
+            accessToken: $accessToken,
+            userId: (int) $user->id,
+            userName: (string) $user->name,
+            userEmail: (string) $user->email,
+        );
     }
 }

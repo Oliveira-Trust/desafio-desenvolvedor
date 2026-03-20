@@ -2,6 +2,7 @@
 
 namespace App\Domains\User\Presentation\Http\Controllers;
 
+use App\Domains\User\Application\DTOs\AuthenticateUserInput;
 use App\Domains\User\Application\Services\AuthenticateUserService;
 use App\Http\Controllers\Controller;
 use App\Shared\Responses\ApiSuccess;
@@ -18,13 +19,21 @@ class UserAuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        $user = $authService->handle($credentials['email'], $credentials['password']);
-        $token = $user->createToken('api-token')->plainTextToken;
+        $output = $authService->handle(
+            new AuthenticateUserInput(
+                email: $credentials['email'],
+                password: $credentials['password'],
+            )
+        );
 
         return ApiSuccess::make(
             data: [
-                'token' => $token,
-                'user' => $user,
+                'token' => $output->accessToken,
+                'user' => [
+                    'id' => $output->userId,
+                    'name' => $output->userName,
+                    'email' => $output->userEmail,
+                ],
             ],
             message: 'Login realizado com sucesso.'
         );
