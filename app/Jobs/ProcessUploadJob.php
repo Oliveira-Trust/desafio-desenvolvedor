@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
+use OpenSpout\Common\Entity\Row;
 use OpenSpout\Reader\Common\Creator\ReaderFactory;
 
 class ProcessUploadJob implements ShouldQueue
@@ -18,9 +19,13 @@ class ProcessUploadJob implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
+    private const CHUNK_SIZE = 1000;
+
     public function __construct(
         public readonly int $uploadId,
-    ) {}
+    ) {
+        $this->onQueue('ingestion');
+    }
 
     public function handle(UploadRepository $uploads): void
     {
@@ -40,22 +45,46 @@ class ProcessUploadJob implements ShouldQueue
 
         $absolutePath = $disk->path($upload->path);
         $reader = ReaderFactory::createFromFile($absolutePath);
+        $buffer = [];
+        $chunkIndex = 0;
 
         try {
             $reader->open($absolutePath);
 
             foreach ($reader->getSheetIterator() as $sheet) {
                 foreach ($sheet->getRowIterator() as $row) {
-                    $cells = $row->getCells();
+                    $buffer[] = $this->mapRowToArray($row);
 
-                    // Aqui, por enquanto, voce pode:
-                    // 1. contar linhas
-                    // 2. montar chunks
-                    // 3. depois despachar ProcessUploadChunkJob
+                    if (count($buffer) < self::CHUNK_SIZE) {
+                        continue;
+                    }
+
+                    $this->dispatchChunk($buffer, $chunkIndex);
+
+                    $buffer = [];
+                    $chunkIndex++;
                 }
+            }
+
+            if ($buffer !== []) {
+                $this->dispatchChunk($buffer, $chunkIndex);
             }
         } finally {
             $reader->close();
         }
+    }
+
+    private function mapRowToArray(Row $row): array
+    {
+        return array_map(
+            static fn ($cell) => $cell->getValue(),
+            $row->getCells()
+        );
+    }
+
+    private function dispatchChunk(array $rows, int $chunkIndex): void
+    {
+        ProcessUploadChunkJob::dispatch($this->uploadId, $rows, $chunkIndex)
+            ->onQueue('ingestion');
     }
 }
