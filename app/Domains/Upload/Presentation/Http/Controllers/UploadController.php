@@ -16,13 +16,20 @@ class UploadController extends Controller
         $validated = $request->validated();
 
         $uploadedFile = $validated['file'];
-        $path = $uploadService->uploadFile($uploadedFile);
+        $upload = $uploadService->uploadFile($uploadedFile);
 
         return ApiSuccess::make(
             data: [
                 'message' => 'Upload recebido com sucesso.',
-                'file_name' => $uploadedFile->getClientOriginalName(),
-                'stored_path' => $path,
+                'upload' => [
+                    'id' => $upload->id,
+                    'filename' => $upload->filename,
+                    'path' => $upload->path,
+                    'mime_type' => $upload->mime_type,
+                    'size' => $upload->size,
+                    'status' => $upload->status,
+                    'created_at' => $upload->created_at,
+                ],
             ],
             status: 202,
         );
