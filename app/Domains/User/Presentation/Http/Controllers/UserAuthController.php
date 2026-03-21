@@ -28,7 +28,10 @@ class UserAuthController extends Controller
         );
 
         Auth::guard('web')->loginUsingId($output->userId);
-        $request->session()->regenerate();
+
+        if ($request->hasSession()) {
+            $request->session()->regenerate();
+        }
 
         return ApiSuccess::make(
             data: [
