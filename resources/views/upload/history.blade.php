@@ -180,25 +180,61 @@
         font-size: 0.92rem;
     }
 
-    .pagination-actions {
-        display: flex;
-        gap: 10px;
+    .pagination-nav {
+        margin-left: auto;
     }
 
-    .pagination-btn {
-        border: 0;
-        border-radius: 10px;
-        padding: 10px 14px;
+    .pagination-list {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .page-item + .page-item .page-link {
+        margin-left: -1px;
+    }
+
+    .page-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 12px;
+        border: 1px solid #d0d7e2;
+        background: #ffffff;
+        color: #0052cc;
         font-size: 0.92rem;
-        font-weight: 700;
-        color: #ffffff;
-        background: #0052cc;
+        font-weight: 600;
+        text-decoration: none;
         cursor: pointer;
     }
 
-    .pagination-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+    .page-item:first-child .page-link {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .page-item:last-child .page-link {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .page-item.active .page-link {
+        background: #0052cc;
+        color: #ffffff;
+        border-color: #0052cc;
+        position: relative;
+        z-index: 1;
+    }
+
+    .page-item.disabled .page-link {
+        color: #98a2b3;
+        background: #f8fafc;
+        cursor: default;
     }
 
     @media (max-width: 768px) {
@@ -215,14 +251,22 @@
         }
 
         .link-btn,
-        .select,
-        .pagination-btn {
+        .select {
             width: 100%;
         }
 
-        .pagination-actions {
+        .pagination {
+            align-items: stretch;
+        }
+
+        .pagination-nav {
             width: 100%;
-            flex-direction: column;
+            margin-left: 0;
+        }
+
+        .pagination-list {
+            justify-content: center;
+            flex-wrap: wrap;
         }
     }
 </style>
@@ -273,10 +317,9 @@
 
         <div class="pagination">
             <div id="pagination-meta" class="pagination-meta"></div>
-            <div class="pagination-actions">
-                <button id="prev-page" class="pagination-btn" type="button">Pagina anterior</button>
-                <button id="next-page" class="pagination-btn" type="button">Próxima pagina</button>
-            </div>
+            <nav class="pagination-nav" aria-label="Paginas do histórico">
+                <ul id="pagination-numbers" class="pagination-list"></ul>
+            </nav>
         </div>
     </div>
 </section>
@@ -289,8 +332,7 @@
     const tableSummary = document.getElementById('table-summary');
     const statusNote = document.getElementById('status-note');
     const paginationMeta = document.getElementById('pagination-meta');
-    const prevPageButton = document.getElementById('prev-page');
-    const nextPageButton = document.getElementById('next-page');
+    const paginationNumbers = document.getElementById('pagination-numbers');
     const perPageSelect = document.getElementById('per-page');
 
     const state = {
@@ -381,6 +423,76 @@
         });
     }
 
+    function getVisiblePages(currentPage, lastPage) {
+        const maxVisible = 6;
+
+        if (lastPage <= maxVisible) {
+            return Array.from({ length: lastPage }, (_, index) => index + 1);
+        }
+
+        let start = Math.max(1, currentPage - 2);
+        let end = start + maxVisible - 1;
+
+        if (end > lastPage) {
+            end = lastPage;
+            start = end - maxVisible + 1;
+        }
+
+        return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+    }
+
+    function renderPaginationNumbers() {
+        paginationNumbers.innerHTML = '';
+
+        const createPageItem = ({ label, page, disabled = false, active = false, ariaLabel = null }) => {
+            const item = document.createElement('li');
+            item.className = `page-item${disabled ? ' disabled' : ''}${active ? ' active' : ''}`;
+
+            const button = document.createElement(active || disabled ? 'span' : 'button');
+            button.className = 'page-link';
+            button.textContent = label;
+
+            if (ariaLabel) {
+                button.setAttribute('aria-label', ariaLabel);
+            }
+
+            if (active) {
+                button.setAttribute('aria-current', 'page');
+            }
+
+            if (!active && !disabled) {
+                button.type = 'button';
+                button.addEventListener('click', () => loadUploads(page));
+            }
+
+            item.appendChild(button);
+            paginationNumbers.appendChild(item);
+        };
+
+        createPageItem({
+            label: 'Anterior',
+            page: state.currentPage - 1,
+            disabled: state.currentPage <= 1,
+            ariaLabel: 'Pagina anterior',
+        });
+
+        getVisiblePages(state.currentPage, state.lastPage).forEach((page) => {
+            createPageItem({
+                label: String(page),
+                page,
+                active: page === state.currentPage,
+                ariaLabel: `Ir para pagina ${page}`,
+            });
+        });
+
+        createPageItem({
+            label: 'Próximo',
+            page: state.currentPage + 1,
+            disabled: state.currentPage >= state.lastPage,
+            ariaLabel: 'Proxima pagina',
+        });
+    }
+
     function updatePagination(meta) {
         state.currentPage = meta.current_page;
         state.lastPage = meta.last_page;
@@ -389,9 +501,8 @@
 
         tableSummary.textContent = `${meta.total} upload(s) encontrados.`;
         paginationMeta.textContent = `Pagina ${meta.current_page} de ${meta.last_page}`;
-        prevPageButton.disabled = meta.current_page <= 1;
-        nextPageButton.disabled = meta.current_page >= meta.last_page;
         perPageSelect.value = String(meta.per_page);
+        renderPaginationNumbers();
     }
 
     async function loadUploads(page = 1) {
@@ -437,24 +548,11 @@
             renderRows([]);
             tableSummary.textContent = 'Falha ao carregar o historico.';
             paginationMeta.textContent = '';
+            paginationNumbers.innerHTML = '';
             statusNote.textContent = error.message || 'Erro inesperado ao carregar os uploads.';
             statusNote.className = 'status-note error';
-            prevPageButton.disabled = true;
-            nextPageButton.disabled = true;
         }
     }
-
-    prevPageButton.addEventListener('click', () => {
-        if (state.currentPage > 1) {
-            loadUploads(state.currentPage - 1);
-        }
-    });
-
-    nextPageButton.addEventListener('click', () => {
-        if (state.currentPage < state.lastPage) {
-            loadUploads(state.currentPage + 1);
-        }
-    });
 
     perPageSelect.addEventListener('change', () => {
         state.perPage = Number(perPageSelect.value);

@@ -37,13 +37,17 @@ class UploadController extends Controller
 
     public function index(Request $request, UploadService $uploadService): JsonResponse
     {
-        $uploads = $uploadService->uploadList();
+        $perPage = (int) $request->integer('per_page', 10);
+        $uploads = $uploadService->uploadList($perPage);
 
         return ApiSuccess::make(
-            data: $uploads,
+            data: $uploads->items(),
             meta: [
-                'total' => count($uploads),
-            ],
+                'current_page' => $uploads->currentPage(),
+                'last_page' => $uploads->lastPage(),
+                'per_page' => $uploads->perPage(),
+                'total' => $uploads->total(),
+            ]
         );
     }
 }
