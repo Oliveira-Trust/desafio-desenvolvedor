@@ -14,6 +14,7 @@ use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use App\Shared\Errors\ApiError;
 use App\Shared\Errors\ErrorCode;
 use App\Shared\Errors\DomainException;
+use App\Http\Middleware\RequestLoggingMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -24,10 +25,15 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->statefulApi();
+        $middleware->api(append: [
+            RequestLoggingMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $resolveTraceId = static function (Request $request): string {
-            return $request->headers->get('X-Request-Id') ?: (string) Str::uuid();
+            return $request->attributes->get('request_id')
+                ?: $request->headers->get('X-Request-Id')
+                ?: (string) Str::uuid();
         };
 
         $exceptions->render(function (ValidationException $e, Request $request) use ($resolveTraceId) {
