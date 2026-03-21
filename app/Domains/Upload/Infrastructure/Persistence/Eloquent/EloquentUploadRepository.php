@@ -5,6 +5,7 @@ namespace App\Domains\Upload\Infrastructure\Persistence\Eloquent;
 use App\Domains\Upload\Application\Ports\UploadRepository;
 use App\Domains\Upload\Domain\Entities\Upload as DomainUpload;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 final class EloquentUploadRepository implements UploadRepository
 {
@@ -49,8 +50,42 @@ final class EloquentUploadRepository implements UploadRepository
             ->whereKey($id)
             ->update([
                 'status' => Upload::STATUS_PROCESSING,
+                'processed_rows' => 0,
+                'failed_rows' => 0,
                 'error_message' => null,
                 'processed_at' => null,
+            ]);
+    }
+
+    public function incrementProgress(int $id, int $processedRows = 0, int $failedRows = 0): void
+    {
+        Upload::query()
+            ->whereKey($id)
+            ->update([
+                'processed_rows' => DB::raw('processed_rows + ' . max(0, $processedRows)),
+                'failed_rows' => DB::raw('failed_rows + ' . max(0, $failedRows)),
+            ]);
+    }
+
+    public function markAsCompleted(int $id): void
+    {
+        Upload::query()
+            ->whereKey($id)
+            ->update([
+                'status' => Upload::STATUS_COMPLETED,
+                'error_message' => null,
+                'processed_at' => now(),
+            ]);
+    }
+
+    public function markAsFailed(int $id, ?string $errorMessage = null): void
+    {
+        Upload::query()
+            ->whereKey($id)
+            ->update([
+                'status' => Upload::STATUS_FAILED,
+                'error_message' => $errorMessage,
+                'processed_at' => now(),
             ]);
     }
 
@@ -78,6 +113,9 @@ final class EloquentUploadRepository implements UploadRepository
             size: (int) $upload->size,
             fileMd5: (string) $upload->file_md5,
             status: (string) $upload->status,
+            processedRows: (int) ($upload->processed_rows ?? 0),
+            failedRows: (int) ($upload->failed_rows ?? 0),
+            errorMessage: $upload->error_message,
             createdAt: $upload->created_at,
             updatedAt: $upload->updated_at,
             processedAt: $upload->processed_at,

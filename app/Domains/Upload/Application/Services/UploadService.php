@@ -39,6 +39,8 @@ final class UploadService
             size: $file->getSize() ?? 0,
             fileMd5: $fileMd5,
             status: 'pending',
+            processedRows: 0,
+            failedRows: 0,
         ));
 
         ProcessUploadJob::dispatch($upload->id);

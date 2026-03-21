@@ -4,16 +4,20 @@ namespace App\Jobs;
 
 use App\Domains\MarketData\Application\DTOs\MarketDataDTO;
 use App\Domains\MarketData\Infrastructure\Persistence\Eloquent\MarketData;
+use App\Domains\Upload\Application\Ports\UploadRepository;
+use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Throwable;
 
 class ProcessUploadChunkJob implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
+    use Batchable;
     use Queueable;
     use SerializesModels;
 
@@ -35,15 +39,22 @@ class ProcessUploadChunkJob implements ShouldQueue
         $this->onQueue('ingestion');
     }
 
-    public function handle(): void
+    public function handle(UploadRepository $uploads): void
     {
         $now = now();
         $inserts = [];
+        $processedRows = 0;
+        $failedRows = 0;
 
         foreach ($this->rows as $row) {
+            if ($this->shouldSkipRow($row)) {
+                continue;
+            }
+
             $dto = $this->mapRowToDto($row);
 
             if ($dto === null) {
+                $failedRows++;
                 continue;
             }
 
@@ -58,13 +69,27 @@ class ProcessUploadChunkJob implements ShouldQueue
                 'created_at' => $now,
                 'updated_at' => $now,
             ];
+            $processedRows++;
         }
 
-        if ($inserts === []) {
+        if ($inserts !== []) {
+            MarketData::query()->insert($inserts);
+        }
+
+        if ($processedRows === 0 && $failedRows === 0) {
             return;
         }
 
-        MarketData::query()->insert($inserts);
+        $uploads->incrementProgress($this->uploadId, $processedRows, $failedRows);
+    }
+
+    public function failed(?Throwable $exception): void
+    {
+        app(UploadRepository::class)->incrementProgress(
+            $this->uploadId,
+            0,
+            $this->countDataRows($this->rows)
+        );
     }
 
     /**
@@ -72,10 +97,6 @@ class ProcessUploadChunkJob implements ShouldQueue
      */
     private function mapRowToDto(array $row): ?MarketDataDTO
     {
-        if ($this->shouldSkipRow($row)) {
-            return null;
-        }
-
         $rptDt = $this->normalizeDate($row[self::COLUMN_RPT_DT] ?? null);
         $tckrSymb = $this->normalizeString($row[self::COLUMN_TCKR_SYMB] ?? null);
         $mktNm = $this->normalizeString($row[self::COLUMN_MKT_NM] ?? null);
@@ -142,5 +163,21 @@ class ProcessUploadChunkJob implements ShouldQueue
         }
 
         return $normalized;
+    }
+
+    /**
+     * @param  array<int, array<int, mixed>>  $rows
+     */
+    private function countDataRows(array $rows): int
+    {
+        $count = 0;
+
+        foreach ($rows as $row) {
+            if (! $this->shouldSkipRow($row)) {
+                $count++;
+            }
+        }
+
+        return $count;
     }
 }
