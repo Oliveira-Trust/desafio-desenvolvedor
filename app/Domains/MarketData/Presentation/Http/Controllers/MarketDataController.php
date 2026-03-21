@@ -2,13 +2,13 @@
 
 namespace App\Domains\MarketData\Presentation\Http\Controllers;
 
+use App\Domains\MarketData\Application\DTOs\MarketDataSearchResponseDTO;
+use App\Domains\MarketData\Application\Services\MarketDataService;
 use App\Http\Controllers\Controller;
 use App\Shared\Responses\ApiSuccess;
-use App\Domains\MarketData\Application\Services\MarketDataService;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
 class MarketDataController extends Controller
 {
@@ -72,14 +72,7 @@ class MarketDataController extends Controller
     private function transformItems(array $items): array
     {
         return array_map(
-            static fn ($marketData): array => [
-                'RptDt' => Carbon::parse($marketData->rpt_dt)->toDateString(),
-                'TckrSymb' => $marketData->tckr_symb,
-                'MktNm' => $marketData->mkt_nm,
-                'SctyCtgyNm' => $marketData->scty_ctgy_nm,
-                'ISIN' => $marketData->isin,
-                'CrpnNm' => $marketData->crpn_nm,
-            ],
+            static fn ($marketData): array => MarketDataSearchResponseDTO::fromModel($marketData)->toArray(),
             $items
         );
     }
