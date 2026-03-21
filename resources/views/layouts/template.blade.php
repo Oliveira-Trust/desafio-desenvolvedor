@@ -152,6 +152,12 @@
                 >
                     Histórico
                 </a>
+                <a
+                    href="{{ route('market-data.index') }}"
+                    class="nav-link {{ request()->routeIs('market-data.index') ? 'active' : '' }}"
+                >
+                    Market Data
+                </a>
             </nav>
         </div>
         <button id="logout-btn" class="logout-btn" type="button">Sair</button>

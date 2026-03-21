@@ -1,5 +1,7 @@
 import { redirectToLogin } from './auth';
 
+let csrfCookieRequest = null;
+
 function normalizePayload(payload) {
     if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
         return payload;
@@ -17,13 +19,60 @@ function normalizePayload(payload) {
     };
 }
 
+function getCookie(name) {
+    const cookies = document.cookie ? document.cookie.split('; ') : [];
+
+    for (const cookie of cookies) {
+        const [key, ...value] = cookie.split('=');
+
+        if (key === name) {
+            return decodeURIComponent(value.join('='));
+        }
+    }
+
+    return null;
+}
+
+async function ensureCsrfCookie() {
+    if (getCookie('XSRF-TOKEN')) {
+        return;
+    }
+
+    if (!csrfCookieRequest) {
+        csrfCookieRequest = fetch('/sanctum/csrf-cookie', {
+            credentials: 'same-origin',
+            headers: {
+                Accept: 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        }).finally(() => {
+            csrfCookieRequest = null;
+        });
+    }
+
+    await csrfCookieRequest;
+}
+
 export async function apiFetch(url, options = {}) {
     const { auth = false, headers = {}, ...rest } = options;
+    const method = String(rest.method || 'GET').toUpperCase();
+    const shouldSendCsrf = auth || !['GET', 'HEAD', 'OPTIONS'].includes(method);
+
+    if (shouldSendCsrf) {
+        await ensureCsrfCookie();
+    }
+
+    const csrfToken = getCookie('XSRF-TOKEN');
 
     const requestHeaders = {
         Accept: 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
         ...headers,
     };
+
+    if (csrfToken && !Object.keys(requestHeaders).some((header) => header.toLowerCase() === 'x-xsrf-token')) {
+        requestHeaders['X-XSRF-TOKEN'] = csrfToken;
+    }
 
     const response = await fetch(url, {
         ...rest,

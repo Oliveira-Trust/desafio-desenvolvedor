@@ -1,5 +1,6 @@
 import { initAppShell } from './modules/app-shell.js';
 import { initLoginPage } from './modules/login.js';
+import { initMarketDataSearch } from './modules/market-data-search.js';
 import { initUploadForm } from './modules/upload-form.js';
 import { initUploadHistory } from './modules/upload-history.js?v=20260321-2';
 
@@ -17,4 +18,8 @@ if (currentPage === 'upload-index') {
 
 if (currentPage === 'upload-history') {
     initUploadHistory();
+}
+
+if (currentPage === 'market-data-index') {
+    initMarketDataSearch();
 }
