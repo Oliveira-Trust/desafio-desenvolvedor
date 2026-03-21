@@ -134,7 +134,7 @@
     </style>
     @stack('styles')
 </head>
-<body>
+<body data-page="@yield('page')">
 <header class="topbar">
     <div class="topbar-inner">
         <div class="brand-group">
@@ -164,36 +164,7 @@
     </div>
 </main>
 
-<script>
-    const authToken = localStorage.getItem('auth_token');
-
-    if (!authToken) {
-        window.location.href = '/login';
-    }
-
-    async function doLogout() {
-        const token = localStorage.getItem('auth_token');
-
-        try {
-            if (token) {
-                await fetch('/api/auth/logout', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                    },
-                });
-            }
-        } catch (error) {
-            // Logout deve prosseguir mesmo com falha de rede.
-        } finally {
-            localStorage.removeItem('auth_token');
-            window.location.href = '/login';
-        }
-    }
-
-    document.getElementById('logout-btn').addEventListener('click', doLogout);
-</script>
+<script type="module" src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')
 </body>
 </html>

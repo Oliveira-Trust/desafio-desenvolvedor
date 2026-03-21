@@ -1,6 +1,7 @@
 @extends('layouts.template')
 
 @section('title', 'Upload de Arquivos')
+@section('page', 'upload-index')
 
 @push('styles')
 <style>
@@ -215,105 +216,3 @@
     </aside>
 </section>
 @endsection
-
-@push('scripts')
-<script>
-    const form = document.getElementById('upload-form');
-    const fileInput = document.getElementById('file');
-    const submitBtn = document.getElementById('submit-btn');
-    const feedback = document.getElementById('feedback');
-    const allowedExtensions = ['csv', 'xls', 'xlsx'];
-    const allowedMimeTypes = [
-        'text/csv',
-        'application/csv',
-        'application/vnd.ms-excel',
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        'text/plain'
-    ];
-
-    function showMessage(message, type) {
-        feedback.textContent = message;
-        feedback.className = `message ${type}`;
-    }
-
-    function getExtension(fileName) {
-        const parts = fileName.split('.');
-        return parts.length > 1 ? parts.pop().toLowerCase() : '';
-    }
-
-    function isAllowedFile(file) {
-        const extension = getExtension(file.name);
-        if (!allowedExtensions.includes(extension)) {
-            return false;
-        }
-
-        // Alguns navegadores não preenchem file.type para certos arquivos.
-        return !file.type || allowedMimeTypes.includes(file.type.toLowerCase());
-    }
-
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const token = localStorage.getItem('auth_token');
-        if (!token) {
-            showMessage('Token não encontrado. Faça login novamente.', 'error');
-            return;
-        }
-
-        const file = fileInput.files[0];
-        if (!file) {
-            showMessage('Selecione um arquivo para continuar.', 'error');
-            return;
-        }
-
-        if (!isAllowedFile(file)) {
-            showMessage('Formato inválido. Envie apenas arquivos .csv, .xls ou .xlsx.', 'error');
-            return;
-        }
-
-        submitBtn.disabled = true;
-        feedback.className = 'message';
-        feedback.textContent = '';
-
-        const formData = new FormData();
-        formData.append('file', file);
-
-        try {
-            const response = await fetch('/api/uploads', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: formData,
-            });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                if (response.status === 401) {
-                    localStorage.removeItem('auth_token');
-                    showMessage('Sessão expirada. Faça login novamente.', 'error');
-                    window.setTimeout(() => {
-                        window.location.href = '/login';
-                    }, 900);
-                    return;
-                }
-
-                const errorMessage = result.message || 'Não foi possível enviar o arquivo.';
-                showMessage(errorMessage, 'error');
-                return;
-            }
-
-            const message = result?.data?.message || 'Upload realizado com sucesso.';
-            const fileName = result?.data?.upload?.filename ? `\nArquivo: ${result.data.upload.filename}` : '';
-            showMessage(`${message}${fileName}`, 'success');
-            form.reset();
-        } catch (error) {
-            showMessage('Erro de conexão ao tentar enviar o arquivo.', 'error');
-        } finally {
-            submitBtn.disabled = false;
-        }
-    });
-</script>
-@endpush
