@@ -11,6 +11,9 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use OpenSpout\Common\Entity\Row;
 use OpenSpout\Reader\Common\Creator\ReaderFactory;
+use OpenSpout\Reader\CSV\Options as CsvOptions;
+use OpenSpout\Reader\CSV\Reader as CsvReader;
+use OpenSpout\Reader\ReaderInterface;
 
 class ProcessUploadJob implements ShouldQueue
 {
@@ -44,7 +47,7 @@ class ProcessUploadJob implements ShouldQueue
         }
 
         $absolutePath = $disk->path($upload->path);
-        $reader = ReaderFactory::createFromFile($absolutePath);
+        $reader = $this->createReader($absolutePath);
         $buffer = [];
         $chunkIndex = 0;
 
@@ -86,5 +89,18 @@ class ProcessUploadJob implements ShouldQueue
     {
         ProcessUploadChunkJob::dispatch($this->uploadId, $rows, $chunkIndex)
             ->onQueue('ingestion');
+    }
+
+    private function createReader(string $absolutePath): ReaderInterface
+    {
+        if (strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION)) !== 'csv') {
+            return ReaderFactory::createFromFile($absolutePath);
+        }
+
+        $options = new CsvOptions();
+        $options->FIELD_DELIMITER = ';';
+        $options->ENCODING = 'ISO-8859-1';
+
+        return new CsvReader($options);
     }
 }
