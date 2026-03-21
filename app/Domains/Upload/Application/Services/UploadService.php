@@ -2,6 +2,7 @@
 
 namespace App\Domains\Upload\Application\Services;
 
+use App\Jobs\ProcessUploadJob;
 use App\Domains\Upload\Application\Ports\UploadRepository;
 use App\Domains\Upload\Application\Ports\UploadStorage;
 use App\Domains\Upload\Domain\Entities\Upload;
@@ -30,7 +31,7 @@ final class UploadService
 
         $path = $this->storage->store($file, 'uploads');
 
-        return $this->uploads->create(new Upload(
+        $upload = $this->uploads->create(new Upload(
             id: null,
             filename: $file->getClientOriginalName(),
             path: $path,
@@ -39,6 +40,10 @@ final class UploadService
             fileMd5: $fileMd5,
             status: 'pending',
         ));
+
+        ProcessUploadJob::dispatch($upload->id);
+
+        return $upload;
     }
 
     private function calculateHash(UploadedFile $file): string

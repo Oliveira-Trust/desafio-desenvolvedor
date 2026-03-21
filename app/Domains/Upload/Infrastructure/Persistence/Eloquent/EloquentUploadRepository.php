@@ -23,7 +23,7 @@ final class EloquentUploadRepository implements UploadRepository
         $uploads = $query->paginate($perPage);
 
         $uploads->setCollection(
-            $uploads->getCollection()->map(fn (Upload $upload) => $this->toDomain($upload))
+            $uploads->getCollection()->map(fn(Upload $upload) => $this->toDomain($upload))
         );
 
         return $uploads;
@@ -34,6 +34,24 @@ final class EloquentUploadRepository implements UploadRepository
         return Upload::query()
             ->where('file_md5', $fileMd5)
             ->exists();
+    }
+
+    public function findById(int $id): ?DomainUpload
+    {
+        $upload = Upload::query()->find($id);
+
+        return $upload ? $this->toDomain($upload) : null;
+    }
+
+    public function markAsProcessing(int $id): void
+    {
+        Upload::query()
+            ->whereKey($id)
+            ->update([
+                'status' => Upload::STATUS_PROCESSING,
+                'error_message' => null,
+                'processed_at' => null,
+            ]);
     }
 
     public function create(DomainUpload $upload): DomainUpload
