@@ -48,11 +48,45 @@
             gap: 12px;
         }
 
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
         .brand {
             margin: 0;
             font-size: 1rem;
             font-weight: 700;
             color: var(--text);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 8px 12px;
+            border-radius: 999px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #eef4ff;
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            background: #e8f0ff;
+            color: var(--primary);
         }
 
         .logout-btn {
@@ -73,9 +107,29 @@
 
         .page {
             min-height: calc(100vh - 61px);
-            display: grid;
-            place-items: center;
             padding: 20px;
+        }
+
+        .page-inner {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .topbar-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .brand-group,
+            .nav {
+                width: 100%;
+            }
+
+            .logout-btn {
+                width: 100%;
+            }
         }
     </style>
     @stack('styles')
@@ -83,13 +137,31 @@
 <body>
 <header class="topbar">
     <div class="topbar-inner">
-        <p class="brand">Search market data</p>
+        <div class="brand-group">
+            <p class="brand">Search market data</p>
+            <nav class="nav" aria-label="Principal">
+                <a
+                    href="{{ route('uploads.page') }}"
+                    class="nav-link {{ request()->routeIs('uploads.page') ? 'active' : '' }}"
+                >
+                    Upload
+                </a>
+                <a
+                    href="{{ route('uploads.history') }}"
+                    class="nav-link {{ request()->routeIs('uploads.history') ? 'active' : '' }}"
+                >
+                    Histórico
+                </a>
+            </nav>
+        </div>
         <button id="logout-btn" class="logout-btn" type="button">Sair</button>
     </div>
 </header>
 
 <main class="page">
-    @yield('content')
+    <div class="page-inner">
+        @yield('content')
+    </div>
 </main>
 
 <script>
