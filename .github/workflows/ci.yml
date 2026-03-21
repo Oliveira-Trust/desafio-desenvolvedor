@@ -19,7 +19,7 @@ jobs:
 
       - name: Wait for MySQL
         run: |
-          until docker compose exec -T mysql mysqladmin ping -h 127.0.0.1 -proot --silent; do
+          until docker compose exec -T -e MYSQL_PWD=root mysql mysqladmin ping -h 127.0.0.1 -uroot --silent; do
             sleep 2
           done
 
