@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+jobs:
+  docker-compose:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and start containers
+        run: docker compose up -d --build app mysql redis nginx
+
+      - name: Wait for MySQL
+        run: |
+          until docker compose exec -T mysql mysqladmin ping -h 127.0.0.1 -proot --silent; do
+            sleep 2
+          done
+
+      - name: Install PHP dependencies
+        run: docker compose exec -T app composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Prepare application
+        run: |
+          docker compose exec -T app sh -lc 'cp .env.example .env'
+          docker compose exec -T app php artisan key:generate
+          docker compose exec -T app php artisan migrate --force
+
+      - name: Run tests in application container
+        run: |
+          docker compose exec -T app env \
+            APP_ENV=testing \
+            DB_CONNECTION=mysql \
+            DB_HOST=mysql \
+            DB_PORT=3306 \
+            DB_DATABASE=desafio-ot \
+            DB_USERNAME=ot \
+            DB_PASSWORD=password \
+            CACHE_STORE=array \
+            QUEUE_CONNECTION=sync \
+            SESSION_DRIVER=array \
+            php artisan test
+
+      - name: Install Node dependencies
+        run: docker compose exec -T app npm install
+
+      - name: Build frontend assets
+        run: docker compose exec -T app npm run build
+
+      - name: Smoke test via Nginx
+        run: curl --fail --retry 10 --retry-delay 3 http://127.0.0.1:8000
+
+      - name: Show container status on failure
+        if: failure()
+        run: docker compose ps
+
+      - name: Show logs on failure
+        if: failure()
+        run: docker compose logs --tail=200
