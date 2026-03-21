@@ -56,6 +56,7 @@ class ProcessUploadJob implements ShouldQueue
             $buffer = [];
             $pendingJobs = [];
             $chunkIndex = 0;
+            $rowsTotal = 0;
             $batch = null;
 
             try {
@@ -63,7 +64,13 @@ class ProcessUploadJob implements ShouldQueue
 
                 foreach ($reader->getSheetIterator() as $sheet) {
                     foreach ($sheet->getRowIterator() as $row) {
-                        $buffer[] = $this->mapRowToArray($row);
+                        $rowData = $this->mapRowToArray($row);
+
+                        if (! $this->shouldSkipRow($rowData)) {
+                            $rowsTotal++;
+                        }
+
+                        $buffer[] = $rowData;
 
                         if (count($buffer) < self::CHUNK_SIZE) {
                             continue;
@@ -81,6 +88,7 @@ class ProcessUploadJob implements ShouldQueue
                     $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex);
                 }
 
+                $uploads->setRowsTotal($this->uploadId, $rowsTotal);
                 $batch = $this->flushPendingJobs($pendingJobs, $batch, true);
 
                 if ($batch === null) {
@@ -102,6 +110,35 @@ class ProcessUploadJob implements ShouldQueue
             static fn ($cell) => $cell->getValue(),
             $row->getCells()
         );
+    }
+
+    /**
+     * @param  array<int, mixed>  $row
+     */
+    private function shouldSkipRow(array $row): bool
+    {
+        $firstColumn = $this->normalizeString($row[0] ?? null);
+
+        if ($firstColumn === null) {
+            return true;
+        }
+
+        if ($firstColumn === 'RptDt') {
+            return true;
+        }
+
+        return str_starts_with($firstColumn, 'Status do Arquivo:');
+    }
+
+    private function normalizeString(mixed $value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        $normalized = trim((string) $value);
+
+        return $normalized === '' ? null : $normalized;
     }
 
     public function failed(?Throwable $exception): void

@@ -12,6 +12,7 @@ final class Upload
         public readonly int $size,
         public readonly string $fileMd5,
         public readonly string $status,
+        public readonly int $rowsTotal = 0,
         public readonly int $processedRows = 0,
         public readonly int $failedRows = 0,
         public readonly ?string $errorMessage = null,

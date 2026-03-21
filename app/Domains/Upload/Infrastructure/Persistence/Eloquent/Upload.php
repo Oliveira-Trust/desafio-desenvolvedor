@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'size',
     'file_md5',
     'status',
+    'rows_total',
     'processed_rows',
     'failed_rows',
     'processed_at',
@@ -35,6 +36,7 @@ class Upload extends Model
     {
         return [
             'size' => 'integer',
+            'rows_total' => 'integer',
             'processed_rows' => 'integer',
             'failed_rows' => 'integer',
             'processed_at' => 'datetime',

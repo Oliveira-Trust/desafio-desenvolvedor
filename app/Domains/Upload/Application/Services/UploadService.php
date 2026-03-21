@@ -39,6 +39,7 @@ final class UploadService
             size: $file->getSize() ?? 0,
             fileMd5: $fileMd5,
             status: 'pending',
+            rowsTotal: 0,
             processedRows: 0,
             failedRows: 0,
         ));

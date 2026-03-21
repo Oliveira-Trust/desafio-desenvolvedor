@@ -50,10 +50,20 @@ final class EloquentUploadRepository implements UploadRepository
             ->whereKey($id)
             ->update([
                 'status' => Upload::STATUS_PROCESSING,
+                'rows_total' => 0,
                 'processed_rows' => 0,
                 'failed_rows' => 0,
                 'error_message' => null,
                 'processed_at' => null,
+            ]);
+    }
+
+    public function setRowsTotal(int $id, int $rowsTotal): void
+    {
+        Upload::query()
+            ->whereKey($id)
+            ->update([
+                'rows_total' => max(0, $rowsTotal),
             ]);
     }
 
@@ -98,6 +108,7 @@ final class EloquentUploadRepository implements UploadRepository
             'size' => $upload->size,
             'file_md5' => $upload->fileMd5,
             'status' => $upload->status,
+            'rows_total' => $upload->rowsTotal,
         ]);
 
         return $this->toDomain($record);
@@ -113,6 +124,7 @@ final class EloquentUploadRepository implements UploadRepository
             size: (int) $upload->size,
             fileMd5: (string) $upload->file_md5,
             status: (string) $upload->status,
+            rowsTotal: (int) ($upload->rows_total ?? 0),
             processedRows: (int) ($upload->processed_rows ?? 0),
             failedRows: (int) ($upload->failed_rows ?? 0),
             errorMessage: $upload->error_message,

@@ -15,6 +15,8 @@ interface UploadRepository
 
     public function markAsProcessing(int $id): void;
 
+    public function setRowsTotal(int $id, int $rowsTotal): void;
+
     public function incrementProgress(int $id, int $processedRows = 0, int $failedRows = 0): void;
 
     public function markAsCompleted(int $id): void;

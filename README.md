@@ -141,7 +141,7 @@ Durante o processamento:
 - as linhas são agrupadas em chunks de 1000 registros
 - cada chunk gera um `ProcessUploadChunkJob`
 - os jobs filhos fazem normalização mínima e `bulk insert` em `market_data`
-- o progresso é atualizado com `processed_rows` e `failed_rows`
+- o progresso é atualizado com `rows_total`, `processed_rows` e `failed_rows`
 - ao final, o upload é concluído como `completed` ou `failed`
 
 O histórico operacional pode ser consultado em:
