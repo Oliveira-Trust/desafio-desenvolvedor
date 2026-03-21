@@ -1,5 +1,5 @@
 import { apiFetch } from '../services/http.js';
-import { getAuthToken, redirectToUpload, setAuthToken } from '../services/auth.js';
+import { redirectToUpload } from '../services/auth.js';
 import { clearFeedback, showFeedback } from '../utils/feedback.js';
 
 export function initLoginPage() {
@@ -8,11 +8,6 @@ export function initLoginPage() {
     const feedback = document.getElementById('feedback');
 
     if (!form || !submitButton || !feedback) {
-        return;
-    }
-
-    if (getAuthToken()) {
-        redirectToUpload();
         return;
     }
 
@@ -39,12 +34,6 @@ export function initLoginPage() {
             if (!response.ok) {
                 showFeedback(feedback, data?.message || 'Não foi possível realizar o login.', 'error');
                 return;
-            }
-
-            const token = data?.data?.token;
-
-            if (token) {
-                setAuthToken(token);
             }
 
             showFeedback(feedback, data?.message || 'Login realizado com sucesso.', 'success');

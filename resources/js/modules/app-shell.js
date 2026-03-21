@@ -1,14 +1,10 @@
 import { apiFetch } from '../services/http';
-import { clearAuthToken, ensureAuthenticated, redirectToLogin } from '../services/auth';
+import { redirectToLogin } from '../services/auth';
 
 export function initAppShell() {
     const logoutButton = document.getElementById('logout-btn');
 
     if (!logoutButton) {
-        return;
-    }
-
-    if (!ensureAuthenticated()) {
         return;
     }
 
@@ -21,7 +17,6 @@ export function initAppShell() {
         } catch (error) {
             // Logout deve prosseguir mesmo com falha de rede.
         } finally {
-            clearAuthToken();
             redirectToLogin();
         }
     });

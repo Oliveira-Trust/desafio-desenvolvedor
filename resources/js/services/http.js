@@ -1,4 +1,4 @@
-import { clearAuthToken, getAuthToken, redirectToLogin } from './auth';
+import { redirectToLogin } from './auth';
 
 function normalizePayload(payload) {
     if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
@@ -25,19 +25,9 @@ export async function apiFetch(url, options = {}) {
         ...headers,
     };
 
-    if (auth) {
-        const token = getAuthToken();
-
-        if (!token) {
-            redirectToLogin();
-            throw new Error('Token não encontrado. Faça login novamente.');
-        }
-
-        requestHeaders.Authorization = `Bearer ${token}`;
-    }
-
     const response = await fetch(url, {
         ...rest,
+        credentials: auth ? 'same-origin' : (rest.credentials ?? 'same-origin'),
         headers: requestHeaders,
     });
 
@@ -45,7 +35,6 @@ export async function apiFetch(url, options = {}) {
     const payload = contentType.includes('application/json') ? normalizePayload(await response.json()) : null;
 
     if (response.status === 401) {
-        clearAuthToken();
         redirectToLogin();
         throw new Error('Sessão expirada. Faça login novamente.');
     }

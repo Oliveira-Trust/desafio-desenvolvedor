@@ -23,12 +23,15 @@ class UserAuthController extends Controller
             new AuthenticateUserInput(
                 email: $credentials['email'],
                 password: $credentials['password'],
-            )
+            ),
+            issueToken: false,
         );
+
+        Auth::guard('web')->loginUsingId($output->userId);
+        $request->session()->regenerate();
 
         return ApiSuccess::make(
             data: [
-                'token' => $output->accessToken,
                 'user' => [
                     'id' => $output->userId,
                     'name' => $output->userName,

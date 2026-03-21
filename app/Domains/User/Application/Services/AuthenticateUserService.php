@@ -17,7 +17,7 @@ final class AuthenticateUserService
         private readonly TokenIssuer $tokens,
     ) {}
 
-    public function handle(AuthenticateUserInput $input): AuthenticateUserOutput
+    public function handle(AuthenticateUserInput $input, bool $issueToken = true): AuthenticateUserOutput
     {
         $email = mb_strtolower(trim($input->email));
         $user = $this->users->findByEmail($email);
@@ -30,7 +30,9 @@ final class AuthenticateUserService
             throw new InvalidCredentialsException();
         }
 
-        $accessToken = $this->tokens->issueForUserId($user->id, 'api-token');
+        $accessToken = $issueToken
+            ? $this->tokens->issueForUserId($user->id, 'api-token')
+            : null;
 
         return new AuthenticateUserOutput(
             accessToken: $accessToken,
