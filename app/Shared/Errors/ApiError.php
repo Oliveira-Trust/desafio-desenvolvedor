@@ -14,10 +14,11 @@ final class ApiError
         ?string $traceId = null
     ): JsonResponse {
         return response()->json([
-            'success' => false,
-            'message' => $message,
-            'error_code' => $errorCode,
-            'errors' => $errors,
+            'error' => [
+                'code' => $errorCode,
+                'message' => $message,
+                'details' => $errors,
+            ],
             'trace_id' => $traceId,
         ], $status);
     }

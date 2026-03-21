@@ -24,15 +24,19 @@ class UploadController extends Controller
                 'file_name' => $uploadedFile->getClientOriginalName(),
                 'stored_path' => $path,
             ],
-            message: 'Upload realizado com sucesso.',
             status: 202,
         );
     }
 
-    public function index(Request $request): JsonResponse
+    public function index(Request $request, UploadService $uploadService): JsonResponse
     {
-        return response()->json([
-            'data' => ['message' => 'Lista de uploads'],
-        ], 200);
+        $uploads = $uploadService->uploadList();
+
+        return ApiSuccess::make(
+            data: $uploads,
+            meta: [
+                'total' => count($uploads),
+            ],
+        );
     }
 }

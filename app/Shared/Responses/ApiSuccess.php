@@ -13,8 +13,6 @@ final class ApiSuccess
         ?array $meta = null
     ): JsonResponse {
         return response()->json([
-            'success' => true,
-            'message' => $message,
             'data' => $data,
             'meta' => $meta,
         ], $status);

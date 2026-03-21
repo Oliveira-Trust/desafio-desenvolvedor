@@ -11,7 +11,7 @@ final class UploadService
         return $file->store('uploads');
     }
 
-    public function uploadList()
+    public function uploadList(): array
     {
         return [
         [
