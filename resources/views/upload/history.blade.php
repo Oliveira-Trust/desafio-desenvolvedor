@@ -328,7 +328,7 @@
     <div class="hero-card">
         <div>
             <h1>Histórico de uploads</h1>
-            <p>Acompanhe status, paginação e timestamps dos arquivos enviados.</p>
+            <p>Acompanhe status, paginação e datas dos arquivos enviados.</p>
         </div>
 
         <form id="filter-form" class="filter-form hero-actions">
@@ -373,8 +373,8 @@
                         <th>Arquivo</th>
                         <th>Status</th>
                         <th>Tamanho</th>
-                        <th>Caminho</th>
-                        <th>Timestamps</th>
+                        <th>Data de criação</th>
+                        <th>Data de processamento</th>
                     </tr>
                 </thead>
                 <tbody id="history-body"></tbody>

@@ -2,7 +2,7 @@ import './bootstrap';
 import { initAppShell } from './modules/app-shell';
 import { initLoginPage } from './modules/login';
 import { initUploadForm } from './modules/upload-form';
-import { initUploadHistory } from './modules/upload-history';
+import { initUploadHistory } from './modules/upload-history?20260321-2';
 
 const currentPage = document.body.dataset.page;
 

@@ -1,8 +1,8 @@
 import { apiFetch } from '../services/http';
 
-function formatDateTime(value) {
+function formatDate(value, emptyLabel = '-') {
     if (!value) {
-        return 'Nao processado';
+        return emptyLabel;
     }
 
     const date = new Date(value);
@@ -13,7 +13,6 @@ function formatDateTime(value) {
 
     return new Intl.DateTimeFormat('pt-BR', {
         dateStyle: 'short',
-        timeStyle: 'medium',
     }).format(date);
 }
 
@@ -110,15 +109,8 @@ export function initUploadHistory() {
                     <span class="badge ${upload.status}">${getStatusLabel(upload.status)}</span>
                 </td>
                 <td>${formatSize(Number(upload.size))}</td>
-                <td class="muted">${upload.path}</td>
-                <td class="timestamp-cell">
-                    <strong>Criado:</strong>
-                    <span class="muted">${formatDateTime(upload.created_at)}</span>
-                    <strong>Atualizado:</strong>
-                    <span class="muted">${formatDateTime(upload.updated_at)}</span>
-                    <strong>Processado:</strong>
-                    <span class="muted">${formatDateTime(upload.processed_at)}</span>
-                </td>
+                <td class="muted">${formatDate(upload.created_at, '-')}</td>
+                <td class="muted">${formatDate(upload.processed_at, 'Nao processado')}</td>
             `;
 
             historyBody.appendChild(row);

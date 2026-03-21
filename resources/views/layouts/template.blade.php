@@ -164,7 +164,7 @@
     </div>
 </main>
 
-<script type="module" src="{{ asset('js/app.js') }}"></script>
+<script type="module" src="{{ asset('js/app.js') }}?v={{ filemtime(public_path('js/app.js')) }}"></script>
 @stack('scripts')
 </body>
 </html>
