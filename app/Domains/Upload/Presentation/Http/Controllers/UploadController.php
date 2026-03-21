@@ -25,10 +25,10 @@ class UploadController extends Controller
                     'id' => $upload->id,
                     'filename' => $upload->filename,
                     'path' => $upload->path,
-                    'mime_type' => $upload->mime_type,
+                    'mime_type' => $upload->mimeType,
                     'size' => $upload->size,
                     'status' => $upload->status,
-                    'created_at' => $upload->created_at,
+                    'created_at' => $upload->createdAt,
                 ],
             ],
             status: 202,
@@ -47,9 +47,23 @@ class UploadController extends Controller
             filename: $filename ?: null,
             date: $date ?: null,
         );
+        $items = array_map(
+            static fn ($upload): array => [
+                'id' => $upload->id,
+                'filename' => $upload->filename,
+                'path' => $upload->path,
+                'mime_type' => $upload->mimeType,
+                'size' => $upload->size,
+                'status' => $upload->status,
+                'created_at' => $upload->createdAt,
+                'updated_at' => $upload->updatedAt,
+                'processed_at' => $upload->processedAt,
+            ],
+            $uploads->items()
+        );
 
         return ApiSuccess::make(
-            data: $uploads->items(),
+            data: $items,
             meta: [
                 'current_page' => $uploads->currentPage(),
                 'last_page' => $uploads->lastPage(),
