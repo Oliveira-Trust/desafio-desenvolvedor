@@ -17,7 +17,7 @@ class StoreUploadRequest extends FormRequest
             'file' => [
                 'required',
                 'file',
-                'max:10240',
+                'max:79872',
                 'extensions:csv,xls,xlsx',
                 'mimetypes:text/plain,text/csv,application/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             ],
@@ -27,7 +27,7 @@ class StoreUploadRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'file.max' => 'O arquivo deve ter no máximo 10 MB.',
+            'file.max' => 'O arquivo deve ter no máximo 78 MB.',
         ];
     }
 }
