@@ -21,10 +21,8 @@
 
     .hero-card {
         padding: 24px 28px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
+        display: grid;
+        gap: 18px;
     }
 
     .hero-card h1 {
@@ -39,8 +37,26 @@
 
     .hero-actions {
         display: flex;
-        align-items: center;
+        align-items: end;
         gap: 12px;
+    }
+
+    .filter-form {
+        display: flex;
+        align-items: end;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .filter-field {
+        display: grid;
+        gap: 6px;
+    }
+
+    .filter-field label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #344054;
     }
 
     .select {
@@ -50,6 +66,36 @@
         background: #f8faff;
         color: #1d2433;
         font: inherit;
+    }
+
+    .input {
+        border: 1px solid #d0d7e2;
+        border-radius: 10px;
+        padding: 10px 12px;
+        background: #f8faff;
+        color: #1d2433;
+        font: inherit;
+        min-width: 220px;
+    }
+
+    .filter-btn {
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .filter-btn.primary {
+        background: #0052cc;
+        color: #ffffff;
+    }
+
+    .filter-btn.secondary {
+        background: #eef4ff;
+        color: #0052cc;
+        border: 1px solid #b9cdf8;
     }
 
     .table-card {
@@ -246,13 +292,18 @@
 
         .hero-actions {
             width: 100%;
-            flex-direction: column;
-            align-items: stretch;
         }
 
         .link-btn,
-        .select {
+        .select,
+        .input,
+        .filter-btn {
             width: 100%;
+        }
+
+        .filter-form {
+            width: 100%;
+            align-items: stretch;
         }
 
         .pagination {
@@ -280,13 +331,29 @@
             <p>Acompanhe status, paginação e timestamps dos arquivos enviados.</p>
         </div>
 
-        <div class="hero-actions">
-            <select id="per-page" class="select" aria-label="Itens por página">
-                <option value="10">10 por página</option>
-                <option value="25">25 por página</option>
-                <option value="50">50 por página</option>
-            </select>
-        </div>
+        <form id="filter-form" class="filter-form hero-actions">
+            <div class="filter-field">
+                <label for="filename-filter">Nome do arquivo</label>
+                <input id="filename-filter" class="input" type="text" placeholder="Ex.: InstrumentsConsolidatedFile">
+            </div>
+
+            <div class="filter-field">
+                <label for="date-filter">Data de referência</label>
+                <input id="date-filter" class="input" type="date">
+            </div>
+
+            <div class="filter-field">
+                <label for="per-page">Itens por página</label>
+                <select id="per-page" class="select" aria-label="Itens por página">
+                    <option value="10">10 por página</option>
+                    <option value="25">25 por página</option>
+                    <option value="50">50 por página</option>
+                </select>
+            </div>
+
+            <button type="submit" class="filter-btn primary">Filtrar</button>
+            <button type="button" id="clear-filters" class="filter-btn secondary">Limpar</button>
+        </form>
     </div>
 
     <div class="table-card">
@@ -333,6 +400,10 @@
     const statusNote = document.getElementById('status-note');
     const paginationMeta = document.getElementById('pagination-meta');
     const paginationNumbers = document.getElementById('pagination-numbers');
+    const filterForm = document.getElementById('filter-form');
+    const filenameFilterInput = document.getElementById('filename-filter');
+    const dateFilterInput = document.getElementById('date-filter');
+    const clearFiltersButton = document.getElementById('clear-filters');
     const perPageSelect = document.getElementById('per-page');
 
     const state = {
@@ -340,6 +411,8 @@
         lastPage: 1,
         perPage: Number(perPageSelect.value),
         total: 0,
+        filename: '',
+        date: '',
     };
 
     function formatDateTime(value) {
@@ -517,7 +590,20 @@
         statusNote.className = 'status-note';
 
         try {
-            const response = await fetch(`/api/uploads?page=${page}&per_page=${state.perPage}`, {
+            const searchParams = new URLSearchParams({
+                page: String(page),
+                per_page: String(state.perPage),
+            });
+
+            if (state.filename) {
+                searchParams.set('filename', state.filename);
+            }
+
+            if (state.date) {
+                searchParams.set('date', state.date);
+            }
+
+            const response = await fetch(`/api/uploads?${searchParams.toString()}`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${token}`,
@@ -556,6 +642,21 @@
 
     perPageSelect.addEventListener('change', () => {
         state.perPage = Number(perPageSelect.value);
+        loadUploads(1);
+    });
+
+    filterForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        state.filename = filenameFilterInput.value.trim();
+        state.date = dateFilterInput.value;
+        loadUploads(1);
+    });
+
+    clearFiltersButton.addEventListener('click', () => {
+        filenameFilterInput.value = '';
+        dateFilterInput.value = '';
+        state.filename = '';
+        state.date = '';
         loadUploads(1);
     });
 

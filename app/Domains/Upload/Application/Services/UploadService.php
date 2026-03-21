@@ -8,7 +8,7 @@ use Illuminate\Http\UploadedFile;
 
 final class UploadService
 {
-    public function uploadList(int $perPage = 10)
+    public function uploadList(int $perPage = 10, ?string $filename = null, ?string $date = null)
     {
         return Upload::query()
             ->select([
@@ -22,8 +22,20 @@ final class UploadService
                 'updated_at',
                 'processed_at',
             ])
+            ->when($filename, function ($query, $filename) {
+                $query->where('filename', 'like', '%' . $filename . '%');
+            })
+            ->when($date, function ($query, $date) {
+                $this->filterByReferenceDate($query, $date);
+            })
             ->latest('created_at')
             ->paginate($perPage);
+    }
+
+    public function filterByReferenceDate($query, string $date): void
+    {
+        $normalizedDate = str_replace('-', '', $date);
+        $query->where('filename', 'like', '%' . $normalizedDate . '%');
     }
 
     public function fileExists(string $fileMd5): bool
