@@ -11,6 +11,8 @@ RUN pecl install redis && docker-php-ext-enable redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
 COPY . .
 
 RUN composer install --no-interaction --optimize-autoloader
