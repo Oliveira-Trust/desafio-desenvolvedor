@@ -25,6 +25,14 @@ function isAllowedFile(file) {
     return !file.type || allowedMimeTypes.includes(file.type.toLowerCase());
 }
 
+function getUploadErrorMessage(data) {
+    if (data?.error?.code === 'UPLOAD_DUPLICATE_FILE' || data?.code === 'UPLOAD_DUPLICATE_FILE') {
+        return data?.error?.message || data?.message || 'Não é possível enviar o mesmo arquivo duas vezes.';
+    }
+
+    return data?.error?.message || data?.message || 'Não foi possível enviar o arquivo.';
+}
+
 export function initUploadForm() {
     const form = document.getElementById('upload-form');
     const fileInput = document.getElementById('file');
@@ -64,7 +72,7 @@ export function initUploadForm() {
             });
 
             if (!response.ok) {
-                showFeedback(feedback, data?.message || 'Não foi possível enviar o arquivo.', 'error');
+                showFeedback(feedback, getUploadErrorMessage(data), 'error');
                 return;
             }
 
