@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
     container_name: desafio_queue
     restart: unless-stopped
-    command: php artisan queue:work redis --tries=3 --timeout=300
+    command: php artisan queue:work redis --tries=3 --timeout=600 --memory=512
     volumes:
       - ./laravel-api:/var/www/html
     depends_on:
