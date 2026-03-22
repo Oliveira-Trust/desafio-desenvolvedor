@@ -64,7 +64,7 @@ class UserAuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Logout feito com sucesso.',
+            'message' => 'Logout successful.',
         ], Response::HTTP_OK);
     }
 }

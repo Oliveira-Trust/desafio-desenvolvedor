@@ -15,6 +15,11 @@ class InstrumentController extends Controller
 
     public function index(Request $request): JsonResponse
     {
+        $request->validate([
+            'TckrSymb' => ['nullable', 'string', 'max:20'],
+            'RptDt' => ['nullable', 'date_format:Y-m-d'],
+        ]);
+
         $data = $this->service->search(
             tckrSymb: $request->TckrSymb,
             rptDt: $request->RptDt,

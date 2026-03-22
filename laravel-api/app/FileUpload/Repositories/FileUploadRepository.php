@@ -13,11 +13,11 @@ class FileUploadRepository extends BaseRepository implements FileUploadRepositor
 {
     protected string $model = FileUpload::class;
 
-    public function verifiUploadHash(string $hash): bool
+    public function findByHash(string $hash): ?FileUpload
     {
         return $this->model::query()
             ->where('hash', $hash)
-            ->exists();
+            ->first();
     }
 
     public function getFilesUploads(?string $name = null, ?string $date = null): LengthAwarePaginator

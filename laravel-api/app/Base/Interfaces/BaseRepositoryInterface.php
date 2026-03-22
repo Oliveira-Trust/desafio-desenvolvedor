@@ -13,5 +13,5 @@ interface BaseRepositoryInterface
 
     public function findAll(): Collection;
 
-    public function find(int $id): ?Model;
+    public function find(int $id): Model;
 }

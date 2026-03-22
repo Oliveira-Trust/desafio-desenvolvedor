@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace App\FileUpload\Http\Controllers;
 
 use App\Base\Http\Controllers\Controller;
-use App\FileUpload\Http\Controllers\Requests\UploadFileRequest;
+use App\FileUpload\Http\Controllers\Requests\FileUploadRequest;
+use App\FileUpload\Http\Controllers\Resources\FileUploadResource;
 use App\FileUpload\Interfaces\FileUploadRepositoryInterface;
 use App\FileUpload\Services\FileUploadService;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class FileUploadController extends Controller
 {
@@ -22,21 +25,28 @@ class FileUploadController extends Controller
     {
         $uploads = $this->fileUploadRepository->getFilesUploads($request->name, $request->date);
 
-        return response()->json($uploads);
+        return response()->json(
+            FileUploadResource::collection($uploads)
+        );
     }
 
-    public function show(int $id): JsonResponse
+    public function store(FileUploadRequest $request): JsonResponse
     {
-        return response()->json($this->fileUploadRepository->find($id));
-    }
+        try {
+            $result = $this->service->handle($request->file('file'));
 
-    public function store(UploadFileRequest $request): JsonResponse
-    {
-        $result = $this->service->handle($request->file('file'));
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Arquivo aceito e enfileirado para processamento.',
+                'upload' => $result,
+            ], 202);
+        } catch (Exception $e) {
+            Log::channel('upload_file')->error("Erro ao subir o arquivo, {$e->getMessage()}");
 
-        return response()->json([
-            'message' => 'File accepted and queued for processing.',
-            'upload' => $result,
-        ], 202);
+            return response()->json([
+                'status' => 'erro',
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }
