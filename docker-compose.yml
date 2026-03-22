@@ -1,0 +1,63 @@
+services:
+  app:
+    build:
+      context: ./laravel-api
+      dockerfile: Dockerfile
+    container_name: desafio_app
+    restart: unless-stopped
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./laravel-api:/var/www/html
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - desafio_network
+
+  queue-worker:
+    build:
+      context: ./laravel-api
+      dockerfile: Dockerfile
+    container_name: desafio_queue
+    restart: unless-stopped
+    command: php artisan queue:work redis --tries=3 --timeout=600 --memory=512
+    volumes:
+      - ./laravel-api:/var/www/html
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - desafio_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: desafio_mysql
+    restart: unless-stopped
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: desafio
+      MYSQL_USER: desafio
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - desafio_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: desafio_redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    networks:
+      - desafio_network
+
+networks:
+  desafio_network:
+    driver: bridge
+
+volumes:
+  mysqldata:
