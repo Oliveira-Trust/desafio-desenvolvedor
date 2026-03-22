@@ -18,11 +18,13 @@ class InstrumentRepository extends BaseRepository implements InstrumentRepositor
     {
         $query = $this->model::query()
             ->select(['RptDt', 'TckrSymb', 'MktNm', 'SctyCtgyNm', 'ISIN', 'CrpnNm'])
-            ->when($tckrSymb, fn ($q, $v) => $q->where('TckrSymb', $v))
-            ->when($rptDt, fn ($q, $v) => $q->whereDate('RptDt', $v));
+            ->when($tckrSymb, fn ($q) => $q->where('TckrSymb', $tckrSymb))
+            ->when($rptDt, fn ($q) => $q->whereDate('RptDt', $rptDt));
 
-        return ($tckrSymb || $rptDt)
-            ? $query->get()
-            : $query->paginate(50);
+        if (! $tckrSymb && ! $rptDt) {
+            return $query->paginate(50);
+        }
+
+        return $query->paginate(500);
     }
 }

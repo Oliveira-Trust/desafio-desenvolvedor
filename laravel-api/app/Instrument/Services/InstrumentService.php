@@ -7,7 +7,6 @@ namespace App\Instrument\Services;
 use App\FileUpload\Models\FileUpload;
 use App\Instrument\Interfaces\InstrumentRepositoryInterface;
 use App\Instrument\Models\Instrument;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -61,7 +60,7 @@ class InstrumentService
             $fileUpload->update(['status' => 'done', 'total_rows' => $totalRows]);
 
         } catch (\Throwable $e) {
-            Log::channel('file_upload')->error('Falha ao processar arquivo', [
+            Log::channel('upload_file')->error('Falha ao processar arquivo', [
                 'file_upload_id' => $fileUpload->id,
                 'error' => $e->getMessage(),
             ]);
@@ -176,24 +175,22 @@ class InstrumentService
         return trim((string) $value);
     }
 
-    public function search(?string $tckrSymb = null, ?string $rptDt = null): mixed
+    public function search(?string $tckrSymb = null, ?string $rptDt = null): array
     {
         $cacheKey = 'instruments:'.md5("{$tckrSymb}:{$rptDt}");
 
         return Cache::remember($cacheKey, now()->addMinutes(30), function () use ($tckrSymb, $rptDt) {
             $result = $this->instrumentRepository->searchInstruments($tckrSymb, $rptDt);
 
-            if ($result instanceof LengthAwarePaginator) {
-                return [
-                    'data' => $result->items(),
+            return [
+                'data' => $result->getCollection()->toArray(),
+                'meta' => [
                     'current_page' => $result->currentPage(),
                     'per_page' => $result->perPage(),
                     'total' => $result->total(),
                     'last_page' => $result->lastPage(),
-                ];
-            }
-
-            return $result->toArray();
+                ],
+            ];
         });
     }
 

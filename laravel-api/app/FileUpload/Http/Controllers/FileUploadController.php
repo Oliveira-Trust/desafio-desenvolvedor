@@ -27,11 +27,18 @@ class FileUploadController extends Controller
             'name' => ['nullable', 'string', 'max:150'],
             'reference_date' => ['nullable', 'date_format:Y-m-d'],
         ]);
+
         $uploads = $this->fileUploadRepository->getFilesUploads($request->name, $request->reference_date);
 
-        return response()->json(
-            FileUploadResource::collection($uploads)
-        );
+        return response()->json([
+            'data' => FileUploadResource::collection($uploads->items()),
+            'meta' => [
+                'current_page' => $uploads->currentPage(),
+                'per_page' => $uploads->perPage(),
+                'total' => $uploads->total(),
+                'last_page' => $uploads->lastPage(),
+            ],
+        ]);
     }
 
     public function store(FileUploadRequest $request): JsonResponse

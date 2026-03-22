@@ -20,11 +20,11 @@ class InstrumentController extends Controller
             'RptDt' => ['nullable', 'date_format:Y-m-d'],
         ]);
 
-        $data = $this->service->search(
-            tckrSymb: $request->TckrSymb,
-            rptDt: $request->RptDt,
+        return response()->json(
+            $this->service->search(
+                tckrSymb: $request->TckrSymb,
+                rptDt: $request->RptDt,
+            )
         );
-
-        return response()->json($data);
     }
 }
