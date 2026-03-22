@@ -23,7 +23,11 @@ class FileUploadController extends Controller
 
     public function index(Request $request): JsonResponse
     {
-        $uploads = $this->fileUploadRepository->getFilesUploads($request->name, $request->date);
+        $request->validate([
+            'name' => ['nullable', 'string', 'max:150'],
+            'reference_date' => ['nullable', 'date_format:Y-m-d'],
+        ]);
+        $uploads = $this->fileUploadRepository->getFilesUploads($request->name, $request->reference_date);
 
         return response()->json(
             FileUploadResource::collection($uploads)
