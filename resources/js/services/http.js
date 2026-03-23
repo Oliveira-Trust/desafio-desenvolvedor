@@ -90,3 +90,45 @@ export async function apiFetch(url, options = {}) {
 
     return { response, data: payload };
 }
+
+export function getSuccessData(payload) {
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+        return null;
+    }
+
+    return payload.data ?? null;
+}
+
+export function getSuccessMessage(payload) {
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+        return null;
+    }
+
+    return typeof payload.message === 'string' && payload.message !== '' ? payload.message : null;
+}
+
+export function getResponseMeta(payload) {
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+        return null;
+    }
+
+    return payload.meta && typeof payload.meta === 'object' && !Array.isArray(payload.meta)
+        ? payload.meta
+        : null;
+}
+
+export function getErrorCode(payload) {
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+        return null;
+    }
+
+    return payload.error?.code ?? null;
+}
+
+export function getErrorMessage(payload) {
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+        return null;
+    }
+
+    return payload.error?.message ?? null;
+}

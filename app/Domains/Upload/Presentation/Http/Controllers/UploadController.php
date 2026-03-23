@@ -22,7 +22,6 @@ class UploadController extends Controller
 
         return ApiSuccess::make(
             data: [
-                'message' => 'Upload recebido com sucesso.',
                 'upload' => [
                     'id' => $upload->id,
                     'filename' => $upload->filename,
@@ -41,6 +40,7 @@ class UploadController extends Controller
             meta: [
                 'request_id' => $requestId,
             ],
+            message: 'Upload recebido com sucesso.',
             status: 202,
         );
     }

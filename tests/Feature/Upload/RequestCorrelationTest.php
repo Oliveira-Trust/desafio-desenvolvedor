@@ -37,6 +37,8 @@ class RequestCorrelationTest extends TestCase
         $response
             ->assertStatus(202)
             ->assertHeader('X-Request-Id', 'req-api-123')
+            ->assertJsonPath('message', 'Upload recebido com sucesso.')
+            ->assertJsonPath('data.upload.filename', 'market-data.csv')
             ->assertJsonPath('meta.request_id', 'req-api-123');
 
         Queue::assertPushed(ProcessUploadJob::class, function (ProcessUploadJob $job): bool {

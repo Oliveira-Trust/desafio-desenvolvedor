@@ -1,4 +1,4 @@
-import { apiFetch } from '../services/http';
+import { apiFetch, getErrorMessage, getResponseMeta, getSuccessData } from '../services/http';
 
 function formatDate(value, emptyLabel = '-') {
     if (!value) {
@@ -210,11 +210,11 @@ export function initUploadHistory() {
             });
 
             if (!response.ok) {
-                throw new Error(data?.message || 'Nao foi possivel carregar o historico.');
+                throw new Error(getErrorMessage(data) || 'Nao foi possivel carregar o historico.');
             }
 
-            renderRows(data?.data || []);
-            updatePagination(data?.meta || {
+            renderRows(getSuccessData(data) || []);
+            updatePagination(getResponseMeta(data) || {
                 current_page: 1,
                 last_page: 1,
                 per_page: state.perPage,

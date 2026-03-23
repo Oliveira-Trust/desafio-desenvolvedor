@@ -1,17 +1,17 @@
-import { apiFetch } from '../services/http';
+import { apiFetch, getErrorCode, getErrorMessage, getSuccessMessage } from '../services/http';
 import { redirectToUpload } from '../services/auth';
 import { clearFeedback, showFeedback } from '../utils/feedback';
 
 function getLoginErrorMessage(data) {
-    if (data?.code === 'AUTH_INVALID_CREDENTIALS') {
+    if (getErrorCode(data) === 'AUTH_INVALID_CREDENTIALS') {
         return 'E-mail ou senha invalidos.';
     }
 
-    if (data?.code === 'RATE_LIMITED') {
+    if (getErrorCode(data) === 'RATE_LIMITED') {
         return 'Muitas tentativas de login. Aguarde um instante e tente novamente.';
     }
 
-    return data?.message || 'Nao foi possivel realizar o login.';
+    return getErrorMessage(data) || 'Nao foi possivel realizar o login.';
 }
 
 export function initLoginPage() {
@@ -49,7 +49,7 @@ export function initLoginPage() {
                 return;
             }
 
-            showFeedback(feedback, data?.message || 'Login realizado com sucesso.', 'success');
+            showFeedback(feedback, getSuccessMessage(data) || 'Login realizado com sucesso.', 'success');
             window.setTimeout(() => {
                 redirectToUpload();
             }, 500);

@@ -1,4 +1,4 @@
-import { apiFetch } from '../services/http';
+import { apiFetch, getErrorMessage, getResponseMeta, getSuccessData } from '../services/http';
 
 function formatDate(value, emptyLabel = '-') {
     if (!value) {
@@ -183,13 +183,13 @@ export function initMarketDataSearch() {
             });
 
             if (!response.ok) {
-                throw new Error(data?.message || 'Nao foi possivel carregar os registros.');
+                throw new Error(getErrorMessage(data) || 'Nao foi possivel carregar os registros.');
             }
 
-            const items = data?.data || [];
+            const items = getSuccessData(data) || [];
 
             renderRows(items);
-            updateSummary(data?.meta || {
+            updateSummary(getResponseMeta(data) || {
                 current_page: 1,
                 last_page: 1,
                 per_page: state.perPage,

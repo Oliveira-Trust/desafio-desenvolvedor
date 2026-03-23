@@ -1,4 +1,4 @@
-import { apiFetch } from '../services/http';
+import { apiFetch, getErrorCode, getErrorMessage, getSuccessData, getSuccessMessage } from '../services/http';
 import { clearFeedback, showFeedback } from '../utils/feedback';
 
 const allowedExtensions = ['csv', 'xls', 'xlsx'];
@@ -26,11 +26,11 @@ function isAllowedFile(file) {
 }
 
 function getUploadErrorMessage(data) {
-    if (data?.error?.code === 'UPLOAD_DUPLICATE_FILE' || data?.code === 'UPLOAD_DUPLICATE_FILE') {
-        return data?.error?.message || data?.message || 'Não é possível enviar o mesmo arquivo duas vezes.';
+    if (getErrorCode(data) === 'UPLOAD_DUPLICATE_FILE') {
+        return getErrorMessage(data) || 'Não é possível enviar o mesmo arquivo duas vezes.';
     }
 
-    return data?.error?.message || data?.message || 'Não foi possível enviar o arquivo.';
+    return getErrorMessage(data) || 'Não foi possível enviar o arquivo.';
 }
 
 export function initUploadForm() {
@@ -76,8 +76,9 @@ export function initUploadForm() {
                 return;
             }
 
-            const message = data?.data?.message || 'Upload realizado com sucesso.';
-            const fileName = data?.data?.upload?.filename ? `\nArquivo: ${data.data.upload.filename}` : '';
+            const responseData = getSuccessData(data);
+            const message = getSuccessMessage(data) || 'Upload realizado com sucesso.';
+            const fileName = responseData?.upload?.filename ? `\nArquivo: ${responseData.upload.filename}` : '';
             showFeedback(feedback, `${message}${fileName}`, 'success');
             form.reset();
         } catch (error) {
