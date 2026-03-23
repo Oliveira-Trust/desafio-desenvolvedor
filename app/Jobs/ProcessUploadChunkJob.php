@@ -173,11 +173,11 @@ class ProcessUploadChunkJob implements ShouldQueue
         $rptDt = $this->normalizeDate($row[self::COLUMN_RPT_DT] ?? null);
         $tckrSymb = $this->normalizeString($row[self::COLUMN_TCKR_SYMB] ?? null);
         $mktNm = $this->normalizeString($row[self::COLUMN_MKT_NM] ?? null);
-        $sctyCtgyNm = $this->normalizeString($row[self::COLUMN_SCTY_CTGY_NM] ?? null);
-        $isin = $this->normalizeString($row[self::COLUMN_ISIN] ?? null);
+        $sctyCtgyNm = $this->normalizeOptionalString($row[self::COLUMN_SCTY_CTGY_NM] ?? null);
+        $isin = $this->normalizeOptionalString($row[self::COLUMN_ISIN] ?? null);
         $crpnNm = $this->normalizeOptionalString($row[self::COLUMN_CRPN_NM] ?? null);
 
-        if ($rptDt === null || $tckrSymb === null || $mktNm === null || $sctyCtgyNm === null || $isin === null) {
+        if ($rptDt === null || $tckrSymb === null || $mktNm === null) {
             return null;
         }
 
