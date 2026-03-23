@@ -175,9 +175,9 @@ class ProcessUploadChunkJob implements ShouldQueue
         $mktNm = $this->normalizeString($row[self::COLUMN_MKT_NM] ?? null);
         $sctyCtgyNm = $this->normalizeString($row[self::COLUMN_SCTY_CTGY_NM] ?? null);
         $isin = $this->normalizeString($row[self::COLUMN_ISIN] ?? null);
-        $crpnNm = $this->normalizeString($row[self::COLUMN_CRPN_NM] ?? null);
+        $crpnNm = $this->normalizeOptionalString($row[self::COLUMN_CRPN_NM] ?? null);
 
-        if ($rptDt === null || $tckrSymb === null || $mktNm === null || $sctyCtgyNm === null || $isin === null || $crpnNm === null) {
+        if ($rptDt === null || $tckrSymb === null || $mktNm === null || $sctyCtgyNm === null || $isin === null) {
             return null;
         }
 
@@ -219,6 +219,15 @@ class ProcessUploadChunkJob implements ShouldQueue
         $normalized = trim((string) $value);
 
         return $normalized === '' ? null : $normalized;
+    }
+
+    private function normalizeOptionalString(mixed $value): string
+    {
+        if ($value === null) {
+            return '';
+        }
+
+        return trim((string) $value);
     }
 
     private function normalizeDate(mixed $value): ?string
