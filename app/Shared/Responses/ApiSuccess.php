@@ -8,13 +8,19 @@ final class ApiSuccess
 {
     public static function make(
         mixed $data = null,
-        string $message = 'Success.',
+        ?string $message = null,
         int $status = 200,
         ?array $meta = null
     ): JsonResponse {
-        return response()->json([
+        $payload = [
             'data' => $data,
             'meta' => $meta,
-        ], $status);
+        ];
+
+        if ($message !== null) {
+            $payload['message'] = $message;
+        }
+
+        return response()->json($payload, $status);
     }
 }
