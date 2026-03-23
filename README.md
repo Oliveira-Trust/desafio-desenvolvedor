@@ -358,4 +358,4 @@ A collection cobre:
 
 ## CI
 
-O pipeline de CI fica em [`.github/workflows/ci.yml`](/var/www/html/projetos/desafio-desenvolvedor/.github/workflows/ci.yml) e prepara containers, ambiente Laravel, banco principal, banco de testes, seed local, testes automatizados e build dos assets frontend.
+O pipeline de CI fica em [`.github/workflows/ci.yml`](/var/www/html/projetos/desafio-desenvolvedor/.github/workflows/ci.yml) e agora separa a suite de unitarios em um job dedicado antes de preparar containers, ambiente Laravel, banco principal, banco de testes, seed local, feature tests e build dos assets frontend.
