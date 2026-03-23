@@ -86,11 +86,22 @@ final class MarketDataService
 
     public function invalidateCache(): void
     {
-        $prefix = config('cache.prefix');
-        $pattern = sprintf('%smarket-data:%s:*', $prefix ? $prefix . '-' : '', self::CACHE_KEY_VERSION);
+        $pattern = sprintf('*market-data:%s:*', self::CACHE_KEY_VERSION);
+        $redis = Redis::connection('cache');
+        $keys = $redis->keys($pattern);
 
-        foreach (Redis::connection('cache')->scan(match: $pattern) as $key) {
-            Redis::connection('cache')->del($key);
+        if ($keys === [] || $keys === null) {
+            return;
+        }
+
+        foreach ($keys as $key) {
+            $logicalKey = strstr((string) $key, 'market-data:');
+
+            if ($logicalKey === false) {
+                continue;
+            }
+
+            Cache::forget($logicalKey);
         }
     }
 
