@@ -14,9 +14,11 @@ class UploadController extends Controller
     public function store(StoreUploadRequest $request, UploadService $uploadService): JsonResponse
     {
         $validated = $request->validated();
+        $requestId = $request->attributes->get('request_id');
 
         $uploadedFile = $validated['file'];
-        $upload = $uploadService->uploadFile($uploadedFile);
+        $upload = $uploadService->uploadFile($uploadedFile, $requestId);
+        $request->attributes->set('upload_id', $upload->id);
 
         return ApiSuccess::make(
             data: [
@@ -34,6 +36,9 @@ class UploadController extends Controller
                     'error_message' => $upload->errorMessage,
                     'created_at' => $upload->createdAt,
                 ],
+            ],
+            meta: [
+                'request_id' => $requestId,
             ],
             status: 202,
         );

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use OpenSpout\Common\Entity\Row;
 use OpenSpout\Reader\CSV\Options as CsvOptions;
@@ -37,6 +38,7 @@ class ProcessUploadJob implements ShouldQueue
 
     public function __construct(
         public readonly int $uploadId,
+        public readonly ?string $requestId = null,
     ) {
         $this->tries = (int) config('ingestion.jobs.upload.tries', 3);
         $this->timeout = (int) config('ingestion.jobs.upload.timeout', 300);
@@ -45,11 +47,16 @@ class ProcessUploadJob implements ShouldQueue
 
     public function handle(UploadRepository $uploads): void
     {
+        $startedAt = microtime(true);
         $upload = $uploads->findById($this->uploadId);
 
         if ($upload === null) {
             return;
         }
+
+        $this->logInfo('ingestion.upload.started', 'processing', $startedAt, [
+            'chunk' => null,
+        ]);
 
         $uploads->markAsProcessing($this->uploadId);
 
@@ -85,7 +92,7 @@ class ProcessUploadJob implements ShouldQueue
                             continue;
                         }
 
-                        $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex);
+                        $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex, $this->requestId);
                         $batch = $this->flushPendingJobs($pendingJobs, $batch);
 
                         $buffer = [];
@@ -94,7 +101,7 @@ class ProcessUploadJob implements ShouldQueue
                 }
 
                 if ($buffer !== []) {
-                    $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex);
+                    $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex, $this->requestId);
                 }
 
                 $uploads->setRowsTotal($this->uploadId, $rowsTotal);
@@ -103,14 +110,36 @@ class ProcessUploadJob implements ShouldQueue
                 if ($batch === null) {
                     $uploads->markAsCompleted($this->uploadId);
                     app(MarketDataService::class)->invalidateCache();
+
+                    $this->logInfo('ingestion.upload.completed', 'completed', $startedAt, [
+                        'chunk' => null,
+                        'rows_total' => $rowsTotal,
+                        'chunks_total' => $chunkIndex + ($buffer !== [] ? 1 : 0),
+                    ]);
+                } else {
+                    $this->logInfo('ingestion.upload.chunks_dispatched', 'queued', $startedAt, [
+                        'chunk' => null,
+                        'rows_total' => $rowsTotal,
+                        'chunks_total' => $chunkIndex + ($buffer !== [] ? 1 : 0),
+                    ]);
                 }
             } finally {
                 $reader->close();
             }
         } catch (Throwable $exception) {
             if ($this->shouldRetryAfterFailure($exception)) {
+                $this->logWarning('ingestion.upload.retrying', 'retrying', $startedAt, $exception, [
+                    'chunk' => null,
+                    'retryable' => true,
+                ]);
+
                 throw $exception;
             }
+
+            $this->logError('ingestion.upload.failed', 'failed', $startedAt, $exception, [
+                'chunk' => null,
+                'retryable' => false,
+            ]);
 
             $this->fail($exception);
         }
@@ -155,6 +184,15 @@ class ProcessUploadJob implements ShouldQueue
 
     public function failed(?Throwable $exception): void
     {
+        Log::error('ingestion.upload.failed.final', $this->buildLogContext([
+            'chunk' => null,
+            'status' => 'failed',
+            'duration_ms' => 0,
+            'exception_class' => $exception ? $exception::class : null,
+            'error_message' => $exception?->getMessage() ?? 'Falha ao iniciar o processamento do upload.',
+            'attempt' => $this->attempts(),
+        ]));
+
         app(UploadRepository::class)->markAsFailed(
             $this->uploadId,
             $exception?->getMessage() ?? 'Falha ao iniciar o processamento do upload.'
@@ -196,16 +234,28 @@ class ProcessUploadJob implements ShouldQueue
         }
 
         $uploadId = $this->uploadId;
+        $requestId = $this->requestId;
 
         if ($batch === null) {
             $batch = Bus::batch($pendingJobs)
                 ->name('upload:' . $uploadId . ':ingestion')
                 ->onQueue('ingestion')
                 ->allowFailures()
-                ->finally(function (Batch $batch) use ($uploadId) {
+                ->finally(function (Batch $batch) use ($uploadId, $requestId) {
                     $uploads = app(UploadRepository::class);
 
                     if ($batch->failedJobs > 0) {
+                        Log::error('ingestion.upload.batch_finished', [
+                            'request_id' => $requestId,
+                            'upload_id' => $uploadId,
+                            'chunk' => null,
+                            'attempt' => null,
+                            'status' => 'failed',
+                            'duration_ms' => 0,
+                            'failed_jobs' => $batch->failedJobs,
+                            'total_jobs' => $batch->totalJobs,
+                        ]);
+
                         $uploads->markAsFailed($uploadId, 'Uma ou mais tarefas de ingestao falharam.');
 
                         return;
@@ -213,6 +263,17 @@ class ProcessUploadJob implements ShouldQueue
 
                     $uploads->markAsCompleted($uploadId);
                     app(MarketDataService::class)->invalidateCache();
+
+                    Log::info('ingestion.upload.batch_finished', [
+                        'request_id' => $requestId,
+                        'upload_id' => $uploadId,
+                        'chunk' => null,
+                        'attempt' => null,
+                        'status' => 'completed',
+                        'duration_ms' => 0,
+                        'failed_jobs' => $batch->failedJobs,
+                        'total_jobs' => $batch->totalJobs,
+                    ]);
                 })
                 ->dispatch();
         } else {
@@ -227,5 +288,59 @@ class ProcessUploadJob implements ShouldQueue
     public function backoff(): array
     {
         return config('ingestion.jobs.upload.backoff', [10, 30, 60]);
+    }
+
+    /**
+     * @param  array<string, mixed>  $context
+     */
+    private function buildLogContext(array $context = []): array
+    {
+        return array_merge([
+            'request_id' => $this->requestId,
+            'upload_id' => $this->uploadId,
+            'attempt' => $this->attempts(),
+        ], $context);
+    }
+
+    /**
+     * @param  array<string, mixed>  $context
+     */
+    private function logInfo(string $message, string $status, float $startedAt, array $context = []): void
+    {
+        Log::info($message, $this->buildLogContext(array_merge($context, [
+            'status' => $status,
+            'duration_ms' => $this->durationMs($startedAt),
+        ])));
+    }
+
+    /**
+     * @param  array<string, mixed>  $context
+     */
+    private function logWarning(string $message, string $status, float $startedAt, Throwable $exception, array $context = []): void
+    {
+        Log::warning($message, $this->buildLogContext(array_merge($context, [
+            'status' => $status,
+            'duration_ms' => $this->durationMs($startedAt),
+            'exception_class' => $exception::class,
+            'error_message' => $exception->getMessage(),
+        ])));
+    }
+
+    /**
+     * @param  array<string, mixed>  $context
+     */
+    private function logError(string $message, string $status, float $startedAt, Throwable $exception, array $context = []): void
+    {
+        Log::error($message, $this->buildLogContext(array_merge($context, [
+            'status' => $status,
+            'duration_ms' => $this->durationMs($startedAt),
+            'exception_class' => $exception::class,
+            'error_message' => $exception->getMessage(),
+        ])));
+    }
+
+    private function durationMs(float $startedAt): int
+    {
+        return (int) ((microtime(true) - $startedAt) * 1000);
     }
 }

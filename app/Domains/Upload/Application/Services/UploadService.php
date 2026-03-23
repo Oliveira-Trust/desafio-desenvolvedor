@@ -21,7 +21,7 @@ final class UploadService
         return $this->uploads->paginate($perPage, $filename, $date);
     }
 
-    public function uploadFile(UploadedFile $file): Upload
+    public function uploadFile(UploadedFile $file, ?string $requestId = null): Upload
     {
         $fileMd5 = $this->calculateHash($file);
 
@@ -44,7 +44,7 @@ final class UploadService
             failedRows: 0,
         ));
 
-        ProcessUploadJob::dispatch($upload->id);
+        ProcessUploadJob::dispatch($upload->id, $requestId);
 
         return $upload;
     }
