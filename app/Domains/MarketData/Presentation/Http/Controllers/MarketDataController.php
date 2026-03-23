@@ -6,7 +6,6 @@ use App\Domains\MarketData\Application\DTOs\MarketDataSearchResponseDTO;
 use App\Domains\MarketData\Application\Services\MarketDataService;
 use App\Http\Controllers\Controller;
 use App\Shared\Responses\ApiSuccess;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -35,32 +34,18 @@ class MarketDataController extends Controller
             ], 422);
         }
 
-        $marketData = $marketDataService->search(
+        $result = $marketDataService->search(
             ticker: $ticker,
             reportDate: $reportDate,
             perPage: $validated['per_page'] ?? null,
+            page: $validated['page'] ?? null
         );
 
-        $items = $this->transformItems($marketData instanceof LengthAwarePaginator ? $marketData->items() : $marketData->all());
-
-        if ($marketData instanceof LengthAwarePaginator) {
-            return ApiSuccess::make(
-                data: $items,
-                meta: [
-                    'current_page' => $marketData->currentPage(),
-                    'last_page' => $marketData->lastPage(),
-                    'per_page' => $marketData->perPage(),
-                    'total' => $marketData->total(),
-                ],
-                status: 200,
-            );
-        }
+        $items = $this->transformItems($result['data']);
 
         return ApiSuccess::make(
             data: $items,
-            meta: [
-                'total' => count($items)
-            ],
+            meta: $result['meta'],
             status: 200,
         );
     }
@@ -72,7 +57,7 @@ class MarketDataController extends Controller
     private function transformItems(array $items): array
     {
         return array_map(
-            static fn ($marketData): array => MarketDataSearchResponseDTO::fromModel($marketData)->toArray(),
+            static fn($marketData): array => MarketDataSearchResponseDTO::fromModel($marketData)->toArray(),
             $items
         );
     }

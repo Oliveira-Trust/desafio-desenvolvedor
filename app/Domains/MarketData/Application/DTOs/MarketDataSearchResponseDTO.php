@@ -15,15 +15,22 @@ final class MarketDataSearchResponseDTO
         public string $crpnNm,
     ) {}
 
-    public static function fromModel(object $marketData): self
+    public static function fromModel(object|array $marketData): self
     {
+        $rptDt = is_array($marketData) ? $marketData['rpt_dt'] : $marketData->rpt_dt;
+        $tckrSymb = is_array($marketData) ? $marketData['tckr_symb'] : $marketData->tckr_symb;
+        $mktNm = is_array($marketData) ? $marketData['mkt_nm'] : $marketData->mkt_nm;
+        $sctyCtgyNm = is_array($marketData) ? $marketData['scty_ctgy_nm'] : $marketData->scty_ctgy_nm;
+        $isin = is_array($marketData) ? $marketData['isin'] : $marketData->isin;
+        $crpnNm = is_array($marketData) ? $marketData['crpn_nm'] : $marketData->crpn_nm;
+
         return new self(
-            rptDt: Carbon::parse($marketData->rpt_dt)->toDateString(),
-            tckrSymb: $marketData->tckr_symb,
-            mktNm: $marketData->mkt_nm,
-            sctyCtgyNm: $marketData->scty_ctgy_nm,
-            isin: $marketData->isin,
-            crpnNm: $marketData->crpn_nm,
+            rptDt: Carbon::parse($rptDt)->toDateString(),
+            tckrSymb: $tckrSymb,
+            mktNm: $mktNm,
+            sctyCtgyNm: $sctyCtgyNm,
+            isin: $isin,
+            crpnNm: $crpnNm,
         );
     }
 

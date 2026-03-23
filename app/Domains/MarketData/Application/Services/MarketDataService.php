@@ -3,13 +3,19 @@
 namespace App\Domains\MarketData\Application\Services;
 
 use App\Domains\MarketData\Infrastructure\Persistence\Eloquent\MarketData;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 final class MarketDataService
 {
-    public function search(?string $ticker = null, ?string $reportDate = null, ?int $perPage = null): Collection|LengthAwarePaginator
+    public function search(?string $ticker = null, ?string $reportDate = null, ?int $perPage = null, ?int $page = null): array
     {
+        $ttl = now()->addMinutes(5);
+
+        $page = max($page ?? 1, 1);
+        $perPage = min($perPage ?? 10, 100);
+
+        $cacheKey = $this->makeCacheKey($ticker, $reportDate, $page, $perPage);
+
         $query = MarketData::query()
             ->select([
                 'rpt_dt',
@@ -19,17 +25,64 @@ final class MarketDataService
                 'isin',
                 'crpn_nm',
             ])
-            ->when($ticker !== null, fn ($builder) => $builder->where('tckr_symb', $ticker))
-            ->when($reportDate !== null, fn ($builder) => $builder->whereDate('rpt_dt', $reportDate))
+            ->when($ticker !== null, fn($builder) => $builder->where('tckr_symb', $ticker))
+            ->when($reportDate !== null, fn($builder) => $builder->whereDate('rpt_dt', $reportDate))
             ->orderBy('rpt_dt', 'desc')
             ->orderBy('tckr_symb');
 
-        if ($ticker === null && $reportDate === null) {
-            $perPage = min($perPage ?? 10, 100);
+        return Cache::remember($cacheKey, $ttl, function () use ($query, $ticker, $reportDate, $perPage, $page) {
+            if ($ticker === null && $reportDate === null) {
+                $paginator = $query->paginate($perPage, ['*'], 'page', $page);
 
-            return $query->paginate($perPage);
-        }
+                return [
+                    'data' => $this->serializeItems($paginator->items()),
+                    'meta' => [
+                        'current_page' => $paginator->currentPage(),
+                        'last_page' => $paginator->lastPage(),
+                        'per_page' => $paginator->perPage(),
+                        'total' => $paginator->total(),
+                    ],
+                ];
+            }
 
-        return $query->get();
+            $items = $query->get();
+
+            return [
+                'data' => $this->serializeItems($items->all()),
+                'meta' => [
+                    'total' => $items->count(),
+                ],
+            ];
+        });
+    }
+
+    private function makeCacheKey(?string $ticker, ?string $reportDate, int $page, int $perPage): string
+    {
+        return sprintf(
+            'market-data:ticker=%s:date=%s:page=%d:per_page=%d',
+            $ticker ? strtoupper(trim($ticker)) : 'all',
+            $reportDate ?? 'all',
+            $page,
+            $perPage,
+        );
+    }
+
+    /**
+     * @param  array<int, object>  $items
+     * @return array<int, array<string, string>>
+     */
+    private function serializeItems(array $items): array
+    {
+        return array_map(
+            static fn (object $item): array => [
+                'rpt_dt' => (string) $item->rpt_dt,
+                'tckr_symb' => (string) $item->tckr_symb,
+                'mkt_nm' => (string) $item->mkt_nm,
+                'scty_ctgy_nm' => (string) $item->scty_ctgy_nm,
+                'isin' => (string) $item->isin,
+                'crpn_nm' => (string) $item->crpn_nm,
+            ],
+            $items,
+        );
     }
 }
