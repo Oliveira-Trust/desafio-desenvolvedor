@@ -194,7 +194,7 @@ export function initUploadHistory() {
         }
 
         if (state.date) {
-            params.set('reference_date', state.date);
+            params.set('date', state.date);
         }
 
         return params.toString();
