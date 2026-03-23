@@ -12,6 +12,6 @@ Route::middleware('web')->prefix('auth')->group(function () {
 
 Route::middleware(['web', 'auth:sanctum'])->group(function () {
     Route::post('/uploads', [UploadController::class, 'store'])->middleware('throttle:uploads');
-    Route::get('/uploads', [UploadController::class, 'index']);
-    Route::get('/market-data', [MarketDataController::class, 'index']);
+    Route::get('/uploads', [UploadController::class, 'index'])->middleware('throttle:uploads-index');
+    Route::get('/market-data', [MarketDataController::class, 'index'])->middleware('throttle:market-data');
 });

@@ -60,5 +60,22 @@ class AppServiceProvider extends ServiceProvider
                 Limit::perDay(25)->by('uploads:day:' . $key),
             ];
         });
+
+        RateLimiter::for('uploads-index', function (Request $request) {
+            $userKey = (string) ($request->user()?->getAuthIdentifier() ?? 'guest');
+            $key = $userKey . '|' . $request->ip();
+
+            return Limit::perMinute(30)->by('uploads-index:' . $key);
+        });
+
+        RateLimiter::for('market-data', function (Request $request) {
+            $userKey = (string) ($request->user()?->getAuthIdentifier() ?? 'guest');
+            $key = $userKey . '|' . $request->ip();
+
+            return [
+                Limit::perMinute(5)->by('market-data:minute:' . $key),
+                Limit::perHour(100)->by('market-data:hour:' . $key),
+            ];
+        });
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use App\Shared\Errors\ApiError;
@@ -81,6 +82,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (MethodNotAllowedHttpException $e, Request $request) use ($resolveTraceId) {
             if (! $request->expectsJson() && ! $request->is('api/*')) return null;
             return ApiError::make('Method not allowed.', ErrorCode::RESOURCE_NOT_FOUND, 405, null, $resolveTraceId($request));
+        });
+
+        $exceptions->render(function (TooManyRequestsHttpException $e, Request $request) use ($resolveTraceId) {
+            if (! $request->expectsJson() && ! $request->is('api/*')) return null;
+            return ApiError::make('Too many requests.', ErrorCode::RATE_LIMITED, 429, null, $resolveTraceId($request));
         });
 
         // sempre por último

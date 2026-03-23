@@ -9,6 +9,7 @@ final class ErrorCode
     public const AUTH_FORBIDDEN = 'AUTH_FORBIDDEN';
     public const UPLOAD_DUPLICATE_FILE = 'UPLOAD_DUPLICATE_FILE';
     public const VALIDATION_ERROR = 'VALIDATION_ERROR';
+    public const RATE_LIMITED = 'RATE_LIMITED';
     public const RESOURCE_NOT_FOUND = 'RESOURCE_NOT_FOUND';
     public const INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR';
 }
