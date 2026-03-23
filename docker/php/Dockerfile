@@ -7,16 +7,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
     zip \
     gnupg \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 RUN docker-php-ext-install -j"$(nproc)" \
     pdo_mysql \
     mbstring \
     pcntl \
     bcmath \
+    gd \
     zip \
     xml
 

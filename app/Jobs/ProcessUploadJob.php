@@ -20,6 +20,8 @@ use OpenSpout\Reader\CSV\Reader as CsvReader;
 use OpenSpout\Reader\ODS\Reader as OdsReader;
 use OpenSpout\Reader\ReaderInterface;
 use OpenSpout\Reader\XLSX\Reader as XlsxReader;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Throwable;
 
 class ProcessUploadJob implements ShouldQueue
@@ -85,80 +87,78 @@ class ProcessUploadJob implements ShouldQueue
             }
 
             $absolutePath = $disk->path($upload->path);
-            $reader = $this->createReader($absolutePath);
             $buffer = [];
             $pendingJobs = [];
             $chunkIndex = 0;
             $rowsTotal = 0;
             $batch = null;
             $headerValidated = false;
+            $referenceDate = null;
 
-            try {
-                $reader->open($absolutePath);
-
-                foreach ($reader->getSheetIterator() as $sheet) {
-                    foreach ($sheet->getRowIterator() as $row) {
-                        $rowData = $this->mapRowToArray($row);
-
-                        if ($this->isStatusRow($rowData) || $this->isEmptyRow($rowData)) {
-                            continue;
-                        }
-
-                        if (! $headerValidated) {
-                            $this->assertValidHeader($rowData);
-                            $headerValidated = true;
-
-                            continue;
-                        }
-
-                        if ($this->shouldSkipRow($rowData)) {
-                            continue;
-                        }
-
-                        $rowsTotal++;
-                        $buffer[] = $rowData;
-
-                        if (count($buffer) < self::CHUNK_SIZE) {
-                            continue;
-                        }
-
-                        $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex, $this->requestId);
-                        $batch = $this->flushPendingJobs($pendingJobs, $batch);
-
-                        $buffer = [];
-                        $chunkIndex++;
-                    }
+            foreach ($this->readRows($absolutePath) as $rowData) {
+                if ($this->isStatusRow($rowData) || $this->isEmptyRow($rowData)) {
+                    continue;
                 }
 
                 if (! $headerValidated) {
-                    throw new \RuntimeException('Header do arquivo ausente ou invalido.');
+                    $this->assertValidHeader($rowData);
+                    $headerValidated = true;
+
+                    continue;
                 }
 
-                if ($buffer !== []) {
-                    $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex, $this->requestId);
+                if ($this->shouldSkipRow($rowData)) {
+                    continue;
                 }
 
-                $uploads->setRowsTotal($this->uploadId, $rowsTotal);
-                $batch = $this->flushPendingJobs($pendingJobs, $batch, true);
+                if ($referenceDate === null) {
+                    $referenceDate = $this->normalizeDate($rowData[0] ?? null);
 
-                if ($batch === null) {
-                    $uploads->markAsCompleted($this->uploadId);
-                    app(MarketDataService::class)->invalidateCache();
-
-                    $this->logInfo('ingestion.upload.completed', 'completed', $startedAt, [
-                        'chunk' => null,
-                        'rows_total' => $rowsTotal,
-                        'chunks_total' => $chunkIndex + ($buffer !== [] ? 1 : 0),
-                    ]);
-                } else {
-                    $this->logInfo('ingestion.upload.chunks_dispatched', 'queued', $startedAt, [
-                        'chunk' => null,
-                        'rows_total' => $rowsTotal,
-                        'chunks_total' => $chunkIndex + ($buffer !== [] ? 1 : 0),
-                    ]);
+                    if ($referenceDate !== null) {
+                        $uploads->setReferenceDate($this->uploadId, $referenceDate);
+                    }
                 }
-            } finally {
-                $reader->close();
+
+                $rowsTotal++;
+                $buffer[] = $rowData;
+
+                if (count($buffer) < self::CHUNK_SIZE) {
+                    continue;
+                }
+
+                $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex, $this->requestId);
+                $batch = $this->flushPendingJobs($pendingJobs, $batch);
+
+                $buffer = [];
+                $chunkIndex++;
+            }
+
+            if (! $headerValidated) {
+                throw new \RuntimeException('Header do arquivo ausente ou invalido.');
+            }
+
+            if ($buffer !== []) {
+                $pendingJobs[] = new ProcessUploadChunkJob($this->uploadId, $buffer, $chunkIndex, $this->requestId);
+            }
+
+            $uploads->setRowsTotal($this->uploadId, $rowsTotal);
+            $batch = $this->flushPendingJobs($pendingJobs, $batch, true);
+
+            if ($batch === null) {
+                $uploads->markAsCompleted($this->uploadId);
+                app(MarketDataService::class)->invalidateCache();
+
+                $this->logInfo('ingestion.upload.completed', 'completed', $startedAt, [
+                    'chunk' => null,
+                    'rows_total' => $rowsTotal,
+                    'chunks_total' => $chunkIndex + ($buffer !== [] ? 1 : 0),
+                ]);
+            } else {
+                $this->logInfo('ingestion.upload.chunks_dispatched', 'queued', $startedAt, [
+                    'chunk' => null,
+                    'rows_total' => $rowsTotal,
+                    'chunks_total' => $chunkIndex + ($buffer !== [] ? 1 : 0),
+                ]);
             }
         } catch (Throwable $exception) {
             if ($this->shouldRetryAfterFailure($exception)) {
@@ -188,6 +188,66 @@ class ProcessUploadJob implements ShouldQueue
     }
 
     /**
+     * @return iterable<int, array<int, mixed>>
+     */
+    private function readRows(string $absolutePath): iterable
+    {
+        $extension = strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION));
+
+        if ($extension === 'xls') {
+            yield from $this->readXlsRows($absolutePath);
+
+            return;
+        }
+
+        $reader = $this->createReader($absolutePath);
+
+        try {
+            $reader->open($absolutePath);
+
+            foreach ($reader->getSheetIterator() as $sheet) {
+                foreach ($sheet->getRowIterator() as $row) {
+                    yield $this->mapRowToArray($row);
+                }
+            }
+        } finally {
+            $reader->close();
+        }
+    }
+
+    /**
+     * @return iterable<int, array<int, mixed>>
+     */
+    private function readXlsRows(string $absolutePath): iterable
+    {
+        $reader = IOFactory::createReader('Xls');
+        $reader->setReadDataOnly(true);
+
+        /** @var Spreadsheet $spreadsheet */
+        $spreadsheet = $reader->load($absolutePath);
+
+        try {
+            foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
+                foreach ($worksheet->getRowIterator() as $row) {
+                    $cellIterator = $row->getCellIterator();
+                    $cellIterator->setIterateOnlyExistingCells(false);
+
+                    $rowData = [];
+
+                    foreach ($cellIterator as $cell) {
+                        $rowData[] = $cell?->getValue();
+                    }
+
+                    yield $rowData;
+                }
+            }
+        } finally {
+            $spreadsheet->disconnectWorksheets();
+            unset($spreadsheet);
+        }
+    }
+
+    /**
      * @param  array<int, mixed>  $row
      */
     private function shouldSkipRow(array $row): bool
@@ -206,6 +266,23 @@ class ProcessUploadJob implements ShouldQueue
         $normalized = trim((string) $value);
 
         return $normalized === '' ? null : $normalized;
+    }
+
+    private function normalizeDate(mixed $value): ?string
+    {
+        $normalized = $this->normalizeString($value);
+
+        if ($normalized === null) {
+            return null;
+        }
+
+        $date = \DateTimeImmutable::createFromFormat('Y-m-d', $normalized);
+
+        if ($date === false || $date->format('Y-m-d') !== $normalized) {
+            return null;
+        }
+
+        return $normalized;
     }
 
     public function failed(?Throwable $exception): void

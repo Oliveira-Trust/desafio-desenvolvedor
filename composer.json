@@ -12,6 +12,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
         "openspout/openspout": "^4.0",
+        "phpoffice/phpspreadsheet": "^5.5",
         "predis/predis": "^3.0"
     },
     "require-dev": {
