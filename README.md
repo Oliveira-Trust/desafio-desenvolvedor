@@ -1,364 +1,361 @@
 # Desafio Desenvolvedor
 
-API desenvolvida em Laravel 13 para ingestão de arquivos e consulta de market data, estruturada com uma organização inspirada em Domain-Driven Design. O projeto suporta upload assíncrono, processamento em background com Redis, consulta paginada de market data com cache e contratos HTTP estáveis para consumo por frontend ou integrações.
+API em Laravel 13 para autenticacao stateful, ingestao assincrona de arquivos e consulta de market data. O projeto combina backend HTTP, jobs em fila, cache Redis e uma interface web simples para validar o fluxo principal de ponta a ponta.
 
-## Visão Geral
+## Visao Geral
 
-O sistema está organizado em domínios de negócio, com separação clara entre camadas de apresentação, aplicação e componentes compartilhados. Atualmente, os principais contextos do projeto são:
+O codigo esta organizado em dominios inspirados em DDD:
 
-- `Upload`, responsável pelo recebimento, rastreamento e processamento assíncrono de arquivos
-- `MarketData`, responsável pela exposição dos dados consultáveis
-- `User`, responsável pelo fluxo de autenticação
+- `User`: autenticacao e sessao stateful com Laravel Sanctum
+- `Upload`: recebimento do arquivo, persistencia do upload e orquestracao do processamento assincrono
+- `MarketData`: consulta dos dados processados com filtros e paginacao
+- `Shared`: respostas HTTP, erros e componentes transversais
 
-Além dos domínios, a aplicação possui uma camada compartilhada para resposta padronizada, tratamento de erros e observabilidade básica de requisições.
+Principais capacidades ja implementadas:
 
-## Stack Tecnológica
+- login e logout stateful por cookie de sessao
+- protecao CSRF para requisicoes mutaveis
+- upload autenticado com prevencao de duplicidade por `md5`
+- processamento em background com Redis, batch e chunking
+- persistencia de progresso, falhas e `reference_date`
+- consulta paginada de uploads com filtros
+- consulta paginada de market data com filtros e cache seletivo
+- observabilidade com `request_id`, logs estruturados e rastreamento de falhas
+- interface web para login, upload, historico e consulta de market data
+
+## Stack
 
 - PHP 8.3
 - Laravel 13
-- Docker
 - MySQL 8
 - Redis
 - Laravel Sanctum
 - Laravel Horizon
 - OpenSpout
-- Predis
+- PhpSpreadsheet
+- Docker Compose
 - Vite
 
 ## Arquitetura
 
-A estrutura do código segue a divisão abaixo:
-
 ```text
 app/
   Domains/
-    Upload/
     MarketData/
+    Upload/
     User/
   Shared/
+app/Jobs/
+resources/views/
+routes/
 ```
 
-Nessa organização:
+Papeis principais:
 
-- controllers atuam como camada de orquestração HTTP
-- services concentram o fluxo de aplicação
-- requests encapsulam validação de entrada
-- jobs executam o processamento assíncrono em background
-- componentes em `Shared` centralizam contratos de resposta, erros e comportamento transversal
+- controllers orquestram o contrato HTTP
+- form requests validam e normalizam entrada
+- services concentram regras de aplicacao
+- jobs processam o pipeline de ingestao em background
+- Eloquent models fazem a integracao com persistencia
+- `Shared` centraliza envelopes de sucesso e erro
 
-Fluxo principal de ponta a ponta:
+Fluxo principal:
 
-1. o cliente autentica em `POST /api/auth/login`
-2. o cliente envia um arquivo para `POST /api/uploads`
-3. `UploadService` valida duplicidade por `file_md5`, persiste o upload e despacha `ProcessUploadJob`
-4. `ProcessUploadJob` lê o arquivo, valida header, extrai `reference_date`, agrupa linhas em chunks e cria `ProcessUploadChunkJob`
-5. os chunks processam linhas válidas e fazem `bulk insert` em `market_data`
-6. o upload é atualizado com `rows_total`, `processed_rows`, `failed_rows`, `status` e `error_message`
-7. `GET /api/uploads` expõe o histórico operacional
-8. `GET /api/market-data` expõe a busca paginada com cache para consultas sem filtro de ticker
+1. o cliente executa `GET /sanctum/csrf-cookie`
+2. o cliente faz login em `POST /api/auth/login`
+3. o cliente envia um arquivo para `POST /api/uploads`
+4. `UploadService` valida duplicidade, salva o arquivo e despacha `ProcessUploadJob`
+5. `ProcessUploadJob` valida o header, extrai `reference_date` e divide as linhas em chunks
+6. `ProcessUploadChunkJob` persiste market data valida e atualiza progresso
+7. `GET /api/uploads` expoe o historico operacional
+8. `GET /api/market-data` expoe consultas paginadas sobre os dados processados
 
-## Autenticação
+## Contratos HTTP
 
-A aplicação utiliza Laravel Sanctum no modo stateful, com autenticação por cookie de sessão e proteção CSRF para o frontend web.
+Respostas de sucesso seguem este envelope:
 
-JWT não foi adotado por adicionar complexidade desnecessária para este cenário, sendo mais útil em arquiteturas distribuídas.
-
-No estado atual, o fluxo de autenticação já está funcional tanto na API quanto na interface web.
-
-Atualmente, o fluxo de autenticação está exposto em:
-
-```text
-POST /api/auth/login
-POST /api/auth/logout
+```json
+{
+  "data": {},
+  "meta": {},
+  "message": "Opcional"
+}
 ```
 
-O projeto também possui seed de usuário para ambiente local:
+Respostas de erro seguem este envelope:
+
+```json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Descricao do erro",
+    "details": {}
+  },
+  "trace_id": "uuid-ou-request-id"
+}
+```
+
+Comportamentos transversais:
+
+- `X-Request-Id` recebido na requisicao e propagado para a resposta
+- `request_id` incluido no `meta` de `POST /api/uploads`
+- validacoes retornam `422`
+- rotas protegidas retornam `401`
+- rate limit retorna `429`
+- mismatch de CSRF retorna `419` com payload estruturado
+
+## Autenticacao
+
+O projeto usa Laravel Sanctum em modo stateful. Nao ha Bearer token proprio da aplicacao: o cliente reutiliza cookie de sessao e token CSRF.
+
+Endpoints:
+
+- `GET /sanctum/csrf-cookie`
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+
+Detalhes atuais:
+
+- autenticacao via `Auth::guard('web')`
+- normalizacao do email no `LoginRequest`
+- regeneracao de sessao no login
+- invalidacao de sessao e regeneracao de token CSRF no logout
+- throttle de login com limite por email + IP
+
+Usuario seed local:
 
 ```text
 email: test@example.com
-senha: password
+password: password
 ```
 
-## Ambiente de Execução
+## API
 
-O ambiente local é composto por quatro serviços principais:
+### Uploads
 
-- `app`, responsável pela aplicação Laravel
-- `nginx`, responsável pela exposição HTTP
-- `mysql`, responsável pela persistência relacional
-- `redis`, responsável por cache e filas
+Rotas:
 
-Por padrão, a aplicação fica disponível em:
+- `POST /api/uploads`
+- `GET /api/uploads`
+
+`POST /api/uploads`:
+
+- exige autenticacao Sanctum
+- aceita `csv`, `xls` e `xlsx`
+- limite de 78 MB
+- impede reenvio duplicado por `file_md5`
+- retorna `202 Accepted`
+- inclui `message`, `data.upload` e `meta.request_id`
+
+Campos relevantes de retorno do upload:
+
+- `id`
+- `filename`
+- `path`
+- `mime_type`
+- `size`
+- `status`
+- `rows_total`
+- `processed_rows`
+- `failed_rows`
+- `reference_date`
+- `error_message`
+- `created_at`
+
+`GET /api/uploads`:
+
+- exige autenticacao Sanctum
+- suporta `per_page` de 1 a 100
+- suporta filtro por `filename`
+- suporta filtro por `date` no formato `Y-m-d`
+- o filtro `date` usa `reference_date`, nao `created_at`
+- retorna payload paginado em `meta`
+
+### Market Data
+
+Rota:
+
+- `GET /api/market-data`
+
+Comportamento atual:
+
+- exige autenticacao Sanctum
+- suporta filtros `TckrSymb` e `RptDt`
+- normaliza ticker para uppercase e remove espacos/caracteres de controle
+- suporta `page` e `per_page`
+- retorna payload paginado mesmo quando filtros sao aplicados
+- ordena por `rpt_dt desc` e `tckr_symb`
+- cacheia apenas consultas sem filtros por 5 minutos
+- invalida o cache ao concluir ingestao com sucesso
+
+Campos de retorno:
+
+- `RptDt`
+- `TckrSymb`
+- `MktNm`
+- `SctyCtgyNm`
+- `ISIN`
+- `CrpnNm`
+
+## Pipeline de Ingestao
+
+O processamento assincrono usa `ProcessUploadJob` e `ProcessUploadChunkJob`, ambos na fila `ingestion`.
+
+Capacidades atuais:
+
+- leitura de `csv` com delimitador `;`
+- leitura de `xlsx` com OpenSpout
+- leitura de `xls` com PhpSpreadsheet
+- validacao de header em posicoes fixas
+- suporte ao header minimo:
+  - `RptDt[0]`
+  - `TckrSymb[1]`
+  - `MktNm[5]`
+  - `SctyCtgyNm[6]`
+  - `ISIN[15]`
+  - `CrpnNm[47]`
+- ignorar linha `Status do Arquivo:` e linhas vazias
+- extracao da `reference_date` a partir da primeira linha de dados valida
+- divisao em chunks de 1000 linhas
+- dispatch em batch para coordenar chunks
+- insercao em lote em `market_data`
+- atualizacao incremental de `processed_rows` e `failed_rows`
+- guarda de concorrencia para nao reprocessar upload que ja saiu de `pending`
+- idempotencia por `upload_id + chunk_index`
+- persistencia de falhas em `failed_jobs`
+- retry com backoff para falhas transitarias
+
+Estados de upload utilizados:
+
+- `pending`
+- `processing`
+- `completed`
+- `failed`
+
+## Observabilidade e Seguranca
+
+Observabilidade:
+
+- middleware de logging com `request_id`
+- logs estruturados para inicio e fim de requisicoes
+- logs estruturados para jobs de upload e chunk
+- correlacao entre request HTTP e jobs assicronos
+- persistencia de falhas finais na tabela `failed_jobs`
+
+Seguranca operacional:
+
+- rotas de dados protegidas por `auth:sanctum`
+- protecao CSRF para login, logout e upload
+- rate limits:
+  - login: 5 por minuto
+  - uploads: 3 por minuto e 25 por dia
+  - historico de uploads: 30 por minuto
+  - market data: 5 por minuto e 100 por hora
+
+## Frontend
+
+A aplicacao possui paginas Blade para validar o fluxo principal:
+
+- `/login`
+- `/upload`
+- `/upload/history`
+- `/market-data`
+
+As telas usam a mesma autenticacao stateful do backend.
+
+## Banco de Dados
+
+Tabelas principais:
+
+- `users`
+- `uploads`
+- `market_data`
+- `upload_processed_chunks`
+- `jobs`
+- `job_batches`
+- `failed_jobs`
+
+Indices e otimizacoes relevantes:
+
+- indice composto para busca de market data por ticker e data
+- indice em `uploads.reference_date`
+- indice em status e timestamps de uploads
+
+## Execucao Local
+
+```bash
+cp .env.example .env
+docker compose up -d --build
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --force
+docker compose exec app php artisan db:seed --force
+docker compose exec app npm install
+docker compose exec app npm run build
+```
+
+Aplicacao local:
 
 ```text
 http://localhost:8000
 ```
 
-O Redis já está preparado para uso com filas e cache por meio das variáveis abaixo:
-
-```env
-QUEUE_CONNECTION=redis
-CACHE_STORE=redis
-REDIS_CLIENT=predis
-REDIS_HOST=redis
-```
-
-## Execução Local
-
-Para iniciar o projeto localmente:
+## Comandos Uteis
 
 ```bash
-cp .env.example .env
-docker compose up -d --build
-docker compose exec app composer install
-docker compose exec app php artisan key:generate
-docker compose exec app php artisan migrate
-docker compose exec app php artisan db:seed
-```
-
-Caso a interface frontend precise ser compilada:
-
-```bash
-docker compose exec app npm install
-docker compose exec app npm run build
-```
-
-## Operação
-
-Comandos úteis no ambiente local:
-
-```bash
-docker compose up -d
+docker compose ps
 docker compose exec app php artisan test
-docker compose exec app php artisan horizon
 docker compose exec app php artisan queue:work redis --queue=ingestion
+docker compose exec app php artisan horizon
 docker compose exec app php artisan migrate:status
 docker compose exec app php artisan tinker
 ```
 
-## Upload e Processamento Assíncrono
-
-O fluxo de upload atualmente funciona da seguinte forma:
-
-- `POST /api/uploads` recebe arquivos autenticados
-- os formatos aceitos são `csv`, `xls` e `xlsx`
-- o arquivo passa por validação de tamanho e extensão
-- o sistema calcula o hash `md5` para impedir reenvio duplicado
-- o arquivo é salvo localmente e um registro é criado na tabela `uploads`
-- o job `ProcessUploadJob` é disparado para a fila `ingestion`
-
-Durante o processamento:
-
-- o upload é marcado como `processing`
-- o arquivo é lido em streaming com OpenSpout para `csv`, `xlsx` e `ods`
-- arquivos `xls` são lidos com PhpSpreadsheet
-- as linhas são agrupadas em chunks de 1000 registros
-- cada chunk gera um `ProcessUploadChunkJob`
-- os jobs filhos fazem normalização mínima, descartam linhas inválidas e executam `bulk insert` em `market_data`
-- o sistema evita reprocessamento indevido com guarda de concorrência no upload e idempotência por `upload_id + chunk_index`
-- o progresso é atualizado com `rows_total`, `processed_rows` e `failed_rows`
-- ao final, o upload é concluído como `completed` ou `failed`
-
-O histórico operacional pode ser consultado em:
-
-```text
-GET /api/uploads
-```
-
-Atualmente, esse endpoint suporta:
-
-- paginação
-- filtro por `filename`
-- filtro por `date`, aplicado sobre `reference_date`
-
-## Front-end
-
-Além da API, o projeto já possui uma interface web básica para validação do fluxo principal:
-
-- `/login`, para autenticação
-- `/upload`, para envio de arquivos
-- `/upload/history`, para acompanhamento do histórico de uploads
-
-Essa interface consome a própria API usando a sessão autenticada do Sanctum.
-
-## Market Data
-
-O endpoint atualmente exposto para consulta é:
-
-```text
-GET /api/market-data
-```
-
-Esse endpoint já realiza busca real sobre `market_data`, com os comportamentos abaixo:
-
-- paginação padrão quando não há filtro de ticker
-- filtro por `TckrSymb`
-- filtro por `RptDt`
-- normalização de ticker para busca
-- cache para consultas sem filtro de ticker
-- invalidação do cache após conclusão de processamento de upload
-
-Também já foram criados índices para suportar a evolução dessa consulta:
-
-- índice composto em `market_data (tckr_symb, rpt_dt)`
-- índice em `market_data (rpt_dt)`
-- índice em `uploads (status, created_at)`
-- índice em `uploads (reference_date)`
-
-## Filas e Observabilidade
-
-O projeto já está preparado para execução assíncrona com Redis e Horizon.
-
-Atualmente, a solução inclui:
-
-- fila dedicada `ingestion`
-- job batching para coordenar chunks de processamento
-- rastreamento de falhas por status do upload
-- middleware de logging com `request_id`
-- propagação de `X-Request-Id` nas respostas da API
-- logs estruturados com `request_id`, `upload_id`, `chunk`, `status`, `attempt` e `duration_ms`
-- persistência de falhas em `failed_jobs`
-- retry/backoff para falhas transitórias
-- rate limit em login, upload, histórico e market data
-
-Essa base permite acompanhar melhor requisições e processamentos, além de preparar o sistema para maior volume de arquivos.
-
-## Trade-offs
-
-### MySQL vs NoSQL
-
-- MySQL foi escolhido porque o problema principal é ingestão tabular com filtros bem definidos por data, ticker e paginação.
-- O modelo relacional simplifica índices, consistência e consultas operacionais do histórico de uploads.
-- NoSQL faria mais sentido se o domínio exigisse esquema altamente variável, escrita distribuída extrema ou acesso orientado a documentos, o que não é o foco atual.
-
-### Redis vs cache simples
-
-- Redis foi escolhido porque o projeto já depende de fila assíncrona e se beneficia de uma camada compartilhada para cache e queue backend.
-- Um cache simples em arquivo ou array seria suficiente apenas para ambiente local ou cenários com baixo volume.
-- Redis melhora invalidação, throughput e aderência ao ambiente de produção, ao custo de mais uma dependência operacional.
-
-### Sanctum vs JWT
-
-- Sanctum foi escolhido por simplicidade e integração nativa com Laravel.
-- JWT adicionaria mais complexidade de emissão, revogação e rotação sem ganho proporcional para este cenário.
-- Para uma API monolítica com frontend próprio e autenticação stateful/stateless controlada, Sanctum atende melhor com menos custo operacional.
-
-### Paralelismo vs simplicidade
-
-- O pipeline usa paralelismo por chunks porque arquivos grandes exigem processamento assíncrono e divisão de trabalho para manter throughput.
-- Um fluxo totalmente sequencial seria mais simples de entender, mas aumentaria o tempo total de ingestão e o risco de gargalo em arquivos grandes.
-- O custo do paralelismo é a necessidade de controles extras de idempotência, batching, retry e observabilidade, que já foram incorporados ao projeto.
-
-## Runbook
-
-### Subida do ambiente
-
-```bash
-cp .env.example .env
-docker compose up -d --build
-docker compose exec app composer install
-docker compose exec app php artisan key:generate
-docker compose exec app php artisan migrate
-docker compose exec app php artisan db:seed
-```
-
-### Verificações rápidas de saúde
-
-```bash
-docker compose ps
-docker compose exec app php artisan migrate:status
-docker compose exec app php artisan test
-```
-
-Sinais esperados:
-
-- `mysql`, `redis`, `app` e `nginx` em estado `Up`
-- migrations aplicadas
-- suíte de testes verde
-
-### Operação de fila
-
-Para consumir a fila localmente:
-
-```bash
-docker compose exec app php artisan queue:work redis --queue=ingestion --tries=1
-```
-
-Para observar backlog da fila `ingestion`:
-
-```bash
-docker compose exec app php artisan tinker --execute='use Illuminate\Support\Facades\Redis; echo json_encode(["queue_len" => Redis::llen("queues:ingestion"), "reserved_len" => Redis::llen("queues:ingestion:reserved"), "delayed_len" => Redis::zcard("queues:ingestion:delayed")], JSON_UNESCAPED_UNICODE), PHP_EOL;'
-```
-
-Interpretação:
-
-- `queue_len > 0` indica backlog aguardando consumo
-- `reserved_len > 0` indica jobs atualmente reservados por workers
-- `delayed_len > 0` indica jobs em retry/backoff
-
-### Diagnóstico de falhas
-
-Para verificar uploads com erro:
-
-```bash
-docker compose exec app php artisan tinker --execute='echo App\Domains\Upload\Infrastructure\Persistence\Eloquent\Upload::query()->where("status", "failed")->latest("id")->limit(10)->get(["id", "filename", "status", "error_message"])->toJson(JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), PHP_EOL;'
-```
-
-Para verificar falhas persistidas da fila:
-
-```bash
-docker compose exec app php artisan tinker --execute='echo Illuminate\Support\Facades\DB::table("failed_jobs")->latest("id")->limit(10)->get()->toJson(JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), PHP_EOL;'
-```
-
-### Limpeza de cache de busca
+Invalidar cache de market data:
 
 ```bash
 docker compose exec app php artisan tinker --execute='app(App\Domains\MarketData\Application\Services\MarketDataService::class)->invalidateCache();'
 ```
 
-### Evidências já validadas
+## Testes
 
-- unit tests para `UploadService` e `MarketDataService`
-- feature tests para upload, histórico, busca, autenticação e fluxo assíncrono
-- smoke de latência com diferença clara entre cold e warm cache
-- smoke de backlog de fila sob carga
-- simulação de ingestão com arquivo CSV real de 16 MB
+A suite cobre cenarios de unit e feature test:
 
-## CI/CD
+- autenticacao stateful com Sanctum
+- payload estruturado para CSRF mismatch
+- validacao de upload e aceite de `xls`
+- correlacao de `request_id`
+- persistencia de `reference_date`
+- validacao de schema/header do arquivo
+- leitura de arquivos `xls`
+- guarda de concorrencia no upload
+- idempotencia de chunks
+- classificacao de falhas transitarias
+- registro em `failed_jobs`
+- paginacao, filtros e cache de market data
 
-O repositório já possui pipeline de integração contínua em [`.github/workflows/ci.yml`](/var/www/html/projetos/desafio-desenvolvedor/.github/workflows/ci.yml).
-
-Atualmente, o fluxo executa:
-
-- checkout do código
-- build e subida dos containers com Docker Compose
-- espera ativa pela disponibilidade do MySQL
-- instalação de dependências PHP
-- preparação do ambiente Laravel
-- execução de migrations
-- execução dos testes automatizados
-- instalação de dependências Node
-- build dos assets frontend
-- smoke test HTTP via Nginx
-
-Na revisão atual, o comando abaixo foi validado localmente:
+Execucao local:
 
 ```bash
 docker compose exec app php artisan test
 ```
 
-Resultado atual:
+## Postman
 
-```text
-suíte ampliada com cobertura de unit e feature tests
-```
+Os artefatos de API para uso manual estao em:
 
-## Estado Atual e Próximos Passos
+- [postman/collection.json](/var/www/html/projetos/desafio-desenvolvedor/postman/collection.json)
+- [postman/environment.local.json](/var/www/html/projetos/desafio-desenvolvedor/postman/environment.local.json)
+- [postman/README.md](/var/www/html/projetos/desafio-desenvolvedor/postman/README.md)
 
-O sistema já possui uma base funcional para autenticação, upload, histórico, ingestão assíncrona e busca paginada com cache. As próximas evoluções naturais do projeto incluem:
+A collection cobre:
 
-- reduzir o volume de linhas descartadas no processamento do arquivo bruto
-- formalizar benchmarks repetíveis de carga
-- expandir métricas operacionais do pipeline
-- revisar estratégia de particionamento e tuning de banco para volume maior
-- endurecer o fluxo web stateful de login/logout no ambiente local
+- bootstrap do cookie CSRF
+- login e logout stateful
+- upload com `X-Request-Id`
+- historico de uploads com e sem filtros
+- market data com consultas padrao e filtradas
+
+## CI
+
+O pipeline de CI fica em [`.github/workflows/ci.yml`](/var/www/html/projetos/desafio-desenvolvedor/.github/workflows/ci.yml) e prepara containers, ambiente Laravel, banco principal, banco de testes, seed local, testes automatizados e build dos assets frontend.
