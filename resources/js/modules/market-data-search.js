@@ -61,10 +61,6 @@ export function initMarketDataSearch() {
         reportDate: '',
     };
 
-    function hasFilters() {
-        return Boolean(state.ticker || state.reportDate);
-    }
-
     function renderRows(items) {
         resultsBody.innerHTML = '';
 
@@ -122,10 +118,6 @@ export function initMarketDataSearch() {
     function renderPaginationNumbers() {
         paginationNumbers.innerHTML = '';
 
-        if (hasFilters()) {
-            return;
-        }
-
         paginationNumbers.appendChild(buildPageItem({
             label: 'Anterior',
             page: state.currentPage - 1,
@@ -150,31 +142,24 @@ export function initMarketDataSearch() {
         }));
     }
 
-    function updateSummary(meta, itemsCount) {
-        if (hasFilters()) {
-            const total = Number(meta?.total ?? itemsCount ?? 0);
-            state.total = total;
-            tableSummary.textContent = `${total} registro(s) encontrados para os filtros aplicados.`;
-            paginationMeta.textContent = '';
-            paginationNumbers.innerHTML = '';
-            pagination.hidden = true;
-            return;
-        }
-
+    function updateSummary(meta) {
         state.currentPage = Number(meta?.current_page ?? 1);
         state.lastPage = Number(meta?.last_page ?? 1);
         state.perPage = Number(meta?.per_page ?? state.perPage);
         state.total = Number(meta?.total ?? 0);
         perPageSelect.value = String(state.perPage);
 
-        tableSummary.textContent = `${state.total} registro(s) disponiveis.`;
+        tableSummary.textContent = `${state.total} registro(s) encontrados.`;
         paginationMeta.textContent = `Pagina ${state.currentPage} de ${state.lastPage}`;
         pagination.hidden = false;
         renderPaginationNumbers();
     }
 
     function buildQuery(page) {
-        const params = new URLSearchParams();
+        const params = new URLSearchParams({
+            page: String(page),
+            per_page: String(state.perPage),
+        });
 
         if (state.ticker) {
             params.set('TckrSymb', state.ticker);
@@ -182,11 +167,6 @@ export function initMarketDataSearch() {
 
         if (state.reportDate) {
             params.set('RptDt', state.reportDate);
-        }
-
-        if (!hasFilters()) {
-            params.set('page', String(page));
-            params.set('per_page', String(state.perPage));
         }
 
         return params.toString();
@@ -209,7 +189,12 @@ export function initMarketDataSearch() {
             const items = data?.data || [];
 
             renderRows(items);
-            updateSummary(data?.meta, items.length);
+            updateSummary(data?.meta || {
+                current_page: 1,
+                last_page: 1,
+                per_page: state.perPage,
+                total: items.length,
+            });
             statusNote.textContent = '';
         } catch (error) {
             renderRows([]);
@@ -240,10 +225,7 @@ export function initMarketDataSearch() {
 
     perPageSelect.addEventListener('change', () => {
         state.perPage = Number(perPageSelect.value);
-
-        if (!hasFilters()) {
-            loadMarketData(1);
-        }
+        loadMarketData(1);
     });
 
     loadMarketData(1);

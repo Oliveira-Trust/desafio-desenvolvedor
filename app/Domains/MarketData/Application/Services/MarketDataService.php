@@ -17,11 +17,10 @@ final class MarketDataService
         $ttl = now()->addMinutes(5);
 
         $page = max($page ?? 1, 1);
-        $perPage = min($perPage ?? 10, 100);
+        $perPage = $this->normalizePerPage($perPage);
         $normalizedTicker = $this->normalizeTicker($ticker);
-        $requiresPagination = $this->requiresPagination($normalizedTicker);
-
-        $cacheKey = $this->makeCacheKey($normalizedTicker, $reportDate, $page, $perPage, $requiresPagination);
+        $shouldCache = $this->shouldCacheQuery($normalizedTicker, $reportDate);
+        $cacheKey = $this->makeCacheKey($normalizedTicker, $reportDate, $page, $perPage);
 
         $query = MarketData::query()
             ->select([
@@ -39,38 +38,29 @@ final class MarketDataService
             ->orderBy('rpt_dt', 'desc')
             ->orderBy('tckr_symb');
 
-        if (! $this->shouldCacheQuery($requiresPagination)) {
-            return $this->runSearch($query, $requiresPagination, $perPage, $page);
+        if (! $shouldCache) {
+            return $this->runSearch($query, $perPage, $page);
         }
 
         return Cache::remember(
             $cacheKey,
             $ttl,
-            fn() => $this->runSearch($query, $requiresPagination, $perPage, $page)
+            fn() => $this->runSearch($query, $perPage, $page)
         );
     }
 
-    private function makeCacheKey(?string $ticker, ?string $reportDate, int $page, int $perPage, bool $requiresPagination): string
+    private function makeCacheKey(?string $ticker, ?string $reportDate, int $page, int $perPage): string
     {
         $normalizedTicker = $ticker ?? 'all';
         $normalizedDate = $reportDate ?? 'all';
 
-        if ($requiresPagination) {
-            return sprintf(
-                'market-data:%s:ticker=%s:date=%s:page=%d:per_page=%d',
-                self::CACHE_KEY_VERSION,
-                $normalizedTicker,
-                $normalizedDate,
-                $page,
-                $perPage,
-            );
-        }
-
         return sprintf(
-            'market-data:%s:ticker=%s:date=%s',
+            'market-data:%s:ticker=%s:date=%s:page=%d:per_page=%d',
             self::CACHE_KEY_VERSION,
             $normalizedTicker,
             $normalizedDate,
+            $page,
+            $perPage,
         );
     }
 
@@ -85,38 +75,27 @@ final class MarketDataService
         return $normalizedTicker === '' ? null : $normalizedTicker;
     }
 
-    private function requiresPagination(?string $ticker): bool
+    private function normalizePerPage(?int $perPage): int
     {
-        return $ticker === null;
+        return max(1, min($perPage ?? 10, 100));
     }
 
-    private function shouldCacheQuery(bool $requiresPagination): bool
+    private function shouldCacheQuery(?string $ticker, ?string $reportDate): bool
     {
-        return $requiresPagination;
+        return $ticker === null && $reportDate === null;
     }
 
-    private function runSearch($query, bool $requiresPagination, int $perPage, int $page): array
+    private function runSearch($query, int $perPage, int $page): array
     {
-        if ($requiresPagination) {
-            $paginator = $query->paginate($perPage, ['*'], 'page', $page);
-
-            return [
-                'data' => $this->serializeItems($paginator->items()),
-                'meta' => [
-                    'current_page' => $paginator->currentPage(),
-                    'last_page' => $paginator->lastPage(),
-                    'per_page' => $paginator->perPage(),
-                    'total' => $paginator->total(),
-                ],
-            ];
-        }
-
-        $items = $query->get();
+        $paginator = $query->paginate($perPage, ['*'], 'page', $page);
 
         return [
-            'data' => $this->serializeItems($items->all()),
+            'data' => $this->serializeItems($paginator->items()),
             'meta' => [
-                'total' => $items->count(),
+                'current_page' => $paginator->currentPage(),
+                'last_page' => $paginator->lastPage(),
+                'per_page' => $paginator->perPage(),
+                'total' => $paginator->total(),
             ],
         ];
     }

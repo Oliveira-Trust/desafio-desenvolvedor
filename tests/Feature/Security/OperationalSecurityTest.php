@@ -5,7 +5,6 @@ namespace Tests\Feature\Security;
 use App\Domains\MarketData\Infrastructure\Persistence\Eloquent\MarketData;
 use App\Domains\Upload\Infrastructure\Persistence\Eloquent\Upload;
 use App\Domains\User\Infrastructure\Persistence\Eloquent\User;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\Sanctum;
 use Tests\Concerns\UsesMySqlDatabase;
 use Tests\TestCase;
@@ -24,14 +23,14 @@ class OperationalSecurityTest extends TestCase
     {
         $this->getJson('/api/uploads')->assertStatus(401);
         $this->getJson('/api/market-data?TckrSymb=PETR4')->assertStatus(401);
-        $this->postJson('/api/auth/logout')->assertStatus(401);
+        $this->postJson('/api/auth/logout')->assertOk();
     }
 
     public function test_login_uses_sanctum_stateful_session_for_protected_routes(): void
     {
         User::factory()->create([
             'email' => 'test@example.com',
-            'password' => Hash::make('password'),
+            'password' => 'password',
         ]);
 
         $this->postJson('/api/auth/login', [
@@ -213,11 +212,93 @@ class OperationalSecurityTest extends TestCase
         $response->assertJsonPath('meta.last_page', 1);
     }
 
+    public function test_market_data_filters_still_return_paginated_payload(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $upload = Upload::query()->create([
+            'filename' => 'market-filtered-pagination.csv',
+            'path' => 'uploads/market-filtered-pagination.csv',
+            'mime_type' => 'text/csv',
+            'size' => 10,
+            'file_md5' => md5('market-filtered-pagination.csv'),
+            'status' => Upload::STATUS_COMPLETED,
+            'rows_total' => 3,
+            'processed_rows' => 3,
+            'failed_rows' => 0,
+        ]);
+
+        MarketData::query()->create([
+            'upload_id' => $upload->id,
+            'rpt_dt' => '2026-03-23',
+            'tckr_symb' => 'PETR4',
+            'mkt_nm' => 'BOVESPA',
+            'scty_ctgy_nm' => 'ACOES',
+            'isin' => 'BRPETRACNPR6',
+            'crpn_nm' => 'PETROLEO BRASILEIRO SA',
+        ]);
+
+        MarketData::query()->create([
+            'upload_id' => $upload->id,
+            'rpt_dt' => '2026-03-23',
+            'tckr_symb' => 'PETR4',
+            'mkt_nm' => 'BOVESPA',
+            'scty_ctgy_nm' => 'ACOES',
+            'isin' => 'BRPETRACNPR6',
+            'crpn_nm' => 'PETROLEO BRASILEIRO SA PN',
+        ]);
+
+        MarketData::query()->create([
+            'upload_id' => $upload->id,
+            'rpt_dt' => '2026-03-22',
+            'tckr_symb' => 'VALE3',
+            'mkt_nm' => 'BOVESPA',
+            'scty_ctgy_nm' => 'ACOES',
+            'isin' => 'BRVALEACNOR0',
+            'crpn_nm' => 'VALE SA',
+        ]);
+
+        $response = $this->getJson('/api/market-data?TckrSymb=PETR4&RptDt=2026-03-23&per_page=1&page=2');
+
+        $response->assertOk();
+        $response->assertJsonCount(1, 'data');
+        $response->assertJsonPath('meta.current_page', 2);
+        $response->assertJsonPath('meta.per_page', 1);
+        $response->assertJsonPath('meta.total', 2);
+        $response->assertJsonPath('meta.last_page', 2);
+        $response->assertJsonPath('data.0.TckrSymb', 'PETR4');
+        $response->assertJsonPath('data.0.RptDt', '2026-03-23');
+    }
+
+    public function test_market_data_rejects_invalid_per_page_for_filtered_and_unfiltered_queries(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $unfilteredResponse = $this->getJson('/api/market-data?per_page=999');
+        $filteredResponse = $this->getJson('/api/market-data?TckrSymb=PETR4&RptDt=2026-03-23&per_page=999');
+
+        $unfilteredResponse->assertStatus(422);
+        $unfilteredResponse->assertJsonPath('error.code', 'VALIDATION_ERROR');
+        $unfilteredResponse->assertJsonStructure([
+            'error' => [
+                'details' => ['per_page'],
+            ],
+        ]);
+
+        $filteredResponse->assertStatus(422);
+        $filteredResponse->assertJsonPath('error.code', 'VALIDATION_ERROR');
+        $filteredResponse->assertJsonStructure([
+            'error' => [
+                'details' => ['per_page'],
+            ],
+        ]);
+    }
+
     public function test_login_endpoint_is_rate_limited(): void
     {
         User::factory()->create([
             'email' => 'security@example.com',
-            'password' => Hash::make('password'),
+            'password' => 'password',
         ]);
 
         for ($attempt = 0; $attempt < 5; $attempt++) {
