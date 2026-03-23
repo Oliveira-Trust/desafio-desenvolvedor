@@ -22,14 +22,14 @@ class MarketDataController extends Controller
 
         $ticker = $validated['TckrSymb'] ?? null;
         $reportDate = $validated['RptDt'] ?? null;
-        $hasFilters = $ticker !== null || $reportDate !== null;
+        $requiresPagination = $ticker === null;
 
-        if (! $hasFilters && (! isset($validated['page']) || ! isset($validated['per_page']))) {
+        if ($requiresPagination && (! isset($validated['page']) || ! isset($validated['per_page']))) {
             return response()->json([
-                'message' => 'Os parametros page e per_page sao obrigatorios quando nenhum filtro for informado.',
+                'message' => 'Os parametros page e per_page sao obrigatorios quando TckrSymb nao for informado.',
                 'errors' => [
-                    'page' => ['O campo page e obrigatorio quando nenhum filtro for informado.'],
-                    'per_page' => ['O campo per_page e obrigatorio quando nenhum filtro for informado.'],
+                    'page' => ['O campo page e obrigatorio quando TckrSymb nao for informado.'],
+                    'per_page' => ['O campo per_page e obrigatorio quando TckrSymb nao for informado.'],
                 ],
             ], 422);
         }
