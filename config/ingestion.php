@@ -19,6 +19,16 @@ $parseBackoff = static function (string $key, string $default): array {
 
 return [
     'jobs' => [
+        'transient_failure_patterns' => [
+            'deadlock',
+            'lock wait timeout',
+            'server has gone away',
+            'connection refused',
+            'timed out',
+            'temporarily unavailable',
+            'temporary failure',
+            'try again',
+        ],
         'upload' => [
             'tries' => (int) env('INGESTION_UPLOAD_TRIES', 3),
             'timeout' => (int) env('INGESTION_UPLOAD_TIMEOUT', 300),

@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Domains\MarketData\Application\Services\MarketDataService;
 use App\Domains\Upload\Application\Ports\UploadRepository;
+use App\Jobs\Concerns\DetectsTransientFailures;
 use Illuminate\Bus\Batch;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -26,6 +27,7 @@ class ProcessUploadJob implements ShouldQueue
     use InteractsWithQueue;
     use Queueable;
     use SerializesModels;
+    use DetectsTransientFailures;
 
     private const CHUNK_SIZE = 1000;
     private const BATCH_ADD_SIZE = 20;
@@ -106,7 +108,7 @@ class ProcessUploadJob implements ShouldQueue
                 $reader->close();
             }
         } catch (Throwable $exception) {
-            if ($this->isTransientFailure($exception)) {
+            if ($this->shouldRetryAfterFailure($exception)) {
                 throw $exception;
             }
 
@@ -225,16 +227,5 @@ class ProcessUploadJob implements ShouldQueue
     public function backoff(): array
     {
         return config('ingestion.jobs.upload.backoff', [10, 30, 60]);
-    }
-
-    private function isTransientFailure(Throwable $exception): bool
-    {
-        $message = strtolower($exception->getMessage());
-
-        return str_contains($message, 'deadlock')
-            || str_contains($message, 'lock wait timeout')
-            || str_contains($message, 'server has gone away')
-            || str_contains($message, 'connection refused')
-            || str_contains($message, 'timed out');
     }
 }

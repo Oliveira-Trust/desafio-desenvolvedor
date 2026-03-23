@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Domains\MarketData\Application\DTOs\MarketDataDTO;
 use App\Domains\MarketData\Infrastructure\Persistence\Eloquent\MarketData;
 use App\Domains\Upload\Application\Ports\UploadRepository;
+use App\Jobs\Concerns\DetectsTransientFailures;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,6 +21,7 @@ class ProcessUploadChunkJob implements ShouldQueue
     use Batchable;
     use Queueable;
     use SerializesModels;
+    use DetectsTransientFailures;
 
     private const COLUMN_RPT_DT = 0;
     private const COLUMN_TCKR_SYMB = 1;
@@ -46,46 +48,54 @@ class ProcessUploadChunkJob implements ShouldQueue
 
     public function handle(UploadRepository $uploads): void
     {
-        $now = now();
-        $inserts = [];
-        $processedRows = 0;
-        $failedRows = 0;
+        try {
+            $now = now();
+            $inserts = [];
+            $processedRows = 0;
+            $failedRows = 0;
 
-        foreach ($this->rows as $row) {
-            if ($this->shouldSkipRow($row)) {
-                continue;
+            foreach ($this->rows as $row) {
+                if ($this->shouldSkipRow($row)) {
+                    continue;
+                }
+
+                $dto = $this->mapRowToDto($row);
+
+                if ($dto === null) {
+                    $failedRows++;
+                    continue;
+                }
+
+                $inserts[] = [
+                    'upload_id' => $dto->uploadId,
+                    'rpt_dt' => $dto->rptDt,
+                    'tckr_symb' => $dto->tckrSymb,
+                    'mkt_nm' => $dto->mktNm,
+                    'scty_ctgy_nm' => $dto->sctyCtgyNm,
+                    'isin' => $dto->isin,
+                    'crpn_nm' => $dto->crpnNm,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+                $processedRows++;
             }
 
-            $dto = $this->mapRowToDto($row);
-
-            if ($dto === null) {
-                $failedRows++;
-                continue;
+            if ($inserts !== []) {
+                MarketData::query()->insert($inserts);
             }
 
-            $inserts[] = [
-                'upload_id' => $dto->uploadId,
-                'rpt_dt' => $dto->rptDt,
-                'tckr_symb' => $dto->tckrSymb,
-                'mkt_nm' => $dto->mktNm,
-                'scty_ctgy_nm' => $dto->sctyCtgyNm,
-                'isin' => $dto->isin,
-                'crpn_nm' => $dto->crpnNm,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ];
-            $processedRows++;
-        }
+            if ($processedRows === 0 && $failedRows === 0) {
+                return;
+            }
 
-        if ($inserts !== []) {
-            MarketData::query()->insert($inserts);
-        }
+            $uploads->incrementProgress($this->uploadId, $processedRows, $failedRows);
+        } catch (Throwable $exception) {
+            if ($this->shouldRetryAfterFailure($exception)) {
+                throw $exception;
+            }
 
-        if ($processedRows === 0 && $failedRows === 0) {
-            return;
+            $this->fail($exception);
         }
-
-        $uploads->incrementProgress($this->uploadId, $processedRows, $failedRows);
     }
 
     public function failed(?Throwable $exception): void
