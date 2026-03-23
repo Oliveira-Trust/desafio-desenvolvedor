@@ -3,6 +3,7 @@
 namespace App\Domains\User\Presentation\Http\Controllers;
 
 use App\Domains\User\Exceptions\InvalidCredentialsException;
+use App\Domains\User\Presentation\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Shared\Responses\ApiSuccess;
 use Illuminate\Http\JsonResponse;
@@ -11,19 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 class UserAuthController extends Controller
 {
-    public function login(Request $request): JsonResponse
+    public function login(LoginRequest $request): JsonResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
-        ]);
-
-        $normalizedCredentials = [
-            'email' => mb_strtolower(trim($credentials['email'])),
-            'password' => $credentials['password'],
-        ];
-
-        if (! Auth::guard('web')->attempt($normalizedCredentials)) {
+        if (! Auth::guard('web')->attempt($request->credentials())) {
             throw new InvalidCredentialsException();
         }
 

@@ -7,7 +7,7 @@ use App\Domains\MarketData\Presentation\Http\Controllers\MarketDataController;
 
 Route::middleware('web')->prefix('auth')->group(function () {
     Route::post('/login', [UserAuthController::class, 'login'])->middleware('throttle:login');
-    Route::post('/logout', [UserAuthController::class, 'logout'])->middleware('auth:sanctum');
+    Route::post('/logout', [UserAuthController::class, 'logout']);
 });
 
 Route::middleware(['web', 'auth:sanctum'])->group(function () {
