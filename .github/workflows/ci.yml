@@ -26,13 +26,15 @@ jobs:
       - name: Install PHP dependencies
         run: docker compose exec -T app composer install --prefer-dist --no-interaction --no-progress
 
-      - name: Prepare application
+      - name: Prepare application environment
         run: |
           docker compose exec -T app sh -lc 'cp .env.example .env'
-          docker compose exec -T app php artisan key:generate
+          docker compose exec -T app php artisan key:generate --force
+          docker compose exec -T app php artisan config:clear
           docker compose exec -T app php artisan migrate --force
+          docker compose exec -T app php artisan db:seed --force
 
-      - name: Run tests in application container
+      - name: Run automated tests
         run: |
           docker compose exec -T app env \
             APP_ENV=testing \
@@ -40,8 +42,11 @@ jobs:
             DB_HOST=mysql \
             DB_PORT=3306 \
             DB_DATABASE=desafio-ot \
+            DB_DATABASE_TEST=desafio-ot-test \
             DB_USERNAME=ot \
             DB_PASSWORD=password \
+            DB_ROOT_USERNAME=root \
+            DB_ROOT_PASSWORD=root \
             CACHE_STORE=array \
             QUEUE_CONNECTION=sync \
             SESSION_DRIVER=array \
