@@ -60,11 +60,24 @@ final class MarketDataService
 
     private function makeCacheKey(?string $ticker, ?string $reportDate, int $page, int $perPage): string
     {
+        $normalizedTicker = $ticker ? strtoupper(trim($ticker)) : 'all';
+        $normalizedDate = $reportDate ?? 'all';
+        $hasFilters = $ticker !== null || $reportDate !== null;
+
+        if ($hasFilters) {
+            return sprintf(
+                'market-data:%s:ticker=%s:date=%s',
+                self::CACHE_KEY_VERSION,
+                $normalizedTicker,
+                $normalizedDate,
+            );
+        }
+
         return sprintf(
             'market-data:%s:ticker=%s:date=%s:page=%d:per_page=%d',
             self::CACHE_KEY_VERSION,
-            $ticker ? strtoupper(trim($ticker)) : 'all',
-            $reportDate ?? 'all',
+            $normalizedTicker,
+            $normalizedDate,
             $page,
             $perPage,
         );
