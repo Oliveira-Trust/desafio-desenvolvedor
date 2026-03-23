@@ -1,0 +1,7 @@
+# Ignorar ambientes com dados sensíveis
+environment.*.json
+!environment.local.json
+
+# Ignorar dumps e arquivos temporários
+*.json.backup
+*.postman_test*
