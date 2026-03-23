@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Domains\MarketData\Application\Services\MarketDataService;
 use App\Domains\Upload\Application\Ports\UploadRepository;
 use Illuminate\Bus\Batch;
 use Illuminate\Bus\Queueable;
@@ -12,10 +13,11 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Storage;
 use OpenSpout\Common\Entity\Row;
-use OpenSpout\Reader\Common\Creator\ReaderFactory;
 use OpenSpout\Reader\CSV\Options as CsvOptions;
 use OpenSpout\Reader\CSV\Reader as CsvReader;
+use OpenSpout\Reader\ODS\Reader as OdsReader;
 use OpenSpout\Reader\ReaderInterface;
+use OpenSpout\Reader\XLSX\Reader as XlsxReader;
 use Throwable;
 
 class ProcessUploadJob implements ShouldQueue
@@ -93,6 +95,7 @@ class ProcessUploadJob implements ShouldQueue
 
                 if ($batch === null) {
                     $uploads->markAsCompleted($this->uploadId);
+                    app(MarketDataService::class)->invalidateCache();
                 }
             } finally {
                 $reader->close();
@@ -151,10 +154,18 @@ class ProcessUploadJob implements ShouldQueue
 
     private function createReader(string $absolutePath): ReaderInterface
     {
-        if (strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION)) !== 'csv') {
-            return ReaderFactory::createFromFile($absolutePath);
-        }
+        $extension = strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION));
 
+        return match ($extension) {
+            'csv' => $this->createCsvReader(),
+            'xlsx' => new XlsxReader(),
+            'ods' => new OdsReader(),
+            default => throw new \RuntimeException("Formato de arquivo nao suportado: {$extension}"),
+        };
+    }
+
+    private function createCsvReader(): ReaderInterface
+    {
         $options = new CsvOptions();
         $options->FIELD_DELIMITER = ';';
         $options->ENCODING = 'ISO-8859-1';
@@ -192,6 +203,7 @@ class ProcessUploadJob implements ShouldQueue
                     }
 
                     $uploads->markAsCompleted($uploadId);
+                    app(MarketDataService::class)->invalidateCache();
                 })
                 ->dispatch();
         } else {

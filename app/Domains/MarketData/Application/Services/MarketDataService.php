@@ -4,6 +4,7 @@ namespace App\Domains\MarketData\Application\Services;
 
 use App\Domains\MarketData\Infrastructure\Persistence\Eloquent\MarketData;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 final class MarketDataService
 {
@@ -81,6 +82,16 @@ final class MarketDataService
             $page,
             $perPage,
         );
+    }
+
+    public function invalidateCache(): void
+    {
+        $prefix = config('cache.prefix');
+        $pattern = sprintf('%smarket-data:%s:*', $prefix ? $prefix . '-' : '', self::CACHE_KEY_VERSION);
+
+        foreach (Redis::connection('cache')->scan(match: $pattern) as $key) {
+            Redis::connection('cache')->del($key);
+        }
     }
 
     /**
