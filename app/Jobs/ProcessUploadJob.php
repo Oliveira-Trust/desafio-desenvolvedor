@@ -32,6 +32,14 @@ class ProcessUploadJob implements ShouldQueue
 
     private const CHUNK_SIZE = 1000;
     private const BATCH_ADD_SIZE = 20;
+    private const REQUIRED_HEADER_COLUMNS = [
+        0 => 'RptDt',
+        1 => 'TckrSymb',
+        5 => 'MktNm',
+        6 => 'SctyCtgyNm',
+        15 => 'ISIN',
+        47 => 'CrpnNm',
+    ];
 
     public int $tries;
     public int $timeout;
@@ -58,7 +66,16 @@ class ProcessUploadJob implements ShouldQueue
             'chunk' => null,
         ]);
 
-        $uploads->markAsProcessing($this->uploadId);
+        if (! $uploads->markAsProcessing($this->uploadId)) {
+            Log::info('ingestion.upload.skipped', $this->buildLogContext([
+                'chunk' => null,
+                'status' => 'skipped',
+                'duration_ms' => $this->durationMs($startedAt),
+                'reason' => 'upload_already_processing_or_processed',
+            ]));
+
+            return;
+        }
 
         try {
             $disk = Storage::disk('local');
@@ -74,6 +91,7 @@ class ProcessUploadJob implements ShouldQueue
             $chunkIndex = 0;
             $rowsTotal = 0;
             $batch = null;
+            $headerValidated = false;
 
             try {
                 $reader->open($absolutePath);
@@ -82,10 +100,22 @@ class ProcessUploadJob implements ShouldQueue
                     foreach ($sheet->getRowIterator() as $row) {
                         $rowData = $this->mapRowToArray($row);
 
-                        if (! $this->shouldSkipRow($rowData)) {
-                            $rowsTotal++;
+                        if ($this->isStatusRow($rowData) || $this->isEmptyRow($rowData)) {
+                            continue;
                         }
 
+                        if (! $headerValidated) {
+                            $this->assertValidHeader($rowData);
+                            $headerValidated = true;
+
+                            continue;
+                        }
+
+                        if ($this->shouldSkipRow($rowData)) {
+                            continue;
+                        }
+
+                        $rowsTotal++;
                         $buffer[] = $rowData;
 
                         if (count($buffer) < self::CHUNK_SIZE) {
@@ -98,6 +128,10 @@ class ProcessUploadJob implements ShouldQueue
                         $buffer = [];
                         $chunkIndex++;
                     }
+                }
+
+                if (! $headerValidated) {
+                    throw new \RuntimeException('Header do arquivo ausente ou invalido.');
                 }
 
                 if ($buffer !== []) {
@@ -158,17 +192,9 @@ class ProcessUploadJob implements ShouldQueue
      */
     private function shouldSkipRow(array $row): bool
     {
-        $firstColumn = $this->normalizeString($row[0] ?? null);
-
-        if ($firstColumn === null) {
-            return true;
-        }
-
-        if ($firstColumn === 'RptDt') {
-            return true;
-        }
-
-        return str_starts_with($firstColumn, 'Status do Arquivo:');
+        return $this->isEmptyRow($row)
+            || $this->isHeaderRow($row)
+            || $this->isStatusRow($row);
     }
 
     private function normalizeString(mixed $value): ?string
@@ -288,6 +314,46 @@ class ProcessUploadJob implements ShouldQueue
     public function backoff(): array
     {
         return config('ingestion.jobs.upload.backoff', [10, 30, 60]);
+    }
+
+    /**
+     * @param  array<int, mixed>  $row
+     */
+    private function assertValidHeader(array $row): void
+    {
+        foreach (self::REQUIRED_HEADER_COLUMNS as $index => $expectedColumn) {
+            $actualColumn = $this->normalizeString($row[$index] ?? null);
+
+            if ($actualColumn !== $expectedColumn) {
+                throw new \RuntimeException('Header do arquivo invalido.');
+            }
+        }
+    }
+
+    /**
+     * @param  array<int, mixed>  $row
+     */
+    private function isEmptyRow(array $row): bool
+    {
+        return $this->normalizeString($row[0] ?? null) === null;
+    }
+
+    /**
+     * @param  array<int, mixed>  $row
+     */
+    private function isHeaderRow(array $row): bool
+    {
+        return $this->normalizeString($row[0] ?? null) === 'RptDt';
+    }
+
+    /**
+     * @param  array<int, mixed>  $row
+     */
+    private function isStatusRow(array $row): bool
+    {
+        $firstColumn = $this->normalizeString($row[0] ?? null);
+
+        return $firstColumn !== null && str_starts_with($firstColumn, 'Status do Arquivo:');
     }
 
     /**

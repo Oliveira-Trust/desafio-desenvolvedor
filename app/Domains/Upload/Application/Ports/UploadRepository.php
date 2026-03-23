@@ -13,7 +13,7 @@ interface UploadRepository
 
     public function findById(int $id): ?Upload;
 
-    public function markAsProcessing(int $id): void;
+    public function markAsProcessing(int $id): bool;
 
     public function setRowsTotal(int $id, int $rowsTotal): void;
 

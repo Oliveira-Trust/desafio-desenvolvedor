@@ -44,10 +44,11 @@ final class EloquentUploadRepository implements UploadRepository
         return $upload ? $this->toDomain($upload) : null;
     }
 
-    public function markAsProcessing(int $id): void
+    public function markAsProcessing(int $id): bool
     {
-        Upload::query()
+        return Upload::query()
             ->whereKey($id)
+            ->where('status', Upload::STATUS_PENDING)
             ->update([
                 'status' => Upload::STATUS_PROCESSING,
                 'rows_total' => 0,
@@ -55,7 +56,7 @@ final class EloquentUploadRepository implements UploadRepository
                 'failed_rows' => 0,
                 'error_message' => null,
                 'processed_at' => null,
-            ]);
+            ]) === 1;
     }
 
     public function setRowsTotal(int $id, int $rowsTotal): void

@@ -12,6 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
@@ -30,6 +31,7 @@ class ProcessUploadChunkJob implements ShouldQueue
     private const COLUMN_SCTY_CTGY_NM = 6;
     private const COLUMN_ISIN = 15;
     private const COLUMN_CRPN_NM = 47;
+    private const PROCESSED_CHUNKS_TABLE = 'upload_processed_chunks';
 
     public int $tries;
     public int $timeout;
@@ -86,10 +88,6 @@ class ProcessUploadChunkJob implements ShouldQueue
                 $processedRows++;
             }
 
-            if ($inserts !== []) {
-                MarketData::query()->insert($inserts);
-            }
-
             if ($processedRows === 0 && $failedRows === 0) {
                 $this->logInfo('ingestion.upload_chunk.skipped', 'completed', $startedAt, [
                     'processed_rows' => 0,
@@ -99,7 +97,36 @@ class ProcessUploadChunkJob implements ShouldQueue
                 return;
             }
 
-            $uploads->incrementProgress($this->uploadId, $processedRows, $failedRows);
+            $chunkClaimed = DB::transaction(function () use ($inserts, $uploads, $processedRows, $failedRows, $now): bool {
+                $inserted = DB::table(self::PROCESSED_CHUNKS_TABLE)->insertOrIgnore([
+                    'upload_id' => $this->uploadId,
+                    'chunk_index' => $this->chunkIndex,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ]);
+
+                if ($inserted !== 1) {
+                    return false;
+                }
+
+                if ($inserts !== []) {
+                    MarketData::query()->insert($inserts);
+                }
+
+                $uploads->incrementProgress($this->uploadId, $processedRows, $failedRows);
+
+                return true;
+            });
+
+            if (! $chunkClaimed) {
+                $this->logInfo('ingestion.upload_chunk.skipped', 'skipped', $startedAt, [
+                    'processed_rows' => 0,
+                    'failed_rows' => 0,
+                    'reason' => 'chunk_already_processed',
+                ]);
+
+                return;
+            }
 
             $this->logInfo('ingestion.upload_chunk.completed', 'completed', $startedAt, [
                 'processed_rows' => $processedRows,
