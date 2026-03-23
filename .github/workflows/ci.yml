@@ -7,7 +7,36 @@ on:
   pull_request:
 
 jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: mbstring, dom, fileinfo, mysql, pdo_mysql, sqlite3, pdo_sqlite, zip
+          coverage: none
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Prepare application environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate --force
+          php artisan config:clear
+
+      - name: Run unit tests
+        run: php artisan test --testsuite=Unit
+
   docker-compose:
+    name: Feature Tests and Build
+    needs: unit-tests
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +63,7 @@ jobs:
           docker compose exec -T app php artisan migrate --force
           docker compose exec -T app php artisan db:seed --force
 
-      - name: Run automated tests
+      - name: Run feature tests
         run: |
           docker compose exec -T app env \
             APP_ENV=testing \
@@ -50,7 +79,7 @@ jobs:
             CACHE_STORE=array \
             QUEUE_CONNECTION=sync \
             SESSION_DRIVER=array \
-            php artisan test
+            php artisan test --testsuite=Feature
 
       - name: Install Node dependencies
         run: docker compose exec -T app npm install
