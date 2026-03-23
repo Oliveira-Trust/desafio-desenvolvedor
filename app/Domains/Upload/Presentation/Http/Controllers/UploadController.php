@@ -3,11 +3,11 @@
 namespace App\Domains\Upload\Presentation\Http\Controllers;
 
 use App\Domains\Upload\Application\Services\UploadService;
+use App\Domains\Upload\Presentation\Http\Requests\IndexUploadRequest;
 use App\Domains\Upload\Presentation\Http\Requests\StoreUploadRequest;
 use App\Http\Controllers\Controller;
 use App\Shared\Responses\ApiSuccess;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UploadController extends Controller
 {
@@ -44,17 +44,14 @@ class UploadController extends Controller
         );
     }
 
-    public function index(Request $request, UploadService $uploadService): JsonResponse
+    public function index(IndexUploadRequest $request, UploadService $uploadService): JsonResponse
     {
-        $perPage = (int) $request->integer('per_page', 10);
-
-        $filename = $request->string('filename')->toString();
-        $date = $request->string('date')->toString();
+        $validated = $request->validated();
 
         $uploads = $uploadService->uploadList(
-            perPage: $perPage,
-            filename: $filename ?: null,
-            date: $date ?: null,
+            perPage: (int) ($validated['per_page'] ?? 10),
+            filename: $validated['filename'] ?? null,
+            date: $validated['date'] ?? null,
         );
         $items = array_map(
             static fn ($upload): array => [

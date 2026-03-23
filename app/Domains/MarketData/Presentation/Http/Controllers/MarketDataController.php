@@ -4,21 +4,16 @@ namespace App\Domains\MarketData\Presentation\Http\Controllers;
 
 use App\Domains\MarketData\Application\DTOs\MarketDataSearchResponseDTO;
 use App\Domains\MarketData\Application\Services\MarketDataService;
+use App\Domains\MarketData\Presentation\Http\Requests\IndexMarketDataRequest;
 use App\Http\Controllers\Controller;
 use App\Shared\Responses\ApiSuccess;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class MarketDataController extends Controller
 {
-    public function index(Request $request, MarketDataService $marketDataService): JsonResponse
+    public function index(IndexMarketDataRequest $request, MarketDataService $marketDataService): JsonResponse
     {
-        $validated = $request->validate([
-            'TckrSymb' => ['nullable', 'string', 'max:255'],
-            'RptDt' => ['nullable', 'date_format:Y-m-d'],
-            'page' => ['nullable', 'integer', 'min:1'],
-            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
-        ]);
+        $validated = $request->validated();
 
         $ticker = $validated['TckrSymb'] ?? null;
         $reportDate = $validated['RptDt'] ?? null;
