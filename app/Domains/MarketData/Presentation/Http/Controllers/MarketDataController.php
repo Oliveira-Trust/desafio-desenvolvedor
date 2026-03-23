@@ -17,17 +17,6 @@ class MarketDataController extends Controller
 
         $ticker = $validated['TckrSymb'] ?? null;
         $reportDate = $validated['RptDt'] ?? null;
-        $requiresPagination = $ticker === null;
-
-        if ($requiresPagination && (! isset($validated['page']) || ! isset($validated['per_page']))) {
-            return response()->json([
-                'message' => 'Os parametros page e per_page sao obrigatorios quando TckrSymb nao for informado.',
-                'errors' => [
-                    'page' => ['O campo page e obrigatorio quando TckrSymb nao for informado.'],
-                    'per_page' => ['O campo per_page e obrigatorio quando TckrSymb nao for informado.'],
-                ],
-            ], 422);
-        }
 
         $result = $marketDataService->search(
             ticker: $ticker,
