@@ -18,7 +18,7 @@ class MarketDataController extends Controller
             'TckrSymb' => ['nullable', 'string', 'max:255'],
             'RptDt' => ['nullable', 'date_format:Y-m-d'],
             'page' => ['nullable', 'integer', 'min:1'],
-            'per_page' => ['nullable', 'integer', 'min:1'],
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
         ]);
 
         $ticker = $validated['TckrSymb'] ?? null;

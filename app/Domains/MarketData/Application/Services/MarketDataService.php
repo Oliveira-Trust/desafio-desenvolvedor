@@ -25,7 +25,9 @@ final class MarketDataService
             ->orderBy('tckr_symb');
 
         if ($ticker === null && $reportDate === null) {
-            return $query->paginate($perPage ?? 10);
+            $perPage = min($perPage ?? 10, 100);
+
+            return $query->paginate($perPage);
         }
 
         return $query->get();
