@@ -5,20 +5,14 @@ namespace Tests\Unit\MarketData;
 use App\Domains\MarketData\Application\Services\MarketDataService;
 use App\Domains\MarketData\Infrastructure\Persistence\Eloquent\MarketData;
 use App\Domains\Upload\Infrastructure\Persistence\Eloquent\Upload;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
-use Tests\Concerns\UsesMySqlDatabase;
 use Tests\TestCase;
 
 class MarketDataServiceTest extends TestCase
 {
-    use UsesMySqlDatabase;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->useMySqlDatabase();
-    }
+    use RefreshDatabase;
 
     public function test_search_returns_paginated_results_and_caches_unfiltered_queries(): void
     {
