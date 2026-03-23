@@ -28,6 +28,9 @@ class ProcessUploadChunkJob implements ShouldQueue
     private const COLUMN_ISIN = 15;
     private const COLUMN_CRPN_NM = 47;
 
+    public int $tries;
+    public int $timeout;
+
     /**
      * @param  array<int, array<int, mixed>>  $rows
      */
@@ -36,6 +39,8 @@ class ProcessUploadChunkJob implements ShouldQueue
         public readonly array $rows,
         public readonly int $chunkIndex,
     ) {
+        $this->tries = (int) config('ingestion.jobs.chunk.tries', 3);
+        $this->timeout = (int) config('ingestion.jobs.chunk.timeout', 300);
         $this->onQueue('ingestion');
     }
 
@@ -179,5 +184,10 @@ class ProcessUploadChunkJob implements ShouldQueue
         }
 
         return $count;
+    }
+
+    public function backoff(): array
+    {
+        return config('ingestion.jobs.chunk.backoff', [5, 15, 30, 60]);
     }
 }

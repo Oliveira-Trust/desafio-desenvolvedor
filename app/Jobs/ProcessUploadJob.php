@@ -30,9 +30,14 @@ class ProcessUploadJob implements ShouldQueue
     private const CHUNK_SIZE = 1000;
     private const BATCH_ADD_SIZE = 20;
 
+    public int $tries;
+    public int $timeout;
+
     public function __construct(
         public readonly int $uploadId,
     ) {
+        $this->tries = (int) config('ingestion.jobs.upload.tries', 3);
+        $this->timeout = (int) config('ingestion.jobs.upload.timeout', 300);
         $this->onQueue('ingestion');
     }
 
@@ -101,16 +106,18 @@ class ProcessUploadJob implements ShouldQueue
                 $reader->close();
             }
         } catch (Throwable $exception) {
-            $uploads->markAsFailed($this->uploadId, $exception->getMessage());
+            if ($this->isTransientFailure($exception)) {
+                throw $exception;
+            }
 
-            throw $exception;
+            $this->fail($exception);
         }
     }
 
     private function mapRowToArray(Row $row): array
     {
         return array_map(
-            static fn ($cell) => $cell->getValue(),
+            static fn($cell) => $cell->getValue(),
             $row->getCells()
         );
     }
@@ -213,5 +220,21 @@ class ProcessUploadJob implements ShouldQueue
         $pendingJobs = [];
 
         return $batch;
+    }
+
+    public function backoff(): array
+    {
+        return config('ingestion.jobs.upload.backoff', [10, 30, 60]);
+    }
+
+    private function isTransientFailure(Throwable $exception): bool
+    {
+        $message = strtolower($exception->getMessage());
+
+        return str_contains($message, 'deadlock')
+            || str_contains($message, 'lock wait timeout')
+            || str_contains($message, 'server has gone away')
+            || str_contains($message, 'connection refused')
+            || str_contains($message, 'timed out');
     }
 }
