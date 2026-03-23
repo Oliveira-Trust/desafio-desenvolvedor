@@ -1,4 +1,3 @@
-import './bootstrap';
 import { initAppShell } from './modules/app-shell';
 import { initLoginPage } from './modules/login';
 import { initMarketDataSearch } from './modules/market-data-search';
