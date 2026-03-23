@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Cache;
 
 final class MarketDataService
 {
+    private const CACHE_KEY_VERSION = 'v1';
+
     public function search(?string $ticker = null, ?string $reportDate = null, ?int $perPage = null, ?int $page = null): array
     {
         $ttl = now()->addMinutes(5);
@@ -59,7 +61,8 @@ final class MarketDataService
     private function makeCacheKey(?string $ticker, ?string $reportDate, int $page, int $perPage): string
     {
         return sprintf(
-            'market-data:ticker=%s:date=%s:page=%d:per_page=%d',
+            'market-data:%s:ticker=%s:date=%s:page=%d:per_page=%d',
+            self::CACHE_KEY_VERSION,
             $ticker ? strtoupper(trim($ticker)) : 'all',
             $reportDate ?? 'all',
             $page,
@@ -74,7 +77,7 @@ final class MarketDataService
     private function serializeItems(array $items): array
     {
         return array_map(
-            static fn (object $item): array => [
+            static fn(object $item): array => [
                 'rpt_dt' => (string) $item->rpt_dt,
                 'tckr_symb' => (string) $item->tckr_symb,
                 'mkt_nm' => (string) $item->mkt_nm,
