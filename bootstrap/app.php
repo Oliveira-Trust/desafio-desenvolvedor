@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
@@ -26,6 +28,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->statefulApi();
+        $middleware->validateCsrfTokens(except: [
+            'api/auth/logout',
+        ]);
         $middleware->api(append: [
             RequestLoggingMiddleware::class,
         ]);
@@ -51,6 +56,18 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (AuthenticationException $e, Request $request) use ($resolveTraceId) {
             if (! $request->expectsJson() && ! $request->is('api/*')) return null;
             return ApiError::make('Unauthenticated.', ErrorCode::AUTH_UNAUTHENTICATED, 401, null, $resolveTraceId($request));
+        });
+
+        $exceptions->render(function (TokenMismatchException $e, Request $request) use ($resolveTraceId) {
+            if (! $request->expectsJson() && ! $request->is('api/*')) return null;
+
+            return ApiError::make(
+                'CSRF token mismatch.',
+                ErrorCode::AUTH_CSRF_MISMATCH,
+                419,
+                null,
+                $resolveTraceId($request)
+            );
         });
 
         $exceptions->render(function (AuthorizationException $e, Request $request) use ($resolveTraceId) {
@@ -87,6 +104,22 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (TooManyRequestsHttpException $e, Request $request) use ($resolveTraceId) {
             if (! $request->expectsJson() && ! $request->is('api/*')) return null;
             return ApiError::make('Too many requests.', ErrorCode::RATE_LIMITED, 429, null, $resolveTraceId($request));
+        });
+
+        $exceptions->render(function (HttpException $e, Request $request) use ($resolveTraceId) {
+            if (! $request->expectsJson() && ! $request->is('api/*')) return null;
+
+            if ($e->getStatusCode() !== 419) {
+                return null;
+            }
+
+            return ApiError::make(
+                'CSRF token mismatch.',
+                ErrorCode::AUTH_CSRF_MISMATCH,
+                419,
+                null,
+                $resolveTraceId($request)
+            );
         });
 
         // sempre por último

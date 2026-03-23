@@ -4,6 +4,7 @@ namespace App\Shared\Errors;
 
 final class ErrorCode
 {
+    public const AUTH_CSRF_MISMATCH = 'AUTH_CSRF_MISMATCH';
     public const AUTH_INVALID_CREDENTIALS = 'AUTH_INVALID_CREDENTIALS';
     public const AUTH_UNAUTHENTICATED = 'AUTH_UNAUTHENTICATED';
     public const AUTH_FORBIDDEN = 'AUTH_FORBIDDEN';

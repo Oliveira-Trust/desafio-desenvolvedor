@@ -37,10 +37,13 @@ class OperationalSecurityTest extends TestCase
             'email' => 'test@example.com',
             'password' => 'password',
         ])->assertOk()
+            ->assertJsonPath('message', 'Login realizado com sucesso.')
             ->assertJsonPath('data.user.email', 'test@example.com');
 
         $this->getJson('/api/uploads')->assertOk();
-        $this->postJson('/api/auth/logout')->assertOk();
+        $this->postJson('/api/auth/logout')
+            ->assertOk()
+            ->assertJsonPath('message', 'Logout realizado com sucesso.');
     }
 
     public function test_market_data_endpoint_is_rate_limited(): void
