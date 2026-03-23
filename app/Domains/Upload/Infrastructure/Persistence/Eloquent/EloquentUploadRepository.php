@@ -18,7 +18,7 @@ final class EloquentUploadRepository implements UploadRepository
         }
 
         if ($date !== null) {
-            $query->whereDate('created_at', $date);
+            $query->whereDate('reference_date', $date);
         }
 
         $uploads = $query->paginate($perPage);
@@ -68,6 +68,15 @@ final class EloquentUploadRepository implements UploadRepository
             ]);
     }
 
+    public function setReferenceDate(int $id, ?string $referenceDate): void
+    {
+        Upload::query()
+            ->whereKey($id)
+            ->update([
+                'reference_date' => $referenceDate,
+            ]);
+    }
+
     public function incrementProgress(int $id, int $processedRows = 0, int $failedRows = 0): void
     {
         Upload::query()
@@ -109,6 +118,7 @@ final class EloquentUploadRepository implements UploadRepository
             'size' => $upload->size,
             'file_md5' => $upload->fileMd5,
             'status' => $upload->status,
+            'reference_date' => $upload->referenceDate,
             'rows_total' => $upload->rowsTotal,
         ]);
 
@@ -128,6 +138,7 @@ final class EloquentUploadRepository implements UploadRepository
             rowsTotal: (int) ($upload->rows_total ?? 0),
             processedRows: (int) ($upload->processed_rows ?? 0),
             failedRows: (int) ($upload->failed_rows ?? 0),
+            referenceDate: $upload->reference_date?->toDateString(),
             errorMessage: $upload->error_message,
             createdAt: $upload->created_at,
             updatedAt: $upload->updated_at,

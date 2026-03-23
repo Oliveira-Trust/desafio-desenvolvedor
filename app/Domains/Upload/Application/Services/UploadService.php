@@ -42,6 +42,7 @@ final class UploadService
             rowsTotal: 0,
             processedRows: 0,
             failedRows: 0,
+            referenceDate: null,
         ));
 
         ProcessUploadJob::dispatch($upload->id, $requestId);

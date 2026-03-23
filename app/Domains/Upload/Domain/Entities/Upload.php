@@ -15,6 +15,7 @@ final class Upload
         public readonly int $rowsTotal = 0,
         public readonly int $processedRows = 0,
         public readonly int $failedRows = 0,
+        public readonly ?string $referenceDate = null,
         public readonly ?string $errorMessage = null,
         public readonly mixed $createdAt = null,
         public readonly mixed $updatedAt = null,
