@@ -29,7 +29,9 @@ final class MarketDataService
                 'crpn_nm',
             ])
             ->when($ticker !== null, fn($builder) => $builder->where('tckr_symb', $ticker))
-            ->when($reportDate !== null, fn($builder) => $builder->whereDate('rpt_dt', $reportDate))
+            ->when($reportDate !== null, fn($builder) => $builder
+                ->where('rpt_dt', '>=', $reportDate . ' 00:00:00')
+                ->where('rpt_dt', '<', $reportDate . ' 23:59:59'))
             ->orderBy('rpt_dt', 'desc')
             ->orderBy('tckr_symb');
 
