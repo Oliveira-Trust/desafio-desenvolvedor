@@ -54,7 +54,7 @@ async function ensureCsrfCookie() {
 }
 
 export async function apiFetch(url, options = {}) {
-    const { auth = false, headers = {}, ...rest } = options;
+    const { auth = false, redirectOn401 = auth, headers = {}, ...rest } = options;
     const method = String(rest.method || 'GET').toUpperCase();
     const shouldSendCsrf = auth || !['GET', 'HEAD', 'OPTIONS'].includes(method);
 
@@ -83,7 +83,7 @@ export async function apiFetch(url, options = {}) {
     const contentType = response.headers.get('content-type') || '';
     const payload = contentType.includes('application/json') ? normalizePayload(await response.json()) : null;
 
-    if (response.status === 401) {
+    if (response.status === 401 && redirectOn401) {
         redirectToLogin();
         throw new Error('Sessão expirada. Faça login novamente.');
     }

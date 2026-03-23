@@ -2,6 +2,18 @@ import { apiFetch } from '../services/http';
 import { redirectToUpload } from '../services/auth';
 import { clearFeedback, showFeedback } from '../utils/feedback';
 
+function getLoginErrorMessage(data) {
+    if (data?.code === 'AUTH_INVALID_CREDENTIALS') {
+        return 'E-mail ou senha invalidos.';
+    }
+
+    if (data?.code === 'RATE_LIMITED') {
+        return 'Muitas tentativas de login. Aguarde um instante e tente novamente.';
+    }
+
+    return data?.message || 'Nao foi possivel realizar o login.';
+}
+
 export function initLoginPage() {
     const form = document.getElementById('login-form');
     const submitButton = document.getElementById('submit-btn');
@@ -25,6 +37,7 @@ export function initLoginPage() {
         try {
             const { response, data } = await apiFetch('/api/auth/login', {
                 method: 'POST',
+                redirectOn401: false,
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -32,7 +45,7 @@ export function initLoginPage() {
             });
 
             if (!response.ok) {
-                showFeedback(feedback, data?.message || 'Não foi possível realizar o login.', 'error');
+                showFeedback(feedback, getLoginErrorMessage(data), 'error');
                 return;
             }
 

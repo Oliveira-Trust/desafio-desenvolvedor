@@ -27,6 +27,23 @@ class OperationalSecurityTest extends TestCase
         $this->postJson('/api/auth/logout')->assertStatus(401);
     }
 
+    public function test_login_uses_sanctum_stateful_session_for_protected_routes(): void
+    {
+        User::factory()->create([
+            'email' => 'test@example.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $this->postJson('/api/auth/login', [
+            'email' => 'test@example.com',
+            'password' => 'password',
+        ])->assertOk()
+            ->assertJsonPath('data.user.email', 'test@example.com');
+
+        $this->getJson('/api/uploads')->assertOk();
+        $this->postJson('/api/auth/logout')->assertOk();
+    }
+
     public function test_market_data_endpoint_is_rate_limited(): void
     {
         Sanctum::actingAs(User::factory()->create());

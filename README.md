@@ -1,6 +1,6 @@
 # Desafio Desenvolvedor
 
-API desenvolvida em Laravel 13 para ingestão de arquivos e consulta de market data, estruturada com uma organização inspirada em Domain-Driven Design. O projeto foi preparado para suportar upload assíncrono, processamento em background com Redis e Horizon, e exposição de contratos HTTP estáveis para consumo por frontend ou integrações.
+API desenvolvida em Laravel 13 para ingestão de arquivos e consulta de market data, estruturada com uma organização inspirada em Domain-Driven Design. O projeto suporta upload assíncrono, processamento em background com Redis, consulta paginada de market data com cache e contratos HTTP estáveis para consumo por frontend ou integrações.
 
 ## Visão Geral
 
@@ -46,9 +46,20 @@ Nessa organização:
 - jobs executam o processamento assíncrono em background
 - componentes em `Shared` centralizam contratos de resposta, erros e comportamento transversal
 
+Fluxo principal de ponta a ponta:
+
+1. o cliente autentica em `POST /api/auth/login`
+2. o cliente envia um arquivo para `POST /api/uploads`
+3. `UploadService` valida duplicidade por `file_md5`, persiste o upload e despacha `ProcessUploadJob`
+4. `ProcessUploadJob` lê o arquivo, valida header, extrai `reference_date`, agrupa linhas em chunks e cria `ProcessUploadChunkJob`
+5. os chunks processam linhas válidas e fazem `bulk insert` em `market_data`
+6. o upload é atualizado com `rows_total`, `processed_rows`, `failed_rows`, `status` e `error_message`
+7. `GET /api/uploads` expõe o histórico operacional
+8. `GET /api/market-data` expõe a busca paginada com cache para consultas sem filtro de ticker
+
 ## Autenticação
 
-A API utiliza Laravel Sanctum com autenticação via Bearer Token.
+A aplicação utiliza Laravel Sanctum no modo stateful, com autenticação por cookie de sessão e proteção CSRF para o frontend web.
 
 JWT não foi adotado por adicionar complexidade desnecessária para este cenário, sendo mais útil em arquiteturas distribuídas.
 
@@ -121,6 +132,8 @@ docker compose up -d
 docker compose exec app php artisan test
 docker compose exec app php artisan horizon
 docker compose exec app php artisan queue:work redis --queue=ingestion
+docker compose exec app php artisan migrate:status
+docker compose exec app php artisan tinker
 ```
 
 ## Upload e Processamento Assíncrono
@@ -137,10 +150,12 @@ O fluxo de upload atualmente funciona da seguinte forma:
 Durante o processamento:
 
 - o upload é marcado como `processing`
-- o arquivo é lido em streaming com OpenSpout
+- o arquivo é lido em streaming com OpenSpout para `csv`, `xlsx` e `ods`
+- arquivos `xls` são lidos com PhpSpreadsheet
 - as linhas são agrupadas em chunks de 1000 registros
 - cada chunk gera um `ProcessUploadChunkJob`
-- os jobs filhos fazem normalização mínima e `bulk insert` em `market_data`
+- os jobs filhos fazem normalização mínima, descartam linhas inválidas e executam `bulk insert` em `market_data`
+- o sistema evita reprocessamento indevido com guarda de concorrência no upload e idempotência por `upload_id + chunk_index`
 - o progresso é atualizado com `rows_total`, `processed_rows` e `failed_rows`
 - ao final, o upload é concluído como `completed` ou `failed`
 
@@ -154,7 +169,7 @@ Atualmente, esse endpoint suporta:
 
 - paginação
 - filtro por `filename`
-- filtro por `date`
+- filtro por `date`, aplicado sobre `reference_date`
 
 ## Front-end
 
@@ -164,7 +179,7 @@ Além da API, o projeto já possui uma interface web básica para validação do
 - `/upload`, para envio de arquivos
 - `/upload/history`, para acompanhamento do histórico de uploads
 
-Essa interface consome a própria API e utiliza o token de autenticação gerado no login.
+Essa interface consome a própria API usando a sessão autenticada do Sanctum.
 
 ## Market Data
 
@@ -174,13 +189,21 @@ O endpoint atualmente exposto para consulta é:
 GET /api/market-data
 ```
 
-No momento, a estrutura de persistência de `market_data` já existe, assim como o pipeline de ingestão para preenchimento da tabela. Porém, a busca final ainda está em evolução e o service atual responde com dados estáticos de exemplo.
+Esse endpoint já realiza busca real sobre `market_data`, com os comportamentos abaixo:
+
+- paginação padrão quando não há filtro de ticker
+- filtro por `TckrSymb`
+- filtro por `RptDt`
+- normalização de ticker para busca
+- cache para consultas sem filtro de ticker
+- invalidação do cache após conclusão de processamento de upload
 
 Também já foram criados índices para suportar a evolução dessa consulta:
 
 - índice composto em `market_data (tckr_symb, rpt_dt)`
 - índice em `market_data (rpt_dt)`
 - índice em `uploads (status, created_at)`
+- índice em `uploads (reference_date)`
 
 ## Filas e Observabilidade
 
@@ -193,8 +216,113 @@ Atualmente, a solução inclui:
 - rastreamento de falhas por status do upload
 - middleware de logging com `request_id`
 - propagação de `X-Request-Id` nas respostas da API
+- logs estruturados com `request_id`, `upload_id`, `chunk`, `status`, `attempt` e `duration_ms`
+- persistência de falhas em `failed_jobs`
+- retry/backoff para falhas transitórias
+- rate limit em login, upload, histórico e market data
 
 Essa base permite acompanhar melhor requisições e processamentos, além de preparar o sistema para maior volume de arquivos.
+
+## Trade-offs
+
+### MySQL vs NoSQL
+
+- MySQL foi escolhido porque o problema principal é ingestão tabular com filtros bem definidos por data, ticker e paginação.
+- O modelo relacional simplifica índices, consistência e consultas operacionais do histórico de uploads.
+- NoSQL faria mais sentido se o domínio exigisse esquema altamente variável, escrita distribuída extrema ou acesso orientado a documentos, o que não é o foco atual.
+
+### Redis vs cache simples
+
+- Redis foi escolhido porque o projeto já depende de fila assíncrona e se beneficia de uma camada compartilhada para cache e queue backend.
+- Um cache simples em arquivo ou array seria suficiente apenas para ambiente local ou cenários com baixo volume.
+- Redis melhora invalidação, throughput e aderência ao ambiente de produção, ao custo de mais uma dependência operacional.
+
+### Sanctum vs JWT
+
+- Sanctum foi escolhido por simplicidade e integração nativa com Laravel.
+- JWT adicionaria mais complexidade de emissão, revogação e rotação sem ganho proporcional para este cenário.
+- Para uma API monolítica com frontend próprio e autenticação stateful/stateless controlada, Sanctum atende melhor com menos custo operacional.
+
+### Paralelismo vs simplicidade
+
+- O pipeline usa paralelismo por chunks porque arquivos grandes exigem processamento assíncrono e divisão de trabalho para manter throughput.
+- Um fluxo totalmente sequencial seria mais simples de entender, mas aumentaria o tempo total de ingestão e o risco de gargalo em arquivos grandes.
+- O custo do paralelismo é a necessidade de controles extras de idempotência, batching, retry e observabilidade, que já foram incorporados ao projeto.
+
+## Runbook
+
+### Subida do ambiente
+
+```bash
+cp .env.example .env
+docker compose up -d --build
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate
+docker compose exec app php artisan db:seed
+```
+
+### Verificações rápidas de saúde
+
+```bash
+docker compose ps
+docker compose exec app php artisan migrate:status
+docker compose exec app php artisan test
+```
+
+Sinais esperados:
+
+- `mysql`, `redis`, `app` e `nginx` em estado `Up`
+- migrations aplicadas
+- suíte de testes verde
+
+### Operação de fila
+
+Para consumir a fila localmente:
+
+```bash
+docker compose exec app php artisan queue:work redis --queue=ingestion --tries=1
+```
+
+Para observar backlog da fila `ingestion`:
+
+```bash
+docker compose exec app php artisan tinker --execute='use Illuminate\Support\Facades\Redis; echo json_encode(["queue_len" => Redis::llen("queues:ingestion"), "reserved_len" => Redis::llen("queues:ingestion:reserved"), "delayed_len" => Redis::zcard("queues:ingestion:delayed")], JSON_UNESCAPED_UNICODE), PHP_EOL;'
+```
+
+Interpretação:
+
+- `queue_len > 0` indica backlog aguardando consumo
+- `reserved_len > 0` indica jobs atualmente reservados por workers
+- `delayed_len > 0` indica jobs em retry/backoff
+
+### Diagnóstico de falhas
+
+Para verificar uploads com erro:
+
+```bash
+docker compose exec app php artisan tinker --execute='echo App\Domains\Upload\Infrastructure\Persistence\Eloquent\Upload::query()->where("status", "failed")->latest("id")->limit(10)->get(["id", "filename", "status", "error_message"])->toJson(JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), PHP_EOL;'
+```
+
+Para verificar falhas persistidas da fila:
+
+```bash
+docker compose exec app php artisan tinker --execute='echo Illuminate\Support\Facades\DB::table("failed_jobs")->latest("id")->limit(10)->get()->toJson(JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), PHP_EOL;'
+```
+
+### Limpeza de cache de busca
+
+```bash
+docker compose exec app php artisan tinker --execute='app(App\Domains\MarketData\Application\Services\MarketDataService::class)->invalidateCache();'
+```
+
+### Evidências já validadas
+
+- unit tests para `UploadService` e `MarketDataService`
+- feature tests para upload, histórico, busca, autenticação e fluxo assíncrono
+- smoke de latência com diferença clara entre cold e warm cache
+- smoke de backlog de fila sob carga
+- simulação de ingestão com arquivo CSV real de 16 MB
 
 ## CI/CD
 
@@ -222,16 +350,15 @@ docker compose exec app php artisan test
 Resultado atual:
 
 ```text
-2 testes passaram
-2 assertions
+suíte ampliada com cobertura de unit e feature tests
 ```
 
 ## Estado Atual e Próximos Passos
 
-O sistema já possui uma base funcional para autenticação, upload, histórico e ingestão assíncrona. As próximas evoluções naturais do projeto incluem:
+O sistema já possui uma base funcional para autenticação, upload, histórico, ingestão assíncrona e busca paginada com cache. As próximas evoluções naturais do projeto incluem:
 
-- concluir a busca real em `market_data` com filtros e paginação
-- adicionar cache para consultas frequentes
-- ampliar testes de negócio e testes de integração
-- fortalecer políticas de retry, timeout e resiliência dos jobs
-- expandir observabilidade operacional do pipeline
+- reduzir o volume de linhas descartadas no processamento do arquivo bruto
+- formalizar benchmarks repetíveis de carga
+- expandir métricas operacionais do pipeline
+- revisar estratégia de particionamento e tuning de banco para volume maior
+- endurecer o fluxo web stateful de login/logout no ambiente local

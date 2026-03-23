@@ -2,43 +2,41 @@
 
 namespace App\Domains\User\Presentation\Http\Controllers;
 
-use App\Domains\User\Application\DTOs\AuthenticateUserInput;
-use App\Domains\User\Application\Services\AuthenticateUserService;
+use App\Domains\User\Exceptions\InvalidCredentialsException;
 use App\Http\Controllers\Controller;
 use App\Shared\Responses\ApiSuccess;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserAuthController extends Controller
 {
-    public function login(Request $request, AuthenticateUserService $authService): JsonResponse
+    public function login(Request $request): JsonResponse
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],
         ]);
 
-        $output = $authService->handle(
-            new AuthenticateUserInput(
-                email: $credentials['email'],
-                password: $credentials['password'],
-            ),
-            issueToken: false,
-        );
+        $normalizedCredentials = [
+            'email' => mb_strtolower(trim($credentials['email'])),
+            'password' => $credentials['password'],
+        ];
 
-        Auth::guard('web')->loginUsingId($output->userId);
-
-        if ($request->hasSession()) {
-            $request->session()->regenerate();
+        if (! Auth::guard('web')->attempt($normalizedCredentials)) {
+            throw new InvalidCredentialsException();
         }
+
+        $request->session()->regenerate();
+
+        $user = Auth::guard('web')->user();
 
         return ApiSuccess::make(
             data: [
                 'user' => [
-                    'id' => $output->userId,
-                    'name' => $output->userName,
-                    'email' => $output->userEmail,
+                    'id' => $user->getAuthIdentifier(),
+                    'name' => $user->name,
+                    'email' => $user->email,
                 ],
             ],
             message: 'Login realizado com sucesso.'
@@ -47,13 +45,9 @@ class UserAuthController extends Controller
 
     public function logout(Request $request): JsonResponse
     {
-        $request->user()?->currentAccessToken()?->delete();
-
-        if ($request->hasSession()) {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-        }
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return ApiSuccess::make(
             message: 'Logout realizado com sucesso.'
