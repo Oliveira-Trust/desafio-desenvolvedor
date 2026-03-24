@@ -1,0 +1,624 @@
+{
+  "info": {
+    "name": "Desafio Desenvolvedor API",
+    "description": {
+      "type": "text/markdown",
+      "content": "# Desafio Desenvolvedor API\n\nCollection alinhada com o comportamento real do sistema.\n\n## Fluxo sugerido\n1. Execute `Obter CSRF Cookie`\n2. Execute `Login`\n3. Rode as requisicoes autenticadas de uploads e market data\n4. Execute `Logout`\n\n## Cobertura atual\n- `GET /sanctum/csrf-cookie`\n- `POST /api/auth/login`\n- `POST /api/auth/logout`\n- `POST /api/uploads`\n- `GET /api/uploads`\n- `GET /api/market-data`\n\n## Observacoes\n- autenticacao stateful com cookie de sessao\n- requisicoes mutaveis exigem `X-XSRF-TOKEN`\n- `POST /api/uploads` propaga `X-Request-Id`\n- uploads retornam `202 Accepted`\n- market data retorna payload paginado com e sem filtros\n"
+    },
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "login_email",
+      "value": "test@example.com",
+      "type": "string"
+    },
+    {
+      "key": "login_password",
+      "value": "password",
+      "type": "string"
+    },
+    {
+      "key": "xsrf_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "request_id",
+      "value": "req-postman-001",
+      "type": "string"
+    },
+    {
+      "key": "upload_file_path",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "upload_filename_filter",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "upload_reference_date",
+      "value": "2026-03-20",
+      "type": "string"
+    },
+    {
+      "key": "uploads_per_page",
+      "value": "10",
+      "type": "string"
+    },
+    {
+      "key": "market_ticker",
+      "value": "003H11",
+      "type": "string"
+    },
+    {
+      "key": "market_report_date",
+      "value": "2026-03-20",
+      "type": "string"
+    },
+    {
+      "key": "market_page",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "market_per_page",
+      "value": "10",
+      "type": "string"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "if (pm.request.method !== 'GET') {",
+          "    var xsrfToken = pm.cookies.get('XSRF-TOKEN') || pm.environment.get('xsrf_token');",
+          "    if (xsrfToken) {",
+          "        pm.request.headers.upsert({ key: 'X-XSRF-TOKEN', value: decodeURIComponent(xsrfToken) });",
+          "    }",
+          "}",
+          "",
+          "pm.request.headers.upsert({ key: 'Accept', value: 'application/json' });",
+          "pm.request.headers.upsert({ key: 'X-Requested-With', value: 'XMLHttpRequest' });"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Autenticacao",
+      "description": "Fluxo stateful com CSRF e cookie de sessao.",
+      "item": [
+        {
+          "name": "Obter CSRF Cookie",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/sanctum/csrf-cookie",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sanctum",
+                "csrf-cookie"
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Inicializa o fluxo stateful do Sanctum e grava os cookies `XSRF-TOKEN` e de sessao no cookie jar."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 204', function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "var xsrfToken = pm.cookies.get('XSRF-TOKEN');",
+                  "if (xsrfToken) {",
+                  "    pm.environment.set('xsrf_token', decodeURIComponent(xsrfToken));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{login_email}}\",\n  \"password\": \"{{login_password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Autentica o usuario seed local e abre a sessao stateful."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Response contains authenticated user', function () {",
+                  "    pm.expect(jsonData.data.user.email).to.eql(pm.environment.get('login_email'));",
+                  "    pm.expect(jsonData.message).to.eql('Login realizado com sucesso.');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/auth/logout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "logout"
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Encerra a sessao atual e renova o token CSRF da sessao."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Response confirms logout', function () {",
+                  "    pm.expect(jsonData.message).to.eql('Logout realizado com sucesso.');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uploads",
+      "description": "Recebimento de arquivo e consulta do historico operacional.",
+      "item": [
+        {
+          "name": "Criar Upload",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Request-Id",
+                "value": "{{request_id}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "{{upload_file_path}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/uploads",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "uploads"
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Envia um arquivo `csv`, `xls` ou `xlsx` para processamento assincrono."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 202', function () {",
+                  "    pm.response.to.have.status(202);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Upload payload includes request correlation', function () {",
+                  "    pm.expect(jsonData.meta.request_id).to.eql(pm.environment.get('request_id'));",
+                  "    pm.expect(pm.response.headers.get('X-Request-Id')).to.eql(pm.environment.get('request_id'));",
+                  "    pm.expect(jsonData.data.upload).to.have.property('status');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Listar Uploads",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/uploads?per_page={{uploads_per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "uploads"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "{{uploads_per_page}}"
+                }
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Retorna o historico paginado de uploads."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Response contains pagination metadata', function () {",
+                  "    pm.expect(jsonData).to.have.property('data');",
+                  "    pm.expect(jsonData.meta).to.have.property('current_page');",
+                  "    pm.expect(jsonData.meta).to.have.property('per_page');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Listar Uploads Filtrados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/uploads?per_page={{uploads_per_page}}&filename={{upload_filename_filter}}&date={{upload_reference_date}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "uploads"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "{{uploads_per_page}}"
+                },
+                {
+                  "key": "filename",
+                  "value": "{{upload_filename_filter}}"
+                },
+                {
+                  "key": "date",
+                  "value": "{{upload_reference_date}}"
+                }
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Consulta uploads filtrando por trecho de nome do arquivo e `reference_date`."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Filtered response still has pagination metadata', function () {",
+                  "    pm.expect(jsonData.meta).to.have.property('total');",
+                  "    pm.expect(jsonData.meta).to.have.property('last_page');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Market Data",
+      "description": "Consultas paginadas sobre market data processada.",
+      "item": [
+        {
+          "name": "Listar Market Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/market-data?page={{market_page}}&per_page={{market_per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "market-data"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{market_page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{market_per_page}}"
+                }
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Consulta paginada sem filtros. Esse e o cenario elegivel para cache."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Response contains paginated market data payload', function () {",
+                  "    pm.expect(jsonData).to.have.property('data');",
+                  "    pm.expect(jsonData.meta).to.have.property('current_page');",
+                  "    pm.expect(jsonData.meta).to.have.property('total');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Filtrar Por Ticker",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/market-data?TckrSymb={{market_ticker}}&page={{market_page}}&per_page={{market_per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "market-data"
+              ],
+              "query": [
+                {
+                  "key": "TckrSymb",
+                  "value": "{{market_ticker}}"
+                },
+                {
+                  "key": "page",
+                  "value": "{{market_page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{market_per_page}}"
+                }
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Filtra market data por ticker normalizado."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Filtered payload stays paginated', function () {",
+                  "    pm.expect(jsonData.meta).to.have.property('per_page');",
+                  "    pm.expect(jsonData.meta).to.have.property('last_page');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Filtrar Por Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/market-data?RptDt={{market_report_date}}&page={{market_page}}&per_page={{market_per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "market-data"
+              ],
+              "query": [
+                {
+                  "key": "RptDt",
+                  "value": "{{market_report_date}}"
+                },
+                {
+                  "key": "page",
+                  "value": "{{market_page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{market_per_page}}"
+                }
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Filtra market data pela data de referencia no formato `Y-m-d`."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Date filter response is valid', function () {",
+                  "    pm.expect(jsonData).to.have.property('data');",
+                  "    pm.expect(jsonData.meta).to.have.property('current_page');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Filtrar Por Ticker E Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/market-data?TckrSymb={{market_ticker}}&RptDt={{market_report_date}}&page={{market_page}}&per_page={{market_per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "market-data"
+              ],
+              "query": [
+                {
+                  "key": "TckrSymb",
+                  "value": "{{market_ticker}}"
+                },
+                {
+                  "key": "RptDt",
+                  "value": "{{market_report_date}}"
+                },
+                {
+                  "key": "page",
+                  "value": "{{market_page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{market_per_page}}"
+                }
+              ]
+            },
+            "description": {
+              "type": "text/markdown",
+              "content": "Combina filtros por ticker e data sem perder o envelope paginado."
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Combined filter response is paginated', function () {",
+                  "    pm.expect(jsonData.meta).to.have.property('total');",
+                  "    pm.expect(jsonData.meta).to.have.property('per_page');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

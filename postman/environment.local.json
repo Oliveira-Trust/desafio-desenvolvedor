@@ -1,0 +1,98 @@
+{
+  "id": "local-env",
+  "name": "Local",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "default",
+      "enabled": true,
+      "description": "URL base da aplicacao em ambiente local"
+    },
+    {
+      "key": "login_email",
+      "value": "test@example.com",
+      "type": "default",
+      "enabled": true,
+      "description": "Usuario seeded para login local"
+    },
+    {
+      "key": "login_password",
+      "value": "password",
+      "type": "secret",
+      "enabled": true,
+      "description": "Senha do usuario local"
+    },
+    {
+      "key": "xsrf_token",
+      "value": "",
+      "type": "secret",
+      "enabled": true,
+      "description": "Token CSRF preenchido automaticamente apos `Obter CSRF Cookie`"
+    },
+    {
+      "key": "request_id",
+      "value": "req-postman-001",
+      "type": "default",
+      "enabled": true,
+      "description": "Correlation id enviado no header `X-Request-Id`"
+    },
+    {
+      "key": "upload_file_path",
+      "value": "",
+      "type": "default",
+      "enabled": true,
+      "description": "Caminho local do arquivo a ser enviado pelo Postman"
+    },
+    {
+      "key": "upload_filename_filter",
+      "value": "",
+      "type": "default",
+      "enabled": true,
+      "description": "Trecho opcional do nome do arquivo para filtro no historico"
+    },
+    {
+      "key": "upload_reference_date",
+      "value": "2026-03-20",
+      "type": "default",
+      "enabled": true,
+      "description": "Filtro de data de referencia no formato YYYY-MM-DD"
+    },
+    {
+      "key": "uploads_per_page",
+      "value": "10",
+      "type": "default",
+      "enabled": true,
+      "description": "Tamanho de pagina para historico de uploads"
+    },
+    {
+      "key": "market_ticker",
+      "value": "003H11",
+      "type": "default",
+      "enabled": true,
+      "description": "Ticker para consultas em market data"
+    },
+    {
+      "key": "market_report_date",
+      "value": "2026-03-20",
+      "type": "default",
+      "enabled": true,
+      "description": "Data para consultas em market data no formato YYYY-MM-DD"
+    },
+    {
+      "key": "market_page",
+      "value": "1",
+      "type": "default",
+      "enabled": true,
+      "description": "Pagina para consulta de market data"
+    },
+    {
+      "key": "market_per_page",
+      "value": "10",
+      "type": "default",
+      "enabled": true,
+      "description": "Tamanho de pagina para consulta de market data"
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}
