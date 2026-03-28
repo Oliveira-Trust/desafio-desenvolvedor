@@ -1,0 +1,216 @@
+name: Uploads
+description: |-
+
+  Group for handling the instruments upload.
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/upload
+    metadata:
+      custom: []
+      groupName: Uploads
+      groupDescription: |-
+
+        Group for handling the instruments upload.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Upload Instruments'
+      description: "This endpoint receives the file, verifies if it's a valid document, if the reference date matches the file, and runs background jobs to save the data. Finally, it sends an email informing the upload status."
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      file:
+        custom: []
+        name: file
+        description: 'The instruments file from B3 (CSV, XLSX)'
+        required: true
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      reference_date:
+        custom: []
+        name: reference_date
+        description: 'The reference date for the file data (YYYY-MM-DD).'
+        required: true
+        example: '2026-03-22'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      reference_date: '2026-03-22'
+    fileParameters:
+      file: null
+    responses:
+      -
+        custom: []
+        status: 202
+        content: |-
+          {
+          "message": "File received and being processed; you will be notified by email upon completion."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+          "message": "Date mismatch: File is for 2026-01-01, but reference date is 2026-03-23."
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/uploads
+    metadata:
+      custom: []
+      groupName: Uploads
+      groupDescription: |-
+
+        Group for handling the instruments upload.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List Upload History'
+      description: |-
+        Returns a paginated list of uploads.
+        The data is cached for 30 minutes to optimize performance on repetitive queries.
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      file_name:
+        custom: []
+        name: file_name
+        description: 'Partial filter by file name.'
+        required: false
+        example: report
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      reference_date:
+        custom: []
+        name: reference_date
+        description: 'date Filter by reference date. (YYYY-MM-DD).'
+        required: false
+        example: '2026-03-24'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      page:
+        custom: []
+        name: page
+        description: 'Page number for pagination.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      file_name: report
+      reference_date: '2026-03-24'
+      page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+          "current_page": 1,
+          "data": [
+          {
+          "id": 1,
+          "user_id": 2,
+          "file_name": "Instruments_20260324.csv",
+          "reference_date": "2026-03-24",
+          "status": "completed",
+          "total_rows": 120879,
+          "created_at": "2026-03-24T22:08:44.000000Z"
+          }
+          ],
+          "first_page_url": "http://localhost/api/v1/uploads?page=1",
+          "from": 1,
+          "last_page": 1,
+          "last_page_url": "http://localhost/api/v1/uploads?page=1",
+          "links": [
+          { "url": null, "label": "&laquo; Previous", "page": null, "active": false },
+          { "url": "http://localhost/api/v1/uploads?page=1", "label": "1", "page": 1, "active": true },
+          { "url": null, "label": "Next &raquo;", "page": null, "active": false }
+          ],
+          "next_page_url": null,
+          "path": "http://localhost/api/v1/uploads",
+          "per_page": 10,
+          "prev_page_url": null,
+          "to": 1,
+          "total": 1
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+          "message": "The reference date field must match the format Y-m-d.",
+          "errors": {
+          "reference_date": ["The reference date field must match the format Y-m-d."]
+          }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

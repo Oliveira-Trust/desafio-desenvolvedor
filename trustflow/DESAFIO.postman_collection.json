@@ -1,0 +1,231 @@
+{
+  "info": {
+    "_postman_id": "7679c4b4-e3cc-40c7-918f-197d3f45ac09",
+    "name": "DESAFIO",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26563998"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if(pm.response.code == 200) {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.environment.set('token', jsonData.token);\r",
+                  "    pm.test('Token extraído e salvo na variável de ambiente', function () {\r",
+                  "        pm.expect(pm.environment.get('token')).to.eql(jsonData.token);\r",
+                  "    });\r",
+                  "}else {\r",
+                  "    pm.test('Resposta não foi 200 OK', function () {\r",
+                  "        pm.expect(pm.response.code).to.eql(200);\r",
+                  "    });\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"nikki13@example.net\",\r\n    \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LOCAL}}/login",
+              "host": [
+                "{{LOCAL}}"
+              ],
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{LOCAL}}/logout",
+              "host": [
+                "{{LOCAL}}"
+              ],
+              "path": [
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Uploads",
+      "item": [
+        {
+          "name": "Upload instrumens",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "93fdf687-4384-4f13-807a-ab0b4b91703f",
+                  "src": "/C:/Users/Thiago Dantas/Downloads/InstrumentsConsolidatedFile_20260323_1.csv"
+                },
+                {
+                  "key": "reference_date",
+                  "value": "2026-03-23",
+                  "type": "text",
+                  "uuid": "d6b05b9b-a8dc-46a9-a084-6f52e63e8b6b"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{LOCAL}}/upload",
+              "host": [
+                "{{LOCAL}}"
+              ],
+              "path": [
+                "upload"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search History",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LOCAL}}/uploads?reference_date=20-03-1998",
+              "host": [
+                "{{LOCAL}}"
+              ],
+              "path": [
+                "uploads"
+              ],
+              "query": [
+                {
+                  "key": "reference_date",
+                  "value": "20-03-1998"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search instruments",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LOCAL}}/instruments?RptDt=2026-03-19&TckrSymb=AMZO34",
+              "host": [
+                "{{LOCAL}}"
+              ],
+              "path": [
+                "instruments"
+              ],
+              "query": [
+                {
+                  "key": "RptDt",
+                  "value": "2026-03-19"
+                },
+                {
+                  "key": "TckrSymb",
+                  "value": "AMZO34"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
