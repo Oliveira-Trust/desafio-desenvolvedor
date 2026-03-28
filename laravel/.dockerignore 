@@ -1,0 +1,5 @@
+storage/app/private/uploads
+storage/app/public
+storage/logs
+vendor
+.env

@@ -1,52 +1,203 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
- 
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+# B3 Instruments API
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+API REST desenvolvida com **Laravel 13** e **MongoDB** para upload, armazenamento e consulta de dados de instrumentos listados na B3.
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+---
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+## Tecnologias
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks (Laravel, Lumen, Yii, Cake, Symfony ou outros...)
-- Banco de dados relacional (MySql, MariaDB)
-- Trabalhar com microsserviços
+- PHP 8.3 + Laravel 13
+- MongoDB 7 (via `mongodb/laravel-mongodb`)
+- Nginx
+- Docker + Docker Compose
 
-#### O que seria legal você saber também: 🚀
-- Conhecimento em banco de dados não relacional;
-- Conhecimento em docker;
-- Conhecimento nos serviços da AWS (RDS, DynamoDB, DocumentDB, Elasticsearch);
-- Conhecimento em metodologias ágeis (Scrum/Kanban);
+---
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+## Estrutura do Projeto
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição (CAJU);
-- Vale Alimentação (CAJU);
-- Vale Transporte ou Vale Combustível (CAJU);
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+```
+.
+├── docker-compose.yml
+├── nginx/
+│   └── default.conf
+└── laravel/
+    ├── Dockerfile
+    ├── php.ini
+    ├── app/
+    │   ├── Http/Controllers/
+    │   │   ├── UploadController.php
+    │   │   └── InstrumentController.php
+    │   ├── Models/
+    │   │   ├── Upload.php
+    │   │   └── Instrument.php
+    │   └── Services/
+    │       └── FileImportService.php
+    |       └── InstrumentService.php
+    |       └── UploadService.php
+    └── routes/
+        └── api.php
+```
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+---
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+## Como Rodar
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+### Requisitos
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-desenvolvedor/blob/master/vaga3.md
+- Docker
+- Docker Compose
+
+### Passo a passo
+
+```bash
+# 1. Clone o repositório
+git clone <repo-url>
+cd <repo-folder>
+
+# 2. Copie e configure o arquivo de ambiente
+cp laravel/.env.example laravel/.env
+
+# 3. Suba os containers
+docker compose up -d --build
+
+# 4. Instale as dependências PHP
+docker compose exec app composer install
+
+# 5. Instale o pacote MongoDB para Laravel
+docker compose exec app composer require mongodb/laravel-mongodb
+
+# 6. Gere a chave da aplicação
+docker compose exec app php artisan key:generate
+
+# 7. Habilite as rotas de API
+docker compose exec app php artisan install:api
+```
+
+A API estará disponível em `http://localhost:8080`.
+
+---
+
+## Endpoints
+
+### POST /api/upload
+
+Faz o upload de um arquivo CSV ou Excel e importa os dados de instrumentos no MongoDB.
+
+- Formatos aceitos: `.csv`, `.xlsx`, `.xls`
+- O mesmo arquivo não pode ser enviado duas vezes (verificado via hash MD5)
+- Arquivos da B3 possuem uma linha de metadados antes do cabeçalho — tratado automaticamente
+
+**Requisição** (`multipart/form-data`):
+
+| Campo | Tipo    | Obrigatório |
+|-------|---------|-------------|
+| file  | Arquivo | Sim         |
+
+**Resposta** `201`:
+```json
+{
+  "message": "File imported successfully.",
+  "upload_id": "65f1a2b3c4d5e6f7a8b9c0d1",
+  "original_name": "InstrumentsConsolidatedFile_20240822.csv",
+  "rows_imported": 74832,
+  "status": "done"
+}
+```
+
+---
+
+### GET /api/uploads
+
+Retorna o histórico de uploads com filtros opcionais.
+
+**Parâmetros de query** (todos opcionais):
+
+| Parâmetro | Tipo   | Descrição                          |
+|-----------|--------|------------------------------------|
+| filename  | string | Filtra pelo nome original do arquivo |
+| date      | string | Filtra pela data de referência (Y-m-d) |
+
+**Exemplo:**
+```
+GET /api/uploads?filename=Instruments&date=2024-08-22
+```
+
+**Resposta** `200` (paginada):
+```json
+{
+  "data": [
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c0d1",
+      "original_name": "InstrumentsConsolidatedFile_20240822.csv",
+      "size": 15728640,
+      "rows_imported": 74832,
+      "status": "done",
+      "reference_date": "2024-08-22T00:00:00.000Z",
+      "created_at": "2024-08-22T10:00:00.000Z"
+    }
+  ],
+  "current_page": 1,
+  "per_page": 15,
+  "total": 1
+}
+```
+
+---
+
+### GET /api/instruments
+
+Consulta os instrumentos importados com filtros opcionais. Sem parâmetros, retorna o resultado paginado.
+
+**Parâmetros de query** (todos opcionais):
+
+| Parâmetro | Tipo   | Descrição                        |
+|-----------|--------|----------------------------------|
+| TckrSymb  | string | Filtra pelo código do ticker     |
+| RptDt     | string | Filtra pela data do relatório (Y-m-d) |
+
+**Exemplos:**
+```
+GET /api/instruments
+GET /api/instruments?TckrSymb=AMZO34
+GET /api/instruments?TckrSymb=AMZO34&RptDt=2024-08-26
+```
+
+**Resposta** `200` (paginada):
+```json
+{
+  "data": [
+    {
+      "RptDt": "2024-08-22",
+      "TckrSymb": "AMZO34",
+      "MktNm": "EQUITY-CASH",
+      "SctyCtgyNm": "BDR",
+      "ISIN": "BRAMZOBDR002",
+      "CrpnNm": "AMAZON.COM, INC"
+    }
+  ],
+  "current_page": 1,
+  "per_page": 20,
+  "total": 5
+}
+```
+
+---
+
+## Regras de Negócio
+
+- O mesmo arquivo não pode ser enviado duas vezes (verificado via hash MD5)
+- Formatos aceitos: CSV e Excel (`.xlsx`, `.xls`)
+- Arquivos CSV da B3 possuem uma linha de metadados antes do cabeçalho — ignorada automaticamente
+- Arquivos da B3 usam encoding ISO-8859-1 — convertido automaticamente para UTF-8 na importação
+- Registros são inseridos em lotes de 500 para suportar arquivos grandes com eficiência
+- O histórico de uploads pode ser filtrado por nome do arquivo ou data de referência
+
+---
+
+## Fonte dos Dados
+
+Os arquivos diários podem ser baixados no site da B3:
+
+> [https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/dados-publicos-de-produtos-listados-e-de-balcao/](https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/consultas/boletim-diario/dados-publicos-de-produtos-listados-e-de-balcao/)
+
+Clique em uma data → "Cadastro de Instrumentos (Listado)" → "Baixar arquivo".
