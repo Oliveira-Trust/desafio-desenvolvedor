@@ -1,0 +1,60 @@
+# docker-compose.override.yml
+# Aplicado automaticamente em desenvolvimento (docker compose up).
+# Em produção use: docker compose -f docker-compose.yml up
+
+services:
+  app:
+    volumes:
+      - .:/var/www/html:cached
+      # - /var/www/html/vendor
+      # - /var/www/html/node_modules
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      PHP_MEMORY_LIMIT: "512M"
+      AUTORUN_LARAVEL_MIGRATION: "true"
+
+  queue:
+    volumes:
+      - .:/var/www/html:cached
+      # - /var/www/html/vendor
+      # - /var/www/html/node_modules
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+
+  scheduler:
+    volumes:
+      - .:/var/www/html:cached
+      # - /var/www/html/vendor
+      # - /var/www/html/node_modules
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  mongo:
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express:1.0
+    container_name: laravel_mongo_express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: "${DB_USERNAME:-laravel_user}"
+      ME_CONFIG_MONGODB_ADMINPASSWORD: "${DB_PASSWORD:-secret}"
+      ME_CONFIG_MONGODB_URL: "mongodb://${DB_USERNAME:-laravel_user}:${DB_PASSWORD:-secret}@mongo:27017/?authSource=admin"
+      ME_CONFIG_BASICAUTH: "false"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - laravel_network
